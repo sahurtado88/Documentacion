@@ -1,8 +1,8 @@
 # Kubernetes
 
-** POD **
+**POD**
 
-** SERVICES **
+**SERVICES**
 
-** DEPLOYMENT **
+**DEPLOYMENT**
 
