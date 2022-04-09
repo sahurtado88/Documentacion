@@ -1,6 +1,28 @@
 # Kubernetes
 
+Open source container orchestration tool
+
+developed by google
+helps manage containerized applications in differen deploymen environment
+
+high availability or no dowtime
+
+scalability or high performance
+
+disaster recovery backuo and restore
+
+## KUBERNETES ARCHITECTURE
+
+api server: entrypoint to K8s cluster
+
+controll manager: keeps track of whts happening in the cluster
+
+Scheduler: ensures pods placement
+
+etcd: kubernetes backing store
+
 **NODES**
+NOde=virtual or pysical machine
 
 Kubernetes runs your workload by placing containers into Pods to run on Nodes. A node may be a virtual or physical machine, depending on the cluster. Each node is managed by the control plane and contains the services necessary to run Pods.
 
@@ -21,7 +43,15 @@ The components on a node include the kubelet, a container runtime, and the kube-
 
 
 **POD**
+
+
 Pods are the smallest deployable units of computing that you can create and manage in Kubernetes.
+
+Abstraction over container
+
+usually 1 application per POD 
+
+pods are ephemeral
 
 A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers. A Pod's contents are always co-located and co-scheduled, and run in a shared context. A Pod models an application-specific "logical host": it contains one or more application containers which are relatively tightly coupled. In non-cloud contexts, applications executed on the same physical or virtual machine are analogous to cloud applications executed on the same logical host.
 
@@ -49,6 +79,11 @@ In Kubernetes, namespaces provides a mechanism for isolating groups of resources
 
 
 **SERVICES**
+
+permanent IP addrees can attach to a POD
+
+lifecylce of POD and service not connected
+
 An abstract way to expose an application running on a set of Pods as a network service.
 
 With Kubernetes you don't need to modify your application to use an unfamiliar service discovery mechanism. Kubernetes gives Pods their own IP addresses and a single DNS name for a set of Pods, and can load-balance across them.
@@ -66,6 +101,8 @@ spec:
       targetPort: 9376
 
 This specification creates a new Service object named "my-service", which targets TCP port 9376 on any Pod with the app=MyApp label.
+
+existe internal Service and external service
 
 **DEPLOYMENT**
 A Deployment provides declarative updates for Pods and ReplicaSets.
@@ -157,6 +194,9 @@ spec:
 
 **LOGS**
 
+**VOLUMES**
+
+attach phisycal hard disk coiuld be local or remote
 
 
 **REPLICASET**
@@ -191,13 +231,57 @@ This actually means that you may never need to manipulate ReplicaSet objects: us
 **ROLES**
 
 **SECRETS**
+used to store secret data like credentials, certificates
+
+reference Secret in Deployment /POD
+
 A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such information might otherwise be put in a Pod specification or in a container image. Using a Secret means that you don't need to include confidential data in your application code.
+
 
 
 
 **ConfigMaps**
 
+external configuration of your application like DB_URL
+
+A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
+
+A ConfigMap allows you to decouple environment-specific configuration from your container images, so that your applications are easily portable.
+
+A ConfigMap is not designed to hold large chunks of data. The data stored in a ConfigMap cannot exceed 1 MiB. If you need to store settings that are larger than this limit, you may want to consider mounting a volume or use a separate database or file service.
+
+piVersion: v1
+kind: ConfigMap
+metadata:
+  name: game-demo
+data:
+  # property-like keys; each key maps to a simple value
+  player_initial_lives: "3"
+  ui_properties_file_name: "user-interface.properties"
+
+  # file-like keys
+  game.properties: |
+    enemy.types=aliens,monsters
+    player.maximum-lives=5    
+  user-interface.properties: |
+    color.good=purple
+    color.bad=yellow
+    allow.textmode=true    
+
+
+
 **INGRESS**
+
+An API object that manages external access to the services in a cluster, typically HTTP.
+
+Ingress may provide load balancing, SSL termination and name-based virtual hosting.
+
+You must have an Ingress controller to satisfy an Ingress. Only creating an Ingress resource has no effect.
+
+You may need to deploy an Ingress controller such as ingress-nginx. You can choose from a number of Ingress controllers.
+
+Ideally, all Ingress controllers should fit the reference specification. In reality, the various Ingress controllers operate slightly differently.
+
 
 **PERSISTENT VOLUMES**
 

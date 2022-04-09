@@ -100,3 +100,62 @@ What is continuous delivery?
 
 Continuous delivery (CD) is the ability to push new software into production multiple times per day, automating the delivery of applications to infrastructure environments. CD is part of DevOps, which helps shorten the software development lifecycle.
 
+## DISTRIBUTED SYSTEM ##
+
+A distributed system is a computing environment in which various components are spread across multiple computers (or other computing devices) on a network. These devices split up the work, coordinating their efforts to complete the job more efficiently than if a single device had been responsible for the task.
+
+## TYPES OF DEPLOYMENT ##
+
+### BLUE GREEN ###
+
+### HOT DEPLOYMENT ###
+
+### CANARY ###
+
+
+## ROLLBACK STRATEGY ##
+
+
+## CHAOS ENGINERRING ##
+
+
+## STATLESS Vs STATEFULL ##
+
+However, the major feature of stateful is that it maintains the state of all its sessions, be it an authentication session, or a client’s request for information. Stateful are those that may be used repeatedly, such as online banking or email. They’re carried out in the context of prior transactions in which the states are stored, and what happened in previous transactions may have an impact on the current transaction. Because of this, stateful apps use the same servers every time they perform a user request. An example of stateful is FTP (File Transfer Protocol). For the course of an FTP session, which often includes many data transfers, the client establishes a Control Connection. After this, the data transfer takes place.
+
+Advantages of Stateful
+
+    Stateful protocol keeps track of the connection information, and as a result, delivers superior performance because of continually keeping track of information.
+    Stateful protocols are more intuitive because they can maintain data on the server between two requests.
+    They can improve performance when data retrieval is required only once.
+
+Disadvantages of Stateful
+
+    Stateful protocol requires memory allocation in order to store data.
+    In the event of inefficient maintenance of session storage, there can be a decrease in the performance. It requires continuous management of the service’s full lifecycle.
+    These protocols are highly dependent on the server-side state.
+    Usually, stateful protocols require backing storage.
+    Since the state is maintained, stateful is not very secure.
+
+What is Stateless?
+
+In order to comprehend what Stateless means, let us consider a scenario just like we did in the case of Stateful. Consider the event of sending an SMS. Here, the receiver’s availability is not confirmed, and the sender just sends the SMS to the recipient. There is no confirmation from the receiving device to the sending device that the message has been received. Despite being transmitted, the communication may or may not be received. There can be no cross-verification of status or retries. This is what stateless is all about.
+
+A stateless protocol is one in which the receiver is not required to keep session state from previous requests. The sender sends relevant session state to the receiver in such a way that each request may be interpreted without reference to prior requests’ session state, which the receiver retains. HTTP (HyperText Transfer Protocol) is an example of Stateless Protocol because each request is executed independently of the requests that came before it. This implies that once a transaction is completed, the connection between the browser and the server is also terminated.
+
+Advantages of Stateless
+
+    Since the monitoring system does not have to look beyond a single request to determine its whole nature, visibility of the protocol is improved. 
+    It is easier to recover from partial failures like crashes since no state is maintained, which improves reliability. 
+    The server does not have to store session state between requests, hence, scalability  is enhanced as deploying the services to any number of servers is possible, and implementation is simplified even more.
+    It only necessitates a small number of resources because the system doesn’t need to keep track of communication over numerous lines, as well as session information.
+    In Stateless Protocols, each individual communication is unconnected and distinct from the ones that come before or after it.
+    Here, each packet of data travels on its own. There is no need to refer to another packet in these packets.
+
+Disadvantages of Stateless
+
+    It may be essential to include additional information in each request, and as a result, the server will need to interpret this new information.
+    They may degrade network performance by increasing the amount of repetitive data delivered in a series of requests, which cannot be saved and reused.
+    They are inherently less capable as they do not store information about a particular user session.
+
+The most significant distinction between stateful and stateless is that stateless do not “save” data, whereas stateful applications do

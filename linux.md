@@ -166,7 +166,11 @@ cat file5.txt >> file4.txt para realizar un append (agregar en vez de reemplazar
 
 
 
+SUDO super usuario DO
 
+SUDO BASH
+
+SU usuario cambiar usuario
 
 
 
@@ -263,3 +267,66 @@ if [ -n "$name" ]; then
 echo "Welcome $name"
 exit 0
 fi
+
+ Working With Files and Folders
+cd  	Shows your home directory
+cd <folder>  	Change to a specific directory
+cd ~  	Home directory, e.g. ‘cd ~/folder/’
+cd / 	Root of drive
+ls  	Shows a listing of all files in the current directory
+ls -C 	Sort files or entries by size
+ls -lt 	List the files sorted by time modified (most recent first)
+ls -l  	Shows a long listing of all files in the current directory.
+ls -a 	Listing including hidden files
+ls -lh 	Long listing with human readable file sizes ( KB, MB, or GB)
+ls -R  	Shows the entire contents of folder recursively
+top 	Displays the active processes. Press q to quit 
+q  	Exit
+clear 	Clear the screen
+touch <file> 	Create a new file with no extension
+pwd 	Full path to the working directory
+.. 	Parent directory
+ls -l .. 	Long listing of parent directory
+cd ../../ 	Move 2 levels up
+. 	Current folder 
+cat 	The current folder
+rm <file> 	Remove a file
+rm -i <file> 	Remove with confirmation
+rm -r <dir> 	Remove a directory and its contents - Use with caution!
+rm -f <file> 	Force a removal without confirmation
+rm -i <file> 	Will display prompt before removal
+cp <file> <newfile> 	Copy a file to file
+cp <file> <dir> 	Copy a file to a directory
+mv <file> <new filename> 	Move/Rename a file
+mkdir <dir> 	Create new directory named <dir>
+mkdir <dir> <dir2> <dir3> 	Create multiple directories at once
+mkdir -p <dir>/<dir> 	Create nested directories 
+rmdir <dir> 	Remove an entire directory ( only works on empty directories )
+find <dir> -name <"file"> 	Find all files named <file> inside <dir>. Use wildcards (*) to search for partial filenames
+
+ Special Commands
+sudo <command> 	Run a command with the security privileges of super user
+nano <file> 	Opens the Terminal editor
+open <file> 	Opens a file
+<command> -h 	Show help about a command
+man <command> 	Show the help manual of the command
+Control Permissions
+ls -ld 	Display the default permission for a home directory
+ls -ld/<dir> 	Display the read, write, and access permission of a particular folder
+chmod 755 <file> 	Change the permission of a file to 755
+chmod -R 600 <dir> 	Change the permission of a folder (and its contents) to 600
+chown <user>:<group> <file> 	Change the ownership of a file to user and group. Add -R to include folder contents
+Network and Server Commands
+ping <host> 	Ping a host and display its status
+whois <domain> 	Output WHOIS information about a domain
+curl -O <url/to/file> 	Download a file via HTTP, HTTPS, or FTP
+ssh <username>@<host> 	Establish an SSH connection to <host> with user <username>
+scp <file><user>@<host>:/remote/path 	Copy a <file> to a remote <host>
+
+ Download Files From the Internet
+
+To quickly download a file from the internet use the command below.
+
+curl -O URL of the file you want to download
+
+https://www.lifewire.com/mac-terminal-commands-4774997

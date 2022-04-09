@@ -1,5 +1,8 @@
 # GIT
 
+
+gitignore - Specifies intentionally untracked files to ignore
+
 ## GIT COMMAND
 
 git status

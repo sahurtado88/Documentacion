@@ -1,5 +1,62 @@
 # DOCKER
 
+## What is a Container
+
+-A way to package application wit all necesary dependencies and configuration
+
+-Portable artifact easily shared and moved around
+
+-makes development and deployment more efficient
+
+-layer of images
+
+-mostly Linux Base Image because small in size (linux alpine)
+
+-Application image on top
+
+
+## Where do container live?
+
+-continer repository
+
+-private repository
+
+-public repository to docker (docker hub)
+
+
+## Docker Image
+
+the actual package
+artifact that can be moved around
+
+## Docker Container 
+
+actually start the application
+
+container environment is created
+
+container is a running environment for IMAGE
+
+## Docker vs Virtual Machine
+
+-Docker on  OS level
+
+- Different levels of abstractions
+
+-Docker virtualice application layer
+
+-Virtual machine application and OS kernel
+
+- docker image is small and run much fast
+
+## CONTAINER PORT
+
+
+
+## HOST PORT
+
+
+
 ## DOCKER FILE
 Docker can build images automatically by reading the instructions from a Dockerfile. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
 
@@ -15,11 +72,11 @@ Traditionally, the Dockerfile is called Dockerfile and located in the root of th
 
  docker build -f /path/to/a/Dockerfile .
 
- Una vez ya sabemos la teoría de docker y también ya lo tenemos instalado (tanto en Linux como en Windows) vamos a ver los primeros comandos para iniciarnos.
+
+
+## COMANDOS DOCKER
 
 Los comandos los vamos a ejecutar desde la terminal, tanto en Windows como en Linux.
-
-Resumen del artículo [ocultar]
 
     Docker images
     Docker run
@@ -42,7 +99,7 @@ El comando para probar que se ha instalado correctamente y revisar la versión e
 
 docker --version
 
-Docker CHEATSHEET (comandos más usados) 0
+
 Docker images
 
 Como hemos visto en la teoría anteriormente, Docker se basa en imágenes. Se diferencia de las imágenes de sistema (ISOs) en que trabajan con capas. Dentro de cada imagen simplemente utiliza la imagen del sistema y luego en cada capa esta un comando.
@@ -207,3 +264,52 @@ docker volume create nombrequequeramos
 Y para ver los volúmenes creados usamos:
 
 docker volume ls
+
+Postgress
+$ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
+dee
+docker container prune
+WARNING! This will remove all stopped containers.
+
+
+--
+docker exec -it ab2 /bin/bash
+
+ingresar a un contenedor modo interactivo (it i interactivo t tty) id o nombre del contenedor  (ab2) /bin/bash abrir comando
+
+Los comandos docker exec y docker attach le permiten conectarse a un contenedor en ejecución. Para obtener un shell interactivo en un contenedor, use el comando exec para iniciar una nueva sesión de shell. El comando adjuntar conecta la terminal a un contenedor en ejecución.
+
+Para salir del contenedor sin detenerlo, use la combinación de teclas CTRL-p CTRL-q. Al presionar CTRL-c se detiene el contenedor.
+
+--
+docker run -p6000:6379 -d --name redis-older redis:4.0
+
+ejecuta un contenedor por el puerto 6000 del host y el puerto 6379 del contenedor en modo secundo plano (-d) y le pone el nombre de redis-older (--name) de la imagen redis de la version 4.0 (redis:4.0)
+
+
+
+## DOCKER COMPOSE
+
+Developers describe Docker Compose as "Define and run multi-container applications with Docker". With Compose, you define a multi-container application in a single file, then spin your application up in a single command which does everything that needs to be done to get it running.
+
+docker-compose -f mongo.yaml up
+
+docker-compose -f mongo.yaml down  stop y remove container and networks
+
+## DOCKERFILE
+
+blueprint for building images
+
+FROM node  -- install node basic images linux alpine, etc
+ENV MONGO_DB_USERNAME=admin \  ---set environment variables
+    MONGO_DB_PWD=password
+RUN mkdir -p /home/app  --- create /home/app folder folder nested -p
+COPY . /home/app copy current directory . to /home/app copia de mi host al docker si fuera dentro del mismo contenedor usaria RUN cp archvio destino archvio origen
+CMD ["node","server.js"] start the app with "node server.js"
+
+diferencia entre CMD y RUN es que CMD=entry point command
+you can  have multiple RUN commands
+
+docker build -t my-app:1.0  . para crer una imagne desde un dockerfile we use docker build -t tagged nombre y version y en el segunod el folder donde esta el docker file . current directory)
+
