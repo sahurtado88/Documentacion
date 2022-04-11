@@ -1,3 +1,12 @@
+# JENKINS #
+
+Open source governance and community
+Stability
+Extensible
+Visibility
+Pipelines
+
+JOB or BUILD
 
 
 Pipeline
@@ -41,6 +50,125 @@ pipeline {
         }
     }
 }
+
+
+pipeline {
+    agent any
+    stages {
+        stage ("Hello World"){
+            steps {
+                echo "Hello World"
+            }
+        }   
+    }
+}
+
+## PIPELINE PARAMETRIZED
+
+build with parameter
+
+pipeline {
+    agent any
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "${params.Greeting} World!"
+            }
+        }
+    }
+}
+
+### MULTI_STEP  ###
+
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Hello World"'
+                sh '''  ### tres comillas multilinea
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
+            }
+        }
+    }
+}
+
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Hello World"'
+            }
+        }
+        stage ('Build More'){
+            steps {
+                sh '''
+                echo "Multiline shell steps works too"
+                ls -lah
+                '''
+            }
+        }
+    }
+}
+
+## TIME OUT
+
+pipeline {
+    agent any
+    stages {
+        stage('Deploy') {
+            steps {
+                timeout(time: 1, unit: 'MINUTES') {
+                    sh '/var/jenkins_home/scripts/fibonacci.sh 5'
+                }
+                timeout(time: 1, unit: 'MINUTES') {
+                    sh '/var/jenkins_home/scripts/fibonacci.sh 32'
+                }
+            }
+        }
+    }
+}
+
+##  TRACKIN BUILD STATE
+
+ingresar al build revisar console output or logs
+
+## SCM POLL
+
+Pipeline definition Pipeline script from SCM
+SCM Git
+URL
+credentials if no public
+branch
+
+BUILD TRIGGER = POLLING SCM
+y poner formato crontab
+
+MIN HOUR DOM MON DOW CMD
+
+Crontab Fields and Allowed Ranges (Linux Crontab Syntax)
+
+Field    Description    Allowed Value
+MIN      Minute field    0 to 59
+HOUR     Hour field      0 to 23
+DOM      Day of Month    1-31
+MON      Month field     1-12
+DOW      Day Of Week     0-6
+CMD      Command         Any command to be executed.
+
+## WEBHOOK BUILD TRIGGEring
+
+se debe agregar plan text del github con permisos en el repo y en el webhook
+
+branch source bil configuration jenkinsfile
+
+
 
 
 

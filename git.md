@@ -1,5 +1,7 @@
 # GIT
 
+source control management  (SCM)
+
 
 gitignore - Specifies intentionally untracked files to ignore
 
@@ -14,7 +16,6 @@ git commit -m "mensaje del commit"
 git push origin
 
 git pull
-
     git init creará un nuevo repositorio local GIT. El siguiente comando de Git creará un repositorio en el directorio actual:
 
 git init

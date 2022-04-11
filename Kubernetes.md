@@ -21,6 +21,50 @@ Scheduler: ensures pods placement
 
 etcd: kubernetes backing store
 
+NODE PROCESS
+
+each node has multiple POD in it
+
+3 processes must be installed on every node
+
+    -Worker Node do the actual work
+
+    CONTAINER RUNTIME (for exmple docker)
+    KUBELET interact with both the container runtime and node, starts the pod with a container inside
+    KUBEPROXY forwards the request
+
+MASTER NODES
+
+  4 processes run on every master node
+
+  API SERVER is like a cluster gateway queries and updates acts as a gatekeeper for authentication
+  
+  SCHEDULER where to put the POD A scheduler watches for newly created Pods that have no Node assigned. For every Pod that the scheduler discovers, the scheduler becomes responsible for finding the best Node for that Pod to run on. The scheduler reaches this placement decision taking into account the scheduling principles described below.
+  
+  CONTROLLER MANAGER in Kubernetes, a controller is a control loop that watches the shared state of the cluster through the apiserver and makes changes attempting to move the current state towards the desired state. Examples of controllers that ship with Kubernetes today are the replication controller, endpoints controller, namespace controller, and serviceaccounts controller. 
+  detects cluster state changes
+
+  ETCD etcd is a consistent and highly-available key value store used as Kubernetes' backing store for all cluster data.
+  cluster brain, cluster changes get stored in the key value store
+  application data is not stored in ETCD
+
+  when we have 2 master nodes de api server is oad balance and etcd is distributed storage across all master nodes
+
+EXAMPLE CLUSTER SET UP
+
+master have less resource 
+
+2 MASTER NODES
+3 WORKER NODES
+
+ADD NEW MASTER/ NODE SERVER
+
+1- get new bare server
+2- install all the master/worker node process
+3- add it to the cluster
+
+
+
 **NODES**
 NOde=virtual or pysical machine
 
@@ -77,6 +121,45 @@ spec:
 **NAMESPACES**
 In Kubernetes, namespaces provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Namespace-based scoping is applicable only for namespaced objects (e.g. Deployments, Services, etc) and not for cluster-wide objects (e.g. StorageClass, Nodes, PersistentVolumes, etc).
 
+-Organise resources in namespaces
+-virtual cluster inside a cluster
+
+
+4 namespaces per default
+*KUBERNETES-DASHBOARD only with minikube
+ 
+  1 KUBE SYSTEM do not create or modify in kube system system processes master and kubectl processes
+  1 KUBE PUBLIC public accesible data a configmap which contains cluster information
+  3 KUBE NODE LEASE heartbeats of node each node has associated lease object in namespace, determines the availability of a node
+  4 DEFAULT  resource you create are located here
+
+
+
+resource grouped in Namespaces you don't use namespaces if small projects or less tha 10 users
+
+conflict many teams same application
+
+resource sharing: staging and development
+
+resouce sharing Blue/green Deployment
+
+acces and resource limits on namespaces
+
+--------------------------
+you cant acces most of resources from another namespaces
+
+each namespaces must defines own CongfigMaps ans Secrets
+
+services can uses from another namespaces
+
+volumes and node live globally in a cluster you can isolate them
+
+namespace can defines in metadata in configuration file yaml
+ or in  apply $ kubectl apply -f [filename] --namespace=[namespacecreated]
+
+ Change active namespaces with kubens other app  kubectx
+
+
 
 **SERVICES**
 
@@ -104,7 +187,49 @@ This specification creates a new Service object named "my-service", which target
 
 existe internal Service and external service
 
+external service open de ip and port 
+
+the configuration of external service need in specs type:load blanacer and the third port nodePort in ports section
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-express-service
+spec:
+  selector:
+    app: mongo-express
+  type: LoadBalancer  
+  ports:
+  - port: 8081
+    targetPort: 8081
+    nodePort: 30000
+
+
+
+**STATEFULSET**
+
+for stateful apps like databases
+
+StatefulSet is the workload API object used to manage stateful applications.
+
+Manages the deployment and scaling of a set of Pods, and provides guarantees about the ordering and uniqueness of these Pods.
+
+Like a Deployment, a StatefulSet manages Pods that are based on an identical container spec. Unlike a Deployment, a StatefulSet maintains a sticky identity for each of their Pods. These pods are created from the same spec, but are not interchangeable: each has a persistent identifier that it maintains across any rescheduling.
+
+If you want to use storage volumes to provide persistence for your workload, you can use a StatefulSet as part of the solution. Although individual Pods in a StatefulSet are susceptible to failure, the persistent Pod identifiers make it easier to match existing volumes to the new Pods that replace any that have failed
+
+DB are often hosted outside of K8 cluster because statefulset is more complicated to do
+
+
+
 **DEPLOYMENT**
+ 
+DB can't be replicated via Deployment shared same storage and give some data inconsistences
+
+Deployment is for stateLESS
+
+blueprint for pods, abstraction of pods
+
 A Deployment provides declarative updates for Pods and ReplicaSets.
 
 You describe a desired state in a Deployment, and the Deployment Controller changes the actual state to the desired state at a controlled rate. You can define Deployments to create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
@@ -282,6 +407,23 @@ You may need to deploy an Ingress controller such as ingress-nginx. You can choo
 
 Ideally, all Ingress controllers should fit the reference specification. In reality, the various Ingress controllers operate slightly differently.
 
+INGRESS CONTROLLER pod
+  evaluates all the rules
+  manages redirections
+  entrypoint to cluster
+  many third partu impementations K8s NGINX Ingress ControllerapiVersion: v1
+kind: Service
+metadata:
+  name: mongo-express-service
+spec:
+  selector:
+    app: mongo-express
+  type: LoadBalancer  
+  ports:
+  - port: 8081
+    targetPort: 8081
+    nodePort: 30000
+
 
 **PERSISTENT VOLUMES**
 
@@ -295,75 +437,87 @@ networkingand storage to provide a seamless portability
 across infrastructure providers.
 
 Nodes
-$ kubectl get no
-$ kubectl get no -o wide
-$ kubectl describe no
-$ kubectl get no -o yaml
-$ kubectl get node --selector =[label _name]
-$ kubectl top node [ node_name]
+$ kubectl get nodes
+$ kubectl get nodes -o wide
+$ kubectl describe nodes
+$ kubectl get nodes -o yaml
+$ kubectl get nodes --selector =[label _name]
+$ kubectl top nodes [ node_name]
 $ kubectl get nodes -o jsonpath='{.items[*].statusaddresses[?(@.type==" External IP")].address}'
 
 
 Pods
-$ kubectl get po
-$ kubectl get po - o wide
-$ kubectl describe po
-$ kubectl get po --show-labels
-$ kubectl get po -l app=nginx
-$ kubectl get po -o yaml
+$ kubectl get pod
+$ kubectl get pod -o wide
+$ kubectl describe pod
+$ kubectl get pod --show-labels
+$ kubectl get pod -l app=nginx
+$ kubectl get pod -o yaml
 $ kubectl get pod [pod_name] -o yaml --export
 $ kubectl get pod [pod_name] -o yaml --export > nameoffile.yaml
-$ kubectl get pods --field -selectorstatus.phase=Running
+$ kubectl get pod --field -selectorstatus.phase=Running
+$ kubectl describe pod [podname]
 
 Namespaces
-$ kubectl get ns
+$ kubectl get namespaces
 $ kubectl get ns -o yaml
 $ kubectl describe ns
 
+kubectl creare namespaces {NAMESPACE}
+
 Deployments
-$ kubectl get deployments
-$ kubectl describe deployments
-$ kubectl get deploy -o wide
-$ kubectl get deploy -o yaml
+$ kubectl create deployment NAME --image=image [--dry-run] [options]
+$ kubectl edit deployment [NAME]
+$ kubectl get deployment
+$ kubectl describe deployment
+$ kubectl get deployment [NAME] -o wide
+$ kubectl get deployment [NAME] -o yaml
+$ kubectl delete deployment [NAME]
+
 Services
-$ kubectl get svc
-$ kubectl describe svc
-$ kubectl get svc -o wide
-$ kubectl get svc -o yaml
-$ kubectl get svc --show-labels
+$ kubectl get service
+$ kubectl describe service [SERVICENAME]
+$ kubectl get service [SERVICENAME] -o wide
+$ kubectl get service [SERVICENAME] -o yaml
+$ kubectl get service --show-labels
+
 DaemonSets
 $ kubectl get ds
 $ kubectl get ds --all-namespaces
 $ kubectl describe ds [daemonset _name] - n
 [namespace_name]
 $ kubectl get ds [ds_name] -n [ ns_name] -o yaml
+
 Events
 $ kubectl get events
 $ kubectl get events -n kube-system
 $ kubectl get events -w
+
 Logs
 $ kubectl logs [pod_name]
 $ kubectl logs --since=1h [ pod_name]
 $ kubectl logs --tail=20 [ pod_name]
 $ kubectl logs -f -c [container _name] [pod_name]
 $ kubectl logs [ pod_name] > pod.log
+
 Service Accounts
 $ kubectl get sa
 $ kubectl get sa -o yaml
 $ kubectl get serviceaccount s default -o yaml > . /sa.yaml
 $ kubectl replace serviceaccount default -f. /sa.yaml
+
 ReplicaSets
-$ kubectl get rs
-$ kubectl describe rs
-$ kubectl get rs -o wide
-$ kubectl get rs -o yaml
+$ kubectl get replicaset
+$ kubectl describe replicaset
+$ kubectl get replicaset -o wide
+$ kubectl get replicaset -o yaml
 Roles
 $ kubectl get roles --all-namespaces
 $ kubectl get roles --all-namespaces -o yaml
 Secrets
-$ kubectl get secrets
-$ kubectl get secrets --all -namespaces
-$ kubectl get secrets -o yaml
+$ kubectl get secret
+$ kubectl get secret --all -namespaces
+$ kubectl get secret -o yaml
 ConfigMaps
 $ kubectl get cm
 $ kubectl get cm --all -namespaces
@@ -378,5 +532,38 @@ PersistentVolumeClaim
 $ kubectl get pvc
 $ kubectl describe pvc 
 
+kubectl get all | grep LABEL
+
+$ kubectl exec -it [pod name] -- bin/bash or -- bin/sh inside the container
 
 $ kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml
+$ kubectl apply -f [filename]
+
+kubectl apply create or update
+
+kubectl delete -f [filename]
+
+## CONFIGURATION FILE ##
+
+each configuration file has 3 parts
+
+1-MEtadata : name
+2 Specification attribute of "spec" are specific to the kind
+3 Status automatically generates and adde by kubernetes desired state and actual state
+
+store the config file with your code or own git repository
+
+deployment manages a replicaset and reĺica set manages a POD and pod is abstarction of containers
+
+LABELS AND SELECTOR
+
+metadata part contains the labels and specs part contains the selectors
+
+continer port has match with target port of the service
+
+
+
+EXAMPLE
+
+apiVersion: apps/v1
+kind: Deployment

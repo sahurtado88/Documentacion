@@ -330,3 +330,234 @@ To quickly download a file from the internet use the command below.
 curl -O URL of the file you want to download
 
 https://www.lifewire.com/mac-terminal-commands-4774997
+
+encriptar en base64
+
+echo -n 'username' | base64
+
+
+## Compresion archivos ##
+
+### TAR ###
+Para poder empaquetar ficheros, utilizamos el siguiente comando:
+
+tar -cvf archivo.tar /dir/a/comprimir/
+
+    -c : indica a tar que cree un archivo.
+    -v : indica a tar que muestre lo que va empaquetando.
+    -f : indica a tar que el siguiente argumento es el nombre del fichero.tar.
+
+En cambio para poder desempaquetar los ficheros .tar, utilizamos el siguiente comando:
+
+tar -xvf archivo.tar
+
+    -x : indica a tar que descomprima el fichero.tar.
+    -v : indica a tar que muestre lo que va desempaquetando.
+    -f : indica a tar que el siguiente argumento es el nombre del fichero a desempaquetar.
+
+Si se quiere ver el contenido de un fichero .tar, se utiliza el siguiente comando:
+
+tar -tf archivo.tar
+
+    -t : Lista el contenido del fichero .tar
+    -f : indica a tar que el siguiente argumento es el nombre del fichero a ver.
+
+### Ficheros gz ###
+
+Para comprimir ficheros en formato .gz, se utiliza el siguiente comando:
+
+gzip -9 fichero
+
+    -9 : le indica a gz que utilice el mayor factor de compresión posible.
+
+Para descomprimir ficheros .gz, se utilizara el siguiente comando:
+
+gzip -d fichero.gz
+
+    -d : indica descompresión
+
+### Ficheros bz2 ###
+
+Para comprimir ficheros en formato bz2, se utiliza el siguiente comando:
+
+bzip fichero
+
+Para descomprimir ficheros .bz2, se usa el comando siguiente:
+
+bzip2 -d fichero.bz2
+
+    -d : indica descompresión.
+
+    Nota: Tanto el compresor gzip como bzip2, solo comprimen ficheros, no directorios, para comprimir directorios (carpetas), se debe de usar en combinación con tar.
+
+### Ficheros tar.gz ###
+
+Para comprimir ficheros en formato tar.gz, se utiliza el siguiente comando:
+
+tar -czfv archivo.tar.gz ficheros
+
+    -c : indica a tar que cree un archivo.
+    -z : indica que use el compresor gzip
+    -f : indica a tar que el siguiente argumento es el nombre del fichero.tar
+    -v : indica a tar que muestre lo que va empaquetando
+
+Para descomprimir ficheros con extensión tar.gz, se usa el siguiente comando:
+
+tar -xzvf archivo.tar.gz
+
+    -x : le dice a tar que extraiga el contenido del fichero tar.gz
+    -z : le indica a tar que esta comprimido con gzip
+    -v : va mostrando el contenido del fichero
+    -f : le dice a tar que el siguiente argumento es el fichero a descomprimir.
+
+Para poder ver el contenido de un fichero comprimido en tar.gz, se usa el siguiente comando:
+
+tar -tzf archivo.tar.gz
+
+### Ficheros tar.bz2 ###
+
+Para comprimir en tar.bz2 usaremos un «truco», mediante el uso del parámetro pipeline ( | ). Esto permite hacer que dos programas trabajen «juntos».
+
+tar -c ficheros | bzip2 > archivo.tar.bz2
+
+Para descomprimir ficheros tar.bz2, se utiliza el siguiente comando:
+
+bzip2 -dc archivo.tar.bz2 | tar -xv
+
+Y para ver el contenido de un fichero tar.bz2, se usa el siguiente comando:
+
+bzip2 -dc archivo.tar.bz2 | tar -t
+
+### Ficheros zip ###
+
+
+Para poder comprimir en formato zip, se usara el comando siguiente:
+
+zip archivo.zip ficheros a comprimir
+
+Para poder descomprimir los ficheros zip, se usa el siguiente comando:
+
+unzip archivo.zip
+
+Para ver el contenido de un fichero zip, se pone el siguiente comando:
+
+unzip -v archivo.zip
+
+### Ficheros rar ###
+
+Para comprimir en formato rar, se usara el siguiente comando:
+
+rar -a archivo.rar ficheros
+
+Para descomprimir ficheros en formato rar, se utiliza el siguiente comando:
+
+unrar -x archivo.rar
+
+Para ver el contenido de un fichero rar, se usa el siguiente comando:
+
+unrar -v archivo.rar
+unrar -l archivo.rar
+
+## CRONTAB ##
+
+The crontab is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list.
+
+MIN HOUR DOM MON DOW CMD
+
+Crontab Fields and Allowed Ranges (Linux Crontab Syntax)
+
+Field    Description    Allowed Value
+MIN      Minute field    0 to 59
+HOUR     Hour field      0 to 23
+DOM      Day of Month    1-31
+MON      Month field     1-12
+DOW      Day Of Week     0-6
+CMD      Command         Any command to be executed.
+
+30 08 10 06 * /home/maverick/full-backup
+
+30 – 30th Minute
+08 – 08 AM
+10 – 10th Day
+06 – 6th Month (June)
+* – Every day of the week
+
+View Current Logged-In User’s Crontab entries : To view your crontab entries type crontab -l from your unix account.
+
+To schedule a job for every minute using Cron.
+Ideally you may not have a requirement to schedule a job every minute. But understanding this example will will help you understand the other examples.
+
+* * * * * CMD
+
+To schedule a job for more than one time (e.g. Twice a Day)
+
+The following script take a incremental backup twice a day every day.
+
+This example executes the specified incremental backup shell script (incremental-backup) at 11:00 and 16:00 on every day. The comma separated value in a field specifies that the command needs to be executed in all the mentioned time.
+
+00 11, 16 * * * /home/maverick/bin/incremental-backup
+
+00 – 0th Minute (Top of the hour)
+11, 16 – 11 AM and 4 PM
+* – Every day
+* – Every month
+* – Every day of the week
+
+    Cron Job everyday during working hours :
+    This example checks the status of the database everyday (including weekends) during the working hours 9 a.m – 6 p.m
+
+    00 09-18 * * * /home/maverick/bin/check-db-status
+
+    00 – 0th Minute (Top of the hour)
+    09-18 – 9 am, 10 am, 11 am, 12 am, 1 pm, 2 pm, 3 pm, 4 pm, 5 pm, 6 pm
+    * – Every day
+    * – Every month
+    * – Every day of the week
+    Cron Job every weekday during working hours :
+    This example checks the status of the database every weekday (i.e excluding Sat and Sun) during the working hours 9 a.m – 6 p.m.
+
+    00 09-18 * * 1-5 /home/maverick/bin/check-db-status
+
+    00 – 0th Minute (Top of the hour)
+    09-18 – 9 am, 10 am, 11 am, 12 am, 1 pm, 2 pm, 3 pm, 4 pm, 5 pm, 6 pm
+    * – Every day
+    * – Every month
+    1-5 -Mon, Tue, Wed, Thu and Fri (Every Weekday)
+
+7.To schedule a background Cron job for every 10 minutes.
+Use the following, if you want to check the disk space every 10 minutes.
+
+*/10 * * * * /home/maverick/check-disk-space
+
+It executes the specified command check-disk-space every 10 minutes through out the year. But you may have a requirement of executing the command only during certain hours or vice versa. The above examples shows how to do those things.Instead of specifying values in the 5 fields, we can specify it using a single keyword as mentioned below.
+
+There are special cases in which instead of the above 5 fields you can use @ followed by a keyword — such as reboot, midnight, yearly, hourly.
+
+Cron special keywords and its meaning
+
+Keyword    Equivalent
+@yearly    0 0 1 1 *
+@daily     0 0 * * *
+@hourly    0 * * * *
+@reboot    Run at startup.
+
+8.To schedule a job for first minute of every year using @yearly
+If you want a job to be executed on the first minute of every year, then you can use the @yearly cron keyword as shown below.This will execute the system annual maintenance using annual-maintenance shell script at 00:00 on Jan 1st for every year.
+
+@yearly /home/maverick/bin/annual-maintenance
+
+9.To schedule a Cron job beginning of every month using @monthly
+It is as similar as the @yearly as above. But executes the command monthly once using @monthly cron keyword.This will execute the shell script tape-backup at 00:00 on 1st of every month.
+
+@monthly /home/maverick/bin/tape-backup
+
+10.To schedule a background job every day using @daily
+Using the @daily cron keyword, this will do a daily log file cleanup using cleanup-logs shell script at 00:00 on every day.
+
+@daily /home/maverick/bin/cleanup-logs "day started"
+
+11.To execute a linux command after every reboot using @reboot
+Using the @reboot cron keyword, this will execute the specified command once after the machine got booted every time.
+
+@reboot CMD
+

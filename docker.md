@@ -313,3 +313,39 @@ you can  have multiple RUN commands
 
 docker build -t my-app:1.0  . para crer una imagne desde un dockerfile we use docker build -t tagged nombre y version y en el segunod el folder donde esta el docker file . current directory)
 
+## SMALLER CONTAINER
+
+1. use base smaller images (alpine, small, slim)
+
+2. Use multi stage Docker buils
+
+FROM golang:1.14-alpine as build
+WORKDIR /app
+COPY . ./
+RUN go build -o server .
+
+########
+
+FROM alpine:3.12
+COPY  --from=build /app /app
+WORKDIR /app
+CMD ["/app/server"]
+
+##Security DOCKER
+
+- Don't run the container as the root user
+- use multi-stage build + distroless base image
+- Harden the security of the host system
+- Use a container image scanner to detect vulnerabilities
+- Don't install/configure thing without understandig the potential risk
+
+## ADD VS COPY
+
+COPY toma src y destrucción. Solo le permite copiar en un directorio local o desde su host (la máquina que crea la imagen de Docker) en la propia imagen de Docker.
+
+COPY <src> <dest>
+
+ADD también  te permite hacer eso, pero también admite otras 2 fuentes. Primero, puede usar una URL en lugar de un archivo / directorio local. En segundo lugar, puede extraer tar del directorio de origen al destino.
+
+ADD <src> <dest>
+

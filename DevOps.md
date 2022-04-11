@@ -104,19 +104,7 @@ Continuous delivery (CD) is the ability to push new software into production mul
 
 A distributed system is a computing environment in which various components are spread across multiple computers (or other computing devices) on a network. These devices split up the work, coordinating their efforts to complete the job more efficiently than if a single device had been responsible for the task.
 
-## TYPES OF DEPLOYMENT ##
 
-### BLUE GREEN ###
-
-### HOT DEPLOYMENT ###
-
-### CANARY ###
-
-
-## ROLLBACK STRATEGY ##
-
-
-## CHAOS ENGINERRING ##
 
 
 ## STATLESS Vs STATEFULL ##
@@ -159,3 +147,400 @@ Disadvantages of Stateless
     They are inherently less capable as they do not store information about a particular user session.
 
 The most significant distinction between stateful and stateless is that stateless do not “save” data, whereas stateful applications do
+
+## GIT DEPLOYMENT
+
+### GIT FLOW
+In the Git flow development model, you have one main development branch with strict access to it. It’s often called the develop branch.
+
+Developers create feature branches from this main branch and work on them. Once they are done, they create pull requests. In pull requests, other developers comment on changes and may have discussions, often quite lengthy ones
+
+Git Flow Pros and Cons
+
+As you can see, doing pull requests might not always be the best choice. They should be used where appropriate only.
+
+When Does Git Flow Work Best?
+
+    When you run an open-source project.
+    This style comes from the open-source world and it works best there. Since everyone can contribute, you want to have very strict access to all the changes. You want to be able to check every single line of code, because frankly you can’t trust people contributing. Usually, those are not commercial projects, so development speed is not a concern.
+
+    When you have a lot of junior developers.
+    If you work mostly with junior developers, then you want to have a way to check their work closely. You can give them multiple hints on how to do things more efficiently and help them improve their skills faster. People who accept pull requests have strict control over recurring changes so they can prevent deteriorating code quality.
+
+    When you have an established product.
+    This style also seems to play well when you already have a successful product. In such cases, the focus is usually on application performance and load capabilities. That kind of optimization requires very precise changes. Usually, time is not a constraint, so this style works well here. What’s more, large enterprises are a great fit for this style. They need to control every change closely, since they don’t want to break their multi-million dollar investment.
+
+When Can Git Flow Cause Problems?
+
+    When you are just starting up.
+    If you are just starting up, then Git flow is not for you. Chances are you want to create a minimal viable product quickly. Doing pull requests creates a huge bottleneck that slows the whole team down dramatically. You simply can’t afford it. The problem with Git flow is the fact that pull requests can take a lot of time. It’s just not possible to provide rapid development that way.
+
+    When you need to iterate quickly.
+    Once you reach the first version of your product, you will most likely need to pivot it few times to meet your customers’ need. Again, multiple branches and pull requests reduce development speed dramatically and are not advised in such cases.
+
+    When you work mostly with senior developers.
+    If your team consists mainly of senior developers who have worked with one another for a longer period of time, then you don’t really need the aforementioned pull request micromanagement. You trust your developers and know that they are professionals. Let them do their job and don’t slow them down with all the Git flow bureaucracy.
+
+## GIT Trunk-based Development Workflow
+
+In the trunk-based development model, all developers work on a single branch with open access to it. Often it’s simply the master branch. They commit code to it and run it. It’s super simple.
+
+In some cases, they create short-lived feature branches. Once code on their branch compiles and passess all tests, they merge it straight to master. It ensures that development is truly continuous and prevents developers from creating merge conflicts that are difficult to resolve.
+
+
+The only way to review code in such an approach is to do full source code review. Usually, lengthy discussions are limited. No one has strict control over what is being modified in the source code base—that is why it’s important to have enforceable code style in place. Developers that work in such style should be experienced so that you know they won’t lower source code quality.
+
+This style of work can be great when you work with a team of seasoned software developers. It enables them to introduce new improvements quickly and without unnecessary bureaucracy. It also shows them that you trust them, since they can introduce code straight into the master branch. Developers in this workflow are very autonomous—they are delivering directly and are checked on final results in the working product. There is definitely much less micromanagement and possibility for office politics in this method.
+
+If, on the other hand, you do not have a seasoned team or you don’t trust them for some reason, you shouldn’t go with this method—you should choose Git flow instead. It will save you unnecessary worries.
+Pros and Cons of Trunk-based Development
+
+Let’s take a closer look at both sides of the cost—the very best and very worst scenarios.
+When Does Trunk-based Development Work Best?
+
+    When you are just starting up.
+    If you are working on your minimum viable product, then this style is perfect for you. It offers maximum development speed with minimum formality. Since there are no pull requests, developers can deliver new functionality at the speed of light. Just be sure to hire experienced programmers.
+
+    When you need to iterate quickly.
+    Once you reached the first version of your product and you noticed that your customers want something different, then don’t think twice and use this style to pivot into a new direction. You are still in the exploration phase and you need to be able to change your product as fast as possible.
+
+    When you work mostly with senior developers.
+    If your team consists mainly of senior developers, then you should trust them and let them do their job. This workflow gives them the autonomy that they need and enables them to wield their mastery of their profession. Just give them purpose (tasks to accomplish) and watch how your product grows.
+
+When Can Trunk-based Development Cause Problems?
+
+    When you run an open-source project.
+    If you are running an open-source project, then Git flow is the better option. You need very strict control over changes and you can’t trust contributors. After all, anyone can contribute. Including online trolls.
+
+    When you have a lot of junior developers.
+    If you hire mostly junior developers, then it’s a better idea to tightly control what they are doing. Strict pull requests will help them to to improve their skills and will find potential bugs more quickly.
+
+    When you have established product or manage large teams.
+    If you already have a prosperous product or manage large teams at a huge enterprise, then Git flow might be a better idea. You want to have strict control over what is happening with a well-established product worth millions of dollars. Probably, application performance and load capabilities are the most important things. That kind of optimization requires very precise changes.
+
+
+## DEploymetn Strategies
+
+
+
+### The Basic Deployment
+
+In a basic deployment, all nodes within a target environment are updated at the same time with a new service or artifact version. Because of this, basic deployments are not outage-proof and they slow down rollback processes or strategies. Of all the deployment strategies shared, it is the riskiest.
+Blue-Green vs Canary Deployment Strategies: The Basic Deployment
+Pros:
+
+The benefits of this strategy are that it is simple, fast, and cheap. Use this strategy if 1) your application service is not business, mission, or revenue-critical, or 2) your deployment is to a lower environment, during off-hours, or with a service that is not in use.
+Cons:
+
+Of all the deployment strategies shared, it is the riskiest and does not fall into best practices. Basic deployments are not outage-proof and do not provide for easy rollbacks.
+
+
+### The Multi-Service Deployment
+
+
+
+In a multi-service deployment all nodes within a target environment are updated with multiple new services simultaneously. This strategy is used for application services that have service or version dependencies, or if you’re deploying off-hours to resources that are not in use.
+Blue-Green vs Canary Deployment Strategies: The Multi-Service Deployment
+Pros:
+
+Multi-service deployments are simple, fast, cheap, and not as risk-prone as a basic deployment.
+Cons:
+
+Multi-service deployments are slow to roll back and not outage-proof. Using this deployment strategy also leads to difficulty in managing, testing, and verifying all the service dependencies.
+
+### Rolling Deployment
+
+A rolling deployment is a deployment strategy that updates running instances of an application with the new release. All nodes in a target environment are incrementally updated with the service or artifact version in integer N batches.
+
+Pros:
+
+The benefits of a rolling deployment are that it is relatively simple to roll back, less risky than a basic deployment, and the implementation is simple. 
+Cons:
+
+Since nodes are updated in batches, rolling deployments require services to support both new and old versions of an artifact. Verification of an application deployment at every incremental change also makes this deployment slow.
+
+### Blue-Green Deployment
+
+Blue-green deployment is a deployment strategy that utilizes two identical environments, a “blue” (aka staging) and a “green” (aka production) environment with different versions of an application or service. Quality assurance and user acceptance testing are typically done within the blue environment that hosts new versions or changes. User traffic is shifted from the green environment to the blue environment once new changes have been testing and accepted within the blue environment. You can then switch to the new environment once the deployment is successful.
+Blue-Green vs Canary Deployment Strategies: The Blue-Green Deployment
+ Pros:
+
+One of the benefits of the blue-green deployment is that it is simple, fast, well-understood, and easy to implement. Rollback is also straightforward, because you can simply flip traffic back to the old environment in case of any issues. Blue-green deployments are therefore not as risky compared to other deployment strategies.
+Cons:
+
+Cost is a drawback to blue-green deployments. Replicating a production environment can be complex and expensive, especially when working with microservices. Quality assurance and user acceptance testing may not identify all of the anomalies or regressions either, and so shifting all user traffic at once can present risks. An outage or issue could also have a wide-scale business impact before a rollback is triggered, and depending on the implementation, in-flight user transactions may be lost when the shift in traffic is made.
+
+### Canary Deployment
+
+A canary deployment is a deployment strategy that releases an application or service incrementally to a subset of users. All infrastructure in a target environment is updated in small phases (e.g: 2%, 25%, 75%, 100%). A canary release is the lowest risk-prone, compared to all other deployment strategies, because of this control.
+
+Pros:
+
+Canary deployments allow organizations to test in production with real users and use cases and compare different service versions side by side. It’s cheaper than a blue-green deployment because it does not require two production environments. And finally, it is fast and safe to trigger a rollback to a previous version of an application.
+Cons:
+
+Drawbacks to canary deployments involve testing in production and the implementations needed. Scripting a canary release can be complex: manual verification or testing can take time, and the required monitoring and instrumentation for testing in production may involve additional research.
+
+### A/B Testing
+
+In A/B testing, different versions of the same service run simultaneously as “experiments” in the same environment for a period of time. Experiments are either controlled by feature flags toggling, A/B testing tools, or through distinct service deployments. It is the experiment owner’s responsibility to define how user traffic is routed to each experiment and version of an application. Commonly, user traffic is routed based on specific rules or user demographics to perform measurements and comparisons between service versions. Target environments can then be updated with the optimal service version.
+A/B Testing Deployment Strategy
+
+The biggest difference between A/B testing and other deployment strategies is that A/B testing is primarily focused on experimentation and exploration. While other deployment strategies deploy many versions of a service to an environment with the immediate goal of updating all nodes with a specific version, A/B testing is about testing multiple ideas vs. deploying one specific tested idea.
+Pros:
+
+A/B testing is a standard, easy, and cheap method for testing new features in production. And luckily, there are many tools that exist today to help enable A/B testing.
+Cons:
+
+The drawbacks to A/B testing involve the experimental nature of its use case. Experiments and tests can sometimes break the application, service, or user experience. Finally, scripting or automating AB tests can also be complex.
+
+https://harness.io/blog/continuous-verification/blue-green-canary-deployment-strategies/
+
+https://scrumlotus.com/scrum-vs-kanban-vs-lean/
+
+### AGILE
+
+Agile prescribes working incrementally, collaboratively and flexibly; it does not prescribe a specific framework or methodology. A few of the most popular frameworks that Agile teams adopt are Scrum, Kanban and Extreme Programming. Teams may choose one of these frameworks or pieces of each.
+
+Agile is a term used to describe approaches to software development emphasizing incremental delivery, team collaboration, continual planning, and continual learning. 
+
+At its core, the manifesto declares 4 value statements representing the foundation of the Agile movement. As written, the manifesto states...
+
+We have come to value:
+
+    Individuals and interactions over processes and tools
+    Working software over comprehensive documentation
+    Customer collaboration over contract negotiation
+    Responding to change over following a plan
+
+
+### Scrum
+
+According to the Scrum Guide, "Scrum is not a process or a technique for building products; rather, it is a framework within which you can employ various processes and techniques… Scrum is grounded in empirical process control theory, and employs an iterative, incremental approach to optimize predictability and control risk."
+
+Scrum is the most prescriptive of the three frameworks and follows a set of repeated activities and ceremonies.
+Scrum at a Glance
+
+    A product vision is created with input from stakeholders, customers and end users.
+    The product owner creates a prioritized list of features called a product backlog.
+    During sprint planning, the team pulls work from the product backlog to create a sprint backlog and collectively discusses how to implement those features.
+    The team works during that timeboxed sprint (typically 1-4 weeks) to complete the sprint backlog's work.
+    The team holds a daily scrum meeting to discuss commitments and impediments.
+    The ScrumMaster helps remove impediments and keeps the team focused on its goal.
+    At the end of the sprint, the team should demonstrate finished work (product that is ready to be deployed or shown to a user) at the sprint review.
+    The sprint ends with a sprint retrospective wherein the team focuses on continuous improvement.
+    This process cycles as needed.
+
+## Kanban
+
+Kanban started in Lean and Just In Time manufacturing from the Toyota Production Systems. It focuses on a visualized workflow where work is broken down in small pieces, pulled using a task board and Work-in-Process (WIP) is limited. By implementing and respecting WIP limits, following explicit process policies and measuring and managing flow, Kanban can identify bottlenecks and waste, reduce wait time and increase efficiency.
+Kanban at a Glance
+
+    Visualize current workflow (value stream).
+    Identify and respect WIP.
+    Measure and manage flow (reduce waste).
+    Make process policies explicit.
+    Implement feedback loops.
+    Continuously improve.
+
+## Extreme Programming
+
+Extreme Programming (XP) is a framework centered around engineering principles and focused on ensuring delivery of high quality software. XP teams work collaboratively in short development cycles and are flexible and adaptable to change. XP utilizes user stories and frequent small planned releases.
+
+XP has twelve core practices grouped in four categories.
+
+    Fine Scale Feedback
+        Test Driven Development
+        Planning Game (frequent release and iteration planning)
+        Whole Team (the customer is a member of the team and available at all times)
+        Pair Programming (code should be produced by two people)
+    Continuous Process
+        Continuous Integration
+        Design Improvement (embrace refactoring)
+        Small Releases (deliver frequent releases of working functionality)
+    Shared Understanding
+        Simple Design
+        System Metaphor (class and method should be named for functionality)
+        Collective Code Ownership
+        Coding Standards (entire team agrees on standards and holds one another accountable)
+    Programmer Welfare
+        Sustainable Pace (people perform best when rested)
+
+
+### DEVSECOPS
+
+The mindset shift to a DevSecOps culture includes an important thinking about not only preventing breaches, but assuming them as well.
+
+### Key DevSecOps practices
+
+There are several common DevSecOps practices that apply to virtually any team.
+
+First, teams should focus on improving their mean time to detection and mean time to recovery. These are metrics that indicate how long it takes to detect a breach and how long it takes to recover, respectively. They can be tracked through ongoing live site testing of security response plans. When evaluating potential policies, improving these metrics should be an important consideration.
+
+Teams should also practice defense in depth. When a breach happens, it often results in the attacker getting access to internal networks and everything they have to offer. While it would be ideal to stop them before it gets that far, a policy of assuming breaches would drive teams to minimize their exposure from an attacker who has already gotten in.
+
+Finally, teams should perform periodic post-breach assessments of the practices and environments. After a breach has been resolved, the team should evaluate the performance of the policies, as well as their own adherence to them. This serves to not only ensure the policies are effective, but also that the team is actually following them. Every breach, whether real or practiced, should be seen as an opportunity to improve.
+
+### Chaos engineering
+
+Chaos engineering is a methodology that helps developers attain consistent reliability by hardening services against failures in production. Another way to think about chaos engineering is that it's about embracing the inherent chaos in complex systems and, through experimentation, growing confidence in your solution's ability to handle it.
+
+A common way to introduce chaos is to deliberately inject faults that cause system components to fail. The goal is to observe, monitor, respond to, and improve your system's reliability under adverse circumstances. For example, taking dependencies offline (stopping API apps, shutting down VMs, etc.), restricting access (enabling firewall rules, changing connection strings, etc.), or forcing failover (database level, Front Door, etc.), is a good way to validate that the application is able to handle faults gracefully.
+
+### Microservices architecture
+
+As the name implies, a microservices architecture is an approach to building a server application as a set of small services. That means a microservices architecture is mainly oriented to the back-end, although the approach is also being used for the front end. Each service runs in its own process and communicates with other processes using protocols such as HTTP/HTTPS, WebSockets, or AMQP. Each microservice implements a specific end-to-end domain or business capability within a certain context boundary, and each must be developed autonomously and be deployable independently. Finally, each microservice should own its related domain data model and domain logic (sovereignty and decentralized data management) and could be based on different data storage technologies (SQL, NoSQL) and different programming languages.
+
+The following are important aspects to enable success in going into production with a microservices-based system:
+
+    Monitoring and health checks of the services and infrastructure.
+
+    Scalable infrastructure for the services (that is, cloud and orchestrators).
+
+    Security design and implementation at multiple levels: authentication, authorization, secrets management, secure communication, etc.
+
+    Rapid application delivery, usually with different teams focusing on different microservices.
+
+    DevOps and CI/CD practices and infrastructure.
+
+
+Design patterns for microservices
+Cloud Services
+
+The goal of microservices is to increase the velocity of application releases, by decomposing the application into small autonomous services that can be deployed independently. A microservices architecture also brings some challenges. The design patterns shown here can help mitigate these challenges.
+
+## Microservices design patterns
+
+Ambassador can be used to offload common client connectivity tasks such as monitoring, logging, routing, and security (such as TLS) in a language agnostic way. Ambassador services are often deployed as a sidecar (see below).
+
+Anti-corruption layer implements a façade between new and legacy applications, to ensure that the design of a new application is not limited by dependencies on legacy systems.
+
+Backends for Frontends creates separate backend services for different types of clients, such as desktop and mobile. That way, a single backend service doesn't need to handle the conflicting requirements of various client types. This pattern can help keep each microservice simple, by separating client-specific concerns.
+
+Bulkhead isolates critical resources, such as connection pool, memory, and CPU, for each workload or service. By using bulkheads, a single workload (or service) can't consume all of the resources, starving others. This pattern increases the resiliency of the system by preventing cascading failures caused by one service.
+
+Gateway Aggregation aggregates requests to multiple individual microservices into a single request, reducing chattiness between consumers and services.
+
+Gateway Offloading enables each microservice to offload shared service functionality, such as the use of SSL certificates, to an API gateway.
+
+Gateway Routing routes requests to multiple microservices using a single endpoint, so that consumers don't need to manage many separate endpoints.
+
+Sidecar deploys helper components of an application as a separate container or process to provide isolation and encapsulation.
+
+Strangler Fig supports incremental refactoring of an application, by gradually replacing specific pieces of functionality with new services.
+
+For the complete catalog of cloud design patterns on the Azure Architecture Center, see Cloud Design Patterns.
+
+
+## CLOUD TYPES
+
+Understanding your deployment options—Public cloud, private cloud, or hybrid cloud?
+
+There’s no one type of cloud computing that’s right for everyone. Several different cloud computing models, types, and services have evolved to meet the rapidly changing technology needs of organizations.
+
+There are three different ways to deploy cloud services: on a public cloud, private cloud, or hybrid cloud. Which deployment method depends on your business needs.
+What is a public cloud?
+
+### Hybrid cloud computing
+
+A hybrid cloud is a type of cloud computing that combines on-premises infrastructure—or a private cloud—with a public cloud. Hybrid clouds allow data and apps to move between the two environments.
+
+Many organizations choose a hybrid cloud approach due to business imperatives such as meeting regulatory and data sovereignty requirements, taking full advantage of on-premises technology investment, or addressing low latency issues.
+
+The hybrid cloud is evolving to include edge workloads as well. Edge computing brings the computing power of the cloud to IoT devices—closer to where the data resides. By moving workloads to the edge, devices spend less time communicating with the cloud, reducing latency, and they are even able to operate reliably in extended offline periods.
+The benefits of a hybrid cloud platform
+
+A hybrid cloud platform gives organizations many advantages—such as greater flexibility, more deployment options, security, compliance, and getting more value from their existing infrastructure. When computing and processing demand fluctuates, hybrid cloud computing gives businesses the ability to seamlessly scale up their on-premises infrastructure to the public cloud to handle any overflow—without giving third-party datacenters access to the entirety of their data. Organizations gain the flexibility and innovation the public cloud provides by running certain workloads in the cloud while keeping highly sensitive data in their own datacenter to meet client needs or regulatory requirements.
+
+This not only allows companies to scale computing resources— it also eliminates the need to make massive capital expenditures to handle short-term spikes in demand, as well as when the business needs to free up local resources for more sensitive data or applications. Companies will pay only for resources they temporarily use instead of having to purchase, program, and maintain additional resources and equipment that could remain idle over long periods of time.
+
+
+*Advantages of the hybrid cloud:*
+
+    Control—your organization can maintain a private infrastructure for sensitive assets or workloads that require low latency.
+    Flexibility—you can take advantage of additional resources in the public cloud when you need them.
+    Cost-effectiveness—with the ability to scale to the public cloud, you pay for extra computing power only when needed.
+    Ease—transitioning to the cloud doesn’t have to be overwhelming because you can migrate gradually—phasing in workloads over time.
+
+
+### PUBLIC CLOUD 
+
+Public clouds are the most common type of cloud computing deployment. The cloud resources (like servers and storage) are owned and operated by a third-party cloud service provider and delivered over the internet. With a public cloud, all hardware, software, and other supporting infrastructure are owned and managed by the cloud provider. Microsoft Azure is an example of a public cloud.
+
+In a public cloud, you share the same hardware, storage, and network devices with other organizations or cloud “tenants,” and you access services and manage your account using a web browser. Public cloud deployments are frequently used to provide web-based email, online office applications, storage, and testing and development environments.
+
+Advantages of public clouds:
+
+    Lower costs—no need to purchase hardware or software, and you pay only for the service you use.
+    No maintenance—your service provider provides the maintenance.
+    Near-unlimited scalability—on-demand resources are available to meet your business needs.
+    High reliability—a vast network of servers ensures against failure.
+
+### private cloud
+
+A private cloud consists of cloud computing resources used exclusively by one business or organization. The private cloud can be physically located at your organization’s on-site datacenter, or it can be hosted by a third-party service provider. But in a private cloud, the services and infrastructure are always maintained on a private network and the hardware and software are dedicated solely to your organization.
+
+In this way, a private cloud can make it easier for an organization to customize its resources to meet specific IT requirements. Private clouds are often used by government agencies, financial institutions, any other mid- to large-size organizations with business-critical operations seeking enhanced control over their environment.
+
+Advantages of a private cloud:
+
+    More flexibility—your organization can customize its cloud environment to meet specific business needs.
+    More control—resources are not shared with others, so higher levels of control and privacy are possible.
+    More scalability—private clouds often offer more scalability compared to on-premises infrastructure.
+
+## CLOUD MODEL
+
+Cloud computing types are service deployment models that let you choose the level of control over your information and types of services you need to provide. There are three main types of cloud computing services, sometimes called the cloud computing stack because they build on top of one another.
+
+The first cloud computing type is infrastructure-as-a-service (IaaS), which is used for Internet-based access to storage and computing power. The most basic category of cloud computing types, IaaS lets you rent IT infrastructure - servers and virtual machines, storage, networks, and operating systems - from a cloud provider on a pay-as-you-go basis.
+
+IaaS Examples: Amazon Web Services (AWS), Cisco Metapod, Microsoft Azure, Google Compute Engine (GCE), Joyent
+
+The second cloud computing type is platform-as-a-service (PaaS) that gives developers the tools to build and host web applications. PaaS is designed to give users access to the components they require to quickly develop and operate web or mobile applications over the Internet, without worrying about setting up or managing the underlying infrastructure of servers, storage, networks, and databases.
+PaaS makes the development, testing, and deployment of applications quick, simple, and cost-effective. With this technology, enterprise operations, or a third-party provider, can manage OSes, virtualization, servers, storage, networking, and the PaaS software itself. Developers, however, manage the applications.
+PaaS Examples: elasticbeanstalk, RDS
+
+The third cloud computing type is software-as-a-service (SaaS) which is used for web-based applications. SaaS is a method for delivering software applications over the Internet where cloud providers host and manage the software applications making it easier to have the same application on all of your devices at once by accessing it in the cloud.
+
+SaaS Examples: Google Apps, Salesforce, Workday, Concur, Citrix GoToMeeting, Cisco WebEx
+Common SaaS Use-Case: Replaces traditional on-device software
+Technology Analyst Examples: Bill Pray (Gartner), Amy DeMartine (Forrester)
+
+## ADVANTAGES CLOUD COMPUTING
+
+- trade capital expenses for variable expenses
+- benefits from massive economic of scale
+- stop guessing capacity
+- increase speed and agility
+- go global in minutes
+
+
+## DISASTER RECOVERY
+
+
+
+    Recovery time objective (RTO): The maximum acceptable delay between the interruption of service and restoration of service. This determines an acceptable length of time for service downtime.
+    Recovery point objective (RPO): The maximum acceptable amount of time since the last data recovery point. This determines what is considered an acceptable loss of data.
+
+
+![alt text](https://d2908q01vomqb2.cloudfront.net/fc074d501302eb2b93e2554793fcaf50b3bf7291/2021/04/02/Figure-1.png)
+
+### BACKUP RESTORe
+
+The backup and recovery strategy is considered the least efficient for RTO. However, you can use AWS resources like Amazon EventBridge to build serverless automation, which will reduce RTO by improving detection and recovery. This will be explored further in a future blog post.
+
+### PILOT LIGHT
+
+With the pilot light strategy, the data is live, but the services are idle. Live data means the data stores and databases are up-to-date (or nearly up-to-date) with the active Region and ready to service read operations. I
+
+n the pilot light strategy, basic infrastructure elements are in place like Elastic Load Balancing and Amazon EC2 Auto Scaling in Figure 6. But functional elements (like compute) are “shut off.”
+
+### WARMSTAND BY
+
+Like the pilot light strategy, the warm standby strategy maintains live data in addition to periodic backups. The difference between the two is infrastructure and the code that runs on it. A warm standby maintains a minimum deployment that can handle requests, but at a reduced capacity—it cannot handle production-level traffic.
+
+
+
+### MULTI SITE ACTIVE ACTIVe
+
+With multi-site active/active, two or more Regions are actively accepting requests. Failover consists of re-routing requests away from a Region that cannot serve them. Here, data is replicated across Regions and is actively used to serve read requests in those Regions. For write requests, you can use several patterns that include writing to the local Region or re-routing writes to specific Regions.
