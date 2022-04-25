@@ -6,6 +6,10 @@ What is DevOps?
 
 DevOps is a work culture primarily centered around collaboration, communication, and integration among the development teams. It was introduced to address the disconnect primarily between the development, operations, and quality assurance teams. As a result, it’s becoming crucial for businesses to adopt DevOps practices, not only for seamless software development and operations but also for the high quality of deployment for successful product delivery. 
 
+The goal are fast tiem to market, few production failures, immediate recovery from failures
+
+In a devops cultur devs care about stability as well as speed and ops care about speed as well as stability
+
 Let’s briefly overview how the DevOps lifecycle works at every stage.
 
     Plan: In this stage, teams identify the business requirement and collect end-user feedback. They create a project roadmap to maximize the business value and deliver the desired product during this stage.
@@ -87,18 +91,32 @@ Tools Used: Kubernetes and Docker Swarm are the container orchestration tools us
 
 Idempotency is the property that ensures that the results from an operation are the same, even if the same function is applied multiple times beyond the initial application. 
 
-CI/CD
+## Continuos Integration, COntinuos deployment, Continuos DElivery CI/CD
+
+
+
+
+- What is continuous integration?
+
+Continuous integration (CI) is the process of automating and integrating code changes and updates from many team members during software development. In CI, automated tools confirm that software code is valid and error-free before it's integrated, which helps detect bugs and speed up new releases.
 
 Successful CI  (continuos integration) means new code changes to an app are regularly built, tested, and merged to a shared repository. It’s a solution to the problem of having too many branches of an app in development at once that might conflict with each other.
 
-The "CD" in CI/CD refers to continuous delivery and/or continuous deployment, which are related concepts that sometimes get used interchangeably. Both are about automating further stages of the pipeline, but they’re sometimes used separately to illustrate just how much automation is happening.
+CI: Practice of frequently merging code changes done by developers
 
-What is continuous integration?
-
-Continuous integration (CI) is the process of automating and integrating code changes and updates from many team members during software development. In CI, automated tools confirm that software code is valid and error-free before it's integrated, which helps detect bugs and speed up new releases.
-What is continuous delivery?
+- What is continuous delivery?
 
 Continuous delivery (CD) is the ability to push new software into production multiple times per day, automating the delivery of applications to infrastructure environments. CD is part of DevOps, which helps shorten the software development lifecycle.
+
+CD: the prectice of continuously maintening code in a deployable state
+
+- What is continuos deployment?
+
+The practice of frequently deploying small code changes to production
+
+Continuos delivery is keeping the code ina deployable state Continuos deployment is actually doing the deployment frequently
+
+
 
 ## DISTRIBUTED SYSTEM ##
 

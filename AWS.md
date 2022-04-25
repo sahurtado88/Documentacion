@@ -249,4 +249,157 @@ Allows you to map domain name that you own to:
     - S3 Buckets
 
 
+## NOTES
+ - roles are preferred from security perspective
+ - avoid hard coding your credentials
+ - policies control a roles's permissions
+ - You can update a policy attahed to a role an it take inmediate effect
+ - YOu can attach or detach roles to running EC2 instances without hving to stop or terminate
+
+ ## RDS
+
+ ### When would we use and RDS database?
+
+ - RDS is generally used for online transaction processing (OLTP) workloads
+
+### RDS TYPES
+
+    - SQL SERVER
+    - POSTGRESQL
+    - ORACLE
+    - MARIA DB
+    - AURORA (MYSQL y POSTGRESQL)
+    - MYSQL
+
+ multi aZ
+ failover capability
+ automated backups
+
+ ### difference betwee OLTP (Online transaction Processing) and OLAP (Online analytics Processing)
+
+ - OLTP Processes from transactions in real time (payment, booking, banking transactions)
+ - OLAP processes complex queries to analyze historical data, OLAP is about data analysis using large amount of data
+
+TO OLAP RDS not suitable for analyzing large amount of data. Use datawarehouse like REdShift
+
+### MULTIAZ
+
+- An exact copy of your prodcution DB in another availability zone
+- Used for disaster recovery
+- In the event of a failure RDS will automatically failover to the stand by instance
+
+### READ REPLICAS
+
+- A read only copy oy your primary DB in the same AZ, cross AZ or cross region
+- Used to increase or scale read performance
+- Great for read heavy workloads and takes off the load off your primary DB for read only workloads
+
+### RDS BACKUP AND SNAPSHOT
+
+- database snapshot manual ad hoc and user initiaded it provides a snapshoy storage volume attached to the DB instance
+
+- automated backup enable by default, it creates daily backups or snapshots that run during a backup window that you define. Transaction logs are used to replay transactions
+ point in time recovery  retention period of 1 to 35 days
+ retetion period
+
+ the restore version of databasee will always be a new RDS instance with a new DNS endpoint no matter if was backup o snapshot
+
+ ### ENCYPTION
+
+ - encryption at rest KMS AES-256 encryption
+    includes all DB storage
+
+  - you can't enable encryption on an unencrypted RDS DB instance
+
+  for encrypt unencrypted DB first is necessary make an snapshot then create an encrypted snapshot to the unecrypted snapshot and the encrypted DB from de encrypted snapshot
+
+  ## ELASTICACHE
+
+-  in memory cache (key value)
+-  improve database performance
+- great for read heavy database workloads: caching the results of I/O intensive database queries Also for storing sessions data for distributed applications
+
+- there are 2 types elsticcahce MEMCAHCED and REDIS
+
+### MEMCACHED
+
+- great for basic object caching
+- scales hotiontally, but there is no persistence, multi-AZ or failover
+-good choice if you just want basic caching and you want your caching model to be as simple as possible
+
+### REDIS
+
+- A more sophisticated solution with enterprise feature like persistence, replication, multi  AZ and failover
+- Support storing and ranking data (for gaming leaderboard) and complex data types like lists and hashes
+
+Elastic cache not help in heavy write load or OLAP queries (redshift)
+
+## SYSTEM MANAGER PARAMETER STORE
+
+Parameter store store confidential info password,database connection string, licenses code, et
+
+
+## S3
+
+simple storage service provide secure, durable, highly- scalable obect store
+
+cannot  use to run to OS or database
+
+object up to 5 TB in size
+
+S3 bucket name is globally unique
+
+### S3 storage classes
+
+ - S3 Standard 
+    High availability and durability (99.99% availability, 99.999999999% durability 11's 9)
+    frequently accesed data
+      big data nalytics, gamming app, mobile, content distribution
+
+ - S3 standard infrequen acces S3-IA
+  designed for infrequently accesed data
+  long terms storage, backups and disaster recovery
+   minimum storage duration 30 days
+   (99.99% availability, 99.999999999% durability 11's 9)
+
+ -  S3 IA one zone
+    cost 20% less than regular S# IA
+    great for long lived, infrequently accesed, non critical data
+    minimum storage duration 30 days
+    (99.5% availability, 99.999999999% durability 11's 9)
+
+ - Glacier
+    Glacier is very cheap storage
+    optimized for data is very infrequent accesed
+    90 day minimum
+    retrieval times rnage from 1 minute to 12 hours
+    (99.99% availability, 99.999999999% durability 11's 9)
+
+ - Glacier deep arhcive
+    archives rarely accecesd data
+    retrieval time of 12 hours
+    180 days minimum
+    (99.99% availability, 99.999999999% durability 11's 9)
+
+ - S3 intellignet tiering
+    automatically moves your data to the most cost-effective tier based on how frequently you access each object
+    (99.9% availability, 99.999999999% durability 11's 9)
+
+### Securing S3 buckets
+
+BUCKET POLICIES
+- bucket policies applied at bucket leves
+- not individula objects
+- groups of files which need to be accesed by the same people
+
+BUCKET ACL ACCESS CONTROL LIST
+- applied at an object level
+- we can define which accounts or groups are granted acces and also the type of access
+-  fine grained control
+
+S3 ACCES LOGS
+every time a user makes a reuqest to upload, read or delete a file logs written 
+
+
+
 
