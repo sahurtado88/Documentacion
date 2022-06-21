@@ -337,7 +337,7 @@ We have come to value:
 According to the Scrum Guide, "Scrum is not a process or a technique for building products; rather, it is a framework within which you can employ various processes and techniques… Scrum is grounded in empirical process control theory, and employs an iterative, incremental approach to optimize predictability and control risk."
 
 Scrum is the most prescriptive of the three frameworks and follows a set of repeated activities and ceremonies.
-Scrum at a Glance
+Scrum at a Glance 
 
     A product vision is created with input from stakeholders, customers and end users.
     The product owner creates a prioritized list of features called a product backlog.
@@ -562,3 +562,7 @@ Like the pilot light strategy, the warm standby strategy maintains live data in 
 ### MULTI SITE ACTIVE ACTIVe
 
 With multi-site active/active, two or more Regions are actively accepting requests. Failover consists of re-routing requests away from a Region that cannot serve them. Here, data is replicated across Regions and is actively used to serve read requests in those Regions. For write requests, you can use several patterns that include writing to the local Region or re-routing writes to specific Regions.
+
+## Idempotency
+
+idempotency — the ability to repeatedly apply code to guarantee a desired state on a system, with the assurance that you will get the same result every time. It ensures that the state of the infrastructure always matches the desired state.
