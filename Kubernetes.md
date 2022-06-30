@@ -73,7 +73,7 @@ Kubernetes runs your workload by placing containers into Pods to run on Nodes. A
 Typically you have several nodes in a cluster; in a learning or resource-limited environment, you might have only one node.
 
 The components on a node include the kubelet, a container runtime, and the kube-proxy.
-
+```
 {
   "kind": "Node",
   "apiVersion": "v1",
@@ -84,7 +84,7 @@ The components on a node include the kubelet, a container runtime, and the kube-
     }
   }
 }
-
+```
 
 **POD**
 
@@ -104,7 +104,7 @@ The shared context of a Pod is a set of Linux namespaces, cgroups, and potential
 In terms of Docker concepts, a Pod is similar to a group of Docker containers with shared namespaces and shared filesystem volumes.
 
 
-
+```
 apiVersion: v1
 kind: Pod
 metadata:
@@ -115,7 +115,7 @@ spec:
     image: nginx:1.14.2
     ports:
     - containerPort: 80
-
+```
 
 
 **NAMESPACES**
@@ -170,7 +170,7 @@ lifecylce of POD and service not connected
 An abstract way to expose an application running on a set of Pods as a network service.
 
 With Kubernetes you don't need to modify your application to use an unfamiliar service discovery mechanism. Kubernetes gives Pods their own IP addresses and a single DNS name for a set of Pods, and can load-balance across them.
-
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -182,7 +182,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 9376
-
+```
 This specification creates a new Service object named "my-service", which targets TCP port 9376 on any Pod with the app=MyApp label.
 
 existe internal Service and external service
@@ -190,7 +190,7 @@ existe internal Service and external service
 external service open de ip and port 
 
 the configuration of external service need in specs type:load blanacer and the third port nodePort in ports section
-
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -203,7 +203,7 @@ spec:
   - port: 8081
     targetPort: 8081
     nodePort: 30000
-
+```
 
 
 **STATEFULSET**
@@ -233,7 +233,7 @@ blueprint for pods, abstraction of pods
 A Deployment provides declarative updates for Pods and ReplicaSets.
 
 You describe a desired state in a Deployment, and the Deployment Controller changes the actual state to the desired state at a controlled rate. You can define Deployments to create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
-
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -256,7 +256,7 @@ spec:
         ports:
         - containerPort: 80
 
-
+```
 
 **DAEMONSETS**
 A DaemonSet ensures that all (or some) Nodes run a copy of a Pod. As nodes are added to the cluster, Pods are added to them. As nodes are removed from the cluster, those Pods are garbage collected. Deleting a DaemonSet will clean up the Pods it created.
@@ -266,6 +266,8 @@ Some typical uses of a DaemonSet are:
     running a cluster storage daemon on every node
     running a logs collection daemon on every node
     running a node monitoring daemon on every node
+
+```
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -311,7 +313,7 @@ spec:
       - name: varlibdockercontainers
         hostPath:
           path: /var/lib/docker/containers
-
+```
 
 **EVENTS**
 
@@ -326,7 +328,7 @@ attach phisycal hard disk coiuld be local or remote
 
 **REPLICASET**
 A ReplicaSet's purpose is to maintain a stable set of replica Pods running at any given time. As such, it is often used to guarantee the availability of a specified number of identical Pods
-
+```
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -348,7 +350,7 @@ spec:
       containers:
       - name: php-redis
         image: gcr.io/google_samples/gb-frontend:v3
-
+```
 A ReplicaSet ensures that a specified number of pod replicas are running at any given time. However, a Deployment is a higher-level concept that manages ReplicaSets and provides declarative updates to Pods along with a lot of other useful features. Therefore, we recommend using Deployments instead of directly using ReplicaSets, unless you require custom update orchestration or don't require updates at all.
 
 This actually means that you may never need to manipulate ReplicaSet objects: use a Deployment instead, and define your application in the spec section
@@ -374,8 +376,8 @@ A ConfigMap is an API object used to store non-confidential data in key-value pa
 A ConfigMap allows you to decouple environment-specific configuration from your container images, so that your applications are easily portable.
 
 A ConfigMap is not designed to hold large chunks of data. The data stored in a ConfigMap cannot exceed 1 MiB. If you need to store settings that are larger than this limit, you may want to consider mounting a volume or use a separate database or file service.
-
-piVersion: v1
+```
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: game-demo
@@ -393,7 +395,7 @@ data:
     color.bad=yellow
     allow.textmode=true    
 
-
+```
 
 **INGRESS**
 
@@ -437,6 +439,7 @@ networkingand storage to provide a seamless portability
 across infrastructure providers.
 
 Nodes
+```
 $ kubectl get nodes
 $ kubectl get nodes -o wide
 $ kubectl describe nodes
@@ -444,9 +447,10 @@ $ kubectl get nodes -o yaml
 $ kubectl get nodes --selector =[label _name]
 $ kubectl top nodes [ node_name]
 $ kubectl get nodes -o jsonpath='{.items[*].statusaddresses[?(@.type==" External IP")].address}'
-
+```
 
 Pods
+```
 $ kubectl get pod
 $ kubectl get pod -o wide
 $ kubectl describe pod
@@ -457,15 +461,17 @@ $ kubectl get pod [pod_name] -o yaml --export
 $ kubectl get pod [pod_name] -o yaml --export > nameoffile.yaml
 $ kubectl get pod --field -selectorstatus.phase=Running
 $ kubectl describe pod [podname]
-
+```
 Namespaces
+```
 $ kubectl get namespaces
 $ kubectl get ns -o yaml
 $ kubectl describe ns
 
 kubectl creare namespaces {NAMESPACE}
-
+```
 Deployments
+```
 $ kubectl create deployment NAME --image=image [--dry-run] [options]
 $ kubectl edit deployment [NAME]
 $ kubectl get deployment
@@ -473,40 +479,46 @@ $ kubectl describe deployment
 $ kubectl get deployment [NAME] -o wide
 $ kubectl get deployment [NAME] -o yaml
 $ kubectl delete deployment [NAME]
-
+```
 Services
+```
 $ kubectl get service
 $ kubectl describe service [SERVICENAME]
 $ kubectl get service [SERVICENAME] -o wide
 $ kubectl get service [SERVICENAME] -o yaml
 $ kubectl get service --show-labels
-
+```
 DaemonSets
+```
 $ kubectl get ds
 $ kubectl get ds --all-namespaces
 $ kubectl describe ds [daemonset _name] - n
 [namespace_name]
 $ kubectl get ds [ds_name] -n [ ns_name] -o yaml
-
+```
 Events
+```
 $ kubectl get events
 $ kubectl get events -n kube-system
 $ kubectl get events -w
-
+```
 Logs
+```
 $ kubectl logs [pod_name]
 $ kubectl logs --since=1h [ pod_name]
 $ kubectl logs --tail=20 [ pod_name]
 $ kubectl logs -f -c [container _name] [pod_name]
 $ kubectl logs [ pod_name] > pod.log
-
+```
 Service Accounts
+```
 $ kubectl get sa
 $ kubectl get sa -o yaml
 $ kubectl get serviceaccount s default -o yaml > . /sa.yaml
 $ kubectl replace serviceaccount default -f. /sa.yaml
-
+```
 ReplicaSets
+```
 $ kubectl get replicaset
 $ kubectl describe replicaset
 $ kubectl get replicaset -o wide
@@ -542,14 +554,14 @@ $ kubectl apply -f [filename]
 kubectl apply create or update
 
 kubectl delete -f [filename]
-
+```
 ## CONFIGURATION FILE ##
 
 each configuration file has 3 parts
 
-1-MEtadata : name
-2 Specification attribute of "spec" are specific to the kind
-3 Status automatically generates and adde by kubernetes desired state and actual state
+1. Metadata : name
+2. Specification attribute of "spec" are specific to the kind
+3. Status automatically generates and adde by kubernetes desired state and actual state
 
 store the config file with your code or own git repository
 
@@ -561,10 +573,4 @@ metadata part contains the labels and specs part contains the selectors
 
 continer port has match with target port of the service
 
-
-
-EXAMPLE
-
-apiVersion: apps/v1
-kind: Deployment
 

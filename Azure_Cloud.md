@@ -271,6 +271,8 @@ Apply access control to all services because RBAC is natively integrated into th
 Apply tags to resources to logically organize all the resources in your subscription.
 Clarify your organization's billing by viewing costs for a group of resources that share the same tag.
 
+
+
 ## Azure subscriptions
 
 Using Azure requires an Azure subscription. A subscription provides you with authenticated and authorized access to Azure products and services.
@@ -977,4 +979,548 @@ You're charged per dedicated host, independent of how many VMs you deploy to it.
 Software licensing, storage, and network usage are billed separately from the host and VMs. 
 
 
+## SECURE AZURE
+
+### Authentication (AuthN)
+Authentication is the process of establishing the identity of a person or service that wants to access a resource. It involves the act of challenging a party for legitimate credentials and provides the basis for creating a security principal for identity and access control. It establishes whether the user is who they say they are.
+
+### Authorization (AuthZ)
+Authentication establishes the user's identity, but authorization is the process of establishing what level of access an authenticated person or service has. It specifies what data they're allowed to access and what they can do with it.
+
+
+### Azure Active Directory
+
+Azure Active Directory (Azure AD) provides identity services that enable your users to sign in and access both Microsoft cloud applications and cloud applications that you develop. You also learn how Azure AD supports single sign-on (SSO).
+
+Azure AD provides services such as:
+
+- Authentication
+
+This includes verifying identity to access applications and resources. It also includes providing functionality such as self-service password reset, multifactor authentication, a custom list of banned passwords, and smart lockout services.
+
+- Single sign-on
+
+SSO enables you to remember only one username and one password to access multiple applications. A single identity is tied to a user, which simplifies the security model. As users change roles or leave an organization, access modifications are tied to that identity, which greatly reduces the effort needed to change or disable accounts.
+
+- Application management
+
+You can manage your cloud and on-premises apps by using Azure AD. Features like Application Proxy, SaaS apps, the My Apps portal (also called the access panel), and single sign-on provide a better user experience.
+
+- Device management
+
+Along with accounts for individual people, Azure AD supports the registration of devices. Registration enables devices to be managed through tools like Microsoft Intune. It also allows for device-based Conditional Access policies to restrict access attempts to only those coming from known devices, regardless of the requesting user account.
+
+### Connect Active Directory with Azure AD
+Connecting Active Directory with Azure AD enables you to provide a consistent identity experience to your users.
+
+There are a few ways to connect your existing Active Directory installation with Azure AD. Perhaps the most popular method is to use Azure AD Connect.
+
+Azure AD Connect synchronizes user identities between on-premises Active Directory and Azure AD. Azure AD Connect synchronizes changes between both identity systems, so you can use features like SSO, multifactor authentication, and self-service password reset under both systems. Self-service password reset prevents users from using known compromised passwords.
+
+Here's a diagram that shows how Azure AD Connect fits between on-premises Active Directory and Azure AD:
+
+![](https://docs.microsoft.com/en-us/learn/azure-fundamentals/secure-access-azure-identity-services/media/3-azure-ad-connect.png)
+
+## Multifactor authentication
+
+Multifactor authentication is a process where a user is prompted during the sign-in process for an additional form of identification. Examples include a code on their mobile phone or a fingerprint scan.
+
+- **Something the user knows**
+
+This might be an email address and password.
+
+- **Something the user has**
+
+This might be a code that's sent to the user's mobile phone.
+
+- **Something the user is**
+
+This is typically some sort of biometric property, such as a fingerprint or face scan that's used on many mobile devices.
+
+
+### Azure AD Multi-Factor Authentication
+
+Azure AD Multi-Factor Authentication is a Microsoft service that provides multifactor authentication capabilities. Azure AD Multi-Factor Authentication enables users to choose an additional form of authentication during sign-in, such as a phone call or mobile app notification.
+
+### Conditional Access
+
+Conditional Access is a tool that Azure Active Directory uses to allow (or deny) access to resources based on identity signals. These signals include who the user is, where the user is, and what device the user is requesting access from.
+
+Conditional Access helps IT administrators:
+
+- Empower users to be productive wherever and whenever.
+- Protect the organization's assets.
+
+To use Conditional Access, you need an Azure AD Premium P1 or P2 license. If you have a Microsoft 365 Business Premium license, you also have access to Conditional Access features.
+
+## Governance Azure
+
+### Azure role-based access control (Azure RBAC)
+
+Access management for cloud resources is a critical function for any organization that is using the cloud. Azure role-based access control (Azure RBAC) helps you manage who has access to Azure resources, what they can do with those resources, and what areas they have access to.
+
+Azure RBAC is an authorization system built on Azure Resource Manager that provides fine-grained access management of Azure resources.
+
+Role-based access control is applied to a scope, which is a resource or set of resources that this access applies to.
+
+Here's a diagram that shows the relationship between roles and scopes.
+
+A diagram showing scopes along the Y axis and roles across the X axis. Role and scope combinations each map to a specific kind of user or account, such as an observer or an administrator.
+
+Scopes include:
+
+- A management group (a collection of multiple subscriptions).
+- A single subscription.
+- A resource group.
+- A single resource.
+
+**Observers**, Users managing resources, Admins, and Automated processes illustrate the kinds of users or accounts that would typically be assigned each of the various roles.
+
+When you grant access at a parent scope, those permissions are inherited by all child scopes. For example:
+
+When you assign the **Owner** role to a user at the management group scope, that user can manage everything in all subscriptions within the management group.
+
+When you assign the **Reader** role to a group at the subscription scope, the members of that group can view every resource group and resource within the subscription.
+
+When you assign the **Contributor** role to an application at the resource group scope, the application can manage resources of all types within that resource group, but not other resource groups within the subscription.
+
+Use Azure RBAC when you need to:
+
+- Allow one user to manage VMs in a subscription and another user to manage virtual networks.
+- Allow a database administrator group to manage SQL databases in a subscription.
+- Allow a user to manage all resources in a resource group, such as virtual machines, websites, and subnets.
+- Allow an application to access all resources in a resource group.
+
+
+### Resource Lock
+
+A resource lock prevents resources from being accidentally deleted or changed.
+
+Even with Azure role-based access control (Azure RBAC) policies in place, there's still a risk that people with the right level of access could delete critical cloud resources. Think of a resource lock as a warning system that reminds you that a resource should not be deleted or changed.
+
+#### levels of locking 
+You can apply locks to a subscription, a resource group, or an individual resource. You can set the lock level to CanNotDelete or ReadOnly.
+
+- CanNotDelete means authorized people can still read and modify a resource, but they can't delete the resource without first removing the lock.
+- ReadOnly means authorized people can read a resource, but they can't delete or change the resource. Applying this lock is like restricting all authorized users to the permissions granted by the Reader role in Azure RBAC.
+
+
+#### delete or change a locked resource
+Although locking helps prevent accidental changes, you can still make changes by following a two-step process.
+
+To modify a locked resource, you must first remove the lock. After you remove the lock, you can apply any action you have permissions to perform. This additional step allows the action to be taken, but it helps protect your administrators from doing something they might not have intended to do.
+
+Resource locks apply regardless of RBAC permissions. Even if you're an owner of the resource, you must still remove the lock before you can perform the blocked activity.
+
+### Tags
+
+ Resource tags are another way to organize resources. Tags provide extra information, or metadata, about your resources. This metadata is useful for:
+
+- Resource management Tags enable you to locate and act on resources that are associated with specific workloads, environments, business units, and owners.
+- Cost management and optimization Tags enable you to group resources so that you can report on costs, allocate internal cost centers, track budgets, and forecast estimated cost.
+- Operations management Tags enable you to group resources according to how critical their availability is to your business. This grouping helps you formulate service-level agreements (SLAs). An SLA is an uptime or performance guarantee between you and your users.
+- Security Tags enable you to classify data by its security level, such as public or confidential.
+- Governance and regulatory compliance Tags enable you to identify resources that align with governance or regulatory compliance requirements, such as ISO 27001. Tags can also be part of your standards enforcement efforts. For example, you might require that all resources be tagged with an owner or department name.
+- Workload optimization and automation Tags can help you visualize all of the resources that participate in complex deployments. For example, you might tag a resource with its associated workload or application name and use software such as Azure DevOps to perform automated tasks on those resources.
+
+A resource tag consists of a name and a value. You can assign one or more tags to each Azure resource.
+
+**Example Tags**
+
+|Name|Value|
+|-|-|
+|AppName|The name of the application that the resource is part of.|
+|CostCenter|The internal cost center code.|
+|Owner|The name of the business owner who's responsible for the resource.|
+|Environment|An environment name, such as "Prod," "Dev," or "Test."|
+|Impact|How important the resource is to business operations, such as "Mission-critical," "High-impact," or "Low-impact."|
+
+Here's an example that shows these tags as they're applied to a virtual machine during provisioning.
+
+![](https://docs.microsoft.com/en-us/learn/azure-fundamentals/build-cloud-governance-strategy-azure/media/8-vm-tags-7c63fa8a.png)
+
+
+### Azure Policy
+
+Azure Policy is a service in Azure that enables you to create, assign, and manage policies that control or audit your resources. These policies enforce different rules across all of your resource configurations so that those configurations stay compliant with corporate standards.
+
+Azure Policy enables you to define both individual policies and groups of related policies, known as *initiatives*. Azure Policy evaluates your resources and highlights resources that aren't compliant with the policies you've created. Azure Policy can also prevent noncompliant resources from being created.
+
+### Azure Policy initiatives
+
+An Azure Policy initiative is a way of grouping related policies together. The initiative definition contains all of the policy definitions to help track your compliance state for a larger goal.
+
+For example, Azure Policy includes an initiative named Enable Monitoring in Azure Security Center. Its goal is to monitor all of the available security recommendations for all Azure resource types in Azure Security Center.
+
+Under this initiative, the following policy definitions are included:
+
+- Monitor unencrypted SQL Database in Security Center This policy monitors for unencrypted SQL databases and servers.
+- Monitor OS vulnerabilities in Security Center This policy monitors servers that don't satisfy the configured OS vulnerability baseline.
+- Monitor missing Endpoint Protection in Security Center This policy monitors for servers that don't have an installed endpoint protection agent.
+In fact, the Enable Monitoring in Azure Security Center initiative contains over 100 separate policy definitions.
+
+Azure Policy also includes initiatives that support regulatory compliance standards, such as HIPAA and ISO 27001.
+
+### Azure Blueprints 
+
+Simplify largescale Azure deployments by packaging key environment artifacts, such as Azure Resource Manager templates, role-based access controls, and policies, in a single blueprint definition. Easily apply the blueprint to new subscriptions and environments, and fine-tune control and management through versioning.
+
+Azure Blueprints orchestrates the deployment of various resource templates and other artifacts, such as:
+
+- Role assignments
+- Policy assignments
+- Azure Resource Manager templates
+- Resource groups
+
+### Cloud Adoption Framework
+
+Cloud Adoption Framework consists of tools, documentation, and proven practices. The Cloud Adoption Framework includes these stages:
+
+1. Define your strategy.
+2. Make a plan.
+3. Ready your organization.
+4. Adopt the cloud.
+5. Govern and manage your cloud environments.
+
+#### *Define strategy*
+
+1. Define and document your motivations: Meeting with stakeholders and leadership can help you answer why you're moving to the cloud.
+
+2. Document business outcomes: Meet with leadership from your finance, marketing, sales, and human resource groups to help you document your goals.
+
+3. Evaluate financial considerations: Measure objectives and identify the return expected from a specific investment.
+
+4. Understand technical considerations: Evaluate those technical considerations through the selection and completion of your first technical project.
+
+#### *Make a plan*
+
+1. Digital estate: Create an inventory of the existing digital assets and workloads that you plan to migrate to the cloud.
+
+2. Initial organizational alignment: Ensure that the right people are involved in your migration efforts, both from a technical standpoint as well as from a cloud governance standpoint.
+
+3. Skills readiness plan: Build a plan that helps individuals build the skills they need to operate in the cloud.
+
+4. Cloud adoption plan: Build a comprehensive plan that brings together the development, operations, and business teams toward a shared cloud adoption goal.
+
+#### *Ready your organization*
+
+1. Azure setup guide: Review the Azure setup guide to become familiar with the tools and approaches you need to use to create a landing zone.
+
+2. Azure landing zone: Begin to build out the Azure subscriptions that support each of the major areas of your business. A landing zone includes cloud infrastructure as well as governance, accounting, and security capabilities.
+
+3. Expand the landing zone: Refine your landing zone to ensure that it meets your operations, governance, and security needs.
+
+4. Best practices: Start with recommended and proven practices to help ensure that your cloud migration efforts are scalable and maintainable.
+
+#### *Adopt the cloud*
+
+The Cloud Adoption Framework breaks this stage into two parts: migrate and innovate.
+
+**Migrate:** Here are the steps in the migrate part of this stage.
+
+1. Migrate your first workload: Use the Azure migration guide to deploy your first project to the cloud.
+
+2. Migration scenarios: Use additional in-depth guides to explore more complex migration scenarios.
+
+3. Best practices: Check in with the Azure cloud migration best practices checklist to verify that you're following recommended practices.
+
+4. Process improvements: Identify ways to make the migration process scale while requiring less effort.
+
+
+
+**Innovate**: Here are the steps in the innovate part of this stage.
+
+1. Business value consensus: Verify that investments in new innovations add value to the business and meet customer needs.
+
+2. Azure innovation guide: Use this guide to accelerate development and build a minimum viable product (MVP) for your idea.
+
+3. Best practices: Verify that your progress maps to recommended practices before you move forward.
+
+4. Feedback loops: Check in frequently with your customers to verify that you're building what they need.
+
+#### *Govern and manage your cloud environments*
+
+**Govern:** Here are the steps in the govern part of this stage.
+
+1. Methodology: Consider your end state solution. Then define a methodology that incrementally takes you from your first steps all the way to full cloud governance.
+
+
+2. Benchmark: Use the governance benchmark tool to assess your current state and future state to establish a vision for applying the framework.
+
+3. Initial governance foundation: Create an MVP that captures the first steps of your governance plan.
+
+4. Improve the initial governance foundation: Iteratively add governance controls that address tangible risks as you progress toward your end state solution.
+
+**Manage:** Here are the steps in the manage part of this stage.
+
+1. Establish a management baseline: Define your minimum commitment to operations management. A management baseline is the minimum set of tools and processes that should be applied to every asset in an environment.
+
+2. Define business commitments: Document supported workloads to establish operational commitments with the business and agree on cloud management investments for each workload.
+
+3. Expand the management baseline: Apply recommended best practices to iterate on your initial management baseline.
+
+4. Advanced operations and design principles: For workloads that require a higher level of business commitment, perform a deeper architecture review to deliver on your resiliency and reliability commitments.
+
+##  Azure compliance documentation
+The Azure compliance documentation provides you with detailed documentation about legal and regulatory standards and compliance on Azure.
+
+Here you find compliance offerings across these categories:
+
+- Global
+- US government
+- Financial services
+- Health
+- Media and manufacturing
+- Regional
+
+There are also additional compliance resources, such as audit reports, privacy information, compliance implementations and mappings, and white papers and analyst reports. Country and region privacy and compliance guidelines are also included. Some resources might require you to be signed in to your cloud service to access them.
+
+## Azure Government
+
+Azure Government is a separate instance of the Microsoft Azure service. It addresses the security and compliance needs of US federal agencies, state and local governments, and their solution providers. Azure Government offers physical isolation from non-US government deployments and provides screened US personnel.
+
+## Azure China 21Vianet
+
+Azure China 21Vianet is operated by 21Vianet. It's a physically separated instance of cloud services located in China. Azure China 21Vianet is independently operated and transacted by Shanghai Blue Cloud Technology Co., Ltd. ("21Vianet"), a wholly owned subsidiary of Beijing 21Vianet Broadband Data Center Co., Ltd.
+
+## Total Cost of Ownership Calculator
+
+The TCO Calculator helps you estimate the cost savings of operating your solution on Azure over time compared to operating in your on-premises datacenter.
+
+Working with the TCO Calculator involves three steps:
+
+1. Define your workloads
+2. Adjust assumptions
+3. View the report
+
+
+## Pricing calculator
+Calculate your estimated hourly or monthly costs for using Azure.
+
+# AZ 104 Admin
+
+## Azure Resource Manager template schema
+
+Azure Resource Manager templates are written in JSON, which allows you to express data stored as an object (such as a virtual machine) in text. A JSON document is essentially a collection of key-value pairs. Each key is a string, whose value can be:
+
+- A string
+- A number
+- A Boolean expression
+- A list of values
+- An object (which is a collection of other key-value pairs)
+
+A Resource Manager template can contain sections that are expressed using JSON notation, but are not related to the JSON language itself:
+
+```
+{
+    "$schema": "http://schema.management.​azure.com/schemas/2019-04-01/deploymentTemplate.json#",​
+    "contentVersion": "",​
+    "parameters": {},​
+    "variables": {},​
+    "functions": [],​
+    "resources": [],​
+    "outputs": {}​
+}
+```
+
+|Element name|Required|Description|
+|-|-|-|
+|$schema|Yes|Location of the JSON schema file that describes the version of the template language. Use the URL shown in the preceding example.|
+|contentVersion|Yes|Version of the template (such as 1.0.0.0). You can provide any value for this element. Use this value to document significant changes in your template. When deploying resources using the template, this value can be used to make sure that the right template is being used.|
+|parameters|No|Values that are provided when deployment is executed to customize resource deployment.|
+|variables|No|Values that are used as JSON fragments in the template to simplify template language expressions.|
+|functions|No|User-defined functions that are available within the template.|
+|resources|Yes|Resource types that are deployed or updated in a resource group.|
+|outputs|No|Values that are returned after deployment.|
+
+In the parameters section of the template, you specify which values you can input when deploying the resources. The available properties for a parameter are:
+
+```
+"parameters": {
+    "<parameter-name>" : {
+        "type" : "<type-of-parameter-value>",
+        "defaultValue": "<default-value-of-parameter>",
+        "allowedValues": [ "<array-of-allowed-values>" ],
+        "minValue": <minimum-value-for-int>,
+        "maxValue": <maximum-value-for-int>,
+        "minLength": <minimum-length-for-string-or-array>,
+        "maxLength": <maximum-length-for-string-or-array-parameters>,
+        "metadata": {
+        "description": "<description-of-the parameter>"
+        }
+    }
+}
+
+```
+Here's an example that illustrates two parameters: one for a virtual machine's username, and one for its password:
+
+```
+"parameters": {
+  "adminUsername": {
+    "type": "string",
+    "metadata": {
+      "description": "Username for the Virtual Machine."
+    }
+  },
+  "adminPassword": {
+    "type": "securestring",
+    "metadata": {
+      "description": "Password for the Virtual Machine."
+    }
+  }
+}
+```
+
+## Bicep templates
+
+Azure Bicep is a domain-specific language (DSL) that uses declarative syntax to deploy Azure resources. It provides concise syntax, reliable type safety, and support for code reuse.
+
+You can use Bicep instead of JSON to develop your Azure Resource Manager templates (ARM templates). The JSON syntax to create an ARM template can be verbose and require complicated expressions. Bicep syntax reduces that complexity and improves the development experience.
+
+Bicep provides many improvements over JSON for template authoring, including:
+
+- **Simpler syntax:** Bicep provides a simpler syntax for writing templates. You can reference parameters and variables directly, without using complicated functions. String interpolation is used in place of concatenation to combine values for names and other items. You can reference the properties of a resource directly by using its symbolic name instead of complex reference statements. These syntax improvements help both with authoring and reading Bicep templates.
+
+- **Modules:** You can break down complex template deployments into smaller module files and reference them in a main template. These modules provide easier management and greater reusability.
+
+- **Automatic dependency management:** In most situations, Bicep automatically detects dependencies between your resources. This process removes some of the work involved in template authoring.
+
+- **Type validation and IntelliSense:** The Bicep extension for Visual Studio Code features rich validation and IntelliSense for all Azure resource type API definitions. This feature helps provide an easier authoring experience.
+
+[Azure Quickstart](https://azure.microsoft.com/en-us/resources/templates/) Templates are Azure Resource Manager templates provided by the Azure community.
+
+Some templates provide everything you need to deploy your solution, while others might serve as a starting point for your template. Either way, you can study these templates to learn how to best author and structure your own templates.
+
+The README.md file provides an overview of what the template does.
+
+The azuredeploy.json file defines the resources that will be deployed.
+
+The azuredeploy.parameters.json file provides the values the template needs.
+
+## POWERSHELL
+
+A PowerShell command is called a cmdlet (pronounced "command-let"). A cmdlet is a command that manipulates a single feature. The term cmdlet is intended to imply "small command". By convention, cmdlet authors are encouraged to keep cmdlets simple and single-purpose.
+
+Cmdlets follow a verb-noun naming convention; for example, Get-Process, Format-Table, and Start-Service. There is also a convention for verb choice: "get" to retrieve data, "set" to insert or update data, "format" to format data, "out" to direct output to a destination, and so on.
+
+Cmdlets are shipped in modules. A PowerShell Module is a DLL that includes the code to process each available cmdlet. You'll load cmdlets into PowerShell by loading the module in which they're contained
+
+Az is the formal name for the Azure PowerShell module, which contains cmdlets to work with Azure features. It contains hundreds of cmdlets that let you control nearly every aspect of every Azure resource. You can work with resource groups, storage, virtual machines, Azure Active Directory, containers, machine learning, and so on.
+
+### powershelcomandos AZ
+
+- Connect-AzAccount
+
+The Connect-AzAccount cmdlet prompts for your Azure credentials, then connects to your Azure subscription.
+
+- Get a list of all resource groups
+Get-AzResourceGroup
+
+Get-AzResourceGroup | Format-Table
+
+- Create a resource group
+```
+New-AzResourceGroup -Name <name> -Location <location>
+```
+- Verify the resources
+
+Get-AzResource
+
+Get-AzResource | Format-Table
+
+Get-AzResource -ResourceGroupName ExerciseResources
+
+- Create an Azure Virtual Machine
+
+**ResourceGroupName:** The resource group into which the new VM will be placed.
+
+**Name:** The name of the VM in Azure.
+
+**Location:** Geographic location where the VM will be provisioned.
+
+**Credential:** An object containing the username and password for the VM admin account. We'll use the Get-Credential cmdlet. This cmdlet will prompt for a username and password and package it into a credential object.
+
+**Image:** The operating system image to use for the VM, which is typically a Linux distribution or Windows Server.
+
+```
+New-AzVm
+       -ResourceGroupName <resource group name>
+       -Name <machine name>
+       -Credential <credentials object>
+       -Location <location>
+       -Image <image name>
+```
+
+The AzVM suffix is specific to VM-based commands in PowerShell. There are several others you can use:
+
+|Command	|Description|
+|-|-|
+Remove-AzVM	|Deletes an Azure VM.
+Start-AzVM|	Start a stopped VM.
+Stop-AzVM|	Stop a running VM.
+Restart-AzVM|	Restart a VM.
+Update-AzVM	|Updates the configuration for a VM.
+
+### Create and save scripts in Azure PowerShell
+
+Complex or repetitive tasks often take a great deal of administrative time. Organizations prefer to automate these tasks to reduce costs and avoid errors.
+
+A PowerShell script is a text file containing commands and control constructs. The commands are invocations of cmdlets. The control constructs are programming features like loops, variables, parameters, comments, etc., supplied by PowerShell.
+
+PowerShell script files have a .ps1 file extension. You can create and save these files with any text editor.
+
+### PowerShell techniques
+
+#### **Variables**
+As you saw in the last unit, PowerShell supports variables. Use $ to declare a variable and = to assign a value. For example:
+
+```
+$loc = "East US"
+$iterations = 3
+
+$adminCredential = Get-Credential
+```
+
+To obtain the value stored in a variable, use the $ prefix and its name, as in the following:
+
+```
+$loc = "East US"
+New-AzResourceGroup -Name "MyResourceGroup" -Location $loc
+```
+#### **Loops**
+
+PowerShell has several loops: For, Do...While, For...Each, and so on. The For loop is the best match for our needs, because we will execute a cmdlet a fixed number of times.
+
+The core syntax is shown below; the example runs for two iterations and prints the value of i each time. The comparison operators are written -lt for "less than", -le for "less than or equal", -eq for "equal", -ne for "not equal", etc.
+
+```
+For ($i = 1; $i -lt 3; $i++)
+{
+    $i
+}
+```
+#### **Parameters**
+
+When you execute a script, you can pass arguments on the command line. You can provide names for each parameter to help the script extract the values. For example:
+
+```
+.\setupEnvironment.ps1 -size 5 -location "East US"
+```
+
+Inside the script, you'll capture the values into variables. In this example, the parameters are matched by name:
+
+```
+param([string]$location, [int]$size)
+```
+
+You can omit the names from the command line. For example:
+
+```
+.\setupEnvironment.ps1 5 "East US"
+```
+
+Inside the script, you'll rely on position for matching when the parameters are unnamed:
+```
+param([int]$size, [string]$location)
+```
 

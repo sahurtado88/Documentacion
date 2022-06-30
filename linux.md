@@ -261,14 +261,16 @@ do
 done
 
 --------------recibir variable por pantalla
-
+```
 read name
 if [ -n "$name" ]; then
 echo "Welcome $name"
 exit 0
 fi
-
+```
  Working With Files and Folders
+
+ ```
 cd  	Shows your home directory
 cd <folder>  	Change to a specific directory
 cd ~  	Home directory, e.g. ‘cd ~/folder/’
@@ -303,13 +305,16 @@ mkdir <dir> <dir2> <dir3> 	Create multiple directories at once
 mkdir -p <dir>/<dir> 	Create nested directories 
 rmdir <dir> 	Remove an entire directory ( only works on empty directories )
 find <dir> -name <"file"> 	Find all files named <file> inside <dir>. Use wildcards (*) to search for partial filenames
-
+```
  Special Commands
+ ```
 sudo <command> 	Run a command with the security privileges of super user
 nano <file> 	Opens the Terminal editor
 open <file> 	Opens a file
 <command> -h 	Show help about a command
 man <command> 	Show the help manual of the command
+
+```
 Control Permissions
 ls -ld 	Display the default permission for a home directory
 ls -ld/<dir> 	Display the read, write, and access permission of a particular folder
@@ -560,4 +565,14 @@ Using the @daily cron keyword, this will do a daily log file cleanup using clean
 Using the @reboot cron keyword, this will execute the specified command once after the machine got booted every time.
 
 @reboot CMD
+
+## Linux package manager
+On Linux, the package manager will change based on the Linux distribution you choose.
+
+|Distribution(s)|	Package manager|
+|-|-|
+|Ubuntu, Debian|	apt-get|
+|Red Hat, CentOS|	yum|
+|OpenSUSE|	zypper|
+|Fedora|	dnf|
 

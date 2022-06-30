@@ -104,7 +104,7 @@ A Helm Chart template is a file describes different deployment type manifest fil
 Template files are stored in the templates/ folder of a chart and processed by the template engine to create the final object manifest.
 
 For example, the development team uses the following deployment manifest file to deploy the drone tracking website.
-
+ 
 ```
 apiVersion: apps/v1
 kind: Deployment
