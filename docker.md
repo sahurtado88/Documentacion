@@ -76,11 +76,11 @@ Traditionally, the Dockerfile is called Dockerfile and located in the root of th
 
 ## COMANDOS DOCKER
 
-Los comandos los vamos a ejecutar desde la terminal, tanto en Windows como en Linux.
-
     Docker images
-    Docker run
-    Docker ps
+    Docker run (nombre imagen) 
+    Docker run -it (nombre contenedor) bash
+    Docker ps muestra contenedores corriendo
+    docker ps -a muestra todos los contenedores
     Docker stop / start / restart
     Docker attach
     Docker history
@@ -94,6 +94,15 @@ Los comandos los vamos a ejecutar desde la terminal, tanto en Windows como en Li
     Docker login
     Docker pull / push
     Docker volume
+    docker run -d
+    
+    docker run -p Hostport: containerport images (puertos)
+
+    docker run -v direceccionhost:direccioncontainer images (volumenes)
+
+
+
+
 
 El comando para probar que se ha instalado correctamente y revisar la versión es:
 
@@ -290,7 +299,7 @@ ejecuta un contenedor por el puerto 6000 del host y el puerto 6379 del contenedo
 
 
 ## DOCKER COMPOSE
-
+                                                                        
 Developers describe Docker Compose as "Define and run multi-container applications with Docker". With Compose, you define a multi-container application in a single file, then spin your application up in a single command which does everything that needs to be done to get it running.
 
 docker-compose -f mongo.yaml up
@@ -300,16 +309,28 @@ docker-compose -f mongo.yaml down  stop y remove container and networks
 ## DOCKERFILE
 
 blueprint for building images
-
+```
 FROM node  -- install node basic images linux alpine, etc
 ENV MONGO_DB_USERNAME=admin \  ---set environment variables
     MONGO_DB_PWD=password
 RUN mkdir -p /home/app  --- create /home/app folder folder nested -p
 COPY . /home/app copy current directory . to /home/app copia de mi host al docker si fuera dentro del mismo contenedor usaria RUN cp archvio destino archvio origen
 CMD ["node","server.js"] start the app with "node server.js"
-
+```
 diferencia entre CMD y RUN es que CMD=entry point command
 you can  have multiple RUN commands
+
+```
+FROM ubuntu
+
+RUN apt-get update && apt-get -y install python
+
+RUN pip install flask flask-mysql
+
+COPY . /opt/source-code
+
+ENTRYPOINT FLASK_APP=/opt/source-code/app.py flask run
+```
 
 docker build -t my-app:1.0  . para crer una imagne desde un dockerfile we use docker build -t tagged nombre y version y en el segunod el folder donde esta el docker file . current directory)
 
@@ -319,6 +340,7 @@ docker build -t my-app:1.0  . para crer una imagne desde un dockerfile we use do
 
 2. Use multi stage Docker buils
 
+````
 FROM golang:1.14-alpine as build
 WORKDIR /app
 COPY . ./
@@ -330,6 +352,7 @@ FROM alpine:3.12
 COPY  --from=build /app /app
 WORKDIR /app
 CMD ["/app/server"]
+````
 
 ##Security DOCKER
 
@@ -343,9 +366,194 @@ CMD ["/app/server"]
 
 COPY toma src y destrucción. Solo le permite copiar en un directorio local o desde su host (la máquina que crea la imagen de Docker) en la propia imagen de Docker.
 
+``` 
 COPY <src> <dest>
-
+```
 ADD también  te permite hacer eso, pero también admite otras 2 fuentes. Primero, puede usar una URL en lugar de un archivo / directorio local. En segundo lugar, puede extraer tar del directorio de origen al destino.
+```
+
 
 ADD <src> <dest>
+```
 
+### Parser directives
+
+Parser directives are optional, and affect the way in which subsequent lines in a Dockerfile are handled. Parser directives do not add layers to the build, and will not be shown as a build step. Parser directives are written as a special type of comment in the form # directive=value. A single directive may only be used once.
+
+All parser directives must be at the very top of a Dockerfile.
+
+Parser directives are not case-sensitive. However, convention is for them to be lowercase. 
+
+The following parser directives are supported:
+
+**syntax**
+```
+# syntax=[remote image reference]
+```
+For example:
+````
+# syntax=docker/dockerfile:1
+# syntax=docker.io/docker/dockerfile:1
+# syntax=example.com/user/repo:tag@sha256:abcdef...
+````
+
+**escape**
+````
+# escape=\ (backslash)
+Or
+
+# escape=` (backtick)
+````
+
+The escape directive sets the character used to escape characters in a Dockerfile. If not specified, the default escape character is \.
+
+Setting the escape character to ` is especially useful on Windows, where \ is the directory path separator. ` is consistent with Windows PowerShell.
+
+````
+# escape=`
+
+FROM microsoft/nanoserver
+COPY testfile.txt c:\
+RUN dir c:\
+
+````
+
+### Environment replacement
+
+Environment replacement
+Environment variables (declared with the ENV statement) can also be used in certain instructions as variables to be interpreted by the Dockerfile. Escapes are also handled for including variable-like syntax into a statement literally.
+````
+Environment variables are notated in the Dockerfile either with $variable_name or ${variable_name}. They are treated equivalently and the brace syntax is typically used to address issues with variable names with no whitespace, like ${foo}_bar.
+
+The ${variable_name} syntax also supports a few of the standard bash modifiers as specified below:
+
+${variable:-word} indicates that if variable is set then the result will be that value. If variable is not set then word will be the result.
+${variable:+word} indicates that if variable is set then word will be the result, otherwise the result is the empty string.
+
+FROM busybox
+ENV FOO=/bar
+WORKDIR ${FOO}   # WORKDIR /bar
+ADD . $FOO       # ADD . /bar
+COPY \$FOO /quux # COPY $FOO /quux
+
+Environment variable substitution will use the same value for each variable throughout the entire instruction. In other words, in this example:
+
+ENV abc=hello
+ENV abc=bye def=$abc
+ENV ghi=$abc
+will result in def having a value of hello, not bye. However, ghi will have a value of bye because it is not part of the same instruction that set abc to bye.
+
+````
+
+Environment variables are supported by the following list of instructions in the Dockerfile:
+
+- ADD
+- COPY
+- ENV
+- EXPOSE
+- FROM
+- LABEL
+- STOPSIGNAL
+- USER
+- VOLUME
+- WORKDIR
+- ONBUILD (when combined with one of the supported instructions above)
+
+## CMD Vs ENTRYPOINT
+
+CMD comand line replace enterily in entrypoint the coman line parameters is appended
+
+## RUN
+
+RUN has 2 forms:
+
+````
+
+RUN <command> (shell form, the command is run in a shell, which by default is /bin/sh -c on Linux or cmd /S /C on Windows)
+
+In the shell form you can use a \ (backslash) to continue a single RUN instruction onto the next line. For example, consider these two lines:
+
+RUN /bin/bash -c 'source $HOME/.bashrc; \
+echo $HOME'
+
+
+RUN ["executable", "param1", "param2"] (exec form)
+
+The exec form is parsed as a JSON array, which means that you must use double-quotes (“) around words not single-quotes (‘).
+
+In the JSON form, it is necessary to escape backslashes. This is particularly relevant on Windows where the backslash is the path separator. The following line would otherwise be treated as shell form due to not being valid JSON, and fail in an unexpected way:
+
+RUN ["c:\windows\system32\tasklist.exe"]
+The correct syntax for this example is:
+
+RUN ["c:\\windows\\system32\\tasklist.exe"]
+
+````
+
+## CMD
+
+The CMD instruction has three forms:
+
+- CMD ["executable","param1","param2"] (exec form, this is the preferred form)
+- CMD ["param1","param2"] (as default parameters to ENTRYPOINT)
+- CMD command param1 param2 (shell form)
+
+The main purpose of a CMD is to provide defaults for an executing container. 
+
+There can only be one CMD instruction in a Dockerfile. If you list more than one CMD then only the last CMD will take effect.
+
+If CMD is used to provide default arguments for the ENTRYPOINT instruction, both the CMD and ENTRYPOINT instructions should be specified with the JSON array format.
+
+Do not confuse RUN with CMD. RUN actually runs a command and commits the result; CMD does not execute anything at build time, but specifies the intended command for the image.
+
+## LABEL
+````
+LABEL <key>=<value> <key>=<value> <key>=<value> ...
+
+````
+
+The LABEL instruction adds metadata to an image. A LABEL is a key-value pair. To include spaces within a LABEL value, use quotes and backslashes as you would in command-line parsing. A few usage examples:
+
+````
+
+LABEL "com.example.vendor"="ACME Incorporated"
+
+LABEL com.example.label-with-value="foo"
+
+LABEL version="1.0"
+
+LABEL description="This text illustrates \
+that label-values can span multiple lines."
+
+````
+
+## EXPOSE
+````
+EXPOSE <port> [<port>/<protocol>...]`
+````
+
+The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. You can specify whether the port listens on TCP or UDP, and the default is TCP if the protocol is not specified.
+
+The EXPOSE instruction does not actually publish the port. It functions as a type of documentation between the person who builds the image and the person who runs the container, about which ports are intended to be published. To actually publish the port when running the container, use the -p flag on docker run to publish and map one or more ports, or the -P flag to publish all exposed ports and map them to high-order ports.
+
+By default, EXPOSE assumes TCP. You can also specify UDP:
+
+EXPOSE 80/udp
+
+To expose on both TCP and UDP, include two lines:
+
+EXPOSE 80/tcp
+EXPOSE 80/udp
+
+
+## VOLUME
+
+VOLUME ["/data"]
+
+The VOLUME instruction creates a mount point with the specified name and marks it as holding externally mounted volumes from native host or other containers. The value can be a JSON array, VOLUME ["/var/log/"], or a plain string with multiple arguments, such as VOLUME /var/log or VOLUME /var/log /var/db.
+
+## WORKDIR
+
+WORKDIR /path/to/workdir
+
+The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile

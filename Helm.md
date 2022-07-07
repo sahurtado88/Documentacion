@@ -352,5 +352,89 @@ You use the helm rollback command to roll back to a specific Helm release revisi
 
 ```
 helm rollback my-app 2
+
 ```
+
+## HELM command
+
+- Add repo
+
+helm repo add NAME URL repo
+
+helm repo add bitnami https://chart.bitnami.com/bitnami
+
+- repo list
+
+helm repo list
+
+- searh in repo
+
+helm search repo NOMBREAPP
+
+helm search repo apache
+
+Buscar diferente a la ultima version
+
+helm search repo mysql --version
+
+- remove repo
+
+helm repo remove NAME
+
+helm repo remove bitnami
+
+
+- dry run
+
+--dry-run debbuging mode
+
+helm uninstall myserver --keep-history paraque se pueda realizar rollback
+
+helm history mywebserver historia de versiones
+
+helm rollback webservice 3 para hacer rolback a la version 3
+
+
+helm upgrade --instal mywebserver bitnami/apache  crear o hacerun upgrade depende si existe o no
+
+helm install bitnami/apache --generate-name crea n nombre aleatorio
+
+helm install bitnami/apache --generate-name  --name-template "mywebserver-{{randAlpha 7 | lower}} crearnombre con un template
+
+## WAIT AND TIMEOUT
+
+helm install mywbserver bitnmi/apache --wait --timeout 5m10s   5 minutos es el wait por defecto
+
+## ATOMIC INSTALL
+
+helm install mywebserver bitnami/apache --atomic --timeout 7m12s devueve a un rollback de un despliegue exitoso
+
+## FOrceful Upgrades
+
+helm up
+
+## clean up
+
+helm upgrademywebserver bitnami/apache --cleanup-on-failure
+
+## create chart
+
+helm create firstchart
+
+### STRUCTURE OF THE CHART
+Chart.yaml metadata
+chart folder dependencias
+templates folder all the templates to render manifest kubernetes
+values.yaml contain all the values
+
+## iChart.yaml
+
+aqui esta la metadata  son obligatorios la apiVersion, name and version the rest is optional
+
+hem lint
+
+helm lint firstchart
+
+
+
 

@@ -29,7 +29,7 @@ A single task. Fundamentally, a step tells Jenkins what to do at a particular po
 
 
 Jenkinsfile (Declarative Pipeline)
-
+```
 pipeline {
     agent any 
     stages {
@@ -63,10 +63,12 @@ pipeline {
     }
 }
 
+``` 
+
 ## PIPELINE PARAMETRIZED
 
 build with parameter
-
+```
 pipeline {
     agent any
     parameters {
@@ -80,9 +82,9 @@ pipeline {
         }
     }
 }
-
+```
 ### MULTI_STEP  ###
-
+```
 pipeline {
     agent any
     stages {
@@ -116,9 +118,9 @@ pipeline {
         }
     }
 }
-
+```
 ## TIME OUT
-
+```
 pipeline {
     agent any
     stages {
@@ -134,7 +136,7 @@ pipeline {
         }
     }
 }
-
+```
 ##  TRACKIN BUILD STATE
 
 ingresar al build revisar console output or logs
@@ -154,13 +156,14 @@ MIN HOUR DOM MON DOW CMD
 
 Crontab Fields and Allowed Ranges (Linux Crontab Syntax)
 
-Field    Description    Allowed Value
-MIN      Minute field    0 to 59
-HOUR     Hour field      0 to 23
-DOM      Day of Month    1-31
-MON      Month field     1-12
-DOW      Day Of Week     0-6
-CMD      Command         Any command to be executed.
+|Field  |  Description |   Allowed Value|
+|-|-|-|
+|MIN     | Minute field |   0 to 59
+|HOUR   |  Hour field    |  0 to 23
+|DOM   |   Day of Month   | 1-31
+|MON  |    Month field     |1-12
+|DOW |     Day Of Week    | 0-6
+|CMD|      Command        | Any command to be executed.
 
 ## WEBHOOK BUILD TRIGGEring
 
@@ -203,3 +206,4 @@ mv /var/lib/jenkins/config.xml.back /var/lib/jenkins/config.xml
 systemctl restart jenkins
 
 Volvemos a iniciar la aplicación para validar que todo este correcto.
+
