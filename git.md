@@ -193,3 +193,4 @@ git mv nombreactualdelarchivo nombrefuturodelarchivo  ->cambiar nombre de archiv
 
 git aad -A tomar cambios de renames or moving files
 
+git rm nombrearchvio borra archvio si ya esta en track
