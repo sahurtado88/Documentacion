@@ -3,7 +3,7 @@
 Open source container orchestration tool
 
 developed by google
-helps manage containerized applications in differen deploymen environment
+helps manage containerized applications in differen deployment environment
 
 high availability or no dowtime
 
@@ -13,13 +13,13 @@ disaster recovery backuo and restore
 
 ## KUBERNETES ARCHITECTURE
 
-api server: entrypoint to K8s cluster
+- api server: entrypoint to K8s cluster
 
-controll manager: keeps track of whts happening in the cluster
+- controll manager: keeps track of whats happening in the cluster
 
-Scheduler: ensures pods placement
+- Scheduler: ensures pods placement
 
-etcd: kubernetes backing store
+- etcd: kubernetes backing store
 
 NODE PROCESS
 
@@ -37,18 +37,18 @@ MASTER NODES
 
   4 processes run on every master node
 
-  API SERVER is like a cluster gateway queries and updates acts as a gatekeeper for authentication
+  - API SERVER is like a cluster gateway queries and updates acts as a gatekeeper for authentication
   
-  SCHEDULER where to put the POD A scheduler watches for newly created Pods that have no Node assigned. For every Pod that the scheduler discovers, the scheduler becomes responsible for finding the best Node for that Pod to run on. The scheduler reaches this placement decision taking into account the scheduling principles described below.
+  - SCHEDULER where to put the POD A scheduler watches for newly created Pods that have no Node assigned. For every Pod that the scheduler discovers, the scheduler becomes responsible for finding the best Node for that Pod to run on. The scheduler reaches this placement decision taking into account the scheduling principles described below.
   
-  CONTROLLER MANAGER in Kubernetes, a controller is a control loop that watches the shared state of the cluster through the apiserver and makes changes attempting to move the current state towards the desired state. Examples of controllers that ship with Kubernetes today are the replication controller, endpoints controller, namespace controller, and serviceaccounts controller. 
+  - CONTROLLER MANAGER in Kubernetes, a controller is a control loop that watches the shared state of the cluster through the apiserver and makes changes attempting to move the current state towards the desired state. Examples of controllers that ship with Kubernetes today are the replication controller, endpoints controller, namespace controller, and serviceaccounts controller. 
   detects cluster state changes
 
-  ETCD etcd is a consistent and highly-available key value store used as Kubernetes' backing store for all cluster data.
+  - ETCD etcd is a consistent and highly-available key value store used as Kubernetes' backing store for all cluster data.
   cluster brain, cluster changes get stored in the key value store
   application data is not stored in ETCD
 
-  when we have 2 master nodes de api server is oad balance and etcd is distributed storage across all master nodes
+  when we have 2 master nodes de api server is load balance and etcd is distributed storage across all master nodes
 
 EXAMPLE CLUSTER SET UP
 

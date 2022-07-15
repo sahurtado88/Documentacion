@@ -221,4 +221,65 @@ A herestring is a pared-down form of a heredoc
 
 
 
+````
+#!bin/bash
 
+echo "what is your name?"
+read name ## read is get user input
+
+echo "Good morning $name"
+sleep 1
+echo "ypu're looking good today $name"
+sleep1
+
+````
+
+
+````
+#!bin/bash
+
+name=$1 ## Position parameter A.K.A arguent
+compliment=$2
+
+echo "Good morning $name"
+sleep 1
+echo "ypu're looking good today $name"
+sleep1
+echo "you have the best $compliment"
+
+execution ./script.sh Arguments ($1 $2)
+
+````
+
+````
+#!bin/bash
+
+name=$1 ## Position parameter A.K.A arguent
+compliment=$2
+
+user=$(whoami) ## variable equal to command
+date=$(date)
+whereami=$(pwd)
+
+echo "Good morning $name"
+sleep 1
+echo "ypu're looking good today $name"
+sleep1
+echo "you have the best $compliment"
+sleep 1
+echo "You are currently logged in as $user and you are in the directory $whereami. also today is: $date
+
+execution ./script.sh Arguments ($1 $2)
+
+
+name=Sergio
+
+echo "$name"  output es Sergio
+
+echo "$(name)" output Command 'name' not found
+
+echo "$'name'" output $'name'
+
+ echo "$`name`" otput Command 'name' not found
+
+ ````

@@ -175,3 +175,21 @@ git fsck
     git rebase se usa para aplicar ciertos cambios de una rama en otra. Por ejemplo:
 
 git rebase master
+
+
+## NOTES
+
+git status + git add archvivo + git pull + git push 
+
+git ls-files verificar tracked files
+
+git add . tambien se utiliza para recursive add
+
+git reset HEAD nombrfearchvio unstaged de archivo
+
+ git checkout -- nombrearchvio dicard changes in working directory
+
+git mv nombreactualdelarchivo nombrefuturodelarchivo  ->cambiar nombre de archivo
+
+git aad -A tomar cambios de renames or moving files
+
