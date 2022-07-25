@@ -109,4 +109,45 @@ Putting all code in main.tf is a good idea when you are getting started or writi
 - versions.tf - contains version requirements for Terraform and providers
 
 
+## Variable
+
+````
+variable "myvar"{
+  type="string"
+  default = "hello terraform"
+}
+
+variable "mymap" {
+  type = map(string)
+  default ={
+    mykey = "my value"
+  }
+}
+
+variable "mylist" {
+  type = list
+  default =[1,2,3]
+}
+
+````
+ las variabel se puede llmar en consola de terraform usando terrafrom console para abrir la consolo y luego escribir var.myvar o "${var.myvar}para map se puede llamar var.mymap ["mykey"]
+
+ ### Terraform Variable types
+
+ #### Simple
+
+  - String
+  - Number
+  - Bool
+
+#### Complex
+
+- list [0,1,5,2] always orderes
+- set is like a list but dopesn't keep the order you put it in, and can only contain unique values
+- map
+- object is like a map but each element can have a different type
+- tuple is like a list, but each element can have a different type
+
+
+## Terraform with Azure
 

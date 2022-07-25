@@ -47,3 +47,207 @@ Litmus is a command line tool that allows you to run acceptance tests against Pu
 
 Bolt is an open source orchestration tool that automates the manual work it takes to maintain your infrastructure. Use Bolt to automate tasks that you perform on an as-needed basis or as part of a greater orchestration workflow. For example, you can use Bolt to patch and update systems, troubleshoot servers, deploy applications, or stop and restart services. Bolt can be installed on your local workstation and connects directly to remote targets with SSH or WinRM, so you are not required to install any agent software.
 
+_____________________
+Puppet is declarative and pull configuration management, 1800 secs is the default time for puppet Agents to check-in with Puppet master
+
+
+Puppet agent most be a Linux machine on port 8140 to communicate with agent through certificates
+
+1. FACTS = current configuration of the agent
+
+2. Catalog= list of cofiguration changes
+
+3. Reports = report of the configuration on agents to master
+
+
+## Puppet command
+
+- List certificates requests: puppet cert list
+- List all Certificates: puppet cert list --all
+- Sign certificates: puppet cert sign
+- clean certificate:  puppet cert clean
+- generate certificate: puppet cert generate
+
+
+Autosign en puppet para geenrar certificados autosign.conf
+
+
+## Building blocks Puppet
+
+### **Resource** 
+
+A resource is a unit of configuration whose state can be managed by Puppet. Every resource has a type (such as file, service, or user), a title, and one or more attributes with specified values.
+
+Types of resource
+
+- Core/built-in
+- Defined
+- Custom
+
+```
+<Resource type> { <TITLE>:
+
+<Attribute> => <Value>,
+<Attribute> => <Value>,
+<Attribute> => <Value>
+
+}
+
+________EXAMPLE______________
+
+# NTP Package installation
+package { "ntp:
+    ensure => "present",
+}
+
+
+#NTP file configuration
+file { "/etc/ntp.config":
+    ensure => "present,
+    content => "server pool.ntp.org\n",
+
+}
+
+# NTP Service startup
+service { "ntpd":
+    ensure => "running",
+
+}
+
+```
+
+
+### **Class**
+
+A class is a collection of related resources that, after it's defined, can be declared as a single unit. For example, a class can contain all of the resources (such as files, settings, modules, and scripts) needed to configure the Apache webserver on a host. Classes can also declare other classes.
+
+```
+class <class-name> { 
+
+    < Resource Declaration>
+
+}
+
+________EXAMPLE______________
+# Definition of a class
+class ntpconfig {
+    
+    package { "ntp:
+        ensure => "present",
+    }
+
+    file { "/etc/ntp.config":
+        ensure => "present,
+        content => "server pool.ntp.org\n",
+    }
+
+    service { "ntpd":
+        ensure => "running",
+    }
+
+
+}
+
+# Declaration of a class
+inlcude ntpconfig
+```
+
+- create puppet class
+- include puppet class
+- Classes mus be unique and can be declared only once
+
+### **Manifest or puppet code**
+
+A manifest file contains code written in the Puppet language and is named with the .pp file extension. The Puppet code in a manifest can:
+- Declare resources and classes.
+- Set variables.
+- Evaluate functions.
+- Define classes, defined types, functions, and nodes.
+
+Most manifests are contained in modules. Every manifest in a module defines a single class, defined type, or function.
+
+## **Node Definitions**
+
+A node definition is a collection of classes, resources, and variables in a manifest that are only applied to a certain agent node. Node definitions begin with the node keyword, and can match a node by full name or regular expression.
+
+
+```
+node "Name or names separated comma of a node(s)" { 
+
+    include <class1>
+    include <class1>
+
+}
+
+_________EXAMPLE_________
+
+node "host01" {
+    include ntpconfig
+}
+
+node 'default' {
+
+}
+
+````
+
+
+
+### **Modules**
+
+A module is a collection of classes, resource types, files, functions, and templates, organized around a particular purpose. For example, a module can configure an Apache web server instance or Rails application. There are many modules available for download in the Puppet Forge.
+
+
+
+
+
+## Puppet Commands
+
+- puppet help OR puppet --help
+- List all action puppet resource --help
+- List all resource types puppet resource --types
+- consultar por tipo de recurso (user en este caso): puppet resource --type | grep -i user
+- consultar atributos de un recurso (user en este caso): puppet describe user
+- save all the .pp files puppet config print etc/puppetlabs/code/environments/production/manifests
+- **site.pp** is the pooint contact between agent and master and is located in  etc/puppetlabs/code/environments/production/manifests/site.pp
+- puppet config print | grep -i module
+
+## Code Creation 
+
+- **Create**
+- **Check** puppet parser validate namefile.pp
+- **Test** puppet apply namefile.pp --noop
+- **Run** puppet apply namefile.pp
+
+## Master/Agent Code creation
+
+- **Create** (Master)
+- **Check**  (Master) puppet parser validate namefile.pp
+- **Test** (agent) puppet agent -tv --noop
+- **Run**(agent) puppet agent -tv
+
+### Varaibles in puppet
+
+Variables store values so that those values can be accessed in code later.
+
+Prefix variable names with a dollar sign ($). Assign values to variables with the equal sign (=) assignment operator.
+
+````
+Class "name of a class" {
+
+    $<variable-Name> = <Value>
+}
+
+````
+
+## Puppet Roles and Profiles
+
+## Hiera
+key value,
+separate data from the code
+
+## MCollective
+
+change pull to push in puppet
+
+
