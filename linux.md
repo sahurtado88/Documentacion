@@ -576,3 +576,94 @@ On Linux, the package manager will change based on the Linux distribution you ch
 |OpenSUSE|	zypper|
 |Fedora|	dnf|
 
+## Some Commands
+
+- whatis command:breve descripcion de un comando
+
+- du estimate file space usage
+- df report file system disk space usage
+- more -n \<filename> this option display the text upto the specified n number of lines of the document
+- more +n \<filename> displays the text from the specified n number of lines of the document
+- head -n \<filename> primeras 10 lineas del docuemnto por defecto
+- tail -n \<filename> ultimas lineas del documento por defecto 10 (si no se pone n)
+- sed -n 'initial_line, last_linep' \<filename>
+
+ (sed -n '6,12p' xyz.txt) 
+ 
+  imprimir un rango de lineas de un documento
+- grep is a filter command
+
+grep[options] "string/pattern" file/files
+
+**basic options:** -i ignore case sensitive -w to match a whole world estrict match -v to display the lines which are not having given string or text -o to display only matched parts from matched lines -n to display the matched line numbers -c to display matched numbers of line count -A to display N lines after match  -B to display N lines before match -C to display N lines around match -r to search under current directory and its sub-directory -l to display only file names -h to hide file names
+**advanced options:** -f takes search string/pattern from a file, one per line (grep -f prueba1.txt prueba21.txt ) -e to search multiple string/patterns (grep -e "lobo" -e "zorro" prueba1.txt) -E to work with patterns
+
+rules to create patterns
+- xy|pq matches for xy or pq
+- ^xyz matches for the lines which are starting with "xyz"
+- xyz$ matches for the lines which are ending with "xyz"
+- ^$ matches for the lines wich are empty
+- \ to remove the special purpose of any symbol. character escape EX \^ \$
+- . matches any one character
+- \b match the empty string at the edge of word
+- ? the preceding character is optional and will be matched, at most, once
+- \* the preceding character will be matched zero or more times
+- \+ the preceding character will be matched one or more times
+- [xyz] Matches for the lines which are having x or y or z
+- [a-d] is equal to [abcd] matched for the lines which are havin a/b/c/d
+- [a-ds-z] is equal to [abcdstuvwxyz]
+- ^[abc] Matches for the lines which are starting with a/b/c
+- [^abc] Matches for the lines which are not starting with a/b/c
+- {N} the precedin string matched exactly N time
+- {N,} the preceding string matched Nor more times
+- {N,M} the preceding string matched at least N times but not more then M times
+- [[:alnum:]] – Alphanumeric characters.
+- [[:alpha:]] – Alphabetic characters
+- [[:blank:]] – Blank characters: space and tab.
+- [[:digit:]] – Digits: ‘0 1 2 3 4 5 6 7 8 9’.
+- [[:lower:]] – Lower-case letters: ‘a b c d e f g h i j k l m n o p q r s t u v w x y z’.
+- [[:space:]] – Space characters: tab, newline, vertical tab, form feed, carriage return, and space.
+- [[:upper:]] – Upper-case letters: ‘A B C D E F G H I J K L M N O P Q R S T U V W X Y Z’.
+
+### some examples of grep command
+
+- filtar solo directorios ls -lrt | grep -E "^d"
+- filtar solo archivos ls -lrt | grep -E "^-"
+
+
+ grep "textoabuscar" \<filename> \<otherfilename> 
+
+grep "texto a buscar o patron" * busca en todo el directorio actual
+
+Find is a utility to search for files and directories in the Linux filesystem based on certain criteria (e.g. filename, modify date, size, file type, etc…), grep is a utility to search for patterns in the content of files or in the output of other commands.
+
+- cut command  tool to extract parts of each line from a file
+
+
+
+## STDIN, STDOUT, STERR
+A file descriptor is simply an integer number to identify STDIN, STDOUT and STDERR
+
+0: STDIN
+1: STDOUT
+2: STDERR
+
+example:
+
+ls 1>succes.txt 2>error.txt
+
+java -version 1>java_version.txt 2>java_version.txt es lo mismo que java -version 1>java_version.txt 2>&1 que es los mismo que  java -version &>java_versiont.txt & means both standard output ( 1> ) and standard error( 2>)
+
+\> default to succes output
+
+1> succes output
+
+2> error output
+
+### output redirection operators
+- \> to create a new file
+- \>> to append the content
+### input redirection operators
+- < to provide the input
+### Combining redirection Operators
+- | to send the standard output of one command to another command as standard input
