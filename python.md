@@ -72,18 +72,16 @@ print(x + y + z)
 
 ### Python Data Types
 
-n programming, data type is an important concept.
-
 Variables can store data of different types, and different types can do different things.
 
 Python has the following data types built-in by default, in these categories:
-Text Type: 	str
-Numeric Types: 	int, float, complex
-Sequence Types: 	list, tuple, range
-Mapping Type: 	dict
-Set Types: 	set, frozenset
-Boolean Type: 	bool
-Binary Types: 	bytes, bytearray, memoryview
+- Text Type: 	str
+- Numeric Types: 	int, float, complex
+- Sequence Types: 	list, tuple, range
+- Mapping Type: 	dict
+- Set Types: 	set, frozenset
+- Boolean Type: 	bool
+- Binary Types: 	bytes, bytearray, memoryview
 
 | Syntax | Description |
 | ----------- | ----------- |
@@ -221,10 +219,12 @@ An "if statement" is written by using the if keyword.
 Example
 
 If statement:
+````
 a = 33
 b = 200
 if b > a:
   print("b is greater than a")
+````
 
 In this example we use two variables, a and b, which are used as part of the if statement to test whether b is greater than a. As a is 33, and b is 200, we know that 200 is greater than 33, and so we print to screen that "b is greater than a".
 Indentation

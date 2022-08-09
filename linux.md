@@ -639,6 +639,75 @@ Find is a utility to search for files and directories in the Linux filesystem ba
 
 - cut command  tool to extract parts of each line from a file
 
+cut -c numero_de_caracteres \<filename>
+
+cut -f numerodecampo \<filename> aplica solo si el separador es tab
+
+cut -d 'delimitador de campo' -f 1  \<filename> se pone el delimitador que se teien en el doc ejemplo ':'
+
+cut -d ' ' -sf numerodecampo \<filename> con la letra s solo se aplica a las lineas que tienen el delimitadro ' ' en este caso
+
+
+2 solo posicion 2
+2- de la posicion 2 al final de la linea
+-7 first to seven position
+3,5 3tercera y quinta posicion
+5-9 rango entre posicion quinta y novena
+
+
+- awk command  is a powerful method for processing or analyzing text or data files, which are organized by lines(rows and records) and columns (fields)
+
+awk[options] '[selection_criteria] {actions}' input-file
+
+**options**
+
+- -F fs to specify a field separator (default separator is tab and space)
+- -f file to specify a file that contains awk script
+- -v var=value to declare a varaible
+    - $0 -> entire file
+    - $1 -> first fild from each line/record
+    - $2 -> second fild from each line/record
+    - NR -> it will print line or record number
+    - NF -> number of field in the line
+    - $NF -> last value or the line
+
+- tr command: short for translate, is useful to translate or delete given set of charactera from the input
+
+tr[options] [SET1] [SET2] < input_File
+
+No Option: For translation
+-  Examples for SET1/SET2: [:lower:], [a-z], [:upper:] [A-Z] , [:digit:] , [0-9], [:space:]
+-  -d : deletes given set of characters
+
+- tee command: is used to display the output and also to store that output into a file, its useful to create logs for shell scripting
+
+command | tee OutputFile.txt
+command | tee -a outputFile.txt para hacer append del archivo
+
+ls -lrt | tee abc.txt
+
+- echo command: print para imprimir con caracteres de escape echo -e "ok\tfine"
+
+Escape Characters:
+    -  \n New Line
+    - \t Horizantal Tab
+    - \v Vertical Tab
+    - \b Backspace
+    - \r Carriage Return etc…
+
+- Heredoc is very useful to write multi-lines or multinline block
+
+command << DELIMITER
+line-1
+line-2
+line-3
+DELIMITER
+
+- Here String is like here document only but with one line
+
+syntax: command <<<string 
+example: tr [A-z] [a-z] <<<$(docker -v)
+
 
 
 ## STDIN, STDOUT, STERR
