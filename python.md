@@ -1,5 +1,6 @@
 # PYTHON
 
+
 ## VARIABLES
 
 ### Creating Variables
@@ -20,6 +21,8 @@ Example
 x = str(3)    # x will be '3'
 y = int(3)    # y will be 3
 z = float(3)  # z will be 3.0 
+
+a=eval(input("enter a value: "))
 
 ### Get the Type
 
@@ -70,6 +73,13 @@ y = "is "
 z = "awesome"
 print(x + y + z)
 
+x=3
+y=5.7
+lang_name="python"
+print("{} {} {}".format(x,y,lang_name))
+print("{} \n{} \n{}".format(x,y,lang_name))
+print(f"xa values is: {x} the y values is:{y} \nthe lang  is:  {lang_name}")
+
 ### Python Data Types
 
 Variables can store data of different types, and different types can do different things.
@@ -104,10 +114,10 @@ Python has the following data types built-in by default, in these categories:
 
 There are four collection data types in the Python programming language:
 
-    List is a collection which is ordered and changeable. Allows duplicate members.
-    Tuple is a collection which is ordered and unchangeable. Allows duplicate members.
-    Set is a collection which is unordered, unchangeable*, and unindexed. No duplicate members.
-    Dictionary is a collection which is ordered** and changeable. No duplicate members.
+  -  List is a collection which is ordered and changeable. Allows duplicate members. []
+  - Tuple is a collection which is ordered and unchangeable. Allows duplicate members. ()
+  - Set is a collection which is unordered, unchangeable*, and unindexed. No duplicate members. {}
+  - Dictionary is a collection which is ordered** and changeable. No duplicate members. {}with key value pair
 
 *Set items are unchangeable, but you can remove and/or add items whenever you like.
 
@@ -116,7 +126,7 @@ There are four collection data types in the Python programming language:
 When choosing a collection type, it is useful to understand the properties of that type. Choosing the right type for a particular data set could mean retention of meaning, and, it could mean an increase in efficiency or security.
 
 
-## List
+## List []
 
 Lists are used to store multiple items in a single variable.
 
@@ -148,13 +158,27 @@ Using the list() constructor to make a List:
 thislist = list(("apple", "banana", "cherry")) # note the double round-brackets
 print(thislist)
 
-### TUPLE
+Python has a set of built-in methods that you can use on lists/arrays.
+
+|Method	|Description|
+|-|-|
+append()	|Adds an element at the end of the list
+clear()	|Removes all the elements from the list
+copy()	|Returns a copy of the list
+count()	|Returns the number of elements with the specified value
+extend()	|Add the elements of a list (or any iterable), to the end of the current list
+index()	|Returns the index of the first element with the specified value
+insert()	|Adds an element at the specified position mylist.insert(posicion,valor a insertar)
+pop()	|Removes the element at the specified position mylist.pop(posicion) si no se pone posicion elimina ultimo
+remove()	|Removes the first item with the specified value
+reverse()	|Reverses the order of the list
+sort()	|Sorts the list|
+
+### TUPLE ()
 
 Tuple
 
 Tuples are used to store multiple items in a single variable.
-
-Tuple is one of 4 built-in data types in Python used to store collections of data, the other 3 are List, Set, and Dictionary, all with different qualities and usage.
 
 A tuple is a collection which is ordered and unchangeable.
 
@@ -165,8 +189,13 @@ Create a Tuple:
 thistuple = ("apple", "banana", "cherry")
 print(thistuple)
 
-### SET
+|Method|	Description|
+|-|-|
+|count()	|Returns the number of times a specified value occurs in a tuple
+|index()	|Searches the tuple for a specified value and returns the position of where it was found
 
+### SET {}
+ 
 Sets are used to store multiple items in a single variable.
 
 Set is one of 4 built-in data types in Python used to store collections of data, the other 3 are List, Tuple, and Dictionary, all with different qualities and usage.
@@ -182,7 +211,27 @@ Create a Set:
 thisset = {"apple", "banana", "cherry"}
 print(thisset) 
 
-### Dictionary
+Method|	Description|
+|-|-|
+add()|	Adds an element to the set
+clear()	|Removes all the elements from the set
+copy()|	Returns a copy of the set
+difference()|	Returns a set containing the difference between two or more sets
+difference_update()|	Removes the items in this set that are also included in another, specified set
+discard()|	Remove the specified item
+intersection()|	Returns a set, that is the intersection of two or more sets
+intersection_update()|	Removes the items in this set that are not present in other, specified set(s)
+isdisjoint()|	Returns whether two sets have a intersection or not
+issubset()|	Returns whether another set contains this set or not
+issuperset()|	Returns whether this set contains another set or not
+pop()|	Removes an element from the set
+remove()|	Removes the specified element
+symmetric_difference()|	Returns a set with the symmetric differences of two sets
+symmetric_difference_update()	|inserts the symmetric differences from this set and another
+union()|	Return a set containing the union of sets
+update()|	Update the set with another set, or any other iterable
+
+### Dictionary {} key-value
 
 Dictionaries are used to store data values in key:value pairs.
 
@@ -200,6 +249,20 @@ thisdict =	{
   "year": 1964
 }
 print(thisdict)
+
+Method	|Description|
+|-|-|
+clear()	|Removes all the elements from the dictionary
+copy()|	Returns a copy of the dictionary
+fromkeys()|	Returns a dictionary with the specified keys and value
+get()|	Returns the value of the specified key
+items()	|Returns a list containing a tuple for each key value pair
+keys()|	Returns a list containing the dictionary's keys
+pop()	|Removes the element with the specified key
+popitem()|	Removes the last inserted key-value pair
+setdefault()|	Returns the value of the specified key. If the key does not exist: insert the key, with the specified value
+update()|	Updates the dictionary with the specified key-value pairs
+values()|	Returns a list of all the values in the dictionary
 
 ## Python If ... Else
 Python Conditions and If statements
@@ -237,22 +300,27 @@ a = 33
 b = 200
 if b > a:
 print("b is greater than a") # you will get an error
+
 Elif
 
 The elif keyword is pythons way of saying "if the previous conditions were not true, then try this condition".
 Example
+````
 a = 33
 b = 33
 if b > a:
   print("b is greater than a")
 elif a == b:
   print("a and b are equal")
+  ````
 
 In this example a is equal to b, so the first condition is not true, but the elif condition is true, so we print to screen that "a and b are equal".
+
 Else
 
 The else keyword catches anything which isn't caught by the preceding conditions.
 Example
+````
 a = 200
 b = 33
 if b > a:
@@ -261,6 +329,21 @@ elif a == b:
   print("a and b are equal")
 else:
   print("a is greater than b")
+````
+
+
+Example
+
+````
+num=eval(input("ingrese un numero del 1 al 3: "))
+
+num_word={1:'uno', 2:'dos',3:'tres'}
+if num in [1,2,3]:
+  print(num_word.get(num))
+else:
+  print("numero por fuera del rango")
+
+````
 
 ## Python While Loops
 
@@ -496,3 +579,385 @@ def tri_recursion(k):
 
 print("\n\nRecursion Example Results")
 tri_recursion(6)
+
+## Operation with String
+
+- word="Python"
+- print(word)
+- print(word[0]) print first character in the string
+- print(word[-1]) print las character in the string
+- print(word[2:5]) print range 2 to 5 
+- print(word[0:]) print range 0 to end 
+- print(word[:5]) print range 0 to 5
+
+word_len=len(word) lenght of the word
+
+- my_string="Python Scripting"
+- print(my_string.lower())
+- print(my_string.upper())
+- print(my_string.swapcase())
+- print(my_string.title()) start letters was capitalize
+- print(my_string.capitalize()) first letter capitalize
+- print(my_string.casefold()) lower letters in a string
+- print(my_string.starswith('p')) boolean result
+- print(my_string.endswith('g')) boolean result
+- print(my_string.islower()) boolean result
+- print(my_string.isupper()) boolean result
+- x="python"
+- y="-".join (x)
+- print(y)   p-y-t-h-o-n
+- print(x.center(20)) In 20 spaces center the words in x
+- prin(x.zfill(10)) llena con ceros hasta completar los 10 caracteres 0000python
+- print(x.strip()) remove space left and right end and final
+-  print(x.strip('n')) remove if letter in the end or begin
+- x= "python is easy"
+x.split() the result is ['python','is','easy']
+- x.split('is)  ['python','easy']
+- x.count('is') cuenta cuantas veces esta la pabara o letra esta en un string
+- x.index('p') ubicacion de una letra la primera que encuentre
+- x.index('p',1) la letra p saltando la posicion 0 si no encuentra la letra o palabra sale error
+- x.find('p') trae la posicion de la primer p que encuentre si sale -1 es que no encontro la letra o palabra
+
+
+## Requirements File
+
+A requirements file is a list of all of a project’s dependencies. This includes the dependencies needed by the dependencies. It also contains the specific version of each dependency, specified with a double equals sign (==).
+
+pip freeze will list the current projects dependencies to stdout.
+
+This shell command will export this as a file named requirements.txt:
+
+````
+$ pip freeze > requirements.txt
+````
+Once you’ve got your requirements file, you can head over to a different computer or new virtual environment and run the following:
+````
+$ pip install -r requirements.txt
+````
+
+That’s assuming you are working in the directory containing requirements.txt. This tells pip to install the specific versions of all the dependencies listed.
+
+By modifying the requirements file to use >= instead of ==, you can tell pip to install the latest stable version of the dependency, with the version specified acting as a minimum. This line would tell pip to install the latest version of requests, but never version 2.23.0: requests>=2.22.0, != 2.23.0.
+
+To upgrade your installed packages, run the following:
+````
+$ pip install --upgrade -r requirements.txt
+````
+
+## Operator of Python
+
+### Arithmetic
+Assignment operators are used to assign values to variables:
+
+Operator|	Example	|Same As	|
+|-|-|-|
+=|	x = 5|	x = 5	
++=|	x += 3|	x = x + 3	
+-=|	x -= 3|	x = x - 3	
+*=|	x *= 3|	x = x * 3	
+/=|	x /= 3|	x = x / 3	
+%=|	x %= 3|	x = x % 3	
+\//=|	x //= 3|	x = x // 3	
+**=|	x **= 3	|x = x ** 3	
+&=|	x &= 3|	x = x & 3	
+\|=|	x \|= 3|	x = x \| 3	
+^=|	x ^= 3|	x = x ^ 3	
+|>>=|	x >>= 3	|x = x >> 3	
+|<<=|	x <<= 3|	x = x << 3
+
+### Comparison
+
+Comparison operators are used to compare two values:
+
+|Operator	|Name	|Example|
+|-|-|-|
+==	|Equal|	x == y	
+!=	|Not equal|	x != y	
+|>	|Greater than|	x > y	
+|<	|Less than|	x < y	
+|>=	|Greater than or equal to|	x >= y	
+|<=	|Less than or equal to	x| <= y
+
+### Identity and memebership 
+- Python Identity Operators
+Identity operators are used to compare the objects, not if they are equal, but if they are actually the same object, with the same memory location:
+
+|Operator|	Description|	Example	|
+|-|-|-|
+is |	Returns True if both variables are the same object|	x is y	
+is not|	Returns True if both variables are not the same object|	x is not y	
+
+- Python Membership Operators
+Membership operators are used to test if a sequence is presented in an object:
+
+Operator|	Description|	Example|
+|-|-|-|
+in 	|Returns True if a sequence with the specified value is present in the object|	x in y	
+not in|	Returns True if a sequence with the specified value is not present in the object|	x not in y
+
+### Logical
+Logical operators are used to combine conditional statements:
+
+Operator	|Description	|Example|
+|-|-|-|
+and| 	Returns True if both statements are true	|x < 5 and  x < 10	
+or|	Returns True if one of the statements is true|	x < 5 or x < 4	
+not|	Reverse the result, returns False if the result is true	| not(x < 5 and x < 10)
+
+### Python Bitwise Operators
+Bitwise operators are used to compare (binary) numbers:
+
+Operator|	Name	|Description|
+|-|-|-|
+& |	AND	|Sets each bit to 1 if both bits are 1
+|\||	OR|	Sets each bit to 1 if one of two bits is 1
+ ^|	XOR|	Sets each bit to 1 if only one of two bits is 1
+~ |	NOT|	Inverts all the bits
+<<|	Zero fill left shift|	Shift left by pushing zeros in from the right and let the leftmost bits fall off
+|>>|	Signed right shift|	Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off
+
+## Switch Case in Python (Replacement)
+
+- Method 1:  Switch Case implement in Python using Dictionary Mapping
+
+````
+# Function to convert number into string
+# Switcher is dictionary data type here
+def numbers_to_strings(argument):
+    switcher = {
+        0: "zero",
+        1: "one",
+        2: "two",
+    }
+ 
+    # get() method of dictionary data type returns
+    # value of passed argument if it is present
+    # in dictionary otherwise second argument will
+    # be assigned as default value of passed argument
+    return switcher.get(argument, "nothing")
+ 
+# Driver program
+if __name__ == "__main__":
+    argument=0
+    print (numbers_to_strings(argument))
+````
+
+- Method 2: Switch Case implement in Python using if-else
+ ````
+ bike = 'Yamaha'
+ 
+if fruit == 'Hero':
+    print("letter is Hero")
+ 
+elif fruit == "Suzuki":
+    print("letter is Suzuki")
+ 
+elif fruit == "Yamaha":
+    print("fruit is Yamaha")
+ 
+else:
+    print("Please choose correct answer")
+ ````
+
+- Method 3: Switch Case implement in Python using Class
+
+````
+class Python_Switch:
+    def day(self, month):
+ 
+        default = "Incorrect day"
+ 
+        return getattr(self, 'case_' + str(month), lambda: default)()
+ 
+    def case_1(self):
+        return "Jan"
+ 
+    def case_2(self):
+        return "Feb"
+ 
+    def case_3(self):
+        return "Mar"
+ 
+ 
+my_switch = Python_Switch()
+ 
+print(my_switch.day(1))
+ 
+print(my_switch.day(3))
+````
+
+- Switch Case in Python
+
+In Python 3.10 and after that, Python will support this by using match in place of switch:
+
+````
+
+def number_to_string(argument):
+    match argument:
+        case 0:
+            return "zero"
+        case 1:
+            return "one"
+        case 2:
+            return "two"
+        case default:
+            return "something"
+ 
+ 
+if __name__ = "__main__":
+    argument = 0
+    number_to_string(argument)
+````
+
+## Module in Python
+
+A module is a file containing Python definitions and statements. That means, module contain python funciton, classes and variables
+
+from math import *
+print(pi)
+
+from math import pi
+print(pi)
+
+import math
+print(math.pi)
+
+import math as m
+print(m.pi)
+
+import platform,math,sys,os,subprocess
+
+- PLATFORM MODULE
+
+Is used to acces the underlying platform's data such as hardware, operating system and interpreter version info
+
+import platform
+print(f"el sistema operativo es: {platform.system()} os")
+print (f'Python version es {platform.python_version()}')
+
+- GETPASS MODULE
+
+  - getpass() prompts the user for a password without echoing. The getpass module 
+  provides a secure way to handle the password prompts where programs interact with 
+  the users via the terminal.
+  ````
+  import getpass
+  db_pass=getpass.getpass()
+  print(f"la contraseña es : {db_pass}")
+  ````
+
+
+    - getuser() function displays the login name of the user. This function checks the 
+  environment variables LOGNAME, USER, LNAME and USERNAME, in order, and returns 
+  the value of the first non-empty string. 
+
+- SYS MODULE
+
+is used to work with python runtime environment
+    
+- sys.exit() para salir de python
+
+- sys.argv returns a list of command line arguments passed to python script, the args be strings, the first element in the list is de script name
+
+````
+  import sys
+
+import sys
+if len(sys.argv) !=3:
+    print(f'{sys.argv[0]} <your require string> <lower|upper|title>')
+    sys.exit()
+
+usr_strg=sys.argv[1]
+usr_action=sys.argv[2]
+
+if usr_action=='lower':
+  print(usr_strg.lower())
+elif usr_action=='upper':
+  print(usr_strg.upper())
+elif usr_action=='title':
+  print(usr_strg.title())
+else:
+  print("escoga una opcion adecuada")
+
+````
+
+- OS MODULE
+
+this module is used to work/interact with operating system to automate many more tasks like creating directoy, removing directory, identifying current directory and many more
+
+os.sep separador del sistema operativo \ windows / linux para windows usa \\\\
+
+|||
+|-|-|
+os.getcwd()| obtener el directorio actual
+os.chdir(path)| cambiar directorio
+os.listdir()| listar directorios y archivos
+os.mkdir(nombre_archivo)| crear archivos o directorios
+os.makedirs(path)| recursive directory creation function
+os.remove(path)|
+os.removedirs(path)| remove directories recursively
+os.rmdir(path)|
+os.environ| variables environment
+os.getuid()| user id
+os.getgid()| group id
+os.getpid()| proccess id
+
+
+  - os path
+
+os.path.sep separador de las rutas del sistema operativo
+os.path.basename(path) 
+os .path dirname(path)
+
+example home/user/test.py  basename test.py, dirname home/user
+
+os.path.join(path1,path2)
+os.path.split(path) is used to split the path into a pair head and tail
+os.path.getsize(path) tamaño en bytes
+os.path.exists(path) 
+os.pat.isfile(path)
+os.path.isdir(path)
+os.path.islink(path)
+
+os.system(comandos del sistema) example
+
+os.system("ls") or os.system("dir")
+
+````
+import os
+import platform
+if platform.system()=="Windows":
+    os.system("cls")
+else:
+    os.system("clear")
+````
+
+os.walk(path) used to generate directory and file names ina a directory tree by walking
+ list(os.walk(path)) devuelve como respuesta una lista de tuplas con el primer argumento nombre del path, segundo directorios en ese path y el tercero files en ese path, si encuentra directorios arma otrsa tuplas
+
+ ````
+import os
+import string
+import platform
+req_file=input("Enter your file name to search: ")
+
+if platform.system()=="Windows":
+	pd_names=string.ascii_uppercase
+	vd_names=[]
+	for each_drive in pd_names:
+		if os.path.exists(each_drive+":\\"):
+			#print(each_drive)
+			vd_names.append(each_drive+":\\")
+	print(vd_names)
+	for each_drive in vd_names:
+		for r,d,f in os.walk(each_drive):
+			for each_f in f:
+				if each_f==req_file:
+					print(os.path.join(r,each_f))
+else:
+	for r,d,f in os.walk("/"):
+		for each_file in f:
+			if each_file==req_file:
+				print(os.path.join(r,each_file))
+
+ ````
