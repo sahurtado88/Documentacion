@@ -389,9 +389,44 @@ Example
 Loop through the letters in the word "banana":
 for x in "banana":
   print(x)
-The break Statement
+
+````
+usr_str=input("ingrese palabra: ")
+index=0
+for letter in usr_str:
+    print(f'{letter} --> {index}')
+    index=index+1
+````
+FIND ALL FILES IN A DIRECTORY WITH REQUEIRED EXTENSION
+````
+#!/usr/local/bin/python3
+import os
+req_path=input("Enter your directory path: ")
+#req_ex=input("Enter the required files extention .py/.sh/.log/.txt: ")
+
+if os.path.isfile(req_path):
+  print(f"The given path {req_path} is a file. Please pass only directory path")
+else:
+  all_f_ds=os.listdir(req_path)
+  if len(all_f_ds)==0:
+     print(f"The given path is {req_path} an empty path")
+  else:
+     req_ex=input("Enter the required files extention .py/.sh/.log/.txt: ")
+     req_files=[]
+     for each_f in all_f_ds:
+        if each_f.endswith(req_ex):
+           req_files.append(each_f)
+     if len(req_files)==0:
+        print(f"There are no {req_ex} files in the logcation of {req_path}")
+     else:
+        print(f"There are {len(req_files)} files in the location of {req_path} with an extention of {req_ex}")
+        print(f"So, the files are: {req_files}")
+````
+
+### The break Statement
 
 With the break statement we can stop the loop before it has looped through all the items:
+
 Example
 
 Exit the loop when x is "banana":
@@ -408,6 +443,18 @@ for x in fruits:
   if x == "banana":
     break
   print(x)
+
+  ### the continue statement
+
+The continue keyword is used to end the current iteration in a for loop (or a while loop), and continues to the next iteration.
+
+  ### the pass statemenet
+
+The pass statement is used as a placeholder for future code.
+
+When the pass statement is executed, nothing happens, but you avoid getting an error when empty code is not allowed.
+
+Empty code is not allowed in loops, function definitions, class definitions, or in if statements.
 
 ##  Python Functions
 
@@ -961,3 +1008,81 @@ else:
 				print(os.path.join(r,each_file))
 
  ````
+
+Range()
+ - built in function
+ - generate integer as list
+- syntax: range(start,stop,step)
+  3 arguments by default start=0, step=1
+the final value is stop-1
+  print(list(range(5))) = [0,1,2,3,4]
+
+### Data module
+
+python built in or default module and used to work with dates and times
+
+````
+import datetime
+print(datatime.datetime.today())
+print(datatime.datatime.now().year)
+print(datatime.datatime.now().month)
+print(datatime.datatime.now().day)
+print(datatime.datatime.now().hour)
+print(datatime.datatime.now().minute)
+print(datatime.datatime.now().strftime("%y-%m-%d"))
+print(datatime.datatime.now().strftime("%Y-%m-%d"))
+
+strftime.org pagina de formateo de horas en string
+
+import datetime
+import pytz
+req_time=pyts.timezone("Asia/Kolkata")
+print(datatime.datatime.now(req_time) ##Hora y fecha lugar especifico
+
+````
+Eliminar archvio que tengan mas de cierta cantidad de dias
+````
+import os
+import sys
+import datetime
+req_path=input("Enter your path: ")
+age=3
+if not os.path.exists(req_path):
+   print("Please provide valid path ")
+   sys.exit(1)
+if os.path.isfile(req_path):
+   print("Please provide directory path ")
+   sys.exit(2)
+today=datetime.datetime.now()
+for each_file in os.listdir(req_path):
+   each_file_path=os.path.join(req_path,each_file)
+   if os.path.isfile(each_file_path):
+      file_cre_date=datetime.datetime.fromtimestamp(os.path.getctime(each_file_path))
+      #print(dir(today-file_cre_date))
+      dif_days=(today-file_cre_date).days
+      if dif_days > age:
+         print(each_file_path,dif_days)
+````
+
+## Subprocess module 
+
+used to execute operating system commands
+
+import subprocess
+sp=subprocess.Popen(cmd,shell=True/False,stdout=subprocess.PIPE,stderr=subprocess.PIPE,universal_newlines=True)
+rc=sp.wait()
+out,err=sp.communicate()
+print(f'OUTPUT IS: {out}')
+print(f'Error is: {err}')
+==================================>
+if shell=True then your cmd is a string (as your os command)
+if shell=False then your cmd is a list
+
+Note: shell=False dont work on your os environment variables
+      
+ex: cmd="ls -lrt" ==>shell=True
+    shell=False ==> cmd="ls -lrt".split()  or ['ls','-lrt']
+ 
+shell=True always on windows
+
+cmd is a string
