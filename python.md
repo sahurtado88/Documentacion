@@ -1086,3 +1086,159 @@ ex: cmd="ls -lrt" ==>shell=True
 shell=True always on windows
 
 cmd is a string
+
+## Working with text files
+
+Open  --> w write mode
+      -->  a append mode
+      -->    r read mode
+
+````
+'''
+fo=open('newdemo.txt','w')
+#print(fo.mode)
+#print(fo.readable())
+#print(fo.writable())
+fo.close()
+'''
+'''
+
+fo=open("random.txt",'w')
+fo.write("This is a first line\n")
+fo.write("This is a second line\n")
+fo.write("This is a third line")
+fo.close()
+'''
+'''
+my_content=['This is using loop-iteratioin-1','This is using loop-iterantion-2','This is using loop-iteratioin-3']
+
+fo=open("with_loop.txt",'a')
+
+for each_line in my_content:
+	fo.write(each_line+"\n")
+fo.close()
+'''
+'''
+
+fo=open("with_loop.txt","r")
+data=fo.read()
+fo.close()
+
+print(data)
+'''
+'''
+fo=open("with_loop.txt","r")
+print(fo.readline())
+print(fo.readline())
+fo.close()
+'''
+
+fo=open("with_loop.txt","r")
+data=fo.readlines()
+fo.close()
+'''
+for each in range(3):
+	print(data[each])   #data[0], data[1],data[2]
+'''
+print(data[-1])
+
+````
+
+Copy content of a source file into a detination file
+
+```
+sfile=input("Enter your source file: ")
+dfile=input("Enter your destination file: ")
+sfo=open(sfile,'r')
+content=sfo.read()
+sfo.close()
+
+dfo=open(dfile,'w')
+dfo.write(content)
+dfo.close()
+```
+
+### Working with CSV
+
+read CSV files
+
+```
+import csv 
+req_file="C:\\Users\\Automation\\Desktop\\hi\\new_info.csv"
+
+fo=open(req_file,"r")
+content=csv.reader(fo,delimiter="|")
+for each in content:
+	print(each)
+
+fo.close()
+```
+
+Read only header of a csv file and finding the numbers of row in a csv file
+```
+import csv 
+req_file="C:\\Users\\Automation\\Desktop\\hi\\new_info.csv"
+
+fo=open(req_file,"r")
+content=csv.reader(fo,delimiter="|")
+#print(list(content))
+#print(f'The header is:\n {list(content)[0]}')
+#header=next(content)
+#print("The header is: ",header)
+print("The no of rows are: ",len(list(content))-1)
+'''
+for each in content:
+	print(each)
+'''
+fo.close()
+```
+
+### Create CSV file
+
+```
+import csv
+#req_file="C:\\Users\\Automation\\Desktop\\hi\\new_info.csv"
+'''
+fo=open(req_file,'r')
+csv_reader=csv.reader(fo,delimiter="|")
+for each_row in csv_reader:
+	print(each_row)
+fo.close()
+'''
+req_file="C:\\Users\\Automation\\Desktop\\hi\\demo.csv"
+fo=open(req_file,'w',newline="")
+csv_writer=csv.writer(fo,delimiter=",")
+'''
+csv_writer.writerow(['S_No',"Name",'Age'])
+csv_writer.writerow([1,"John",23])
+csv_writer.writerow([2,"Cliton",24])
+'''
+my_data=[['S_No',"Name",'Age'],[1,"John",23],[2,"Cliton",24]]
+csv_writer.writerows(my_data)
+fo.close()
+```
+
+### Working with JSON files
+
+```
+import json 
+#Read a json file
+'''
+req_file="myjson.json"
+
+fo=open(req_file,'r')
+#print(fo.read())
+print(json.load(fo))
+
+fo.close()
+'''
+#Write data(dictionary data) into a json file
+my_dict={'Name':'Narendra','skills':['Python','shell','yaml','AWS']}
+
+req_file="myinfo.json"
+
+fo=open(req_file,'w')
+json.dump(my_dict,fo,indent=4)
+
+fo.close()
+```
