@@ -463,21 +463,47 @@ A function is a block of code which only runs when it is called.
 You can pass data, known as parameters, into a function.
 
 A function can return data as a result.
-Creating a Function
+
+### Creating a Function
 
 In Python a function is defined using the def keyword:
 Example
+```
 def my_function():
-  print("Hello from a function")
-Calling a Function
+  print("Hello from a function")`
+ ```
+
+### Calling a Function
 
 To call a function, use the function name followed by parenthesis:
+
 Example
+````
 def my_function():
   print("Hello from a function")
 
 my_function()
-Arguments
+````
+
+ Exmaple function in ptyhon to clear screen and list of directories in windows or linux
+```
+import os
+import time
+import platform
+def mycode(cmd1,cmd2):
+	print("Please wait. Cleaning the screen....")
+	time.sleep(2)
+	os.system(cmd1)
+	print("Please wait finding the list of dir and files")
+	time.sleep(2)
+	os.system(cmd2)
+if platform.system()=="Windows":
+	mycode("cls","dir")
+else:
+	mycode('clear','ls -lrt')
+```
+
+### Arguments
 
 Information can be passed into functions as arguments.
 
@@ -485,13 +511,14 @@ Arguments are specified after the function name, inside the parentheses. You can
 
 The following example has a function with one argument (fname). When the function is called, we pass along a first name, which is used inside the function to print the full name:
 Example
+```
 def my_function(fname):
   print(fname + " Refsnes")
 
 my_function("Emil")
 my_function("Tobias")
 my_function("Linus")
-
+```
 Arguments are often shortened to args in Python documentations.
 Parameters or Arguments?
 
@@ -502,25 +529,33 @@ From a function's perspective:
 A parameter is the variable listed inside the parentheses in the function definition.
 
 An argument is the value that is sent to the function when it is called.
-Number of Arguments
+
+
+### Number of Arguments
 
 By default, a function must be called with the correct number of arguments. Meaning that if your function expects 2 arguments, you have to call the function with 2 arguments, not more, and not less.
 Example
 
 This function expects 2 arguments, and gets 2 arguments:
+
+```
 def my_function(fname, lname):
   print(fname + " " + lname)
 
 my_function("Emil", "Refsnes")
+
+```
 If you try to call the function with 1 or 3 arguments, you will get an error:
 Example
 
 This function expects 2 arguments, but gets only 1:
+```
 def my_function(fname, lname):
   print(fname + " " + lname)
 
 my_function("Emil")
-Arbitrary Arguments, *args
+```
+### Arbitrary Arguments, *args
 
 If you do not know how many arguments that will be passed into your function, add a * before the parameter name in the function definition.
 
@@ -528,25 +563,29 @@ This way the function will receive a tuple of arguments, and can access the item
 Example
 
 If the number of arguments is unknown, add a * before the parameter name:
+```
 def my_function(*kids):
   print("The youngest child is " + kids[2])
 
 my_function("Emil", "Tobias", "Linus")
-
+```
 Arbitrary Arguments are often shortened to *args in Python documentations.
-Keyword Arguments
+
+### Keyword Arguments
 
 You can also send arguments with the key = value syntax.
 
 This way the order of the arguments does not matter.
 Example
+```
 def my_function(child3, child2, child1):
   print("The youngest child is " + child3)
 
 my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
-
+```
 The phrase Keyword Arguments are often shortened to kwargs in Python documentations.
-Arbitrary Keyword Arguments, **kwargs
+
+### Arbitrary Keyword Arguments, **kwargs
 
 If you do not know how many keyword arguments that will be passed into your function, add two asterisk: ** before the parameter name in the function definition.
 
@@ -554,18 +593,22 @@ This way the function will receive a dictionary of arguments, and can access the
 Example
 
 If the number of keyword arguments is unknown, add a double ** before the parameter name:
+```
 def my_function(**kid):
   print("His last name is " + kid["lname"])
 
 my_function(fname = "Tobias", lname = "Refsnes")
+```
 
 Arbitrary Kword Arguments are often shortened to **kwargs in Python documentations.
-Default Parameter Value
+
+### Default Parameter Value
 
 The following example shows how to use a default parameter value.
 
 If we call the function without argument, it uses the default value:
 Example
+```
 def my_function(country = "Norway"):
   print("I am from " + country)
 
@@ -573,12 +616,14 @@ my_function("Sweden")
 my_function("India")
 my_function()
 my_function("Brazil")
-Passing a List as an Argument
+```
+### Passing a List as an Argument
 
 You can send any data types of argument to a function (string, number, list, dictionary etc.), and it will be treated as the same data type inside the function.
 
 E.g. if you send a List as an argument, it will still be a List when it reaches the function:
 Example
+```
 def my_function(food):
   for x in food:
     print(x)
@@ -586,23 +631,30 @@ def my_function(food):
 fruits = ["apple", "banana", "cherry"]
 
 my_function(fruits)
-Return Values
+```
+
+### Return Values
 
 To let a function return a value, use the return statement:
 Example
+```
 def my_function(x):
   return 5 * x
 
 print(my_function(3))
 print(my_function(5))
 print(my_function(9))
-The pass Statement
+```
+
+### The pass Statement
 
 function definitions cannot be empty, but if you for some reason have a function definition with no content, put in the pass statement to avoid getting an error.
 Example
+```
 def myfunction():
   pass
-Recursion
+```
+### Recursion
 
 Python also accepts function recursion, which means a defined function can call itself.
 
@@ -616,6 +668,7 @@ To a new developer it can take some time to work out how exactly this works, bes
 Example
 
 Recursion Example
+```
 def tri_recursion(k):
   if(k > 0):
     result = k + tri_recursion(k - 1)
@@ -626,6 +679,38 @@ def tri_recursion(k):
 
 print("\n\nRecursion Example Results")
 tri_recursion(6)
+````
+
+### How to use \_\_name__
+```
+if __name__="__main__"
+````
+
+```
+#!/usr/local/bin/python3
+import os
+
+def main():
+  req_path=input("Enter path to change working dir: ")
+  print("The current working dir is: ",os.getcwd())
+  try:
+    os.chdir(req_path)
+    print("Now your new working dir is: ",os.getcwd())
+  except FileNotFoundError:
+    print("Given path is not a valid path. So cant change working directory")
+  except NotADirectoryError:
+    print("Given path is a file path. So cant change working directory")
+  except PermissionError:
+    print("Sorry you dont have access for the given path. So cant chagne working directory")
+  except Exception as e:
+    print(e)
+  return None
+
+
+if __name__=="__main__":
+   main()
+
+```
 
 ## Operation with String
 
@@ -1227,7 +1312,6 @@ import json
 req_file="myjson.json"
 
 fo=open(req_file,'r')
-#print(fo.read())
 print(json.load(fo))
 
 fo.close()
@@ -1242,3 +1326,65 @@ json.dump(my_dict,fo,indent=4)
 
 fo.close()
 ```
+###  Exception Handling
+
+When an error occurs, or exception as we call it, Python will normally stop and generate an error message.
+
+These exceptions can be handled using the try statement:
+
+```
+try:
+  print(x)
+except:
+  print("An exception occurred")
+```
+
+You can define as many exception blocks as you want, e.g. if you want to execute a special block of code for a special kind of error:
+```
+try:
+  print(x)
+except NameError:
+  print("Variable x is not defined")
+except:
+  print("Something else went wrong")
+
+  ```
+  - Known Exceptions
+    - NameError
+    - TypeError
+    - FileNotFoundError
+    - ZeroDivisionError
+    - MpduleNotFoundError
+
+### Custom exception
+
+we can create custom exceptions using:
+- raise (used to raise an existing exceptions)
+- assert (used to create an AssestionError)
+
+```
+'''
+
+age=23
+
+
+if age>30:
+	print("Valid age")
+else:
+	raise ValueError("Age is less than 30")
+
+'''
+age=20
+
+try:
+	assert age>30
+	print("Valid age")
+except AssertionError:
+	print("Raised with assert because age is lessthan 30")
+except:
+	print("Exception occured")
+```
+
+## Regular expression with re module
+
+
