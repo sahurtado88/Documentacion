@@ -1388,3 +1388,78 @@ except:
 ## Regular expression with re module
 
 
+- a,X, p -> Ordinary characters that match themselves
+- [abc] matches a or b or c
+- [a-c] matches a or b or c
+- [a-zA-Z0-9] mathes any letter from (a to z) or (A to Z) or (0 to 9)
+- \w  matches any single letter , digit or underscore
+- \W matches any character not part of \w
+- \d Matches decimal digit 0-9
+- . matches any single character except newline character
+- \\. mathce with dot only
+- [^abc] A negated or complemented character class. That is, it matches anything that is not enclosed in the brackets. 
+- ^  beggining of input and star of the line in- case multiline string
+- $  Matches the end of input.
+- \b empty string at the beginning or end of a word
+- \B empty string not at thhe beggining or end of a word
+- \t, \n,\r mathes tab, newline, return respectively
+- {2} exactly two times
+- {2,4} 2,3 or 4 times
+- {2,} two or more times
+- \+ one or more
+- \* 0 or more times
+- ? once or none
+
+
+## OOPS python (Polymorphism,Encapsulation, Data Abstraction,Inheritance )
+
+Class: is a template/blueprint to create object, is a combination of attributes and methods
+
+```
+class emp:
+	count=0
+	def get_name_age_salary(self,name,age,salary):
+		self.name=name
+		self.age=age 
+		self.salary=salary
+		self.increase_count_for_emp()
+		#self.display_details()
+		return None
+	def increase_count_for_emp(self):
+		emp.count=emp.count+1
+		return None
+	def display_details(self):
+		print(f'The name is: {self.name}\nThe age is: {self.age}\nThe salary is: {self.salary}')
+		return None
+
+emp1=emp()
+emp2=emp()
+
+emp1.get_name_age_salary('John',34,45000)
+#emp1.increase_count_for_emp()
+emp2.get_name_age_salary('Cliton',25,54000)
+#emp2.increase_count_for_emp()
+
+print(emp.count)
+```
+Constructor: is a special method that is called by default whenever you create an object from a class
+
+```
+class Emp(object):
+	def __init__(self,name,salary):
+		self.name=name
+		self.salary=salary
+		return None
+	def display(self):
+		print(f"The name is: {self.name}\nThe salary is: {self.salary}")
+		return None		
+
+
+emp1=Emp('Ramu',56000)
+emp2=Emp("Naren",90000)
+
+emp1.display()
+#emp2.display()
+```
+
+

@@ -262,6 +262,7 @@ git rm nombrearchvio borra archvio si ya esta en track
 ### Alias en Git
 
 git config --global alias.namealias "comando deseado"
-````
+```
 ejemplo: git config --global alias.hist "log --all --graph --decorate --oneline"
-````
+```
+

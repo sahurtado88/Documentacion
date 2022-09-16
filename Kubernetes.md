@@ -27,11 +27,11 @@ each node has multiple POD in it
 
 3 processes must be installed on every node
 
-    -Worker Node do the actual work
+Worker Node do the actual work
 
-    CONTAINER RUNTIME (for exmple docker)
-    KUBELET interact with both the container runtime and node, starts the pod with a container inside
-    KUBEPROXY forwards the request
+  - CONTAINER RUNTIME (for example docker)
+  - KUBELET interact with both the container runtime and node, starts the pod with a container inside
+  - KUBEPROXY forwards the request
 
 MASTER NODES
 
@@ -66,7 +66,7 @@ ADD NEW MASTER/ NODE SERVER
 
 
 **NODES**
-NOde=virtual or pysical machine
+Node=virtual or pysical machine
 
 Kubernetes runs your workload by placing containers into Pods to run on Nodes. A node may be a virtual or physical machine, depending on the cluster. Each node is managed by the control plane and contains the services necessary to run Pods.
 
@@ -204,6 +204,10 @@ spec:
     targetPort: 8081
     nodePort: 30000
 ```
+- node port (range 30000-32767)
+ 
+- clusterIP:
+- load balancer
 
 
 **STATEFULSET**
@@ -355,6 +359,11 @@ A ReplicaSet ensures that a specified number of pod replicas are running at any 
 
 This actually means that you may never need to manipulate ReplicaSet objects: use a Deployment instead, and define your application in the spec section
 
+scale replica set
+- chenge replicaset yaml and run kubectl replace -f replicaset.yanl
+- kubectl scale --replicas=6 -f replicaset.yaml
+- kubectl scale --replicas=6 replicaset myapp-replicaset
+
 **ROLES**
 
 **SECRETS**
@@ -430,8 +439,9 @@ spec:
 **PERSISTENT VOLUMES**
 
 
+## Commands 
+
 What is Kubernetes?
-http://linuxacademy.com
 
 Kubernetes is a platform for managingcontainerized
 workloads.Kubernetes orchestrates computing,
@@ -573,4 +583,8 @@ metadata part contains the labels and specs part contains the selectors
 
 continer port has match with target port of the service
 
+## Deployment strategy
+
+- recreate (application down)
+- rolling update (default deployment strategy)
 
