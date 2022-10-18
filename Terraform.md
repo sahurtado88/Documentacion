@@ -1,11 +1,26 @@
 # TERRAFORM
 
+Infrastructure as code (IaC) tools allow you to manage infrastructure with configuration files rather than through a graphical user interface. IaC allows you to build, change, and manage your infrastructure in a safe, consistent, and repeatable way by defining resource configurations that you can version, reuse, and share.
+
+Terraform is HashiCorp's infrastructure as code tool. It lets you define resources and infrastructure in human-readable, declarative configuration files, and manages your infrastructure's lifecycle
+
+some advantages using terraform are:
+
+- Terraform can manage infrastructure on multiple cloud platforms.
+- The human-readable configuration language helps you write infrastructure code quickly.
+- Terraform's state allows you to track resource changes throughout your deployments.
+- You can commit your configurations to version control to safely collaborate on infrastructure.
+
+## TERRAFORM WORKFLOW
+
+![terraform workflow](https://blog.gautamkumar.co.uk/wp-content/uploads/2021/10/terraform-1024x536.png)
+
 ## TERRAFORM COMMAND
 
 | COMMAND | Description |
 | ----------- | ----------- |
 |Terrafom init |descarga provider|
-|terraform init -upgrade |actualiza provider |
+|terraform init -upgrade |actualiza provider descaragndolo segun lo indicado en la version |
   |console     | Try Terraform expressions at an interactive command prompt|
   |fmt |          Reformat your configuration in the standard style|
   |force-unlock | Release a stuck lock on the current workspace|
@@ -109,6 +124,7 @@ Putting all code in main.tf is a good idea when you are getting started or writi
 - versions.tf - contains version requirements for Terraform and providers
 
 
+
 ## Variable
 
 ````
@@ -132,6 +148,8 @@ variable "mylist" {
 ````
  las variabel se puede llmar en consola de terraform usando terrafrom console para abrir la consolo y luego escribir var.myvar o "${var.myvar}para map se puede llamar var.mymap ["mykey"]
 
+
+
  ### Terraform Variable types
 
  #### Simple
@@ -150,4 +168,158 @@ variable "mylist" {
 
 
 ## Terraform with Azure
+
+### Terraform Basic blocks
+
+#### **Terraform BlocK**
+  - Special block used to configure some behaviors
+  - Specifying a required Terraform CLI version
+  - Specifying Provider requirements and versions
+  - Configure a teraform backend( terrafrom state)
+  - only constant values can be used
+
+        terraform {
+          # Requiered Terraform version
+          required_version = ">=1.0.0"
+          # Required Providers and their versions
+          required_providers{
+            azurerm = {
+              source  = "hashicorp/azurerm"
+              version = ">= 2.0" # optional but recommend
+            }
+          }
+          # Terraform state Storage to azure Storage Container
+          backend "azurerm" {
+            resource_group_name  = "terrafor-storage-rg
+            storage_account_name = "terraformstate201"
+            container_name       = "tfstatefiles"
+            key                  = "terraform.tfstate"
+          }
+          # Experimental Language features
+          experiments = [ example ] #Experimental (Not required)
+          # Passing metadata to providers
+          provider_meta "my-provider" { #Super Advanced (not requiered)
+            hello= "world"
+          }
+        }
+
+Version Constraint Syntax
+
+Terraform's syntax for version constraints is very similar to the syntax used by other dependency management systems like Bundler and NPM.
+
+The following operators are valid:
+
+- = (or no operator): Allows only one exact version number. Cannot be combined with other conditions.
+
+- !=: Excludes an exact version number.
+
+- \>, >=, <, <=: Comparisons against a specified version, allowing versions for which the comparison is true. "Greater-than" requests newer versions, and "less-than" requests older versions.
+
+- ~>: Allows only the rightmost version component to increment. For example, to allow new patch releases within a specific minor release, use the full version number: ~> 1.0.4 will allow installation of 1.0.5 and 1.0.10 but not 1.1.0. This is usually called the pessimistic constraint operator.
+
+Best Practices
+
+- Module Versions
+
+  - When depending on third-party modules, require specific versions to ensure that updates only happen when convenient to you.
+
+  - For modules maintained within your organization, specifying version ranges may be appropriate if semantic versioning is used consistently or if there is a well-defined release process that avoids unwanted updates.
+
+#### **Provider Block**
+  - Heart of terrafomr
+  - Terraform relies on providers to interact with remote systems
+  - Declare providers for terraform to install providers and use them
+  - Provider configuration belong to root module
+
+We can use the alternate provider in a resource, data or module by referencing it as \<PROVIDER NAME>.\<ALIAS>
+
+```
+# Terraform Block
+terraform {
+  required_version = ">= 0.15"
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = ">= 2.0"
+    }
+  }
+}
+
+# Provider-1 for EastUS (Default Provider)
+provider "azurerm" {
+  features {}
+}
+
+# Provider-2 for WestUS
+provider "azurerm" {
+  features {
+    virtual_machine {
+      delete_os_disk_on_deletion = false # This will ensure when the Virtual Machine is destroyed, Disk is not deleted, default is true and we can alter it at provider level
+    }
+  }
+  alias = "provider2-westus"
+  #client_id = "XXXX"
+  #client_secret = "YYY"
+  #environment = "german"
+  #subscription_id = "JJJJ"
+}
+
+
+# Provider Documentation for Reference
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
+
+
+# Create a resource group in EastUS region - Uses Default Provider
+resource "azurerm_resource_group" "myrg1" {
+  name = "myrg-1"
+  location = "East US"
+}
+
+#Create a resource group in WestUS region - Uses "provider2-westus" provider
+resource "azurerm_resource_group" "myrg2" {
+  name = "myrg-2"
+  location = "West US"
+  provider = azurerm.provider2-westus
+}
+
+
+/*
+Additional Note: 
+provider = <PROVIDER NAME>.<ALIAS NAME>  # This is a Meta-Argument from Resources Section nothing but a Special Argument
+*/
+
+```
+
+#### **resource Block**
+  - Each resource block describes one or more infraestructure objects
+
+### MEta-Arguments
+
+  - Depend on:
+
+  The depends_on meta-argument instructs Terraform to complete all actions on the dependency object (including Read actions) before performing actions on the object declaring the dependency. When the dependency object is an entire module, depends_on affects the order in which Terraform processes all of the resources and data sources associated with that module
+  - count:
+
+  The count meta-argument accepts a whole number, and creates that many instances of the resource or module.
+
+  - for each
+
+  If a resource or module block includes a for_each argument whose value is a map or a set of strings, Terraform creates one instance for each member of that map or set.
+
+  - Povider
+
+The provider meta-argument specifies which provider configuration to use for a resource, overriding Terraform's default behavior of selecting one based on the resource type name.
+
+
+  - lifecycle The Resource Behavior page describes the general lifecycle for resources. Some details of that behavior can be customized using the special nested lifecycle block within a resource block body:
+
+    The arguments available within a lifecycle block are 
+
+    - **create_before_destroy** meta-argument changes this behavior so that the new replacement object is created first, and the prior object is destroyed after the replacement is created.
+
+    - **prevent_destroy** This meta-argument, when set to true, will cause Terraform to reject with an error any plan that would destroy the infrastructure object associated with the resource, as long as the argument remains present in the configuration.
+
+    - **ignore_changes** feature is intended to be used when a resource is created with references to data that may change in the future, but should not affect said resource after its creation
+
+    - **Replace_triggered_by** Replaces the resource when any of the referenced items change. Supply a list of expressions referencing managed resources, instances, or instance attributes. 
 

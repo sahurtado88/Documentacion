@@ -12,11 +12,11 @@ Compute services are often one of the primary reasons why companies move to the 
 | Service name  | Service function |
 | ----------- | ----------- |
 | Azure Virtual Machines | Windows or Linux virtual machines (VMs) hosted in Azure. |
-| Azure Virtual Machine Scale Sets | Scaling for Windows or Linux VMs hosted in Azure. |
-| Azure Kubernetes Service | Cluster management for VMs that run containerized services.  |
+| Azure Virtual Machine Scale Sets  (VM SS)| Scaling for Windows or Linux VMs hosted in Azure. |
+| Azure Kubernetes Service (AKS)| Cluster management for VMs that run containerized services.  |
 | Azure Service Fabric | Distributed systems platform that runs in Azure or on-premises. |
 | Azure Batch  | Managed service for parallel and high-performance computing applications. |
-| Azure Container Instances | Containerized apps run on Azure without provisioning servers or VMs. |
+| Azure Container Instances (ACI) | Containerized apps run on Azure without provisioning servers or VMs. |
 | Azure Functions | An event-driven, serverless compute service. |
 
 
@@ -228,6 +228,8 @@ Like PaaS, serverless computing enables developers to build applications faster 
 - **Resource groups**: Resources are combined into resource groups, which act as a logical container into which Azure resources like web apps, databases, and storage accounts are deployed and managed.
 - **Subscriptions**: A subscription groups together user accounts and the resources that have been created by those user accounts. For each subscription, there are limits or quotas on the amount of resources that you can create and use. Organizations can use subscriptions to manage costs and the resources that are created by users, teams, or projects.
 - **Management groups**: These groups help you manage access, policy, and compliance for multiple subscriptions. All subscriptions in a management group automatically inherit the conditions applied to the management group.
+
+
 
 ## Azure regions, availability zones, and region pairs
 
@@ -619,7 +621,7 @@ Azure Databricks helps you unlock insights from all your data and build artifici
 
 #### **Azure Data Lake Analytics**
 
-Azure Data Lake Analytics is an on-demand analytics job service that simplifies big data. Instead of deploying, configuring, and tuning hardware, you can write queries to transform your data and extract valuable insights. The analytics service can handle jobs of any scale instantly by setting the dial for how much power you need. You only pay for your job when it's running, making it more cost-effective.
+Azure Data Lake Analytics is an on-demand analytics job service that simplifies big data. Instead of deploying, configuring, and tuning hardware, you can write queries to tr       ansform your data and extract valuable insights. The analytics service can handle jobs of any scale instantly by setting the dial for how much power you need. You only pay for your job when it's running, making it more cost-effective.
 
 ## IOT
 

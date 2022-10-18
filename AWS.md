@@ -401,5 +401,54 @@ S3 ACCES LOGS
 every time a user makes a reuqest to upload, read or delete a file logs written 
 
 
+## CLOUDFORMATION
 
+### CloudForm,ation Buildign block
 
+Templates components:
+
+1.  AWSTemplateFormatVersion: identifies the capabilities of the template("2010-09-09")
+2. Description: comments about the template
+3. Transform: specifies one or more Macros that used to process the template
+4. Metadata
+5. Resources: your AWS resources declared in the template (MANDATORY)
+6. Parameters: the dynamic inputs for your template
+7. Mapping: the static variables for your template
+8. Outputs: reference to what has been created
+9. Conditionals: List of conditions to perform resource creation
+10. Rules: validate a parameter duric stack creation/update
+
+parameters can be used anywhere in a template, except:
+- AWSTemplateFormatVersion
+- Description
+- Transform
+- Mappings
+
+how to reference a parameter?
+- the Fn::Ref
+La función intrínseca Ref devuelve el valor del parámetro o el recurso especificado 
+
+La sintaxis del nombre de función completo:
+en YAML
+
+        Ref: logicalName
+La sintaxis de la forma abreviada:
+
+        !Ref logicalName
+
+- SSM (Sistem manager) Parameter Type
+
+The AWS::SSM::Parameter resource creates an SSM parameter in AWS Systems Manager Parameter Store.
+
+Depends on
+
+- DeletionPolicy
+Control what happens when the CloudFormation template is deleted or when a resource is removed directly from a CloudFormation template
+    - Retain: Specify on resources to preserve/ backup in case of Cloudformation deletes
+    - snapshot
+    - delete defaul behavior
+- UpdateReplacePolicy
+Control what happens to a resource if you update a property whose update behavior is replacement
+    - Delete (default behavior)  delete the old resource and creates a new one with a new physical ID
+    - Retain keeps the reource (it is removed from cloudformations scope)
+    - Snapshot
