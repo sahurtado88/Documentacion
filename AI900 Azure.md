@@ -318,9 +318,7 @@ An Azure Machine Learning (ML) job executes a task against a specified compute t
 Confusion matrix
 The confusion matrix shows cases where both the predicted and actual values were 1 (known as true positives) at the top left, and cases where both the predicted and the actual values were 0 (true negatives) at the bottom right. The other cells show cases where the predicted and actual values differ (false positives and false negatives).
 
-For a binary classification model where you're predicting one of two possible values, the confusion matrix is a 2x2 grid showing the predicted and actual value counts for classes 0 and 1, similar to this:
-
-Screenshot of a confusion matrix showing actual and predicted value counts.
+For a binary classification model where you're predicting one of two possible values, the confusion matrix is a 2x2 grid showing the predicted and actual value counts for classes 0 and 1
 
 For a multi-class classification model (where there are more than two possible classes), the same approach is used to tabulate each possible combination of actual and predicted value counts - so a model with three possible classes would result in a 3x3 matrix with a diagonal line of cells where the predicted and actual labels match.
 
@@ -345,7 +343,7 @@ An AUC of 0.5 is what you'd expect with random prediction of a binary model.
 
 ## clustering machine learning scenarios
 
-Clustering is a form of machine learning that is used to group similar items into clusters based on their features. 
+Clustering is a type of unsupervised learning, is a form of machine learning that is used to group similar items into clusters based on their features. 
 
 ### steps for clustering
 
@@ -827,3 +825,125 @@ Azure Cognitive Search comes with the following features:
 
 A typical Azure Cognitive Search solution starts with a data source that contains the data artifacts you want to search. This could be a hierarchy of folders and files in Azure Storage, or text in a database such as Azure SQL Database or Azure Cosmos DB. The data format that Cognitive Search supports is JSON. Regardless of where your data originates, if you can provide it as a JSON document, the search engine can index it.
 
+-------------------------
+
+regression, cassification, clustering
+
+dataset features and labels 
+
+## Machine learning Algorithm Cheat Sheet
+
+![Machine learning Algorithm Cheat Sheet](https://learn.microsoft.com/en-us/azure/machine-learning/media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet.png#lightbox)
+
+
+## presicion vs Acurracy
+
+Precision and accuracy are two ways that scientists think about error. Accuracy refers to how close a measurement is to the true or accepted value. Precision refers to how close measurements of the same item are to each other. Precision is independent of accuracy. That means it is possible to be very precise but not very accurate, and it is also possible to be accurate without being precise.
+
+![Acurracy vs pricision](https://i0.wp.com/wp.stolaf.edu/it/files/2017/06/precsionvsaccuracy_crashcourse.png?resize=579%2C600&ssl=1)
+
+## Confusion Matrix
+A confusion matrix is a tabular summary of the number of correct and incorrect predictions made by a classifier. It is used to measure the performance of a classification model. It can be used to evaluate the performance of a classification model through the calculation of performance metrics like accuracy, precision, recall, and F1-score.
+
+![](https://miro.medium.com/max/720/1*3yGLac6F4mTENnj5dBNvNQ.jpeg)
+
+1. A good model is one which has high TP and TN rates, while low FP and FN rates.
+2. If you have an imbalanced dataset to work with, it’s always better to use confusion matrix as your evaluation criteria for your machine learning model.
+
+true positive rate(TPR) also called hit rate, sensitivity, or recall 
+
+TPR= TP/P=TP/TP+FN=1-FNR
+
+false positive rate (FPR) also called fallout rate
+
+FPR=FP/N= FP/FP+TN=1-TNR
+
+TPR and FPR together can be combined onto a curve
+
+reciever opñerating characteristic (ROC) curve
+
+AUC area under the curve  of a classifier is equal to the probability that the classifier will rank a randomly chosen positive example higher than a randomly chosen negative example
+
+![](https://miro.medium.com/max/720/1*1MsGU9XT35XcPyyz1OJ6WQ.png)
+
+
+## Primary metric
+- Sperman correlation
+- Normqalized root mean squared error
+- R2 score
+- Normalized mean absolute error
+
+## types of computer vision workload
+image calssification
+object detection
+semantic segmentation boundies of objects
+optical character recognition
+facial detection and recognition
+
+
+## Azure Tools
+
+- computer vision service
+    - pre trained ml model
+    -can recognize over 10000 objects
+    - can generate automatic caption for images and tags
+    - content moderation for adul, racy or gory content
+    - detect faces
+    - text recognition
+
+    custom vision service
+     - a model that you can build and train
+     - classification or object detection
+     - upload an existing data set of images and clasess
+     - publish the model so that you and other can use it
+
+### face service
+- can recognize a human face in an image
+- Returns the rectangle coordinates of those 1 or more faces
+- can recognize celebrities
+- needs to be trained on your own data
+
+face detection, face verification, similar faces, face grouping, identify API, form recognizer (ideal for invoices and receipts)  
+
+
+
+
+- azure cognitive services includes many other services under one umbrella 
+
+
+## Natural language Workloads on Azure
+
+- key phrase extraction
+- entity recognition item categorized by type and subtype
+- sentiment analysis score from 0 to 1 1 being positive sentiment
+- Language Modeling build your own dictionary for terms in your indutry
+- speech recognition( detect an interpret speech) and synthesis (ability to generate spoken output)
+- Transaltion support over 60 languages semantic context
+
+### NLP services en azure
+
+- text analytuc service
+- language understanding service (LUIS)
+    1. uterances: something a user will say
+    2. entities:an item to which an uterrance refers
+    3. intents: the goal expressed by the user, things your application is able to do
+- speech service
+    1. text to speech
+    2. speech to text
+    3. Audio translation
+    4. Custom voice models
+- Translator text service
+    
+## Conversational AI workloads on azure
+
+azure bots can operate over the web, email, social media and voice
+
+- webchat bots
+- telephone voice menus
+- personal digital assistants
+
+
+### Conversational AI services on azure
+
+- QnA Maker services
+- Azure bot services

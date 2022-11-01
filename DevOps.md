@@ -566,3 +566,61 @@ With multi-site active/active, two or more Regions are actively accepting reques
 ## Idempotency
 
 idempotency — the ability to repeatedly apply code to guarantee a desired state on a system, with the assurance that you will get the same result every time. It ensures that the state of the infrastructure always matches the desired state.
+
+## RoadMap Devops
+
+![roadmaps devops](https://pbs.twimg.com/media/ErsZTKoXMAEH0l9.jpg:large)
+
+1. Programming language
+    - Python
+    - golang
+    - javascript
+2. Server admin
+    - Linux
+    - Windows
+3. Network
+    - TCP/IP 
+    - Protocols DNS, HTTPS, FTP, SSL
+4. Servers
+    - Apache
+    - Nginx
+    - Tomcat
+5. Database
+    - Mongo
+    - Casandra    
+    - Dynamo DB
+    - Oracle
+    - MySQL/ MariaDB
+    - Postresql
+6. IAC (Infraestructure as a code)    
+    - Ansible
+    - Cheff
+    - Puppet
+    - Docker
+    - Kubernetes
+    - Terraform
+    - AWS Cloudformation
+    - Azure template (ARM, BiCEPS)
+    - Google deployment Manager
+    - Pulumi
+7. CI/CD
+    - Jenkins
+    - Circle CI
+    - Travis CI
+    - Gitlab
+    - AWS codepipeline
+    - bitbucket
+8. Monitoring
+    - Zabixx
+    - Prometheus
+    - Grafana
+    - Datadog
+    - New relic
+    - ELK
+    - Splunk
+9. Cloud            
+    - AWS
+    - Azure  
+    - GCP
+    - Oracle
+    - Open stack  

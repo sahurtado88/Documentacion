@@ -36,10 +36,10 @@ print(type(y))
 ### Variable Names
 A variable can have a short name (like x and y) or a more descriptive name (age, carname, total_volume). Rules for Python variables:
 
-    A variable name must start with a letter or the underscore character
-    A variable name cannot start with a number
-    A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )
-    Variable names are case-sensitive (age, Age and AGE are three different variables)
+  - A variable name must start with a letter or the underscore - character
+  - A variable name cannot start with a number
+  - A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )
+  - Variable names are case-sensitive (age, Age and AGE are three different variables)
 
 ### Many Values to Multiple Variables
 
@@ -1410,6 +1410,176 @@ except:
 - \* 0 or more times
 - ? once or none
 
+### REGEX with flags
+
+
+First, refer to the below table for available regex flags.
+
+Flag|	long syntax	|Meaning|
+|-|-|-|
+re.A|	re.ASCII|	Perform ASCII-only matching instead of full Unicode matching
+re.I|	re.IGNORECASE|	Perform case-insensitive matching
+re.M|	re.MULTILINE|	This flag is used with metacharacter ^ (caret) and \$ (dollar).When this flag is specified, the metacharacter ^ matches the pattern at beginning of the string and each newline’s beginning (\\n). And the metacharacter $ matches pattern at the end of the string and the end of each new line (\\n)
+re.S|	re.DOTALL|	Make the DOT (.) special character match any character at all, including a newline. Without this flag, DOT(.) will match anything except a newline
+re.X	|re.VERBOSE|	Allow comment in the regex. This flag is useful to make regex more readable by allowing comments in the regex.
+re.L|	re.LOCALE|	Perform case-insensitive matching dependent on the current locale. Use only with bytes patterns
+
+``` 
+text="""this is a string
+this a secon line
+This is third line
+asdf this"""
+
+my_pat=r'^this'
+print(re.findall(my_pat,text,re.M|re.I))
+```
+
+### Search and match operstions from re module
+
+search operation: It looks throughtout the entire string and returns the first match
+
+match operations: It looks only in the first line
+
+````
+import re
+text= "This is for python and ther are two major vers python2 and python3 in future python4"
+pat=r'\bpython\d?\b'
+#print(re.findall(pat,text))
+match_ob=re.search(pat,text)
+#print(match_ob)
+if match_ob:
+  print("match from our pattern: ",match_ob.group())
+  print('Starting index: ',match_ob.start())
+  print('ending index: ', match_ob.end()-1)
+  print("lenght: ",match_ob.end()-match_ob.start())
+else:
+  print("Not match found")
+````
+
+### Find all and finiter 
+
+findall list of result
+
+finiter retur an object iterable
+
+````
+import re
+my_str="This is python and we are having python2 and python3 version"
+my_pat=r'\bpython[23]?\b'
+#print(re.search(my_pat,my_str))
+#print(len(re.findall(my_pat,my_str)))
+print(re.findall(my_pat,my_str))
+
+for each_ob in re.finditer(my_pat,my_str):
+	print(f'The match is: {each_ob.group()} starting index: {each_ob.start()}, ending index {each_ob.end()-1}')
+````
+
+### Compile operation re Module
+
+```
+import re
+my_str="This is about python. Python is easy to learn  and we have two major versions: python2 and python3 "
+
+my_pat=r'\bPython[23]?\b'
+
+#print(re.search(my_pat,my_str))
+#print(re.findall(my_pat,my_str,flags=re.I))
+#print(re.split(my_pat,my_str))
+
+
+pat_ob=re.compile(my_pat,flags=re.I)
+print(pat_ob)
+print(pat_ob.search(my_str))
+print(pat_ob.findall(my_str))
+
+
+#re.findall(my_pat,my_str)===> re.complie(my_pat).findall(my_str)
+
+
+```
+
+## Parmiko module
+
+Paramiko(used to work with remote servers)
+you need ssh v2 installed 
+
+- Paramiko module will create a SSH client and by using this it will connect to remote server and executes commands
+- We can also tranfer files from the remote machine to the local or viceversa using paramiko
+- two ways to connect with remote server:
+  - using username and password
+  - using username and criptographic key
+- we connect to linux to (windows or linux) <-> windows to (linux or linux)
+
+````
+#!/bin/python
+import paramiko
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+#ssh.connect(hostname='3.92.79.119',username='ec2-user',password='paramiko123',port=22)
+ssh.connect(hostname='3.92.79.119',username='ec2-user',key_filename='/home/Automation/.ssh/id_rsa',port=22)
+#stdin, stdout, stderr = ssh.exec_command('whoami')
+#stdin, stdout, stderr = ssh.exec_command('uptime')
+stdin, stdout, stderr = ssh.exec_command('free -m')
+print("The output is: ")
+print(stdout.readlines())
+
+
+print("THe error is: ")
+print(stderr.readlines())
+ssh.close()
+
+````
+Transfer fiel from local service to remote server using paramiko
+
+````
+import paramiko
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh.connect(hostname='54.165.97.91',username='ec2-user',password='paramiko123',port=22)
+sftp_client=ssh.open_sftp()
+
+#sftp_client.get('/home/ec2-user/paramiko_download.txt','paramiko_downloaded_file.txt')
+#sftp_client.chdir("/home/ec2-user")
+#print(sftp_client.getcwd())
+#sftp_client.get('demo.txt','C:\\Users\\Automation\\Desktop\\download_file.txt')
+sftp_client.put("transfer_files.py",'/home/ec2-user/transfer_files.py')
+sftp_client.close()
+ssh.close()
+
+````
+
+
+## Shutil module
+
+Python Sutil Module provide us a number of high-level operations on files and folders/directories like copy, move, remove and much more
+
+````
+#!/usr/local/bin/python3
+import shutil
+#copy', 'copy2', 'copyfile', 'copyfileobj', 'copymode', 'copystat', 'copytree'
+
+#copyfile-->copy --> copy2
+#src="/home/Automation/working_with_remote_server.py"
+src="/home/Automation/shutil_part_1.py"
+dest="/home/Automation/working_with_remote_server.py_bkp"
+#shutil.copyfile(src,dest)
+#shutil.copy(src,dest)   #same permissions for src and dest
+#shutil.copy2(src,dest)   #same meta data for dest as well
+#shutil.copymode(src,dest)
+#shutil.copystat(src,dest)
+
+#f1=open('xyz.txt','r')
+#f2=open('pqr.txt','w')
+#shutil.copyfileobj(f1,f2)
+
+#src="/home/Automation/tomcat7"
+#shutil.copytree(src,'/tmp/tomcat')
+
+shutil.rmtree('/tmp/tomcat')
+
+````
+
+
 
 ## OOPS python (Polymorphism,Encapsulation, Data Abstraction,Inheritance )
 
@@ -1460,6 +1630,108 @@ emp2=Emp("Naren",90000)
 
 emp1.display()
 #emp2.display()
+````
+
+
+**Destructor** are called when an objects gets destroyed, in python destructors are not needed as much needed in C++ because python has a garbage collector
+
+```
+class Person(object):
+	def __init__(self,name,age):
+		print("an object has been created")
+		self.name=name
+		self.age=age		
+		return None
+	def __del__(self):
+		print("object has been deleted")
+		return None
+
+
+per1=Person('Jhon',26)
 ```
 
+### Polymorphism
 
+allows us to define same methods in different classes. This process is also known as method Overriding
+
+````
+class Tomcat(object):
+	def __init__(self,home,ver):
+		self.home=home
+		self.version=ver
+		return None 
+	def display(self):
+		print("This is from tocmat class")
+		print(self.home)
+		print(self.version)
+		return None 
+class Apache(object):
+	def __init__(self,home,ver):
+		self.home=home
+		self.version=ver
+		return None 
+	def display(self):
+		print("This is from apache class")
+		print(self.home)
+		print(self.version)
+		return None 
+
+tom_ob=Tomcat('/home/tomcat9','7.6')
+apa_ob=Apache("/etc/httpd",'2.4')
+
+tom_ob.display()
+apa_ob.display()
+
+````
+
+### Inheritance
+
+is mechanism that allows us to create a new classs- known as child class - that is based upon an existing class- the parent class
+
+````
+class Tomcat(object):
+	def __init__(self,home,ver):
+		self.home=home
+		self.version=ver
+		return None 
+	def display(self):
+		print(self.home)
+		print(self.version)
+		return None 
+class Apache(Tomcat):
+	def __init__(self,home,ver):
+		self.home=home
+		self.version=ver
+		return None 
+tom_ob=Tomcat('/home/tomcat9','7.6')
+apa_ob=Apache("/etc/httpd",'2.4')
+
+
+tom_ob.display()
+apa_ob.display()
+
+````
+
+### Encapsulation
+
+Using OOP in python, we can restrict acces to m,ethods and variables. This prevent data from direct modification which is called encapsulation
+
+```
+class Person(object):
+	def assing_name_and_age(self,name,age):
+		self.name=name
+		self.__age=age
+		self.__display()
+		return None
+	def __display(self):
+		print(self.name,self.__age)
+		return None
+
+per1=Person()
+per1.assing_name_and_age('John',32)
+
+#per1.__display()
+#print(per1.name)
+#print(per1.__age)
+
+```
