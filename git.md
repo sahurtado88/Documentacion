@@ -263,3 +263,11 @@ git config --global alias.namealias "comando deseado"
 ejemplo: git config --global alias.hist "log --all --graph --decorate --oneline"
 ```
 
+
+### Borrar archvio que por erro no se puso en gitignore
+
+```
+ git rm --cached ruta-de-archivo
+
+ luego se agrega archivo o extension al gitignore y se sube de nuevo el codigo
+```
