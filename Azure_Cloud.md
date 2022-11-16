@@ -2434,3 +2434,1532 @@ Application Insights, an Azure Monitor feature, monitors your web applications. 
 
 There are two ways to configure Application Insights to help monitor your application. You can either install an SDK in your application, or you can use the Application Insights agent. The Application Insights agent is supported in C#.NET, VB.NET, Java, JavaScript, Node.js, and Python.
 
+# AZ 104 Resume
+
+## Configure Azure Active Directory
+
+### Azure Active Directory concepts
+
+To implement Azure Active Directory in your corporate configuration, you need to understand the key components of the service. The following table describes the main components and concepts of Azure AD and explains how they work together to support service features.
+
+Azure AD concept|	Description|
+|-|-|
+Identity	|An identity is an object that can be authenticated. The identity can be a user with a username and password. Identities can also be applications or other servers that require authentication by using secret keys or certificates. Azure AD is the underlying product that provides the identity service.
+Account	|An account is an identity that has data associated with it. To have an account, you must first have a valid identity. You can't have an account without an identity.
+Azure AD account	|An Azure AD account is an identity that's created through Azure AD or another Microsoft cloud service, such as Microsoft 365. Identities are stored in Azure AD and are accessible to your organization's cloud service subscriptions. The Azure AD account is also called a work or school account.
+Azure tenant (directory)|	An Azure tenant is a single dedicated and trusted instance of Azure AD. Each tenant (also called a directory) represents a single organization. When your organization signs up for a Microsoft cloud service subscription, a new tenant is automatically created. Because each tenant is a dedicated and trusted instance of Azure AD, you can create multiple tenants or instances.
+Azure subscription|	An Azure subscription is used to pay for Azure cloud services. A subscription is linked to a credit card. Each subscription is joined to a single tenant. You can have multiple subscriptions.
+
+### Compare Active Directory Domain Services to Azure Active Directory
+
+Azure AD is similar to AD DS, but there are significant differences. It's important to understand that using Azure AD for your configuration is different from deploying an Active Directory domain controller on an Azure virtual machine and then adding it to your on-premises domain.
+
+As you plan your identity strategy, consider the following characteristics that distinguish Azure AD from AD DS.
+
+- **Identity solution:** AD DS is primarily a directory service, while Azure AD is a full identity solution. Azure AD is designed for internet-based applications that use HTTP and HTTPS communications. The features and capabilities of Azure AD support target strong identity management.
+
+- **REST API queries:** Azure AD is based on HTTP and HTTPS protocols. Azure AD tenants can't be queried by using LDAP. Azure AD uses the REST API over HTTP and HTTPS.
+
+- **Communication protocols:** Because Azure AD is based on HTTP and HTTPS, it doesn't use Kerberos authentication. Azure AD implements HTTP and HTTPS protocols, such as SAML, WS-Federation, and OpenID Connect for authentication (and OAuth for authorization).
+
+- **Federation services:** Azure AD includes federation services, and many third-party services like Facebook.
+
+- **Flat structure:** Azure AD users and groups are created in a flat structure. There are no organizational units (OUs) or group policy objects (GPOs).
+
+- **Managed service:** Azure AD is a managed service. You manage only users, groups, and policies. If you deploy AD DS with virtual machines by using Azure, you manage many other tasks, including deployment, configuration, virtual machines, patching, and other backend processes.
+
+### Azure Active Directory editions
+
+Azure Active Directory comes in four editions: Free, Microsoft 365 Apps, Premium P1, and Premium P2. The Free edition is included with an Azure subscription.
+
+Consider the following features that distinguish the different editions of Azure AD.An X indicates the feature is supported.
+
+|Feature|	Free|	Microsoft 365 Apps|	Premium P1	|Premium P2|
+|-|-|-|-|-|
+Directory Objects|	500,000	|Unlimited	|Unlimited	|Unlimited
+Single Sign-on	|Unlimited	|Unlimited	|Unlimited	|Unlimited
+Core Identity and Access Management	|X|	X|	X	|X|
+Business-to-business Collaboration	|X|	X|	X	|X
+Identity and Access Managementfor Microsoft 365 apps||		X|	X|	X|
+Premium Features	||		|X	|X
+Hybrid Identities		||		|X	|X
+Advanced Group Access Management		||		|X	|X
+Conditional Access		||		|X	|X
+Identity Protection		||		|	|X
+Identity Governance				||		|	|X
+
+**Azure Active Directory Free**
+The Free edition provides user and group management, on-premises directory synchronization, and basic reports. Single sign-on access is supported across Azure, Microsoft 365, and many popular SaaS apps.
+
+**Azure Active Directory Microsoft 365 Apps**
+This edition is included with Microsoft 365. In addition to the Free features, this edition provides Identity and Access Management for Microsoft 365 apps. The extra support includes branding, MFA, group access management, and self-service password reset for cloud users.
+
+**Azure Active Directory Premium P1**
+In addition to the Free features, the Premium P1 edition lets your hybrid users access both on-premises and cloud resources. This edition supports advanced administration like dynamic groups, self-service group management, and cloud write-back capabilities. P1 also includes Microsoft Identity Manager, an on-premises identity and access management suite. The extra features in P1 allow self-service password reset for your on-premises users.
+
+**Azure Active Directory Premium P2**
+In addition to the Free and P1 features, the Premium P2 edition offers Azure AD Identity Protection to help provide risk-based Conditional Access to your apps and critical company data. Privileged Identity Management is included to help discover, restrict, and monitor administrators and their access to resources, and to provide just-in-time access when needed.
+
+### Azure Active Directory join
+
+The Azure AD join feature works with SSO to provide access to organizational apps and resources, and to simplify Windows deployments of work-owned devices.
+
+Let's look at some of the benefits of using joined devices:
+
+|Benefit	|Description|
+|-|-|
+Single-Sign-On (SSO)	|Joined devices offer SSO access to your Azure-managed SaaS apps and services. Your users won't have extra authentication prompts when they access work resources. The SSO functionality is available even when users aren't connected to the domain network.
+Enterprise state roaming	|Starting in Windows 10, your users can securely synchronize their user settings and app settings data to joined devices. Enterprise state roaming reduces the time to configure a new device.
+Access to Microsoft Store for Business|	When your users access Microsoft Store for Business by using an Azure AD account, they can choose from an inventory of applications pre-selected by your organization.
+Windows Hello	|Provide your users with secure and convenient access to work resources from joined devices.
+Restriction of access	|Restrict user access to apps from only joined devices that meet your compliance policies.
+Seamless access to on-premises resources|	Joined devices have seamless access to on-premises resources, when the device has line of sight to the on-premises domain controller.
+
+Your organization is interested in using joined devices in their management strategy. As you plan for how to implement the feature, review these configuration points:
+
+- **Consider connection options.** Connect your device to Azure AD in one of two ways:
+
+  - **Register** your device to Azure AD so you can manage the device identity. Azure AD device registration provides the device with an identity that's used to authenticate the device when a user signs into Azure AD. You can use the identity to enable or disable the device.
+
+  - **Join** your device, which is an extension of registering a device. Joining provides the benefits of registering, and also changes the local state of the device. Changing the local state enables your users to sign into a device by using an organizational work or school account instead of a personal account.
+
+- **Consider combining registration with other solutions.** Combine registration with a mobile device management (MDM) solution like Microsoft Intune, to provide other device attributes in Azure AD. You can create conditional access rules that enforce access from devices to meet organization standards for security and compliance.
+
+- **Consider other implementation scenarios.** Although AD Join is intended for organizations that don't have an on-premises Windows Server Active Directory infrastructure, it can be used for other scenarios like branch offices.
+
+
+### Azure Active Directory self-service password reset
+
+ The Azure Active Directory self-service password reset (SSPR) feature lets you give users the ability to bypass helpdesk and reset their own passwords.
+
+ Examine the following characteristics and requirements of the SSPR feature:
+
+- SSPR requires an Azure AD account with Global Administrator privileges to manage SSPR options. This account can always reset their own passwords, no matter what options are configured.
+
+- SSPR uses a security group to limit the users who have SSPR privileges.
+
+- All user accounts in your organization must have a valid license to use SSPR.
+
+In the Azure portal, there are three options for the SSPR feature: None, Selected, and All
+
+## User and group accounts
+
+### Create user accounts
+
+Every user who wants access to Azure resources needs an Azure user account. A user account has all the information required to authenticate the user during the sign-in process. Azure Active Directory (Azure AD) supports three types of user account
+
+|User account|	Description|
+|-|-|
+Cloud identity|	A user account with a cloud identity is defined only in Azure AD. This type of user account includes administrator accounts and users who are managed as part of your organization. A cloud identity can be for user accounts defined in your Azure AD organization, and also for user accounts defined in an external Azure AD instance. When a cloud identity is removed from the primary directory, the user account is deleted.
+Directory-synchronized identity|	User accounts that have a directory-synchronized identity are defined in an on-premises Active Directory. A synchronization activity occurs via Azure AD Connect to bring these user accounts in to Azure. The source for these accounts is Windows Server Active Directory.
+Guest user|	Guest user accounts are defined outside Azure. Examples include user accounts from other cloud providers, and Microsoft accounts like an Xbox LIVE account. The source for guest user accounts is Invited user. Guest user accounts are useful when external vendors or contractors need access to your Azure resources.
+
+### Create bulk user accounts
+
+Azure Active Directory (Azure AD) supports several bulk operations, including bulk create and delete for user accounts. The most common approach for these operations is to use the Azure portal. Azure PowerShell can be used for bulk upload of user accounts.
+
+- Only Global administrators or User administrators have privileges to create and delete user accounts in the Azure portal.
+
+- To complete bulk create or delete operations, the admin fills out a comma-separated values (CSV) template of the data for the user accounts.
+
+- Bulk operation templates can be downloaded from the Azure AD portal.
+
+- Bulk lists of user accounts can be downloaded.
+
+**Consider naming conventions.** Establish or implement a naming convention for your user accounts. Apply conventions to user account names, display names, and user aliases for consistency across the organization. Conventions for names and aliases can simplify the bulk create process by reducing areas of uniqueness in the CSV file. A convention for user names could begin with the user's last name followed by a period, and end with the user's first name
+
+**Consider using initial passwords.** Implement a convention for the initial password of a newly created user. Design a system to notify new users about their passwords in a secure way. You might generate a random password and email it to the new user or their manager.
+
+### Create group accounts
+
+Azure Active Directory (Azure AD) allows your organization to define two different types of group accounts. **Security groups** are used to manage member and computer access to shared resources for a group of users. You can create a security group for a specific security policy and apply the same permissions to all members of a group. **Microsoft 365 groups** provide collaboration opportunities. Group members have access to a shared mailbox, calendar, files, SharePoint site, and more.
+
+- Use security groups to set permissions for all group members at the same time, rather than adding permissions to each member individually.
+
+- Add Microsoft 365 groups to enable group access for guest users outside your Azure AD organization.
+
+- Security groups can be implemented only by an Azure AD administrator.
+
+- Normal users and Azure AD admins can both use Microsoft 365 groups.
+
+Access rights|	Description|
+|-|-|
+Assigned|	Add specific users as members of a group, where each user can have unique permissions.
+Dynamic user	|Use dynamic membership rules to automatically add and remove group members. When member attributes change, Azure reviews the dynamic group rules for the directory. If the member attributes meet the rule requirements, the member is added to the group. If the member attributes no longer meet the rule requirements, the member is removed.
+Dynamic device|	(Security groups only) Apply dynamic group rules to automatically add and remove devices in security groups. When device attributes change, Azure reviews the dynamic group rules for the directory. If the device attributes meet the rule requirements, the device is added to the security group. If the device attributes no longer meet the rule requirements, the device is removed.
+
+### Create administrative units
+
+As you design your strategy for managing identities and governance in Azure, planning for comprehensive management of your Azure Active Directory (Azure AD) infrastructure is critical. It can be useful to restrict administrative scope by using administrative units for your organization. The division of roles and responsibilities is especially helpful for organizations that have many independent divisions.
+
+Think about how you can implement administrative units in your organization. Here are some considerations:
+
+- Consider management tools. Review your options for managing AUs. You can use the Azure portal, PowerShell cmdlets and scripts, or Microsoft Graph.
+
+- Consider role requirements in the Azure portal. Plan your strategy for administrative units according to role privileges. In the Azure portal, only the Global Administrator or Privileged Role Administrator users can manage AUs.
+
+- Consider scope of administrative units. Recognize that the scope of an administrative unit applies only to management permissions. Members and admins of an administrative unit can exercise their default user permissions to browse other users, groups, or resources outside of their administrative unit.
+
+## Subscriptions
+
+### Azure regions
+
+ A region is a geographical area on the planet containing at least one, but potentially multiple datacenters. The datacenters are in close proximity and networked together with a low-latency network.
+
+ Here are some points to consider about regions:
+
+- Azure is generally available in more than 60 regions in 140 countries.
+
+- Azure has more global regions than any other cloud provider.
+
+- Regions provide you with the flexibility and scale needed to bring applications closer to your users.
+
+- Regions preserve data residency and offer comprehensive compliance and resiliency options for customers.
+
+### Regional pairs
+
+Most Azure regions are paired with another region within the same geography to make a regional pair (or paired regions). Regional pairs help to support always-on availability of Azure resources used by your infrastructure. The following table describes some prominent characteristics of paired regions:
+
+Characteristic	|Description|
+|-|-|
+Physical isolation|	Azure prefers at least 300 miles of separation between datacenters in a regional pair. This principle isn't practical or possible in all geographies. Physical datacenter separation reduces the likelihood of natural disasters, civil unrest, power outages, or physical network outages affecting both regions at once.
+Platform-provided replication|	Some services like Geo-Redundant Storage provide automatic replication to the paired region.
+Region recovery order|	During a broad outage, recovery of one region is prioritized out of every pair. Applications that are deployed across paired regions are guaranteed to have one of the regions recovered with priority.
+Sequential updates|	Planned Azure system updates are rolled out to paired regions sequentially (not at the same time). Rolling updates minimizes downtime, reduces bugs, and logical failures in the rare event of a bad update.
+Data residency|	Regions reside within the same geography as their enabled set (except for the Brazil South and Singapore regions).
+
+### Azure subscriptions
+
+An Azure subscription is a logical unit of Azure services that's linked to an Azure account. An Azure account is an identity in Azure Active Directory (Azure AD) or a directory that's trusted by Azure AD, such as a work or school account. Subscriptions help you organize access to Azure cloud service resources, and help you control how resource usage is reported, billed, and paid.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-subscriptions/media/azure-subscriptions-e855533e.png)
+
+
+- Every Azure cloud service belongs to a subscription.
+
+- Each subscription can have a different billing and payment configuration.
+
+- Multiple subscriptions can be linked to the same Azure account.
+
+- More than one Azure account can be linked to the same subscription.
+
+- Billing for Azure services is done on a per-subscription basis.
+
+- If your Azure account is the only account associated with a subscription, you're responsible for the billing requirements.
+
+- Programmatic operations for a cloud service might require a subscription ID.
+
+### Things to consider when using subscriptions
+
+Consider how many subscriptions your organization needs to support the business scenarios. As you plan, think about how you can organize your resources into resource groups.
+
+- **Consider the types of Azure accounts required.** Determine the types of Azure accounts your uses will link with Azure subscriptions. You can use an Azure AD account or a directory that's trusted by Azure AD like a work or school account. If you don't belong to one of these organizations, you can sign up for an Azure account by using your Microsoft Account, which is also trusted by Azure AD.
+
+- **Consider multiple subscriptions.** Set up different subscriptions and payment options according to your company's departments, projects, regional offices, and so on. A user can have more than one subscription linked to their Azure account, where each subscription pertains to resources, access privileges, limits, and billing for a specific project.
+
+- **Consider a dedicated shared services subscription.** Plan for how users can share resources allocated in a single subscription. Use a shared services subscription to ensure all common network resources are billed together and isolated from other workloads. Examples of shared services subscriptions include Azure ExpressRoute and Virtual WAN.
+
+- **Consider access to resources.** Every Azure subscription can be associated with an Azure AD. Users and services authenticate with Azure AD before they access resources.
+
+To use Azure, you must have an Azure subscription. There are several ways to procure an Azure subscription. You can obtain an Azure subscription as part of an Enterprise agreement, or through a Microsoft reseller or Microsoft partner. Users can also open a personal free account for a trial subscription.
+
+###  types of Azure subscriptions
+
+Azure offers free and paid subscription options to meet different needs and requirements. The most common subscriptions are Free, Pay-As-You-Go, Enterprise Agreement, and Student. For your organization, you can choose a combination of procurement options and subscription choices to meet your business scenarios.
+
+- **Consider trying Azure for free.** An Azure free subscription includes a monetary credit to spend on any service for the first 30 days. You get free access to the most popular Azure products for 12 months, and access to more than 25 products that are always free. An Azure free subscription is an excellent way for new users to get started.
+
+  - To set up a free subscription, you need a phone number, a credit card, and a Microsoft account.
+  - he credit card information is used for identity verification only. You aren't charged for any services until you upgrade to a paid subscription.
+- **Consider paying monthly for used services.** A Pay-As-You-Go (PAYG) subscription charges you monthly for the services you used in that billing period. This subscription type is appropriate for a wide range of users, from individuals to small businesses, and many large organizations as well.
+
+- **Consider using an Azure Enterprise Agreement.** An Enterprise Agreement provides flexibility to buy cloud services and software licenses under one agreement. The agreement comes with discounts for new licenses and Software Assurance. This type of subscription targets enterprise-scale organizations.
+
+- **Consider supporting Azure for students.** An Azure for Students subscription includes a monetary credit that can be used within the first 12 months.
+
+  - Students can select free services without providing a credit card during the sign-up process.
+  - You must verify your student status through your organizational email address.
+
+
+### Microsoft Cost Management
+
+With Azure products and services, you pay only for what you use. As you create and use Azure resources, you're charged for the resources.
+
+Microsoft Cost Management provides support for administrative billing tasks and helps you manage billing access to costs. You can use the product to monitor and control Azure spending, and optimize your Azure resource usage.
+
+- Microsoft Cost Management shows organizational cost and usage patterns with advanced analytics. Costs are based on negotiated prices and factor in reservation and Azure Hybrid Benefit discounts. Predictive analytics are also available.
+
+- Reports in Microsoft Cost Management show the usage-based costs consumed by Azure services and third-party Marketplace offerings. Collectively, the reports show your internal and external costs for usage and Azure Marketplace charges. The reports help you understand your spending and resource use, and can help find spending anomalies. Charges, such as reservation purchases, support, and taxes might not be visible in reports.
+
+- The product uses Azure management groups, budgets, and recommendations to show clearly how your expenses are organized and how you might reduce costs.
+
+- You can use the Azure portal or various APIs for export automation to integrate cost data with external systems and processes. Automated billing data export and scheduled reports are also available.
+
+#### Things to consider when using Microsoft Cost Management
+
+- Consider cost analysis. Take advantage of Microsoft Cost Management cost analysis features to explore and analyze your organizational costs. You can view aggregated costs by organization to understand where costs are accrued, and to identify spending trends. Monitor accumulated costs over time to estimate monthly, quarterly, or even yearly cost trends against a budget.
+
+- Consider budget options. Use Microsoft Cost Management features to establish and maintain budgets. The product helps you plan for and meet financial accountability in your organization. Budgets help prevent cost thresholds or limits from being surpassed. You can utilize analysis data to inform others about their spending to proactively manage costs. The budget features help you see how company spending progresses over time.
+
+- Consider recommendations. Review the Microsoft Cost Management recommendations to learn how you can optimize and improve efficiency by identifying idle and underutilized resources. Recommendations can reveal less expensive resource options. When you act on the recommendations, you change the way you use your resources to save money. Using recommendations is an easy process:
+
+  1. View cost optimization recommendations to see potential usage inefficiencies.
+  2. Act on a recommendation to modify your Azure resource use and implement a more cost-effective option.
+  3. Verify the new action to make sure the change has the desired effect.
+- Consider exporting cost management data. Microsoft Cost Management helps you work with your billing information. If you use external systems to access or review cost management data, you can easily export the data from Azure.
+
+  - Set a daily scheduled export in comma-separated-value (CSV) format and store the data files in Azure storage.
+  - Access your exported data from your external system.
+
+  ### Resource tagging
+
+  managing, and doing analysis on your resources.
+
+Each resource tag consists of a name and a value. You could have the tag name Server and the value Production or Development, and then apply the tag/value pair to your Engineering computer resource
+
+### Characteristics of Azure resource tags
+
+- Each resource tag has a name and a value.
+
+- The tag name remains constant for all resources that have the tag applied.
+
+- The tag value can be selected from a defined set of values, or unique for a specific resource instance.
+
+- A resource or resource group can have a maximum of 50 tag name/value pairs.
+
+- Tags applied to a resource group aren't inherited by the resources in the resource group.
+
+### Apply cost savings
+Completed
+
+Azure has several options that can help you gain significant cost savings for your organization. As you prepare your implementation plan for Azure subscriptions, services, and resources, consider the following cost saving advantages.
+
+
+Cost saving |	Description|
+|-|-|
+Reservations|	Save money by paying ahead. You can pay for one year or three years of virtual machine, SQL Database compute capacity, Azure Cosmos DB throughput, or other Azure resources. Pre-paying allows you to get a discount on the resources you use. Reservations can significantly reduce your virtual machine, SQL database compute, Azure Cosmos DB, or other resource costs up to 72% on pay-as-you-go prices. Reservations provide a billing discount and don't affect the runtime state of your resources.
+Azure Hybrid Benefits	|Access pricing benefits if you have a license that includes Software Assurance. Azure Hybrid Benefits helps maximize the value of existing on-premises Windows Server or SQL Server license investments when migrating to Azure. There's an Azure Hybrid Benefit Savings Calculator to help you determine your savings.
+Azure Credits|	Use the monthly credit benefit to develop, test, and experiment with new solutions on Azure. As a Visual Studio subscriber, you could use Microsoft Azure at no extra charge. With your monthly Azure credit, Azure is your personal sandbox for development and testing.
+Azure regions|	Compare pricing across regions. Pricing can vary from one region to another, even in the US. Double check the pricing in various regions to see if you can save by selecting a different region for your subscription.
+Budgets|	Apply the budgeting features in Microsoft Cost Management to help plan and drive organizational accountability. With budgets, you can account for the Azure services you consume or subscribe to during a specific period. Monitor spending over time and inform others about their spending to proactively manage costs. Use budgets to compare and track spending as you analyze costs.
+Pricing Calculator|	The Pricing Calculator provides estimates in all areas of Azure, including compute, networking, storage, web, and databases.
+
+## Azure Policy
+
+Azure Policy is a service in Azure that enables you to create, assign, and manage policies to control or audit your resources. These policies enforce different rules over your resource configurations so the configurations stay compliant with corporate standards. You apply the policies to your resources by using management groups.
+
+### Management groups
+
+ Azure management groups provide a level of scope and control above your subscriptions. You can use management groups as containers to manage access, policy, and compliance across your subscriptions.
+
+ Consider the following characteristics of Azure management groups:
+
+- By default, all new subscriptions are placed under the top-level management group, or root group.
+
+- All subscriptions within a management group automatically inherit the conditions applied to that management group.
+
+- A management group tree can support up to six levels of depth.
+
+- Azure role-based access control authorization for management group operations isn't enabled by default.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-policy/media/management-groups-aa92c04a.png)
+
+Review the following ways you can use management groups in Azure Policy to manage your subscriptions:
+
+- Consider custom hierarchies and groups. Align your Azure subscriptions by using custom hierarchies and grouping that meet your company's organizational structure and business scenarios. You can use management groups to target policies and spending budgets across subscriptions.
+
+- Consider policy inheritance. Control the hierarchical inheritance of access and privileges in policy definitions. All subscriptions within a management group inherit the conditions applied to the management group. You can apply policies to a management group to limit the regions available for creating virtual machines (VMs). The policy can be applied to all management groups, subscriptions, and resources under the initial management group, to ensure VMs are created only in the specified regions.
+
+- Consider compliance rules. Organize your subscriptions into management groups to help meet compliance rules for individual departments and teams.
+
+- Consider cost reporting. Use management groups to do cost reporting by department or for specific business scenarios. You can use management groups to report on budget details across subscriptions.
+
+the management group. The ID value can't be changed after it's created because it's used throughout the Azure system to identify the management group. The display name for the management group is optional and can be changed at any time.
+
+### Azure policies
+
+
+Azure Policy is a service in Azure that you can use to create, assign, and manage policies. You can use policies to enforce rules on your resources to meet corporate compliance standards and service level agreements. Azure Policy runs evaluations and scans on your resources to make sure they're compliant.
+ The main advantages of Azure Policy are in the areas of enforcement and compliance, scaling, and remediation. Azure Policy is also important for teams that run an environment that requires different forms of governance.
+
+Advantage	|Description
+|-|-|
+Enforce rules and compliance|	Enable built-in policies, or build custom policies for all resource types. Support real-time policy evaluation and enforcement, and periodic or on-demand compliance evaluation.
+Apply policies at scale	|Apply policies to a management group with control across your entire organization. Apply multiple policies and aggregate policy states with policy initiative. Define an exclusion scope.
+Perform remediation|	Conduct real-time remediation, and remediation on your existing resources.
+Exercise governance	|Implement governance tasks for your environment: - Support multiple engineering teams (deploying to and operating in the environment)   - Manage multiple subscriptions   - Standardize and enforce how cloud resources are configured - Manage regulatory compliance, cost control, security, and design consistency
+
+### Create Azure policies
+
+Azure Administrators use Azure Policy to create policies that define conventions for resources. A policy definition describes the compliance conditions for a resource, and the actions to complete when the conditions are met. One or more policy definitions are grouped into an initiative definition, to control the scope of your policies and evaluate the compliance of your resources.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-policy/media/implement-azure-policy-b4a4a47c.png)
+
+**Step 1: Create policy definitions**
+A policy definition expresses a condition to evaluate and the actions to perform when the condition is met. You can create your own policy definitions, or choose from built-in definitions in Azure Policy. You can create a policy definition to prevent VMs in your organization from being deployed, if they're exposed to a public IP address.
+
+**Step 2: Create an initiative definition**
+An initiative definition is a set of policy definitions that help you track your resource compliance state to meet a larger goal. You can create your own initiative definitions, or use built-in definitions in Azure Policy. You can use an initiative definition to ensure resources are compliant with security regulations.
+
+**Step 3: Scope the initiative definition**
+Azure Policy lets you control how your initiative definitions are applied to resources in your organization. You can limit the scope of an initiative definition to specific management groups, subscriptions, or resource groups.
+
+**Step 4: Determine compliance**
+After you assign an initiative definition, you can evaluate the state of compliance for all your resources. Individual resources, resource groups, and subscriptions within a scope can be exempted from having the policy rules affect it. Exclusions are handled individually for each assignment.
+
+### Create policy definitions
+
+Azure Policy offers built-in policy definitions to help you quickly configure control conditions for your resources. In addition to the built-in policies, you can also create your own definitions, or import definitions from other sources.
+
+### Create an initiative definition
+
+After you determine your policy definitions, the next step is to create an initiative definition for your policies. An initiative definition has one or more policy definitions. One example for using initiative definitions is to ensure your resources are compliant with security regulations.
+
+You can create your own initiative definitions, or use built-in definitions in Azure Policy. You can sort the list of built-in initiatives by category to search for definitions for your organization.
+
+After you create your initiative definition, the next step is to assign the initiative to establish the scope for the policies. The scope determines what resources or grouping of resources are affected by the conditions of the policies.
+
+You have your policies defined, your initiative definition created, and your policies assigned to affected resources. The last step is to evaluate the state of compliance for your scoped resources.
+
+## Role based Access Control
+
+Role-based access control (RBAC) is a mechanism that can help you manage who can access your Azure resources. RBAC lets you determine what operations specific users can do on specific resources, and control what areas of a resource each user can access.
+
+Here are some things you can do with Azure RBAC:
+
+- Allow an application to access all resources in a resource group.
+
+- Allow one user to manage VMs in a subscription, and allow another user to manage virtual networks.
+
+- Allow a database administrator (DBA) group to manage SQL databases in a subscription.
+
+- Allow a user to manage all resources in a resource group, such as VMs, websites, and subnets.
+
+### Azure RBAC concepts
+The following table describes the core concepts of Azure RBAC.
+
+Concept|	Description	|Examples|
+|-|-|-|
+Security principal|	An object that represents something that requests access to resources.|	User, group, service principal, managed identity
+Role definition	|A set of permissions that lists the allowed operations. Azure RBAC comes with built-in role definitions, but you can also create your own custom role definitions.	|Some built-in role definitions: Reader, Contributor, Owner, User Access Administrator
+Scope	|The boundary for the requested level of access, or "how much" access is granted.|	Root, management group, subscription, resource group, resource
+Assignment|	An assignment attaches a role definition to a security principal at a particular scope. Users can grant the access described in a role definition by creating (attaching) an assignment for the role.|	- Assign the User Access Administrator role to an admin group scoped to a management group - Assign the Contributor role to a user scoped to a subscription
+
+
+### role definition
+
+A role definition consists of sets of permissions that are defined in a JSON file. Each permission set has a name, such as Actions or NotActions that describes the purpose of the permissions. Some examples of permission sets include:
+
+- Actions permissions identify what actions are allowed.
+
+- NotActions permissions specify what actions aren't allowed.
+
+- DataActions permissions indicate how data can be changed or used.
+
+- AssignableScopes permissions list the scopes where a role definition can be assigned.
+
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-role-based-access-control/media/role-definition-bf297cac.png)
+
+The Actions permissions show the Contributor role has all action privileges. The asterisk "*" wildcard means "all." The NotActions permissions narrow the privileges provided by the Actions set, and deny three actions:
+
+- Authorization/*/Delete: Not authorized to delete or remove for "all."
+- Authorization/*/Write: Not authorized to write or change for "all."
+- Authorization/elevateAccess/Action: Not authorized to increase the level or scope of access privileges.
+
+The Contributor role also has two DataActions permissions to specify how data can be affected:
+
+- "NotDataActions": []: No specific actions are listed. Therefore, all actions can affect the data.
+- "AssignableScopes": ["/"]: The role can be assigned for all scopes that affect data. The backslash {\} wildcard means "all."
+
+### Role definition characteristics
+
+- Azure RBAC provides built-in roles and permissions sets. You can also create custom roles and permissions.
+
+- The Owner built-in role has the highest level of access privilege in Azure.
+
+- The system subtracts NotActions permissions from Actions permissions to determine the effective permissions for a role.
+
+- The AssignableScopes permissions for a role can be management groups, subscriptions, resource groups, or resources.
+
+### Role permissions
+
+Use the Actions and NotActions permissions together to grant and deny the exact privileges for each role. The Actions permissions can provide the breadth of access and the NotActons permissions can narrow the access
+
+The following table shows how the Actions or NotActions permissions are used in the definitions for three built-in roles: Owner, Contributor, and Reader. The permissions are narrowed from the Owner role to the Contributor and Reader roles to limit access.
+
+Role name	|Description|	Actions permissions|	NotActions permissions
+|-|-|-|-|
+Owner	|Allow all actions|	\\*|	n/a
+Contributor	|Allow all actions, except write or delete role assignment|	\\*	|- Microsoft.Authorization/\*/Delete - Microsoft.Authorization/\*/Write - Microsoft.Authorization/elevateAccess/Action
+Reader|	Allow all read actions|	\\*/read|	n/a
+
+### Role scopes
+
+After you define the role permissions, you use the AssignableScopes permissions to specify how the role can be assigned.
+
+### Compare Azure roles to Azure Active Directory roles
+
+Three types of roles are available for access management in Azure:
+
+- Classic subscription administrator roles
+
+- Azure role-based access control (RBAC) roles
+
+- Azure Active Directory (Azure AD) administrator roles
+
+||Azure RBAC roles|	Azure AD admin roles|
+|-|-|-|
+Access management|	Manages access to Azure resources	|Manages access to Azure AD resources|
+Scope assignment|	Scope can be specified at multiple levels, including management groups, subscriptions, resource groups, and resources	|Scope is specified at the tenant level|
+Role definitions|	Roles can be defined via the Azure portal, the Azure CLI, Azure PowerShell, Azure Resource Manager templates, and the REST API	|Roles can be defined via the Azure admin portal, Microsoft 365 admin portal, and Microsoft Graph Azure AD PowerShell
+
+### fundamental Azure RBAC roles
+
+The following table describes four built-in Azure RBAC role definitions that are considered fundamental.
+
+Fundamental role|Description
+|-|-|
+Owner	|The Owner role has full access to all resources, including the right to delegate access to others. The Service Administrator and Co-Administrators roles are assigned the Owner role at the subscription scope.
+Contributor	|The Contributor role can create and manage all types of Azure resources. This role can't grant access to others.
+Reader	|The Reader role can view existing Azure resources.
+User Access Administrator	|The User Access Administrator role can manage user access to Azure resources.
+
+## Configure azure resources with tools
+
+
+### Azure portal
+
+The Azure portal lets you build, manage, and monitor everything from simple web apps to complex cloud applications in a single, unified console.
+
+- Search resources, services, and docs.
+- Manage resources.
+- Create customized dashboards and favorites.
+- Access the Cloud Shell.
+- Receive notifications.
+- Links to the Azure documentation.
+
+### Azure Cloud Shell
+
+Azure Cloud Shell is an interactive, browser-accessible shell for managing Azure resources. It provides the flexibility of choosing the shell experience that best suits the way you work. Linux users can opt for a Bash experience, while Windows users can opt for PowerShell.
+
+- Is temporary and requires a new or existing Azure Files share to be mounted.
+- Offers an integrated graphical text editor based on the open-source Monaco Editor.
+- Authenticates automatically for instant access to your resources.
+- Runs on a temporary host provided on a per-session, per-user basis.
+- Times out after 20 minutes without interactive activity.
+Requires a resource group, storage account, and Azure File share.
+- Uses the same Azure file share for both Bash and PowerShell.
+- Is assigned to one machine per user account.
+- Persists $HOME using a 5-GB image held in your file share.
+- Permissions are set as a regular Linux user in Bash.
+
+### Azure PowerShell
+
+Azure PowerShell is a module that you add to Windows PowerShell or PowerShell Core to enable you to connect to your Azure subscription and manage resources. Azure PowerShell requires PowerShell to function. PowerShell provides services such as the shell window and command parsing. Azure PowerShell adds the Azure-specific commands.
+
+Azure PowerShell is also available two ways: inside a browser via the Azure Cloud Shell, or with a local installation on Linux, macOS, or the Windows operating system. 
+
+**Az module**
+
+Az is the formal name for the Azure PowerShell module containing cmdlets to work with Azure features. It contains hundreds of cmdlets that let you control nearly every aspect of every Azure resource. You can work with the following features, and more:
+
+- Resource groups
+- Storage
+- VMs
+- Azure AD
+- Containers
+- Machine learning
+
+### Azure CLI
+
+Azure CLI is a command-line program to connect to Azure and execute administrative commands on Azure resources. It runs on Linux, macOS, and Windows, and allows administrators and developers to execute their commands through a terminal, command-line prompt, or script instead of a web browser.
+
+Azure CLI lets you control nearly every aspect of every Azure resource. You can work with resource groups, storage, VMs, Azure Active Directory (Azure AD), containers, machine learning, and so on.
+
+Commands in the CLI are structured in groups and subgroups. Each group represents a service provided by Azure, and the subgroups divide commands for these services into logical groupings. For example, the storage group contains subgroups including account, blob, share, and queue.
+
+So, how do you find the particular commands you need? One way is to use **az find**.  
+
+    az find blob
+
+If you already know the name of the command you want, the **--help** argument for that command will get you more detailed information on the command, and for a command group, a list of the available subcommands 
+
+    az storage blob --help
+
+## Azure Resource Manager
+
+Azure Resource Manager enables you to work with the resources in your solution as a group. You can deploy, update, or delete all the resources for your solution in a single, coordinated operation. You use a template for deployment and that template can work for different environments such as testing, staging, and production. Azure Resource Manager provides security, auditing, and tagging features to help you manage your resources after deployment.
+
+Azure Resource Manager provides a consistent management layer to perform tasks through Azure PowerShell, Azure CLI, Azure portal, REST API, and client SDKs. Choose the tools and APIs that work best for you.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/use-azure-resource-manager/media/resource-manager-016a1bac.png)
+
+### Benefits Azure Resource Manager
+
+Azure Resource Manager provides several benefits:
+
+- You can deploy, manage, and monitor all the resources for your solution as a group, rather than handling these resources individually.
+- You can repeatedly deploy your solution throughout the development lifecycle and have confidence your resources are deployed in a consistent state.
+- You can manage your infrastructure through declarative templates rather than scripts.
+- You can define the dependencies between resources so they're deployed in the correct order.
+- You can apply access control to all services in your resource group because Role-Based Access Control (RBAC) is natively integrated into the management platform.
+- You can apply tags to resources to logically organize all the resources in your subscription.
+- You can clarify your organization's billing by viewing costs for a group of resources sharing the same tag.
+
+### Azure resource terminology
+
+- resource - A manageable item that is available through Azure. Some common resources are a virtual machine, storage account, web app, database, and virtual network, but there are many more.
+- resource group - A container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group. You decide how you want to allocate resources to resource groups based on what makes the most sense for your organization.
+- resource provider - A service that supplies the resources you can deploy and manage through Resource Manager. Each resource provider offers operations for working with the resources that are deployed. Some common resource providers are Microsoft.Compute, which supplies the virtual machine resource, Microsoft.Storage, which supplies the storage account resource, and Microsoft.Web, which supplies resources related to web apps.
+- template - A JavaScript Object Notation (JSON) file that defines one or more resources to deploy to a resource group. It also defines the dependencies between the deployed resources. The template can be used to deploy the resources consistently and repeatedly.
+- declarative syntax - Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure.
+
+Resource Groups are at their simplest a logical collection of resources. There are a few rules for resource groups.
+
+- Resources can only exist in one resource group.
+- Resource Groups cannot be renamed.
+- Resource Groups can have resources of many different types (services).
+- Resource Groups can have resources from many different regions.
+- A resource group can contain resources that reside in different regions.
+- All the resources in your group should share the same lifecycle. You deploy, update, and delete them together.
+- You can move a resource from one resource group to another group. Limitations do apply to moving resources.
+
+### Azure Resource Manager locks
+
+esource Manager locks allow organizations to put a structure in place that prevents the accidental deletion of resources in Azure.
+
+- You can associate the lock with a subscription, resource group, or resource.
+- Locks are inherited by child resources.
+
+**Lock types**
+There are two types of resource locks.
+
+- Read-Only locks, which prevent any changes to the resource.
+- Delete locks, which prevent deletion.
+
+
+### Determine resource limits
+
+Azure lets you view resource usage against limits. This is helpful to track current usage, and plan for future use.
+
+- The limits shown are the limits for your subscription.
+- When you need to increase a default limit, there is a Request Increase link.
+- All resources have a maximum limit listed in Azure limits.
+- If you are at the maximum limit, the limit can't be increased.
+
+Azure limits list: 
+https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=%2Fazure%2Fnetworking%2Ftoc.json
+
+## Azure Resource Manager template advantages
+
+An Azure Resource Manager template precisely defines all the Resource Manager resources in a deployment. You can deploy a Resource Manager template into a resource group as a single operation.
+
+Using Resource Manager templates will make your deployments faster and more repeatable. For example, you no longer have to create a VM in the portal, wait for it to finish, and then create the next VM. Resource Manager template takes care of the entire deployment for you.
+
+### Template benefits
+- **Templates improve consistency.** Resource Manager templates provide a common language for you and others to describe your deployments. Regardless of the tool or SDK that you use to deploy the template, the structure, format, and expressions inside the template remain the same.
+- **Templates help express complex deployments.** Templates enable you to deploy multiple resources in the correct order. For example, you wouldn't want to deploy a virtual machine prior to creating an operating system (OS) disk or network interface. Resource Manager maps out each resource and its dependent resources, and creates dependent resources first. Dependency mapping helps ensure that the deployment is carried out in the correct order.
+- **Templates reduce manual, error-prone tasks.** Manually creating and connecting resources can be time consuming, and it's easy to make mistakes. Resource Manager ensures that the deployment happens the same way every time.
+- **Templates are code.** Templates express your requirements through code. Think of a template as a type of Infrastructure as Code that can be shared, tested, and versioned similar to any other piece of software. Also, because templates are code, you can create a "paper trail" that you can follow. The template code documents the deployment. Most users maintain their templates under some kind of revision control, such as GIT. When you change the template, its revision history also documents how the template (and your deployment) has evolved over time.
+- **Templates promote reuse.** Your template can contain parameters that are filled in when the template runs. A parameter can define a username or password, a domain name, and so on. Template parameters enable you to create multiple versions of your infrastructure, such as staging and production, while still using the exact same template.
+- **Templates are linkable.** You can link Resource Manager templates together to make the templates themselves modular. You can write small templates that each define a piece of a solution, and then combine them to create a complete system.
+- **Templates simplify orchestration.** You only need to deploy the template to deploy all of your resources. Normally this would take multiple operations.
+
+
+### Azure Resource Manager template schema
+
+
+Azure Resource Manager templates are written in JSON, which allows you to express data stored as an object (such as a virtual machine) in text. A JSON document is essentially a collection of key-value pairs. Each key is a string, whose value can be:
+
+- A string
+- A number
+- A Boolean expression
+- A list of values
+- An object (which is a collection of other key-value pairs)
+
+      {
+        "$schema": "http://schema.management.​azure.com/schemas/2019-04-01/deploymentTemplate.json#",​
+        "contentVersion": "",​
+        "parameters": {},​
+        "variables": {},​
+        "functions": [],​
+        "resources": [],​
+        "outputs": {}​
+      }
+
+Element name|Required|Description|
+|-|-|-|
+$schema| Yes |Location of the JSON schema file that describes the version of the template language. Use the URL shown in the preceding example.
+contentVersion|Yes|Version of the template (such as 1.0.0.0). You can provide any value for this element. Use this value to document significant changes in your template. This value can be used to make sure that the right template is being used.
+parameters|No|Values that are provided when deployment is executed to customize resource deployment.
+variables|No|Values that are used as JSON fragments in the template to simplify template language expressions.
+functions|No|User-defined functions that are available within the template.
+resources|Yes|Resource types that are deployed or updated in a resource group.
+outputs|No|Values that are returned after deployment.
+
+In the parameters section of the template, you specify which values you can input when deploying the resources. The available properties for a parameter are:
+
+    "parameters": {
+      "<parameter-name>" : {
+        "type" : "<type-of-parameter-value>",
+        "defaultValue": "<default-value-of-parameter>",
+        "allowedValues": [ "<array-of-allowed-values>" ],
+        "minValue": <minimum-value-for-int>,
+        "maxValue": <maximum-value-for-int>,
+        "minLength": <minimum-length-for-string-or-array>,
+        "maxLength": <maximum-length-for-string-or-array-parameters>,
+        "metadata": {
+        "description": "<description-of-the parameter>"
+        }
+      }
+    }
+  
+Azure Quickstart Templates are Azure Resource Manager templates provided by the Azure community.  https://learn.microsoft.com/en-us/samples/browse/?expanded=azure&products=azure-resource-manager
+
+### Bicep templates
+
+Azure Bicep is a domain-specific language (DSL) that uses declarative syntax to deploy Azure resources. It provides concise syntax, reliable type safety, and support for code reuse.
+
+You can use Bicep instead of JSON to develop your Azure Resource Manager templates (ARM templates). The JSON syntax to create an ARM template can be verbose and require complicated expressions. Bicep syntax reduces that complexity and improves the development experience. Bicep is a transparent abstraction over ARM template JSON and doesn't lose any of the JSON template capabilities.
+
+When you deploy a resource or series of resources to Azure, you submit the Bicep template to Resource Manager, which still requires JSON templates. The tooling that's built into Bicep converts your Bicep template into a JSON template. This process is known as transpilation
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-resources-arm-templates/media/bicep.png)
+
+Bicep provides many improvements over JSON for template authoring, including:
+
+- **Simpler syntax:** Bicep provides a simpler syntax for writing templates. You can reference parameters and variables directly, without using complicated functions. String interpolation is used in place of concatenation to combine values for names and other items. You can reference the properties of a resource directly by using its symbolic name instead of complex reference statements. These syntax improvements help both with authoring and reading Bicep templates.
+
+- **Modules:** You can break down complex template deployments into smaller module files and reference them in a main template. These modules provide easier management and greater reusability.
+
+- **Automatic dependency management:** In most situations, Bicep automatically detects dependencies between your resources. This process removes some of the work involved in template authoring.
+
+- **Type validation and IntelliSense:** The Bicep extension for Visual Studio Code features rich validation and IntelliSense for all Azure resource type API definitions. This feature helps provide an easier authoring experience.
+
+## Virtual Networks
+
+An Azure Virtual Network (VNet) is a representation of your own network in the cloud. It is a logical isolation of the Azure cloud dedicated to your subscription. You can use VNets to provision and manage virtual private networks (VPNs) in Azure and, optionally, link the VNets with other VNets in Azure, or with your on-premises IT infrastructure to create hybrid or cross-premises solutions. Each VNet you create has its own CIDR block and can be linked to other VNets and on-premises networks if the CIDR blocks do not overlap. You also have control of DNS server settings for VNets, and segmentation of the VNet into subnets.
+
+Virtual networks can be used in many ways.
+
+- **Create a dedicated private cloud-only VNet.** Sometimes you don't require a cross-premises configuration for your solution. When you create a VNet, your services and VMs within your VNet can communicate directly and securely with each other in the cloud. You can still configure endpoint connections for the VMs and services that require internet communication, as part of your solution.
+- **Securely extend your data center With VNets.** You can build traditional site-to-site (S2S) VPNs to securely scale your datacenter capacity. S2S VPNs use IPSEC to provide a secure connection between your corporate VPN gateway and Azure.
+- **Enable hybrid cloud scenarios.** VNets give you the flexibility to support a range of hybrid cloud scenarios. You can securely connect cloud-based applications to any type of on-premises system such as mainframes and Unix systems.
+
+### Subnets
+
+A virtual network can be segmented into one or more subnets. Subnets provide logical divisions within your network. Subnets can help improve security, increase performance, and make it easier to manage the network.
+
+Each subnet contains a range of IP addresses that fall within the virtual network address space. The range must be unique within the address space for the virtual network. The range can't overlap with other subnet address ranges within the virtual network. The address space must be specified by using Classless Inter-Domain Routing (CIDR) notation.
+
+**Azure reserves the first four and last IP address for a total of 5 IP addresses within each subnet.**
+
+- **Service requirements.** Each service directly deployed into virtual network has specific requirements for routing and the types of traffic that must be allowed into and out of subnets. A service may require, or create, their own subnet, so there must be enough unallocated space for them to do so. For example, if you connect a virtual network to an on-premises network using an Azure VPN Gateway, the virtual network must have a dedicated subnet for the gateway.
+- **Virtual appliances.** Azure routes network traffic between all subnets in a virtual network, by default. You can override Azure's default routing to prevent Azure routing between subnets, or to route traffic between subnets through a network virtual appliance. So, if you require that traffic between resources in the same virtual network flow through a network virtual appliance (NVA), deploy the resources to different subnets.
+- **Service endpoints.** You can limit access to Azure resources such as an Azure storage account or Azure SQL database, to specific subnets with a virtual network service endpoint. Further, you can deny access to the resources from the internet. You may create multiple subnets, and enable a service endpoint for some subnets, but not others.
+- **Network security groups.** You can associate zero or one network security group to each subnet in a virtual network. You can associate the same, or a different, network security group to each subnet. Each network security group contains rules, which allow or deny traffic to and from sources and destinations.
+- **Private Links.** Azure Private Link provides private connectivity from a virtual network to Azure platform as a service (PaaS), customer-owned, or Microsoft partner services. It simplifies the network architecture and secures the connection between endpoints in Azure by eliminating data exposure to the public internet.
+
+### IP addressing
+
+You can assign IP addresses to Azure resources to communicate with other Azure resources, your on-premises network, and the Internet. There are two types of Azure IP addresses: public and private IP addresses.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-virtual-networks/media/ip-addressing-54476e47.png)
+
+- Private IP addresses: For communication within an Azure virtual network (VNet), and your on-premises network, when you use a VPN gateway or ExpressRoute circuit to extend your network to Azure.
+- Public IP addresses: For communication with the Internet, including Azure public-facing services.
+
+### Static vs dynamic addressing
+
+IP addresses can also be statically assigned or dynamically assigned. Static IP addresses don't change and are best for certain situations such as:
+
+- DNS name resolution, where a change in the IP address would require updating host records.
+- IP address-based security models that require apps or services to have a static IP address.
+- TLS/SSL certificates linked to an IP address.
+- Firewall rules that allow or deny traffic using IP address ranges.
+- Role-based VMs such as Domain Controllers and DNS servers.
+
+### Associate public IP addresses
+
+A public IP address resource can be associated with virtual machine network interfaces, internet-facing load balancers, VPN gateways, and application gateways.
+
+Public IP addresses|IP address association|Dynamic|Static|
+|-|-|-|-|
+Virtual Machine|NIC|Yes|Yes|
+Load Balancer|Front-end configuration|Yes|Yes|
+VPN Gateway|Gateway IP configuration|Yes|Yes*
+Application Gateway|Front-end configuration|Yes|Yes*|
+
+Static IP addresses only available on certain SKUs.
+
+### Address SKUs
+When you create a public IP address, you are given a SKU choice of either Basic or Standard. Your SKU choice affects the IP assignment method, security, available resources, and redundancy. This table summarizes the differences.
+
+Feature|Basic SKU|Standard SKU|
+|-|-|-|
+IP assignment|Static or dynamic|Static
+Security|Open by default|Are secure by default and closed to inbound traffic
+Resources|Network interfaces, VPN Gateways, Application Gateways, and Internet-facing load balancers|Network interfaces or public standard load balancers
+Redundancy|Not zone redundant|Zone redundant by default|
+
+### Associate private IP addresses
+
+A private IP address resource can be associated with virtual machine network interfaces, internal load balancers, and application gateways. Azure can provide an IP address (dynamic assignment) or you can assign the IP address (static assignment).
+
+Private IP Addresses|IP address association|Dynamic|Static|
+|-|-|-|-|
+Virtual Machine|NIC|Yes|Yes|
+Internal Load Balancer|Front-end configuration|Yes|Yes|
+Application Gateway|Front-end configuration|Yes|Yes|
+
+
+A private IP address is allocated from the address range of the virtual network subnet a resource is deployed in.
+
+- **Dynamic.** Azure assigns the next available unassigned or unreserved IP address in the subnet's address range. For example, Azure assigns 10.0.0.10 to a new resource, if addresses 10.0.0.4-10.0.0.9 are already assigned to other resources. Dynamic is the default allocation method.
+- **Static.** You select and assign any unassigned or unreserved IP address in the subnet's address range. For example, if a subnet's address range is 10.0.0.0/16 and addresses 10.0.0.4-10.0.0.9 are already assigned to other resources, you can assign any address between 10.0.0.10 - 10.0.255.254.
+
+## Security Groups
+
+You can limit network traffic to resources in a virtual network using a network security group (NSG). A network security group contains a list of security rules that allow or deny inbound or outbound network traffic. An NSG can be associated to a subnet or a network interface. A network security group can be associated multiple times.
+
+### Subnets
+You can assign Network Security Groups to subnets and create protected screened subnets (also called a DMZ). These NSGs can restrict traffic flow to all the machines that reside within that subnet. Each subnet can have zero, or one, associated network security groups.
+
+### Network interfaces
+You can assign NSGs to a NIC so that all the traffic that flows through that NIC is controlled by NSG rules. Each network interface that exists in a subnet can have zero, or one, associated network security groups.
+
+### Network security group rules
+
+Security rules in network security groups enable you to filter the type of network traffic that can flow in and out of virtual network subnets and network interfaces. Azure creates several default security rules within each network security group.
+
+You can add more rules by specifying:
+
+- Name
+- Priority Rules are processed in priority order; **the lower the number, the higher the priority.** We recommend leaving gaps between rules - 100, 200, 300, etc. - so that it's easier to add new rules without having to edit existing rules.
+- Port
+- Protocol (Any, TCP, UDP)  The service specifies the destination protocol and port range for this rule. You can choose a predefined service, like RDP or SSH, or provide a custom port range. There are a large number of services to select from.
+- Source (Any, IP Addresses, Service tag) The source filter can be Any, an IP address range, an Application security group, or a default tag. It specifies the incoming traffic from a specific source IP address range that will be allowed or denied by this rule.
+- Destination (Any, IP Addresses, Virtual Network) The destination filter can be Any, an IP address range, an application security group, or a default tag. It specifies the outgoing traffic for a specific destination IP address range that will be allowed or denied by this rule.
+- Action (Allow or Deny)
+
+Azure creates the default rules in each network security group that you create. You cannot remove the default rules, but you can override them by creating rules with higher priorities.
+
+NSGs are evaluated independently, and an “allow” rule must exist at both levels otherwise traffic won't be allowed.
+
+For incoming traffic, the NSG set at the subnet level is evaluated first, then the NSG set at the NIC level is evaluated. For outgoing traffic, it's the reverse.
+
+If you have several NSGs and aren't sure which security rules are being applied, you can use the Effective security rules link. For example, you could verify the security rules being applied to a network interface.
+
+### Application Security Groups
+
+Application Security Groups (ASGs) ) logically group virtual machines by workload and define network security rules based on those groups. ASGs work in the same way as NSGs but provide an application-centric way of looking at your infrastructure. You join virtual machines to the ASG, and then use the ASG as a source or destination in NSG rule
+
+
+### Advantages of using an application security group
+
+This configuration has several advantages:
+
+- The configuration doesn’t require specific IP addresses. It would be difficult to specify IP addresses because of the number of servers and because the IP addresses could change. You also don't need to arrange the servers into a specific subnet.
+
+- This configuration doesn't require multiple rule sets. You don't need to create a separate rule for each VM. You can dynamically apply new rules to ASG. New security rules are automatically applied to all the VMs in the Application Security Group.
+
+- The configuration is easy to maintain and understand since is based on workload usage.
+
+## Azure Firewall
+
+Azure Firewall is a managed, cloud-based network security service that protects your Azure Virtual Network resources. It's a fully stateful firewall as a service with built-in high availability and unrestricted cloud scalability. You can centrally create, enforce, and log application and network connectivity policies across subscriptions and virtual networks.
+
+Azure Firewall uses a static public IP address for your virtual network resources allowing outside firewalls to identify traffic originating from your virtual network. The service is fully integrated with Azure Monitor for logging and analytics.
+
+### Azure Firewall features
+- **Built-in high availability.** High availability is built in, so additional load balancers aren't required. There's nothing you need to configure.
+- **Availability Zones.** Azure Firewall can be configured during deployment to span multiple Availability Zones for increased availability.
+- **Unrestricted cloud scalability.** Azure Firewall can scale up as much as you need to accommodate changing network traffic flows, so you don't need to budget for your peak traffic.
+- **Application FQDN filtering rules.** You can limit outbound HTTP/S traffic or Azure SQL traffic to a specified list of fully qualified domain names (FQDN) including wild cards.
+- **Network traffic filtering rules.** You can centrally create allow or deny network filtering rules by source and destination IP address, port, and protocol. Azure Firewall is fully stateful, so it can distinguish legitimate packets for different types of connections. Rules are enforced and logged across multiple subscriptions and virtual networks.
+- **Threat intelligence.** Threat intelligence-based filtering can be enabled for your firewall to alert and deny traffic from/to known malicious IP addresses and domains. The IP addresses and domains are sourced from the Microsoft Threat Intelligence feed.
+- **Multiple public IP addresses.** You can associate multiple public IP addresses with your firewall.
+
+It's recommended to use a hub-spoke network topology when deploying a firewall.
+
+- The hub is a virtual network in Azure that acts as a central point of connectivity to your on-premises network.
+- The spokes are virtual networks that peer with the hub, and can be used to isolate workloads.
+- Traffic flows between the on-premises datacenter and the hub through an ExpressRoute or VPN gateway connection.
+
+![Diagram with three subnets. Numbers are aligned with the subnets.](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-firewall/media/firewall-tasks-7b6dbe0f.png)
+
+The benefits of this topology include:
+
+- Cost savings by centralizing services that can be shared by multiple workloads, such as network virtual appliances (NVAs) and DNS servers, in a single location.
+- Overcome subscriptions limits by peering virtual networks from different subscriptions to the central hub.
+- Separation of concerns between central IT (SecOps, InfraOps) and workloads (DevOps).
+
+Typical uses for a hub-spoke network architecture include:
+
+- Workloads in different environments that require shared services. For example, development and testing environments that require DNS. Shared services are placed in the hub virtual network. Each environment is deployed to a spoke to maintain isolation.
+- Workloads that don't require connectivity to each other, but require access to shared services.
+- Enterprises that require central control over security aspects. For example, a firewall in the hub and workloads in each spoke.
+
+### Firewall Rules
+
+There are three kinds of rules that you can configure in the Azure Firewall. Remember, by default, Azure Firewall blocks all traffic, unless you enable it.
+
+#### **NAT rules**
+You can configure Azure Firewall Destination Network Address Translation (DNAT) to translate and filter inbound traffic to your subnets. Each rule in the NAT rule collection is used to translate your firewall public IP and port to a private IP and port. Scenarios where NAT rules might be helpful are publishing SSH, RDP, or non-HTTP/S applications to the Internet. A NAT rule that routes traffic must be accompanied by a matching network rule to allow the traffic. Configuration settings include:
+
+- **Name**: A label for the rule.
+- **Protocol**: TCP or UDP.
+- **Source Address**: * (Internet), a specific Internet address, or a CIDR block.
+- **Destination Address**: The external address of the firewall that the rule will inspect.
+- **Destination Ports**: The TCP or UDP ports that the rule will listen to on the external IP address of the firewall.
+- **Translated Address**: The IP address of the service (virtual machine, internal load balancer, and so on) that privately hosts or presents the service.
+- **Translated Port**: The port that the inbound traffic will be routed to by the Azure Firewall.
+
+#### **Network rules**
+Any non-HTTP/S traffic that will be allowed to flow through the firewall must have a network rule. For example, if resources in one subnet must communicate with resources in another subnet, then you would configure a network rule from the source to the destination. Configuration settings include:
+
+- **Name**: A friendly label for the rule.
+- **Protocol**: TCP, UDP, ICMP (ping and traceroute) or Any.
+- **Source Address**: The address or CIDR block of the source.
+- **Destination Addresses**: The addresses or CIDR blocks of the destination(s).
+- **Destination Ports**: The destination port of the traffic.
+
+#### **Application rules**
+Application rules define fully qualified domain names (FQDNs) that can be accessed from a subnet. For example, specify the Windows Update network traffic through the firewall. Configuration settings include:
+
+- **Name**: A friendly label for the rule.
+- **Source Addresses**: The IP address of the source.
+- **Protocol:Port:** HTTP/HTTPS and the port that the web server is listening on.
+- **Target FQDNs**: The domain name of the service, such as www.contoso.com. Wildcards can be used. An FQDN tag represents a group of FQDNs associated with well known Microsoft services. Example FQDN tags include Windows Update, App Service Environment, and Azure Backup.
+
+### Rule processing
+When a packet is being inspected to determine if it is allowed or not, the rules are processed in this order:
+
+Network Rules
+Application Rules (network and application)
+Once a rule is found that allows the traffic through, no more rules are checked.
+
+## Azure DNS
+
+### Initial domain name
+When you create an Azure subscription, an Azure AD domain is automatically created. This instance of the domain has an initial domain name in the form domainname.onmicrosoft.com. The initial domain name is intended to be used until a custom domain name is verified.
+
+### Custom domain name
+The initial domain name can't be changed or deleted. You can however add a routable custom domain name you control. A custom domain name simplifies the user sign-on experience. Users can use credentials they are familiar with. For example, a contosogold.onmicrosoft.com, could be assigned to contosogold.com.
+
+### information about domain names
+You must be a global administrator to perform domain management tasks. The global administrator is the user who created the subscription.
+Domain names in Azure AD are globally unique. When one Azure AD directory has verified a domain name, other directories can't use that name.
+Before a custom domain name can be used by Azure AD, the custom domain name must be added to your directory and verified.
+
+### Azure DNS zones
+
+Azure DNS provides a reliable, secure DNS service to manage and resolve domain names in a virtual network without needing to add a custom DNS solution.
+
+A DNS zone hosts the DNS records for a domain. So, to start hosting your domain in Azure DNS, you need to create a DNS zone for that domain name. Each DNS record for your domain is then created inside this DNS zone.
+
+From the Azure portal, you can easily add a DNS zone. Information for the DNS zone includes name, number of records, resource group, location, subscription, and name servers.
+
+### Delegate DNS domains
+
+To delegate your domain to Azure DNS, you first need to know the name server names for your zone. Each time a DNS zone is created Azure DNS allocates name servers from a pool. Once the Name Servers are assigned, Azure DNS automatically creates authoritative NS records in your zone.
+
+Once the DNS zone is created, and you have the name servers, you need to update the parent domain. Each registrar has their own DNS management tools to change the name server records for a domain. In the registrar’s DNS management page, edit the NS records and replace the NS records with the ones Azure DNS created.
+
+### Child domains
+If you want to set up a separate child zone, you can delegate a subdomain in Azure DNS. For example, after configuring contoso.com in Azure DNS, you could configure a separate child zone for partners.contoso.com.
+
+Setting up a subdomain follows the same process as typical delegation. The only difference is that NS records must be created in the parent zone contoso.com in Azure DNS, rather than in the domain registrar.
+
+### Add DNS record sets
+
+It's important to understand the difference between DNS record sets and individual DNS records. A record set is a collection of records in a zone that have the same name and are the same type.
+
+A record set cannot contain two identical records. Empty record sets (with zero records) can be created, but do not appear on the Azure DNS name servers. Record sets of type CNAME can contain one record at most.
+
+The Add record set page will change depending on the type of record you select. For an A record, you will need the TTL (Time to Live) and IP address. The time to live, or TTL, specifies how long each record is cached by clients.
+
+### Private DNS zones
+
+When using private DNS zones, you can use your own custom domain names rather than the Azure-provided names. Using custom domain names helps you to tailor your virtual network architecture to best suit your organization's needs. It provides name resolution for virtual machines (VMs) within a virtual network and between virtual networks. Additionally, you can configure zones names with a split-horizon view, which allows a private and a public DNS zone to share the name.
+
+Azure private DNS benefits
+- Removes the need for custom DNS solutions. Previously, many customers created custom DNS solutions to manage DNS zones in their virtual network. You can now perform DNS zone management by using the native Azure infrastructure. This removes the burden of creating and managing custom DNS solutions.
+- Use all common DNS records types. Azure DNS supports A, AAAA, CNAME, MX, PTR, SOA, SRV, and TXT records.
+- Automatic hostname record management. Along with hosting your custom DNS records, Azure automatically maintains hostname records for the VMs in the specified virtual networks. In this scenario, you can optimize the domain names you use without needing to create custom DNS solutions or modify applications.
+- Hostname resolution between virtual networks. Unlike Azure-provided host names, private DNS zones can be shared between virtual networks. This capability simplifies cross-network and service-discovery scenarios, such as virtual network peering.
+- Familiar tools and user experience. To reduce the learning curve, this new offering uses well-established Azure DNS tools (PowerShell, Azure Resource Manager templates, and the REST API).
+- Split-horizon DNS support. With Azure DNS, you can create zones with the same name that resolve to different answers from within a virtual network and from the public internet. A typical scenario for split-horizon DNS is to provide a dedicated version of a service for use inside your virtual network.
+- Available in all Azure regions. The Azure DNS private zones feature is available in all Azure regions in the Azure public cloud.
+
+
+## Virtual Network Peering
+
+Perhaps the simplest and quickest way to connect your VNets is to use VNet peering. Virtual network peering enables you to seamlessly connect two Azure virtual networks. Once peered, the virtual networks appear as one, for connectivity purposes. There are two types of VNet peering.
+
+- **Regional VNet peering** connects Azure virtual networks in the same region.
+- **Global VNet peering** connects Azure virtual networks in different regions. When creating a global peering, the peered virtual networks can exist in any Azure public cloud region or China cloud regions, but not in Government cloud regions. You can only peer virtual networks in the same region in Azure Government cloud regions.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-vnet-peering/media/network-peering-5beae28a.png)
+
+### Benefits of virtual network peering
+The benefits of using local or global virtual network peering, include:
+
+- Private. Network traffic between peered virtual networks is private. Traffic between the virtual networks is kept on the Microsoft backbone network. No public Internet, gateways, or encryption is required in the communication between the virtual networks.
+- Performance. A low-latency, high-bandwidth connection between resources in different virtual networks.
+- Communication. The ability for resources in one virtual network to communicate with resources in a different virtual network, once the virtual networks are peered.
+- Seamless. The ability to transfer data across Azure subscriptions, deployment models, and across Azure regions.
+- No disruption. No downtime to resources in either virtual network when creating the peering, or after the peering is created.
+
+### Determine gateway transit and connectivity
+
+When virtual networks are peered, you configure a VPN gateway in the peered virtual network as a transit point. In this case, a peered virtual network uses the remote gateway to gain access to other resources. A virtual network can have only one gateway. Gateway transit is supported for both VNet Peering and Global VNet Peering.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-vnet-peering/media/gateway-transit-173a51a0.png)
+
+When you Allow Gateway Transit the virtual network can communicate to resources outside the peering. For example, the subnet gateway could:
+
+- Use a site-to-site VPN to connect to an on-premises network.
+- Use a VNet-to-VNet connection to another virtual network.
+- Use a point-to-site VPN to connect to a client.
+
+In these scenarios, gateway transit allows peered virtual networks to share the gateway and get access to resources. This means you do not need to deploy a VPN gateway in the peer virtual network.
+
+When you add a peering on one virtual network, the second virtual network configuration is automatically added.
+
+**VNet Peering is nontransitive.** When you establish VNet peering between VNet1 and VNet2 and between VNet2 and VNet3, VNet peering capabilities do not apply between VNet1 and VNet3. However, you can configure user-defined routes and service chaining to provide the transitivity. This allows you to:
+
+Implement a multi-level hub and spoke architecture.
+Overcome the limit on the number of VNet peerings per virtual network.
+
+### Hub and spoke architecture
+When you deploy hub-and-spoke networks, the hub virtual network can host infrastructure components like the network virtual appliance or VPN gateway. All the spoke virtual networks can then peer with the hub virtual network. Traffic can flow through network virtual appliances or VPN gateways in the hub virtual network.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-vnet-peering/media/service-chains-5c9286d1.png)
+
+## VPN Gateway
+
+A VPN gateway is a specific type of virtual network gateway that is used to send encrypted traffic between an Azure virtual network and an on-premises location over the public Internet. You also use a VPN gateway to send encrypted traffic between Azure virtual networks over the Microsoft network.
+
+Each virtual network can have only one VPN gateway. However, you can create multiple connections to the same VPN gateway. When you create multiple connections to the same VPN gateway, all VPN tunnels share the available gateway bandwidth.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-vpn-gateway/media/virtual-gateways-5cd58717.png)
+
+- **Site-to-site** connections connect on-premises datacenters to Azure virtual networks
+- **VNet-to-VNet** connections connect Azure virtual networks (custom)
+- **Point-to-site (User VPN)** connections connect individual devices to Azure virtual networks
+
+A virtual network gateway is composed of two or more VMs that are deployed to a specific subnet you create called the gateway subnet. Virtual network gateway VMs contain routing tables and run specific gateway services. These VMs are created when you create the virtual network gateway. You can't directly configure the VMs that are part of the virtual network gateway.
+
+VPN gateways can be deployed in Azure Availability Zones. Availability zones bring resiliency, scalability, and higher availability to virtual network gateways. Availability Zones physically and logically separates gateways within a region, while protecting your on-premises network connectivity to Azure from zone-level failures.
+
+### Create site-to-site connections
+
+Here are the high-level steps to create a site-to-site virtual network connection. The on-premises part is only needed when you're configuring Site-to-Site. We'll review in detail each step.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-vpn-gateway/media/gateway-steps-aebd935e.png)
+
+- **Create VNets and subnets.** By now you should be familiar with creating virtual networks and subnets. Contact your on-premises network administrator to reserve an IP address range for this virtual network.
+
+- **Specify the DNS server (optional).** DNS isn't required to create a site-to-site connection. However, if you need name resolution for resources that are deployed to your virtual network, you should specify a DNS server in the virtual network configuration.
+
+- **Create the gateway subnet** Before creating a virtual network gateway for your virtual network, you first need to create the gateway subnet. The gateway subnet contains the IP addresses that are used by the virtual network gateway. If possible, it's best to create a gateway subnet by using a CIDR block of /28 or /27 to provide enough IP addresses to accommodate future configuration requirements.
+
+  When you create your gateway subnet, gateway VMs are deployed to the gateway subnet and configured with the required VPN gateway settings. Never deploy other resources (for example, additional VMs) to the gateway subnet. The gateway subnet must be named GatewaySubnet.
+
+- **Create the VPN gateway** The VPN gateway settings that you chose are critical to creating a successful connection.
+  -  **Gateway type.**  VPN or ExpressRoute. When you create the virtual network gateway, you must specify a VPN type. The VPN type that you choose depends on the connection topology that you want to create. For example, a Point-to-Site (P2S) connection requires a Route-based VPN type. A VPN type can also depend on the hardware that you are using. Site-to-Site (S2S) configurations require a VPN device. Some VPN devices only support a certain VPN type.
+      - **Route-based VPNs.** Route-based VPNs use routes in the IP forwarding or routing table to direct packets into their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy (or traffic selector) for Route-based VPNs are configured as any-to-any (or wild cards). 
+
+      - **Policy-based VPNs.** Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the IPsec policies configured with the combinations of address prefixes between your on-premises network and the Azure VNet. The policy (or traffic selector) is defined as an access list in the VPN device configuration. When using a Policy-based VPN, keep in mind the following limitations:
+        - Policy-Based VPNs can only be used on the Basic gateway SKU and is not compatible with other gateway SKUs.
+        - You can have only one tunnel when using a Policy-based VPN.
+        - You can only use Policy-based VPNs for S2S connections, and only for certain configurations. Most VPN Gateway configurations require a Route-based VPN. 
+  - **VPN type.** Route based or Policy based. Most VPN types are Route-based. The type of VPN you choose depends on the make and model of your VPN device, and the kind of VPN connection you intend to create. Typical route-based gateway scenarios include point-to-site, inter-virtual network, or multiple site-to-site connections. Route-based is also selected when you coexist with an ExpressRoute gateway or if you need to use IKEv2. Policy-based gateways support only IKEv1.
+  - **SKU.** Use the drop-down to select a gateway SKU. Your choice will affect the number of tunnels you can have and the aggregate throughput benchmark. The benchmark is based on measurements of multiple tunnels aggregated through a single gateway. It is not a guaranteed throughput due to Internet traffic conditions and your application behaviors.
+
+    When you create a virtual network gateway, you need to specify the gateway SKU that you want to use. Select the SKU that satisfies your requirements based on the types of workloads, throughputs, features, and SLAs.
+
+    Gen| SKUS2S |VNet-to-VNet Tunnels| P2S IKEv2 Connections| Aggregate Throughput Benchmark
+    |-|-|-|-|-|
+    1|VpnGw1/Az|Max. 30|Max. 250|650 Mbps|
+    1|VpnGw2/Az|Max. 30|Max. 500|1.0 Gbps|
+    2|VpnGw2/Az|Max. 30|Max. 500|1.25 Gbps|
+    1|VPNGw3/Az|Max. 30|Max. 1000|1.25 Gbps|
+    2|PNGw3/Az|Max. 30|Max. 1000|2.5 Gbps|
+    2|VPNGw4/Az|Max. 100|Max. 5000|15.0 Gbps|
+    2|VPNGw5/Az|Max. 100|Max. 10000|10.0 Gbps|
+
+  - **Generation.** Generation1 or Generation2. You cannot change generations or SKUs across generations. Basic and VpnGw1 SKUs are only supported in Generation1. VpnGw4 and VpnGw5 SKUs are only supported in Generation2.
+
+
+  - **Virtual networks.** The virtual network that will be able to send and receive traffic through the virtual network gateway. A virtual network cannot be associated with more than one gateway.
+
+- **Create the local network gateway** The local network gateway typically refers to the on-premises location. You give the site a name by which Azure can refer to it, then specify the IP address or FQDN of the on-premises VPN device for the connection. You also specify the IP address prefixes that will be routed through the VPN gateway to the VPN device. The address prefixes you specify are the prefixes located in the on-premises network.
+   - **IP Address.** The public IP address of the local gateway.
+
+   - **Address Space.** One or more IP address ranges (in CIDR notation) that define your local network's address space. If you plan to use this local network gateway in a BGP-enabled connection, then the minimum prefix you need to declare is the host address of your BGP Peer IP address on your VPN device.
+
+- **Set up the on-premises VPN gateway** There is a validated list of standard VPN devices that work well with the VPN gateway. This list was created in partnership with device manufacturers like Cisco, Juniper, Ubiquiti, and Barracuda Networks.
+
+  When your device is not listed in the validated VPN devices table, the device may still work. Contact your device manufacturer for support and configuration instructions.
+
+  To configure your VPN device, you will need:
+
+  - A shared key. The same shared key that you specify when creating the VPN connection.
+  - The public IP address of your VPN gateway. The IP address can be new or existing.
+
+  Depending on the VPN device that you have, you may be able to download a VPN device configuration script.
+
+- **Create the VPN connection** Once your VPN gateways are created, you can create the connection between them. If your VNets are in the same subscription, you can use the portal.
+  - Name. Enter a name for your connection.
+  - Connection type. Select Site-to-Site (IPSec) from the drop-down.
+  - Shared key (PSK). In this field, enter a shared key for your connection. You can generate or create this key yourself. In a site-to-site connection, the key you use is the same for your on-premises device and your virtual network gateway connection.
+
+- **Verify the VPN connection** After you have configured all the Site-to-Site components, it is time to verify that everything is working. You can verify the connections either in the portal, or by using PowerShell.
+
+### Determine high availability scenarios
+
+ - Active/standby 
+  
+    Every Azure VPN gateway consists of two instances in an active-standby configuration. For any planned maintenance or unplanned disruption that happens to the active instance, the standby instance would take over (failover) automatically, and resume the S2S VPN or VNet-to-VNet connections. The switch over will cause a brief interruption. For planned maintenance, the connectivity should be restored within 10 to 15 seconds. For unplanned issues, the connection recovery will be longer, about 1 minute to 1 and a half minutes in the worst case. For P2S VPN client connections to the gateway, the P2S connections will be disconnected and the users will need to reconnect from the client machines.
+    ![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-vpn-gateway/media/active-standby-b1ae014b.png)
+
+- Active/active
+
+    You can now create an Azure VPN gateway in an active-active configuration, where both instances of the gateway VMs will establish S2S VPN tunnels to your on-premises VPN device.
+
+  In this configuration, each Azure gateway instance will have a unique public IP address, and each will establish an IPsec/IKE S2S VPN tunnel to your on-premises VPN device specified in your local network gateway and connection. Both VPN tunnels are actually part of the same connection. You will still need to configure your on-premises VPN device to accept or establish two S2S VPN tunnels to those two Azure VPN gateway public IP addresses.
+
+  When in active-active configuration, the traffic from your Azure virtual network to your on-premises network will be routed through both tunnels simultaneously. The same TCP or UDP flow will always traverse the same tunnel or path, unless a maintenance event happens on one of the instances.
+
+  ![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-vpn-gateway/media/active-active-ea464be2.png)
+
+## ExpressRoute and Virtual WAN
+
+###  ExpressRoute uses
+
+Azure ExpressRoute lets you extend your on-premises networks into the Microsoft cloud. The connection is facilitated by a connectivity provider. With ExpressRoute, you can establish connections to Microsoft cloud services, such as Microsoft Azure, Microsoft 365, and CRM Online.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-expressroute-virtual-wan/media/expressroute-b72c1320.png)
+
+
+Use Azure ExpressRoute to create private connections between Azure datacenters and infrastructure on your premises or in a colocation environment. ExpressRoute connections don't go over the public Internet, and they offer more reliability, faster speeds, and lower latencies than typical Internet connections. In some cases, using ExpressRoute connections to transfer data between on-premises systems and Azure can give you significant cost benefits.
+
+ExpressRoute gives you a fast and reliable connection to Azure with bandwidths up to 100 Gbps. The high connection speeds make it excellent for scenarios like periodic data migration, replication for business continuity, and disaster recovery. ExpressRoute is a cost-effective option for transferring large amounts of data, such as datasets for high-performance computing applications, or moving large virtual machines between your dev-test environments.
+
+Use ExpressRoute to connect and add compute and storage capacity to your existing datacenters. With high throughput and low latencies, Azure will feel like a natural extension to or between your datacenters, so you enjoy the scale and economics of the public cloud without having to compromise on network performance.
+
+Build applications that span on-premises infrastructure and Azure without compromising privacy or performance. For example, run a corporate intranet application in Azure that authenticates your customers with an on-premises Active Directory service. You serve all of your corporate customers without traffic ever routing through the public Internet.
+
+### ExpressRoute capabilities
+
+ExpressRoute is supported across all Azure regions and locations. This map provides a list of Azure regions and ExpressRoute locations. ExpressRoute locations are where Microsoft peers with several service providers. When you connected to at least one ExpressRoute location within the geopolitical region, you will access Azure services across all regions within a geopolitical region.
+
+- **Latyer 3 connectivity** Microsoft uses BGP to exchange routes between your on-premises network, your instances in Azure, and Microsoft public addresses. Multiple BGP sessions are created for different traffic profiles.
+- **Redundancy** Each ExpressRoute circuit consists of two connections to two Microsoft Enterprise edge routers (MSEEs) from the connectivity provider/your network edge. Microsoft requires dual BGP connection from the connectivity provider/your network edge – one to each MSEE.
+- **Connectivity to Microsoft cloud services**  ExpressRoute connections enable access to Microsoft Azure services, Microsoft 365 services, and Microsoft Dynamics 365. Microsoft 365 was created to be accessed securely and reliably via the Internet, so ExpressRoute requires Microsoft authorization.
+- **Global connectivity with ExpressRoute premium add-on** You enable the ExpressRoute premium add-on feature to extend connectivity across geopolitical boundaries. For example, if you connect to Microsoft in Amsterdam through ExpressRoute, you will have access to all Microsoft cloud services hosted in all regions across the world, except national clouds.
+
+- **Across on-premises connectivity with ExpressRoute Global Reach** You enable ExpressRoute Global Reach to exchange data across your on-premises sites by connecting your ExpressRoute circuits. For example, if you have a private data center in California connected to ExpressRoute in Silicon Valley, and another private data center in Texas connected to ExpressRoute in Dallas, with ExpressRoute Global Reach, you can connect your private data centers together through two ExpressRoute circuits. Your cross-data-center traffic will traverse through Microsoft's network.
+
+- **Bandwidth options** You purchase ExpressRoute circuits for a wide range of bandwidths. Be sure to check with your connectivity provider to determine the bandwidths they support.
+
+- **Flexible billing models** You pick a billing model that works best for you. Several pricing options are available.
+
+### Coexist site-to-site and ExpressRoute
+
+ExpressRoute is a direct, private connection from your WAN (not over the public Internet) to Microsoft Services, including Azure. Site-to-Site VPN traffic travels encrypted over the public Internet. Being able to configure Site-to-Site VPN and ExpressRoute connections for the same virtual network has several advantages.
+
+You configure a Site-to-Site VPN as a secure failover path for ExpressRoute or use Site-to-Site VPNs to connect to sites that are not part of your network, but that are connected through ExpressRoute. Notice this configuration requires two virtual network gateways for the same virtual network, one using the gateway type VPN, and the other using the gateway type ExpressRoute.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-expressroute-virtual-wan/media/coexisting-connections-4af27ce9.png)
+
+
+### ExpressRoute connection models
+You create a connection between your on-premises network and the Microsoft cloud in three different ways, Colocated at a cloud exchange, Point-to-point Ethernet Connection, and Any-to-any (IPVPN) Connection. Connectivity providers offer one or more connectivity models. You work with your connectivity provider to pick the model that works best for you.
+
+- **Colocated at a cloud exchange**
+
+  If you are colocated in a facility with a cloud exchange, you order virtual cross-connections to the Microsoft cloud through the colocation provider’s Ethernet exchange. Colocation providers offer either Layer 2 cross-connections, or managed Layer 3 cross-connections between your infrastructure in the colocation facility and the Microsoft cloud.
+
+- **Point-to-point Ethernet connections**
+
+  You connect your on-premises datacenters/offices to the Microsoft cloud through point-to-point Ethernet links. Point-to-point Ethernet providers offer Layer 2 connections, or managed Layer 3 connections between your site and the Microsoft cloud.
+
+- **Any-to-any (IPVPN) networks**
+
+  You integrate your WAN with the Microsoft cloud. IPVPN providers, typically Multiprotocol Label Switching (MPLS) VPN, offer any-to-any connectivity between your branch offices and datacenters. The Microsoft cloud can be interconnected to your WAN to make it appear just like any other branch office. WAN providers typically offer managed Layer 3 connectivity.
+
+  ### Compare intersite connection options
+
+  There are many intersite connection choices. This table summarizes how to make a selection.
+
+Connection|Azure Services Supported|Bandwidths|Protocols|Typical Use Case
+|-|-|-|-|-|
+Virtual network, point-to-site|Azure IaaS services, Azure Virtual Machines|Based on the gateway SKU|Active/passive|Dev, test, and lab environments for cloud services and virtual machines.
+Virtual network, site-to-site|Azure IaaS services, Azure Virtual Machines|Typically < 1 Gbps aggregate|Active/passive, Active/active|Dev, test, and lab environments. Small-scale production workloads and virtual machines.
+ExpressRoute|Azure IaaS and PaaS services, Microsoft 365 services|50 Mbps up to 100 Gbps|Active/active|Enterprise-class and mission-critical workloads. Big data solutions.
+
+### Virtual WAN uses
+
+Azure Virtual WAN is a networking service that provides optimized and automated branch connectivity to, and through, Azure. Azure regions serve as hubs that you can choose to connect your branches to. You use the Azure backbone to connect branches and enjoy branch-to-VNet connectivity. There is a list of partners that support connectivity automation with Azure Virtual WAN VPN.
+
+### Virtual WAN advantages
+- **Integrated connectivity solutions in hub and spoke.** Automate site-to-site configuration and connectivity between on-premises sites and an Azure hub.
+- **Automated spoke setup and configuration.** Connect your virtual networks and workloads to the Azure hub seamlessly.
+- **Intuitive troubleshooting.** You can see the end-to-end flow within Azure, and then use this information to take required actions.
+
+### Virtual WAN types
+
+There are two types of virtual WANs: Basic and Standard.
+
+Virtual WAN type|Hub type|Available configurations
+|-|-|-|
+Basic|Basic|Site-to-site VPN only|
+Standard|Standard|ExpressRoute, User VPN (P2S). VPN (site-to-site), Inter-hub, and VNet-to-VNet transiting through the virtual hub.
+
+### system routes
+
+Azure uses system routes to direct network traffic between virtual machines, on-premises networks, and the Internet. The following situations are managed by these system routes:
+
+- Traffic between VMs in the same subnet.
+- Between VMs in different subnets in the same virtual network.
+- Data flow from VMs to the Internet.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-network-routing-endpoints/media/system-routes-08992506.png)
+
+Information about the system routes is recorded in a route table. A route table contains a set of rules, called routes, that specifies how packets should be routed in a virtual network. Routing tables are associated to subnets, and each packet leaving a subnet is handled based on the associated route table. Packets are matched to routes using the destination. The destination can be an IP address, a virtual network gateway, a virtual appliance, or the internet. If a matching route can't be found, then the packet is dropped.
+
+### User-defined routes
+
+onfigure user-defined routes (UDRs). UDRs control network traffic by defining routes that specify the next hop of the traffic flow. The hop can be a virtual network gateway, virtual network, internet, or virtual appliance.
+
+Each route table can be associated to multiple subnets, but a subnet can only be associated to a single route table.
+
+There are no charges for creating route tables in Microsoft Azure.
+
+### Service endpoint uses
+
+A virtual network service endpoint provides the identity of your virtual network to the Azure service. Once service endpoints are enabled in your virtual network, you can secure Azure service resources to your virtual network by adding a virtual network rule to the resources.
+
+Today, Azure service traffic from a virtual network uses public IP addresses as source IP addresses. With service endpoints, service traffic switches to use virtual network private addresses as the source IP addresses when accessing the Azure service from a virtual network. This switch allows you to access the services without the need for reserved, public IP addresses used in IP firewalls.
+
+
+### use a service endpoint
+
+- Improved security for your Azure service resources. VNet private address spaces can be overlapping and so, cannot be used to uniquely identify traffic originating from your VNet. Service endpoints secure Azure service resources to your virtual network by extending VNet identity to the service. When service endpoints are enabled in your virtual network, you secure Azure service resources to your virtual network by adding a virtual network rule. The rule improves security by fully removing public Internet access to resources, and allowing traffic only from your virtual network.
+- Optimal routing for Azure service traffic from your virtual network. Today, any routes in your virtual network that force Internet traffic to your premises and/or virtual appliances, known as forced-tunneling, also force Azure service traffic to take the same route as the Internet traffic. Service endpoints provide optimal routing for Azure traffic.
+- Endpoints always take service traffic directly from your virtual network to the service on the Microsoft Azure backbone network. Keeping traffic on the Azure backbone network allows you to continue auditing and monitoring outbound Internet traffic from your virtual networks, through forced-tunneling, without impacting service traffic. Learn more about user-defined routes and forced-tunneling.
+- Simple to set up with less management overhead. You no longer need reserved, public IP addresses in your virtual networks to secure Azure resources through IP firewall. There are no NAT or gateway devices required to set up the service endpoints. Service endpoints are configured through the subnet. There's no extra overhead to maintaining the endpoints.
+
+## Determine service endpoint services
+
+It is easy to add a service endpoint to the virtual network. Several services are available including: Azure Active Directory, Azure Cosmos DB, EventHub, KeyVault, Service Bus, SQL, and Storage.
+
+**Azure Storage.** Generally available in all Azure regions. This endpoint gives traffic an optimal route to the Azure Storage service. Each storage account supports up to 100 virtual network rules.
+
+**Azure SQL Database and Azure SQL Data Warehouse.** Generally available in all Azure regions. A firewall security feature that controls whether the database server for your single databases and elastic pool in Azure SQL Database or for your databases in SQL Data Warehouse accepts communications that are sent from particular subnets in virtual networks.
+
+**Azure Database for PostgreSQL server and MySQL.** Generally available in Azure regions where database service is available. Virtual Network (VNet) services endpoints and rules extend the private address space of a Virtual Network to your Azure Database for PostgreSQL server and MySQL server.
+
+**Azure Cosmos DB.** Generally available in all Azure regions. You can configure the Azure Cosmos account to allow access only from a specific subnet of virtual network (VNet). By enabling Service endpoint to access Azure Cosmos DB on the subnet within a virtual network, the traffic from that subnet is sent to Azure Cosmos DB with the identity of the subnet and Virtual Network. Once the Azure Cosmos DB service endpoint is enabled, you can limit access to the subnet by adding it to your Azure Cosmos account.
+
+**Azure Key Vault.** Generally available in all Azure regions. The virtual network service endpoints for Azure Key Vault allow you to restrict access to a specified virtual network. The endpoints also allow you to restrict access to a list of IPv4 (internet protocol version 4) address ranges. Any user connecting to your key vault from outside those sources is denied access.
+
+**Azure Service Bus and Azure Event Hubs.** Generally available in all Azure regions. The integration of Service Bus with Virtual Network (VNet) service endpoints enables secure access to messaging capabilities from workloads like virtual machines that are bound to virtual networks, with the network traffic path being secured on both ends.
+
+### Identify private link uses
+
+Azure Private Link provides private connectivity from a virtual network to Azure platform as a service (PaaS), customer-owned, or Microsoft partner services. It simplifies the network architecture and secures the connection between endpoints in Azure by eliminating data exposure to the public internet.
+
+- **Private connectivity to services on Azure.** Traffic remains on the Microsoft network, with no public internet access. Connect privately to services running in other Azure regions. Private Link is global and has no regional restrictions.
+- **Integration with on-premises and peered networks.** Access private endpoints over private peering or VPN tunnels from on-premises or peered virtual networks. Microsoft hosts the traffic, so you don’t need to set up public peering or use the internet to migrate your workloads to the cloud.
+- **Protection against data exfiltration for Azure resources.** Use Private Link to map private endpoints to Azure PaaS resources. When there's a security incident within your network, only the mapped resource would be accessible, eliminating the threat of data exfiltration.
+- **Services delivered directly to your customers’ virtual networks.** Privately consume Azure PaaS, Microsoft partner, and your own services in your virtual networks on Azure. Private Link works across Azure Active Directory (Azure AD) tenants to help unify your experience across services. Send, approve, or reject requests directly, without permissions or role-based access controls.
+
+Use Private Link to bring services delivered on Azure into your private virtual network by mapping it to a private endpoint. Or privately deliver your own services in your customers’ virtual networks. All traffic to the service can be routed through the private endpoint, so no gateways, NAT devices, ExpressRoute or VPN connections, or public IP addresses are needed. Private Link keeps traffic on the Microsoft global network.
+
+## Azure Load Balancer
+
+The Azure Load Balancer delivers high availability and network performance to your applications. The load balancer distributes inbound traffic to backend resources using load-balancing rules and health probes.
+
+- Load-balancing rules determine how traffic is distributed to the backend.
+- Health probes ensure the resources in the backend are healthy.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-load-balancer/media/load-balancer-4caf947b.png)
+
+The Load Balancer can be used for inbound and outbound scenarios and scales up to millions of TCP and UDP application flows.
+
+### Types of load balancer
+
+
+There are two types of load balancers: public and internal.
+
+#### **Public**
+A public load balancer maps the public IP address and port number of incoming traffic to the private IP address and port number of the VM. Mapping is also provided for the response traffic from the VM. By applying load-balancing rules, you can distribute specific types of traffic across multiple VMs or services. For example, you can spread the load of incoming web request traffic across multiple web servers.
+
+The diagram shows internet clients sending webpage requests to the public IP address of a web app on TCP port 80. Azure Load Balancer distributes the requests across the three VMs in the load-balanced set.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-load-balancer/media/public-load-balancer-46d5d9fe.png)
+
+#### **Internal**
+
+An internal load balancer directs traffic to resources that are inside a virtual network or that use a VPN to access Azure infrastructure. Frontend IP addresses and virtual networks are never directly exposed to an internet endpoint. Internal line-of-business applications run in Azure and are accessed from within Azure or from on-premises resources. For example, an internal load balancer could receive database requests that need to be distributed to backend SQL servers.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-load-balancer/media/internal-load-balancer-5ae85589.png)
+
+An internal load balancer enables the following types of load balancing:
+
+- **Within a virtual network.** Load balancing from VMs in the virtual network to a set of VMs that reside within the same virtual network.
+- **For a cross-premises virtual network.** Load balancing from on-premises computers to a set of VMs that reside within the same virtual network.
+- **For multi-tier applications.** Load balancing for internet-facing multi-tier applications where the backend tiers are not internet-facing. The backend tiers require traffic load-balancing from the internet-facing tier.
+- **For line-of-business applications.** Load balancing for line-of-business applications that are hosted in Azure without additional load balancer hardware or software. This scenario includes on-premises servers that are in the set of computers whose traffic is load-balanced.
+
+A public load balancer could be placed in front of the internal load balancer to create a multi-tier application.
+
+### Determine load balancer SKUs
+
+When you create an Azure Load Balancer, you select the type (Internal or Public) of load balancer. You also select the SKU. The load balancer supports both Basic and Standard SKUs, each differing in scenario scale, features, and pricing. The Standard Load Balancer is the newer Load Balancer product with an expanded and more granular feature set over Basic Load Balancer. It is a superset of Basic Load Balancer.
+
+### Capabilities
+
+|Feature|Basic SKU|Standard SKU
+|-|-|-|
+Backend pools|Up to 300 instances|Up to 1000 instances
+Health probes|HTTP, TCP|HTTPS, HTTP, TCP|
+Availability zones|Not available|Zone-redundant and zonal frontends for inbound and outbound traffic.
+Multiple front ends|Inbound only|Inbound and outbound|
+Secure by default|Open by default. NSG optional.|Closed to inbound flows unless allowed by an NSG. Internal traffic from the virtual network to the internal load balancer is allowed.
+SLA|Not available|99.99%|
+
+### backend pools
+
+To distribute traffic, a back-end address pool contains the IP addresses of the virtual NICs that are connected to the load balancer. How you configure the backend pool depends on whether you are using the Standard or Basic SKU.
+
+||Standard SKU|Basic SKU|
+|-|-|-|
+Backend pool endpoints|Any virtual machine in a single virtual network. This includes a blend of virtual machines, availability sets, and virtual machine scale sets.|Virtual machines in a single availability set or virtual machine scale set.
+
+Backend pools are configured from the Backend Pool blade. For the Standard SKU you can connect to an Availability set, single virtual machine, or a virtual machine scale set.
+
+In the Standard SKU, you can have up to 1000 instances in the backend pool. In the Basic SKU, you can have up to 300 instances.
+
+### load balancer rules
+
+A load balancer rule defines how traffic is distributed to the backend pool. The rule maps a given frontend IP and port combination to a set of backend IP addresses and port combination. Before configuring the rule, create the frontend, backend, and health probe. This diagram shows a rule that routes frontend TCP connections to a set of backend web (port 80) servers. The rule uses a health probe that checks on HTTP port 80.
+
+By default, Azure Load Balancer distributes network traffic equally among multiple VM instances. The load balancer uses a five-tuple (source IP, source port, destination IP, destination port, and protocol type) hash to map traffic to available servers. It provides stickiness only within a transport session.
+
+Session persistence specifies how traffic from a client should be handled. 
+- None (default) specifies any virtual machine can handle the request.
+- Client IP specifies that successive requests from the same client IP address will be handled by the same virtual machine.
+- Client IP and protocol specifies that successive requests from the same client IP address and protocol combination will be handled by the same virtual machine.
+
+### Health probes
+
+A health probe allows the load balancer to monitor the status of your app. The health probe dynamically adds or removes VMs from the load balancer rotation based on their response to health checks. When a probe fails to respond, the load balancer stops sending new connections to the unhealthy instances.
+
+There are two main ways to configure health probes HTTP and TCP.
+
+- **HTTP custom probe.** The load balancer regularly probes your endpoint (every 15 seconds, by default). The instance is healthy if it responds with an HTTP 200 within the timeout period (default of 31 seconds). Any status other than HTTP 200 causes the probe to fail. You can specify the port (Port), the URI for requesting the health status from the backend (URI), amount of time between probe attempts (Interval), and the number of failures that must occur for the instance to be considered unhealthy (Unhealthy threshold).
+
+- **TCP custom probe.** This probe relies on establishing a successful TCP session to a defined probe port. If the specified listener on the VM exists, the probe succeeds. If the connection is refused, the probe fails. You can specify the Port, Interval, and Unhealthy threshold.
+
+## Application Gateway
+
+Application Gateway manages the requests that client applications send to a web app.
+
+The Application Gateway uses application layer routing. Application layer routing routes traffic to a pool of web servers based on the URL of a request. The back-end pool can include Azure virtual machines, Azure virtual machine scale sets, Azure App Service, and even on-premises servers.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-application-gateway/media/application-gateway-cb3392f4.png)
+
+The Application Gateway uses round robin to send load balance requests to the servers in each back-end pool. The Application Gateway provides session stickiness. Use session stickiness to ensure client requests in the same session are routed to the same back-end server.
+
+### Additional features
+- Support for the HTTP, HTTPS, HTTP/2 and WebSocket protocols.
+- A web application firewall to protect against web application vulnerabilities.
+- End-to-end request encryption.
+- Autoscaling, to dynamically adjust capacity as your web traffic load change.
+
+### Determine Application Gateway routing
+
+Clients send requests to your web apps to the IP address or DNS name of the gateway. The gateway routes requests to a selected web server in the back-end pool, using a set of rules configured for the gateway to determine where the request should go.
+
+There are two primary methods of routing traffic, path-based routing and multiple site routing.
+
+### Path-based routing
+Path-based routing sends requests with different URL paths to different pools of back-end servers. For example, you could direct requests with the path /video/* to a back-end pool containing servers that are optimized to handle video streaming, and direct /images/* requests to a pool of servers that handle image retrieval.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-application-gateway/media/path-based-routing-15bcef5f.png)
+
+### Multiple site routing
+Multiple site routing configures more than one web application on the same application gateway instance. In a multi-site configuration, you register multiple DNS names (CNAMEs) for the IP address of the Application Gateway, specifying the name of each site. Application Gateway uses separate listeners to wait for requests for each site. Each listener passes the request to a different rule, which can route the requests to servers in a different back-end pool.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-application-gateway/media/site-based-routing-e686b605.png)
+
+Multi-site configurations are useful for supporting multi-tenant applications, where each tenant has its own set of virtual machines or other resources hosting a web application.
+
+### Other features
+- Redirection. Redirection can be used to another site, or from HTTP to HTTPS.
+- Rewrite HTTP headers. HTTP headers allow the client and server to pass parameter information with the request or the response.
+- Custom error pages. Application Gateway allows you to create custom error pages instead of displaying default error pages. You can use your own branding and layout using a custom error page.
+
+
+### Gateway component
+
+Application Gateway has a series of components that combine to route requests to a pool of web servers and to check the health of these web servers.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-application-gateway/media/configure-app-gateway-0193dbd6.png)
+
+- Front-end IP address
+Client requests are received through a front-end IP address. You can configure Application Gateway to have a public IP address, a private IP address, or both. Application Gateway can't have more than one public and one private IP address.
+
+- Listeners
+Application Gateway uses one or more listeners to receive incoming requests. A listener accepts traffic arriving on a specified combination of protocol, port, host, and IP address. Each listener routes requests to a back-end pool of servers following routing rules that you specify. A listener can be Basic or Multi-site. A Basic listener only routes a request based on the path in the URL. A Multi-site listener can also route requests using the hostname element of the URL.
+
+  Listeners also handle TLS/SSL certificates for securing your application between the user and Application Gateway.
+
+- Routing rules
+A routing rule binds a listener to the back-end pools. A rule specifies how to interpret the hostname and path elements in the URL of a request, and then direct the request to the appropriate back-end pool. A routing rule also has an associated set of HTTP settings. These HTTP settings indicate whether (and how) traffic is encrypted between Application Gateway and the back-end servers. Other configuration information includes Protocol, Session stickiness, Connection draining, Request timeout period, and Health probes.
+
+- Back-end pools
+A back-end pool references a collection of web servers. You provide the IP address of each web server and the port on which it listens for requests when configuring the pool. Each pool can specify a fixed set of virtual machines, a virtual machine scale-set, an app hosted by Azure App Services, or a collection of on-premises servers. Each back-end pool has an associated load balancer that distributes work across the pool
+
+- Web application firewall
+The web application firewall (WAF) is an optional component that handles incoming requests before they reach a listener. The web application firewall checks each request for many common threats, based on the Open Web Application Security Project (OWASP). Common threats include SQL-injection, Cross-site scripting, Command injection, HTTP request smuggling, HTTP response splitting, Remote file inclusion, Bots, crawlers, and scanners, and HTTP protocol violations and anomalies.
+
+- Health probes
+Health probes determine which servers are available for load-balancing in a back-end pool. The Application Gateway uses a health probe to send a request to a server. When the server returns an HTTP response with a status code between 200 and 399, the server is considered healthy.
+
+If you don't configure a health probe, Application Gateway creates a default probe that waits for 30 seconds before deciding that a server is unavailable.
+
+## storage accounts
+
+### Azure Storage
+
+Azure Storage is Microsoft's cloud storage solution for modern data storage scenarios. Azure Storage offers a massively scalable object store for data objects. It provides a file system service for the cloud, a messaging store for reliable messaging, and a NoSQL store.
+
+Azure Storage is a service that you can use to store files, messages, tables, and other types of information. You use Azure Storage for applications like file shares. Developers use Azure Storage for working data. Working data includes websites, mobile apps, and desktop applications. Azure Storage is also used by IaaS virtual machines, and PaaS cloud services.
+
+You can think of Azure Storage as supporting three categories of data: structured data, unstructured data, and virtual machine data. Review the following categories and think about which types of storage are used in your organization.
+
+Category|	Description	|Storage examples|
+|-|-|-|
+Virtual machine data|	Virtual machine data storage includes disks and files. Disks are persistent block storage for Azure IaaS virtual machines. Files are fully managed file shares in the cloud.|	Storage for virtual machine data is provided through Azure managed disks. Data disks are used by virtual machines to store data like database files, website static content, or custom application code. The number of data disks you can add depends on the virtual machine size. Each data disk has a maximum capacity of 32,767 GB.
+|Unstructured data	|Unstructured data is the least organized. It can be a mix of information that's stored together, but the data doesn't have a clear relationship. The format of unstructured data is referred to as non-relational.	|Unstructured data can be stored by using Azure Blob Storage and Azure Data Lake Storage. Blob Storage is a highly scalable, REST-based cloud object store. Azure Data Lake Storage is the Hadoop Distributed File System (HDFS) as a service.
+|Structured data	|Structured data is stored in a relational format that has a shared schema. Structured data is often contained in a database table with rows, columns, and keys. Tables are an autoscaling NoSQL store.|	Structured data can be stored by using Azure Table Storage, Azure Cosmos DB, and Azure SQL Database. Azure Cosmos DB is a globally distributed database service. Azure SQL Database is a fully managed database-as-a-service built on SQL.
+
+### Storage account tiers
+General purpose Azure storage accounts have two tiers: Standard and Premium.
+
+- Standard storage accounts are backed by magnetic hard disk drives (HDD). A standard storage account provides the lowest cost per GB. You can use Standard tier storage for applications that require bulk storage or where data is infrequently accessed.
+
+- Premium storage accounts are backed by solid-state drives (SSD) and offer consistent low-latency performance. You can use Premium tier storage for Azure virtual machine disks with I/O-intensive applications like databases.
+
+### Azure Storage services
+
+Azure Storage offers four data services that can be accessed by using an Azure storage account:
+
+- Azure Blob Storage (containers): A massively scalable object store for text and binary data.
+  Azure Blob Storage is Microsoft's object storage solution for the cloud. Blob Storage is optimized for storing massive amounts of unstructured or non-relational data, such as text or binary data. Blob Storage is ideal for:
+
+    - Serving images or documents directly to a browser.
+    - Storing files for distributed access.
+    - Streaming video and audio.
+    - Storing data for backup and restore, disaster recovery, and archiving.
+    - Storing data for analysis by an on-premises or Azure-hosted service.
+    - You can access data from Azure Blob Storage by using the NFS protocol.
+
+
+
+- Azure Files: Managed file shares for cloud or on-premises deployments.
+  Azure Files enables you to set up highly available network file shares. Shares can be accessed by using the Server Message Block (SMB) protocol and the Network File System (NFS) protocol. Multiple virtual machines can share the same files with both read and write access. You can also read the files by using the REST interface or the storage client libraries.
+  File shares can be used for many common scenarios:
+
+  - Many on-premises applications use file shares. This feature makes it easier to migrate those applications that share data to Azure. If you mount the file share to the same drive letter that the on-premises application uses, the part of your application that accesses the file share should work with minimal, if any, changes.
+  - Configuration files can be stored on a file share and accessed from multiple virtual machines. Tools and utilities used by multiple developers in a group can be stored on a file share, ensuring that everybody can find them, and that they use the same version.
+  - Diagnostic logs, metrics, and crash dumps are just three examples of data that can be written to a file share and processed or analyzed later.
+
+
+
+- Azure Queue Storage: A messaging store for reliable messaging between application components.
+
+  Azure Queue Storage is used to store and retrieve messages. Queue messages can be up to 64 KB in size, and a queue can contain millions of messages. Queues are used to store lists of messages to be processed asynchronously.
+
+- Azure Table Storage: A NoSQL store for schemaless storage of structured data or relational data.
+  Azure Table Storage is now part of Azure Cosmos DB, which is a fully managed NoSQL database service for modern app development. As a fully managed service, Azure Cosmos DB takes database administration off your hands with automatic management, updates, and patching. It also handles capacity management with cost-effective serverless and automatic scaling options that respond to application needs to match capacity with demand.
+
+  In addition to the existing Azure Table Storage service, there's a new Azure Cosmos DB Table API offering that provides throughput-optimized tables, global distribution, and automatic secondary indexes. Table Storage is ideal solution for storing structured or relational data.
+
+
+###  storage account types
+
+Azure Storage offers several storage account options. Each storage account supports different features and has its own pricing model
+
+
+Review the following options and think about what storage accounts are required to support your applications.
+
+Storage account|	Supported services	|Recommended usage|
+|-|-|-|
+Standard general-purpose v2|	Blob Storage (including Data Lake Storage), Queue Storage, Table Storage, and Azure Files	|Standard storage account for most scenarios, including blobs, file shares, queues, tables, and disks (page blobs).
+Premium block blobs	|Blob Storage (including Data Lake Storage)|	Premium storage account for block blobs and append blobs. Recommended for applications with high transaction rates. Use Premium block blobs if you work with smaller objects or require consistently low storage latency. This storage is designed to scale with your applications.
+Premium file shares|	Azure Files	|Premium storage account for file shares only. Recommended for enterprise or high-performance scale applications. Use Premium file shares if you require support for both Server Message Block (SMB) and NFS file shares.
+Premium page blobs|	Page blobs only|	Premium high-performance storage account for page blobs only. Page blobs are ideal for storing index-based and sparse data structures, such as operating systems, data disks for virtual machines, and databases.
+
+All storage account types are encrypted by using Storage Service Encryption (SSE) for data at rest.
+
+
+### replication strategies
+
+The data in your Azure storage account is always replicated to ensure durability and high availability. Azure Storage replication copies your data so that it's protected from planned and unplanned events. These events range from transient hardware failures, network or power outages, massive natural disasters, and so on. You can choose to replicate your data within the same data center, across zonal data centers within the same region, and even across regions. Replication ensures your storage account meets the Service-Level Agreement (SLA) for Azure Storage even if there are failures.
+
+We'll explore four replication strategies:
+
+- **Locally redundant storage (LRS)** Locally redundant storage is the lowest-cost replication option and offers the least durability compared to other strategies. If a data center-level disaster occurs, such as fire or flooding, all replicas might be lost or unrecoverable. Despite its limitations, LRS can be appropriate in several scenarios:
+
+  - Your application stores data that can be easily reconstructed if data loss occurs.
+  - Your data is constantly changing like in a live feed, and storing the data isn't essential.
+  - Your application is restricted to replicating data only within a country/region due to data governance requirements.
+- **Zone redundant storage (ZRS)** Zone redundant storage synchronously replicates your data across three storage clusters in a single region. Each storage cluster is physically separated from the others and resides in its own availability zone. Each availability zone, and the ZRS cluster within it, is autonomous, and has separate utilities and networking capabilities. Storing your data in a ZRS account ensures you can access and manage your data if a zone becomes unavailable. ZRS provides excellent performance and low latency.
+
+  - ZRS isn't currently available in all regions.
+  - Changing to ZRS from another data replication option requires the physical data movement from a single storage stamp to multiple stamps within a region.
+- **Geo-redundant storage (GRS)** Geo-redundant storage replicates your data to a secondary region (hundreds of miles away from the primary location of the source data). GRS provides a higher level of durability even during a regional outage. GRS is designed to provide at least 99.99999999999999% (16 9's) durability. When your storage account has GRS enabled, your data is durable even when there's a complete regional outage or a disaster where the primary region isn't recoverable.
+  If you implement GRS, you have two related options to choose from:
+
+  - GRS replicates your data to another data center in a secondary region. The data is available to be read only if Microsoft initiates a failover from the primary to secondary region.
+
+  - Read-access geo-redundant storage (RA-GRS) is based on GRS. RA-GRS replicates your data to another data center in a secondary region, and also provides you with the option to read from the secondary region. With RA-GRS, you can read from the secondary region regardless of whether Microsoft initiates a failover from the primary to the secondary.
+
+  For a storage account with GRS or RA-GRS enabled, all data is first replicated with locally redundant storage. An update is first committed to the primary location and replicated by using LRS. The update is then replicated asynchronously to the secondary region by using GRS. When data is written to the secondary location, it's also replicated within that location by using LRS. Both the primary and secondary regions manage replicas across separate fault domains and upgrade domains within a storage scale unit. The storage scale unit is the basic replication unit within the datacenter. Replication at this level is provided by LRS.
+
+- **Geo-zone-redundant storage (GZRS)** Geo-zone-redundant storage combines the high availability of zone-redundant storage with protection from regional outages as provided by geo-redundant storage. Data in a GZRS storage account is replicated across three Azure availability zones in the primary region, and also replicated to a secondary geographic region for protection from regional disasters. Each Azure region is paired with another region within the same geography, together making a regional pair. 
+With a GZRS storage account, you can continue to read and write data if an availability zone becomes unavailable or is unrecoverable. Additionally, your data is also durable during a complete regional outage or during a disaster in which the primary region isn't recoverable. GZRS is designed to provide at least 99.99999999999999% (16 9's) durability of objects over a given year. GZRS also offers the same scalability targets as LRS, ZRS, GRS, or RA-GRS. You can optionally enable read access to data in the secondary region with read-access geo-zone-redundant storage (RA-GZRS).
+Microsoft recommends using GZRS for applications that require consistency, durability, high availability, excellent performance, and resilience for disaster recovery. Enable RA-GZRS for read access to a secondary region when there's a regional disaster.
+
+
+### Access storage
+
+Every object you store in Azure Storage has a unique URL address. Your storage account name forms the subdomain portion of the URL address. The combination of the subdomain and the domain name, which is specific to each service, forms an endpoint for your storage account.
+
+We create the URL to access an object in your storage account by appending the object's location in the storage account to the endpoint.
+
+You can configure a custom domain to access blob data in your Azure storage account. As we reviewed, the default endpoint for Azure Blob Storage is \<storage-account-name>.blob.core.windows.net. You can also use the web endpoint that's generated as a part of the static websites feature. If you map a custom domain and subdomain, such as www.contoso.com, to the blob or web endpoint for your storage account, your users can use that domain to access blob data in your storage account.
+
+There are two ways to configure a custom domain: direct mapping and intermediary domain mapping.
+
+- **Direct mapping** lets you enable a custom domain for a subdomain to an Azure storage account. For this approach, you create a CNAME record that points from the subdomain to the Azure storage account.
+
+  The following example shows how a subdomain is mapped to an Azure storage account to create a CNAME record in the domain name system (DNS):
+
+    - Subdomain: blobs.contoso.com
+    - Azure storage account: \<storage account>\.blob.core.windows.net
+    - Direct CNAME record: contosoblobs.blob.core.windows.net
+- **Intermediary domain mapping** is applied to a domain that's already in use within Azure. This approach might result in minor downtime while the domain is being mapped. To avoid downtime, you can use the asverify intermediary domain to validate the domain. By prepending the asverify keyword to your own subdomain, you permit Azure to recognize your custom domain without modifying the DNS record for the domain. After you modify the DNS record for the domain, your domain is mapped to the blob endpoint with no downtime.
+
+  The following example shows how a domain in use is mapped to an Azure storage account in the DNS with the asverify intermediary domain:
+
+   - CNAME record: asverify.blobs.contoso.com
+   - Intermediate CNAME record: asverify.contosoblobs.blob.core.windows.net

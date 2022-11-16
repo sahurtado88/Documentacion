@@ -449,3 +449,12 @@ case $num in
 esac
 ````
 
+## Test command
+
+- It is a command to judge conditions
+- Simply syntax:
+
+test condition or [condition] or [[condition]]
+
+### Comparion Operators with test command
+
