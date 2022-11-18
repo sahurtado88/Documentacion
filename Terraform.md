@@ -341,4 +341,6 @@ Terraform automatically creates or updates the dependency lock file each time yo
 
 the primary purpose of terraform state is to store bindings between objects in a remote system and resource instances declared in your configuration
 
+
+
  

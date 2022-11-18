@@ -3963,3 +3963,1956 @@ There are two ways to configure a custom domain: direct mapping and intermediary
 
    - CNAME record: asverify.blobs.contoso.com
    - Intermediate CNAME record: asverify.contosoblobs.blob.core.windows.net
+
+### Secure storage endpoints
+
+In the Azure portal, each Azure service has required steps to configure the service endpoints and restrict network access for the service.
+
+To access these settings for your storage account, you use the Firewalls and virtual networks settings. You add the virtual networks that should have access to the service for the account.
+
+Here are some points to consider about configuring service access settings:
+
+- The Firewalls and virtual networks settings restrict access to your storage account from specific subnets on virtual networks or public IPs.
+
+- You can configure the service to allow access to one or more public IP ranges.
+
+- Subnets and virtual networks must exist in the same Azure region or region pair as your storage account.
+
+## Azure Blob Storage
+
+Azure Blob Storage is a service that stores unstructured data in the cloud as objects or blobs. Blob stands for Binary Large Object. Blob Storage is also referred to as object storage or container storage.
+
+Let's examine some configuration characteristics of Blob Storage.
+
+- Blob Storage can store any type of text or binary data. Some examples are text documents, images, video files, and application installers.
+
+- Blob Storage uses three resources to store and manage your data:
+
+  - An Azure storage account
+  - Containers in an Azure storage account
+  - Blobs in a container
+
+- To implement Blob Storage, you configure several settings:
+
+  - Blob container options
+  - Blob types and upload options
+  - Blob Storage access tiers
+  - Blob lifecycle rules
+  - Blob object replication options
+
+The following diagram shows the relationship between the Blob Storage resources.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-blob-storage/media/blob-storage-94fb52b8.png)
+
+
+There are many common uses for Blob Storage. Consider the following scenarios and think about your own data needs:
+
+- Consider browser uploads. Use Blob Storage to serve images or documents directly to a browser.
+
+- Consider distributed access. Blob Storage can store files for distributed access, such as during an installation process.
+
+- Consider streaming data. Stream video and audio by using Blob Storage.
+
+- Consider archiving and recovery. Blob Storage is a great solution for storing data for backup and restore, disaster recovery, and archiving.
+
+- Consider application access. You can store data in Blob Storage for analysis by an on-premises or Azure-hosted service.
+
+### Create blob containers
+
+Azure Blob Storage uses a container resource to group a set of blobs. A blob can't exist by itself in Blob Storage. A blob must be stored in a container resource.
+
+Let's look at the configuration characteristics of containers and blobs.
+
+- All blobs must be in a container.
+
+- A container can store an unlimited number of blobs.
+
+- An Azure storage account can contain an unlimited number of containers.
+
+- You can create the container in the Azure portal.
+
+- You upload blobs into a container.
+
+### Configure a container
+
+In the Azure portal, you configure two settings to create a container for an Azure storage account. As you review these details, consider how you might organize containers in your storage account.
+
+- **Name:** Enter a name for your container. The name must be unique within the Azure storage account.
+
+  - The name can contain only lowercase letters, numbers, and hyphens.
+  - The name must begin with a letter or a number.
+  - The minimum length for the name is three characters.
+  - The maximum length for the name is 63 characters.
+
+- **Public access level:** The access level specifies whether the container and its blobs can be accessed publicly. By default, container data is private and visible only to the account owner. There are three access level choices:
+
+  - Private: (Default) Prohibit anonymous access to the container and blobs.
+  - Blob: Allow anonymous public read access for the blobs only.
+  - Container: Allow anonymous public read and list access to the entire container, including the blobs.
+
+
+
+### Assign blob access tiers
+
+
+Azure Storage supports several access tiers for blob data, including Hot, Cool, Archive, and Premium Blob Storage. Each access tier is optimized to support a particular pattern of data usage.
+
+Let's examine characteristics of the blob access tiers.
+
+- **Hot tier**
+The Hot tier is optimized for frequent reads and writes of objects in the Azure storage account. A good usage case is data that is actively being processed. By default, new storage accounts are created in the Hot tier. This tier has the lowest access costs, but higher storage costs than the Cool and Archive tiers.
+
+- **Cool tier**
+The Cool tier is optimized for storing large amounts of data that's infrequently accessed. This tier is intended for data that remains in the Cool tier for at least 30 days. A usage case for the Cool tier is short-term backup and disaster recovery datasets and older media content. This content shouldn't be viewed frequently, but it needs to be immediately available. Storing data in the Cool tier is more cost-effective. Accessing data in the Cool tier can be more expensive than accessing data in the Hot tier.
+
+- **Archive tier**
+The Archive tier is an offline tier that's optimized for data that can tolerate several hours of retrieval latency. Data must remain in the Archive tier for at least 180 days or be subject to an early deletion charge. Data for the Archive tier includes secondary backups, original raw data, and legally required compliance information. This tier is the most cost-effective option for storing data. Accessing data is more expensive in the Archive tier than accessing data in the other tiers.
+
+- **Premium Blob Storage**
+Premium Blob Storage is best suited for I/O intensive workloads that require low and consistent storage latency. Premium Blob Storage uses solid-state drives (SSDs) for fast and consistent response times. This storage is best for workloads that perform many small transactions. An example would be a mapping application that requires frequent and fast updates.
+
+
+Compare	|Premium Blob Storage|	Hot tier|	Cool tier|	Archive tier|
+|-|-|-|-|-|
+Availability|	99.9%|	99.9%|	99%|	Offline
+Availability (RA-GRS reads)	|N/A	|99.99%	|99.9%|	Offline|
+Latency (time to first byte)|	Single-digit milliseconds	|milliseconds	|milliseconds|	hours
+Minimum storage duration|	N/A|	N/A|	30 days|	180 days|
+Usage costs|	Higher storage costs, Lower access & transaction costs|	Higher storage costs, Lower access & transaction costs|	Lower storage costs, Higher access & transaction costs	|Lowest storage costs, Highest access & transaction costs
+
+### Blob lifecycle management rules
+
+Azure Blob Storage supports lifecycle management for data sets. It offers a rich rule-based policy for GPv2 and Blob Storage accounts. You can use lifecycle policy rules to transition your data to the appropriate access tiers, and set expiration times for the end of a data set's lifecycle.
+
+You can use Azure Blob Storage lifecycle management policy rules to accomplish several tasks.
+
+- Transition blobs to a cooler storage tier (Hot to Cool, Hot to Archive, Cool to Archive) to optimize for performance and cost.
+
+- Delete blobs at the end of their lifecycles.
+
+- Define rule-based conditions to run once per day at the Azure storage account level.
+
+- Apply rule-based conditions to containers or a subset of blobs.
+
+
+### Configure lifecycle management policy rules
+
+In the Azure portal, you create lifecycle management policy rules for your Azure storage account by specifying several settings. For each rule, you create If - Then block conditions to transition or expire data based on your specifications. As you review these details, consider how you can set up lifecycle management policy rules for your data sets.
+
+- If: The If clause sets the evaluation clause for the policy rule. When the If clause evaluates to true, the Then clause is executed. Use the If clause to set the time period to apply to the blob data. The lifecycle management feature checks if the data is accessed or modified according to the specified time.
+
+  - More than (days ago): The number of days to use in the evaluation condition.
+
+- Then: The Then clause sets the action clause for the policy rule. When the If clause evaluates to true, the Then clause is executed. Use the Then clause to set the transition action for the blob data. The lifecycle management feature transitions the data based on the setting.
+
+  - Move to cool storage: The blob data is transitioned to Cool tier storage.
+  - Move to archive storage: The blob data is transitioned to Archive tier storage.
+  - Delete the blob: The blob data is deleted.
+
+By designing policy rules to adjust storage tiers in respect to the age of data, you can design the least expensive storage options for your needs.
+
+
+### blob object replication
+
+Object replication copies blobs in a container asynchronously according to policy rules that you configure. During the replication process, the following contents are copied from the source container to the destination container:
+
+- The blob contents
+- The blob metadata and properties
+- Any versions of data associated with the blob
+
+The following illustration shows an example of asynchronous replication of blob containers between regions.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-blob-storage/media/blob-object-replication-21fd3c07.png)
+
+There are several considerations to keep in mind when planning your configuration for blob object replication.
+
+- Object replication requires that blob versioning is enabled on both the source and destination accounts.
+
+- Object replication doesn't support blob snapshots. Any snapshots on a blob in the source account aren't replicated to the destination account.
+
+- Object replication is supported when the source and destination accounts are in the Hot or Cool tier. The source and destination accounts can be in different tiers.
+
+- When you configure object replication, you create a replication policy that specifies the source Azure storage account and the destination storage account.
+
+- A replication policy includes one or more rules that specify a source container and a destination container. The policy identifies the blobs in the source container to replicate.
+
+There are many benefits to using blob object replication. Consider the following scenarios and think about how replication can be a part of your Blob Storage strategy.
+
+- Consider latency reductions. Minimize latency with blob object replication. You can reduce latency for read requests by enabling clients to consume data from a region that's in closer physical proximity.
+
+- Consider efficiency for compute workloads. Improve efficiency for compute workloads by using blob object replication. With object replication, compute workloads can process the same sets of blobs in different regions.
+
+- Consider data distribution. Optimize your configuration for data distribution. You can process or analyze data in a single location and then replicate only the results to other regions.
+
+- Consider costs benefits. Manage your configuration and optimize your storage policies to achieve cost benefits. After your data is replicated, you can reduce costs by moving the data to the Archive tier by using lifecycle management policies.
+
+### Upload blobs
+
+A blob can be any type of data and any size file. Azure Storage offers three types of blobs: block blob, page blob, and append blob. You specify the blob type and Blob Storage access tier when you create the blob.
+
+- **Block blobs.** A block blob consists of blocks of data that are assembled to make a blob. Most Blob Storage scenarios use block blobs. Block blobs are ideal for storing text and binary data in the cloud, like files, images, and videos.
+
+- **Append blobs.** An append blob is similar to a block blob because the append blob also consists of blocks of data. The blocks of data in an append blob are optimized for append operations. Append blobs are useful for logging scenarios, where the amount of data can increase as the logging operation continues.
+
+- **Page blobs.** A page blob can be up to 8 TB in size. Page blobs are more efficient for frequent read/write operations. Azure Virtual Machines uses page blobs for operating system disks and data disks.
+
+- The block blob type is the default type for a new blob. When you're creating a new blob, if you don't choose a specific type, the new blob is created as a block blob.
+
+- After you create a blob, you can't change its type.
+
+A common approach for uploading blobs to your Azure storage account is to use Azure Storage Explorer. Many other tools are also available. Review the following options and consider which tools would suit your configuration needs.
+
+Upload tool	|Description|
+|-|-|
+AzCopy|	An easy-to-use command-line tool for Windows and Linux. You can copy data to and from Blob Storage, across containers, and across storage accounts.
+Azure Storage Data Movement library|	A .NET library for moving data between Azure Storage services. The AzCopy utility is built with the Data Movement library.
+Azure Data Factory|	You can copy data to and from Blob Storage by using the account key, shared access signature, service principal, or managed identities for Azure resources authentications.
+blobfuse	|A virtual file system driver for Azure Blob Storage. You can use blobfuse to access your existing block blob data in your storage account through the Linux file system.
+Azure Data Box Disk|	A service for transferring on-premises data to Blob Storage when large datasets or network constraints make uploading data over the wire unrealistic. You can use Azure Data Box Disk to request solid-state disks (SSDs) from Microsoft. You can copy your data to those disks and ship them back to Microsoft to be uploaded into Blob Storage.
+Azure Import/Export|	A service that helps you export large amounts of data from your storage account to hard drives that you provide and that Microsoft then ships back to you with your data.
+
+### Blob Storage pricing
+
+Review the following billing considerations for an Azure storage account and Blob Storage.
+
+- Performance tiers. The Blob Storage tier determines the amount of data stored and the cost for storing that data. As the performance tier gets cooler, the per-gigabyte cost decreases.
+
+- Data access costs. Data access charges increase as the tier gets cooler. For data in the Cool and Archive tiers, you're billed a per-gigabyte data access charge for reads.
+
+- Transaction costs. There's a per-transaction charge for all tiers. The charge increases as the tier gets cooler.
+
+- Geo-replication data transfer costs. This charge only applies to accounts that have geo-replication configured, including GRS and RA-GRS. Geo-replication data transfer incurs a per-gigabyte charge.
+
+- Outbound data transfer costs. Outbound data transfers (data that's transferred out of an Azure region) incur billing for bandwidth usage on a per-gigabyte basis. This billing is consistent with general-purpose Azure storage accounts.
+
+- Changes to the storage tier. If you change the account storage tier from Cool to Hot, you incur a charge equal to reading all the data existing in the storage account. Changing the account storage tier from Hot to Cool incurs a charge equal to writing all the data into the Cool tier (GPv2 accounts only).
+
+## Azure Storage security
+
+Administrators use different strategies to ensure their data is secure. Common approaches include encryption, authentication, authorization, and user access control with credentials, file permissions, and private signatures. Azure Storage offers a suite of security capabilities based on common strategies to help you secure your data.
+
+### Azure Storage security strategies
+
+Let's look at some characteristics of Azure Storage security.
+
+- **Encryption.** All data written to Azure Storage is automatically encrypted by using Azure Storage encryption.
+
+- **Authentication.** Azure Active Directory (Azure AD) and role-based access control (RBAC) are supported for Azure Storage for both resource management operations and data operations.
+
+  - Assign RBAC roles scoped to an Azure storage account to security principals, and use Azure AD to authorize resource management operations like key management.
+  - Azure AD integration is supported for data operations on Azure Blob Storage and Azure Queue Storage.
+- **Data in transit.** Data can be secured in transit between an application and Azure by using Client-Side Encryption, HTTPS, or SMB 3.0.
+
+- **Disk encryption.** Operating system disks and data disks used by Azure Virtual Machines can be encrypted by using Azure Disk Encryption.
+
+- **Shared access signatures.** Delegated access to the data objects in Azure Storage can be granted by using a shared access signature (SAS).
+
+- **Authorization.** Every request made against a secured resource in Blob Storage, Azure Files, Queue Storage, or Azure Cosmos DB (Azure Table Storage) must be authorized. Authorization ensures that resources in your storage account are accessible only when you want them to be, and to only those users or applications whom you grant access.
+
+Authorization strategy	|Description
+|-|-|
+Azure Active Directory|	Azure AD is Microsoft's cloud-based identity and access management service. With Azure AD, you can assign fine-grained access to users, groups, or applications by using role-based access control.
+Shared Key|	Shared Key authorization relies on your Azure storage account access keys and other parameters to produce an encrypted signature string. The string is passed on the request in the Authorization header.
+Shared access signatures	|A SAS delegates access to a particular resource in your Azure storage account with specified permissions and for a specified time interval.
+Anonymous access to containers and blobs	|You can optionally make blob resources public at the container or blob level. A public container or blob is accessible to any user for anonymous read access. Read requests to public containers and blobs don't require authorization.
+
+### shared access signatures
+
+A shared access signature (SAS) is a uniform resource identifier (URI) that grants restricted access rights to Azure Storage resources. SAS is a secure way to share your storage resources without compromising your account keys.
+
+You can provide a SAS to clients who shouldn't have access to your storage account key. By distributing a SAS URI to these clients, you grant them access to a resource for a specified period of time.
+
+Let's review some characteristics of a SAS.
+
+- A SAS gives you granular control over the type of access you grant to clients who have the SAS.
+
+- An account-level SAS can delegate access to multiple Azure Storage services, such as blobs, files, queues, and tables.
+
+- You can specify the time interval for which a SAS is valid, including the start time and the expiration time.
+
+- You specify the permissions granted by the SAS. A SAS for a blob might grant read and write permissions to that blob, but not delete permissions.
+
+- SAS provides account-level and service-level control.
+
+  - Account-level SAS delegates access to resources in one or more Azure Storage services.
+
+  - Service-level SAS delegates access to a resource in only one Azure Storage service.
+
+
+- There are optional SAS configuration settings:
+
+  - IP addresses. You can identify an IP address or range of IP addresses from which Azure Storage accepts the SAS. Configure this option to specify a range of IP addresses that belong to your organization.
+
+  - Protocols. You can specify the protocol over which Azure Storage accepts the SAS. Configure this option to restrict access to clients by using HTTPS.
+
+### Configure a shared access signature
+In the Azure portal, you configure several settings to create a SAS. As you review these details, consider how you might implement shared access signatures in your storage security solution.
+
+- Signing method: Choose the signing method: Account key or User delegation key.
+- Signing key: Select the signing key from your list of keys.
+Permissions: Select the permissions granted by the SAS, such as read or write.
+- Start and Expiry date/time: Specify the time interval for which the SAS is valid. Set the start time and the expiry time.
+- Allowed IP addresses: (Optional) Identify an IP address or range of IP addresses from which Azure Storage accepts the SAS.
+- Allowed protocols: (Optional) Select the protocol over which Azure Storage accepts the SAS.
+
+### Identify URI and SAS parameters
+
+When you create your shared access signature (SAS), a uniform resource identifier (URI) is created by using parameters and tokens. The URI consists of your Azure Storage resource URI and the SAS token.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-storage-security/media/secure-parameters-76db5bda.png)
+
+
+Let's look at a sample URI definition and examine the parameters. This sample creates a service-level SAS that grants read and write permissions to a blob. Consider how you might configure the parameters to support your Azure Storage resources.
+
+Parameter|	Example	|Description|
+|-|-|-|
+Resource URI|	https://myaccount.blob.core.windows.net/ ?restype=service &amp;comp=properties|	Defines the Azure Storage endpoint and other parameters. This example defines an endpoint for Blob Storage and indicates that the SAS applies to service-level operations. When the URI is used with GET, the Storage properties are retrieved. When the URI is used with SET, the Storage properties are configured.
+Storage version	|sv=2015-04-05	|For Azure Storage version 2012-02-12 and later, this parameter indicates the version to use. This example indicates that version 2015-04-05 (April 5, 2015) should be used.
+Storage service	|ss=bf	|Specifies the Azure Storage to which the SAS applies. This example indicates that the SAS applies to Blob Storage and Azure Files.
+Start time	|st=2015-04-29T22%3A18%3A26Z	|(Optional) Specifies the start time for the SAS in UTC time. This example sets the start time as April 29, 2015 22:18:26 UTC. If you want the SAS to be valid immediately, omit the start time.
+Expiry time|	se=2015-04-30T02%3A23%3A26Z|	Specifies the expiration time for the SAS in UTC time. This example sets the expiry time as April 30, 2015 02:23:26 UTC.
+Resource|	sr=b	|Specifies which resources are accessible via the SAS. This example specifies that the accessible resource is in Blob Storage.
+Permissions	|sp=rw|	Lists the permissions to grant. This example grants access to read and write operations.
+IP range|	sip=168.1.5.60-168.1.5.70	|Specifies a range of IP addresses from which a request is accepted. This example defines the IP address range 168.1.5.60 through 168.1.5.70.
+Protocol	|spr=https|	Specifies the protocols from which Azure Storage accepts the SAS. This example indicates that only requests by using HTTPS are accepted.
+Signature|	sig=F%6GRVAZ5Cdj2Pw4tgU7Il STkWgn7bUkkAg8P6HESXwmf%4B	|Specifies that access to the resource is authenticated by using an HMAC signature. The signature is computed over a string-to-sign with a key by using the SHA256 algorithm, and encoded by using Base64 encoding.
+
+
+### Determine Azure Storage encryption
+
+Azure Storage encryption for data at rest protects your data by ensuring your organizational security and compliance commitments are met. The encryption and decryption processes happen automatically. Because your data is secured by default, you don't need to modify your code or applications.
+
+Examine the following characteristics of Azure Storage encryption.
+
+- Data is encrypted automatically before it's persisted to Azure Managed Disks, Azure Blob Storage, Azure Queue Storage, Azure Cosmos DB (Azure Table Storage), or Azure Files.
+
+- Data is automatically decrypted before it's retrieved.
+
+- Azure Storage encryption, encryption at rest, decryption, and key management are transparent to users.
+
+- All data written to Azure Storage is encrypted through 256-bit advanced encryption standard (AES) encryption. AES is one of the strongest block ciphers available.
+
+- Azure Storage encryption is enabled for all new and existing storage accounts and can't be disabled.
+
+### Configure Azure Storage encryption
+
+In the Azure portal, you configure Azure Storage encryption by specifying the encryption type. You can manage the keys yourself, or you can have the keys managed by Microsoft. Consider how you might implement Azure Storage encryption for your storage security.
+
+- Create customer-managed keys
+
+  For your Azure Storage security solution, you can use Azure Key Vault to manage your encryption keys. The Azure Key Vault APIs can be used to generate encryption keys. You can also create your own encryption keys and store them in a key vault.
+
+  Consider the following characteristics of customer-managed keys.
+
+  - By creating your own keys (referred to as customer-managed keys), you have more flexibility and greater control.
+
+  - You can create, disable, audit, rotate, and define access controls for your encryption keys.
+
+  - Customer-managed keys can be used with Azure Storage encryption. You can use a new key or an existing key vault and key. The Azure storage account and the key vault must be in the same region, but they can be in different subscriptions.
+
+  In the Azure portal, you can configure customer-managed encryption keys. You can create your own keys, or you can have the keys managed by Microsoft. Consider how you might use Azure Key Vault to create your own customer-managed encryption keys.
+
+  - Encryption type: Choose how the encryption key is managed: by Microsoft or by the yourself (customer).
+  - Encryption key: Specify an encryption key by entering a URI, or select a key from an existing key vault.
+
+
+### Azure Storage security best practices
+
+Let's look at some recommendations that can help mitigate risks when working with a SAS.
+
+Recommendation	|Description
+|-|-|
+Always use HTTPS for creation and distribution|	If a SAS is passed over HTTP and intercepted, an attacker can intercept and use the SAS. These man-in-the-middle attacks can compromise sensitive data or allow for data corruption by the malicious user.
+Reference stored access policies where possible	|Stored access policies give you the option to revoke permissions without having to regenerate the Azure storage account keys. Set the storage account key expiration date far in the future.
+Set near-term expiry times for an unplanned SAS|	If a SAS is compromised, you can mitigate attacks by limiting the SAS validity to a short time. This practice is important if you can't reference a stored access policy. Near-term expiration times also limit the amount of data that can be written to a blob by limiting the time available to upload to it.
+Require clients automatically renew the SAS|	Require your clients to renew the SAS well before the expiration date. By renewing early, you allow time for retries if the service providing the SAS is unavailable.
+Plan carefully for the SAS start time|	If you set the start time for a SAS to now, then due to clock skew (differences in current time according to different machines), failures might be observed intermittently for the first few minutes. In general, set the start time to at least 15 minutes in the past. Or, don't set a specific start time, which causes the SAS to be valid immediately in all cases. The same conditions generally apply to the expiry time. You might observe up to 15 minutes of clock skew in either direction on any request. For clients that use a REST API version earlier than 2012-02-12, the maximum duration for a SAS that doesn't reference a stored access policy is 1 hour. Any policies that specify a longer term will fail.
+Define minimum access permissions for resources|	A security best practice is to provide a user with the minimum required privileges. If a user only needs read access to a single entity, then grant them read access to that single entity, and not read/write/delete access to all entities. This practice also helps lessen the damage if a SAS is compromised because the SAS has less power in the hands of an attacker.
+Understand account billing for usage, including a SAS|	If you provide write access to a blob, a user might choose to upload a 200-GB blob. If you've given them read access as well, they might choose to download the blob 10 times, which incurs 2 TB in egress costs for you. Again, provide limited permissions to help mitigate the potential actions of malicious users. Use a short-lived SAS to reduce this threat, but be mindful of clock skew on the end time.
+Validate data written by using a SAS|	When a client application writes data to your Azure storage account, keep in mind there can be problems with the data. If your application requires validated or authorized data, validate the data after it's written, but before it's used. This practice also protects against corrupt or malicious data being written to your account, either by a user who properly acquired the SAS, or by a user exploiting a leaked SAS.
+Don't assume a SAS is always the correct choice|	In some scenarios, the risks associated with a particular operation against your Azure storage account outweigh the benefits of using a SAS. For such operations, create a middle-tier service that writes to your storage account after performing business rule validation, authentication, and auditing. Also, sometimes it's easier to manage access in other ways. If you want to make all blobs in a container publicly readable, you can make the container Public, rather than providing a SAS to every client for access.
+Monitor your applications with Azure Storage Analytics|	You can use logging and metrics to observe any spike in authentication failures. You might see spikes from an outage in your SAS provider service or to the inadvertent removal of a stored access policy.
+
+## Azure files
+
+Azure Files offers shared storage for applications by using the industry standard Server Message Block protocol. Microsoft Azure Virtual Machines and cloud services can share file data across application components by using mounted shares. On-premises applications can also access file data in the share.
+
+Some characteristics of Azure Files.
+
+- Azure Files stores data as true directory objects in file shares.
+
+- Azure Files provides shared access to files across multiple virtual machines. Any number of Azure virtual machines or roles can mount and access an Azure Files storage share simultaneously.
+
+- Applications that run in Azure Virtual Machines or cloud services can mount an Azure Files storage share to access file data. This process is similar to how a desktop application mounts a typical SMB share.
+
+- Azure Files offers fully managed file shares in the cloud that are accessible via SMB. Azure Files shares can be mounted concurrently by cloud or on-premises deployments of Windows, Linux, and macOS.
+
+There are many common scenarios for using Azure Files storage. As you review the following suggestions, think about how Azure Files storage can provide solutions for your organization.
+
+- Consider replacement and supplement options. Replace or supplement traditional on-premises file servers or NAS devices by using Azure Files.
+
+- Consider global access. Directly access Azure Files shares by using most operating systems, such as Windows, macOS, and Linux from anywhere in the world.
+
+- Consider lift and shift support. Lift and shift applications to the cloud with Azure Files for apps that expect a file share to store file application or user data.
+
+- Consider the Azure File Sync agent. Replicate Azure Files shares to Windows Servers by using the Azure File Sync agent. You can replicate on-premises or in the cloud for performance and distributed caching of the data where it's being used. We'll take a closer look at the agent in a later unit.
+
+- Consider shared applications. Store shared application settings in Azure Files, such as configuration files.
+
+- Consider diagnostic data. Use Azure Files to store diagnostic data such as logs, metrics, and crash dumps in a shared location.
+
+- Consider tools and utilities. Azure Files is a good option for storing tools and utilities that are needed for developing or administering Azure Virtual Machines or cloud services.
+
+It can be difficult to determine exactly when to use Azure Files to store data as file shares rather than Azure Blob Storage or Azure Disks to store data as blobs. The following table compares different features of these services and common implementation scenarios.
+
+Azure Files (file shares)	|Azure Blob Storage (blobs)	|Azure Disks (page blobs)|
+|-|-|-|
+Azure Files provides the SMB and NFS protocols, client libraries, and a REST interface that allows access from anywhere to stored files.	|Azure Blob Storage provides client libraries and a REST interface that allows unstructured data to be stored and accessed at a massive scale in block blobs.	  |Azure Disks is similar to Azure Blob Storage. Azure Disks provides a REST interface to store and access index-based or structured data in page blobs.
+  -Files in an Azure Files share are true directory objects. -Data in Azure Files is accessed through file shares across multiple virtual machines.|	- Blobs in Azure Blob Storage are a flat namespace.-Blob data in Azure Blob Storage is accessed through a container.|	- Page blobs in Azure Disks are stored as 512-byte pages.-Page blob data is exclusive to a single virtual machine.
+Azure Files is ideal to lift and shift an application to the cloud that already uses the native file system APIs. Share data between the app and other applications running in Azure.Azure Files is a good option when you want to store development and debugging tools that need to be accessed from many virtual machines.	Azure Blob Storage is ideal for applications that need to support streaming and random-access scenarios.|Azure Blob Storage is a good option when you want to be able to access application data from anywhere.	Azure Disks solutions are ideal when your applications run frequent random read/write operations.|Azure Disks is a good option when you want to store relational data for operating system and data disks in Azure Virtual Machines and databases.
+
+### Manage Azure Files shares
+
+To access your files, you need an Azure storage account. After you have a storage account, you can create and configure a file share by using Azure Files in the Azure portal.
+
+There are two important settings for Azure Files that you need to be aware of when creating and configuring file shares.
+
+- Open port 445. Azure Files uses the SMB protocol. SMB communicates over TCP port 445. Be sure port 445 is open. Also, make sure your firewall isn't blocking TCP port 445 from the client machine.
+
+- Enable secure transfer. The Secure transfer required setting enhances the security of your storage account by limiting requests to your storage account from secure connections only. Consider the scenario where you use REST APIs to access your storage account. If you attempt to connect, and secure transfer required is enabled, you must connect by using HTTPS. If you try to connect to your account by using HTTP, and secure transfer required is enabled, the connection is rejected.
+
+
+### Map Azure Files share on Windows
+You can connect your Azure Files share with Windows or Windows Server in the Azure portal. Specify the Drive where you want to map the share, and choose the Authentication method. The system supplies you with PowerShell commands to run when you're ready to work with the file share.
+
+### Mount Azure Files share on Linux
+You can also connect Azure Files shares with Linux machines. From your virtual machine page, select Connect. Azure Files shares can be mounted in Linux distributions by using the CIFS kernel client. File mounting can be done on-demand with the mount command or on-boot (persistent) by creating an entry in /etc/fstab.
+
+### Create file share snapshots
+
+Azure Files provides the capability to take share snapshots of file shares. File share snapshots capture a point-in-time, read-only copy of your data.
+
+Some characteristics of file share snapshots.
+
+- The Azure Files share snapshot capability is provided at the file share level.
+- Share snapshots are incremental in nature. Only data changed since the most recent share snapshot is saved.
+
+- Incremental snapshots minimize the time required to create share snapshots and saves on storage costs.
+
+- Even though share snapshots are saved incrementally, you only need to retain the most recent share snapshot to restore the share.
+
+- You can retrieve a share snapshot for an individual file. This level of support helps with restoring individual files rather than having to restore to the entire file share.
+
+- If you want to delete a share that has share snapshots, you must first delete all of its' snapshots.
+
+There are several benefits to using file share snapshots and having access to incremental point-in-time data storage. As you review the following suggestions, think about how you can implement file share snapshots in your Azure Files storage solution.
+
+Benefit	|Description|
+|-|-|
+Protect against application error and data corruption	|Applications that use file shares perform operations like writing, reading, storage, transmission, and processing. When an application is misconfigured or an unintentional bug is introduced, accidental overwrite or damage can happen to a few data blocks. To help protect against these scenarios, you can take a share snapshot before you deploy new application code. When a bug or application error is introduced with the new deployment, you can go back to a previous version of your data on that file share.
+Protect against accidental deletions or unintended changes|	Imagine you're working on a text file in a file share. After the text file is closed, you lose the ability to undo your changes. In this scenario, you need to recover a previous version of your file. You can use share snapshots to recover previous versions of the file if it's accidentally renamed or deleted.
+Support backup and recovery	|After you create a file share, you can periodically create a snapshot of the file share to use it for data backup. A share snapshot, when taken periodically, helps maintain previous versions of data that can be used for future audit requirements or disaster recovery.
+
+
+## Azure File Sync
+
+Azure File Sync enables you to cache several Azure Files shares on an on-premises Windows Server or cloud virtual machine. You can use Azure File Sync to centralize your organization's file shares in Azure Files, while keeping the flexibility, performance, and compatibility of an on-premises file server.
+
+ characteristics of Azure File Sync.
+
+- Azure File Sync transforms Windows Server into a quick cache of your Azure Files shares.
+
+- You can use any protocol that's available on Windows Server to access your data locally with Azure File Sync, including SMB, NFS, and FTPS.
+
+- Azure File Sync supports as many caches as you need around the world.
+
+Cloud tiering is an optional feature of Azure File Sync. Frequently accessed files are cached locally on the server while all other files are tiered to Azure Files based on policy settings.
+
+- When a file is tiered, Azure File Sync replaces the file locally with a pointer. A pointer is commonly referred to as a reparse point. The reparse point represents a URL to the file in Azure Files.
+
+- When a user opens a tiered file, Azure File Sync seamlessly recalls the file data from Azure Files without the user needing to know that the file is stored in Azure.
+
+- Cloud tiering files have greyed icons with an offline O file attribute to let the user know when the file is only in Azure.
+
+There are many advantages to using Azure File Sync. Consider the following scenarios, and think about how you can use Azure File Sync with your Azure Files shares.
+
+- Consider application lift and shift. Use Azure File Sync to move applications that require access between Azure and on-premises systems. Provide write access to the same data across Windows Servers and Azure Files.
+
+- Consider support for branch offices. Support your branch offices that need to back up files by using Azure File Sync. Use the service to set up a new server that connects to Azure storage.
+
+- Consider backup and disaster recovery. After you implement Azure File Sync, Azure Backup backs up your on-premises data. Restore file metadata immediately and recall data as needed for rapid disaster recovery.
+
+- Consider file archiving with cloud tiering. Azure File Sync stores only recently accessed data on local servers. Implement cloud tiering so non-used data moves to Azure Files.
+
+### Azure File Sync components
+
+
+Azure File Sync is composed of four main components that work together to provide caching for Azure Files shares on an on-premises Windows Server or cloud virtual machine.
+
+The following illustration shows how the components of Azure File Sync provide a cache for a storage account that has Accounting and Sales data stored in Azure Files shares.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-files-file-sync/media/file-sync-components-c6561274.png)
+
+- Storage Sync Service
+The Storage Sync Service is the top-level Azure resource for Azure File Sync. This resource is a peer of the storage account resource and can be deployed in a similar manner.
+
+  - The Storage Sync Service forms sync relationships with multiple storage accounts by using multiple sync groups.
+
+  - The service requires a distinct top-level resource from the storage account resource to support the sync relationships.
+
+  - A subscription can have multiple Storage Sync Service resources deployed.
+
+- Sync group
+A sync group defines the sync topology for a set of files. Endpoints within a sync group are kept in sync with each other. Consider the scenario where you have two distinct sets of files that you want to manage with Azure File Sync. In this case, you create two sync groups and add different endpoints to each sync group. An instance of the Storage Sync Service can host as many sync groups as you need.
+
+- Registered server
+The registered server object represents a trust relationship between your server (or cluster) and the Storage Sync Service resource. You can register as many servers to a Storage Sync Service resource as you want.
+
+- Azure File Sync agent
+The Azure File Sync agent is a downloadable package that enables Windows Server to be synced with an Azure Files share. The Azure File Sync agent has three main components:
+
+  - FileSyncSvc.exe: This file is the background Windows service that's responsible for monitoring changes on server endpoints, and for initiating sync sessions to Azure.
+
+- StorageSync.sys: This file is the Azure File Sync file system filter that supports cloud tiering. The filter is responsible for tiering files to Azure Files when cloud tiering is enabled.
+
+- PowerShell cmdlets: These PowerShell management cmdlets allow you to interact with the Microsoft.StorageSync Azure resource provider. You can find the cmdlets at the following (default) locations:
+
+  - C:\\Program Files\\Azure\\StorageSyncAgent\\StorageSync.Management.PowerShell.Cmdlets.dll
+  - C:\\Program Files\\Azure\\StorageSyncAgent\\StorageSync.Management.ServerCmdlets.dll
+
+- Server endpoint
+A server endpoint represents a specific location on a registered server, such as a folder on a server volume. Multiple server endpoints can exist on the same volume if their namespaces are unique (for example, F:\\sync1 and F:\\sync2).
+
+- Cloud endpoint
+A cloud endpoint is an Azure Files share that's part of a sync group. As part of a sync group, the entire cloud endpoint (Azure Files share) syncs.
+
+  - An Azure Files share can be a member of one cloud endpoint only.
+
+  - An Azure Files share can be a member of one sync group only.
+
+  - Consider the scenario where you have a share with existing files. If you add the share as a cloud endpoint to a sync group, the files in the share are merged with files on other endpoints in the sync group.
+
+### Deploy Azure File Sync
+
+Before you can start synchronizing files with Azure File Sync, there are several high-level steps that need to be completed.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-files-file-sync/media/file-sync-steps-b6fa9fd9.png)
+
+- **Step 1: Deploy the Storage Sync Service**
+You can deploy the Storage Sync Service from the Azure portal. You configure the following settings:
+
+  - The deployment name for the Storage Sync Service
+  - The Azure subscription ID to use for the deployment
+  - A Resource Group for the deployment
+  - The deployment location
+
+- **Step 2: Prepare each Windows Server to use Azure File Sync**
+After you deploy the Storage Sync Service, you configure each Windows Server or cloud virtual machine that you intend to use with Azure File Sync, including server nodes in a Failover Cluster.
+
+- **Step 3: Install the Azure File Sync agent**
+When the Windows Server configuration is complete, you're ready to install the Azure File Sync agent. The agent is a downloadable package that enables Windows Server to be synced with an Azure Files share. The Azure File Sync agent installation package should install relatively quickly.
+
+  For the agent installation, Microsoft recommends using the default installation path. Also enable Microsoft Update to ensure your severs are running the latest version of Azure File Sync.
+- **Step 4: Register each Windows Server with the Storage Sync Service**
+After the Azure File Sync agent installation completes, the Server Registration window opens.
+
+  By registering the Windows Server with a Storage Sync Service, you establish a trust relationship between your server (or cluster) and the Storage Sync Service. For the registration, you need your Azure subscription ID and some of the deployment settings you configured in the first step:
+
+  - The Storage Sync Service deployment name
+  - The Resource Group for the deployment
+
+  A server (or cluster) can be registered with only one Storage Sync Service resource at a time.
+
+## Azure Storage with tools
+Azure Administrators have many tools available to them for managing Azure Storage. They need to be efficient and select the best tool for the job.
+
+### Azure Storage Explorer
+
+**Azure Storage Explorer** is a standalone application that makes it easy to work with Azure Storage data on Windows, macOS, and Linux. With Azure Storage Explorer, you can access multiple accounts and subscriptions, and manage all your Storage content.
+
+Azure Storage Explorer has the following characteristics.
+
+- Azure Storage Explorer requires both management (Azure Resource Manager) and data layer permissions to allow full access to your resources. You need Azure Active Directory (Azure AD) permissions to access your storage account, the containers in your account, and the data in the containers.
+
+- Azure Storage Explorer lets you connect to different storage accounts.
+
+  - Connect to storage accounts associated with your Azure subscriptions.
+  - Connect to storage accounts and services that are shared from other Azure subscriptions.
+  - Connect to and manage local storage by using the Azure Storage Emulator.
+
+  Azure Storage Explorer supports many scenarios for working with storage accounts in global and national Azure. As you review these options, think about which scenarios apply to your Azure Storage implementation.
+
+Scenario|	Description|
+|-|-|
+Connect to an Azure subscription|	Manage storage resources that belong to your Azure subscription.
+Work with local development storage	|Manage local storage by using the Azure Storage Emulator.
+Attach to external storage	|Manage storage resources that belong to another Azure subscription or that are under national Azure clouds by using the storage account name, key, and endpoints. This scenario is described in more detail in the next section.
+Attach a storage account with a SAS	|Manage storage resources that belong to another Azure subscription by using a shared access signature (SAS).
+Attach a service with a SAS	|Manage a specific Azure Storage service (blob container, queue, or table) that belongs to another Azure subscription by using a SAS.
+
+Azure Storage Explorer lets you attach to external storage accounts so storage accounts can be easily shared.
+
+To create the connection, you need the external storage Account name and Account key. In the Azure portal, the account key is called key1.
+
+To use a storage account name and key from a national Azure cloud, use the Storage endpoints domain drop-down menu to select Other, and then enter the custom storage account endpoint domain.
+
+**Access keys** provide access to the entire storage account. You're provided two access keys so you can maintain connections by using one key while regenerating the other.
+
+Store your access keys securely. We recommend regenerating your access keys regularly.
+
+When you regenerate your access keys, you must update any Azure resources and applications that access this storage account to use the new keys. This action doesn't interrupt access to disks from your virtual machines.
+
+### Azure Import/Export service
+
+The Azure Import/Export service is used to securely import large amounts of data to Azure Blob Storage and Azure Files by shipping disk drives to an Azure datacenter. This service can also be used to transfer data from Azure Blob Storage to disk drives and ship to your on-premises sites.
+
+Characteristics of the Azure Import/Export service.
+
+- Data from your disk drives can be imported to Azure Blob Storage or Azure Files in your Azure storage account.
+
+- Data from Azure Storage in your Azure storage account can be exported to drives that you provide.
+
+- Create an Azure Import job to import data from physical disks into Azure Blob Storage or Azure Files.
+
+- Create an Azure Export job to export data from Azure Storage to hard disk drives.
+
+- You can create jobs directly from the Azure portal or programmatically by using the Azure Storage Import/Export REST API.
+
+The Azure Import/Export service is frequently used in cases where uploading or downloading data over the network is too slow or getting more network bandwidth is cost-prohibitive. Let's review some scenarios where using the Azure Import/Export service can help improve performance.
+
+- Consider cloud migrations. Move large amounts of data to Azure quickly and cost effectively with the Azure Import/Export service.
+
+- Consider content distribution. Send data quickly to customer sites in diverse geographic locations.
+
+- Consider backup operations. Use the Azure Import/Export service to take backups of your on-premises data to store in Azure Blob Storage.
+
+- Consider data recovery. Recover large amounts of data stored in Blob Storage, and have the delivered to your on-premises location with the Azure Import/Export service.
+
+### Azure Import jobs
+Azure Import jobs securely transfer large amounts of data to Azure Blob Storage (block blobs or page blobs) or Azure Files. You ship disk drives to an Azure datacenter, the staff copy specified data to the drives and then return the drives to you. Consider how Azure Import jobs can be a part of your data transfer strategy.
+
+Create an Azure Import job
+Follow these steps to create an Azure Import job.
+
+1. If you don't have an Azure storage account, create an account to use for the Import job.
+
+2. Determine the number of disks needed to accommodate the data to transfer.
+
+3. Identify the computer to use to perform the data copy, and attach the physical disks you intend to ship to Microsoft.
+
+4. Install the WAImportExport tool on the disks. We'll take a closer look at the WAImportExport tool in the next unit.
+
+5. Run the WAImportExport tool to copy the data on the disks.
+
+    - Encrypt the disk drives with BitLocker.
+    - Generate journal files to document the data transfer.
+6. In the Azure portal, create an Azure Import job and provide the following information:
+
+    - The Azure Storage account to use for the Import job
+    - The return address for shipment of your disks
+    - Your shipment carrier account number
+    - The datacenter address of the Azure region that hosts the Azure storage account
+7. Ship the required number of disks to the Azure region datacenter that hosts the storage account. Note the shipment tracking number.
+
+8. Update the Import job to include the shipment tracking number.
+
+9. After the disks arrive at the Azure datacenter, the staff completes the following tasks:
+
+    - The data on the provided disks is copied to the specified storage account.
+    - The disks are shipped back to you.
+
+### Azure Export jobs
+Azure Export jobs transfer data from Azure Storage to hard disk drives and ship the disks to your on-premises sites. Think about how Azure Export jobs can support your data transfer scenarios.
+
+Create an Azure Export job
+Follow these steps to create an Azure Export job.
+
+1. Identify the data in Azure Blob Storage to export.
+
+2. Determine the number of disks needed to accommodate the data to transfer.
+
+3. In the Azure portal, create an Azure Export job and provide the following information:
+
+    - The Azure Storage account to use for the Export job
+    - The blob data to export
+    - The return address for shipment of your disks
+    - Your shipment carrier account number
+4. Ship the required number of disks to the Azure region datacenter that hosts the storage account. Note the shipment tracking number.
+
+5. Update the Export job to include the shipment tracking number.
+
+6. After the disks arrive at the Azure datacenter, the staff completes the following tasks:
+
+    - The specified data in the storage account is copied to the disks you provided.
+    - The disk volumes are encrypted by using BitLocker.
+    - The disks are shipped back to you.
+
+    The BitLocker keys used to encrypt your disks are stored with the specified storage account in the Azure portal. You can decrypt the content of the disks and copy the data to your on-premises storage.
+
+### WAImportExport tool
+
+WAImportExport is the Azure Import/Export service tool. The tool is used to prepare drives before importing data, and to repair any corrupted or missing files after data transfer.
+
+The WAImportExport tool is available in two versions:
+
+  - Version 1 is best for importing and exporting data in Azure Blob Storage.
+  - Version 2 is best for importing data into Azure Files.
+
+The WAImportExport tool is only compatible with 64-bit Windows operating system. For the list of supported operating systems and versions, see Azure Import/Export requirements.
+
+You can use the WAImportExport tool with the Azure Import/Export service to complete the following tasks:
+
+- Before you create an Azure Import job, use the WAImportExport tool to copy data to the hard disk drives you intend to ship to Microsoft.
+
+- After your Azure Import job completes, use the WAImportExport tool to repair any blobs that were corrupted, missing, or that have conflicts with other blobs in your Azure Storage.
+
+- After you receive your disk drives from a completed Azure Export job, use the WAImportExport tool to repair any corrupted or missing files on the drives.
+
+- The WAImportExport tool handles data copy, volume encryption, and creation of journal files. Journal files are necessary to create an Azure Import/Export job and help ensure the integrity of the data transfer.
+
+There are several points to consider as you plan for using the WAImportExport tool with the Azure Import/Export service.
+
+- Consider supported disk drives. For hard disk drives, the Azure Import/Export service requires internal SATA II/III HDDs or SSDs. Keep this requirement in mind when selecting your hard disk drives.
+
+- Consider BitLocker encryption. When you prepare a disk for an Azure Import job, you must encrypt the NTFS volume of each disk drive with BitLocker.
+
+- Consider OS version. To prepare a disk drive, you must connect the drive to a computer that's running a 64-bit version of the Windows client or server operating system. You run the WAImportExport tool from that computer.
+
+### AzCopy tool
+
+An alternate method for transferring data is the AzCopy tool. AzCopy v10 is the next-generation command-line utility for copying data to and from Azure Blob Storage and Azure Files. AzCopy v10 offers a redesigned command-line interface (CLI) and new architecture for high-performance reliable data transfers. You can use AzCopy to copy data between a file system and a storage account, or between storage accounts.
+
+ characteristics of the AzCopy tool.
+
+- Every AzCopy instance creates a job order and a related log file. You can view and restart previous jobs, and resume failed jobs.
+
+- You can use AzCopy to list or remove files or blobs in a given path. AzCopy supports wildcard patterns in a path, --include flags, and --exclude flags.
+
+- AzCopy automatically retries a transfer when a failure occurs.
+
+- When you use Azure Blob Storage, AzCopy lets you copy an entire account to another account with the Put command from URL APIs. No data transfer to the client is needed.
+
+- AzCopy supports Azure Data Lake Storage Gen2 APIs.
+
+- AzCopy is built into Azure Storage Explorer.
+
+- AzCopy is available on Windows, Linux, and macOS.
+
+
+There are two options to authenticate your transferred data when using AzCopy.
+
+Authentication	|Support|	Description
+|-|-|-|
+Azure Active Directory (Azure AD)|	Azure Blob Storage and Azure Data Lake Storage Gen2|	The user enters the .\\azcopy sign-in command to sign in by using Azure AD. The user should have the Storage Blob Data Contributor role assigned, which allows them to write to Blob Storage by using Azure AD authentication. When the user signs in from Azure AD, they provide their credentials only once. This option allows the user to circumvent having to append a SAS token to each command.
+SAS tokens	|Azure Blob Storage and Azure Files	|On the command line, the user appends a SAS token to the blob or file path for every command they enter.
+
+###AzCopy and Azure Storage Explorer
+Azure Storage Explorer uses the AzCopy tool for all of its data transfers. If you want to use a graphical UI to work with your files, you can use Azure Storage Explorer and gain the performance advantages of AzCopy.
+
+Azure Storage Explorer uses your account key to perform operations. After you sign into Azure Storage Explorer, you don't need to provide your authorization credentials again.
+
+Review the following scenarios for using AzCopy. Consider how the tool features can enhance your Azure Storage solution.
+
+- Consider data synchronization. Use AzCopy to synchronize a file system to Azure Blob Storage and vice versa. AzCopy is ideal for incremental copy scenarios.
+
+- Consider job management. Manage your transfer operations with AzCopy. View and restart previous jobs. Resume failed jobs.
+
+- Consider transfer resiliency. Provide data resiliency for your data transfers. If a copy job fails, AzCopy automatically retries the copy.
+
+- Consider fast account to account copy. Use AzCopy with Azure Blob Storage for the account to account copy feature. Because data isn't transferred to the client, the transfer is faster.
+
+### Virtual machines
+
+Azure Virtual Machines is one of several types of on-demand, scalable computing resources that Azure offers. Typically, you'll choose a virtual machine if you need more control over the computing environment than the choices such as App Service or Cloud Services offer. Virtual machines provide an operating system, storage, and networking capabilities and can run a wide range of applications.
+
+business scenarios
+- Test and development. Teams can quickly set up and dismantle test and development environments, bringing new applications to market faster. IaaS makes it quick and economical to scale up dev-test environments up and down.
+- Website hosting. Running websites using IaaS can be less expensive than traditional web hosting.
+- Storage, backup, and recovery. Organizations avoid the expense for storage and complexity of storage management. Recovery typically requires a skilled staff to manage data and meet legal and compliance requirements. IaaS is useful for handling unpredictable demand and steadily growing storage needs. It can also simplify planning and management of backup and recovery systems.
+- High-performance computing. High-performance computing (HPC) on supercomputers, computer grids, or computer clusters helps solve complex problems involving millions of variables or calculations. Examples include earthquake and protein folding simulations, climate and weather predictions, financial modeling, and evaluating product designs.
+- Big data analysis. Big data is a popular term for massive data sets that contain potentially valuable patterns, trends, and associations. Mining data sets to locate or tease out these hidden patterns requires a huge amount of processing power, which IaaS economically provides.
+- Extended Datacenter. Add capacity to your datacenter by adding virtual machines in Azure. Avoid the costs of physically adding hardware or space to your physical location. Connect your physical network to the Azure cloud network seamlessly.
+ 
+
+### Plan virtual machines
+
+Provisioning VMs to Azure requires planning.
+
+- **Start with the network** Virtual networks (VNets) are used in Azure to provide private connectivity between Azure Virtual Machines and other Azure services. VMs and services that are part of the same virtual network can access one another. By default, services outside the virtual network can't connect to services within the virtual network
+  
+  Network addresses and subnets aren't trivial to change once you have them set up. If you plan to connect your private company network to the Azure services, you'll want to make sure you consider the topology before putting any VMs into place.
+
+
+- **Name the VM** The VM name is used as the computer name, which is configured as part of the operating system. You can specify a name of up to 15 characters on a Windows VM and 64 characters on a Linux VM.
+  
+  The virtual machine name also defines a manageable Azure resource, and it's not trivial to change later. That means you should choose names that are meaningful and consistent, so you can easily identify what the VM does. A good convention is to include the following information in the name:
+
+  Element|Example|Notes|
+  |-|-|-|
+  Environment|dev, prod, QA|Identifies the environment for the resource|
+  Location|uw (US West), ue (US East)|Identifies the region into which the resource is deployed
+  Instance|01, 02|For resources that have more than one named instance (web servers, etc.)
+  Product or Service|service|Identifies the product, application, or service that the resource supports
+  Role|sql, web, messaging|Identifies the role of the associated resource
+
+  For example, devusc-webvm01 might represent the first development web server hosted in the US South Central location.
+
+- **Decide the location for the VM**
+  Azure has datacenters all over the world filled with servers and disks. These datacenters are grouped into geographic regions ('West US', 'North Europe', 'Southeast Asia', etc.) to provide redundancy and availability.
+
+  You must select a region where you want the resources (CPU, storage, etc.) to be allocated. The region lets you locate your VMs as close as possible to your users to improve performance and to meet any legal, compliance, or tax requirements.
+  - The location can limit your available options
+  - There are price differences between locations.
+
+- **Determine the size of the VM**
+  The best way to determine the appropriate VM size is to consider the type of workload your VM needs to run. Based on the workload, you're able to choose from a subset of available VM sizes. Workload options are classified as follows on Azure:
+
+  Type|Example Usage
+  |-|-|
+  General purpose|Balanced CPU-to-memory ratio. Ideal for testing and development, small to medium databases, and low to medium traffic web servers.
+  Compute optimized|High CPU-to-memory ratio. Good for medium traffic web servers, network appliances, batch processes, and application servers.
+  Memory optimized|High memory-to-CPU ratio. Great for relational database servers, medium to large caches, and in-memory analytics.
+  Storage optimized|High disk throughput and IO ideal for Big Data, SQL, NoSQL databases, data warehousing, and large transactional databases.
+  GPU|Specialized virtual machines targeted for heavy graphic rendering and video editing, as well as model training and inferencing (ND) with deep learning. Available with single or multiple GPUs.
+  High performance compute|Our fastest and most powerful CPU virtual machines with optional high-throughput network interfaces (RDMA).
+
+  Azure allows you to change the VM size when the existing size no longer meets your needs. You can resize a VM if your current hardware configuration is allowed in the new size. This provides a fully agile and elastic approach to VM management.
+
+  Be cautious when resizing production VMs. Resizing may require a restart that can cause a temporary outage or change configuration settings like the IP address.
+
+- **Understanding the pricing model** 
+  There are two separate costs the subscription will be charged for every VM: compute and storage. By separating these costs, you scale them independently and only pay for what you need.
+
+  Compute costs - Compute expenses are priced on a per-hour basis but billed on a per-minute basis. For example, you're only charged for 55 minutes of usage if the VM is deployed for 55 minutes. you aren't charged for compute capacity if you stop and deallocate the VM. The hourly price varies based on the VM size and OS you select.
+
+  Storage costs - you're charged separately for the storage the VM uses. The status of the VM has no relation to the storage charges. Even when a VM is stopped/deallocated, you're charged for the storage used by the disks.
+
+  You're able to choose from two payment options for compute costs:
+
+  - Consumption-based - With the consumption-based option, you pay for compute capacity by the second. You're able to increase or decrease compute capacity on demand and start or stop at any time. Use consumption-based if you run applications with short-term or unpredictable workloads that can't be interrupted. For example, if you're doing a quick test, or developing an app in a VM.
+  - Reserved Virtual Machine Instances - The Reserved Virtual Machine Instances (RI) option is an advance purchase of a virtual machine for one or three years in a specified region. The commitment is made up front, and in return, you get up to 72% price savings compared to pay-as-you-go pricing. RIs are flexible and can easily be exchanged or returned for an early termination fee. Use this option if the VM has to run continuously, or you need budget predictability, and you can commit to using the VM for at least a year.
+
+
+- **Storage for the VM**
+  Just like any other computer, virtual machines in Azure use disks as a place to store an operating system, applications, and data. All Azure virtual machines have at least two disks – an operating system disk and a temporary disk. Virtual machines also can have one or more data disks. All disks are stored as VHDs.
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-virtual-machines/media/virtual-machine-disks-ff57089c.png)
+
+  - **Operating system disks**
+  
+    Every virtual machine has one attached operating system disk. That OS disk has a pre-installed OS, which was selected when the VM was created. It’s registered as a SATA drive and labeled as the C: drive by default.
+  - **Temporary disk**
+
+    Data on the temporary disk may be lost during a maintenance event or when you redeploy a VM. During a standard reboot of the VM, the data on the temporary drive should persist. However, there are cases where the data may not persist, such as moving to a new host. Therefore, any data on the temp drive shouldn't be data that is critical to the system
+
+      - On Windows virtual machines, this disk is labeled as the D: drive by default and it used for storing pagefile.sys.
+      - On Linux virtual machines, the disk is typically /dev/sdb and is formatted and mounted to /mnt by the Azure Linux Agent.
+  - **Data disks**
+  
+    A data disk is a managed disk that's attached to a virtual machine to store application data, or other data you need to keep. Data disks are registered as SCSI drives and are labeled with a letter that you choose. The size of the virtual machine determines how many data disks you can attach to it and the type of storage you can use to host the disks.
+
+- **Select an operating system**
+
+### Connect to virtual machines
+
+There are several ways to access your Azure virtual machines.
+
+- **Windows-based virtual machines**
+
+  You'll use the remote desktop client (RDP) to connect to the Windows-based VM hosted on Azure. RDP provides a graphical user interface (GUI) session to an Azure VM that runs any supported version of Windows.
+
+- **Linux-based virtual machines**
+
+  To connect to a Linux-based VM, you can use a secure shell protocol (SSH) client. SSH is an encrypted connection protocol that allows secure sign-ins over unsecured connections. Depending on your organization's security policies, you can reuse a single public-private key pair to access multiple Azure VMs and services. You don't need a separate pair of keys for each VM or service you wish to access.
+
+   - The public key is placed on your Linux VM, or any other service that you wish to use with public-key cryptography.
+  - The private key remains on your local system. Protect this private key. don't share it.
+
+### Bastion connections
+
+The Azure Bastion service is a fully platform-managed PaaS service. Bastion provides secure and seamless RDP/SSH connectivity to your virtual machines directly over SSL. When you connect via Azure Bastion, your virtual machines don't need a public IP address.
+
+Bastion provides secure RDP and SSH connectivity to all VMs in the virtual network in which it's provisioned. Using Azure Bastion protects your virtual machines from exposing RDP/SSH ports to the outside world while still providing secure access using RDP/SSH. With Azure Bastion, you connect to the virtual machine directly from the Azure portal. You don't a client, agent, or another piece of software.
+
+**default network security settings for a new virtual machine Outbound requests are considered low risk, so they're allowed by default. Inbound traffic from within the virtual network is allowed.**
+
+
+## Virtual machine Availability
+
+As an Azure administrator you must be prepared for planned and unplanned failures. There are three scenarios that can lead to your virtual machine in Azure being impacted: unplanned hardware maintenance, unexpected downtime, and planned maintenance.
+
+- An Unplanned Hardware Maintenance event occurs when the Azure platform predicts that the hardware or any platform component associated to a physical machine, is about to fail. When the platform predicts a failure, it will issue an unplanned hardware maintenance event. Azure uses Live Migration technology to migrate the Virtual Machines from the failing hardware to a healthy physical machine. Live Migration is a VM preserving operation that only pauses the Virtual Machine for a short time, but performance might be reduced before and/or after the event.
+
+- Unexpected Downtime is when the hardware or the physical infrastructure for the virtual machine fails unexpectedly. Unexpected downtime can include local network failures, local disk failures, or other rack level failures. When detected, the Azure platform automatically migrates (heals) your virtual machine to a healthy physical machine in the same datacenter. During the healing procedure, virtual machines experience downtime (reboot) and in some cases loss of the temporary drive.
+
+- Planned Maintenance events are periodic updates made by Microsoft to the underlying Azure platform to improve overall reliability, performance, and security of the platform infrastructure that your virtual machines run on. Most of these updates are performed without any impact upon your Virtual Machines or Cloud Services.
+
+### Setup availability sets
+
+An Availability Set is a logical feature used to ensure that a group of related VMs are deployed so that they aren't all subject to a single point of failure and not all upgraded at the same time during a host operating system upgrade in the datacenter. VMs placed in an availability set should perform an identical set of functionalities and have the same software installed.
+
+Availability Sets are an essential capability when you want to build reliable cloud solutions. Keep these general principles in mind.
+
+- For redundancy, configure multiple virtual machines in an Availability Set.
+- Configure each application tier into separate Availability Sets.
+- Combine a Load Balancer with Availability Sets.
+- Use managed disks with the virtual machine
+
+### Service Level Agreements (SLAs)
+- For all Virtual Machines that have two or more instances deployed across two or more Availability Zones in the same Azure region, we guarantee you will have Virtual Machine Connectivity to at least one instance at least 99.99% of the time.
+- For all Virtual Machines that have two or more instances deployed in the same Availability Set, we guarantee you will have Virtual Machine Connectivity to at least one instance at least 99.95% of the time.
+- For any Single Instance Virtual Machine using premium storage for all Operating System Disks and Data Disks, we guarantee you will have Virtual Machine Connectivity of at least 99.9%.
+
+### update and fault domains
+
+Update Domains and Fault Domains help Azure maintain high availability and fault tolerance when deploying and upgrading applications. Each virtual machine in an availability set is placed in one update domain and one fault domain.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-virtual-machine-availability/media/update-fault-domains-c1ceee00.png)
+
+- **Update domains**
+An update domain (UD) is a group of nodes that are upgraded together during the process of a service upgrade (rollout). An update domain allows Azure to perform incremental or rolling upgrades across a deployment. Each update domain contains a set of virtual machines and associated physical hardware that can be updated and rebooted at the same time. During planned maintenance, only one update domain is rebooted at a time. By default, there are five (non-user-configurable) update domains, but you configure up to 20 update domains.
+
+- **Fault domains**
+A fault domain (FD) is a group of nodes that represent a physical unit of failure. A fault domain defines a group of virtual machines that share a common set of hardware, switches, that share a single point of failure. For example, a server rack serviced by a set of power or networking switches. Two fault domains mitigate against hardware failures, network outages, power interruptions, or software updates. Think of a fault domain as nodes belonging to the same physical rack.
+
+### Review availability zones
+
+Availability Zones is a high-availability offering that protects your applications and data from datacenter failures.
+
+- Availability Zones are unique physical locations within an Azure region.
+- Each zone is made up of one or more datacenters equipped with independent power, cooling, and networking.
+- To ensure resiliency, there’s a minimum of three separate zones in all enabled regions.
+- The physical separation of Availability Zones within a region protects applications and data from datacenter failures.
+- Zone-redundant services replicate your applications and data across Availability Zones to protect from single-points-of-failure.
+- With Availability Zones, Azure offers industry best 99.99% VM uptime SLA.
+
+Azure services that support Availability Zones fall into two categories:
+
+- Zonal services. Pins the resource to a specific zone (for example, virtual machines, managed disks, Standard IP addresses).
+- Zone-redundant services. Platform replicates automatically across zones (for example, zone-redundant storage, SQL Database).
+
+### vertical and horizontal scaling
+
+- Vertical scaling
+
+  ![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-virtual-machine-availability/media/vertical-scaling-cdafa792.png)
+
+  Vertical scaling, also known as scale up and scale down, means increasing or decreasing virtual machine sizes in response to a workload. Vertical scaling makes the virtual machines more (scale up) or less (scale down) powerful. Vertical scaling can be useful when:
+
+  - A service built on virtual machines is under-utilized (for example at weekends). Reducing the virtual machine size can reduce monthly costs.
+  - Increasing virtual machine size to cope with larger demand without creating additional virtual machines.
+
+- Horizontal scaling
+
+  ![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-virtual-machine-availability/media/horizontal-scaling-3e457e75.png)
+
+  Horizontal scaling, also referred to as scale out and scale in, where the number of VMs is altered depending on the workload. In this case, there is an increase (scale out) or decrease (scale in) in the number of virtual machine instances.
+
+- Vertical scaling generally has more limitations. Vertical scaling dependent on the availability of larger hardware, which quickly hits an upper limit and can vary by region. Vertical scaling also usually requires a virtual machine to stop and restart.
+- Horizontal scaling is more flexible in a cloud situation as it allows you to run potentially thousands of virtual machines to handle load.
+- Reprovisioning means removing an existing virtual machine and replacing it with a new one. Do you need to retain your data?
+
+### Implement scale sets
+
+Virtual machine scale sets are an Azure Compute resource you can use to deploy and manage a set of identical VMs. With all VMs configured the same, virtual machine scale sets are designed to support true autoscale. No pre-provisioning of VMs is required. It is easier to build large-scale services targeting big compute, big data, and containerized workloads. As demand goes up more virtual machine instances can be added. As demand goes down virtual machines instances can be removed. The process can be manual or automated or a combination of both.
+
+Scale set benefits
+- All VM instances are created from the same base OS image and configuration. This approach lets you easily manage hundreds of VMs without additional configuration tasks or network management.
+- Scale sets support the use of the Azure load balancer for basic layer-4 traffic distribution, and Azure Application Gateway for more advanced layer-7 traffic distribution and SSL termination.
+- Scale sets are used to run multiple instances of your application. If one of these VM instances has a problem, customers continue to access your application through one of the other VM instances with minimal interruption.
+- Customer demand for your application may change throughout the day or week. To match customer demand, scale sets can automatically increase the number of VM instances as application demand increases, then reduce the number of VM instances as demand decreases. This is known as autoscale.
+- Scale sets support up to 1,000 VM instances. If you create and upload your own custom VM images, the limit is 600 VM instances.
+
+### Create scale sets
+
+When you create a scale set, consider these parameters.
+
+- Initial instance count. Number of virtual machines in the scale set (0 to 1000).
+- Instance size. The size of each virtual machine in the scale set.
+- Azure spot instance. Low-priority VMs are allocated from Microsoft Azure's excess compute capacity. Spot instances enable several types of workloads to run at a reduced cost.
+- Enable scaling beyond 100 instances. If No, the scale set will be limited to one placement group with a max capacity of 100. If Yes, the scale set can span multiple placement groups. This allows for capacity to be up to 1,000 but changes the availability characteristics of the scale set.
+- Spreading algorithm. We recommend deploying with max spreading for most workloads. This approach provides the best spreading.
+
+### Implement autoscale
+
+An Azure virtual machine scale set can automatically increase or decrease the number of VM instances that run your application. This means you can dynamically scale to meet changing demand.
+
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-virtual-machine-availability/media/autoscale-45b054e0.png)
+
+Autoscale benefits
+- Automatically adjust capacity. Lets you create rules that define the acceptable performance for a positive customer experience. When those defined thresholds are met, autoscale rules act to adjust the capacity of your scale set.
+- Scale out. If your application demand increases, the load on the VM instances in your scale set increases. If this increased load is consistent, rather than just a brief demand, you can configure autoscale rules to increase the number of VM instances in the scale set.
+- Scale in. On an evening or weekend, your application demand may decrease. If this decreased load is consistent over a period of time, you can configure autoscale rules to decrease the number of VM instances in the scale set. This scale-in action reduces the cost to run your scale set as you only run the number of instances required to meet the current demand.
+- Schedule events. Schedule events to automatically increase or decrease the capacity of your scale set at fixed times.
+- Less overhead. Reduces the management overhead to monitor and optimize the performance of your application.
+
+
+### Configure autoscale
+
+When you create a scale set you can enable Autoscale. You should also define a minimum, maximum, and default number of VM instances.
+
+- Minimum number of VMs. The minimum value for autoscale on this scale set.
+- Maximum number of VMs. The maximum value for autoscale on this scale set.
+- Scale out CPU threshold. The CPU usage percentage threshold for triggering the scale-out autoscale rule.
+- Number of VMs to increase by. The number of virtual machines to add to the scale set when the scale-out autoscale rule is triggered.
+- Scale in CPU threshold. The CPU usage percentage threshold for triggering the scale in autoscale rule.
+- Number of VMs to decrease by. The number of virtual machines to remove from the scale set when the scale in autoscale rule is triggered.
+
+## Configure virtual machine extensions
+
+Creating and maintaining virtual machines can be a lot of work, and much of it is repetitive, requiring the same steps each time. Fortunately, there are several ways to automate the tasks of creating, maintaining, and removing virtual machines. One way is to use a virtual machine extension.
+
+Azure virtual machine extensions are small applications that provide post-deployment configuration and automation tasks on Azure VMs. For example, if a virtual machine requires software installation, anti-virus protection, or a configuration script inside, a VM extension can be used. Extensions are all about managing your virtual machines.
+
+Azure VM extensions can be:
+
+- Managed with Azure CLI, PowerShell, Azure Resource Manager templates, and the Azure portal.
+- Bundled with a new VM deployment or run against any existing system. For example, they can be part of a larger deployment, configuring applications on VM provision, or run against any supported extension operated systems post deployment.
+
+There are different extensions for Windows and Linux machines and a large choice of first and third-party extensions.
+
+### Implement custom script extensions
+
+A Custom Script Extension(CSE) can be used to automatically launch and execute virtual machine customization tasks post configuration. Your script extension may perform simple tasks such as stopping the virtual machine or installing a software component. However, the script could be more complex and perform a series of tasks.
+
+You can install the CSE from the Azure portal by accessing the virtual machines Extensions blade. Once the CSE resource is created, you will provide a PowerShell script file. Your script file will include the PowerShell commands you want to execute on the virtual machine. Optionally, you can pass in arguments, such as param1, param2. After the file is uploaded, it executes immediately. Scripts can be downloaded from Azure storage or GitHub, or provided to the Azure portal at extension run time.
+
+Considerations
+- Timeout. Custom Script extensions have 90 minutes to run. If your deployment exceeds this time, it is marked as a timeout. Keep this in mind when designing your script. Your virtual machine must be running to perform the tasks.
+- Dependencies. If your extension requires networking or storage access, make sure that content is available.
+- Failure events. Be sure to account for any errors that might occur when running your script. For example, running out of disk space, or security and access restrictions. What will the script do if there is an error?
+- Sensitive data. Your extension may need sensitive information such as credentials, storage account names, and storage account access keys. How will you protect/encrypt this information?
+
+### Implement desired state configuration
+
+Desired State Configuration (DSC) is a management platform in Windows PowerShell. DSC enables deploying and managing configuration data for software services and managing the environment in which these services run. DSC provides a set of Windows PowerShell language extensions, Windows PowerShell cmdlets, and resources that you can use to declaratively specify how you want your software environment to be configured. DSC also provides a means to maintain and manage existing configurations.
+
+DSC centers around creating configurations. A configuration is an easy-to-read script that describes an environment made up of computers (nodes) with specific characteristics. These characteristics can be as simple as ensuring a specific Windows feature is enabled or as complex as deploying SharePoint. Use DSC when the CSE will not work for your application.
+
+      configuration IISInstall
+      {
+      Node “localhost”
+      {
+      WindowsFeature IIS
+      {
+      Ensure = “Present”
+      Name = “Web-Server”
+      } } }
+
+The DSC script consists of a Configuration block, Node block, and one or more resource blocks.
+
+- The Configuration block. This is the outermost script block. You define it by using the Configuration keyword and providing a name. In the example, the name of the configuration is IISInstall.
+- One or more Node blocks. Node blocks define the computers or VMs that you are configuring. In the example, there is one Node block that targets a computer named "localhost".
+- One or more resource blocks. Resource blocks configure the resource properties. In the example, there is one resource block that uses WindowsFeature. WindowsFeature indicates the name (Web-Server) of the role or feature that you want to ensure is added or removed. Ensure indicates if the role or feature is added. Your choices are Present and Absent.
+
+## app service plans
+
+In App Service, an app runs in an App Service plan. An App Service plan defines a set of compute resources for a web app to run. These compute resources are analogous to the server farm in conventional web hosting. One or more apps can be configured to run on the same computing resources (or in the same App Service plan).
+
+Each App Service plan defines:
+
+- Region (West US, East US, etc.)
+- Number of VM instances
+- Size of VM instances (Small, Medium, Large)
+
+
+### How the app runs and scales
+In the Free and Shared tiers, an app receives CPU minutes on a shared VM instance and cannot scale out. In other tiers, an app runs and scales as follows.
+
+When you create an app in App Service, it is put into an App Service plan. When the app runs, it runs on all the VM instances configured in the App Service plan. If multiple apps are in the same App Service plan, they all share the same VM instances. If you have multiple deployment slots for an app, all deployment slots also run on the same VM instances. If you enable diagnostic logs, perform backups, or run WebJobs, they also use CPU cycles and memory on these VM instances.
+
+In this way, the App Service plan is the scale unit of the App Service apps. If the plan is configured to run five VM instances, then all apps in the plan run on all five instances. If the plan is configured for autoscaling, then all apps in the plan are scaled out together based on the autoscale settings.
+
+### Considerations
+Since you pay for the computing resources your App Service plan allocates, you can potentially save money by putting multiple apps into one App Service plan. You can continue to add apps to an existing plan as long as the plan has enough resources to handle the load. However, keep in mind that apps in the same App Service plan all share the same compute resources. To determine whether the new app has the necessary resources, you need to understand the capacity of the existing App Service plan, and the expected load for the new app. Overloading an App Service plan can potentially cause downtime for your new and existing apps. Isolate your app into a new App Service plan when:
+
+- The app is resource-intensive.
+- You want to scale the app independently from the other apps in the existing plan.
+- The app needs resource in a different geographical region.
+
+##  Determine app service plan pricing
+
+The pricing tier of an App Service plan determines what App Service features you get and how much you pay for the plan. There are a few categories of pricing tiers.
+
+Selected Feature|	Free|	Shared|	Basic|	Standard|	Premium	|Isolated|
+|-|-|-|-|-|-|-|
+Usage|	dev/test|	dev/test|	dedicated dev/test|	production workloads	|enhanced scale and performance|	high performance, security, and isolation
+Web, mobile, or API apps|	10|	100|	Unlimited|	Unlimited	|Unlimited	|Unlimited
+Disk space|	1 GB|	1 GB	|10 GB|	50 GB|	250 GB|	1 TB|
+Auto scale	|-|	-|	-|	Supported|	Supported|	Supported
+Deployment slots	|-|	-|	-|	5|	20|	20|
+Max instances|	-|	-|	Up to 3|	Up to 10|	Up to 30|	Up to 100
+
+
+- Free and Shared. The Free and Shared service plans are base tiers that run on the same Azure VMs as other apps. Some apps may belong to other customers. These tiers are intended to be used only for development and testing purposes. There is no SLA provided for Free and Shared service plans. Free and Shared plans are metered on a per App basis.
+- Basic. The Basic service plan is designed for apps that have lower traffic requirements, and don't need advanced auto scale and traffic management features. Pricing is based on the size and number of instances you run. Built-in network load-balancing support automatically distributes traffic across instances. The Basic service plan with Linux runtime environments supports Web App for Containers.
+- Standard. The Standard service plan is designed for running production workloads. Pricing is based on the size and number of instances you run. Built-in network load-balancing support automatically distributes traffic across instances. The Standard plan includes auto scale that can automatically adjust the number of virtual machine instances running to match your traffic needs. The Standard service plan with Linux runtime environments supports Web App for Containers.
+- Premium. The Premium service plan is designed to provide enhanced performance for production apps. The upgraded Premium plan, Premium v2, features Dv2-series VMs with faster processors, SSD storage, and double memory-to-core ratio compared to Standard. The new Premium plan also supports higher scale via increased instance count while still providing all the advanced capabilities found in the Standard plan. The first generation of Premium plan is still available for existing customers’ scaling needs.
+- Isolated. The Isolated service plan is designed to run mission critical workloads, that are required to run in a virtual network. The Isolated plan allows customers to run their apps in a private, dedicated environment in an Azure datacenter using Dv2-series VMs with faster processors, SSD storage, and double the memory-to-core ratio compared to Standard. The private environment used with an Isolated plan is called the App Service Environment. The plan can scale to 100 instances with more available upon request.
+
+### Scale up and scale out the app service
+
+There are two methods for Web App scaling, scale up and scale out. Apps can be scaled manually or automatically (autoscale).
+
+- Scale up. Get more CPU, memory, disk space, and extra features like dedicated virtual machines (VMs), custom domains and certificates, staging slots, autoscaling, and more. You scale up by changing the pricing tier of the App Service plan that your app belongs to.
+
+- Scale out: Increase the number of VM instances that run your app. You can scale out to as many as 30 instances, depending on your pricing tier. App Service Environments in Isolated tier further increases your scale-out count to 100 instances. The scale instance count can be configured manually or automatically (autoscale). Autoscale is based on predefined rules and schedules.
+
+### Changing your App Service plan (scale up)
+
+Your App Service plan can be scaled up and down at any time. It's as simple as changing the pricing tier of the plan. You can choose a lower pricing tier at first and scale up later when you need more App Service features.
+
+
+- The scale settings take only seconds to apply and affect all apps in your App Service plan. They don't require you to change your code or redeploy your application.
+- If your app depends on other services, such as Azure SQL Database or Azure Storage, you can scale up these resources separately. These resources aren't managed by the App Service plan.
+
+### Configure app service plan scaling
+
+Autoscale allows you to have the right amount of resources running to handle the load on your application. It allows you to add resources to handle increases in load and also save money by removing resources that are sitting idle. You specify a minimum and maximum number of instances to run and add or remove VMs automatically based on a set of rules. When rule conditions are met, one or more autoscale actions are triggered.
+
+An autoscale setting is read by the autoscale engine to determine whether to scale out or in. Autoscale settings are grouped into profiles.
+
+Rules include a trigger and a scale action (in or out). The trigger can be metric-based or time-based.
+
+- Metric-based. Metric-based rules measure application load and add or remove VMs based on that load. For example, do this action when CPU usage is above 50%. Examples of metrics are CPU time, Average response time, and Requests.
+- Time-based. Time-based (schedule-based) rules allow you to scale when you see time patterns in your load and want to scale before a possible load increase or decrease occurs. For example, trigger a webhook every 8am on Saturday in a given time zone.
+
+Considerations
+- Having a minimum instance count makes sure your application is always running even under no load.
+- Having a maximum instance count limits your total possible hourly cost.
+- You can automatically scale between the minimum and maximum using rules you create.
+- Ensure the maximum and minimum values are different and have an adequate margin between them.
+- Always use a scale-out and scale-in rule combination that performs an increase and decrease.
+- Choose the appropriate statistic for your diagnostics metric (Average, Minimum, Maximum and Total).
+- Always select a safe default instance count. The default instance count is important because autoscale scales your service to that count when metrics are not available.
+- Always configure autoscale notifications.
+
+## Configure Azure App Services
+
+Azure App Service brings together everything you need to create websites, mobile backends, and web APIs for any platform or device. Applications run and scale with ease on both Windows and Linux-based environments. There are many deployment choices.
+
+### Reasons to use App Services
+- Multiple languages and frameworks. App Service has first-class support for ASP.NET, Java, Ruby, Node.js, PHP, or Python. You can also run PowerShell and other scripts or executables as background services.
+- DevOps optimization. Set up continuous integration and deployment with Azure DevOps, GitHub, BitBucket, Docker Hub, or Azure Container Registry. Promote updates through test and staging environments. Manage your apps in App Service by using Azure PowerShell or the cross-platform command-line interface (CLI).
+- Global scale with high availability. Scale up or out manually or automatically. Host your apps anywhere in Microsoft's global datacenter infrastructure, and the App Service SLA promises high availability.
+- Connections to SaaS platforms and on-premises data. Choose from more than 50 connectors for enterprise systems (such as SAP), SaaS services (such as Salesforce), and internet services (such as Facebook). Access on-premises data using Hybrid Connections and Azure Virtual Networks.
+- Security and compliance. App Service is ISO, SOC, and PCI compliant. Authenticate users with Azure Active Directory or with social login (Google, Facebook, Twitter, and Microsoft). Create IP address restrictions and manage service identities.
+- Application templates. Choose from an extensive list of application templates in the Azure Marketplace, such as WordPress, Joomla, and Drupal.
+- Visual Studio integration. Dedicated tools in Visual Studio streamline the work of creating, deploying, and debugging.
+- API and mobile features. App Service provides turn-key CORS support for RESTful API scenarios, and simplifies mobile app scenarios by enabling authentication, offline data sync, push notifications, and more.
+- Serverless code. Run a code snippet or script on-demand without having to explicitly provision or manage infrastructure and pay only for the compute time your code actually uses.
+
+### Create an app service
+
+When creating an App Service, you will need to specify a resource group and service plan. Then there are few other configuration choices. You may need to ask your developer for assistance in completing this information.
+
+- Name. The name must be unique and will be used to locate your app. For example, webappces1.azurewebsites.net. You can map a custom domain name, if you prefer to use that instead.
+- Publish. The App service can host either Code or a Docker Container.
+- Runtime stack. The software stack to run the app, including the language and SDK versions. For Linux apps and custom container apps, you can also set an optional start-up command or file. Choices include: .NET Core, .NET Framework, Node.js, PHP, Python, and Ruby. Various versions of each are available.
+- Operating system. Choices are Linux and Windows.
+- Region. Your choice will affect app service plan availability.
+
+### Application settings
+Once your app service is created, additional configuration information is available.
+
+Certain configuration settings can be included in the developer's code or configurated in the app service. Here are a few interesting settings.
+
+- Always On. Keep the app loaded even when there's no traffic. It's required for continuous WebJobs or for WebJobs that are triggered using a CRON expression.
+- ARR affinity. In a multi-instance deployment, ensure that the client is routed to the same instance for the life of the session.
+- Connection strings. Connection strings are encrypted at rest and transmitted over an encrypted channel.
+
+### Explore continuous integration and deployment
+
+The Azure portal provides out-of-the-box continuous integration and deployment with Azure DevOps, GitHub, Bitbucket, FTP, or a local Git repository on your development machine. Connect your web app with any of the above sources and App Service will do the rest for you by auto-syncing code and any future changes on the code into the web app. Furthermore, with Azure DevOps, you can define your own build and release process that compiles your source code, runs the tests, builds a release, and finally deploys the release into your web app every time you commit the code. All that happens implicitly without any need to intervene.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-app-services/media/continuous-development-a0dfd350.png)
+
+- Automated deployment
+
+  Automated deployment, or continuous integration, is a process used to push out new features and bug fixes in a fast and repetitive pattern with minimal impact on end users. Azure supports automated deployment directly from several sources. The following options are available:
+
+  - Azure DevOps: You can push your code to Azure DevOps (previously known as Visual Studio Team Services), build your code in the cloud, run the tests, generate a release from the code, and finally, push your code to an Azure Web App.
+  - GitHub: Azure supports automated deployment directly from GitHub. When you connect your GitHub repository to Azure for automated deployment, any changes you push to your production branch on GitHub will be automatically deployed for you.
+  - Bitbucket: With its similarities to GitHub, you can configure an automated deployment with Bitbucket.
+- Manual deployment
+  There are a few options that you can use to manually push your code to Azure:
+
+  - Git: App Service web apps feature a Git URL that you can add as a remote repository. Pushing to the remote repository will deploy your app.
+  - CLI: webapp up is a feature of the command-line interface that packages your app and deploys it. Deployment can include creating a new App Service web app.
+  - Visual Studio: Visual Studio features an App Service deployment wizard that can walk you through the deployment process.
+  - FTP/S: FTP or FTPS is a traditional way of pushing your code to many hosting environments, including App Service.
+
+
+### Create deployment slots
+
+When you deploy your web app, web app on Linux, mobile back end, or API app to Azure App Service, you can use a separate deployment slot instead of the default production slot when you're running in the Standard, Premium, or Isolated App Service plan tier. Deployment slots are live apps with their own hostnames. App content and configurations elements can be swapped between two deployment slots, including the production slot.
+
+- Deployment slot advantages
+Using separate staging and production slots has several advantages.
+
+  - You can validate app changes in a staging deployment slot before swapping it with the production slot.
+  - Deploying an app to a slot first and swapping it into production ensures that all instances of the slot are warmed up before being swapped into production. This eliminates downtime when you deploy your app. The traffic redirection is seamless, and no requests are dropped because of swap operations. This entire workflow can be automated by configuring Auto Swap when pre-swap validation is not needed.
+  - After a swap, the slot with previously staged app now has the previous production app. If the changes swapped into the production slot are not as you expected, you can perform the same swap immediately to get your “last known good site” back.
+
+Auto swap streamlines Azure DevOps scenarios where you want to deploy your app continuously with zero cold starts and zero downtime for customers of the app. When auto swap is enabled from a slot into production, every time you push your code changes to that slot, App Service automatically swaps the app into production after it's warmed up in the source slot. Auto swap isn't currently supported in web apps on Linux.
+
+### Add deployment slots
+
+New deployment slots can be empty or cloned. When you clone a configuration from another deployment slot, the cloned configuration is editable. Some configuration elements follow the content across a swap (not slot specific), whereas other configuration elements stay in the same slot after a swap (slot specific). Deployment slot settings fall into three categories.
+
+- Slot-specific app settings and connection strings, if applicable.
+- Continuous deployment settings, if enabled.
+- App Service authentication settings, if enabled.
+
+**Settings that are swapped:**
+
+- General settings, such as framework version, 32/64-bit, web sockets
+- App settings (can be configured to stick to a slot)
+- Connection strings (can be configured to stick to a slot)
+- Handler mappings
+- Public certificates
+- WebJobs content
+- Hybrid connections *
+- Service endpoints *
+- Azure Content Delivery Network *
+
+Features marked with an asterisk (*) are planned to be unswapped.
+
+**Settings that aren't swapped:**
+
+- Publishing endpoints
+- Custom domain names
+- Non-public certificates and TLS/SSL settings
+- Scale settings
+- WebJobs schedulers
+- IP restrictions
+- Always On
+- Diagnostic settings
+- Cross-origin resource sharing (CORS)
+- Virtual network integration
+
+### Secure an app service
+
+Azure App Service provides built-in authentication and authorization support, so you can sign in users and access data by writing minimal or no code in your web app, API, and mobile back end, and also Azure Functions.
+
+Secure authentication and authorization requires deep understanding of security, including federation, encryption, JSON web tokens (JWT) management, grant types, and so on. App Service provides these utilities so that you can spend more time and energy on providing business value to your customer.
+
+The authentication and authorization module runs in the same sandbox as your application code. When it's enabled, every incoming HTTP request passes through it before being handled by your application code. This module handles several things for your app:
+
+- Authenticates users with the specified provider.
+- Validates, stores, and refreshes tokens.
+- Manages the authenticated session.
+- Injects identity information into request headers.
+
+The module runs separately from your application code and is configured using app settings. No SDKs, specific languages, or changes to your application code are required.
+
+Configuration settings
+In the Azure portal, you can configure App Service with a number of behaviors:
+
+1. Allow Anonymous requests (no action): This option defers authorization of unauthenticated traffic to your application code. For authenticated requests, App Service also passes along authentication information in the HTTP headers.This option provides more flexibility in handling anonymous requests. It lets you present multiple sign-in providers to your users.
+
+2. Allow only authenticated requests: The option is Log in with <provider>. App Service redirects all anonymous requests to /.auth/login/<provider> for the provider you choose. If the anonymous request comes from a native mobile app, the returned response is an HTTP 401 Unauthorized. With this option, you don't need to write any authentication code in your app.
+
+### Logging and tracing
+
+If you enable application logging, you will see authentication and authorization traces directly in your log files. If you see an authentication error that you didn’t expect, you can conveniently find all the details by looking in your existing application logs. If you enable failed request tracing, you can see exactly what role the authentication and authorization module may have played in a failed request. In the trace logs, look for references to a module named EasyAuthModule_32/64.
+
+### Create custom domain names
+
+When you create a web app, Azure assigns it to a subdomain of azurewebsites.net. For example, if your web app is named contoso, the URL is contoso.azurewebsites.net. Azure also assigns a virtual IP address. For a production web app, you may want users to see a custom domain name.
+
+1. Reserve your domain name. If you haven't already registered for an external domain name (i.e. not *.azurewebsites.net) already, the easiest way to set up a custom domain is to buy one directly in the Azure portal. The process enables you to manage your web app's domain name directly in the Portal instead of going to a third-party site to manage it. Likewise, configuring the domain name in your web app is greatly simplified. If you do not use the portal, you can use any domain registrar. When you sign up, the registration site will help you through the process.
+2. Create DNS records that map the domain to yourAzure web app. The Domain Name System (DNS) uses data records to map domain names into IP addresses. There are several types of DNS records. For web apps, you’ll create either an A record or a CNAME record. If the IP address changes, a CNAME entry is still valid, whereas an A record must be updated. However, some domain registrars do not allow CNAME records for the root domain or for wildcard domains. In that case, you must use  an A record.
+   - An A (Address) record maps a domain name to an IP address.
+   - A CNAME (Canonical Name) record maps a domain name to another domain name. DNS uses the second name to look up the address. Users still see the first domain name in their browser. For example, you could map contoso.com to your webapp.azurewebsites.net.
+3. Enable the custom domain. After obtaining your domain and creating your DNS record, you can use the portal to validate the custom domain and add it to your web app. Be sure to test.
+
+To map a custom DNS name to a web app, the web app's App Service plan must be a paid tier.
+
+### Back up an app service
+
+The Backup and Restore feature in Azure App Service lets you easily create app backups manually or on a schedule. You can configure the backups to be retained up to an indefinite amount of time. You can restore the app to a snapshot of a previous state by overwriting the existing app or restoring to another app.
+
+App Service can back up the following information to an Azure storage account and container that you have configured your app to use.
+
+- App configuration.
+- File content.
+- Database connected to your app (SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL, MySQL in-app).
+
+### Considerations
+- The Backup and Restore feature requires the App Service plan to be in the Standard tier or Premium tier.
+- You can configure backups manually or on a schedule.
+- You need an Azure storage account and container in the same subscription as the app that you want to back up. After you have made one or more backups for your app, the backups are visible on the Containers page of your storage account, and your app. In the storage account, each backup consists of a.zip file that contains the backup data and an .xml file that contains a manifest of the .zip file contents. You can unzip and browse these files if you want to access your backups without actually performing an app restore.
+- Full backups are the default. When a full backup is restored, all content on the site is replaced with whatever is in the backup. If a file is on the site, but not in the backup it gets deleted.
+- Partial backups are supported. Partial backups allow you choose exactly which files you want to back up. When a partial backup is restored, any content that is located in one of the excluded directories, or any excluded file, is left as is. You restore partial backups of your site the same way you would restore a regular backup.
+- You can exclude files and folders you do not want in the backup.
+- Backups can be up to 10 GB of app and database content.
+- Using a firewall enabled storage account as the destination for your backups is not supported.
+
+### Application Insights
+
+Application Insights, a feature of Azure Monitor, monitors your live applications. It will automatically detect performance anomalies, and includes powerful analytics tools to help you diagnose issues and to understand what users actually do with your app. It's designed to help you continuously improve performance and usability. Insights works on various platforms including .NET, Node.js and Java EE, hosted on-premises, hybrid, or any public cloud. It integrates with your DevOps process, and has connection points to a variety of development tools. It can monitor and analyze data from mobile apps by integrating with Visual Studio App Center.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-app-services/media/app-insights-16629887.png)
+
+## Azure Container Instances
+
+Compare containers to virtual machines
+
+Feature|Containers|Virtual Machines
+|-|-|-|
+Isolation|Typically provides lightweight isolation from the host and other containers but doesn't provide as strong a security boundary as a virtual machine.|Provides complete isolation from the host operating system and other VMs. This is useful when a strong security boundary is critical, such as hosting apps from competing companies on the same server or cluster.
+Operating system|Runs the user mode portion of an operating system and can be tailored to contain just the needed services for your app, using fewer system resources.|Runs a complete operating system including the kernel, thus requiring more system resources (CPU, memory, and storage).
+Deployment|Deploy individual containers by using Docker via command line; deploy multiple containers by using an orchestrator such as Azure Kubernetes Service.|Deploy individual VMs by using Windows Admin Center or Hyper-V Manager; deploy multiple VMs by using PowerShell or System Center Virtual Machine Manager.
+Persistent storage|Use Azure Disks for local storage for a single node, or Azure Files (SMB shares) for storage shared by multiple nodes or servers.|Use a virtual hard disk (VHD) for local storage for a single VM, or an SMB file share for storage shared by multiple servers.|
+Fault tolerance|If a cluster node fails, any containers running on it are rapidly recreated by the orchestrator on another cluster node.|VMs can fail over to another server in a cluster, with the VM's operating system restarting on the new server.
+
+### Container advantages
+
+Containers offer several advantages over physical and virtual machines, including:
+
+- Increased flexibility and speed when developing and sharing the application code.
+- Simplified application testing.
+- Streamlined and accelerated application deployment.
+- Higher workload density, resulting in improved resource utilization.
+
+### Azure container instances
+
+Containers are becoming the preferred way to package, deploy, and manage cloud applications. Azure Container Instances offers the fastest and simplest way to run a container in Azure, without having to manage any virtual machines and without having to adopt a higher-level service. Azure Container Instances is a great solution for any scenario that can operate in isolated containers, including simple applications, task automation, and build jobs.
+
+Feature|Description
+|-|-|
+Fast Startup Times|Containers can start in seconds without the need to provision and manage virtual machines.
+Public IP Connectivity and DNS Names|Containers can be directly exposed to the internet with an IP address and FQDN.
+Hypervisor-level Security|Container applications are as isolated in a container as they would be in a virtual machine.
+Custom Sizes|Container nodes can be scaled dynamically to match actual resource demands for an application.
+Persistent Storage|Containers support direct mounting of Azure File Shares.
+Linux and Windows Containers|Container instances can schedule both Windows and Linux containers. Simply specify the OS type when you create your container groups.
+Coscheduled Groups|Container instances supports scheduling of multi-container groups that share host machine resources.
+Virtual Network Deployment|Container instances can be deployed into an Azure virtual network.
+
+### Implement container groups
+
+
+The top-level resource in Azure Container Instances is the container group. A container group is a collection of containers that get scheduled on the same host machine. The containers in a container group share a lifecycle, resources, local network, and storage volumes. It's similar in concept to a pod in Kubernetes.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-container-instances/media/container-groups-ea19ee6b.png)
+
+An example container group:
+
+- Is scheduled on a single host machine.
+- Is assigned a DNS name label.
+- Exposes a single public IP address, with one exposed port.
+- Consists of two containers. One container listens on port 80, while the other listens on port 1433.
+- Includes two Azure file shares as volume mounts, and each container mounts one of the shares locally.
+
+### Deployment options
+Here are two common ways to deploy a multi-container group: use a Resource Manager template or a YAML file. A Resource Manager template is recommended when you need to deploy additional Azure service resources (for example, an Azure Files share) when you deploy the container instances. Due to the YAML format's more concise nature, a YAML file is recommended when your deployment includes only container instances.
+
+### Resource allocation
+Azure Container Instances allocates resources such as CPUs, memory, and optionally GPUs to a multi-container group by adding the resource requests of the instances in the group. Taking CPU resources as an example, if you create a container group with two container instances, each requesting one CPU, then the container group is allocated 2 CPUs.
+
+### Networking
+Container groups can share an external-facing IP address, one or more ports on that IP address, and a DNS label with a fully qualified domain name (FQDN). To enable external clients to reach a container within the group, you must expose the port on the IP address and from the container. Because containers within the group share a port namespace, port mapping isn't supported. A container group's IP address and FQDN will be released when the container group is deleted.
+
+### Common scenarios
+Multi-container groups are useful in cases where you want to divide a single functional task into a small number of container images. These images can then be delivered by different teams and have separate resource requirements. Example usage could include:
+
+- A container serving a web application and a container pulling the latest content from source control.
+- An application container and a logging container. The logging container collects the logs and metrics output by the main application and writes them to long-term storage.
+- An application container and a monitoring container. The monitoring container periodically makes a request to the application to ensure that it's running and responding correctly, and raises an alert if it's not.
+- A front-end container and a back-end container. The front end might serve a web application, with the back end running a service to retrieve data.
+
+### docker platform
+
+Docker is a platform that enables developers to host applications within a container.
+
+A container is essentially a standalone package that contains everything that is needed to execute a piece of software. The package includes:
+
+- The application executable code.
+- The runtime environment (such as .NET Core).
+- System tools.
+- Settings.
+
+### Docker terminology
+You should be familiar with the following key terms before using Docker and Container Instances to create, build, and test containers:
+
+- Container. Container is an instance of a Docker image. It represents the execution of a single application, process, or service. It consists of the contents of a Docker image, an execution environment, and a standard set of instructions. When scaling a service, you create multiple instances of a container from the same image. Or a batch job can create multiple containers from the same image, passing different parameters to each instance.
+- Container image. Container image refers to a package with all the dependencies and information required to create a container. The dependencies include frameworks and the deployment and execution configuration that a container runtime uses. Usually, an image derives from multiple base images that are layers stacked on top of each other to form the container's file system. An image is immutable once it has been created.
+- Build. Build refers to the action of building a container image based on the information and context provided by the Dockerfile. The build also includes any other files that are needed. You build images by using the Docker docker build command.
+- Pull. Pull refers to the process of downloading a container image from a container registry.
+-Push. Push refers to the process of uploading a container image to a container registry.
+- Dockerfile. Dockerfile refers to a text file that contains instructions on how to build a Docker image. The Dockerfile is like a batch script. The first line identifies the base image. The rest of the file includes the build actions.
+
+## Azure Kubernetes Service
+
+### AKS terminology
+
+- Pools are groups of nodes with identical configurations.
+
+- Nodes are individual virtual machines running containerized applications.
+
+- Pods are a single instance of an application. A pod can contain multiple containers.
+
+- Container is a lightweight and portable executable image that contains software and all of its dependencies.
+
+- Deployment has one or more identical pods managed by Kubernetes.
+
+- Manifest is the YAML file describing a deployment.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-kubernetes-service/media/kubernetes-terms-ee59aa6e.png)
+
+### AKS cluster and node architecture
+
+A Kubernetes cluster is divided into two components:
+
+- Azure-managed nodes, which provide the core Kubernetes services and orchestration of application workloads.
+- Customer-managed nodes that run your application workloads.
+
+### Azure-managed node
+When you create an AKS cluster, a cluster node is automatically created and configured. This node is provided as a managed Azure resource abstracted from the user. You pay only for running agent nodes
+
+### Nodes and node pools
+To run your applications and supporting services, you need a Kubernetes node. An AKS cluster contains one or more nodes (Azure Virtual Machines) that run the Kubernetes node components and the container runtime.
+
+- The kubelet is the Kubernetes agent that processes the orchestration requests from the Azure-managed node, and scheduling of running the requested containers.
+- Virtual networking is handled by the kube-proxy on each node. The proxy routes network traffic and manages IP addressing for services and pods.
+- The container runtime is the component that allows containerized applications to run and interact with additional resources such as the virtual network and storage. AKS clusters using Kubernetes version 1.19 node pools and greater use containerd as its container runtime. AKS clusters using Kubernetes prior to v1.19 for node pools use Moby (upstream docker) as its container runtime.
+
+Nodes of the same configuration are grouped together into node pools. A Kubernetes cluster contains one or more node pools. The initial number of nodes and size are defined when you create an AKS cluster, which creates a default node pool. This default node pool in AKS contains the underlying VMs that run your agent nodes.
+
+### AKS networking
+
+To allow access to your applications, or for application components to communicate with each other, Kubernetes provides an abstraction layer to virtual networking. Kubernetes nodes are connected to a virtual network, and can provide inbound and outbound connectivity for pods. The kube-proxy component runs on each node to provide these network features.
+
+The Azure platform also helps to simplify virtual networking for AKS clusters. When you create a Kubernetes load balancer, the underlying Azure load balancer resource is created and configured. As you open network ports to pods, the corresponding Azure network security group rules are configured. For HTTP application routing, Azure can also configure external DNS as new ingress routes are configured.
+
+### Services
+To simplify the network configuration for application workloads, Kubernetes uses Services to logically group a set of pods together and provide network connectivity. The following Service types are available:
+
+- Cluster IP - Creates an internal IP address for use within the AKS cluster. Good for internal-only applications that support other workloads within the cluster.
+- NodePort - Creates a port mapping on the underlying node that allows the application to be accessed directly with the node IP address and port.
+- LoadBalancer - Creates an Azure load balancer resource, configures an external IP address, and connects the requested pods to the load balancer backend pool. To allow customers traffic to reach the application, load-balancing rules are created on the desired ports.
+- ExternalName - Creates a specific DNS entry for easier application access
+
+### Pods
+Kubernetes uses pods to run an instance of your application. A pod represents a single instance of your application. Pods typically have a 1:1 mapping with a container, although there are advanced scenarios where a pod might contain multiple containers. These multi-container pods are scheduled together on the same node, and allow containers to share related resources.
+
+A pod is a logical resource, but the container (or containers) is where the application workloads run. Pods are typically ephemeral, disposable resources. Therefore, individually scheduled pods miss some of the high availability and redundancy features Kubernetes provides. Instead, pods are usually deployed and managed by Kubernetes controllers, such as the Deployment controller.
+
+### AKS storage
+
+Applications that run in Azure Kubernetes Service (AKS) may need to store and retrieve data. For some application workloads, this data storage can use local, fast storage on the node that is no longer needed when the pods are deleted. Other application workloads may require storage that persists on more regular data volumes within the Azure platform. Multiple pods may need to share the same data volumes, or reattach data volumes if the pod is rescheduled on a different node. Finally, you may need to inject sensitive data or application configuration information into pods.
+
+This section introduces the core concepts that provide storage to your applications in AKS:
+
+- **Volumes**
+
+  Applications often need to be able to store and retrieve data. As Kubernetes typically treats individual pods as ephemeral, disposable resources, different approaches are available for applications use and persist data as necessary. A volume represents a way to store, retrieve, and persist data across pods and through the application lifecycle.
+  These data volumes can use Azure Disks or Azure Files:
+
+  - Azure Disks can be used to create a Kubernetes DataDisk resource. Disks can use Azure Premium storage, backed by high-performance SSDs, or Azure Standard storage, backed by regular HDDs. For most production and development workloads, use Premium storage. Azure Disks are mounted as ReadWriteOnce, so are only available to a single node. For storage volumes that can be accessed by multiple nodes simultaneously, use Azure Files.
+  - Azure Files can be used to mount an SMB 3.0 share backed by an Azure Storage account to pods. Files let you share data across multiple nodes and pods. Files can use Azure Standard storage backed by regular HDDs, or Azure Premium storage, backed by high-performance SSDs.
+
+
+- **Persistent volumes**
+  Volumes are defined and created as part of the pod lifecycle only exist until the pod is deleted. Pods often expect their storage to remain if a pod is rescheduled on a different host during a maintenance event, especially in StatefulSets. A persistent volume (PV) is a storage resource created and managed by the Kubernetes API that can exist beyond the lifetime of an individual pod.
+
+  Azure Disks or Files are used to provide the PersistentVolume. As noted in the previous section on Volumes, the choice of Disks or Files is often determined by the need for concurrent access to the data or the performance tier
+
+  A PersistentVolume can be statically created by a cluster administrator, or dynamically created by the Kubernetes API server. If a pod is scheduled and requests storage that is not currently available, Kubernetes can create the underlying Azure Disk or Files storage and attach it to the pod. Dynamic provisioning uses a StorageClass to identify what type of Azure storage needs to be created.
+
+
+- **Storage classes**
+
+  To define different tiers of storage, such as Premium and Standard, you can create a StorageClass. The StorageClass also defines the reclaimPolicy. This reclaimPolicy controls the behavior of the underlying Azure storage resource when the pod is deleted and the persistent volume may no longer be required. The underlying storage resource can be deleted, or retained for use with a future pod.
+
+  In AKS, four initial StorageClasses are created for cluster using the in-tree storage plugins:
+
+    - default - Uses Azure StandardSSD storage to create a Managed Disk. The reclaim policy ensures that the underlying Azure Disk is deleted when the persistent volume that used it is deleted.
+   - managed-premium - Uses Azure Premium storage to create a Managed Disk. The reclaim policy again ensures that the underlying Azure Disk is deleted when the persistent volume that used it is deleted.
+  - azurefile - Uses Azure Standard storage to create an Azure File Share. The reclaim policy ensures that the underlying Azure File Share is deleted when the persistent volume that used it is deleted.
+  - azurefile-premium - Uses Azure Premium storage to create an Azure File Share. The reclaim policy ensures that the underlying Azure File Share is deleted when the persistent volume that used it is deleted.
+
+  If no StorageClass is specified for a persistent volume, the default StorageClass is used. Take care when requesting persistent volumes so that they use the appropriate storage you need. You can create a StorageClass for additional needs using kubectl.
+
+- **Persistent volume claims**
+
+  A PersistentVolumeClaim requests either Disk or File storage of a particular StorageClass, access mode, and size. The Kubernetes API server can dynamically provision the underlying storage resource in Azure if there is no existing resource to fulfill the claim based on the defined StorageClass. The pod definition includes the volume mount once the volume has been connected to the pod.
+
+  A PersistentVolume is bound to a PersistentVolumeClaim once an available storage resource has been assigned to the pod requesting it. There is a 1:1 mapping of persistent volumes to claims.
+
+
+### AKS scaling
+
+As you run applications in Azure Kubernetes Service (AKS), you may need to increase or decrease the amount of compute resources. As the number of application instances you need change, the number of underlying Kubernetes nodes may also need to change. You may also need to quickly provision a large number of additional application instances.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-kubernetes-service/media/kubernetes-scale-a7fff281.png)
+
+### Manually scale pods or nodes
+You can manually scale replicas (pods) and nodes to test how your application responds to a change in available resources and state. Manually scaling resources also lets you define a set amount of resources to use to maintain a fixed cost, such as the number of nodes. To manually scale, you define the replica or node count, and the Kubernetes API schedules creating new pods or draining nodes.
+
+### Horizontal pod autoscaler
+Kubernetes uses the horizontal pod autoscaler (HPA) to monitor the resource demand and automatically scale the number of replicas. By default, the horizontal pod autoscaler checks the Metrics API every 30 seconds for any required changes in replica count. When changes are required, the number of replicas is increased or decreased accordingly. Horizontal pod autoscaler works with AKS clusters that have deployed the Metrics Server for Kubernetes 1.8+.
+
+When you configure the horizontal pod autoscaler for a given deployment, you define the minimum and maximum number of replicas that can run. You also define the metric to monitor and base any scaling decisions on, such as CPU usage.
+
+### Cooldown of scaling events
+As the horizontal pod autoscaler checks the Metrics API every 30 seconds, previous scale events may not have successfully completed before another check is made. This behavior could cause the horizontal pod autoscaler to change the number of replicas before the previous scale event has been able to receive application workload and the resource demands to adjust accordingly.
+
+To minimize these race events, cooldown or delay values can be set. These values define how long the horizontal pod autoscaler must wait after a scale event before another scale event can be triggered. This behavior allows the new replica count to take effect and the Metrics API reflect the distributed workload. By default, the delay on scale up events is 3 minutes, and the delay on scale down events is 5 minutes
+
+You may need to tune these cooldown values. The default cooldown values may give the impression that the horizontal pod autoscaler isn't scaling the replica count quickly enough. For example, to more quickly increase the number of replicas in use, reduce the --horizontal-pod-autoscaler-upscale-delay when you create your horizontal pod autoscaler definitions using kubectl.
+
+### Cluster autoscaler
+To respond to changing pod demands, Kubernetes has a cluster autoscaler that adjusts the number of nodes based on the requested compute resources in the node pool. By default, the cluster autoscaler checks the API server every 10 seconds for any required changes in node count. If the cluster autoscale determines that a change is required, the number of nodes in your AKS cluster is increased or decreased accordingly. The cluster autoscaler works with RBAC-enabled AKS clusters that run Kubernetes 1.10.x or higher.
+
+Cluster autoscaler is typically used alongside the horizontal pod autoscaler. When combined, the horizontal pod autoscaler increases or decreases the number of pods based on application demand, and the cluster autoscaler adjusts the number of nodes as needed to run those additional pods accordingly.
+
+### Scale out events
+If a node does not have sufficient compute resources to run a requested pod, that pod cannot progress through the scheduling process. The pod cannot start unless other compute resources are available within the node pool.
+
+When the cluster autoscaler notices pods that cannot be scheduled due to node pool resource constraints, the number of nodes within the node pool is increased to provide the extra compute resources. When those additional nodes are successfully deployed and available for use within the node pool, the pods are then scheduled to run on them.
+
+If your application needs to scale rapidly, some pods may remain in a state waiting to be scheduled until the new nodes deployed by the cluster autoscaler can accept the scheduled pods. For applications that have high burst demands, you can scale with virtual nodes and Azure Container Instances.
+
+### Scale in events
+The cluster autoscaler also monitors the pod scheduling status for nodes that have not recently received new scheduling requests. This scenario indicates that the node pool has more compute resources than are required, and that the number of nodes can be decreased.
+
+A node that passes a threshold for no longer being needed for 10 minutes by default is scheduled for deletion. When this situation occurs, pods are scheduled to run on other nodes within the node pool, and the cluster autoscaler decreases the number of nodes.
+
+Your applications may experience some disruption as pods are scheduled on different nodes when the cluster autoscaler decreases the number of nodes. To minimize disruption, avoid applications that use a single pod instance.
+
+
+### AKS scaling to Azure Container Instances
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-kubernetes-service/media/kubernetes-burst-686ee747.png)
+
+To rapidly scale your AKS cluster, you can integrate with Azure Container Instances (ACI). Kubernetes has built-in components to scale the replica and node count. However, if your application needs to rapidly scale, the horizontal pod autoscaler may schedule more pods than can be provided by the existing compute resources in the node pool. If configured, this scenario would then trigger the cluster autoscaler to deploy additional nodes in the node pool. It may take a few minutes for those nodes to successfully provision.
+
+ACI lets you quickly deploy container instances without more infrastructure overhead. When you connect with AKS, ACI becomes a secured, logical extension of your AKS cluster. The Virtual Kubelet component is installed in your AKS cluster that presents ACI as a virtual Kubernetes node. Kubernetes can then schedule pods that run as ACI instances through virtual nodes, not as pods on VM nodes directly in your AKS cluster.
+
+## File and folder backup
+
+### Azure backup benefits
+
+Azure Backup is the Azure-based service you can use to back up (or protect) and restore your data in the Microsoft cloud. Azure Backup replaces your existing on-premises or off-site backup solution with a cloud-based solution that is reliable, secure, and cost-competitive.
+
+Azure Backup offers multiple components that you download and deploy on the appropriate computer, server, or in the cloud. The component, or agent, that you deploy depends on what you want to protect. All Azure Backup components (no matter whether you're protecting data on-premises or in the cloud) can be used to back up data to a Recovery Services vault in Azure.
+
+### Key benefits
+- Offload on-premises backup. Azure Backup offers a simple solution for backing up your on-premises resources to the cloud. Get short and long-term backup without the need to deploy complex on-premises backup solutions.
+
+- Back up Azure IaaS VMs. Azure Backup provides independent and isolated backups to guard against accidental destruction of original data. Backups are stored in a Recovery Services vault with built-in management of recovery points. Configuration and scalability is simple, backups are optimized, and you can easily restore as needed.
+
+- Get unlimited data transfer. Azure Backup does not limit the amount of inbound or outbound data you transfer, or charge for the data that is transferred. Outbound data refers to data transferred from a Recovery Services vault during a restore operation. If you perform an offline initial backup using the Azure Import/Export service to import large amounts of data, there is a cost associated with inbound data.
+
+- Keep data secure. Data encryption allows for secure transmission and storage of your data in the public cloud. You store the encryption passphrase locally, and it is never transmitted or stored in Azure. If it is necessary to restore any of the data, only you have encryption passphrase, or key.
+
+- Get app-consistent backups. An application-consistent backup means a recovery point has all required data to restore the backup copy. Azure Backup provides application-consistent backups, which ensure additional fixes are not required to restore the data. Restoring application-consistent data reduces the restoration time, allowing you to quickly return to a running state.
+
+- Retain short and long-term data. You can use Recovery Services vaults for short-term and long-term data retention. Azure doesn't limit the length of time data can remain in a Recovery Services vault. You can keep it for as long as you like. Azure Backup has a limit of 9999 recovery points per protected instance.
+
+- Automatic storage management. Hybrid environments often require heterogeneous storage - some on-premises and some in the cloud. With Azure Backup, there is no cost for using on-premises storage devices. Azure Backup automatically allocates and manages backup storage, and it uses a pay-as-you-use model, so that you only pay for the storage you consume.
+
+- Multiple storage options. Azure Backup offers two types of replication to keep your storage/data highly available.
+
+  - Locally redundant storage (LRS) replicates your data three times (it creates three copies of your data) in a storage scale unit in a datacenter. All copies of the data exist within the same region. LRS is a low-cost option for protecting your data from local hardware failures.
+  - Geo-redundant storage (GRS) is the default and recommended replication option. GRS replicates your data to a secondary region (hundreds of miles away from the primary location of the source data). GRS costs more than LRS, but GRS provides a higher level of durability for your data, even if there is a regional outage.
+
+### Implement Azure backup center
+
+Backup Center provides a single unified management experience in Azure for enterprises to govern, monitor, operate, and analyze backups at scale. As such, it's consistent with Azure’s native management experiences.
+
+Some of the key benefits of Backup Center include:
+
+- Single pane of glass to manage backups. Backup Center is designed to function well across a large and distributed Azure environment. You can use Backup Center to efficiently manage backups spanning multiple workload types, vaults, subscriptions, regions, and tenants.
+- Datasource-centric management. Backup Center provides views and filters that are centered on the datasources that you're backing up. Datasources like VMs and databases. This feature lets a resource owner or a backup admin administer backup items across different vaults. The admin can also filter views by datasource-specific properties. These properties include datasource subscription, datasource resource group, and datasource tags.
+- Connected experiences. Backup Center provides native integrations to existing Azure services that enable management at scale. For example, Backup Center uses the Azure Policy experience to help you govern your backups. It uses Azure workbooks and Azure Monitor Logs to help you view detailed reports on backups. So you don't need to learn any new principles to use the varied features that Backup Center offers. You can also discover community resources from the Backup Center.
+
+Backup Center is currently supported for Azure VM backup, SQL in Azure VM backup, SAP HANA in Azure VM backup, Azure Files backup, Azure Blobs backup, Azure-managed disks backup, and Azure Database for PostgreSQL Server backup.
+
+### Setup recovery service vault backup options
+
+The Recovery Services vault is a storage entity in Azure that stores data.
+
+Recovery Services vaults store backup data for various Azure services such as IaaS VMs (Linux or Windows) and Azure SQL databases. Recovery Services vaults support System Center DPM, Windows Server, Azure Backup Server, and other services. Recovery Services vaults make it easy to organize your backup data, while minimizing management overhead.
+
+The Recovery Services vault can be used to back up Azure file shares or on-premises files and folders.
+
+Within an Azure subscription, you can create up to 500 Recovery Services vaults per region.
+
+### Configure on-premises file and folder backups
+
+There are several steps to configuring Azure backup of on-premises files and folders.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-file-folder-backups/media/file-folder-backup-6d3d3d1e.png)
+
+1. Create the recovery services vault. Within your Azure subscription, you will need to create a recovery services vault for the backups.
+2. Download the agent and credential file. The recovery services vault provides a link to download the Azure Backup Agent. The Backup Agent will be installed on the local machine. There is also a credentials file that is required during the installation of the agent. You must have the latest version of the agent. Versions of the agent below 2.0.9083.0 must be upgraded by uninstalling and reinstalling the agent.
+3. Install and register agent. The installer provides a wizard to configure the installation location, proxy server, and passphrase information. The downloaded credential file will be used to register the agent.
+4. Configure the backup. Use the agent to create a backup policy including when to backup, what to backup, how long to retain items, and settings like network throttling.
+
+### Manage the Azure recovery services agent
+
+Azure Backup for files and folders relies on the Microsoft Azure Recovery Services (MARS) agent to be installed on the Windows client or server.
+
+The MARS agent is a full featured agent that has many features.
+
+- Back up files and folders on physical or virtual Windows OS (VMs can be on-premises or in Azure).
+- No separate backup server required.
+- Not application aware; file, folder, and volume-level restore only.
+- Back up and restore content.
+
+## Virtual Machine backups
+
+You can protect your data by taking backups at regular intervals. There are several backup options available for VMs, depending on your use-case.
+
+- Azure Backup
+For backing up Azure VMs running production workloads, use Azure Backup. Azure Backup supports application-consistent backups for both Windows and Linux VMs. Azure Backup creates recovery points that are stored in geo-redundant recovery vaults. When you restore from a recovery point, you can restore the whole VM or just specific files.
+
+- Azure Site Recovery
+Azure Site Recovery protects your VMs from a major disaster scenario when a whole region experiences an outage due to major natural disaster or widespread service interruption. You can configure Azure Site Recovery for your VMs so that you can recover your application with a single click in matter of minutes. You can replicate to an Azure region of your choice.
+
+- Managed disk snapshots
+In development and test environments, snapshots provide a quick and simple option for backing up VMs that use Managed Disks. A managed disk snapshot is a read-only full copy of a managed disk that is stored as a standard managed disk by default. With snapshots, you can back up your managed disks at any point in time. These snapshots exist independent of the source disk and can be used to create new managed disks. They are billed based on the used size. For example, if you create a snapshot of a managed disk with provisioned capacity of 64 GiB and actual used data size of 10 GiB, that snapshot is billed only for the used data size of 10 GiB.
+
+- Images
+Managed disks also support creating a managed custom image. You can create an image from your custom VHD in a storage account or directly from a generalized (sysprepped) VM. This process captures a single image. This image contains all managed disks associated with a VM, including both the OS and data disks. This managed custom image enables creating hundreds of VMs using your custom image without the need to copy or manage any storage accounts
+
+- Images versus snapshots
+It's important to understand the difference between images and snapshots. With managed disks, you can take an image of a generalized VM that has been deallocated. This image includes all of the disks attached to the VM. You can use this image to create a VM, and it includes all of the disks.
+
+A snapshot is a copy of a disk at the point in time the snapshot is taken. It applies only to one disk. If you have a VM that has one disk (the OS disk), you can take a snapshot or an image of it and create a VM from either the snapshot or the image.
+A snapshot doesn't have awareness of any disk except the one it contains. This makes it problematic to use in scenarios that require the coordination of multiple disks, such as striping. Snapshots would need to be able to coordinate with each other and this is currently not supported.
+
+### Create virtual machine snapshots
+
+An Azure backup job consists of two phases. First, a virtual machine snapshot is taken. Second, the virtual machine snapshot is transferred to the Azure Recovery Services vault.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-virtual-machine-backups/media/virtual-machine-snapshot-aeddf5a2.png)
+
+A recovery point is considered created only after both steps are completed. As a part of the upgrade, a recovery point is created as soon as the snapshot is finished. This recovery point is used to perform a restore. You can identify the recovery point in the Azure portal by using “snapshot” as the recovery point type. After the snapshot is transferred to the vault, the recovery point type changes to “snapshot and vault”.
+
+### Capabilities and considerations
+- Ability to use snapshots taken as part of a backup job that is available for recovery without waiting for data transfer to the vault to finish.
+- Reduces backup and restore times by retaining snapshots locally, for two days by default. This default snapshot retention value is configurable to any value between 1 to 5 days.
+- Supports disk sizes up to 32 TB. Resizing of disks is not recommended by Azure Backup.
+- Supports Standard SSD disks along with Standard HDD disks and Premium SSD disks.
+- Incremental snapshots are stored as page blobs.
+- For premium storage accounts, the snapshots taken for instant recovery points count towards the 10-TB limit of allocated space.
+- You get an ability to configure the snapshot retention based on the restore needs. Depending on the requirement, you can set the snapshot retention to a minimum of one day in the backup policy blade as explained below. This will help you save cost for snapshot retention if you don’t perform restores frequently.
+
+By default, snapshots are retained for two days. This feature allows restore operation from these snapshots there by cutting down the restore times. It reduces the time that is required to transform and copy data back from the vault.
+
+### Setup recovery services vault backup options
+
+Recovery Services vault is a storage entity in Azure that houses data. The data is typically copies of data, or configuration information for virtual machines (VMs), workloads, servers, or workstations. You can use Recovery Services vaults to hold backup data for various Azure services such as IaaS VMs (Linux or Windows) and Azure SQL databases. Recovery Services vaults support System Center DPM, Windows Server, Azure Backup Server, and more. Recovery Services vaults make it easy to organize your backup data, while minimizing management overhead
+
+### Backup virtual machines
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-virtual-machine-backups/media/backup-steps-97429b0d.png)
+
+1. Create a recovery services vault. To back up your files and folders, you need to create a Recovery Services vault in the region where you want to store the data. You also need to determine how you want your storage replicated, either geo-redundant (default) or locally redundant. By default, your vault has geo-redundant storage. If you are using Azure as a primary backup storage endpoint, use the default geo-redundant storage. If you are using Azure as a non-primary backup storage endpoint, then choose locally redundant storage, which will reduce the cost of storing data in Azure.
+2. Use the Portal to define the backup. Protect your data by taking snapshots of your data at defined intervals. These snapshots are known as recovery points, and they are stored in recovery services vaults. If or when it is necessary to repair or rebuild a VM, you can restore the VM from any of the saved recovery points. A backup policy defines a matrix of when the data snapshots are taken, and how long those snapshots are retained. When defining a policy for backing up a VM, you can trigger a backup job once a day.
+3. Backup the virtual machine. The Azure VM Agent must be installed on the Azure virtual machine for the Backup extension to work. However, if your VM was created from the Azure gallery, then the VM Agent is already present on the virtual machine. VMs that are migrated from on-premises data centers would not have the VM Agent installed. In such a case, the VM Agent needs to be installed.
+
+
+### Restore virtual machines
+
+Once your virtual machine snapshots are safely in the recovery services vault it is easy to recover them.
+
+Once you trigger the restore operation, the Backup service creates a job for tracking the restore operation. The Backup service also creates and temporarily displays notifications, so you monitor how the backup is proceeding.
+
+### Implement Azure Backup Server
+
+Another method of backing up virtual machines is using a Data Protection Manager (DPM) or Microsoft Azure Backup Server (MABS) server. This method can be used for specialized workloads, virtual machines, or files, folders, and volumes. Specialized workloads can include SharePoint, Exchange, and SQL Server.
+
+### Advantages
+The advantages of backing up machines and apps to MABS/DPM storage, and then backing up DPM/MABS storage to a vault are as follows:
+
+- Backing up to MABS/DPM provides app-aware backups optimized for common apps. These apps include SQL Server, Exchange, and SharePoint. Also, file/folder/volume backups, and machine state backups. Machine state backups can be bare-metal, or system state.
+- For on-premises machines, you don't need to install the MARS agent on each machine you want to back up. Each machine runs the DPM/MABS protection agent, and the MARS agent runs on the MABS/DPM only.
+- You have more flexibility and granular scheduling options for running backups.
+- You can manage backups for multiple machines that you gather into protection groups in a single console. Grouping machines is useful when apps are tiered over multiple machines and you want to back them up at the same time.
+### Backup steps
+1. Install the DPM or MABS protection agent on machines you want to protect. You then add the machines to a DPM protection group.
+2. To protect on-premises machines, the DPM or MABS server must be located on-premises.
+3. To protect Azure VMs, the MABS server must be located in Azure, running as an Azure VM.
+4. With DPM/MABS, you can protect backup volumes, shares, files, and folders. You can also protect a machine's system state (bare metal), and you can protect specific apps with app-aware backup settings.
+5. When you set up protection for a machine or app in DPM/MABS, you select to back up to the MABS/DPM local disk for short-term storage and to Azure for online protection. You also specify when the backup to local DPM/MABS storage should run and when the online backup to Azure should run.
+6. The disk of the protected workload is backed up to the local MABS/DPM disks, according to the schedule you specified.
+7. The DPM/MABS disks are backed up to the vault by the MARS agent that's running on the DPM/MABS server.
+
+### Compare backup options
+
+Component|Benefits|Limits|What is protected?|Where are backups stored?|
+|-|-|-|-|-|
+Azure Backup (MARS) agent|Backup files and folders on physical or virtual Windows OS; no separate backup server required|Backup 3x per day; not application aware; file, folder, and volume-level restore only; no support for Linux|Files and folders|Recovery services vault
+Azure Backup Server (MABS)|App aware snapshots; full flex for when to backups; recovery granularity; linux support on Hyper-V and VMware VMs; backup and restore VMware VMs, doesn't require a System Center license|Cannot backup Oracle workloads; always requires live Azure subscription; no support for tape backup|Files, folders, volumes, VMs, applications, and workloads| Recovery services vault, locally attached disk
+
+### Manage soft delete
+
+Azure Storage now offers soft delete for blob objects so that you can more easily recover your data when it is erroneously modified or deleted by an application or other storage account user. Soft delete for VMs protects the backups of your VMs from unintended deletion. Even after the backups are deleted, they're preserved in soft-delete state for 14 additional days.
+
+### How soft delete works for virtual machines
+1. To delete the backup data of a VM, the backup must be stopped.
+2. You can then choose to delete or retain the backup data. If you choose Delete backup data and then Stop backup, the VM backup won't be permanently deleted. Rather, the backup data will be retained for 14 days in the soft deleted state.
+3. During those 14 days, in the Recovery Services vault, the soft deleted VM will appear with a red soft-delete icon next to it. If any soft-deleted backup items are present in the vault, the vault can't be deleted at that time. Try deleting the vault after the backup items are permanently deleted, and there are no items in soft deleted state left in the vault.
+4. To restore the soft-deleted VM, it must first be undeleted. To undelete, choose the soft-deleted VM, and then select the option Undelete. At this point, you can also restore the VM by selecting Restore VM from the chosen restore point.
+5. After the undelete process is completed, the status will return to Stop backup with retain data and then you can choose Resume backup. The Resume backup operation brings back the backup item in the active state, associated with a backup policy selected by the user defining the backup and retention schedules.
+
+### Implement Azure Site Recovery
+
+Site Recovery helps ensure business continuity by keeping business apps and workloads running during outages. Site Recovery replicates workloads running on physical and virtual machines (VMs) from a primary site to a secondary location. When an outage occurs at your primary site, you fail over to secondary location, and access apps from there. After the primary location is running again, you can fall back to it.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-virtual-machine-backups/media/site-recovery-scenarios-388c71fd.png)
+
+### Replications scenarios
+- Replicate Azure VMs from one Azure region to another.
+- Replicate on-premises VMware VMs, Hyper-V VMs, physical servers (Windows and Linux), Azure Stack VMs to Azure.
+- Replicate AWS Windows instances to Azure.
+- Replicate on-premises VMware VMs, Hyper-V VMs managed by System Center VMM, and physical servers to a secondary site.
+
+
+## Azure Monitor
+
+### Azure Monitor key capabilities
+
+- Monitor and visualize metrics. Metrics are numerical values available from Azure resources helping you understand the health, operation and performance of your system.
+- Query and analyze logs. Logs are activity logs, diagnostic logs, and telemetry from monitoring solutions; analytics queries help with troubleshooting and visualizations.
+- Setup alerts and actions. Alerts notify you of critical conditions and potentially take automated corrective actions based on triggers from metrics or logs.
+
+### Azure Monitor components
+
+Monitoring is the act of collecting and analyzing data. The data can be used to determine the performance, health, and availability of your business application and the resources that it depends on.
+
+The next diagram gives a high-level view of Azure Monitor. At the center of the diagram, are the data stores for metrics and logs. Metrics and logs are the two fundamental types of data use by Azure Monitor. On the left side of the diagram, are the sources of monitoring data that populate these data stores. On the right side of the diagram, are the different functions that Azure Monitor performs with this collected data such as analysis, alerting, and streaming to external systems.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-azure-monitor/media/monitor-service-d0bdfd6d.png)
+
+### Define metrics and logs
+
+All data collected by Azure Monitor fits into one of two fundamental types, metrics and logs.
+
+- **Metrics** are numerical values that describe some aspect of a system at a particular point in time. They are lightweight and capable of supporting near real-time scenarios.
+
+  For many Azure resources, the data collected by Azure Monitor is displayed on the Overview page in the Azure portal. 
+- **Logs** contain different kinds of data organized into records with different sets of properties for each type. Data such as events and traces are stored as logs in addition to performance data so that it can all be combined for analysis.
+
+Log data collected by Azure Monitor is stored in Log Analytics which includes a rich query language to quickly retrieve, consolidate, and analyze collected data. You can create and test queries using the Log Analytics page in the Azure portal. You can use the query results to directly analyze the data. save queries, visualize the data, or create alert rules.
+
+### Identify data types
+
+
+Azure Monitor can collect data from various sources. You can think of monitoring data for your applications in tiers ranging from your application, any operating system and services it relies on, down to the platform itself. Azure Monitor collects data from each of the following tiers:
+
+- Application monitoring data: Data about the performance and functionality of the code you have written, regardless of its platform.
+- Guest OS monitoring data: Data about the operating system on which your application is running. The application could be running in Azure, another cloud, or on-premises.
+- Azure resource monitoring data: Data about the operation of an Azure resource.
+- Azure subscription monitoring data: Data about the operation and management of an Azure subscription, as well as data about the health and operation of Azure itself.
+- Azure tenant monitoring data: Data about the operation of tenant-level Azure services, such as Azure Active Directory.
+
+Azure Monitor can collect log data from any REST client using the Data Collector API. The Data Collector API lets you create custom monitoring scenarios and extend monitoring to resources that don't expose data through other sources.
+
+### Describe activity log events
+
+The Azure Activity Log is a subscription log that provides insight into subscription-level events that have occurred in Azure. This includes a range of data, from Azure Resource Manager operational data to updates on Service Health events.
+
+With the Activity Log, you can determine the ‘what, who, and when’ for any write operations (PUT, POST, DELETE) taken on the resources in your subscription. You can also understand the status of the operation and other relevant properties. Through activity logs, you can determine:
+
+- What operations were taken on the resources in your subscription?
+- Who started the operation?
+- When the operation occurred?
+- The status of the operation.
+- The values of other properties that might help you research the operation.
+
+Activity logs are kept for 90 days. 
+
+### Query the activity log
+
+In the Azure portal, you can filter your Activity Log.
+
+- Subscription. One or more Azure subscription names.
+- Timespan. The start and end time for events.
+- Event Severity. The severity level of the event (Informational, Warning, Error, Critical).
+- Resource group. One or more resource groups within those subscriptions.
+- Resource (name). The name of a specific resource.
+- Resource type. The type of resource, for example, Microsoft.Compute/virtualmachines.
+- Operation name. The name of an Azure Resource Manager operation, for example, Microsoft.SQL/servers/Write.
+- Event initiated by. The 'caller,' or user who performed the operation.
+- Search. This is an open text search box that searches for that string across all fields in all events.
+
+### Event categories
+- Administrative. This category contains the record of all create, update, delete, and action operations performed through Resource Manager. Examples of the types of events you would observe in this category include "create virtual machine" and "delete network security group". The Administrative category also includes any changes to role-based access control in a subscription.
+- Service Health. This category contains the record of any service health incidents that have occurred in Azure. An example of the type of event you would observe in this category is "SQL Azure in East US is experiencing downtime." Service health events come in five varieties: Action Required, Assisted Recovery, Incident, Maintenance, Information, or Security.
+- Resource Health. This category contains the record of any resource health events that have occurred to your Azure resources. An example of the type of event you would see in this category is "Virtual Machine health status changed to unavailable." Resource health events can represent one of four health statuses: Available, Unavailable, Degraded, and Unknown.
+- Alert. This category contains the record of all activations of Azure alerts. An example of the type of event you would observe in this category is "CPU % on myVM has been over 80 for the past 5 minutes."
+- Autoscale. This category contains the record of any events related to the operation of the autoscale engine based on any autoscale settings you have defined in your subscription. An example of the type of event you would observe in this category is "Autoscale scale up action failed."
+- Recommendation. This category contains recommendation events from certain resource types, such as web sites and SQL servers. These events offer recommendations for how to better utilize your resources.
+- Security. This category contains the record of any alerts generated by Azure Defender for Servers. An example of the type of event you would observe in this category is "Suspicious double extension file executed."
+- Policy. This category contains records of all effect action operations performed by Azure Policy. Examples of the types of events you would see in this category include Audit and Deny.
+
+## Azure alerts
+
+### Manage Azure Monitor alerts
+
+The Monitor Alerts experience has many benefits.
+
+- Better notification system. All newer alerts use action groups, which are named groups of notifications and actions that can be reused in multiple alerts.
+- A unified authoring experience. All alert creation for metrics, logs and activity log across Azure Monitor, Log Analytics, and Application Insights is in one place.
+- View Log Analytics alerts in Azure portal. You can now also observe Log Analytics alerts in your subscription. Previously these were in a separate portal.
+- Separation of Fired Alerts and Alert Rules. Alert Rules (the definition of the condition that triggers an alert), and Fired Alerts (an instance of the alert rule firing) are differentiated, so the operational and configuration views are separated.
+- Better workflow. The new alerts authoring experience guides the user along the process of configuring an alert rule, which makes it simpler to discover the right things to get alerted on.
+
+You can alert on metrics and logs as described in monitoring data sources. These include but are not limited to:
+
+- Metric values
+- Log search queries
+- Activity Log events
+- Health of the underlying Azure platform
+- Tests for web site availability
+
+### Alert states
+You can set the state of an alert to specify where it is in the resolution process. When the criteria specified in the alert rule is met, an alert is created or fired, it has a status of New. You can change the status when you acknowledge an alert and when you close it. All state changes are stored in the history of the alert. The following alert states are supported.
+
+State|Description
+|-|-|
+New|The issue has been detected and has not yet been reviewed.
+Acknowledged|An administrator has reviewed the alert and started working on it.
+Closed|The issue has been resolved. After an alert has been closed, you can reopen it by changing it to another state.
+
+### Create alert rules
+
+Alerts proactively notify you when important conditions are found in your monitoring data. They allow you to identify and address issues before the users of your system notice them. Alert rules consist of resources, action groups, and monitor conditions.
+
+The alert rule captures the target and criteria for alerting. The alert rule can be in an enabled or a disabled state. Alerts only fire when enabled. The key attributes of an alert rule are:
+
+- Target Resource – Defines the scope and signals available for alerting. A target can be any Azure resource. Example targets: a virtual machine, a storage account, a virtual machine scale set, a Log Analytics workspace, or an Application Insights resource. For certain resources (like Virtual Machines), you can specify multiple resources as the target of the alert rule.
+- Signal – Signals are emitted by the target resource and can be of several types. Metric, Activity log, Application Insights, and Log.
+- Criteria – Criteria is a combination of Signal and Logic applied on a Target resource. Examples: * Percentage CPU > 70%; Server Response Time > 4 ms; and Result count of a log query > 100.
+- Alert Name – A specific name for the alert rule configured by the user.
+- Alert Description – A description for the alert rule configured by the user.
+- Severity – The severity of the alert once the criteria specified in the alert rule is met. Severity can range from 0 to 4.
+- Action – A specific action taken when the alert is fired.
+
+### Create action groups
+
+An action group is a collection of notification preferences defined by the owner of an Azure subscription. Azure Monitor and Service Health alerts use action groups to notify users that an alert has been triggered. Various alerts may use the same action group or different action groups depending on the user's requirements.
+
+**Notifications** configure the method in which users will be notified when the action group triggers.
+  - Email Azure Resource Manager role – Send email to the members of the subscription's role. Email will only be sent to Azure AD user members of the role. Email will not be sent to Azure AD groups or service principals.
+  - Email/SMS message/Push/Voice - Specify any email, SMS, push, or voice actions.
+
+**Actions** configure the method in which actions are performed when the action group triggers.
+
+  - Automation runbook - An automation runbook is the ability to define, build, orchestrate, manage, and report on workflows that support system and network operational processes. A runbook workflow can potentially interact with all types of infrastructure elements, such as applications, databases, and hardware.
+  - Azure Function – Azure functions is a serverless compute service that lets you run event-triggered code without having to explicitly provision or manage infrastructure.
+  - ITSM – Connect Azure and a supported IT Service Management (ITSM) product/service. This requires an ITSM Connection.
+  - Logic App – Logic apps connect your business-critical apps and services by automating your workflows.
+  - Webhook – A webhook is a HTTPS or HTTP endpoint that allows external applications to communicate with your system.
+
+## Log Analytics
+
+Log Analytics is a service in that helps you collect and analyze data generated by resources in your cloud and on-premises environments.
+
+Log queries help you to use the data collected in Azure Monitor Logs. A powerful query language allows you to join data from multiple tables, aggregate large sets of data, and perform complex operations with minimal code. Virtually any question can be answered and analysis performed as long as the supporting data has been collected, and you understand how to construct the right query.
+
+Operations Management Suite collects data from all customers performing patches and uses that data to provide an average patching time for specific missing updates. This use of “crowd-sourced” data is unique to cloud systems, and is a great example of how Log Analytics can help meet strict SLAs.
+
+Log Analytics helps to easily identify things like abnormal behavior from a specific account, users installing unapproved software, unexpected system reboots or shutdowns, evidence of security breaches, or specific problems in loosely coupled applications.
+
+### Create a workspace
+
+To get started with Log Analytics you need to add a workspace.
+
+- Provide a name for the new Log Analytics workspace.
+- Select a Subscription from the drop-down list.
+- For Resource Group, select an existing resource group that contains one or more Azure virtual machines.
+- Select the Location your VMs are deployed to.
+- The workspace will automatically use the Per GB pricing plan.
+
+### Visualize Log Analytics data
+
+Log Analytics provides a query syntax to quickly retrieve and consolidate data in the repository. You can create and save Log Searches to directly analyze data in the portal. You can also create log searches to run automatically and create an alert.
+
+### Structure Log Analytics queries
+
+When you build a query, you start by determining which tables have the data that you're looking for. Each data source and solution stores its data in dedicated tables in the Log Analytics workspace. Documentation for each data source and solution includes the name of the data type that it creates and a description of each of its properties. Many queries will only require data from a single table, but others may use a variety of options to include data from multiple tables.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-log-analytics/media/query-tables-f3872e3a.png)
+
+The basic structure of a query is a source table followed by a series of operators separated by a pipe character |. You can chain together multiple operators to refine the data and perform advanced functions.
+
+Some common operators are:
+
+- count - Returns the number of records in the input record set.
+
+
+      StormEvents | count
+
+-  limit - Return up to the specified number of rows.
+
+        T | limit 5
+
+- summarize - Produces a table that aggregates the content of the input table.
+
+      T | summarize count(), avg(price) by fruit, supplier
+
+- top - Returns the first N records sorted by the specified columns.
+
+      T | top 5 by Name desc nulls last
+
+- where - Filters a table to the subset of rows that satisfy a predicate.
+
+      T | where fruit=="apple"
+
+For more information, Azure Monitor log queries (https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/)
+
+
+## Network Watcher
+
+Network Watcher provides tools to monitor, diagnose, view metrics, and enable or disable logs for resources in an Azure virtual network. Network Watcher is a regional service that enables you to monitor and diagnose conditions at a network scenario level.
+
+- Automate remote network monitoring with packet capture. Monitor and diagnose networking issues without logging in to your virtual machines (VMs) using Network Watcher. Trigger packet capture by setting alerts, and gain access to real-time performance information at the packet level. When you observe an issue, you can investigate in detail for better diagnoses.
+- Gain insight into your network traffic using flow logs. Build a deeper understanding of your network traffic pattern using Network Security Group flow logs. Information provided by flow logs helps you gather data for compliance, auditing and monitoring your network security profile.
+- Diagnose VPN connectivity issues. Network Watcher provides you the ability to diagnose your most common VPN Gateway and Connections issues. Allowing you, not only, to identify the issue but also to use the detailed logs created to help further investigate.
+
+Verify IP Flow: Quickly diagnose connectivity issues from or to the internet and from or to the on-premises environment. For example, confirming if a security rule is blocking ingress or egress traffic to or from a virtual machine. IP flow verify is ideal for making sure security rules are being correctly applied. When used for troubleshooting, if IP flow verify doesn’t show a problem, you will need to explore other areas such as firewall restrictions.
+
+Next Hop: To determine if traffic is being directed to the intended destination by showing the next hop. This will help determine if networking routing is correctly configured. Next hop also returns the route table associated with the next hop. If the route is defined as a user-defined route, that route is returned. Otherwise, next hop returns System Route. Depending on your situation the next hop could be Internet, Virtual Appliance, Virtual Network Gateway, VNet Local, VNet Peering, or None. None lets you know that while there may be a valid system route to the destination, there is no next hop to route the traffic to the destination. When you create a virtual network, Azure creates several default outbound routes for network traffic. The outbound traffic from all resources, such as VMs, deployed in a virtual network, are routed based on Azure's default routes. You might override Azure's default routes or create additional routes.
+
+VPN Diagnostics: Troubleshoot gateways and connections. VPN Diagnostics returns a wealth of information. Summary information is available in the portal and more detailed information is provided in log files. The log files are stored in a storage account and include things like connection statistics, CPU and memory information, IKE security errors, packet drops, and buffers and events.
+
+NSG Flow Logs: NSG Flow Logs maps IP traffic through a network security group. These capabilities can be used in security compliance and auditing. You can define a prescriptive set of security rules as a model for security governance in your organization. A periodic compliance audit can be implemented in a programmatic way by comparing the prescriptive rules with the effective rules for each of the VMs in your network.
+
+Connection Troubleshoot. Azure Network Watcher Connection Troubleshoot is a more recent addition to the Network Watcher suite of networking tools and capabilities. Connection Troubleshoot enables you to troubleshoot network performance and connectivity issues in Azure.
+
+### flow verify diagnostics
+
+IP Flow Verify Purpose: Checks if a packet is allowed or denied to or from a virtual machine. For example, confirming if a security rule is blocking ingress or egress traffic to or from a virtual machine.
+
+The IP Flow Verify capability enables you to specify a source and destination IPv4 address, port, protocol (TCP or UDP), and traffic direction (inbound or outbound). IP Flow Verify then tests the communication and informs you if the connection succeeds or fails. If the connection fails, IP Flow Verify identifies which security rule allowed or denied the communication. With this information, you can then resolve the problem.
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-network-watcher/media/flow-verify-d136d78d.png)
+
+IP Flow Verify is ideal for making sure security rules are being correctly applied. When used for troubleshooting, if IP Flow Verify doesn’t show a problem, you will need to explore other areas such as firewall restrictions.
+
+### next hop diagnostics
+
+Next Hop Purpose: To determine if traffic is being directed to the intended destination. Next hop information will help determine if network routing is correctly configured.
+
+When you create a virtual network, Azure creates several default outbound routes for network traffic. The outbound traffic from all resources, such as VMs, deployed in a virtual network, are routed based on Azure's default routes. You might override Azure's default routes or create additional routes.
+
+Next Hop also returns the route table associated with the next hop. If the route is defined as a user-defined route, that route is returned. Otherwise, Next Hop returns the system route. Depending on your situation, the next hop could be the Internet, Virtual Appliance, Virtual Network Gateway, VNet Local, VNet Peering, or None. A returned value of None lets you know that there may be a valid system route to the destination, there is no next hop to route the traffic to the destination.
+
+### Visualize the network topology
+
+Network Watcher's Topology capability enables you to generate a visual diagram of the resources in a virtual network, and the relationships between the resources. The following picture shows an example topology diagram for a virtual network that has three subnets, two VMs, network interfaces, public IP addresses, network security groups, route tables, and the relationships between the resources:
+
+![](https://learn.microsoft.com/en-us/training/wwl-azure/configure-network-watcher/media/monitor-visualization-1fb7bd5c.png)
+
+The topology tool generates a graphical display of your Azure virtual network, its resources, its interconnections, and their relationships with each other.
+
+To generate the topology, you need a Network Watcher instance in the same region as the virtual network.
+
