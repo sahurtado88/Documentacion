@@ -61,6 +61,17 @@ If you're familiar with traditional programming languages, it can be useful to c
     Output values are like function return values.
     Local values are like a function's temporary local variables.
 
+benefits modules: reduce complexity, reduce risk, avoid repetition, increase readibility and mantainability, consistency
+
+Types odf modules:
+
+- Local modules
+
+- Remote modules: this modules are outside of your omputer (terraform repository, git,etc)
+
+
+
+
 ## Manejo string 
 	
 manejo string terraform https://www.terraform.io/language/expressions/strings
@@ -341,6 +352,45 @@ Terraform automatically creates or updates the dependency lock file each time yo
 
 the primary purpose of terraform state is to store bindings between objects in a remote system and resource instances declared in your configuration
 
+Benefits of remote state:
+
+- Working in a team
+- Keeping sensitive information off your local disck
+- Remote operations
+- Locking while running terraform
+  - prevents concurrent state operations
+  - Automatically locked
+  - Encryption at rest in Azure Blob Storage
+
+## Conditionals
+
+- Format: conition ? true_val: false_val
+
+## Functions
+
+- Vast amount of built-in functions
+- No support for user defined functions
+
+https://developer.hashicorp.com/terraform/language/functions
+
+## For and Foreach loops
+
+- The foor-loop features can help you to loop over variables, transform it, and output it in different formats
+- You can loop over a list [1,2,3,4] or even a map like {"key"="value"}
+- You can transform them by doping a calculation or a string operation
+
+
+
+- For example
+
+  - [for s in ["this is a","list"]:upper(s)]
+
+
+
+
+
+
+https://github.com/in4it/terraform-azure-course
 
 
  

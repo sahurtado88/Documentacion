@@ -324,10 +324,14 @@ For a multi-class classification model (where there are more than two possible c
 
 Metrics can be derived from the confusion matrix include:
 
-- Accuracy: The ratio of correct predictions (true positives + true negatives) to the total number of predictions.
-- Precision: The fraction of the cases classified as positive that are actually positive (the number of true positives divided by the number of true positives plus false positives).
-- Recall: The fraction of positive cases correctly identified (the number of true positives divided by the number of true positives plus false negatives).
+- **Accuracy:** The ratio of correct predictions (true positives + true negatives) to the total number of predictions.
+- **Precision:** The fraction of the cases classified as positive that are actually positive (the number of true positives divided by the number of true positives plus false positives).
+- **Recall:** The fraction of positive cases correctly identified (the number of true positives divided by the number of true positives plus false negatives).
 - F1 Score: An overall metric that essentially combines precision and recall.
+
+![Descripción de la imagen](.\Images\Matriz_conufssion.png)
+
+
 
 ### Choosing a threshold
 A classification model predicts the probability for each possible class. In other words, the model calculates a likelihood for each predicted label. In the case of a binary classification model, the predicted probability is a value between 0 and 1.
