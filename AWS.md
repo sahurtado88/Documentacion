@@ -643,7 +643,24 @@ Applies to an instance only if it is associated with the instance|Applies to all
 
 
 
+### Ephemeral port
 
+An ephemeral port is a communications endpoint (port) of a transport layer protocol of the Internet protocol suite that is used for only a short period of time for the duration of a communication session. Such short-lived ports are allocated automatically within a predefined range of port numbers by the IP stack software of a computer operating system. 
+
+Many Linux kernels use the port range 32768–65535.
+
+Microsoft Windows operating systems through Windows XP use the range 1025–5000 as ephemeral ports by default.
+
+### Nat Gateway
+
+A NAT gateway is a Network Address Translation (NAT) service. You can use a NAT gateway so that instances in a private subnet can connect to services outside your VPC but external services cannot initiate a connection with those instances.
+always be deploy in public subnet
+- uses por 1024-65535 for outbound connection
+
+### NAt Instance
+- NAT EC2 can be launched using Amazon linux Nat AMI
+- Disable Source/Destination check on instance
+- Allocate EIP
 
 
 
