@@ -116,7 +116,7 @@ The practice of frequently deploying small code changes to production
 
 Continuos delivery is keeping the code ina deployable state Continuos deployment is actually doing the deployment frequently
 
-
+Continuous Delivery is a software engineering practice where the code changes are prepared to be released. Continuous Deployment aims at continuously releasing the code changes into the production environment.
 
 ## DISTRIBUTED SYSTEM ##
 

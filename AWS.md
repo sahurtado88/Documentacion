@@ -657,12 +657,42 @@ A NAT gateway is a Network Address Translation (NAT) service. You can use a NAT 
 always be deploy in public subnet
 - uses por 1024-65535 for outbound connection
 
+Steps to create NAt Gateway
+- create a nat gateway in your vpc must select public subnet
+- EIP: Create a new  EIP
+- add a route in private subnet for internet traffica and route through NAT gateway
+  - Destination: 0.0.0./0 target: natgateway
+
 ### NAt Instance
 - NAT EC2 can be launched using Amazon linux Nat AMI
 - Disable Source/Destination check on instance
 - Allocate EIP
 
+Setup your own NAT on EC2 (NAT Instance)
+-  Must be in Public Subnet
+- Must have Public or Elastic IP
+- Should be launched using AWS provided
+NAT AMIs
+- Disable Source/Destination Check
+- Update Private subnet route tables.
+- For internet traffic set target as NAT
+Instance ID
 
+
+### Nat Gateway vs NAT Instance
+
+Attribute| NAT Gateway| NAT Instance|
+|-|-|-|
+Availability| Highly available within AZ. Create a NAT Gateway in each Availability Zone to ensure zone-independent architecture. |Use a script to manage failover between instances.
+Bandwidth| Can scale up to 45 Gbps.| Depends on the bandwidth of the instance type.
+Maintenance |Managed by AWS. You do not need to perform any maintenance.| Managed by you, for example, by installing software updates or operating system patches on the instance.
+Performance| Software is optimized for handling NAT traffic.|A generic Amazon Linux AMI that's configured to perform NAT.|
+Cost |Charged depending on the number of NAT Gateways you use, duration of usage, and amount of data that you send through the NAT Gateways.|Charged depending on the number of NAT Instances that you use,duration of usage, and instance type and size.
+Type and size| Uniform offering; you don’t need to decide on the type or size.|Choose a suitable instance type and size, according to your predicted workload.|
+Public IP addresses|Choose the Elastic IP address to associate with a NAT Gateway at creation.|Use an Elastic IP address or a public IP address with a NAT Instance.|
+Security groups| Cannot be associated with a NAT Gateway. You canassociate security groups with your resources behind the NAT Gateway to control inbound and outbound traffic.|Associate with your NAT Instance and the resources behind your NAT Instance to control inbound and outbound traffic.
+Port forwarding| Not supported.| Manually customize the configuration to support port forwarding.
+Bastion servers| Not supported. |Use as a bastion server
 
 
 
