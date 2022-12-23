@@ -271,3 +271,62 @@ ejemplo: git config --global alias.hist "log --all --graph --decorate --oneline"
 
  luego se agrega archivo o extension al gitignore y se sube de nuevo el codigo
 ```
+
+## Git Ammend
+
+To review, git commit --amend lets you take the most recent commit and add new staged changes to it. You can add or remove changes from the Git staging area to apply with a --amend commit. If there are no changes staged, a --amend will still prompt you to modify the last commit message log. Be cautious when using --amend on commits shared with other team members. Amending a commit that is shared with another user will potentially require confusing and lengthy merge conflict resolutions.
+
+Premature commits happen all the time in the course of your everyday development. It’s easy to forget to stage a file or to format your commit message the wrong way. The --amend flag is a convenient way to fix these minor mistakes.
+```
+git commit --amend -m "an updated commit message"
+```
+
+## GIT Rebase
+
+Rebasing is the process of moving or combining a sequence of commits to a new base commit. Rebasing is most useful and easily visualized in the context of a feature branching workflow. The general process can be visualized as the following:
+
+![](https://wac-cdn.atlassian.com/dam/jcr:4e576671-1b7f-43db-afb5-cf8db8df8e4a/01%20What%20is%20git%20rebase.svg?cdnVersion=690)
+
+From a content perspective, rebasing is changing the base of your branch from one commit to another making it appear as if you'd created your branch from a different commit. Internally, Git accomplishes this by creating new commits and applying them to the specified base. It's very important to understand that even though the branch looks the same, it's composed of entirely new commits
+
+Rebasing is a common way to integrate upstream changes into your local repository. Pulling in upstream changes with Git merge results in a superfluous merge commit every time you want to see how the project has progressed. On the other hand, rebasing is like saying, “I want to base my changes on what everybody has already done.”
+
+```
+git rebase <base>
+```
+
+Too abort a rebase we can use 
+```
+git rebase --abort
+```
+If we have problem with the rebase merge , we solve the problem and add the files modify and later we use 
+```
+git rebase --continue
+```
+
+## Configure merge tool p4merge
+
+- Download p4merge  https://www.perforce.com/downloads/visual-merge-tool
+
+- select only p4merge tool
+
+- add p4merge en path if is necessary
+
+- execute this command
+```
+git config --global merge.tool p4merge
+
+git config --global mergetool.p4merge.path "C:/Program Files/Perforce/p4merge.exe" 
+
+git config --global mergetool.prompt false
+
+git config --global diff.tool p4merge
+
+git config --global difftool.p4merge.path "C:/Program Files/Perforce/p4merge.exe"
+
+git config --global difftool.prompt false
+
+git config --global --list ## validate variables
+```
+
+## Stash
