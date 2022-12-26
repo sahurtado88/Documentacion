@@ -264,7 +264,7 @@ ejemplo: git config --global alias.hist "log --all --graph --decorate --oneline"
 ```
 
 
-### Borrar archvio que por erro no se puso en gitignore
+### Borrar archvio que por error no se puso en gitignore
 
 ```
  git rm --cached ruta-de-archivo
@@ -330,3 +330,22 @@ git config --global --list ## validate variables
 ```
 
 ## Stash
+
+git-stash - Stash the changes in a dirty working directory away
+
+Use git stash when you want to record the current state of the working directory and the index, but want to go back to a clean working directory. The command saves your local modifications away and reverts the working directory to match the HEAD commit.
+
+git stash apply
+
+git stash list 
+git stash drop  borra el ultimo stash
+git stash pop realiza el stash apply y el stash drop en un solo comando
+git stash save "message" nos ayuda a diferenciar si hacemos mas de un stash
+
+git stash show stash@{1}
+git stash apply satsh@{1} aplicar un stash en esepcifico
+git stash drop stas@{1} drop an specific stash
+git stash clear clean the list of stash
+git stash nranch NAMEBRANCH crea una nueva rama y elimina el stash
+git stash -u include untrack files
+
