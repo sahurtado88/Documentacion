@@ -455,7 +455,7 @@ Control what happens to a resource if you update a property whose update behavio
 
 
 
-    # Advanced networking Speciality
+# Advanced networking Speciality
 
 
 ## VPC (Virtul Private Cloud) Fundamentals

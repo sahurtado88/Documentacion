@@ -36,3 +36,4 @@ No built-in deployment platform	|Software deployment via Kubernetes
 Comprehensive comment tracking|	No comment tracking
 No ability to export issues as a CSV file|	Ability to export and email issues as a CSV file
 Personal dashboard for tracking issues and pull requests|	Analysis dashboard for planning and monitoring projects
+

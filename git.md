@@ -349,3 +349,23 @@ git stash clear clean the list of stash
 git stash nranch NAMEBRANCH crea una nueva rama y elimina el stash
 git stash -u include untrack files
 
+## Simple tag
+
+git tag myTag
+git tag --list
+git tag --delete myTag
+
+## Reset
+
+## Cherry Pick
+
+git cherry-pick is a powerful command that enables arbitrary Git commits to be picked by reference and appended to the current working HEAD. Cherry picking is the act of picking a commit from a branch and applying it to another. git cherry-pick can be useful for undoing changes. For example, say a commit is accidently made to the wrong branch. You can switch to the correct branch and cherry-pick the commit to where it should belong.
+
+git cherry-pick is a useful tool but not always a best practice. Cherry picking can cause duplicate commits and many scenarios where cherry picking would work, traditional merges are preferred instead. With that said git cherry-pick is a handy tool for a few scenarios
+
+- Bug hotfixes
+- Undoing changes and restoring lost commits
+
+
+
+
