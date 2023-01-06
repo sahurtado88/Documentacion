@@ -624,3 +624,7 @@ idempotency — the ability to repeatedly apply code to guarantee a desired stat
     - GCP
     - Oracle
     - Open stack  
+
+## Virtual Machine vs Container
+
+in vitual machine you needd Guest OS and this make more heavier  in docker you don't need de guest OS so the docker is more lighter is platform independt

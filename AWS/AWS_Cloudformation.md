@@ -1193,3 +1193,300 @@ Great nested stacks example at https://github.com/aws-samples/ecs-refarch-cloudf
   - Create a temporary policy that overrides the stack policy
   - The override policy doesn't permanently change the stack policy
 - Once created, can't be deleted (edit allow all update action on all resources)
+
+## Stack termination protection
+
+- To prevent accidental deletes of CLoudFormation stacks, use TerminationProtection
+- Applied to any nested stacks
+- Tighten your IAM policies (ex: explicit deny on some user groups)
+
+## Cloudformation Service Role / Template Role
+
+### Service Role
+
+- IAM role that allows CloudFormation to create/update/delete stack resources on your behalf
+- By default, CloudFormation uses a temporary sessions that it generates from users credentials
+- use Cases
+  - You want to achieve the last privilege principle
+  - But you don't want to give the user all the requiered permissions to create the stack resources
+- Give ability to users to create/update/delete the stack resources even if they don't have permissions to work with the resources in the stack
+
+## Quick create links for Stacks
+
+- Custom URL that used to launch CloudFormation stacks quickly from AWS Console
+- Reduce the number of wizard pages and the amount of user input that's requeried
+- For example: create multiple URL that specify different values for the same template
+- CloudFormation ignores parameters:
+  - That doesn't exist in the template
+  - That defined with Noecho property set to true
+ 
+ ## Continous Delivery with CodePipeline
+
+ - Use CodePipeline to build a continous delivery workflows (building a pipeline for CloudFormation stacks)
+ - Rapidly and reliably make changes to your AWS infraestructure
+ - Automatically build and test changes to your CloudFormation templates before promoting them to production stacks
+ - For example
+  - Create a workflow that automatically builds a test stack when you submit a Cloudformation template to a code repository
+  - After CloudFormation builds the test stack, you can test it and then decide wheter to push change to production stack
+
+Pipelines
+```
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: >
+  AWS CloudFormation Sample Template Continuous Delivery: This template
+  builds an AWS CodePipeline pipeline that implements a continuous delivery release
+  process for AWS CloudFormation stacks. Submit a CloudFormation source artifact
+  to an Amazon S3 location before building the pipeline. The pipeline uses the
+  artifact to automatically create stacks and change sets.
+  **WARNING** This template creates an Amazon EC2 instance. You will be billed
+  for the AWS resources used when you create a stack using this template.
+
+Parameters:
+  PipelineName:
+    Description: A name for pipeline
+    Type: String
+  S3Bucket:
+    Description: The name of the S3 bucket that contains the source artifact, which must be in the same region as this stack
+    Type: String
+  SourceS3Key:
+    Default: wordpress-single-instance.zip
+    Description: The file name of the source artifact, such as myfolder/myartifact.zip
+    Type: String
+  TemplateFileName:
+    Default: wordpress-single-instance.yaml
+    Description: The file name of the WordPress template
+    Type: String
+  TestStackName:
+    Default: Test-MyWordPressSite
+    Description: A name for the test WordPress stack
+    Type: String
+  TestStackConfig:
+    Default: test-stack-configuration.json
+    Description: The configuration file name for the test WordPress stack
+    Type: String
+  ProdStackName:
+    Default: Prod-MyWordPressSite
+    Description: A name for the production WordPress stack
+    Type: String
+  ProdStackConfig:
+    Default: prod-stack-configuration.json
+    Description: The configuration file name for the production WordPress stack
+    Type: String
+  ChangeSetName:
+    Default: UpdatePreview-MyWordPressSite
+    Description: A name for the production WordPress stack change set
+    Type: String
+  Email:
+    Description: The email address where CodePipeline sends pipeline notifications
+    Type: String
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "CodePipeline Settings"
+        Parameters:
+          - PipelineName
+          - S3Bucket
+          - SourceS3Key
+          - Email
+      - Label:
+          default: "Test Stack Settings"
+        Parameters:
+          - TestStackName
+          - TemplateFileName
+          - TestStackConfig
+      - Label:
+          default: "Production Stack Settings"
+        Parameters:
+          - ChangeSetName
+          - ProdStackName
+          - ProdStackConfig
+
+Resources:
+  ArtifactStoreBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      VersioningConfiguration:
+        Status: Enabled
+
+  CodePipelineSNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      Subscription:
+        - Endpoint: !Ref Email
+          Protocol: email
+
+  Pipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      ArtifactStore:
+        Location: !Ref 'ArtifactStoreBucket'
+        Type: S3
+      DisableInboundStageTransitions: []
+      Name: !Ref 'PipelineName'
+      RoleArn: !GetAtt [PipelineRole, Arn]
+      Stages:
+        - Name: S3Source
+          Actions:
+            - Name: TemplateSource
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Provider: S3
+                Version: '1'
+              Configuration:
+                S3Bucket: !Ref 'S3Bucket'
+                S3ObjectKey: !Ref 'SourceS3Key'
+              OutputArtifacts:
+                - Name: TemplateSource
+              RunOrder: 1
+        - Name: TestStage
+          Actions:
+            - Name: CreateStack
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: '1'
+              InputArtifacts:
+                - Name: TemplateSource
+              Configuration:
+                ActionMode: REPLACE_ON_FAILURE
+                RoleArn: !GetAtt [CFNRole, Arn]
+                StackName: !Ref TestStackName
+                TemplateConfiguration: !Sub "TemplateSource::${TestStackConfig}"
+                TemplatePath: !Sub "TemplateSource::${TemplateFileName}"
+              RunOrder: 1
+            - Name: ApproveTestStack
+              ActionTypeId:
+                Category: Approval
+                Owner: AWS
+                Provider: Manual
+                Version: '1'
+              Configuration:
+                NotificationArn: !Ref CodePipelineSNSTopic
+                CustomData: !Sub 'Do you want to create a change set against the production stack and delete the ${TestStackName} stack?'
+              RunOrder: 2
+            - Name: DeleteTestStack
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: '1'
+              Configuration:
+                ActionMode: DELETE_ONLY
+                RoleArn: !GetAtt [CFNRole, Arn]
+                StackName: !Ref TestStackName
+              RunOrder: 3
+        - Name: ProdStage
+          Actions:
+            - Name: CreateChangeSet
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: '1'
+              InputArtifacts:
+                - Name: TemplateSource
+              Configuration:
+                ActionMode: CHANGE_SET_REPLACE
+                RoleArn: !GetAtt [CFNRole, Arn]
+                StackName: !Ref ProdStackName
+                ChangeSetName: !Ref ChangeSetName
+                TemplateConfiguration: !Sub "TemplateSource::${ProdStackConfig}"
+                TemplatePath: !Sub "TemplateSource::${TemplateFileName}"
+              RunOrder: 1
+            - Name: ApproveChangeSet
+              ActionTypeId:
+                Category: Approval
+                Owner: AWS
+                Provider: Manual
+                Version: '1'
+              Configuration:
+                NotificationArn: !Ref CodePipelineSNSTopic
+                CustomData: !Sub 'A new change set was created for the ${ProdStackName} stack. Do you want to implement the changes?'
+              RunOrder: 2
+            - Name: ExecuteChangeSet
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: '1'
+              Configuration:
+                ActionMode: CHANGE_SET_EXECUTE
+                ChangeSetName: !Ref ChangeSetName
+                RoleArn: !GetAtt [CFNRole, Arn]
+                StackName: !Ref ProdStackName
+              RunOrder: 3
+  CFNRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: ['sts:AssumeRole']
+          Effect: Allow
+          Principal:
+            Service: [cloudformation.amazonaws.com]
+        Version: '2012-10-17'
+      Path: /
+      Policies:
+        - PolicyName: CloudFormationRole
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Action:
+                  - 'ec2:*'
+                Effect: Allow
+                Resource: '*'
+              
+  PipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: ['sts:AssumeRole']
+          Effect: Allow
+          Principal:
+            Service: [codepipeline.amazonaws.com]
+        Version: '2012-10-17'
+      Path: /
+      Policies:
+        - PolicyName: CodePipelineAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Action:
+                - 's3:*'
+                - 'cloudformation:CreateStack'
+                - 'cloudformation:DescribeStacks'
+                - 'cloudformation:DeleteStack'
+                - 'cloudformation:UpdateStack'
+                - 'cloudformation:CreateChangeSet'
+                - 'cloudformation:ExecuteChangeSet'
+                - 'cloudformation:DeleteChangeSet'
+                - 'cloudformation:DescribeChangeSet'
+                - 'cloudformation:SetStackPolicy'
+                - 'iam:PassRole'
+                - 'sns:Publish'
+                Effect: Allow
+                Resource: '*'
+```
+
+## Custom resource
+
+- Enable you to write custom provision logic in templates that AWS CloudFormation runs anytime you create, update, delete stacks
+- Defined in the template using AWS::CloudFormation::CustomResource or Custom::MyCustomResourceTypeName (recommended)
+- two types:
+  - Amazon SNS-backed Custom resources
+  - AWS Lambda-backed Custom Resources
+- Use cases:
+  - An AWS resource is not covered yet (new service for example)
+  - An on.premise resource
+  - Running a Lambda function to empty an S3 bucket before being deleted
+  - Fetch an AMI id 
+
+- ServiceToken specifies where cloudformation send requests to, such as Lambda ARN or SNS ARN (requiered and must be in the same region)
+- input data parameter (optional)
+

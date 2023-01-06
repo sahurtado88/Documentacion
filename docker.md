@@ -2,7 +2,7 @@
 
 ## What is a Container
 
--A way to package application wit all necesary dependencies and configuration
+-A way to package application with all necesary dependencies and configuration
 
 -Portable artifact easily shared and moved around
 
