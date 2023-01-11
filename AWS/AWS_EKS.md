@@ -29,6 +29,10 @@ Amazon EKS is a managed Kubernetes service to run Kubernetes in the AWS cloud an
     - You define and deloy pod
     - Container + Serverless
 
+- **Self-managed:** You bring your own servers and have more control of the server. You have to manage it yourself though. So people also call this unmanaged.
+- **Managed Node Groups:** AWS manages the servers for you. You just have to specify some configurations of server instance types.
+- **AWS Fargate:** AWS manages even more of the server for you. You don't even have to think about instance types. Just tell EKS how much RAM and CPU you need and that's it.
+
 ## Spin Up Cluster
 
 - AWS console
@@ -84,5 +88,31 @@ kubectl get pod my-pod -o yaml |Get a pod's YAML
 kubectl get deployment my-dep |List a particular deployment
 kubectl exec -it podname -- /bin/bash |Get a shell to the running Containe
 
+## Pod limit in a Node
+
+- Max number of allowed pods depend on EC2 instance type
+
+
+## EKS Managed Groups
+
+- Create and manage EC2 workers for you
+- Amazon releases AMIs with bug fix, security patches fro EKS worker nodes
+    - or bring your own custom AMI
+- Automated deployment of updated AMIs with security patches, CVEs
+    - No app downtime
+    - No overhead of user managed orchestration
+    - Auto Scaling group is used behind the scenes
+
+## Helm and charts
+
+- Helm is package manager for Kubernetes
+- Helm packages are called Charts
+- Helm Charts help define, install, and upgrade 
+complex Kubernetes application
+- Helm Charts can be versioned, shared, and 
+published
+- Helm Charts can accept input parameter
+    - kubectl need template engine to do this (Kustomize, jinja etc.)
+- Popular packages already available
 
 
