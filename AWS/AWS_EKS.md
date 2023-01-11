@@ -62,4 +62,27 @@ eksctl create cluster --name <name> --fargate | EKS Cluster with Fargate Profile
 - IAM Management and Add-on Policies
 - List cluster Cloudformation stacks
 - Install coredns
-- Write kubeconfig file for a cluste
+- Write kubeconfig file for a cluster
+
+### Kubectl
+
+- CLI for running commands against a cluster on K8s resources
+- Communicate via cluster API Server
+- Works for any K8s cluster- EKS, K8s on EC2, GKE, AKS, etc
+
+#### Kubectl Commands Syntax
+
+![Descripción de la imagen](..\Images\kubectl_commands_syntax.png)
+
+Command |Brief Description
+|-|-|
+kubectl apply -f ./manifest-file.yaml |Create resources based on manifest. Declarative Way! Best Way!
+kubectl get nodes |List all node info
+kubectl get services |List all services 
+kubectl get pods -o wide |List pods with more details
+kubectl get pod my-pod -o yaml |Get a pod's YAML
+kubectl get deployment my-dep |List a particular deployment
+kubectl exec -it podname -- /bin/bash |Get a shell to the running Containe
+
+
+
