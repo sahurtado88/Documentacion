@@ -628,3 +628,234 @@ idempotency — the ability to repeatedly apply code to guarantee a desired stat
 ## Virtual Machine vs Container
 
 in vitual machine you needd Guest OS and this make more heavier  in docker you don't need de guest OS so the docker is more lighter is platform independt
+
+
+### LOG MANAGEMENT TOOLS
+
+- Prometheus
+
+Prometheus is a systems and service monitoring system that collects metrics from configured targets at specified intervals, evaluates rule expressions, displays results and triggers alerts when pre-defined conditions are met. With customers like DigitalOcean, SoundCloud, Docker, CoreOS and countless others, the Prometheus repository is a great example of how open-source projects can compete with leading technology and innovate in the field of systems and log management.
+
+Key Features:
+
+A custom-built query language for digging deep into your data that can then be used to create graphs, charts, tables, and custom alerts.
+A selection of data visualization methods: Grafana, Console, and an inbuilt ExpressionEngine.
+Efficient storage techniques to scale data appropriately.
+Cost: Free, Open-Source.
+
+- Fluentd
+
+Fluentd collects events from various data sources and writes them to files, RDBMS, NoSQL, IaaS, SaaS, Hadoop and so on. Fluentd helps you unify your logging infrastructure. Fluentd’s flagship feature is an extensive library of plugins which provide extended support and functionality for anything related to log and data management within a concise developer environment.
+
+Key Features:
+
+Unified logging layer that can decouple data from multiple sources.
+Gives structure to unstructured logs.
+Flexible, but simple. Takes a couple of minutes to get it going.
+Compatible with a majority of modern data sources.
+Cost:
+
+Free: Open-Source
+Enterprise: Upon request.
+
+Pros:
+
+Good performance and resource usage
+Good plugin ecosystem
+Easy to use configuration
+Good documentation
+Cons:
+
+No buffering before parsing, which may cause back pressure in the logging pipeline
+Limited support for transforming data, like you could do with Logstash’s mutate filter or rsyslog’s variables and templates
+
+
+- Nagios
+
+Nagios provides a complete log management and monitoring solution which is based on its Nagios Log Server platform. With Nagios, a leading log analysis tool in this market, you can increase the security of all your systems, understand your network infrastructure and its events, and gain access to clear data about your network performance and how it can be stabilized.
+
+Key Features:
+
+A powerful out of the box dashboard that gives customers a way to filter, search, and conduct a comprehensive analysis of any incoming log data.
+Extended availability through multiple server clusters so data isn’t lost in case of an outage.
+Custom alert assignments based on queries and IT department in charge.
+Tap into the live-stream of your data as its coming through the pipes.
+Easy management of clusters lets you add more power and performance to your existing log management infrastructure.
+Cost: Starting at $1995.
+
+- pagerduty
+
+PagerDuty helps developers, ITOps, DevOps, and businesses protect their brand reputation and customer experiences. An incident resolution platform, PagerDuty automates your resolutions and provides full-stack visibility and delivers actionable insights for better customer experiences.
+
+Key Features:
+
+Visualize each dimension of the customer experience.
+Gain event intelligence and understand the context of disruptions across your infrastructure with actionable, time-series visualizations of correlated events.
+Response orchestration to enable better collaboration and rapid resolution.
+Discover patterns in performance and view post-mortem reports to analyze system efficiency.
+Cost: FREE trial available for 14 days
+
+Lite: $9/month billed annually or $10/month billed monthly – Unlimited notifications, 180+ integrations with top tools, alert triage and reduplication, reliable notifications and escalations, and more
+Basic: $29/month billed annually or $34/month billed monthly – Unlimited notifications, 200+ integrations with top tools, all Lite features, plus incident enrichment, incident urgencies, on-call scheduling, and more
+Standard: $49/month billed annually or $59/month billed annually – Unlimited notifications, 200+ integrations with top tools, all Basic features, plus coordinated response, incident subscription, postmortems, and more
+Enterprise: $99/month billed annually – Unlimited notifications, 200+ integrations with top tools, all Standard features, plus operations command console, infrastructure health application, stakeholder users, live all routing, and more
+
+- Logstash
+
+Logstash from Elasticsearch is one of the most renowned open-source log management tool for managing, processing and transporting your log data and events. Logstash works as a data processor that can combine and transform data from multiple sources at the same time, then send it over to your favorite log management platform, such as Elasticsearch.
+
+Key Features:
+
+Ingest data from varied sets of sources: logs, metrics, web apps, data storages, AWS, without losing concurrency.
+Real-time data parsing.
+Create structure from unstructured data.
+Pipeline encryption for data security.
+Cost: Open-Source
+
+Pros:
+
+Easy to get started and move to complex configurations
+Flexible: Logstash is used in various logging use-cases and even for non-logging data
+Well-written documentation and lots of how-tos on the web
+Cons:
+
+High resource usage, compared to other log shippers
+Lower performance, compared to alternatives
+
+- Splunk
+
+Splunk’s log management tool focuses on enterprise customers who need concise tools for searching, diagnosing and reporting any events surrounding data logs. Splunk’s software is built to support the process of indexing and deciphering logs of any type, whether structured, unstructured, or sophisticated application logs, based on a multi-line approach.
+
+Key Features:
+
+Splunk understands machine-data of any type; servers, web servers, networks, exchanges, mainframes, security devices, etc.
+Flexible UI for searching and analyzing data in real-time.
+Drilling algorithm for finding anomalies and familiar patterns across log files.
+Monitoring and alert system for keeping an eye on important events and actions.
+Visual reporting using an automated dashboard output.
+Cost:
+
+Free: 500MB data per day
+Splunk Cloud: Starting at $186
+Splunk Enterprise: Starting at $2,000
+
+Pros:
+
+Mature and feature-rich
+Good data compression for most use-cases (assuming limited indexing, as recommended)
+Logs and metrics under one roof
+Cons:
+
+Expensive
+Slow queries for longer time ranges (assuming limited indexing, as recommended)
+Less efficient for metrics storage than monitoring-focused tools
+
+- Datadog
+
+Datadog is a SaaS that started up as a monitoring (APM) tool and later added log management capabilities as well. You can send logs via HTTP(S) or syslog, either via existing log shippers (rsyslog, syslog-ng, Logstash, etc.) or through Datadog’s own agent. It features Logging without Limits™, which is a double-edged sword: harder to predict and manage costs, but you get pay-as-you-use pricing (see below) combined with the fact that you can archive and restore from archive.
+
+Key Features:
+
+Server-side processing pipeline for parsing and enriching logs
+Automatically detects common log patterns
+Can archive logs to AWS/Azure/Google Cloud storage and rehydrate them later
+Pricing separates processing from storage:
+
+Processing starts at $0.10 per ingested GB per month (e.g. $3 for 1GB/day)
+Processing also applies to rehydration from archive, though here data is compressed
+Storage starts at $1.59 for 3 days for 1M events (e.g. $47.7 for 1GB/day at 1K each, stored for 3 days)
+Pros:
+
+Easy search with good autocomplete (based on facets)
+Integration with DataDog metrics and traces
+Affordable, especially for short retention and/or if you rely on the archive for a few searches going back
+Cons:
+
+Not available on premises
+Some users complain about cost getting out of control (due to flexible pricing). Though you can set daily processing quotas
+
+- Elasticsearch, Logstash and Kibana (ELK stack or Elastic Stack)
+
+The ELK stack contains most of the tools needed for a log management solution:
+
+Log shippers such as Logstash and Filebeat
+Elasticsearch as a scalable search engine
+Kibana as the UI to search for logs or build visualizations
+It’s very popular for centralizing logs, with lots of tutorials on how to use it all around the web. There’s a vast ecosystem of tools that you can use on top of the basic setup to enhance it with alerting, role-based access control, and more. We go into details about these extra additions in this blog post where we discuss Elastic Stack features alternatives.
+
+Elasticsearch indexes every field by default, making searches fast
+Real-time visualizations via API and Kibana
+Data parsing and enriching before indexing
+Pricing: Free & Open source. Some companies offer forms of hosted ELK, see above. There’s also Elastic Cloud which is a pure form of ELK in the cloud, that you’d mostly have to manage yourself.
+
+Pros:
+
+Scalable search engine as log storage
+Mature log shippers
+Web UI and visualizations in Kibana
+Cons:
+
+At scale, it may become difficult to maintain. Which is why Sematext offers ELK stack consulting, production support, and training
+The open-source version of the ELK Stack misses some features like role-based access control and alerting. You can get these features through a commercial “Elastic Stack Features” or its alternatives or visa Open Distro for Elasticsearch.
+
+- Grafana Loki
+
+Loki and its ecosystem are an alternative to the ELK stack, but it makes different trade-offs. By indexing only some fields (labels), it can have a completely different architecture. Namely, the main write component (Ingester) will keep chunks of logs in memory, making recent queries fast. As chunks get older, they are written in two places: a key-values store (e.g. Cassandra) for labels and an object store (e.g. Amazon S3) for the chunk data. Neither of them need background maintenance as you add data (like Elasticsearch/Solr need merges).
+
+If you query older data, you typically filter by labels and timeframe. This restricts the number of chunks that have to be retrieved from the long term storage.
+
+Key features:
+
+Logs and metrics in the same UI (Grafana)
+Loki labels can be consistent with Prometheus labels
+Pricing:
+
+Free & Open source
+There’s also Grafana Cloud, offering Loki as SaaS (with an on-premises option as well). Prices start at $49, which includes 100GB of log storage (30 days retention) and 3000 metrics series
+Pros:
+
+Faster ingestion compared to ELK: less indexing, no merging
+Small storage footprint: smaller index, data is only written once to the long term storage (which typically has built-in replication)
+Uses cheaper storage (e.g. AWS S3)
+Cons:
+
+Slower queries and analytics for longer time frames compared to ELK
+Fewer log shipper options compared to ELK (e.g. Promtail or Fluentd)
+Less mature than ELK (e.g. more difficult to install)
+
+## Types Of Monitoring In DevOps: What Should You Monitor?
+Continuous monitoring in DevOps comes in four forms:
+
+Infrastructure monitoring 
+Application monitoring
+Network monitoring
+Cost monitoring
+Here are brief descriptions of each: 
+
+Infrastructure monitoring
+Infrastructure monitoring involves detecting, tracking, and compiling real-time data on the health and performance of the backend components of your DevOps tech stack. Those components include servers, databases, virtual machines, and containers, among other computing components in a system. 
+
+There are two types of infrastructure monitoring:
+
+In agent-based infrastructure monitoring, engineers install an agent (software) on each of their hosts, either physical or virtual. The agent collects infrastructure metrics and sends them to a monitoring tool for analysis and visualization.  
+Agentless infrastructure monitoring doesn’t involve installing an agent. Instead, it uses built-in protocols such as SSH, NetFlow, SNMP, and WMI to relay infrastructure component metrics to monitoring tools.    
+Each approach has its advantages and disadvantages. For example, agent-based monitoring collects more in-depth data because it is designed specifically for a particular monitoring platform. On the flip side, if you want to migrate to another platform, the agent may not be compatible with your new platform, resulting in data loss.
+
+Several infrastructure components, including VMs (such as Hyper-V and VMware), servers, networking, storage, and flow devices, come with built-in agentless monitoring capabilities. You can also manage these components' monitoring centrally.  You can combine the two approaches to build a comprehensive monitoring strategy. 
+
+Application monitoring
+This ongoing process involves monitoring an application's performance and availability, along with the effects the two have on the user's experience. A monitoring application tracks your app's hardware utilization, SLA status, platform performance, and user response times. 
+
+Among the metrics, DevOps engineers can monitor here are server diagnostics, error logs, network traffic reports, historical statistics, and failure diagnostics.      
+
+Network monitoring
+The software and hardware engineers use here enable them to monitor the health and performance of network components, such as switches, servers, and routers. A network monitoring system tracks bandwidth, uptime, and bottlenecks, such as failing switches or routers.   
+
+Monitoring tools perform periodic checks to enable engineers to detect failing or failed incidences before they can affect user experiences. 
+
+Cost monitoring
+The DevOps pipeline involves a multitude of changes that can cause significant cost overruns, so tracking costs throughout is essential. Thus, any cloud cost anomalies will not surprise you with a hefty bill. 
+
+Monitoring costs involves identifying resource usage. Besides real-time metrics, some advanced cost intelligence tools can collect exact costs per unit and per customer or project and transmit that information to engineers and finance.  
+
+With this capability, you can forecast cost of goods sold (COGS), secure gross margins, and optimize resource utilization throughout different phases of DevOps.    

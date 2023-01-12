@@ -115,4 +115,43 @@ published
     - kubectl need template engine to do this (Kustomize, jinja etc.)
 - Popular packages already available
 
+## EKS logging
 
+- EKS Control Plane Logging
+    - K8 api
+    - audit
+    - authenticator
+    - ControlManager
+    - scheduler
+- EKS Worker Nodes Logging
+    - System logs from kubelet, kube-proxy, or dockerd
+    - Application logs from application containers    
+
+### Log are written
+
+- Containerized application writes to stdout and stderr
+- System logs go to systemd
+- Container redirect logs to /var/log/containers/*.log files
+
+![Descripción de la imagen](..\Images\Logs_kubernetes.png)
+
+## Kubernetes Dashboard
+
+- Web-based kubernetes used  interface
+- Overview of applications and resources running on cluster
+- create and modify resources
+- Is not use in prod environment
+
+## Monitoring using Prometheus
+
+- Monito Kubernetes cluster
+- Query times series data to generate graphs, tables
+- create alerts
+- Open source
+
+## Graphs using grafana
+
+- Visualize metrics
+- Works out of the box with prometheus
+- Create alerts
+- Open source
