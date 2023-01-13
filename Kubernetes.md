@@ -720,3 +720,14 @@ continer port has match with target port of the service
 - recreate (application down)
 - rolling update (default deployment strategy)
 
+
+
+### TIPS
+Tip of the day: if you want to improve the speed  that application takes to start in any kubernetes cluster not hosted in cloud you can set up the following flags in the kubelet
+--serialize-image-pulls (by default true which means all images are downloaded one after another)
+--image-pull-progress-deadline (by default unset which mean there is not timeout configured)
+if you want to set a max limit in the qty of images downloaded at the same time you can set at docker daemon
+max-concurrent-downloads
+this doesn't applied for cloud environment since this setting are already enabled by default , for example in the amazon eks ami image :
+https://github.com/awslabs/amazon-eks-ami/blob/master/files/docker-daemon.json
+https://github.com/awslabs/amazon-eks-ami/blob/master/files/kubelet-config.json

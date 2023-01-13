@@ -1490,3 +1490,237 @@ Resources:
 - ServiceToken specifies where cloudformation send requests to, such as Lambda ARN or SNS ARN (requiered and must be in the same region)
 - input data parameter (optional)
 
+cfn-response module help in sending responses to CloudFormation instead of writing your own code (Python / NodeJS) https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-lambda-function-code-cfnresponsemodule.html
+
+Custom resource helper framework for Python simplifies writing custom resources by implementing best practices and abstractions https://github.com/aws-cloudformation/custom-resource-helper
+
+You can create your own resources using Resource Types, which we’ll see later in the course! https://aws.amazon.com/blogs/mt/managing-resources-using-aws-cloudformation-resource-types/
+
+
+EX: Lambda-backed custom resource delete object in s3 before delete s3 bucket
+
+```
+Parameters:
+  S3BucketName:
+    Type: String
+    Description: "S3 bucket to create"
+    AllowedPattern: "[a-zA-Z][a-zA-Z0-9_-]*"
+
+Resources:
+  SampleS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref S3BucketName
+    DeletionPolicy: Delete
+
+  S3CustomResource:
+    Type: Custom::S3CustomResource
+    Properties:
+      ServiceToken: !GetAtt AWSLambdaFunction.Arn
+      bucket_name: !Ref SampleS3Bucket    ## Additional parameter here
+
+  AWSLambdaFunction:
+     Type: AWS::Lambda::Function
+     Properties:
+       Description: "Empty an S3 bucket!"
+       FunctionName: !Sub '${AWS::StackName}-${AWS::Region}-lambda'
+       Handler: index.handler
+       Role: !GetAtt AWSLambdaExecutionRole.Arn
+       Timeout: 360
+       Runtime: python3.8
+       Code:
+         ZipFile: |
+          import boto3
+          import cfnresponse
+          ### cfnresponse module help in sending responses to CloudFormation
+          ### instead of writing your own code
+
+          def handler(event, context):
+              # Get request type
+              the_event = event['RequestType']        
+              print("The event is: ", str(the_event))
+
+              response_data = {}
+              s3 = boto3.client('s3')
+
+              # Retrieve parameters (bucket name)
+              bucket_name = event['ResourceProperties']['bucket_name']
+              
+              try:
+                  if the_event == 'Delete':
+                      print("Deleting S3 content...")
+                      b_operator = boto3.resource('s3')
+                      b_operator.Bucket(str(bucket_name)).objects.all().delete()
+
+                  # Everything OK... send the signal back
+                  print("Execution succesfull!")
+                  cfnresponse.send(event, context, cfnresponse.SUCCESS, response_data)
+              except Exception as e:
+                  print("Execution failed...")
+                  print(str(e))
+                  response_data['Data'] = str(e)
+                  cfnresponse.send(event, context, cfnresponse.FAILED, response_data)
+
+  AWSLambdaExecutionRole:
+     Type: AWS::IAM::Role
+     Properties:
+       AssumeRolePolicyDocument:
+         Statement:
+         - Action:
+           - sts:AssumeRole
+           Effect: Allow
+           Principal:
+             Service:
+             - lambda.amazonaws.com
+         Version: '2012-10-17'
+       Path: "/"
+       Policies:
+       - PolicyDocument:
+           Statement:
+           - Action:
+             - logs:CreateLogGroup
+             - logs:CreateLogStream
+             - logs:PutLogEvents
+             Effect: Allow
+             Resource: arn:aws:logs:*:*:*
+           Version: '2012-10-17'
+         PolicyName: !Sub ${AWS::StackName}-${AWS::Region}-AWSLambda-CW
+       - PolicyDocument:
+           Statement:
+           - Action:
+             - s3:PutObject
+             - s3:DeleteObject
+             - s3:List*
+             Effect: Allow
+             Resource:
+             - !Sub arn:aws:s3:::${SampleS3Bucket}
+             - !Sub arn:aws:s3:::${SampleS3Bucket}/*
+           Version: '2012-10-17'
+         PolicyName: !Sub ${AWS::StackName}-${AWS::Region}-AWSLambda-S3
+       RoleName: !Sub ${AWS::StackName}-${AWS::Region}-AWSLambdaExecutionRole
+```
+
+## Wait Condition
+
+- Make CloudFormation pause the creation of a stack and wait for a signal before it continues to create the stack
+
+- For example, start the creation of another resource after an application on an EC2 instacne fully/partically configured
+
+- Properties:
+  - **Count** number of success signals requiered to continue stack creation (default 1)
+  - **Timeout** time to wait for the number of signals ( Max 4320 second=12 hours)
+  - **Handle** reference to AWS::CloudFormation::WaitConditionalHandle
+
+- AWS::CloudFormation::WaitConditionalHandle 
+  - A pre-signed URL enables you to send a signal (succes/failure) to WaitCondition
+
+- For EC2 and ASG, recommended to use CreationPolicy
+
+```
+Resources:
+  WaitConditionLogicalId:
+    Type: AWS::CloudFormation::WaitCondition
+    Properties:
+      Count: Integer
+      Handle: String
+      Timeout: String
+```
+
+```
+Resources:
+  WaitConditionHandleLogicalId:
+    Type: AWS::CloudFroamtion::WAitConditionHandle
+    Properties:
+```
+
+### How to use a WaitCondition
+
+- To signal the WaitCondition you use the WaitConditionHandle pre-signed URL
+  - Using the cfn-signal helper script
+  - Make an HTTP PUT request
+
+```
+Parameters:
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instances
+  SSHLocation:
+    Type: String
+    Description: The IP address range that can be used to SSH to the EC2 instances
+    MinLength: '9'
+    MaxLength: '18'
+    Default: 0.0.0.0/0
+    AllowedPattern: "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})"
+    ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
+  
+  ImageId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+
+Resources:
+  InstanceWaitHandle:
+    Type: AWS::CloudFormation::WaitConditionHandle
+  
+  InstanceWaitCondition:
+    Type: AWS::CloudFormation::WaitCondition
+    DependsOn: MyEC2Instance
+    Properties:
+      Handle: !Ref InstanceWaitHandle
+      Count: 1
+      Timeout: "3600"
+  
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref ImageId
+      InstanceType: t2.micro
+      KeyName: !Ref KeyName
+      SecurityGroups:
+      - !Ref InstanceSecurityGroup
+      UserData:
+        Fn::Base64:
+          !Sub |
+            #!/bin/bash -xe
+
+            # Update to the latest packages
+            yum update -y
+
+            # Get the latest CloudFormation helper scripts
+            yum install -y aws-cfn-bootstrap
+
+            # Make your configuration here
+            date > /tmp/datefile
+            cat /tmp/datefile
+
+            sleep 10s
+
+            # Signal the status from instance
+            /opt/aws/bin/cfn-signal -e $? --data "This is from the EC2 instance" --reason "Build process complete." '${InstanceWaitHandle}'
+
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access via port 22
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: !Ref SSHLocation
+
+  MySNSTopic:
+    Type: AWS::SNS::Topic
+    DependsOn: InstanceWaitCondition
+    Properties:
+      TopicName: DemoTopic
+```
+
+  ## Dynamic References
+
+- Reference external values stored in SSM Parameter store and AWS secret Manager within CloudFormation templates
+- CloudFormation retrieves the value of the specified reference during stack and change set operations
+- For example: retrieve RDS DB Instance master password from AWS Secrets Manager
+- Supports
+  - ssm: for plain text values stored in SSM Parameter Store
+  - ssm-secure: for secure string stored in SSM Parameter Store
+  - secretsmanager: for secret values stroed in AWS Secrets Manager
+- Up to 60 dynamics references in a template
