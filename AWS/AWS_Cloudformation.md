@@ -1724,3 +1724,1442 @@ Resources:
   - ssm-secure: for secure string stored in SSM Parameter Store
   - secretsmanager: for secret values stroed in AWS Secrets Manager
 - Up to 60 dynamics references in a template
+
+- Dynamic refeence: ssm
+  - Reference values stored in SSM parameter Store of type String and Stringlist
+  - If no version specified, CloudFormation uses the latest version
+  - Doesn't support public SSM parameters (eg Amazon Linux 2 AMI)
+
+  '{{resolve:ssm:parameter-name:version}}'
+
+  ```
+  Resources:
+    MyBucket:
+      type: AWS::S3::Bucket
+      Properties:
+        AccessControl: '{{resolve:ssm:S3AccessControl:2}}'
+
+  ```
+- Dynamic Reference: ssm-secure
+  - Reference values stored in SSM Parameter Store of Type SecureString
+  - for example: passwords, license keys, etc
+  - CloudFormation never stores the actual parameter value
+  - If no version specified, CloudFormation uses the latest version
+  - Only use with supported resources
+
+```
+  Resources:
+    MyIAMUser:
+      type: AWS::IAM::User
+      Properties:
+        UserName: 'MyUserName'
+        LoginProfile
+          Password: '{{resolve:ssm-secure:IAMUserPassword:10}}'
+```
+
+- Dynamic Reference: Secretmanager
+  - Retrieve entire secrets or secrets values stored in AWS Secrets Manager
+  - for example: database credentials, password, 3rd party API Keys, etc
+  - To update a secret, you must update the resource containing the secretmanager dynamic reference (one of the resource properties)
+  - format '{{resolve:secretmanager:secret-id:secret-string:json-key:version-stage:version-id}}'
+
+```
+  Resources:
+    MyRDSInstance:
+      type: AWS::RDS::DBInstance
+      Properties:
+        DBName: MyRDSInstance
+        AllocatedStorage: 20
+        DBInstanceClass: db.t2.micro
+        Engine: mysql
+        MasterUsername: '{{resolve:secretmanager:MyRDSSecret:SecretString:username}}'
+        MasterUserPassword: '{{resolve:secretmanager:MyRDSSecret:SecretString:password}}'
+
+```
+Example 3 types
+```
+Parameters:
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instances
+  ImageId: # Public SSM Paramater
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref ImageId
+      KeyName: !Ref KeyName
+      # ssm dynamic reference
+      InstanceType: '{{resolve:ssm:/ec2/instanceType:1}}'
+
+  MyIAMUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: 'sample-user'
+      LoginProfile:
+        # ssm-secure dynamic reference (latest version)
+        Password: '{{resolve:ssm-secure:/iam/userPassword}}'
+
+  MyDBInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceClass: db.t2.micro
+      Engine: mysql
+      AllocatedStorage: "20"
+      VPCSecurityGroups:
+      - !GetAtt [DBEC2SecurityGroup, GroupId]
+      # secretsmanager dynamic reference
+      MasterUsername: '{{resolve:secretsmanager:MyRDSSecret:SecretString:username}}'
+      MasterUserPassword: '{{resolve:secretsmanager:MyRDSSecret:SecretString:password}}'
+  
+  DBEC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: 'Allow access from anywhwere to database'
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 3306
+        ToPort: 3306
+        CidrIp: "0.0.0.0/0"
+
+```
+
+## UpdatePolicy
+
+- Specify how CloudFormation handles updates to the following resources
+  - APPStream::Fleet
+  - AutoScaling::AutoScalingGroup (3 updates policies)
+    - AutoScalingRollingUpdate
+        - Specify whter CloudFormation update instances that are in an ASG in batches or all at once
+        - During stack update rollback operation, CloudFormation uses the UpdatePolicy in the old template before the current stack update operation
+
+    - AutoScalingReplacingUpdate
+        - Specify whether CloudFormation replaces an ASG with a new one or replaces the instances in the ASG
+        - CloudFormation retains the old ASG until it finishes creating the new one
+        - It update fails, CloudFormation rollback to the old ASG and deletes the new ASG
+    - AutoScalingScheduledAction
+      - Specify how CloudFormation handles updates for the group size properties (MinSize, MaxSize, DesiredCapacity) of an ASG that has scheduled action
+      - With scheduled actions, the group size properties of an ASG can change at any time
+      - During stack update, CloudFormation always sets the group size property values of your ASG to values defined in ASG resource, even scheduled action is in effect
+      - Usage: to prevent CloudFormation from changing group size property values when you have scheduled action in effect, unless you modify the values in your template
+  - ElastiCache::ReplicationGroup
+  - ElasticSearch::Domain
+  - Lambda::Alias
+
+Rolling
+```
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  VpcId:
+    Type: 'AWS::EC2::VPC::Id'
+    Description: VpcId of your existing Virtual Private Cloud (VPC)
+    ConstraintDescription: must be the VPC Id of an existing Virtual Private Cloud.
+
+  Subnets:
+    Type: 'List<AWS::EC2::Subnet::Id>'
+    Description: The list of SubnetIds in your Virtual Private Cloud (VPC)
+    ConstraintDescription: >-
+      must be a list of at least two existing subnets associated with at least
+      two different availability zones. They should be residing in the selected
+      Virtual Private Cloud.
+
+  InstanceType:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t1.micro
+      - t2.nano
+      - t2.micro
+      - t2.small
+      - t2.medium
+    Description: WebServer EC2 instance type
+    ConstraintDescription: must be a valid EC2 instance type.
+
+  KeyName:
+    Type: 'AWS::EC2::KeyPair::KeyName'
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instances
+    ConstraintDescription: must be the name of an existing EC2 KeyPair.
+
+  SSHLocation:
+    Type: String
+    MinLength: '9'
+    MaxLength: '18'
+    Default: 0.0.0.0/0
+    AllowedPattern: '(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})'
+    Description: The IP address range that can be used to SSH to the EC2 instances
+    ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
+
+  ImageId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+
+Resources:
+  WebServerGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    CreationPolicy:
+      ResourceSignal:
+        Timeout: PT15M
+        Count: 2
+    UpdatePolicy:
+      AutoScalingRollingUpdate:
+        MaxBatchSize: 1
+        MinInstancesInService: 1
+        PauseTime: PT15M
+        WaitOnResourceSignals: true
+    Properties:
+      VPCZoneIdentifier: !Ref Subnets
+      LaunchConfigurationName: !Ref LaunchConfig
+      MinSize: "2"
+      MaxSize: "4"
+      TargetGroupARNs:
+        - !Ref ALBTargetGroup
+
+  LaunchConfig:
+    Type: AWS::AutoScaling::LaunchConfiguration
+    Metadata:
+      Comment: Install a simple application
+      AWS::CloudFormation::Init:
+        config:
+          packages:
+            yum:
+              httpd: []
+          files:
+            '/var/www/html/index.html':
+              content: | 
+                <h1>Congratulations, you have successfully launched the AWS CloudFormation sample.</h1>
+                <h2>Version: 1.0</h2>
+              mode: '000644'
+              owner: root
+              group: root
+            '/etc/cfn/cfn-hup.conf':
+              content: !Sub |
+                [main]
+                stack=${AWS::StackId}
+                region=${AWS::Region}
+              mode: '000400'
+              owner: root
+              group: root
+            '/etc/cfn/hooks.d/cfn-auto-reloader.conf':
+              content: !Sub |
+                [cfn-auto-reloader-hook]
+                triggers=post.update
+                path=Resources.LaunchConfig.Metadata.AWS::CloudFormation::Init
+                action=/opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource LaunchConfig --region ${AWS::Region}
+              mode: '000400'
+              owner: root
+              group: root
+          services:
+            sysvinit:
+              httpd:
+                enabled: 'true'
+                ensureRunning: 'true'
+              cfn-hup:
+                enabled: 'true'
+                ensureRunning: 'true'
+                files:
+                  - /etc/cfn/cfn-hup.conf
+                  - /etc/cfn/hooks.d/cfn-auto-reloader.conf
+    Properties:
+      KeyName: !Ref KeyName
+      ImageId: !Ref ImageId
+      InstanceType: !Ref InstanceType
+      SecurityGroups:
+        - !Ref InstanceSecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash -xe
+          # Get the latest CloudFormation helper scripts
+          yum install -y aws-cfn-bootstrap
+
+          # Start cfn-init
+          /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource LaunchConfig --region ${AWS::Region}
+          
+          # All done so signal success
+          /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource WebServerGroup --region ${AWS::Region}
+
+  ApplicationLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Subnets: !Ref Subnets
+      SecurityGroups:
+        - !Ref ALBSecurityGroup
+
+  ALBListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref ALBTargetGroup
+      LoadBalancerArn: !Ref ApplicationLoadBalancer
+      Port: 80
+      Protocol: HTTP
+
+  ALBTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      HealthCheckIntervalSeconds: 30
+      HealthCheckTimeoutSeconds: 5
+      HealthyThresholdCount: 3
+      Port: 80
+      Protocol: HTTP
+      UnhealthyThresholdCount: 5
+      VpcId: !Ref VpcId
+  
+  ALBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP access on the configured port
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      VpcId: !Ref VpcId
+
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access and HTTP access on the configured port
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: !Ref SSHLocation
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      VpcId: !Ref VpcId
+
+Outputs:
+  URL:
+    Description: URL of the website
+    Value: !Join ['', ['http://', !GetAtt [ApplicationLoadBalancer, DNSName]]]
+```
+
+Rolling update
+
+```
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  VpcId:
+    Type: 'AWS::EC2::VPC::Id'
+    Description: VpcId of your existing Virtual Private Cloud (VPC)
+    ConstraintDescription: must be the VPC Id of an existing Virtual Private Cloud.
+
+  Subnets:
+    Type: 'List<AWS::EC2::Subnet::Id>'
+    Description: The list of SubnetIds in your Virtual Private Cloud (VPC)
+    ConstraintDescription: >-
+      must be a list of at least two existing subnets associated with at least
+      two different availability zones. They should be residing in the selected
+      Virtual Private Cloud.
+
+  InstanceType:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t1.micro
+      - t2.nano
+      - t2.micro
+      - t2.small
+      - t2.medium
+    Description: WebServer EC2 instance type
+    ConstraintDescription: must be a valid EC2 instance type.
+
+  KeyName:
+    Type: 'AWS::EC2::KeyPair::KeyName'
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instances
+    ConstraintDescription: must be the name of an existing EC2 KeyPair.
+
+  SSHLocation:
+    Type: String
+    MinLength: '9'
+    MaxLength: '18'
+    Default: 0.0.0.0/0
+    AllowedPattern: '(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})'
+    Description: The IP address range that can be used to SSH to the EC2 instances
+    ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
+
+  ImageId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+
+Resources:
+  WebServerGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    CreationPolicy:
+      ResourceSignal:
+        Timeout: PT15M
+        Count: 2
+    UpdatePolicy:
+      AutoScalingRollingUpdate:
+        MaxBatchSize: 1
+        MinInstancesInService: 1
+        PauseTime: PT15M
+        WaitOnResourceSignals: true
+    Properties:
+      VPCZoneIdentifier: !Ref Subnets
+      LaunchConfigurationName: !Ref LaunchConfigUpdated
+      MinSize: "2"
+      MaxSize: "4"
+      TargetGroupARNs:
+        - !Ref ALBTargetGroup
+
+  LaunchConfigUpdated:
+    Type: AWS::AutoScaling::LaunchConfiguration
+    Metadata:
+      Comment: Install a simple application
+      AWS::CloudFormation::Init:
+        config:
+          packages:
+            yum:
+              httpd: []
+          files:
+            '/var/www/html/index.html':
+              content: | 
+                <h1>Congratulations, you have successfully launched the AWS CloudFormation sample.</h1>
+                <h2>Version: 2.0</h2>
+              mode: '000644'
+              owner: root
+              group: root
+            '/etc/cfn/cfn-hup.conf':
+              content: !Sub |
+                [main]
+                stack=${AWS::StackId}
+                region=${AWS::Region}
+              mode: '000400'
+              owner: root
+              group: root
+            '/etc/cfn/hooks.d/cfn-auto-reloader.conf':
+              content: !Sub |
+                [cfn-auto-reloader-hook]
+                triggers=post.update
+                path=Resources.LaunchConfigUpdated.Metadata.AWS::CloudFormation::Init
+                action=/opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource LaunchConfigUpdated --region ${AWS::Region}
+              mode: '000400'
+              owner: root
+              group: root
+          services:
+            sysvinit:
+              httpd:
+                enabled: 'true'
+                ensureRunning: 'true'
+              cfn-hup:
+                enabled: 'true'
+                ensureRunning: 'true'
+                files:
+                  - /etc/cfn/cfn-hup.conf
+                  - /etc/cfn/hooks.d/cfn-auto-reloader.conf
+    Properties:
+      KeyName: !Ref KeyName
+      ImageId: !Ref ImageId 
+      InstanceType: !Ref InstanceType
+      SecurityGroups:
+        - !Ref InstanceSecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash -xe
+          # Get the latest CloudFormation helper scripts
+          yum install -y aws-cfn-bootstrap
+
+          # Start cfn-init
+          /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource LaunchConfigUpdated --region ${AWS::Region}
+          
+          /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource WebServerGroup --region ${AWS::Region}
+
+  ApplicationLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Subnets: !Ref Subnets
+      SecurityGroups:
+        - !Ref ALBSecurityGroup
+
+  ALBListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref ALBTargetGroup
+      LoadBalancerArn: !Ref ApplicationLoadBalancer
+      Port: 80
+      Protocol: HTTP
+
+  ALBTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      HealthCheckIntervalSeconds: 30
+      HealthCheckTimeoutSeconds: 5
+      HealthyThresholdCount: 3
+      Port: 80
+      Protocol: HTTP
+      UnhealthyThresholdCount: 5
+      VpcId: !Ref VpcId
+  
+  ALBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP access on the configured port
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      VpcId: !Ref VpcId
+
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access and HTTP access on the configured port
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: !Ref SSHLocation
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      VpcId: !Ref VpcId
+
+Outputs:
+  URL:
+    Description: URL of the website
+    Value: !Join ['', ['http://', !GetAtt [ApplicationLoadBalancer, DNSName]]]
+```
+
+## CloudFormation Registry
+
+- Contains private and public extensions (Resource types and Modules)
+- Extensions are artifacts that arguments the funcionality of CloudFormation resources and properties
+- Extension registered in CloudFormation Registry
+- Extension can be written by Amazon, APN Partners, Marketplace sellers and the community
+- Extensions types
+  - Private extensions: you created or shared with you
+  - Public extensions: provided by AWS (ex AWS::DynamoDB::Table)
+- Use cloudformation CLI to create extension
+
+### ResopurceTypes
+
+- Model and provisions resources using cloudformation
+- For example, create a custom resource that doesn't exist in CloudFormation
+- It should follow the structure Organization::Service::Resource
+- Resource type package consists of
+  - JSON schema that defines your type
+  - Handlers that perform the required action(create, update, delete, read, list)
+- Step to create
+  1. Model: create and validate schema that serves as the definition of your resource type
+  2. Develop: write a handler that defines five core operations (Create, Update, Delete, List, Read) on your resource type, and test locally
+  3. Register: register the resource type with cloudformation so that it can be used in yur cloudformation templates
+- Write handlers in (Python, Java, Typescript, Go)
+
+
+#### Custom Resource vs Custom types
+
+||Custom Resource| Custom Types|
+|-|-|-|
+|Operations|Create, Update, delete|Create, Update, Delete, Read, List|
+|Languages|Any languages that lambda supports|Python, java, go, typescript|
+|Location of execution|Logic and code managed and executed in your account (lambda function| Logic and code managed and executed by AWS|
+|Billing|Lambda function invocation|Handler operation/months|
+|CloudFormation Registry|No|Yes|
+|Integration with drift detection|No|Yes|
+|Integration with changesets |No|Yes|
+
+## Modules
+
+- package resources and their configurations for use across stack templates
+- uses cases:
+  - keep resource configurations aligned with best practices
+  - use code written by experts
+- Module contains
+  - template section: resources, outputs, ...
+  - Module parameters: input custom values to your module
+- It should follow the structure
+Organization::Service::Resource::MODULE
+- Registered in CloudFrormation registry as private extensions
+- Modules are versioned and can contain nested modules
+
+### Module parameters
+
+- Enables you to input custom values to your module from the template/module that contains it
+- Defined the same as template parameters
+- You can pass template (parent) parameters to module parameters
+- You can't perform constraint checking (e.g AllowedPattern, AllowedValues, ...) on modules Parameters
+
+### Reference Resources in a Module
+
+- Resources in a module can be referenced by logical names
+- The fully qualified logicla name
+  - ModuleLogicalName.ResourceLogicalName
+- Use GetAtt and ref intrinsic functions to acces property values as usual
+
+in AWS cloudShell
+
+mkdir s3-module
+cfn init
+m for module
+name MyCompany::S3::Bucket::MODULE
+s3-module/fragments Created
+ls fragments
+rm fragments/sample.json
+nano s3-bucket.yaml
+  sudo yum install -y nano if nano editor doesn't exists
+paste s3-bucket
+
+```
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create a S3 bucket that follows MyCompany's standards
+Parameters:
+  KMSKeyAlias:
+    Description: >-
+      The alias for your KMS key. If you will leave this field empty KMS key
+      alias won't be created along the key.
+    Type: String
+    AllowedPattern: '^(?!aws)([a-zA-Z0-9\-\_\/]){1,32}$|^$'
+    MinLength: 0
+    MaxLength: 32
+    ConstraintDescription: >-
+      KMS key alias must be at least 1 and no more than 32 characters long, can
+      contain lowercase and uppercase letters, numbers, hyphens, underscores and
+      forward slashes and cannot begin with aws.
+  ReadOnlyArn:
+    Description: >-
+      Provide ARN of an existing Principal (role) that will be granted with read
+      only access to the S3 bucket (e.g.
+      'arn:aws:iam::123456789xxx:role/myS3ROrole'). If not specified, access
+      will be granted to current AWS account:root only. CF deployment will fail
+      and rollback for non-existing ARN.
+    Type: String
+    Default: ''
+    AllowedPattern: >-
+      ^(arn:aws:iam::\d{12}:role(\/|\/[\w\!\"\#\$\%\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\]\^\`\{\|\}\~]{1,510}\/)[\w\+\=\,\.\@\-]{1,64})$|^$
+    ConstraintDescription: >-
+      IAM role ARN must start with arn:aws:iam::<12-digit AWS account
+      number>:role/[<path>/]<name of role>. The name of role must be at least 1
+      and no more than 64 characters long, can contain lowercase letters,
+      uppercase letters, numbers, plus (+), equal (=), comma (,), period (.), at
+      (@), underscore (_), and hyphen (-). Path is optional and must not exceed
+      510 characters.
+  ReadWriteArn:
+    Description: >-
+      Provide ARN of an existing Principal (role) that will be granted with read
+      and write access to the S3 bucket (e.g.
+      'arn:aws:iam::123456789xxx:role/myS3RWrole'). If not specified, access
+      will be granted to current AWS account:root only. CF deployment will fail
+      and rollback for non-existing ARN.
+    Type: String
+    Default: ''
+    AllowedPattern: >-
+      ^(arn:aws:iam::\d{12}:role(\/|\/[\w\!\"\#\$\%\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\]\^\`\{\|\}\~]{1,510}\/)[\w\+\=\,\.\@\-]{1,64})$|^$
+    ConstraintDescription: >-
+      IAM role ARN must start with arn:aws:iam::<12-digit AWS account
+      number>:role/[<path>/]<name of role>. The name of role must be at least 1
+      and no more than 64 characters long, can contain lowercase letters,
+      uppercase letters, numbers, plus (+), equal (=), comma (,), period (.), at
+      (@), underscore (_), and hyphen (-). Path is optional and must not exceed
+      510 characters.
+
+Resources:
+  KmsKey:
+    Type: AWS::KMS::Key
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      Enabled: true
+      EnableKeyRotation: true
+      KeyPolicy:
+        Version: 2012-10-17
+        Statement:
+          - Sid: 'Give AWS account:root full control over the KMS key'
+            Effect: Allow
+            Principal:
+              AWS: !Sub 'arn:aws:iam::${AWS::AccountId}:root'
+            Action:
+              - 'kms:*'
+            Resource: '*'
+          - Sid: 'Give ReadOnlyRole access to use KMS key for decryption'
+            Effect: Allow
+            Principal:
+              AWS: !Ref ReadOnlyArn
+            Action:
+              - 'kms:Decrypt'
+              - 'kms:DescribeKey'
+            Resource: '*'
+          - Sid: 'Give the ReadWriteRole access to use KMS key for encryption and decryption'
+            Effect: Allow
+            Principal:
+              AWS: !Ref ReadWriteArn
+            Action:
+              - 'kms:Encrypt'
+              - 'kms:Decrypt'
+              - 'kms:ReEncrypt'
+              - 'kms:GenerateDataKey*'
+              - 'kms:DescribeKey'
+            Resource: '*'
+
+  KmsKeyAlias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: !Sub 'alias/${KMSKeyAlias}'
+      TargetKeyId: !Ref KmsKey
+
+  Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: BucketOwnerFullControl
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              KMSMasterKeyID: !Ref KmsKey
+              SSEAlgorithm: 'aws:kms'
+      BucketName: !Sub '${AWS::StackName}-${AWS::AccountId}-${AWS::Region}'
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref Bucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Sid: DenyIncorrectEncryptionHeader
+            Effect: Deny
+            Principal: '*'
+            Action: 's3:PutObject'
+            Resource: !Sub 'arn:aws:s3:::${Bucket}/*'
+            Condition:
+              StringEquals:
+                's3:x-amz-server-side-encryption': AES256
+          - Sid: DenyPublicReadACL
+            Effect: Deny
+            Principal: '*'
+            Action:
+              - 's3:PutObject'
+              - 's3:PutObjectAcl'
+            Resource: !Sub 'arn:aws:s3:::${Bucket}/*'
+            Condition:
+              StringEquals:
+                's3:x-amz-acl':
+                  - public-read
+                  - public-read-write
+                  - authenticated-read
+          - Sid: DenyPublicReadGrant
+            Effect: Deny
+            Principal: '*'
+            Action:
+              - 's3:PutObject'
+              - 's3:PutObjectAcl'
+            Resource: !Sub 'arn:aws:s3:::${Bucket}/*'
+            Condition:
+              StringLike:
+                's3:x-amz-grant-read':
+                  - '*http://acs.amazonaws.com/groups/global/AllUsers*'
+                  - '*http://acs.amazonaws.com/groups/global/AuthenticatedUsers*'
+          - Sid: DenyNonHttpsConnections
+            Effect: Deny
+            Principal: '*'
+            Action:
+              - 's3:PutObject'
+              - 's3:GetObject'
+            Resource: !Sub 'arn:aws:s3:::${Bucket}/*'
+            Condition:
+              Bool:
+                'aws:SecureTransport': false
+          - Sid: 'Give ReadOnlyRole access to get objects from bucket and list bucket'
+            Effect: Allow
+            Principal:
+              AWS: !Ref ReadOnlyArn
+            Action:
+              - 's3:GetObject'
+              - 's3:GetObjectTagging'
+              - 's3:ListBucket'
+            Resource:
+              - !Sub 'arn:aws:s3:::${Bucket}'
+              - !Sub 'arn:aws:s3:::${Bucket}/*'
+          - Sid: 'Give the ReadWriteRole access to get and put objects from and to bucket and list bucket and multipart uploads'
+            Effect: Allow
+            Principal:
+              AWS: !Ref ReadWriteArn
+            Action:
+              - 's3:DeleteObject'
+              - 's3:DeleteObjectTagging'
+              - 's3:GetObject'
+              - 's3:GetObjectTagging'
+              - 's3:ListBucket'
+              - 's3:PutObject'
+              - 's3:PutObjectTagging'
+            Resource:
+              - !Sub 'arn:aws:s3:::${Bucket}'
+              - !Sub 'arn:aws:s3:::${Bucket}/*'
+
+Outputs:
+  BucketArn:
+    Description: ARN of the bucket created.
+    Value: !GetAtt Bucket.Arn
+  BucketName:
+    Description: Name of the bucket created.
+    Value: !Ref Bucket
+  KmsKeyAlias:
+    Description: Alias of SSE-KMS Customer Managed Key used to encrypt S3 bucket content.
+    Value: !Ref KmsKeyAlias
+  KmsKeyArn:
+    Description: ARN of SSE-KMS Customer Managed Key used to encrypt S3 bucket content.
+    Value: !GetAtt KmsKey.Arn
+
+```
+
+in fragmetns directory
+
+cfn submit -v (Create Module Cloudformation Registry)
+
+
+```
+AWSTemplateFormatVersion: '2010-09-09'
+Description: "Create a Firehose stream that writes to S3"
+
+Resources:
+  FirehoseDestination: # Module logical name
+    Type: MyCompany::S3::Bucket::MODULE
+    Properties:
+      KMSKeyAlias: !Sub "${AWS::StackName}"
+      ReadWriteArn: !GetAtt FirehoseRole.Arn
+      ReadOnlyArn: !Sub 'arn:aws:iam::${AWS::AccountId}:root'
+
+  FirehoseRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AssumeRole1
+            Effect: Allow
+            Principal:
+              Service: firehose.amazonaws.com
+            Action: 'sts:AssumeRole'
+
+  FirehosePolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: "ReadWrite"
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: "KmsEncryptionDecryption"
+            Effect: Allow
+            Action:
+              - 'kms:Decrypt'
+              - 'kms:GenerateDataKey'
+            Resource: !GetAtt FirehoseDestinationKmsKey.Arn # Get KmsKey Arn inside our module
+            Condition:
+              StringEquals:
+                kms:ViaService: !Sub 's3:${AWS::Region}.amazonaws.com'
+              StringLike:
+                kms:EncryptionContext:aws:s3:arn: !Sub '${FirehoseDestinationBucket.Arn}/*' # Get Bucket Arn inside our module
+          - Sid: FirehoseAccess
+            Effect: Allow
+            Action:
+            - kinesis:DescribeStream
+            - kinesis:GetShardIterator
+            - kinesis:GetRecords
+            - kinesis:ListShards
+            Resource: !GetAtt Firehose.Arn
+          - Sid: "S3ListBucket"
+            Effect: Allow
+            Action:
+              - 's3:ListBucket'
+              - 's3:ListBucketByTags'
+              - 's3:ListBucketMultipartUploads'
+              - 's3:GetBucketLocation'
+            Resource: !GetAtt FirehoseDestinationBucket.Arn # Get Bucket Arn inside our module
+          - Sid: "S3GetPutDeleteObject"
+            Effect: Allow
+            Action:
+              - 's3:DeleteObject'
+              - 's3:DeleteObjectTagging'
+              - 's3:GetObject'
+              - 's3:GetObjectTagging'
+              - 's3:PutObject'
+              - 's3:PutObjectTagging'
+            Resource: !Sub '${FirehoseDestinationBucket.Arn}/*' # Get Bucket Arn inside our module
+      Roles: 
+      - !Ref FirehoseRole
+
+  Firehose:
+    Type: AWS::KinesisFirehose::DeliveryStream
+    Properties:
+      DeliveryStreamName: !Sub "${AWS::StackName}"
+      DeliveryStreamType: DirectPut
+      S3DestinationConfiguration:
+        BucketARN: !GetAtt FirehoseDestinationBucket.Arn # Get Bucket Arn inside our module
+        RoleARN: !GetAtt FirehoseRole.Arn
+        EncryptionConfiguration:
+          KMSEncryptionConfig:
+            AWSKMSKeyARN: !GetAtt FirehoseDestinationKmsKey.Arn # Get KmsKey Arn inside our module
+```
+
+## Resource import
+
+- Import existing resource into existing/new stacks
+- You don't need to delete and re-create the resources as part of a cloudformation stack
+- During impor operation, you will need
+  - A template that describes the entire stack (original stack resource and target resource to import)
+  - A unique identifier for each target resource (ex BucketName for S3 bucket)
+- Each resource to import must have a DeletionPolicy attribute (any value) and identifier
+- Can't import the same resource into multiple stacks
+- CloudFormation performs the following validations
+  - The resource to import exists
+  - Properties and configuration values adhere to the resource schema
+  - the resource's requeried properties are specified
+  - the resource to import doesn't belong to another stack
+- CloudFormation doesn't check that the template configuration matches the actual configuration
+- Recommended to run drift detection on imported resources after import operation
+- Use cases:
+  - Create a new stack from existing resources
+  - Import existing resources into existing stack
+  - Move resources between stacks
+  - Remove resource from a stack
+  - Remediate a detected drift
+  - Moving nested stack from parent stack and import it into another parent stack
+  - Nesting an existing stack
+
+in create stack menu choose import
+updtae stack s3 and dynamos
+```
+Resources:
+  ImportedTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+
+  ImportedBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+  
+  ImportedInstance:
+    Type: AWS::EC2::Instance
+    DeletionPolicy: Retain
+    Properties:
+      ImageId: ami-043097594a7df80ec
+      InstanceType: t2.micro
+```
+
+## AWS SAM
+
+- SAM = Serverless Application Model
+- Framework for developing and deploying serverless applications
+- All the configuration is YAML code
+- Generate complex CloudFormation from simple AM YAML file
+- Supports anything from CloudFormation: Outputs, Maping, Parameters, Resources
+- Only two commands to deply to AWS
+- SAM can use CodeDeploy to deploy Lambda functions
+- SAM can help you to run lambda, API Gateway, DynamoDB locally
+
+## AWS Cloud Development Kit (CDK)
+
+- Define your cloud infraestructure using a familiar language:
+  - JavaScript/TypeScript, Python, Java and .NET
+- Contains high level components called constructs
+- The code is "compiled" into a CloudFormation template (JSON/YAML)
+- You can therefore deploy infraestructure and application runtime code together
+  - Great for Lambda functions
+  - Great for docker containers in ECS/EKS
+- Can import/migrate a ClpudFormation template into/to AWS CDK
+
+## CloudFormation Macros
+
+- Perform custom processing on CloudFormation templates (ex. find-and-replace, transformations, ...)
+- For example AWS::Serverless which takes an entire template written in SAM syntax and transforms it into a compliant CloudFormation template
+- To define a Macro, you need:
+  - Lambda function: perform the template processing (snippet or entire template)
+  - A resource of type AWS::CloudFormation::Macro ( Create stack containing this resource)
+- You can process
+  - The entire template (reference the Macro in the Transform section in the template)
+  - A sippet of a template (reference the mMacro  in Fn::Transform)
+- CloudFormation generates a ChangeSet that includes the processed template
+
+- You can't use a Macro in the same template you're registering it in
+- You can't include Macros within Macros
+- Macros are not supported in Stacksets
+- Macros are evaluated in order, processed from deepest to shallowest ( top-level Macros are executed last)
+
+
+```
+AWSTemplateFormatVersion: 2010-09-09
+Description: >
+  Count Macro
+  A simple iterator for creating multipleidentical resources
+
+Resources:
+  Macro:
+    Type: AWS::CloudFormation::Macro
+    Properties:
+      Name: Count
+      FunctionName: !GetAtt CountMacroFunction.Arn
+  
+  CountMacroFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index.handler
+      Runtime: python3.8
+      Timeout: 360
+      Role: !GetAtt AWSLambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          import copy
+          import json
+
+          def process_template(template, parameters):
+            new_template = copy.deepcopy(template)
+            status = 'success'
+
+            for name, resource in template['Resources'].items():
+              if 'Count' in resource:
+
+                # Check if the value of Count is referenced to a parameter passed in the template
+                try:
+                  refValue = new_template['Resources'][name]['Count'].pop('Ref')
+                  # Convert referenced parameter to an integer value
+                  count = int(parameters[refValue])
+                  # Remove the Count property from this resource
+                  new_template['Resources'][name].pop('Count')
+                
+                except AttributeError:
+                  # Use numeric Count value
+                  count = new_template['Resources'][name].pop('Count')
+                
+                print("Found 'Count' property with value {} in '{}' resource...multiplying!".format(count, name))
+
+                # Remove the original resource from the template but take a local copy of it
+                resourceToMultiply = new_template['Resources'].pop(name)
+
+                # Create a new block of the resource muliplied with names ending in the iterator and the placeholders substituted
+                resourcesAfterMultiplication = multiply(name, resourceToMultiply, count)
+
+                if not set(resourcesAfterMultiplication.keys()) & set(new_template['Resources'].keys()):
+                  new_template['Resources'].update(resourcesAfterMultiplication)
+                else:
+                  status = 'failed'
+                  return status, template
+              
+              else:
+                print("Did not find 'Count' property in '{}' resource...Nothing to do!".format(name))
+            
+            return status, new_template
+        
+          def update_placeholder(resource_structure, iteration):
+
+            # Convert the json into a string
+            resourceString = json.dumps(resource_structure)
+
+            # Count the number of times the placeholder is found in the string
+            placeHolderCount = resourceString.count('%d')
+
+            # If the placeholder is found then replace it
+            if placeHolderCount > 0:
+              print ("Found {} occurrences of decimal placeholder in JSON, replacing with iterator value {}".format(placeHolderCount, iteration))
+
+              # Make a list of the values that we will use to replace the decimal placeholders - the values will all be the same
+              placeHolderReplacementValues = [iteration] * placeHolderCount
+
+              # Replace the decimal placeholders using the list - the syntax below expands the list
+              resourceString = resourceString % (*placeHolderReplacementValues,)
+
+              # Convert the string back to JSON and return it
+              return json.loads(resourceString)
+
+            else:
+              print("No occurrences of decimal placeholder found in JSON, therefore nothing will be replaced")
+              return resource_structure
+          
+          def multiply(resource_name, resource_structure, count):
+            resources = {}
+
+            # Loop according to the number of times we want to multiply, creating a new resource each time
+            for iteration in range(1, (count + 1)):
+              print("Multiplying '{}', iteration count {}".format(resource_name, iteration))
+              multipliedResourceStructure = update_placeholder(resource_structure, iteration)
+              resources[resource_name + str(iteration)] = multipliedResourceStructure
+            
+            return resources
+          
+          def handler(event, context):
+            result = process_template(event['fragment'], event['templateParameterValues'])
+
+            return {
+              'requestId': event['requestId'],
+              'status': result[0],
+              'fragment': result[1]
+            }
+
+  AWSLambdaExecutionRole:
+     Type: AWS::IAM::Role
+     Properties:
+       AssumeRolePolicyDocument:
+         Statement:
+         - Action:
+           - sts:AssumeRole
+           Effect: Allow
+           Principal:
+             Service:
+             - lambda.amazonaws.com
+         Version: '2012-10-17'
+       Path: "/"
+       Policies:
+       - PolicyDocument:
+           Statement:
+           - Action:
+             - logs:CreateLogGroup
+             - logs:CreateLogStream
+             - logs:PutLogEvents
+             Effect: Allow
+             Resource: arn:aws:logs:*:*:*
+           Version: '2012-10-17'
+         PolicyName: !Sub ${AWS::StackName}-${AWS::Region}-AWSLambda-CW
+       RoleName: !Sub ${AWS::StackName}-${AWS::Region}-AWSLambdaExecutionRole
+```
+
+```
+Transform: Count
+
+Resources:
+  MyBucket:
+    Type: AWS::S3::Bucket
+    Count: 3
+    Properties:
+      Tags:
+        - Key: TestKey
+          Value: my bucket %d
+```
+
+## Public roadmap coverage
+https://github.com/aws-cloudformation/cloudformation-coverage-roadmap
+
+## using the AWS CLI
+
+
+```
+#!/usr/bin/env bash
+
+# see http://docs.aws.amazon.com/cli/latest/userguide/installing.html
+# AWS CLI installation depends on OS
+
+# we create the cloudformation template
+aws cloudformation create-stack --stack-name example-cli-stack --template-body file://0-sample-template.yaml --parameters file://0-parameters.json
+
+# some options:
+# [--template-url <value>]
+# [--disable-rollback | --no-disable-rollback]
+# [--rollback-configuration <value>]
+# [--timeout-in-minutes <value>]
+# [--notification-arns <value>]
+# [--capabilities <value>]
+# [--resource-types <value>]
+# [--role-arn <value>]
+# [--on-failure <value>]
+# [--stack-policy-body <value>]
+# [--stack-policy-url <value>]
+# [--tags <value>]
+# [--client-request-token <value>]
+# [--enable-termination-protection | --no-enable-termination-protection]
+# [--cli-input-json | --cli-input-yaml]
+# [--generate-cli-skeleton <value>]
+
+aws cloudformation delete-stack --stack-name example-cli-stack
+```
+
+template
+```
+Metadata: 
+  License: Apache-2.0
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'AWS CloudFormation Sample Template Sample template EIP_With_Association:
+  This template shows how to associate an Elastic IP address with an Amazon EC2 instance
+  - you can use this same technique to associate an EC2 instance with an Elastic IP
+  Address that is not created inside the template by replacing the EIP reference in
+  the AWS::EC2::EIPAssoication resource type with the IP address of the external EIP.
+  **WARNING** This template creates an Amazon EC2 instance and an Elastic IP Address.
+  You will be billed for the AWS resources used if you create a stack from this template.'
+Parameters:
+  InstanceType:
+    Description: WebServer EC2 instance type
+    Type: String
+    Default: t3.small
+    AllowedValues: [t2.nano, t2.micro, t2.small, t2.medium, t2.large, t2.xlarge, t2.2xlarge,
+      t3.nano, t3.micro, t3.small, t3.medium, t3.large, t3.xlarge, t3.2xlarge,
+      m4.large, m4.xlarge, m4.2xlarge, m4.4xlarge, m4.10xlarge,
+      m5.large, m5.xlarge, m5.2xlarge, m5.4xlarge,
+      c5.large, c5.xlarge, c5.2xlarge, c5.4xlarge, c5.9xlarge,
+      g3.8xlarge,
+      r5.large, r5.xlarge, r5.2xlarge, r5.4xlarge,
+      i3.xlarge, i3.2xlarge, i3.4xlarge, i3.8xlarge,
+      d2.xlarge, d2.2xlarge, d2.4xlarge, d2.8xlarge]
+    ConstraintDescription: must be a valid EC2 instance type.
+  KeyName:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instances
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription: must be the name of an existing EC2 KeyPair.
+  SSHLocation:
+    Description: The IP address range that can be used to SSH to the EC2 instances
+    Type: String
+    MinLength: '9'
+    MaxLength: '18'
+    Default: 0.0.0.0/0
+    AllowedPattern: (\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})
+    ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
+  LatestAmiId:
+    Type:  'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2'
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      UserData: !Base64
+        Fn::Join:
+        - ''
+        - [IPAddress=, !Ref 'IPAddress']
+      InstanceType: !Ref 'InstanceType'
+      SecurityGroups: [!Ref 'InstanceSecurityGroup']
+      KeyName: !Ref 'KeyName'
+      ImageId: !Ref 'LatestAmiId'
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: !Ref 'SSHLocation'
+  IPAddress:
+    Type: AWS::EC2::EIP
+  IPAssoc:
+    Type: AWS::EC2::EIPAssociation
+    Properties:
+      InstanceId: !Ref 'EC2Instance'
+      EIP: !Ref 'IPAddress'
+Outputs:
+  InstanceId:
+    Description: InstanceId of the newly created EC2 instance
+    Value: !Ref 'EC2Instance'
+  InstanceIPAddress:
+    Description: IP address of the newly created EC2 instance
+    Value: !Ref 'IPAddress'
+```
+
+parameters
+```
+[
+  {
+    "ParameterKey": "InstanceType",
+    "ParameterValue": "t2.micro"
+  },
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue": "DemoKeyPair"
+  },
+  {
+    "ParameterKey": "SSHLocation",
+    "ParameterValue": "0.0.0.0/0"
+  }
+]
+```
+
+## Advanced Concepts & 3rd Party Tools
+Former2
+Former2 allows you to generate IaC (ex. CloudFormation templates) from existing resources https://github.com/iann0036/former2
+
+Everything happens in the browser (it’s a client-side web app)
+
+Requires IAM keys with ReadOnlyAccess
+
+The following outputs are currently supported:
+
+CloudFormation templates
+
+Terraform
+
+Troposphere
+
+CDK (Cfn Primitives) – TypeScript, Python, C#, Java
+
+CDK for Terraform – TypeScript
+
+Pulumi – TypeScript
+
+Diagram – an embedded version of draw.io
+
+
+TaskCat
+A tool that automates the testing of CloudFormation templates https://github.com/aws-quickstart/taskcat
+
+Deploys your template in multiple AWS Regions simultaneously
+
+Generates a report with a pass/fail result for each Region
+
+You provide
+
+AWS Regions and the number of AZs you want to include in the test
+
+Template parameters’ values
+
+
+
+cfn-nag
+A tool that looks for patterns in CloudFormation templates that may indicate insecure infrastructure https://github.com/stelligent/cfn_nag
+
+Examples:
+
+IAM rule and Security Group rules that are too permissive (wildcards)
+
+Access logs and Encryption that aren’t enabled
+
+Password literals
+
+
+
+CloudFormation cheatsheet
+Summarizes the usage of !Ref and !GetAtt with CloudFormation resources https://theburningmonk.com/cloudformation-ref-and-getatt-cheatsheet/
+
+
+
+aws-cfn-template-flip
+A tool that converts CloudFormation templates between JSON and YAML formats https://github.com/awslabs/aws-cfn-template-flip
+
+
+
+cfn-diagram
+A tool to visualize CloudFormation/SAM/CDK templates as diagrams https://github.com/mhlabs/cfn-diagram
+
+Generates https://draw.io and HTML diagrams
+
+Select only the resources you want (filter by resource type/name)
+
+Different layouts
+
+Supports JSON and YAML
+
+
+
+cfn-format
+A tool that reads a CloudFormation template and outputs a cleanly-formatted copy adhering to CloudFormation standards https://github.com/awslabs/aws-cloudformation-template-formatter
+
+
+
+awesome-cloudformation
+Reference list for open-source projects related to CloudFormation: https://github.com/aws-cloudformation/awesome-cloudformation
+
+
+## Template Validation
+You can validate your CloudFormation template to catch syntax and semantic errors, before CloudFormation creates any resources
+
+- CloudFormation Console automatically validates the template after you specify input parameters
+
+- AWS CLI CloudFormation validate-template command
+
+cfn-lint: https://github.com/aws-cloudformation/cfn-lint
+
+- Validate CloudFormation templates JSON/YAML against resource specification (properties and their values)
+
+cfn-guard: https://github.com/aws-cloudformation/cloudformation-guard
+
+- Validate CloudFormation templates for compliance to organization policy guidelines
+
+- You define your own rules
+
+- Example: ensure users always create encrypted S3 buckets
+
+- Can be used as part of CI/CD pipeline
+
+## Intrinsic Functions References
+
+- Fn::Ref
+  - the Fn::Ref function can be leveraged to reference
+    - Parameters => returns the value of the parameter
+    - resources => returns the physical ID of the underlying resource (ex: EC2 ID)
+  - The shorthand for this in YAML is !Ref
+
+- Fn::GetATT
+  - Attributes are attached to any resources you create
+  - To know the attributes of your resources, the best place to look at is the documentation
+  - For example: the AZ of an EC2 machine
+
+- Fn::FindInMap
+  - We use FN::FindInMap to return a named value from a specifik key
+  - !FindInMap [MapName, TopLevelKey, SecondLevelKey]
+
+- Fn::ImportValue
+  - Import values that are exported in other stacks
+  - For this, we use the FN::ImportValue function
+
+- Fn::Join
+  - Join vlaues with a delimiter
+  - Ex: !join [":",[a,b,c]] recult in a:b:c
+
+- Fn::Base64
+  - Convert String to it's Base64 representation
+  - !base64 ValueToEncode
+  - Example: pass encoded data to EC2 Instance's UserData property
+
+- Fn::Cidr
+  - Returns an array of CIDR address blocks
+  - Parameters:
+    - ipBlock: CIDR address block to be split
+    - count: number of CIDRs to generate (I-256)
+    - cidrBits: number of subnet bits of the CIDR, inverse of subnet mask (32 - subnet_mask)
+    - Ex !Cidr ['192.168.0.0/24', 6,5] generates 6 CIDR with a subnet mask "/27"(32-5=27) from a CIDR with subnet mask "/24"
+- Fn::GetAZs
+  - Retunrns an array of Availability Zones in a region in alphabtical order !GetAZs
+
+- Fn::Select
+   - returns a single object from an array of objects by index
+   - !Select [index, listofObjects]
+   - Ex !Select["1", ["apples", "grapes", "oranges"]] returns grapes
+
+- Fn::Split
+  - Split a String into set of String Values
+  - !Split [delimiter, souurceString]
+  - EX !Split ["|", "a|b|c"] returns ["a","b", "c"]
+
+- FN::Transform
+  - Specifies a Cloudformation Macro to perform custom processing on the template
+
+## AWS CLoudformation Best Practices
+
+- Layered arqchitecture (horizontal layers) vs service-oriented architecture (vertical layers)
+- Use cross-stack references (example, to reference a VPC or subnet)
+- Make sure teh template is environment agnostic so you can do dev/test/prod and cross regions/accounts
+- Used nested stacks to reuse common template patterns
+- Do not embed credentials into CloudFormaqtion templates (use Parameters with Noecho or Dynamic references)
+- Use cfn-init (and latest version of the helper scripts)
+- Validate templates
+- Use scpecifis parameters types and constraints
+- Don't do anything manual on the elements of the stack- that can cause a state mismatch
+- Verify changes with changesSets (and avoid disasters)
+- Use Stack policies to prevent critical components from being deleted after create (exapmple your must valuable RDSdatabase)
+
+
+## Template Snippets and Samples
+A list of template snippets, samples and examples you can use
+
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/CHAP_TemplateQuickRef.html
+
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-sample-templates.html
+
+https://github.com/awslabs/aws-cloudformation-templates
