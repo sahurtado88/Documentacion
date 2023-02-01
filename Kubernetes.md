@@ -63,7 +63,15 @@ ADD NEW MASTER/ NODE SERVER
 2- install all the master/worker node process
 3- add it to the cluster
 
+## YAML in kubernetes
 
+alway have 4 fields
+- apiVersion: version create object (v1, apps/v1)
+- kind: refers type of objects (pod, replicaset, deployment, service)
+- metadata: is data about the object form or dictionary (name, labels) you can specify names or lables that k8s expect
+- specs: aditional information to k8s esepcification depend on object (dictionary) - is a item in the list
+
+is recommended two spaces to indent
 
 **NODES**
 Node=virtual or pysical machine
@@ -109,12 +117,17 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: nginx
+  label:
+    app:nginx
+    tier: frontend
 spec:
   containers:
   - name: nginx
     image: nginx:1.14.2
     ports:
     - containerPort: 80
+  - name: busybox
+    image: busybox
 ```
 
 
@@ -403,6 +416,10 @@ Some typical uses of a DaemonSet are:
     running a logs collection daemon on every node
     running a node monitoring daemon on every node
 
+kubectl create -f daemon-set-definition.yaml
+
+kubectl get daemonsets
+
 ```
 apiVersion: apps/v1
 kind: DaemonSet
@@ -688,6 +705,8 @@ $ kubectl describe pvc
 
 kubectl get all | grep LABEL
 
+kubectl get pods --all-namespaces
+
 $ kubectl exec -it [pod name] -- bin/bash or -- bin/sh inside the container
 
 $ kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml
@@ -696,6 +715,23 @@ $ kubectl apply -f [filename]
 kubectl apply create or update
 
 kubectl delete -f [filename]
+
+kubectl replace --froce -f nginx.yaml  delte and replace pod nginx in this case
+
+kubectl get pods --selector app=App1
+
+kubectl get all --selector env=prod --no-headers | wc -l exact number of object with  env=rod
+
+kubectl get all --selector env=prod,bu=finance,tier=frontend
+
+kubectl describe node Node-Name | grep Taint see the taints aplied in the node
+
+kubectl taint node node-name key-values:taint-effect  | apply a taint to a node
+
+kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-  remove the taint on controlplane
+
+kubectl label nodes <node-name> <label-key>=<label-value>
+
 ```
 ## CONFIGURATION FILE ##
 
@@ -731,3 +767,352 @@ max-concurrent-downloads
 this doesn't applied for cloud environment since this setting are already enabled by default , for example in the amazon eks ami image :
 https://github.com/awslabs/amazon-eks-ami/blob/master/files/docker-daemon.json
 https://github.com/awslabs/amazon-eks-ami/blob/master/files/kubelet-config.json
+
+# Certified Kubernetes Administrator (CKA) Udemy Course
+
+## Cluster Arquitecture
+
+### Worker  NODES
+
+3 processes must be installed on every node
+
+Worker Node do the actual work
+
+  - CONTAINER RUNTIME (for example docker)
+  - KUBELET interact with both the container runtime and node, starts the pod with a container inside
+    - register node, create pods, monitor node and pods
+  - KUBEPROXY forwards the request, allow network communications
+
+### MASTER NODES
+
+  4 processes run on every master node
+
+  - API SERVER is like a cluster gateway queries and updates acts as a gatekeeper for authentication
+   - API SERVER is  responsible for ( Authenticate User, Validate request, retrieve data, Update ETCD, scheduler and kubelet)
+  
+  - SCHEDULER where to put the POD A scheduler watches for newly created Pods that have no Node assigned. For every Pod that the scheduler discovers, the scheduler becomes responsible for finding the best Node for that Pod to run on. The scheduler reaches this placement decision taking into account the scheduling principles described below.
+    - filter nodes
+    - rank nodes
+  
+  - CONTROLLER MANAGER in Kubernetes, a controller is a control loop that watches the shared state of the cluster through the apiserver and makes changes attempting to move the current state towards the desired state. Examples of controllers that ship with Kubernetes today are the replication controller, endpoints controller, namespace controller, and serviceaccounts controller. 
+  detects cluster state changes
+
+  - ETCD etcd is a consistent and highly-available key value store used as Kubernetes' backing store for all cluster data.
+    - cluster brain, cluster changes get stored in the key value store
+    - ETCD port  listens 2379
+    - application data is not stored in ETCD
+
+## Scheduling
+
+### Manual scheduling
+
+add node name in pod definition if dont have scheduler
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ngnix
+  labels:
+    name: nginx
+spec:
+  containers:
+  -  name: nginx
+     image: nginx
+     ports:
+       -  containerPort: 8080
+  nodeName: node02     
+```
+binding object mimic shceduler does
+
+```
+apiVersion: v1
+kind: binding
+metadata:
+  name: nginx
+target:
+  apiVersion: v1
+  kind: Node
+  name: node02  
+
+```
+
+### Label and selectors
+
+Labels are properties attach to each item, selector help to filters this items
+annotation are use for other purpouse, detail, version, etc
+
+### Taints and Tolerations
+
+Node affinity is a property of Pods that attracts them to a set of nodes (either as a preference or a hard requirement). Taints are the opposite -- they allow a node to repel a set of pods.
+
+Tolerations are applied to pods. Tolerations allow the scheduler to schedule pods with matching taints. Tolerations allow scheduling but don't guarantee scheduling: the scheduler also evaluates other parameters as part of its function.
+
+Taints and tolerations work together to ensure that pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints.
+
+
+taint are set on node and tolerations are set on pods
+
+```
+kubectl taint nodes node-name key-values:taint-effect
+
+kubectl taint nodes node01 app=blue :NoSchedule
+
+```
+**Taint effects:**
+- NoSchedule:
+
+ The Kubernetes scheduler will only allow scheduling pods that have tolerations for the tainted nodes.
+- PreferNoSchedule
+
+The Kubernetes scheduler will try to avoid scheduling pods that don’t have tolerations for the tainted nodes.
+- NoExecute
+
+Kubernetes will evict the running pods from the nodes if the pods don’t have tolerations for the tainted nodes.
+
+**Tolerations - PODS**
+
+```
+apiVersion:
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+  - name: nginx-container
+  image: nginx
+
+  tolerations:
+  - key: "app"
+  operator: "Equal"
+  value: "blue"
+  effect: "NoSchedule  
+```
+
+toleration not implify that node only be deploy in taint node for thath task your need node affinity
+
+### Node Selectors
+
+label Nodes
+```
+kubectl lable nodes <node-name> <label-key>=<label-value>
+
+kubectl label node node-1 size=Large
+
+```
+
+now the node is labeled yo can use this to selector in pod
+
+
+```
+apiVersion:
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+  - name: data-processor
+  image: data-processor
+  nodeSelector:
+    size: Large
+ 
+```
+
+Node selector Limitations you only one label dont have OR  NOT in the logic
+
+### Node Affinity
+
+Node affinity is conceptually similar to nodeSelector, allowing you to constrain which nodes your Pod can be scheduled on based on node labels. There are two types of node affinity:
+
+- requiredDuringSchedulingIgnoredDuringExecution: The scheduler can't schedule the Pod unless the rule is met. This functions like nodeSelector, but with a more expressive syntax.
+- preferredDuringSchedulingIgnoredDuringExecution: The scheduler tries to find a node that meets the rule. If a matching node is not available, the scheduler still schedules the Pod.
+Note: In the preceding types, IgnoredDuringExecution means that if the node labels change after Kubernetes schedules the Pod, the Pod continues to run.
+
+You can specify node affinities using the .spec.affinity.nodeAffinity field in your Pod spec.
+
+You can use the operator field to specify a logical operator for Kubernetes to use when interpreting the rules. You can use In, NotIn, Exists, DoesNotExist, Gt and Lt.
+
+NotIn and DoesNotExist allow you to define node anti-affinity behavior. Alternatively, you can use node taints to repel Pods from specific nodes.
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: In
+            values:
+            - antarctica-east1
+            - antarctica-west1
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: another-node-label-key
+            operator: In
+            values:
+            - another-node-label-value
+  containers:
+  - name: with-node-affinity
+    image: registry.k8s.io/pause:2.0
+
+```
+
+### Resource requeriments limits
+
+by default the limits of CPU is 1vCPU and 512 Mi
+
+Throttle
+
+terminate
+
+What is OOMKilled (exit code 137) The OOMKilled error, also indicated by exit code 137, means that a container or pod was terminated because they used more memory than allowed. OOM stands for “Out Of Memory”. Kubernetes allows pods to limit the resources their containers are allowed to utilize on the host machine.
+
+CPU throttling is an approach to automatically slow down the CPU so as to consume fewer resources, and is a side effect of setting resource usage limits. Whenever an application is running close to the maximum CPU utilization that it’s permitted, it is throttled. This cuts down the CPU cycles and slows down the response rate.
+
+When a pod is created the containers are assigned a default CPU request of .5 and memory of 256Mi". For the POD to pick up those defaults you must have first set those as default values for request and limit by creating a LimitRange in that namespace.
+
+```
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: mem-limit-range
+spec:
+  limits:
+  - default:
+      memory: 512Mi
+    defaultRequest:
+      memory: 256Mi
+    type: Container
+```
+```
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+spec:
+  limits:
+  - default:
+      cpu: 1
+    defaultRequest:
+      cpu: 0.5
+    type: Container
+```
+
+
+### Edit a POD
+Remember, you CANNOT edit specifications of an existing POD other than the below.
+
+- spec.containers[*].image
+- spec.initContainers[*].image
+- spec.activeDeadlineSeconds
+- spec.tolerations
+
+For example you cannot edit the environment variables, service accounts, resource limits (all of which we will discuss later) of a running pod. But if you really want to, you have 2 options:
+
+1. Run the kubectl edit pod <pod name> command.  This will open the pod specification in an editor (vi editor). Then edit the required properties. When you try to save it, you will be denied. This is because you are attempting to edit a field on the pod that is not editable.
+
+
+A copy of the file with your changes is saved in a temporary location as shown above.
+
+You can then delete the existing pod by running the command:
+
+kubectl delete pod webapp
+
+
+
+Then create a new pod with your changes using the temporary file
+
+kubectl create -f /tmp/kubectl-edit-ccvrq.yaml
+
+
+
+2. The second option is to extract the pod definition in YAML format to a file using the command
+
+kubectl get pod webapp -o yaml > my-new-pod.yaml
+
+Then make the changes to the exported file using an editor (vi editor). Save the changes
+
+vi my-new-pod.yaml
+
+Then delete the existing pod
+
+kubectl delete pod webapp
+
+Then create a new pod with the edited file
+
+kubectl create -f my-new-pod.yaml
+
+
+
+### Edit Deployments
+With Deployments you can easily edit any field/property of the POD template. Since the pod template is a child of the deployment specification,  with every change the deployment will automatically delete and create a new pod with the new changes. So if you are asked to edit a property of a POD part of a deployment you may do that simply by running the command
+
+kubectl edit deployment my-deployment
+
+The status OOMKilled indicates that it is failing because the pod ran out of memory. Identify the memory limit set on the POD.
+
+### Static Pods
+
+Static Pods are managed directly by the kubelet daemon on a specific node, without the API server observing them. Unlike Pods that are managed by the control plane (for example, a Deployment); instead, the kubelet watches each static Pod (and restarts it if it fails).
+
+Static Pods are always bound to one Kubelet on a specific node.
+
+The kubelet automatically tries to create a mirror Pod on the Kubernetes API server for each static Pod. This means that the Pods running on a node are visible on the API server, but cannot be controlled from there. The Pod names will be suffixed with the node hostname with a leading hyphen.
+
+https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/
+
+Use case
+- controller-manager, apiserver in master node
+
+### static POD vs Daemos Set
+
+|Static POD| DaemonSet|
+|-|-|
+|Created by kubelet| created by Kube-Api server (DaemonSet Controller|
+|Deploy Control plane component as Satatic pod| Deploy monitoring agents, logging agents and nodes|
+| both are Ignore by the kube-Scheduler|
+
+Create a static pod named static-busybox that uses the busybox image and the command sleep 1000:
+
+kubectl run --restart=Never --image=busybox static-busybox --dry-run=client -o yaml --command -- sleep 1000 > /etc/kubernetes/manifests/static-busybox.yaml
+
+Edit the image on the static pod to use busybox:1.28.4
+
+kubectl run --restart=Never --image=busybox:1.28.4 static-busybox --dry-run=client -o yaml --command -- sleep 1000 > /etc/kubernetes/manifests/static-busybox.yaml
+
+### Delete static pod
+
+If you don't know the IP of the node, run the kubectl get nodes -o wide command and identify the IP.
+Then, SSH to the node using that IP. For static pod manifest path look at the file /var/lib/kubelet/config.yaml on node01
+
+First, let's identify the node in which the pod called static-greenbox is created. To do this, run:
+
+kubectl get pods --all-namespaces -o wide  | grep static-greenbox
+
+From the result of this command, we can see that the pod is running on node01.
+
+
+Next, SSH to node01 and identify the path configured for static pods in this node.
+Important: The path need not be /etc/kubernetes/manifests. Make sure to check the path configured in the kubelet configuration file.
+
+ssh node01
+
+ps -ef |  grep /usr/bin/kubelet
+
+
+
+grep -i staticpod /var/lib/kubelet/config.yaml
+
+Here the staticPodPath is /etc/just-to-mess-with-you
+
+
+Navigate to this directory and delete the YAML file:
+
+ rm -rf greenbox.yaml

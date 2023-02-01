@@ -304,7 +304,7 @@ provider = <PROVIDER NAME>.<ALIAS NAME>  # This is a Meta-Argument from Resource
 #### **resource Block**
   - Each resource block describes one or more infraestructure objects
 
-### MEta-Arguments
+### Meta-Arguments
 
   - Depend on:
 
@@ -384,9 +384,6 @@ https://developer.hashicorp.com/terraform/language/functions
 - For example
 
   - [for s in ["this is a","list"]:upper(s)]
-
-
-
 
 
 
