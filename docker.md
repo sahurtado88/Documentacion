@@ -461,7 +461,47 @@ Environment variables are supported by the following list of instructions in the
 
 ## CMD Vs ENTRYPOINT
 
-CMD comand line replace enterily in entrypoint the coman line parameters is appended
+CMD comand line replace enterily in entrypoint the comand line parameters is appended
+
+```
+FROM ubuntu
+
+CDM sleep 5
+```
+docker run ubuntu-sleeper sleep 10
+
+COMMAND AT STARTUP: Sleep 10
+
+```
+FROM Ubuntu
+
+ENTRYPOINT ["sleep"]
+```
+docker run ubuntu-sleeper 10
+COMMAND AT STARTUP: ENTRYPOINT +  10
+
+you can use ENTRYPOINT and CMD togheter for the case you use CMD like default value on ENTRYPOINT
+
+```
+FROM ubuntu
+ENTRYPOINT ["sleep"]
+CMD["5"]
+```
+
+docker run ubuntu-sleeper
+COMMAND AT STARTUP: Sleep 5
+
+docker run ubuntu-sleeper 10
+COMMAND AT STARTUP: Sleep 10
+
+docker run --entrypoint sleep2.0 ubuntu-sleeper 10
+COMMAND AT STARTUP: Sleep2.0 10
+
+### RUN vs CMD vs ENTRYPOINT
+RUN executes commands and creates new image layers.
+CMD sets the command and its parameters to be executed by default after the container is started. However CMD can be replaced by docker run command line parameters.
+ENTRYPOINT configures the command to run when the container starts, similar to CMD from a functionality perspective.
+
 
 ## RUN
 

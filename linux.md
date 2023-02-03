@@ -736,3 +736,50 @@ java -version 1>java_version.txt 2>java_version.txt es lo mismo que java -versio
 - < to provide the input
 ### Combining redirection Operators
 - | to send the standard output of one command to another command as standard input
+
+
+## Cómo ejecutar varios comandos a la vez en Linux
+
+En Linux, hay tres formas de ejecutar varios comandos en una terminal ayudandonos con operadores:
+
+1. El operador de punto y coma ( ; )
+2. El operador lógico OR ( || )
+3. El operador lógico AND ( && )
+
+
+-  Uso del operador de punto y coma (;)
+Segmentar una cadena de comandos con punto y coma es la práctica más común cuando desea ejecutar varios comandos en una terminal. Parte de la razón de esto es la forma en que actúa el operador: ejecuta todos los comandos en la secuencia independientemente de si el comando anterior se ejecutó correctamente o falló.
+
+    Por ejemplo, si hay dos comandos: comando A y comando B, el uso del operador de punto y coma entre ellos asegura que tanto el primer comando como el segundo se ejecuten secuencialmente independientemente de la salida del primer comando.
+
+    command A ; command B
+    Entonces, si se encuentra en una situación en la que es necesario ejecutar dos o más comandos de terminales no relacionados, de modo que el estado de salida del primer comando no afecta la ejecución del último, el operador de punto y coma es el camino a seguir.
+
+    Ejemplo: primero actualiza la base de apt y luego actualiza el sistema.
+
+    apt update ; apt upgrade
+
+- Uso del operador OR (||)
+    Cuando ejecutas dos comandos usando el operador OR, le dices al shell que ejecute solo un comando entre los dos.
+
+    Consideremos un escenario en el que ha utilizado el operador OR con dos comandos: comando A y comandos B . Así es como se vería el comando combinado con el operador OR:
+
+    command A || command B
+    Aquí, el comando B solo se ejecutará si el comando A falla, es decir, cuando el comando A devuelve un error. Del mismo modo, si el comando A se ejecuta correctamente, el comando B no se ejecutará.
+
+    Ejemplo de caso de uso : supongamos que desea crear un nuevo archivo, digamos Document.txt , pero antes de hacerlo, debe asegurarse de que no exista un archivo con el mismo nombre en el directorio actual. En tales situaciones, puede ejecutar sus comandos en la siguiente secuencia:
+
+    find . -name Document.txt || touch Document.txt
+
+- Uso del operador AND (&&)
+    El operador AND ejecuta el siguiente comando en una secuencia solo cuando su comando anterior se ejecuta correctamente.
+
+    Para comprender esto mejor, consideremos un escenario en el que desee ejecutar dos comandos relacionados, de modo que desee que el segundo comando se ejecute solo si el primero devuelve un resultado válido. En este caso, podemos vincular los comandos mediante el operador AND, denominado &&, para obtener el resultado deseado.
+
+    Ejemplo de caso de uso : Uno de los casos de uso más comunes del operador AND en Linux es crear un nuevo directorio y acceder a él de inmediato. De esa forma, no tendrá que ejecutar los dos comandos individualmente para realizar la operación.
+
+    Para el propósito de esta guía, supongamos que desea crear un nuevo directorio llamado Documentos y cambiar inmediatamente su directorio de trabajo actual a él.
+
+    mkdir Documents && cd Documents
+
+

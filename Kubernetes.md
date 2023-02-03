@@ -1116,3 +1116,445 @@ Here the staticPodPath is /etc/just-to-mess-with-you
 Navigate to this directory and delete the YAML file:
 
  rm -rf greenbox.yaml
+
+ ### Multiple schedulers
+
+ Kubernetes ships with a default scheduler. If the default scheduler does not suit your needs you can implement your own scheduler. Moreover, you can even run multiple schedulers simultaneously alongside the default scheduler and instruct Kubernetes what scheduler to use for each of your pods. 
+
+#### Deply aditional Scheduler as a POD
+
+my-custom-scheduler.yaml
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-custom-scheduler
+  namespace: kube-system
+spec:
+  containers:
+  - command:
+    - kube-scheduler
+    - --address=127.0.0.1
+    - --kubeconfig=/etc/kubernetes/scheduler.conf
+    - --config=/etc/kubernetes/my-scheduler-config.yaml
+    image: k8.gcr.io/kube-scheduler-amd64:v1.11.3
+    name: kube-scheduler
+
+```
+
+my-scheduler-config.yaml
+```
+apiVersion: kubescheduler.config.k8s.io/v1
+kind: KubeSchedulerConfiguration
+profiles:
+- schedulerName: my-scheduler
+leaderElection
+  leaderElect: true
+  resourceNamescpace: kube-system
+  resourceName: lock-object-my-scheduler
+```
+
+#### **Specify schedulers for pods**
+Now that your second scheduler is running, create some pods, and direct them to be scheduled by either the default scheduler or the one you deployed. In order to schedule a given pod using a specific scheduler, specify the name of the scheduler in that pod spec. Let's look at three examples.
+
+Pod spec without any scheduler name
+
+```
+apiVersion: v1
+  
+kind: Pod
+  
+metadata:
+  
+  name: no-annotation
+  
+  labels:
+  
+    name: multischeduler-example
+  
+spec:
+  
+  containers:
+  
+  - name: pod-with-no-annotation-container
+  
+    image: registry.k8s.io/pause:2.0
+  
+  ```
+
+  When no scheduler name is supplied, the pod is automatically scheduled using the default-scheduler.
+
+  ```
+apiVersion: v1
+  
+kind: Pod
+  
+metadata:
+  
+  name: annotation-default-scheduler
+  
+  labels:
+  
+    name: multischeduler-example
+  
+spec:
+  
+  schedulerName: default-scheduler
+  containers:
+  
+  - name: pod-with-default-annotation-container
+    image: registry.k8s.io/pause:2.0
+  
+  ```
+A scheduler is specified by supplying the scheduler name as a value to spec.schedulerName. In this case, we supply the name of the default scheduler which is default-scheduler.
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: annotation-second-scheduler
+  labels:
+    name: multischeduler-example
+  
+spec:  
+  schedulerName: my-scheduler
+  containers:
+  - name: pod-with-second-annotation-container
+    image: registry.k8s.io/pause:2.0
+  
+```
+
+In this case, we specify that this pod should be scheduled using the scheduler that we deployed - my-scheduler. Note that the value of spec.schedulerName should match the name supplied for the scheduler in the schedulerName field of the mapping KubeSchedulerProfile.
+
+to see which scheduler put the pod you can use
+
+```
+kubectl get events -o wide
+``` 
+### Configuring Scheduler Profiles
+
+**Scheduling Plugins**
+scheduling queue :  PrioritySort
+filtering: NodeResourcesFit, NodeName, NodeUnschedulable
+scoring: NodeResourcesFit, ImageLocality
+binding: DefaultBinder
+
+The following plugins, enabled by default, implement one or more of these extension points:
+
+- ImageLocality: Favors nodes that already have the container images that the Pod runs. Extension points: score.
+- TaintToleration: Implements taints and tolerations. Implements extension points: filter, preScore, score.
+- NodeName: Checks if a Pod spec node name matches the current node. Extension points: filter.
+- NodePorts: Checks if a node has free ports for the requested Pod ports. Extension points: preFilter, filter.
+- NodeAffinity: Implements node selectors and node affinity. Extension points: filter, score.
+- PodTopologySpread: Implements Pod topology spread. Extension points: preFilter, filter, preScore, score.
+- NodeUnschedulable: Filters out nodes that have .spec.unschedulable set to true. Extension points: filter.
+- NodeResourcesFit: Checks if the node has all the resources that the Pod is requesting. The score can use one of three strategies: LeastAllocated (default), MostAllocated and RequestedToCapacityRatio. Extension points: preFilter, filter, score.
+- NodeResourcesBalancedAllocation: Favors nodes that would obtain a more balanced resource usage if the Pod is scheduled there. Extension points: score.
+VolumeBinding: Checks if the node has or if it can bind the requested volumes. Extension points: preFilter, filter, reserve, preBind, score.
+-   **Note:** 
+score extension point is enabled when VolumeCapacityPriority feature is enabled. It prioritizes the smallest PVs that can fit the requested volume size.
+- VolumeRestrictions: Checks that volumes mounted in the node satisfy restrictions that are specific to the volume provider. Extension points: filter.
+- VolumeZone: Checks that volumes requested satisfy any zone requirements they might have. Extension points: filter.
+- NodeVolumeLimits: Checks that CSI volume limits can be satisfied for the node. Extension points: filter.
+- EBSLimits: Checks that AWS EBS volume limits can be satisfied for the node. Extension points: filter.
+- GCEPDLimits: Checks that GCP-PD volume limits can be satisfied for the node. Extension points: filter.
+- AzureDiskLimits: Checks that Azure disk volume limits can be satisfied for the node. Extension points: filter.
+- InterPodAffinity: Implements inter-Pod affinity and anti-affinity. Extension points: preFilter, filter, preScore, score.
+- PrioritySort: Provides the default priority based sorting. Extension points: queueSort.
+- DefaultBinder: Provides the default binding mechanism. Extension points: bind.
+- DefaultPreemption: Provides the default preemption mechanism. Extension points: postFilter.
+
+You can also enable the following plugins, through the component config APIs, that are not enabled by default:
+
+- CinderLimits: Checks that OpenStack Cinder volume limits can be satisfied for the node. Extension points: filter.
+
+**Extension Point**
+scheduling queue :  queueSort
+filtering: prefilter,filter, podtfilter
+scoring: presscore,score, reserve
+binding: permit,prebind,bind,postBind
+
+![](https://d33wubrfki0l68.cloudfront.net/4e9fa4651df31b7810c851b142c793776509e046/61a36/images/docs/scheduling-framework-extensions.png)
+
+https://kubernetes.io/docs/concepts/scheduling-eviction/scheduling-framework/
+
+Scheduling happens in a series of stages that are exposed through the following extension points:
+
+- queueSort: These plugins provide an ordering function that is used to sort pending Pods in the scheduling queue. Exactly one queue sort plugin may be enabled at a time.
+- preFilter: These plugins are used to pre-process or check information about a Pod or the cluster before filtering. They can mark a pod as unschedulable.
+- filter: These plugins are the equivalent of Predicates in a scheduling Policy and are used to filter out nodes that can not run the Pod. Filters are called in the configured order. A pod is marked as unschedulable if no nodes pass all the filters.
+- postFilter: These plugins are called in their configured order when no feasible nodes were found for the pod. If any postFilter plugin marks the Pod schedulable, the remaining plugins are not called.
+- preScore: This is an informational extension point that can be used for doing pre-scoring work.
+- score: These plugins provide a score to each node that has passed the filtering phase. The scheduler will then select the node with the highest weighted scores sum.
+- reserve: This is an informational extension point that notifies plugins when resources have been reserved for a given Pod. Plugins also implement an Unreserve call that gets called in the case of failure during or after Reserve.
+- permit: These plugins can prevent or delay the binding of a Pod.
+- preBind: These plugins perform any work required before a Pod is bound.
+- bind: The plugins bind a Pod to a Node. bind plugins are called in order and once one has done the binding, the remaining plugins are skipped. At least one bind plugin is required.
+- postBind: This is an informational extension point that is called after a Pod has been bound.
+- multiPoint: This is a config-only field that allows plugins to be enabled or disabled for all of their applicable extension points simultaneously.
+
+### Scheduler profile
+
+For each extension point, you could disable specific default plugins or enable your own. For example:
+
+```
+apiVersion: kubescheduler.config.k8s.io/v1
+kind: KubeSchedulerConfiguration
+profiles:
+  - plugins:
+      score:
+        disabled:
+        - name: PodTopologySpread
+        enabled:
+        - name: MyCustomPluginA
+          weight: 2
+        - name: MyCustomPluginB
+          weight: 1
+```
+
+You can use * as name in the disabled array to disable all default plugins for that extension point. This can also be used to rearrange plugins order, if desired
+
+## Logging and Monitoring
+
+kubectl top node performance metrics(CPU, MEMORY (bytes), MEMORY%) of the node
+
+kubectl top pod performance metrics CPU, MEMORY (bytes), MEMORY%) of the pods
+
+kubernetes-metric-server
+
+```
+git clone https://github.com/kodekloudhub/kubernetes-metrics-server.git
+```
+kubectl logs -f [pod_name] -c [container _name]
+
+## aplication lifecycle management
+
+### Rolling updates and Rollbacks
+
+Users expect applications to be available all the time and developers are expected to deploy new versions of them several times a day. In Kubernetes this is done with rolling updates. Rolling updates allow Deployments' update to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources.
+
+```
+kubectl rollout status deployment/my-app-deployment
+```
+
+**Deployment strategy**
+
+- Recreate This is a basic deployment pattern which simply shuts down all the old pods and replaces them with new ones. You define it by setting the spec:strategy:type section of your manifest to Recreate
+The Recreate strategy can result in downtime, because old pods are deleted before ensuring that new pods are rolled out with the new version of the application.
+
+- Rolling Update A rolling deployment is the default deployment strategy in Kubernetes. It replaces the existing version of pods with a new version, updating pods slowly one by one, without cluster downtime. 
+
+  The rolling update uses a readiness probe to check if a new pod is ready, before starting to scale down pods with the old version. If there is a problem, you can stop an update and roll it back, without stopping the entire cluster. 
+
+  To perform a rolling update, simply update the image of your pods using kubectl set image. This will automatically trigger a rolling update.
+
+  To refine your deployment strategy, change the parameters in the spec:strategy section of your manifest file. There are two optional parameters—maxSurge and maxUnavailable: 
+
+  **MaxSurge** specifies the maximum number of pods the Deployment is allowed to create at one time. You can specify this as a whole number (e.g. 5), or as a percentage of the total required number of pods (e.g. 10%, always rounded up to the next whole number). If you do not set MaxSurge, the implicit, default value is 25%.
+  **MaxUnavailable** specifies the maximum number of pods that are allowed to be unavailable during the rollout. Like MaxSurge, you can define it as an absolute number or a percentage. 
+  At least one of these parameters must be larger than zero. By changing the values of these parameters, you can define other deployment strategies, as shown below.
+
+- Ramped Slow Rollout: A ramped rollout updates pods gradually, by creating new replicas while removing old ones. You can choose the number of replicas to roll out each time. You also need to make sure that no pods become unavailable. 
+
+  The difference between this strategy and a regular rolling deployment is you can control the pace at which new replicas are rolled out. For example, you can define that only 1 or 2 nodes should be updated at any one time, to reduce the risk of an update.
+
+   To define this behavior, set maxSurge to 1 and maxUnvailable to 0. This means the Deployment will roll one pod at a time, while ensuring no pods are unavailable. So, for example, if there are ten pods, the Deployment will ensure at least ten pods are available at one time. 
+
+   ![](https://cdn.shortpixel.ai/spai/w_512+q_lossless+ret_img+to_webp/https://assets.spot.io/app/uploads/2021/07/28013439/Kubernetes-ramped-rollout-YAML-file-snippet.png)
+
+- Best-Effort Controlled Rollout 
+The downside of a ramped rollout is that it takes time to roll out the application, especially at large scale. An alternative is a “best-effort controlled rollout”. This enables a faster rollout, but with a tradeoff of higher risk, by tolerating a certain percentage of downtime among your nodes.
+
+  This involves:
+
+  Setting maxUnavailable to a certain percentage, meaning your update can tolerate a certain amount of pods with downtime.
+  Setting maxSurge to 0, to ensure that there are always the same number of pods in the Deployment. This provides the best possible resource utilization during the update.
+  This has the effect of rapidly replacing pods, as quickly as possible, while ensuring a limited number of pods down at any given time. 
+
+  ![](https://cdn.shortpixel.ai/spai/w_512+q_lossless+ret_img+to_webp/https://assets.spot.io/app/uploads/2021/07/28013551/kubernetes-best-effort-controlled-rollout-code-snippet.png)
+
+- Canary Deployment
+Canary deployments are typically used to test some new features on the backend of an application. Two or more services or versions of an application are deployed in parallel, one running an existing version, and one with new features. Users are gradually shifted to the new version, allowing the new version to be validated by exposing it to real users. If no errors are reported, one of the new versions can be gradually deployed to all users.
+
+
+Rollback generate other replicaset
+
+```
+CREATE: kubectl create -f deployment-definition.yaml
+GET: kubectl get deployment
+UPDATE: kubectl apply -f deployment-definition.yaml
+        kubectl edit deployment fronten
+STATUS: kubectl rollout status deployment/myapp-deployment
+        kubectl rollout history deployment/myapp-deployment
+ROLLBACK: kubectl rollout undo deployment/myapp-deployment
+
+```
+
+### Commands and arguments
+
+FROM ubuntu
+ENTRYPOINT ["sleep"]
+CMD["5"]
+
+
+to change de CMD value you can use args in pod definition
+´´´
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper-pod
+specs:
+  container:
+    - name: ubuntu-sleeper
+      image: ubuntu-sleeper
+      arg: ["10"]
+´´´
+
+to change ENTRYPOINT you can use command in pod definition
+
+´´´
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper-pod
+specs:
+  container:
+    - name: ubuntu-sleeper
+      image: ubuntu-sleeper
+      command: ["sleep2.0"]
+´´´
+
+´´´
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper-pod
+specs:
+  container:
+    - name: ubuntu-sleeper
+      image: ubuntu-sleeper
+      command: 
+        - "sleep"
+        - "1200"
+´´´
+
+### Env variables in kubernetes
+
+When you create a Pod, you can set environment variables for the containers that run in the Pod. To set environment variables, include the env or envFrom field in the configuration file.
+
+
+docker run -e APP_COLOR=pink simple-webapp-color
+
+POD DEFINITION
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-webapp-color
+Spec:
+  container:
+  - name: simple-webapp-color
+    image: simple-webapp-color
+    ports:
+      - containerPort: 8080
+    env:
+     - name: APP_COLOR
+       value: pink  
+```
+
+env is an array
+
+thera are 3 types of env value types
+
+- Play Key-value
+```
+env:
+  - name: APP_COLOR
+    value: pink
+```
+- ConfigMap
+```
+env:
+  - name: APP_COLOR
+    valueFrom:
+      configMapKeyRef:
+```
+
+- Secrets
+```
+env:
+  - name: APP_COLOR
+    valueFrom: 
+      secretKeyRef:
+```
+
+### Configuring ConfigMaps in Applications
+
+A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
+
+A ConfigMap allows you to decouple environment-specific configuration from your container images, so that your applications are easily portable.
+
+There are four different ways that you can use a ConfigMap to configure a container inside a Pod:
+
+1. Inside a container command and args
+2. Environment variables for a container
+3. Add a file in read-only volume, for the application to read
+4. Write code to run inside the Pod that uses the Kubernetes API to read a ConfigMap
+
+These different methods lend themselves to different ways of modeling the data being consumed. For the first three methods, the kubelet uses the data from the ConfigMap when it launches container(s) for a Pod.
+
+The fourth method means you have to write code to read the ConfigMap and its data. However, because you're using the Kubernetes API directly, your application can subscribe to get updates whenever the ConfigMap changes, and react when that happens. By accessing the Kubernetes API directly, this technique also lets you access a ConfigMap in a different namespace.
+
+Thera are two face to configure a configmap:
+
+- Create ConfigMap
+  - imperative way: kubectl create configmap <config-name> --from-literal=<key>=<value>
+  ```
+  kubectl create configmap app-config --from-literal=APP_COLOR=blue
+  ```
+  kubectl create configmap <config-name> --from-file=<path-to-file>
+  ```
+  kubectl create configmap app-config --from-file=app_config.properties
+  ```
+  - declarative way: kubectl create -f config-map.yaml
+
+  CONFIG-MAP.YAML
+  ```
+  apiVersion:v1
+  kind: ConfigMap
+  metadata:
+    name: app-config
+  data:
+    APP_COLOR: blue
+    APP_MODE: prod
+  ```
+
+to see config maps you can use:
+```
+kubectl get configmaps
+kubectl describe configmaps
+```
+
+- inject into the pod
+
+in envFrom section you can reference by name
+
+```
+apiversion: v1
+kind: pod
+metadata:
+  name: simple-webapp-color
+  lables:
+    name: simple-webapp-color
+spec:
+  containers:
+  - name: simple-webapp-color
+    image: simple-webapp-color
+    ports:
+     - containerPort: 8080
+    envFrom:
+      - configMapRef:
+          name: app-config 
+```
+
+
