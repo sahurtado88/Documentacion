@@ -391,3 +391,107 @@ https://github.com/in4it/terraform-azure-course
 
 
  
+# Terraform for the absolute Beginners with labs
+
+
+Configuration Managment:
+  - Designed to install and manage software
+  - Maintains Standard Structure
+  - Version control
+  - Idempotent
+
+Server templating tools:
+  - Pre installed software and dependencies
+  - virtual machine or docker images
+  - inmutable infraestructure
+
+Provisioning tools
+  - Deploy inmutable infraestructure resources
+  - Server, databases, network components, etc
+  - multiple providers
+
+![](./Images/TypesofIAC.png)
+
+### HCL basic
+
+```
+<block> <parameters>{
+  key1= value1
+  key2 = value2
+}
+```
+
+![](./Images/terraformbasics.png)
+
+## Configuration directory
+
+|File Name| Purpose|
+|-|-|
+|main.tf| Main configuration file containing resource definition| 
+variables.tf| Contains variable declarations
+outputs.tf| Contains outputs from resources
+provider.tf| Contain provider definition
+
+## Using input variables
+
+![](./Images/Variables_terraform.png)
+
+![](./Images/usingvariables.png)
+
+## Variable block
+
+The variable block has 3 arguments default, type and description
+
+![](./Images/variableblock.png)
+
+The types are:
+
+![](./Images/typesvariable.png)
+
+
+![](./Images/listype.png)
+
+![](./Images/map.png)
+
+set is similar to list but set has not duplicates elements
+
+![](./Images/settype.png)
+
+![](./Images/objecttype.png)
+
+tuples are similar to list the difference list use the same type but in tuples you can use differetne types of elements
+
+
+![](./Images/tupletype.png)
+
+## Variable definition Files
+
+![](./Images/definitionfiles.png)
+
+### Variable definition precedence
+
+![](./Images/precedence.png)
+
+4  method has the highest priority in Variable Definition Precedence
+
+### Resources Attributes
+
+
+![](./Images/resourcesattributes.png)
+
+### Resources Dependencies
+
+- Implicit dependency terrform figure out reference expression
+
+- Explicit deepndency
+
+![](./Images/explicitdependencie.png)
+
+### Output Variables
+
+![](./Images/outputvar.png)
+
+terraform output show the outputs
+
+## Terraform state
+

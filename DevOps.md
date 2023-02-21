@@ -859,3 +859,56 @@ The DevOps pipeline involves a multitude of changes that can cause significant c
 Monitoring costs involves identifying resource usage. Besides real-time metrics, some advanced cost intelligence tools can collect exact costs per unit and per customer or project and transmit that information to engineers and finance.  
 
 With this capability, you can forecast cost of goods sold (COGS), secure gross margins, and optimize resource utilization throughout different phases of DevOps.    
+
+## Brncnhing Strategies
+
+### Mainline branch
+
+- Good things
+    - Simple workflow
+    - Ready for deploy
+- Bad things
+    - Careful branch large
+    - If there isn’t test, is very risky
+### Branch per feature
+- Good things
+    - Mater never have errors
+    - We have a branch to comparing
+- Bad things
+    - Careful branch large
+    - If there is rollback, it is lost all value delivered
+### Environment based 
+- Good things
+    - Mater never have errors
+    - We have a branch to comparing 
+ - Bad things
+    - Careful branch large
+    - If there is rollback, it is lost all value delivered
+    - We can’t Deploy automatization
+### Git flow
+- Good things
+    - Much Documentation
+    - Ordered branches
+- Bad things
+    - Careful branch large
+    - If there is rollback, it is lost all value delivered
+    - Difficult for teams little 
+
+## Deployment strategies 
+
+- recreate: terminate the old version and release the new one
+    - Pros:
+        - Easy to setup.
+        - Application state entirely renewed
+    - Cons:
+        - High impact on the user, expect downtime that depends on both shutdown and boot duration of the application.
+
+- ramped also known as rolling-update or incremental: release a new version on a rolling update fashion, one after the other
+    
+
+- blue/green: release a new version alongside the old version then switch traffic
+- canary: release a new version to a subset of users, then proceed to a full rollout
+- a/b testing: release a new version to a subset of users in a precise way (HTTP headers,cookie, weight, etc.).
+- shadow: release a new version alongside the old version. Incoming traffic is mirrored to thenew version and doesn't impact the response.
+
+

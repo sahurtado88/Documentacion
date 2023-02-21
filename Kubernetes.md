@@ -716,7 +716,7 @@ kubectl apply create or update
 
 kubectl delete -f [filename]
 
-kubectl replace --froce -f nginx.yaml  delte and replace pod nginx in this case
+kubectl replace --froce -f nginx.yaml  delete and replace pod nginx in this case
 
 kubectl get pods --selector app=App1
 
@@ -1557,4 +1557,285 @@ spec:
           name: app-config 
 ```
 
+![Descripción de la imagen](.\Images\configmaps.png)
 
+### Configure Secrets in Application
+
+Secrets are use to store sensitive data like passwords or keys
+
+Thera are two face to configure a configmap:
+
+1. Create Secret
+
+    - imperative way: kubectl create secret generic <secret-name> --from-literal=<key>=<value> or kubectl create secret generic <secret-name> --from-file=<path-to-file>
+    ```
+    kubectl create secret generic app-secret --from-literal=DB_Host=mysql
+
+    kubectl create secret generic app-secret --from-file=app_secret.properties
+
+    ```
+
+    - declarative way: kubectl create -f secret-data.yaml but you need encode data because is a plain text in linux you can use echo -n 'mysql' | base64 to encode in base64, to decode you can use echo -n 'bXlzcWw=' |base64 --decode
+
+
+    ```
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: app-secret
+    data:
+      DB_Host: mysql
+      DB_User: root
+      DB_Password : pasword 
+    ```
+
+  to see the secret you can use kubectl get secret app.secret -o yaml
+
+2. Inject into Pod
+
+  in envFrom section you can reference by name
+
+```
+apiversion: v1
+kind: pod
+metadata:
+  name: simple-webapp-color
+  lables:
+    name: simple-webapp-color
+spec:
+  containers:
+  - name: simple-webapp-color
+    image: simple-webapp-color
+    ports:
+     - containerPort: 8080
+    envFrom:
+      - secretRef:
+          name: app-config 
+```
+![Descripción de la imagen](.\Images\secrets.png)
+
+- secrets are not encrypted. only encoded
+  - Do not check-in secret objects to SCM along with code
+- secret are not encrypted in ETCD
+https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/
+- Afeter you do the encrypt procees you can use this command ``` kubectl get secrets --all-namespaces -o json | kubectl replace -f - ```  to encrypt the previous secrets
+
+- Anyone able to create pods/deployments in the same namespace can acces the secrets
+  - Configure least-privilege acces to secret - RBAC
+- Consider third party secret stroe providers, AWs, AZURE, GCP, VAULT
+
+Secrets are not encrypted, so it is not safer in that sense. However, some best practices around using secrets make it safer. As in best practices like:
+
+Not checking-in secret object definition files to source code repositories.
+
+Enabling Encryption at Rest for Secrets so they are stored encrypted in ETCD. 
+
+Also the way kubernetes handles secrets. Such as:
+
+A secret is only sent to a node if a pod on that node requires it.
+
+Kubelet stores the secret into a tmpfs so that the secret is not written to disk storage.
+
+Once the Pod that depends on the secret is deleted, kubelet will delete its local copy of the secret data as well.
+
+Read about the protections and risks of using secrets https://kubernetes.io/docs/concepts/configuration/secret/#risks
+
+Having said that, there are other better ways of handling sensitive data like passwords in Kubernetes, such as using tools like Helm Secrets, HashiCorp Vault.
+
+### Multicontainer Pods
+
+There are 3 common patterns, when it comes to designing multi-container PODs. The first with the logging service example is known as a side car pattern. The others are the adapter and the ambassador pattern.
+
+```
+apiversion: v1
+kind: pod
+metadata:
+  name: simple-webapp-color
+  lables:
+    name: simple-webapp-color
+spec:
+  containers:
+  - name: simple-webapp-color
+    image: simple-webapp-color
+    ports:
+     - containerPort: 8080
+  - name: log-agent
+    image: log-agent
+```
+
+The application outputs logs to the file /log/app.log. View the logs and try to identify the user having issues with Login.
+```
+kubectl -n elastic-stack exec -it app -- cat /log/app.log
+```
+
+#### Sidecar pattern
+The sidecar pattern consists of a main application—i.e. your web application—plus a helper container with a responsibility that is essential to your application, but is not necessarily part of the application itself.
+
+The most common sidecar containers are logging utilities, sync services, watchers, and monitoring agents. It wouldn't make sense for a logging container to run while the application itself isn't running, so we create a pod that has the main application and the sidecar container. Another benefit of moving the logging work is that if the logging code is faulty, the fault will be isolated to that container—an exception thrown in the nonessential logging code won't bring down the main application.
+
+#### Adapter pattern
+The adapter pattern is used to standardize and normalize application output or monitoring data for aggregation.
+
+As a simple example, we have a cluster-level monitoring agent that tracks response times. Say we have a Ruby application in our cluster that writes request timing in the format [DATE] - [HOST] - [DURATION], while another Node.js application writes the same information in [HOST] - [START_DATE] - [END_DATE].
+
+The monitoring agent can only accept output in the format [RUBY|NODE] - [HOST] - [DATE] - [DURATION]. We could force the applications to write output in the format we need, but that burdens the application developer, and there might be other things depending on this format. The better alternative is to provide adapter containers that adjust the output into the desired format. Then the application developer can simply update the pod definition to add the adapter container and they get this monitoring for free.
+
+#### Ambassador pattern
+The ambassador pattern is a useful way to connect containers with the outside world. An ambassador container is essentially a proxy that allows other containers to connect to a port on localhost while the ambassador container can proxy these connections to different environments depending on the cluster's needs.
+
+One of the best use-cases for the ambassador pattern is for providing access to a database. When developing locally, you probably want to use your local database, while your test and production deployments want different databases again.
+
+Managing which database you connect to could be done through environment variables, but will mean your application changes connection URLs depending on the environment. A better solution is for the application to always connect to localhost, and let the responsibility of mapping this connecting to the right database fall to an ambassador container. Alternatively, the ambassador could be sending requests to different shards of the database—the application itself doesn't need to worry.
+
+### InitContainers
+
+In a multi-container pod, each container is expected to run a process that stays alive as long as the POD's lifecycle. For example in the multi-container pod that we talked about earlier that has a web application and logging agent, both the containers are expected to stay alive at all times. The process running in the log agent container is expected to stay alive as long as the web application is running. If any of them fails, the POD restarts.
+
+
+
+But at times you may want to run a process that runs to completion in a container. For example a process that pulls a code or binary from a repository that will be used by the main web application. That is a task that will be run only  one time when the pod is first created. Or a process that waits  for an external service or database to be up before the actual application starts. That's where initContainers comes in.
+
+An initContainer is configured in a pod like all other containers, except that it is specified inside a initContainers section,  like this:
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: myapp-container
+    image: busybox:1.28
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+  initContainers:
+  - name: init-myservice
+    image: busybox
+    command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application> ; done;']
+```
+
+When a POD is first created the initContainer is run, and the process in the initContainer must run to a completion before the real container hosting the application starts. 
+
+You can configure multiple such initContainers as well, like how we did for multi-pod containers. In that case each init container is run one at a time in sequential order.
+
+If any of the initContainers fail to complete, Kubernetes restarts the Pod repeatedly until the Init Container succeeds.
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: myapp-container
+    image: busybox:1.28
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+  initContainers:
+  - name: init-myservice
+    image: busybox:1.28
+    command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']
+  - name: init-mydb
+    image: busybox:1.28
+    command: ['sh', '-c', 'until nslookup mydb; do echo waiting for mydb; sleep 2; done;']
+```
+
+
+https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+
+
+### Self Heaqling Application
+
+Kubernetes provides additional support to check the health of applications running within PODs and take necessary actions through Liveness and Readiness Probes
+
+## Cluster Maintenance
+
+### OS Upgrades
+
+pod eviction
+
+drain de node: the workload go to other node if is part of replicaset and the node is mark unschedule
+
+kubectl drain node-1
+
+kubectl cordon node-2 node unschedule but not move the pods
+
+Do not drain node01, instead use the kubectl cordon node01 command. This will ensure that no new pods are scheduled on this node and the existing pods will not be affected by this operation.
+
+kubectl uncordon node-1 makes the node is schedulable
+
+We need to take node01 out for maintenance. Empty the node of all applications and mark it unschedulable.
+```
+kubectl drain node01 --ignore-daemonsets
+```
+
+
+Run: kubectl get pods -o wide and you will see that there is a single pod scheduled on node01 which is not part of a replicaset.
+The drain command will not work in this case. To forcefully drain the node we now have to use the --force flag.
+
+### Cluster Upgrade process
+
+
+
+### Backup and Restore methods
+
+resource configuration, etcd cluster and persitent volumes are candaites for backups
+
+resource configuration: store this yaml in vsc like github or gitlab
+
+you can use commands like:
+
+```
+kubectl get all -all-namespaces -o yaml > all-deploy-services.yaml
+
+```
+
+ETCD CLuster: you can backup the etcd.service dat-dir
+
+ETCDTL_API=3 etcdtl snapshot save snapshot.db
+
+ETCDTL_API=3 etcdtl \ snapchot status snapshot.db
+
+to restore de ETCDTL you need
+  - service kube-apiserver stop
+  - ETCDCTL_API=3 etcdctl snapshot restore snapshot.db --dat-dir va/lib/etcd-from-backup  
+  - systemctl daemon-reload
+  - service etcd restart
+  - service kube-apiserver start
+
+  Since our ETCD database is TLS-Enabled, the following options are mandatory:
+
+--cacert                                                verify certificates of TLS-enabled secure servers using this CA bundle
+
+--cert                                                    identify secure client using this TLS certificate file
+
+--endpoints=[127.0.0.1:2379]          This is the default as ETCD is running on master node and exposed on localhost 2379.
+
+--key                                                      identify secure client using this TLS key file
+
+  ![Descripción de la imagen](.\Images\restore_etcd.png)
+
+https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster
+
+## Security
+
+### Security Primitives
+
+- secure host
+- secure kubernetes
+
+
+- Authentication (who can acces)
+  - files - Username and Passwords
+  - files - username and tokens
+  - certtficates
+  - external authentication providers -LDAP
+  - service account
+
+- Authorization (what can they do?)
+  - RBAC Authorization
+  - ABAC
+  - Node
+  - Webhook

@@ -783,3 +783,12 @@ Segmentar una cadena de comandos con punto y coma es la práctica más común cu
     mkdir Documents && cd Documents
 
 
+- Se usa \ pra poner mas lineas en la terminal
+
+- Generate a 32-byte random key and base64 encode it. If you're on Linux or macOS, run the following command:
+
+```
+head -c 32 /dev/urandom | base64
+```
+
+
