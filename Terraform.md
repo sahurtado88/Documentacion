@@ -495,3 +495,128 @@ terraform output show the outputs
 
 ## Terraform state
 
+Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures.
+
+This state is stored by default in a local file named "terraform.tfstate", but it can also be stored remotely, which works better in a team environment.
+
+Terraform uses this local state to create plans and make changes to your infrastructure. Prior to any operation, Terraform does a refresh to update the state with the real infrastructure.
+
+The primary purpose of Terraform state is to store bindings between objects in a remote system and resource instances declared in your configuration. When Terraform creates a remote object in response to a change of configuration, it will record the identity of that remote object against a particular resource instance, and then potentially update or delete that object in response to future configuration changes.
+
+## Inmutable infraestructure
+
+Immutable infrastructure is an approach to managing services and software deployments on IT resources wherein components are replaced rather than changed.
+
+## Lifecycle Rules
+
+lifecycle is a nested block that can appear within a resource block. The lifecycle block and its contents are meta-arguments, available for all resource blocks regardless of type.
+
+The arguments available within a lifecycle block are create_before_destroy, prevent_destroy, ignore_changes, and replace_triggered_by.
+
+- The create_before_destroy (bool) meta-argument changes this behavior so that the new replacement object is created first, and the prior object is destroyed after the replacement is created.
+
+- prevent_destroy (bool) - This meta-argument, when set to true, will cause Terraform to reject with an error any plan that would destroy the infrastructure object associated with the resource, as long as the argument remains present in the configuration.
+
+But the resource can be deleted by terraform destroy
+
+- ignore_changes (list of attribute names) - By default, Terraform detects any difference in the current settings of a real infrastructure object and plans to update the remote object to match configuration.
+
+  The ignore_changes feature is intended to be used when a resource is created with references to data that may change in the future, but should not affect said resource after its creation.
+
+- replace_triggered_by (list of resource or attribute references) - Added in Terraform 1.2. Replaces the resource when any of the referenced items change. Supply a list of expressions referencing managed resources, instances, or instance attributes. When used in a resource that uses count or for_each, you can use count.index or each.key in the expression to reference specific instances of other resources that are configured with the same count or collection.
+
+  References trigger replacement in the following conditions:
+
+  - If the reference is to a resource with multiple instances, a plan to update or replace any instance will trigger replacement.
+  - If the reference is to a single resource instance, a plan to update or replace that instance will trigger replacement.
+  - If the reference is to a single attribute of a resource instance, any change to the attribute value will trigger replacement.
+
+  You can only reference managed resources in replace_triggered_by expressions. This lets you modify these expressions without forcing replacement.
+
+  ![](./Images/lifecycle_rules.png)
+
+
+If you observe the output of the previous apply (scroll up!), you will see that the lifecycle rule we applied caused the local file to the created first and the same file to be destroyed during the recreate operation.
+
+This goes to show that it is not always advisable to use this rule!
+
+In this example, the filename argument for the local_file resource has to be unique which means that we cannot have two instances of the same file created at the same time!
+The random_string resource on the other hand is a logical resource that is only recorded in the state and does not have such a restriction.
+
+## Datasource
+
+Data sources allow Terraform to use information defined outside of Terraform, defined by another separate Terraform configuration, or modified by functions.
+
+A data source is accessed via a special kind of resource known as a data resource, declared using a data block:
+
+```
+data "aws_ami" "example" {
+  most_recent = true
+
+  owners = ["self"]
+  tags = {
+    Name   = "app-server"
+    Tested = "true"
+  }
+}
+
+```
+
+A data block requests that Terraform read from a given data source ("aws_ami") and export the result under the given local name ("example"). The name is used to refer to this resource from elsewhere in the same Terraform module, but has no significance outside of the scope of a module.
+
+The data source and name together serve as an identifier for a given resource and so must be unique within a module.
+
+### Resources vs datasources
+
+|Resource|Data source|
+|-|-|
+|keyword: **resource**| keyword: **data**|
+|Creates, updates, destroys infraestructure|Only reads Infraestructure|
+|Also called: **Managed Resources**| Also Called **Data Resources**|
+
+## Meta Arguments
+
+There are 5 Meta-Arguments in Terraform which are as follows:
+
+- depends_on
+- count
+- for_each
+- provider
+- lifecycle
+
+### Count
+
+count is a meta-argument defined by the Terraform language. It can be used with modules and with every resource type.
+
+The count meta-argument accepts a whole number, and creates that many instances of the resource or module. Each instance has a distinct infrastructure object associated with it, and each is separately created, updated, or destroyed when the configuration is applied.
+
+ ![](./Images/countterraform.png)
+
+![](./Images/lenghtcountterraform.png)
+
+the output is created as a list
+
+### For Each
+
+for_each is a meta-argument defined by the Terraform language. It can be used with modules and with every resource type.
+
+The for_each meta-argument accepts a map or a set of strings, and creates an instance for each item in that map or set. Each instance has a distinct infrastructure object associated with it, and each is separately created, updated, or destroyed when the configuration is applied.
+
+![](./Images/foreachterraform.png)
+
+the output is created like a map
+
+## Version Constraints
+
+Terraform's syntax for version constraints is very similar to the syntax used by other dependency management systems like Bundler and NPM.
+
+The following operators are valid:
+
+- = (or no operator): Allows only one exact version number. Cannot be combined with other conditions.
+
+- !=: Excludes an exact version number.
+
+- \>, >=, <, <=: Comparisons against a specified version, allowing versions for which the comparison is true. "Greater-than" requests newer versions, and "less-than" requests older versions.
+
+- ~>: Allows only the rightmost version component to increment. For example, to allow new patch releases within a specific minor release, use the full version number: ~> 1.0.4 will allow installation of 1.0.5 and 1.0.10 but not 1.1.0. This is usually called the pessimistic constraint operator.
+
