@@ -467,6 +467,8 @@ spec:
         hostPath:
           path: /var/lib/docker/containers
 ```
+A daemonSet ensure that all (or some) nodes run a copy of a Pod. You can not control its replica using scale option. You have to use node selector to control replicas
+
 
 **EVENTS**
 

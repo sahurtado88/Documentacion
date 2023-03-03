@@ -118,3 +118,4 @@ H~2~O
 
 X^2^
 
+**Control+ space activates intellisense visual studio**
