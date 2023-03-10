@@ -620,3 +620,73 @@ The following operators are valid:
 
 - ~>: Allows only the rightmost version component to increment. For example, to allow new patch releases within a specific minor release, use the full version number: ~> 1.0.4 will allow installation of 1.0.5 and 1.0.10 but not 1.1.0. This is usually called the pessimistic constraint operator.
 
+## Remote State
+
+## state locking
+
+## Remote backend S3
+
+![](./Images/remotebackends3.png)
+
+### Terraform state command
+
+
+## Terraform provisioners
+
+You can use provisioners to model specific actions on the local machine or on a remote machine in order to prepare servers or other infrastructure objects for service.
+
+- remote exec
+
+The remote-exec provisioner invokes a script on a remote resource after it is created. This can be used to run a configuration management tool, bootstrap into a cluster, etc. To invoke a local process, see the local-exec provisioner instead. The remote-exec provisioner requires a connection and supports both ssh and winrm.
+connection
+
+- local exec
+
+The local-exec provisioner invokes a local executable after a resource is created. This invokes a process on the machine running Terraform, not on the resource. See the remote-exec provisioner to run commands on the resource.
+
+- file provisioner
+
+The file provisioner copies files or directories from the machine running Terraform to the newly created resource. The file provisioner supports both ssh and winrm type connections.
+
+- destroy time provisioner
+
+- failure behavior
+ on_failure = fail is by default
+
+ on_failure = continue salta los errores
+
+ ## Terraform taint and untaint
+
+The terraform taint command informs Terraform that a particular object has become degraded or damaged. Terraform represents this by marking the object as "tainted" in the Terraform state, and Terraform will propose to replace it in the next plan you create.
+
+**For Terraform v0.15.2 and later, we recommend using the -replace option with terraform apply to force Terraform to replace an object even though there are no configuration changes that would require it.**
+
+## Debugging terraform
+
+log level 
+
+export TF_LOG=TRACE
+
+export TF_LOG_PATH=/tmp/terrafom.log
+
+## Terraform import
+
+terraform import <resource_type>.<resource_name> <attribute>
+
+## Terraform Modules
+
+## Terrafrom Functions
+
+The Terraform language includes a number of built-in functions that you can call from within expressions to transform and combine values. The general syntax for function calls is a function name followed by comma-separated arguments in parentheses:
+```
+<FUNCTION NAME>(<ARGUMENT 1>, <ARGUMENT 2>)
+```
+
+## Terraform workspaces (OSS)
+
+terraform workspace new <NAMEPROJECT>
+
+terraform workspace list
+
+terraform workspace select <NAMEPROJECT>
+
