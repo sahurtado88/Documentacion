@@ -1,4 +1,7 @@
 
+
+sudo su - convertir en root
+
 Copiar archivo a otra carpeta
 Para copiar un archivo de una carpeta a otra es muy fácil, la instrucción a ejecutar es la siguiente.
 

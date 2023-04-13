@@ -125,7 +125,8 @@ IPv4
   - One Elastic IP (IPv4) per private IPv4
   -  One Public IPv4
   -  One or more security groups
-  - A MAC address 
+  - A MAC address
+  - A source/destination chech flag
 - You can create ENI independently and 
 attach them on the fly (move them) on EC2 
 instances for failover
@@ -238,5 +239,16 @@ Port forwarding| Not supported.| Manually customize the configuration to support
 Bastion servers| Not supported. |Use as a bastion server
 
 
+## Extending VPC address space
 
+
+### VPC secondary CIDR blocks
+
+1. You can add secondary VPC CIDR to existing VPC
+2. CIDR block must not overlap with existing CIDR or peered VPC CIDR
+3. If primary CIDR is from RFC1918 then you can not add secondary CIDR from other RFC1918 IP rangfes (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)
+4. CIDR block must not be same or larger than the CIDR range of routes in any of the VPC route tables
+5. You can have total 5 IPV4 and 1 IPv6 CIDR block for VPC
+
+![](..\Images\extendingvpc.png)
 

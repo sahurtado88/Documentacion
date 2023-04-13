@@ -1,0 +1,48 @@
+# Windows Command
+
+- ipconfig:  displays all current TCP/IP network configuration values and refreshes Dynamic Host Configuration Protocol (DHCP) and Domain Name System (DNS) settings.
+- ipconfig /all | findstr DNS
+- ipconfig /release
+- ipconfig /renew
+- ipconfig /displaydns
+- ipconfig /displaydns | clip copia la info del dns al clipboard
+- ipconfig /flushdns
+- nslookup
+- cls
+- getmac /v
+- powercfg /energy
+- powercfg /batteryreport
+- assoc
+- assosc .mp4=VLC.vlc
+- chkdsk /f
+- chkdsk /r
+- sfc /scannow
+- DISM /Online /Cleanup-Image /CheckHealth
+- DISM /Online /Cleanup-Image /ScanHealth
+- DISM /Online /Cleanup-Image /RestoreHealth
+- tasklist ! findstr script
+- taskkill /f /pid numberproccess
+- netsh wlan show wlanreport
+- netsh interface show interface
+- netsh interface ip show address ! findstr "IP Address"
+- netsh interface ip show dnsservers
+- netsh advfirewall set allprofiles state off
+- netsh advfirewall set allprofiles state on
+- ping
+- ping -t
+- tracert
+- tracert -d
+- netstat -af
+- nestat
+- netstat -o
+- netstat -e -t 5
+- route print
+- route add 
+- route delete 
+- shutdown /r /fw /f /t 0
+- prompt $T $B $P$G 
+- command /?
+- doskey /history
+- && execute varios comandos en una linea
+
+

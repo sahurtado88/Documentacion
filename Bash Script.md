@@ -61,6 +61,11 @@ echo "Copying files" && cp /usr/bin/* ~/backup || echo $? # exit code status
 ##  FIle descriptor
 file descriptor 0 STDIN input data , 1 STDOUT, 2 STDERR
 
+2>&1
+At first, 2>1 may look like a good way to redirect stderr to stdout. However, it will actually be interpreted as "redirect stderr to a file named 1".
+
+& indicates that what follows and precedes is a file descriptor, and not a filename. Thus, we use 2>&1. Consider >& to be a redirect merger operator.
+
 ## Utility comand
 
 SORT sort input and prints a sorted output
@@ -458,3 +463,7 @@ test condition or [condition] or [[condition]]
 
 ### Comparion Operators with test command
 
+
+
+
+### 

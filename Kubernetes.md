@@ -1842,3 +1842,7 @@ https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#back
   - Node
   - Webhook
 
+## TLS in kubernetes
+
+![](./Images/tlsinkubernetes.png)
+
