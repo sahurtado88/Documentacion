@@ -314,19 +314,170 @@ _____________
 
 We use conjunctions to connect words, phrases or sentences. Here is a list of commonly used conjunctions:
 
-showing time
-before
-after
-while
-when
-whenever
-ever since
-until
-showing comparison
-as
-than
-showing contrast
-though/although/even though
-whereas
+**Here are some commonly used conjunctions for showing time.**
+
+"Before" connects an earlier action to a later action.
+
+We checked the report before submitting it to our boss.
+
+"After" connects a later action to an earlier action.
+
+Therese left the office after our meeting ended.
+
+"While" describes two actions happening at the same time.
+
+Farrah read a book while waiting for her friends to arrive.
+
+"When" means "at the time that."
+
+I was busy writing an email when my colleague called.
+
+"Whenever" means "every time that."
+
+Feel free to ask for help whenever you have problems with the new software.
+
+"Ever since" means "from the time that."
+
+Sales have doubled ever since we launched our advertising campaign.
+
+"Until" means "up to the time that."
+
+We won't be hiring new agents until we are sure of production levels next quarter.
+
+
+
+**for showing comparison**
+
+"As" means "to the same degree."
+
+The new manager is talented, as the previous one was.
+
+"Than" means "to a greater degree." (follows a comparative adjective)
+
+The new manager is more talented than the previous one.
+
+
+**for showing contrast**
+
+Though"/ "although"/ "even though" are all used to mean "in spite of the fact that."
+
+You can't expect me to pay the same delivery fee even though you were two weeks late.
+
+"Whereas" means "on the other hand."
+
+We provide 24-hour customer service, whereas our competitors are available only from 8 a.m. to 5 p.m. every day.
 
 ______________
+
+
+For + -ing 
+Grammar > Prepositions and particles > For + -ing
+
+**For + -ing: function**
+We use for + the -ing form of a verb to talk about the function of something or how something is used:
+
+I need something for storing CDs.
+
+The PC is still the most popular tool for developing software systems.
+
+**For + -ing: reason**
+We use for + the -ing form of a verb to refer to the reason for something:
+
+You should talk to Jane about it. You know, she’s famous for being a good listener. (A lot of people know she’s such a good listener.)
+
+__For + -ing or to + infinitive?__
+
+Warning:
+We don’t use for + -ing to express our purpose or intention. We use to + infinitive:
+
+We’re going to Lisbon to visit my aunt.
+
+Not: We’re going to Lisbon for visiting my aunt. or … for visit my aunt.
+
+He’s now studying to be a doctor.
+
+Not: He’s now studying for to be a doctor. or … for being a doctor.
+
+You don’t need to bring anything. There’ll be sandwiches to eat and juice to drink.
+
+Not: There’ll be sandwiches for eat and juice for drink.
+
+______________
+
+- The verbs think, feel, believe and find are useful for politely talking about opinions of past events.
+    - I think/thought (that) ...
+    - I feel/felt (that) ...
+    - I find/ found the … (adjective).
+
+- Add more details to your description by using relative clauses.
+
+Toby attended the reunion concert of Little Contentment, a rock band that was very famous in the ‘70s.
+Little Contentment promoted their new album, which will be released in February next year.
+Most of the people who attended the seminar were also newly promoted managers.
+
+- Certain adjectives can be used with infinitives to express feelings and reactions.
+    - Fans were willing to stand for the whole show.
+    - She is now better prepared to handle her team.
+
+___________________
+
+porter: a person whose job is to take care of a building, usually by cleaning or repairing it
+
+come back to (something): to return to something that was done or mentioned earlier
+
+___________
+
+I have learned that …
+
+I have learned that hard work is just as important as intelligence.
+
+
+My experience has taught me …
+
+My experience has taught me that I can accomplish anything I persevere at.
+
+
+I have recently …
+
+I have recently finished a project for the government's budget management office.
+
+
+I worked as a …
+
+I worked as a junior marketing executive for several years.
+
+My career goals are/include …
+
+My career goals are finishing my graduate studies and teaching at a university.
+My career goals include finishing my graduate studies and teaching at a university.
+
+
+For the next … years, I will …
+
+For the next two years, I will work while earning my certificate in teaching.
+
+____________
+
+FOSTER (SOMETHING)
+to help something, such as an idea or principle, grow or develop
+
+Going on team-building activities helps to foster communication and teamwork between co-workers.
+
+TO GO TO THE HEART OF (SOMETHING)
+to create or strengthen an alignment between two actions, or between a problem and a solution
+
+The company's new online business model goes to the heart of the firm's mission to provide fast and convenient customer service.
+
+
+
+
+In … years, I see myself as …
+
+In seven years, I see myself as the associate vice president of a respected consulting firm.
+
+You may use the present perfect tense when talking about experiences related to your career goals.
+
+- My experience has taught me ...
+- I have recently finished ...
+- I have learned that ...
+

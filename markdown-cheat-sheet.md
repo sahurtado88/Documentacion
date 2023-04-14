@@ -119,3 +119,33 @@ H~2~O
 X^2^
 
 **Control+ space activates intellisense visual studio**
+
+
+*Texto en cursiva*
+
+_Texto en cursiva_
+
+**Texto en negrita**
+
+__Texto en negrita__
+
+***Texto en cursiva y negrita***
+
+___Texto en cursiva y negrita___
+
+~~Este texto está tachado.~~ Pero este no.
+
+
+Puedes colocar [^1] notas en el pie de página [^2] fácilmente.
+
+[^1]: Aquí encuentras el texto de la nota al pie de página.
+
+[^2]: **Las notas de pie de página** pueden *formatearse* también.
+
+Estas pueden ocupar varias líneas.
+
+Asimismo, Markdown te da la opción de crear listas de verificación, que vienen con casillas que pueden activarse haciendo clic sobre ellas. Si quieres, puedes marcar directamente las casillas al crear la lista. Para ello, utiliza corchetes y una X.
+
+[ ] A
+[x] B
+[ ] C

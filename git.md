@@ -367,5 +367,18 @@ git cherry-pick is a useful tool but not always a best practice. Cherry picking 
 - Undoing changes and restoring lost commits
 
 
+____________
 
+cat .git/config
+
+git remote set-url origin \<URL REPOSITORY>
+
+git clone -b \<branch name> \<URL GIT>
+
+git config --global user.email "EMAIL"
+
+git config --global user.name "NAME"
+
+git ls-remote -h GITHUBURL HEAD
+__________________
 
