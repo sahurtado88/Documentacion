@@ -1,6 +1,6 @@
 # Prometheus
 
-is an open source system monitoring and alerting toolkit with an active ecosystem
+Is an open source system monitoring and alerting toolkit with an active ecosystem
 
 uses a multidimensional dat amodel with time series data identified by metric name and key/value pairs
 
@@ -24,3 +24,35 @@ The Prometheus ecosystem consists of multiple components, many of which are opti
 
 Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
 
+![](./Images/5stagesofmetricsmonitoring.png)
+
+![](./Images/pushvspull.png)
+
+## Dimensional Data model
+```
+<aggregators> <functions> metric_name{key="value", ...}
+
+```
+
+## Overview of the prometheus service package
+
+- **Console_libraries** prometheus expresion browser
+- **Consoles** prometheus expresion browser
+- **./tsdb** tool interact with time series
+- **./promt** run queries from command line
+- **prometheus.yml** configurations of prometheus
+- **./prometheus**
+
+```
+./prometheus --storage.tsdb.retention.time=13d --config.file="./prometheus.yml" &
+```
+
+## Node exporter
+
+La herramienta de node exporter en Prometheus también es conocida como Prometheus Node Exporter y una de sus características principales es que puede ser implementada en los procesos para obtener métricas de los nodos e información del sistema.
+
+Además de esto, la opción de node exporter en Prometheus se encarga de ofrecer información útil para supervisar el rendimiento de un servidor o de un nodo.
+
+```
+kill -HUP %numero proceso prometheus para cargar nueva configuracion
+```
