@@ -56,3 +56,89 @@ Además de esto, la opción de node exporter en Prometheus se encarga de ofrecer
 ```
 kill -HUP %numero proceso prometheus para cargar nueva configuracion
 ```
+
+## Prometheus as a Systemd Service
+
+- Prometheus user
+    ```
+    sudo useradd -r -s /bin/false prometheus
+    ```
+
+- New directories
+    - sudo mkdir /prom_data
+    - sudo mkdir /etc/prometheus
+    - sudo chown prometheus:prometheus /prom_data
+- Extract and move files
+    - cd prometheus*
+    - mv console* , prometheus.yml /etc/prometheus
+    - sudo chown -R prometheus:prometheus /etc/prometheus
+- Move binaries
+    - sudo mv prom* /usr/local/bin
+    - sudo chown prometheus:prometheus /usr/local/bin/prom* 
+- Create service file
+    - sudo vim /etc/systemd/system/<service_name>.service
+
+```
+[Unit]
+Description=Prometheus
+Wants=network-online.target
+After=neteork-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+
+ExecStart=/usr/local/bin/prometheus \
+  --config.file /etc/prometheus/prometheus.yml \
+  --storage.tsdb.path /prom_data \
+  --web.console.templates=/etc/prometheus/consoles \
+  --web.console.libraries=/etc/prometheus/console_libraries \
+  --web.enable-lifecycle
+
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+## Node Exporter as a Systemd Service
+
+- Nodeexporter user
+
+  sudo useradd -r -s /bin/false nodeexporter
+- move binaries
+    - sudo mv node* /usr/local/bin
+    - sudo chown nodeexporter:nodeexporter /usr/local/bin/node*
+- create service file
+    - sudo vim /etc/systemd/system/\<service_name>.service
+
+```
+[Unit]
+Description=NodeExporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=nodeexporter
+Group=nodeexporter
+Type=simple
+
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=multi-user.target
+```
+
+sudo systemctl daemon-reload
+sudo systemctl start nodeexporter
+sudo systemctl status nodeexporter
+
+## Prometheus as a Docker Service
+
+## Prometheus Metrics Format
+
+- Summary
+- Gauge
+- Counter
+- Histagram

@@ -481,3 +481,84 @@ You may use the present perfect tense when talking about experiences related to 
 - I have recently finished ...
 - I have learned that ...
 
+_______________________
+
+
+"Neither ... nor ..." is used for negations (statements that refuse or deny something).
+
+- "Neither ... nor ..." connects two or more negations.
+ 
+- When two subjects are connected by "neither ... nor ...," the verb follows the number of the subject closer to it.
+ 
+- "Neither" and "nor" must always go immediately before the ideas they are joining.
+ 
+______________________
+
+- Certain verbs are commonly used with gerunds and infinitives to express preferences.
+
+    I prefer to be relaxed.
+
+    I prefer having minimal supervision.
+
+    I would prefer to work with people my age.
+
+    I like to look professional.
+
+    I like working with older and more experienced people.
+
+    I would like to receive clear and specific directions from my supervisor.
+
+    I don't mind having a strict dress code.
+ 
+- Would rather is used to express a preference between two choices.
+
+    I would rather work with older people.
+
+    I would rather follow a dress code than wear a uniform.
+ 
+- Conjunctions are useful for stating choices and explaining preferences.
+
+    I prefer to be relaxed, but I would also like to look professional.
+
+    Do you like working with people your age or people who are older and more experienced?
+
+    I would rather work with people my age because it's easier to relate to my peers.
+
+
+
+I like ...
+
+I like having a schedule for everything I need to do.
+
+
+I would rather (verb without "to") than (verb without "to") ...
+
+I would rather work alone than work in a team.
+
+I prefer (verb + "-ing") ...
+
+I prefer drinking iced coffee.
+
+
+I prefer ("to" + verb) rather than (verb without "to") …
+
+I prefer to wear casual attire rather than wear a suit.
+______________________________
+
+- Here are useful phrases when expressing preferences as a client:
+
+    I like/want ...
+
+    I would like (to) ...
+
+    I prefer ... (to) ...
+
+    I would rather ... (than) ...
+    
+- We can use both gerunds and infinitives with like and prefer to express preferences.
+
+    I like/prefer to wear casual clothes.
+
+    I like/prefer wearing casual clothes.
+    
+    I prefer cooking my own food to eating out. 

@@ -1735,3 +1735,8 @@ per1.assing_name_and_age('John',32)
 #print(per1.__age)
 
 ```
+
+![](https://miro.medium.com/v2/resize:fit:1400/1*Det-kkoSw9T4IZ4XrypVNQ.png)
+
+![](https://www.devopsschool.com/blog/wp-content/uploads/2022/10/python-list-tuple-set-array-dict-4-1024x791.jpg)
+

@@ -793,5 +793,42 @@ Segmentar una cadena de comandos con punto y coma es la práctica más común cu
 ```
 head -c 32 /dev/urandom | base64
 ```
+____________________
 
+First of all, I should say in terms of functionality there is no difference between /bin/false & /sbin/nologin. It means, both denies a shell access to a particular user account.
 
+/bin/false does nothing and it just exits with a status code indicating failure when a user attempts to login to the machine. It does not output any message indicating that the user account does not have shell access.
+
+Whereas, /sbin/nologin politely denies a shell access for a particular user account and exists with a status code of non-zero. For example, when a user account is set to /sbin/nologin as shell, then nologin displays ‘This account is currently not available‘.
+
+nologin can also read a custom message from /etc/nologin.txt, if present.
+
+Enter a custom message say “This is not a valid login account – Administrator“.
+
+Both /bin/false & /sbin/nologin will log the login attempts in /var/log/secure.
+
+_____________________
+
+## CHOWN command
+
+The chown command allows you to change the user and/or group ownership of a given file, directory, or symbolic link.
+
+chown [OPTIONS] USER[:GROUP] FILE(s)
+Copy
+USER is the user name or the user ID (UID) of the new owner. GROUP is the name of the new group or the group ID (GID). FILE(s) is the name of one or more files, directories or links. Numeric IDs should be prefixed with the + symbol.
+
+USER - If only the user is specified, the specified user will become the owner of the given files, the group ownership is not changed.
+
+USER: - When the username is followed by a colon :, and the group name is not given, the user will become the owner of the files, and the files group ownership is changed to user’s login group.
+
+USER:GROUP - If both the user and the group are specified (with no space betwen them), the user ownership of the files is changed to the given user and the group ownership is changed to the given group.
+
+:GROUP - If the User is omitted and the group is prefixed with a colon :, only the group ownership of the files is changed to the given group.
+: If only a colon : is given, without specifying the user and the group, no change is made.
+By default, on success, chown doesn’t produce any output and returns
+
+______________
+
+Use the ls -l command to find out who owns a file or what group the file belongs to:
+
+ls -l filename.txt
