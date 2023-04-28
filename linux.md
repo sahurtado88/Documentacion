@@ -832,3 +832,69 @@ ______________
 Use the ls -l command to find out who owns a file or what group the file belongs to:
 
 ls -l filename.txt
+
+
+___________
+
+### uname Command 
+The uname tool is most commonly used to determine the processor architecture, the system hostname and the version of the kernel running on the system.
+
+
+
+_____________________________
+# Linux for cloud and Devops Engineers
+
+## Linux filesystem Hierarchy
+
+![](./Images/Linuxhierarchy.png) 
+
+- sudo su - pasar a root user
+
+## Basi linux command
+
+- uptime show the uptime on the server you can validate if the server was restarted or not
+
+- ls -ltr : lista los archvios l de long mas info, t de organizar por creacion por defecto de mas joven a mas viejo y r de reverse para cmabair el orde n
+
+cat >> filename using to append data to the file, not edit previous info
+
+cat > filename crea un nuevo archvio o sobreescribe toda la informacion si el archivo existia
+
+rm remove file_name pide aceptacion
+
+rm -f file_name elimina sin preguntar
+
+rm -rf dir_name borrar directorios aunque tengs datos adentro
+
+rm -rf * borra todo
+
+________________________
+
+copy file
+
+cp source_file destination_file
+
+cp -R dir1 source_dir destination_dir copia de manera recursiva de un directorio a otro
+
+__________________
+
+move a file or rename a file
+
+mv source_file destination_dir
+
+________________
+
+find command
+
+is used to find the files or directory's path
+
+fin / -option filename
+
+Option | Usage |
+|-|-|
+|-name| for searching a file with its name|
+|-user| For files whose owner is a particular user|
+|-group| for files belonging to particular group|
+
+
+

@@ -57,9 +57,9 @@ Ansible Playbooks offer a repeatable, re-usable, simple configuration management
 
 Play defines a set of activities (tasks (an action to be performed on the host like execute command, run a script, install package, etc)) to be run on hosts
 
--plays have name, hosts and tasks
+- plays have name, hosts and tasks
 - properties of dictionary the order doesn't matter
-- a list or array is an order collection ans order matter
+- a list or array is an order collection and order matter
 
 
 ansible-playbook <NAMEPLAYBOOK.yaml> -i inventory.txt

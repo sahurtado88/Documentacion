@@ -382,3 +382,69 @@ git config --global user.name "NAME"
 git ls-remote -h GITHUBURL HEAD
 __________________
 
+git init: Este comando se utiliza para inicializar un nuevo repositorio de Git. Se ejecuta en la raíz del directorio del proyecto que se desea versionar.
+
+git add: Este comando se utiliza para agregar los cambios realizados en los archivos al área de preparación (staging area) de Git. Puedes agregar los cambios a nivel de archivo o de directorio.
+
+git commit: Este comando se utiliza para confirmar los cambios en el área de preparación de Git y crear una nueva revisión o versión del repositorio.
+
+git clone: Este comando se utiliza para clonar un repositorio de Git en tu equipo local. Esto crea una copia local del repositorio remoto.
+
+git push: Este comando se utiliza para enviar los cambios confirmados en tu repositorio local al repositorio remoto.
+
+git pull: Este comando se utiliza para actualizar el repositorio local con los cambios realizados en el repositorio remoto.
+
+git status: Este comando se utiliza para verificar el estado actual del repositorio. Muestra los archivos modificados, agregados y eliminados en el directorio de trabajo.
+
+git log: Este comando se utiliza para ver el historial de cambios realizados en el repositorio.
+
+git diff: Este comando se utiliza para mostrar las diferencias entre los cambios realizados en los archivos desde la última confirmación.
+
+git branch: Este comando se utiliza para listar, crear y eliminar ramas (branch) del repositorio.
+
+git checkout: Este comando se utiliza para cambiar entre las diferentes ramas o versiones del repositorio.
+
+git merge: Este comando se utiliza para fusionar los cambios realizados en dos ramas diferentes del repositorio.
+
+git reset: Este comando se utiliza para deshacer los cambios realizados en un archivo o directorio específico y volver al estado anterior.
+
+git stash: Este comando se utiliza para guardar temporalmente los cambios que no se quieren confirmar o que se desea mover a otra rama.
+
+git remote: Este comando se utiliza para administrar los repositorios remotos conectados al repositorio local.
+
+git fetch: Este comando se utiliza para recuperar los cambios realizados en el repositorio remoto sin realizar la fusión con el repositorio local.
+
+git rebase: Este comando se utiliza para aplicar los cambios de una rama en otra rama para tener un historial más lineal y limpio.
+
+git tag: Este comando se utiliza para etiquetar versiones específicas del repositorio.
+
+git submodule: Este comando se utiliza para incluir un repositorio dentro de otro como un submódulo.
+
+git config: Este comando se utiliza para configurar las opciones de Git, como el nombre del usuario, el correo electrónico, la configuración de SSH, entre otros.
+
+__________________
+
+Cambiar nombre rama:
+
+git branch -m main
+
+_________________
+
+git checkout \<id> where id is commit temporarily move to another commit
+
+git revert \<id>
+Revert changes of commit by creating a new commit
+
+git reset --hard \<id> undo changes by deleting all commits since \<id>
+
+git remote add connected to local git repositories
+
+```
+git remote add Anyname <URL: github>
+```
+
+git push --set-upstream origin main
+
+git push Anyname remotenamerepository
+
+git remote set-url origin https://usergithub@github.com/repo

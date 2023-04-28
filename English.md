@@ -562,3 +562,42 @@ ______________________________
     I like/prefer wearing casual clothes.
     
     I prefer cooking my own food to eating out. 
+
+_____________________________________
+
+Grammar tip: The past continuous tense
+
+The past continuous tense is also called the past progressive tense. The past continuous tense is used to talk about a continuing action in the past.
+
+The past continuous tense can also be used to talk about two or more past actions happening continuously at the same time.
+
+The past continuous tense is formed by was/were + verb + -ing.
+
+"What I was discovering is that as I was falling in love with this thing, it was also dying."
+
+"... I was trying to find a way to spend my life doing this thing."
+
+More examples:
+
+Clarisse was preparing dinner when her husband came home.
+
+As Dan was opening his gift, he saw that he received a watch he already had.
+
+Tin was preparing for her presentation as her coworker was starting the team meeting.
+
+____________________________
+
+Here are useful phrases for talking about fashion and clothing preferences.
+I (usually/often/always) wear...
+You'll (usually/often/always/never) see me in...
+I'm a (big) fan of...
+I prefer…(to…)
+I'd rather wear…(than…)
+I accessorize (my outfits) with...
+
+We can also use gerunds and participles to talk about fashion and clothing preferences.
+I love/don't like wearing...
+You'll always/never see me wearing...
+ __________________
+
+Droop by -> pasate por

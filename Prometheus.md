@@ -136,9 +136,111 @@ sudo systemctl status nodeexporter
 
 ## Prometheus as a Docker Service
 
-## Prometheus Metrics Format
 
-- Summary
-- Gauge
-- Counter
-- Histagram
+## Metrics
+
+### Prometheus Metrics Format
+
+- Summary: Tracks the size and number of events
+    - values must be non negative
+    - used to track latency
+    - obsrve()
+- Gauge: Can go both up and down
+    - essentially a snapshot of the current state
+    - inc(), dec(), set()
+- Counter: Goes up and resets when the process resets
+    - Needed to track rates
+    - track how often a specific code path is executed
+    - inc()  
+
+- Histagram: track the size and number of events with buckets
+    - Used to tracks the size and number of events with buckets
+    - bucket = counter set
+
+### Service types
+
+- Online-serving systems: Has a human or other service waitin on a response
+    - key Metrics
+        - Request
+        - Errors
+        - Duration
+- Offline-serving systems: Has no response requests- usaually pipelines
+    - Key metrics:
+        - Utilization
+        - Saturation
+        - Errors
+- Batch jobs:Run on a regular schedule, use the push gateway
+    - key metrics:
+        - Total run duration
+        - Duration per Stage
+        - Job success Timestamp
+
+### Metric Name Structure
+
+- Do
+    - Format: library_name_unit_suffix
+    - snake_case
+    - Be specific e.g cron_job_duration
+    - Start with a letter
+    - Use base units w/ no prefix. Prometheus uses base units
+- Don'ts
+    - Use names already in use e.g process
+    - Use official suffixes: _total, _count, _sum, _bucket
+    - start with an underscore or use colons
+
+### Limitations to monitoring metrics
+
+- There's a poinnt where operational and resource cost outweigh the benefits of instrumentions
+
+RESOURCE COST(%)= Metric INSTANCES /SERVER Threshold *100
+
+- Cardinality is the amount of metrics that you have
+
+![](./Images/cardinality.png)
+
+## Infraestrucutre Monitoring
+
+There are a number of libraries and servers which help in exporting existing metrics from third-party systems as Prometheus metrics. This is useful for cases where it is not feasible to instrument a given system with Prometheus metrics directly (for example, HAProxy or Linux system stats).
+
+Exporters job is to basically translte or act like proxy between promethesus sytem an third party system
+
+[exporters prometheus](https://prometheus.io/docs/instrumenting/exporters/)
+
+### WMI Exporter Monitoring Windows Systems
+
+https://github.com/prometheus-community/windows_exporter
+
+Configure the Prometheus WMI exporter to collect Windows system metrics.
+
+The Prometheus WMI exporter runs as a Windows service. You configure the metrics that you want to monitor by enabling collectors.
+
+### Docker Engine Metrics
+
+Prometheus is an open-source systems monitoring and alerting toolkit. You can configure Docker as a Prometheus target. This topic shows you how to configure Docker, set up Prometheus to run as a Docker container, and monitor your Docker instance using Prometheus.
+
+Currently, you can only monitor Docker itself. You cannot currently monitor your application using the Docker target.
+
+To configure the Docker daemon as a Prometheus target, you need to specify the metrics-address. The best way to do this is via the daemon.json, which is located at one of the following locations by default. If the file does not exist, create it.
+
+Linux: /etc/docker/daemon.json
+Windows Server: C:\ProgramData\docker\config\daemon.json
+Docker Desktop for Mac / Docker Desktop for Windows: Click the Docker icon in the toolbar, select Settings, then select Docker Engine.
+If the file is currently empty, paste the following:
+
+{
+  "metrics-addr" : "127.0.0.1:9323"
+}
+
+If the file is not empty, add the new key, making sure that the resulting file is valid JSON. Be careful that every line ends with a comma (,) except for the last line.
+
+Save the file, or in the case of Docker Desktop for Mac or Docker Desktop for Windows, save the configuration. Restart Docker.
+
+Docker now exposes Prometheus-compatible metrics on port 9323.
+
+[https://docs.docker.com/config/daemon/prometheus/ ](https://docs.docker.com/config/daemon/prometheus/)
+
+
+__________________
+
+DEV/QA/STAG
+
