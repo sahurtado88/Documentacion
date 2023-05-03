@@ -41,3 +41,39 @@ run: |
     echo "Second output"
 ```
 This will run both commands in one step.
+
+## Events that trigger workflows
+
+You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs.
+
+
+[events-that-trigger-workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
+
+![](./Images/wftriggers.png)
+
+## Action
+
+![](./Images/actions.png)
+
+![](./Images/marketplaceactions.png)
+
+[https://github.com/marketplace?type=](https://github.com/marketplace?type=)
+
+
+```
+name: Test Project
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Intall NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci  
+
+```
