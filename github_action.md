@@ -74,6 +74,240 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: npm ci  
+        run: npm ci
+      - name: run test
+        run: npm test
 
 ```
+
+you can use the word needs to execute in sequential jobs instead of parallel
+
+```
+name: Deploy Project
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build
+      - name: Deploy
+        run: echo "Deploying ..."
+
+```
+
+## Multiply triggers
+
+```
+name: Deploy Project
+on: [push, workflow_dispatch]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build
+      - name: Deploy
+        run: echo "Deploying ..."
+
+```
+
+### Expressions and Contexts objects
+
+ https://docs.github.com/en/actions/learn-github-actions/contexts
+
+ https://docs.github.com/en/actions/learn-github-actions/expressions
+
+ ```
+name: Output information
+on: workflow_dispatch
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output GitHub context
+        run: echo "${{ toJSON(github) }}"
+ ```
+
+
+ ```
+name: Deployment Exercise 1
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Test code
+        run: npm run test
+      - name: Build code
+        run: npm run build
+      - name: Deploy code
+        run: echo "Deploying..."
+ ```
+
+ ```
+name: Deployment Exercise 2
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Test code
+        run: npm run test
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Build code
+        run: npm run build
+      - name: Deploy code
+        run: echo "Deploying..."
+ ```
+
+ ```
+ name: Handel issues
+on: issues
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output event details
+        run: echo "${{ toJSON(github.event) }}"
+```
+
+## Workflows and Events
+
+![](./Images/eventsactivitytypesandfilters.png)
+
+https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+
+```
+name: Events Demo 1
+on: 
+  pull_request:
+      types:
+          - opened
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output event data
+        run: echo "${{ toJSON(github.event) }}"
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Test code
+        run: npm run test
+      - name: Build code
+        run: npm run build
+      - name: Deploy project
+        run: echo "Deploying..."
+```
+
+```
+name: Events Demo 1
+on: 
+  pull_request:
+      types:
+          - opened
+      branches: 
+        - main
+        - master
+        - 'feat/**'
+  workflow_dispatch:
+  push:
+    branches: 
+      - main
+      - master
+      - 'feat/**'
+    paths-ignore:
+      - 'github/workflows/*'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output event data
+        run: echo "${{ toJSON(github.event) }}"
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Test code
+        run: npm run test
+      - name: Build code
+        run: npm run build
+      - name: Deploy project
+        run: echo "Deploying..."
+```
+

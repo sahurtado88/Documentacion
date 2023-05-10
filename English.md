@@ -601,3 +601,125 @@ You'll always/never see me wearing...
  __________________
 
 Droop by -> pasate por
+
+____________________
+
+BEHEMOTHS
+very large and powerful groups, companies, etc.
+
+Automotive industry behemoths hold expensive and elaborate motor shows during the annual automotive trade fair.
+
+REAPED
+gained something as a result of one's actions
+
+The fashion chain reaped large profits from the sale of its clothes which were recently featured in a very popular movie.
+
+BLOSSOM
+fully develop into something
+
+The wine industry is expected to blossom in a few years as the increasing global demand enables winemakers to expand and increase production.
+
+BY ANY MEANS
+in any possible way
+
+Bert is not by any means unfamiliar with using the photo editing program since he uses an older version of it at work.
+
+GASTRONOMY
+the art or science of preparing and eating good food
+
+Alan is very interested in gastronomy. He eats at different restaurants then posts his opinions about the food online.
+
+ARTISANS
+people who are skilled at making things, often by hand
+
+Several artisans work at the ceramics house creating porcelain vases and sculptures.
+
+COVETED
+refers to things that other people want to have
+
+Dan got a coveted job as a designer and product planner at a world-famous fashion design firm.
+
+HONED
+perfected
+
+The sculptor honed his skills through years of practice.
+
+UBERIZED
+Uberized refers to a service that changed because of the introduction of a new way to buy or use the service using technologies such as smartphones.
+
+________________________
+
+The present perfect tense links the past and the present.
+
+The present perfect tense is formed by "has/have" + the past participle of the verb.
+
+The present perfect tense is used to:
+
+- say that a past action is still related to the present
+- say that you have done or experienced something in the past
+- say that you have never done or experienced something before
+- talk about change that happened over a period of time
+
+The negative form of the present perfect tense, "have not"/"haven't," is used to say that an action or event that we expected has not happened yet. Using the present perfect tense suggests that we are still waiting for the action or event.
+
+_____________________
+
+The present perfect continuous tense is formed by combining "has/have" + "been" + verb + "-ing."
+
+We use the present perfect continuous for the following purposes:
+
+- to talk about an action that started in the past but is still happening at present
+- to talk about actions that happen repeatedly, from a past time up to the present
+
+_____________
+
+- I have had this … since …
+
+    I have had this headache since yesterday.
+
+
+- … has felt … since …
+
+    Harry has felt nauseated since lunchtime.
+
+
+- … has been suffering from … for …
+
+    Layla has been suffering from a fever for nearly a day now.
+
+
+- … has been experiencing bouts of … for …
+
+    Mary has been experiencing bouts of dizziness for the past hour.
+
+- If your … is bothering you, you may want to take …
+
+    If your headache is bothering you, you may want to take painkillers.
+
+
+- If his/her … does not stop soon, he/she may want to …
+
+    If Harry's nausea does not stop soon, he may want to see a doctor.
+
+
+- If his/her … does not go away, he/she ought to start taking …
+
+    If Layla's fever does not go away, she ought to start taking antibiotics.
+
+
+- If he/she continues to feel …, he/she should …
+
+    If Mary continues to feel dizzy, she should take a nap at the lounge.
+
+_____________________
+
+Listed below are the different forms and uses of "have to."
+
+Use "have to" + base verb to talk about a habitual or present obligation.
+ 
+Use "have got to" + base verb to talk about obligation more strongly than "have to" and to express certainty.
+ 
+Use "will have to" + base verb to talk about a future obligation or necessity.
+ 
+Use "do not/don't have to" + base verb to say that there is no obligation or necessity.
+__________________________
