@@ -282,9 +282,9 @@ on:
       types:
           - opened
       branches: 
-        - main
-        - master
-        - 'feat/**'
+        - main # main
+        - master # dev-new dev-this-is-new
+        - 'feat/**' # feat/new feat/new/button
   workflow_dispatch:
   push:
     branches: 
@@ -311,3 +311,28 @@ jobs:
         run: echo "Deploying..."
 ```
 
+## A note about fork pull request workflows
+
+by default, pull requests based on Forks do NOT trigger a workflow because everyone can fork and open pull requests
+
+First time contributors must be approved manually
+
+## Cancelling and Skipping workflows Runs
+
+Cancelling: by default, workflows get cancelled if jobs fail
+by dafeult a job fails if at least one step fails
+you can also cancel workflows manually
+
+Skipping: by default all matching event start a workflow, execption for "push" and "pull_request"
+skip with proper commit message
+
+like
+[skip ci]
+[ci skip] 
+[no ci]
+[skip actions]
+[actions skip]
+```
+git commit -m "added coments [skip ci]"
+
+```

@@ -1,0 +1,11 @@
+- COdeWhisperer: es un asistente de creación de código basado en IA que genera sugerencias de código en tiempo real, de una sola línea o de funciones completas, en el entorno de desarrollo integrado (IDE) para ayudar a crear software con rapidez.
+- Chatgpt: 
+- copilot : es un programador de pares de IA que ofrece sugerencias de estilo autocompletar a medida que programas. 
+- runway. es un software de edición de vídeo de IA en línea apto para cualquier persona, 
+- scenario: La plataforma Scenario sirve para crear objetos para videojuegos a la medida de las necesidades del usuario. Se pueden cargar datos de entrenamiento para el sistema: personajes, accesorios, vehículos, armas, máscaras, edificios, bocetos, etc
+- Kaedim : un servicio que promete crear modelos 3D a partir de imágenes 2D usando inteligencia artificial,
+- midjourney: MidJourney es un bot que te permite generar imágenes con IA de forma gratuita y a través del servidor de Discord
+- editor x :
+- imgcreator: es una herramienta de generación de imágenes basada en inteligencia artificial que convierte una descripción de texto en una imagen. Esta aplicación es ideal para crear ilustraciones, anime y conceptos de diseño.
+- craiyon. Craiyon, formerly DALL·E mini, is an AI model that can draw images from any text prompt!
+- dall-e2: is an AI system that can create realistic images and art from a description in natural language.

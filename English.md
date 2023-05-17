@@ -723,3 +723,209 @@ Use "will have to" + base verb to talk about a future obligation or necessity.
  
 Use "do not/don't have to" + base verb to say that there is no obligation or necessity.
 __________________________
+
+
+under the weather - sick
+
+I'm not coming to work today because I am feeling under the weather.
+
+
+coming down with - becoming sick with
+
+I think I am coming down with the flu.
+
+
+bout of/with - a period of illness
+
+I have just recovered from a bout with chicken pox.
+
+- Here are phrases you can use to talk about health problems.
+I'm feeling under the weather.
+I'm coming down with...
+I had (a) bout/s of/with...
+
+- The present perfect and present perfect continuous tenses are useful for talking about a person's health condition.
+I've had/been having...since/for...
+I've been feeling...since/for...
+I've just recovered from...
+
+_________________
+
+The following is a list of dental terms:
+
+Kinds of dental problems
+
+wisdom tooth
+caries
+impacted tooth
+plaque
+Kinds of dental treatment
+
+amalgam
+bridge
+filling
+radiograph
+root canal therapy
+veneer
+
+_____________
+
+DEGENERATIVE
+referring to a disease that slowly destroys parts of the body to stop them from working
+
+When struck by a degenerative disease, the body becomes unable to replace dead cells with new ones, causing organs to stop working.
+
+HALTING
+stopping
+
+A sudden increase in foreign investments provided employment to many people, effectively halting an economic recession.
+
+PROGRESSION
+development over time
+
+Chemotherapy prevents the progression of cancer by killing cancer cells before they spread to other organs.
+
+JUVENILE
+young or undeveloped
+
+Despite its current reach of 40 million people, the comic series had a little more than a hundred readers back in its juvenile days.
+
+SIDESTEPPING
+avoiding dealing with or discussing a problem
+
+Members of the Congress are voting for the bill while sidestepping controversies that came with it.
+
+QUALMS
+worries or feelings of uneasiness, often caused by doubt regarding a decision or situation
+
+The singer's loyal fans had qualms with the sudden change in her music style.
+
+_____________
+
+**MUST**
+
+"Must" talks about obligation and duty where there is no other choice.
+
+Companies must pay their employees for their work.
+You must deposit a minimum of $25 to open a bank account.
+
+In its negative form, "must" talks about a definite obligation to not do something.
+
+You must not use the meeting room without a reservation.
+You mustn't forget to check the data listed in your report.
+
+To express that there is no obligation, we use "do/does not have to" instead of "must not."
+
+I will be late to our meeting. You don't have to hurry.
+It's not an important decision; you don't have to include it in the report.
+
+"Must" is used to express a confident guess.
+
+She went to bed early; she must be tired.
+Ethan seems so happy. He must be enjoying his new job.
+
+"Must have" + past participle expresses a confident guess about a past event.
+
+She went to bed early last night; she must've been tired.
+Ethan used to look so sad. He must have hated his old job.
+
+In its negative form, "must" can also express a confident guess that something is not true.
+
+The dog isn't eating its food; it must not be that hungry.
+Carol always looks so relaxed at the end of the day. Her job mustn't be very hard.
+
+"Must" is a modal that is used to:
+
+- express obligation
+You must show an ID.
+He must be paid when the job is done.
+ 
+- give a confident guess
+Wendy’s absent; she must be sick.
+The restaurant is always full; it must have good food.
+
+____________________
+
+"Should" and "ought to" talk about obligation and duty.
+
+Companies should take care of their employees.
+Employees ought to do their jobs well.
+
+"Should have" + past participle or "ought to have" + past participle can be used to talk about past obligations that you did not do.
+
+We should have been more careful in analyzing the research data.
+Vicki ought to have paid more attention to the caller. Now she has forgotten his name.
+
+In their negative form, "should" and "ought to" talk about obligations to not do something.
+
+You should not be late for work.
+You ought not argue with a client./You ought not to argue with a client.
+
+___________________________
+
+Use "so" before adverbs, quantifiers and adjectives without nouns.
+
+When used with adverbs, "so" also becomes an adverb.
+
+I woke up so early today.
+
+"So" can also be used before quantifiers (few, little, much, many).
+
+He got so little rest last night.
+
+As an adverb, "so" can be used before adjectives not followed by nouns.
+
+That house is so big.
+
+For comparative adjectives, use "so much," not just "so."
+
+CORRECT: His house is so much bigger than my house.
+INCORRECT: His house is so bigger than my house.
+
+"So" and "such" are both used to add emphasis to a description.
+
+Use "such" before nouns. These nouns may or may not have adjectives.
+
+Such a meal is good for you. (no adjective)
+Such a healthy meal is good for you. (with adjective)
+
+"So" and "such" are both used to add emphasis to a description.
+
+We use "so" before adverbs, quantifiers and adjectives without nouns.
+
+We use "such" before nouns. These nouns may or may not have adjectives.
+
+______________________
+
+
+"Some" is used to say that you have something.
+
+I have some tickets to the concert.
+
+"Any" is used to say that you do not have something.
+
+The ticket seller doesn't have any tickets left.
+
+"Some" is used to say that you want something.
+
+She wants some pancakes for breakfast.
+
+"Any" is used to say that you do not want something.
+
+The man didn't want any sugar in his coffee.
+
+"Some" is used to offer or request something politely.
+
+Would you like some tea?
+I would like some tea, please.
+
+"Any" is used to ask if something is present or available.
+
+Is there any tea in the kitchen?
+
+"Some" is generally used in a positive sense.
+
+"Any" is generally used in a negative sense.
+
+___________________
+
