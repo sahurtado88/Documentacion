@@ -124,3 +124,48 @@ Ausgezeichnet, danke.
 Alles in Ordnung.
 
 ______________
+
+Wie Sie informell nach dem Namen fragen
+
+Wie heiβt du?
+Wer bist du?
+Wie Sie formell nach dem Namen fragen
+
+Wie heiβen Sie?
+Wer sind Sie?
+Wie Sie sich informell vorstellen
+
+Ich bin …
+Mein Name ist …
+Ich heiβe …
+Wie Sie sich formell vorstellen
+
+Mein Name ist …
+Ich heiβe …
+
+_________________________
+
+
+Im Folgenden finden Sie grundlegende Informationen, die Sie bereitstellen können, wenn Sie sich vorstellen
+
+La siguiente es información básica que puede proporcionar al presentarse
+Name und Alter
+
+Mein Name ist Tina. Mi nombre es Tina
+Ich bin 34 Jahre alt. Tengo 34 años.
+
+Adresse und Nationalität
+
+Ich bin Französin. Soy francés
+Ich wohne in der Lindenstraße 19.
+Vivo en Lindenstrasse 19.
+
+número de teléfono
+Telefonnummer
+
+Meine Telefonnummer ist 0170 / 1234 567.
+Mi número de teléfono es 0170 / 1234 567.
+
+_____________________
+
+

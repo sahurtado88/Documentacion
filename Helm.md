@@ -8,6 +8,8 @@ Helm uses four components to manage application deployments on a Kubernetes clus
 
 ![](https://docs.microsoft.com/en-us/learn/modules/aks-app-package-management-using-helm/media/2-helm-components.svg)
 
+![](./Images/helmcomponents.png)
+
 - **A Helm client**
 
 The Helm client is a client installed binary responsible for creating and submitting the manifest files required to deploy a Kubernetes application. The client is responsible for the interaction between the user and the Kubernetes cluster.
@@ -226,7 +228,7 @@ The helm search repo command allows you to search for charts on all locally adde
 ## How to test a Helm chart
 Helm provides an option for you to generate the manifest files that the template engine creates from the chart. This feature allows you to test the chart before a release by combining two additional parameters. These parameters are --dry-run and debug.
 
-The --dry-run parameter makes sure that the installation is simulated, and the --debug parameter enables verbose output. Here is an example of the --dry-run enabled command.
+The --dry-run parameter makes sure that the installation is simulated, and the --debug parameter enables verbose output. 
 
 ## How to install a Helm chart
 You use the helm install command to install a chart. A Helm chart can be installed from any of the following locations.
@@ -435,6 +437,6 @@ hem lint
 
 helm lint firstchart
 
-
+________________________
 
 

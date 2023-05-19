@@ -929,3 +929,428 @@ Is there any tea in the kitchen?
 
 ___________________
 
+plug a gap: to provide what is missing from something
+
+womb: the organ in women in which babies develop before birth
+
+It takes a baby nine months to fully develop in the mother's womb.
+
+"... the same as her mother's womb."
+
+Grammar tip: Compound adjectives
+
+Compound adjectives contain two or more words that, taken together, function like adjectives. An adjective does not necessarily have to be part of the combination.
+
+The words in a compound adjective are usually separated by a hyphen.
+
+Here are some examples from the video:
+
+"Until reaching the safe 2.5-kilogram mark, she'll need to..."
+
+"Luckily, this family discovered a free home-based incubator service..."
+
+"This fact has only strengthened the professor's determination to continue his life-saving work."
+
+More examples:
+
+The manager approved Helena's well-planned project proposal.
+A new law would be passed if it has two-thirds majority vote of the governing body.
+The town's demographic is mostly composed of middle-aged people ages 30 to 55.
+
+_______________________
+
+blood chemistry
+complete blood count/CBC
+urinalysis
+fecalysis
+electrocardiogram/ECG/EKG
+ultrasound/sonogram
+medical history 
+medical screenings
+outpatient procedure
+
+outpatient procedure
+
+medical procedures that are done quickly and don't require patients to stay overnight in the hospital
+
+__________
+
+When starting a fitness program, you may encounter the following terms:
+
+body mass index (BMI) 
+cardio-respiratory endurance 
+diastolic blood pressure 
+exercise log 
+flexibility 
+muscular endurance 
+obese
+progressive overload 
+systolic blood pressure
+target heart rate (THR) zone 
+________________________
+
+KEPT (SOMETHING) AT BAY
+prevented something from having an effect on a person or thing
+
+Eating an energy bar every morning kept Miguel's hunger at bay.
+
+INDULGING
+allowing oneself to enjoy something
+
+After a busy week at work, Jean relaxes by indulging in good food and a movie.
+
+HAIRDO
+the style, including the cut, color, etc., of someone's hair
+
+The bob cut is a popular hairdo for busy women since it is easy to maintain.
+
+PASSES THE TIME
+allows one to enjoy time that would be boring otherwise
+
+Flight attendants sometimes wait hours in between flights; touring the city they are currently in passes the time.
+
+A STONE'S THROW
+very near or short distance
+
+Sharlene watches a lot of films because the cinema is a stone's throw from her home.
+
+EMIGRATED
+left one's country to live in a different country permanently
+
+The house is cheap since the owners emigrated and want to sell it quickly.
+
+EXERTION
+use of physical effort
+
+The group's immense exertion during the three-day hike left them tired and sore.
+
+PHONY
+false or fake
+
+The job offer Erica got last week turned out to be a phony one.
+
+AT TIMES
+occasionally
+
+At times, traffic gets so bad that a drive which normally takes 30 minutes can take two hours or more.
+
+_____________________
+
+widespread: very common in many places or among many people
+
+Technology companies are widespread in the United States' Silicon Valley.
+
+"Going to the gym or to a yoga class on your lunch break is widespread in Sweden."
+
+mandatory: required by law, a rule, or an authority
+
+Yearly medical checkups are mandatory in many companies.
+
+"... pushing this practice to the extreme and making exercise on the job mandatory ..."
+
+staying in shape: maintaining one's physical fitness
+
+Kara lifts weights and rides her bicycle because she enjoys staying in shape.
+
+"In Sweden, staying in shape is seen as every person's responsibility to society."
+
+stigmatized: regarded in a disapproving way
+
+The organization held programs designed to welcome employees from all backgrounds, in order to keep anyone from being stigmatized.
+
+"Those who don't take care of themselves risk being mocked or stigmatized."
+
+stand up to (something): to oppose something or maintain one's principles despite a challenge
+
+Andrew decided to stand up to his coworker's difficult attitude by bringing the matter to their manager for resolution.
+
+"... but rather to find ways to stand up to this kind of culture, to dare to question it ..."
+
+vehement: forceful or powerful
+
+Daniel expressed vehement disagreement with the new business plan, arguing that it was a bad idea and would lead to financial problems.
+
+"... a workplace that is not characterized by this very vehement idea that everyone has to exercise."
+
+subsidizing: helping to pay for the costs of something, such as an activity or project
+
+The government is subsidizing the environmental group by helping pay for seeds and other equipment.
+
+"Some big companies try to attract top new talent by subsidizing their sporting activities"
+
+Grammar tip: Gerunds
+
+Gerunds are words that appear to be verbs, but are used as if they are nouns. Gerunds are formed by using the base form of a verb and adding the suffix -ing.
+
+"Going to the gym or to a yoga class on your lunch break is widespread in Sweden."
+
+"Several studies show that doing exercise during your workday benefits both employees and employers ..."
+
+"In Sweden, staying in shape is seen as every person's responsibility to society."
+
+More examples:
+
+Do you mind my asking you for some help on this project?
+George believes that working hard is the fastest way for him to earn a promotion.
+Anna thinks that sleeping early every night can help her wake up refreshed the next day.
+
+_____________________
+
+- "Since" is often used to say that an action began at a certain time and continues to the present.
+
+I have lived in Japan since 1994.
+Our company has been operating since 2001.
+
+- "For" is used to give the time in which an action happens.
+
+"For" is followed by the length of time in which the action lasts.
+
+He has been our employee for five years.
+
+- "During" is also used to give the time in which an action happens.
+
+"During" is followed by the period of time in which an action happens.
+
+He started working in the company during his last year of business school.
+
+
+The prepositions "since," "for" and "during" are used to describe duration.
+
+"Since" is used when an action began at a certain time and continues to the present.
+"For" and "during" are used to give the time in which an action happens.
+
+__________________
+
+
+I fractured my (part of body) …
+
+I fractured my ankle while I was jogging yesterday.
+
+
+I scratched my (body part) …
+
+I scratched my knee while I was playing football this morning.
+
+
+I dislocated my (body part) …
+
+I dislocated my shoulder in the gym last night.
+
+
+I sprained my (body part) …
+
+I sprained my ankle a few days ago, and it still hurts.
+
+
+I got (kind of injury) from …
+
+I got a mild concussion from the car accident.
+
+My (body part) got …
+
+My jaw got dislocated while I was sparring with my trainer last week.
+
+
+I landed on my (body part) when …
+
+I landed on my hip when I fell down the stairs.
+
+When talking about accidents, it's important to describe actions and the sequence of events.
+
+Use connecting words or conjunctions to describe what happened.
+
+I fractured my ankle while I was jogging yesterday.
+I landed on my hip when I fell down the stairs.
+I need to wear the bandage until the wound heals.
+
+_______________________
+
+TREACHEROUS
+dangerous and difficult
+
+During the storm, the ship went through treacherous waters.
+
+TERRAIN
+land; a particular type of land
+
+To reach the waterfalls, Marion would need to hike and travel through mountainous terrain.
+
+ON THE EVE OF (SOMETHING)
+the night before something, such as an event
+
+On the eve of the competition, the dance group is still practicing for their performance.
+
+BILLING
+advertising; promoting
+
+The XYZ Circus Company is billing itself as having "the most thrilling and entertaining performances in the world."
+
+SEARCH AND RESCUE
+the process of locating people and providing them with assistance after a disaster or accident
+
+After the hurricane, civil groups immediately helped with search and rescue in the affected areas.
+
+HUMANITARIAN
+involving work that makes other people's lives better
+
+Joel works in a humanitarian organization that provides education to children in poor communities.
+
+GAITS
+the manner or ways in which someone or something walks
+
+Raleigh has a slower gait because he had a leg surgery recently.
+
+PUT TO WORK
+given a specific job or task
+
+A project needs to be completed soon so the team was put to work immediately.
+
+________________
+
+Grammar tip: The zero and first conditional
+
+Conditionals are sentences used to discuss hypothetical situations, and their effects or consequences. A conditional usually includes a conditional clause, also known as the if-clause.
+
+The zero conditional is used when making statements about real or factual situations at the present time. It is formed by combining the condition (if + simple present tense), and the result (simple present tense.)
+
+"But if birds know that there's a predator chasing them, they start to leave the area ..."
+
+More examples:
+
+If the temperature drops below zero, it snows.
+Food spoils if it is in a hot place for several days.
+
+The first conditional, also known as the "real conditional," is used when talking about possibilities and their results. The first conditional is formed by combining the condition (if + simple present tense), and the result (will + the zero infinitive).
+
+"... even if the next generation comes through, they'll go, 'Well, I don't know why I don't want to go there ...'"
+
+"If you can start to change where they nest ... the likelihood is they'll stay away as well ..."
+
+More examples:
+
+If Marty sees Jennifer tomorrow, he will tell her about the department's upcoming project.
+The manager will sign the documents if it is delivered within the day.
+
+_______________________________
+
+Adverbs of place tell us where an action or event happens.
+
+Some adverbs of place may show a specific direction.
+
+The storm is moving south.
+The street slopes downwards.
+He is turning right at the corner.
+
+Some common nouns may also be used as adverbs of place to show directions for movement.
+
+I am traveling abroad.
+They walked home from the train station.
+
+Adverbs of place may talk about a non-specific location.
+
+Let us eat out.
+I put the file there.
+Can we talk elsewhere?
+
+Adverbs of place can be put after the verb in a sentence.
+
+The employees walked out of the room.
+The restaurant is located southeast of here.
+
+Adverbs of place can also be put after the direct object.
+
+You can just place the books there.
+The speakers greeted the audience downstairs.
+
+
+Adverbs of place tell us where an action or event happens. In a sentence, adverbs of place can be found after a verb or direct object.
+
+To show direction
+The train is heading east to the city. (after verb)
+He threw the ball upwards. (after direct object)
+ 
+To show location
+She walked ahead of her friends. (after verb)
+You can see the train there. (after direct object)
+
+_____________
+
+BOLSTER
+to make something better or stronger
+
+The marketing department is planning a campaign that will bolster the company's product sales.
+
+HOSPITALITY
+the friendly, generous and welcoming behavior towards guests or visitors
+
+Family and friends usually stay at Ryan's house because he is known for his hospitality.
+
+SPARSELY
+in small numbers or amounts
+
+Tana's office is sparsely furnished: it just has a desk, chair and her work computer.
+
+ENCAMPMENT
+a group of tents or shelters in one place, usually used by people who do not have a permanent home
+
+After patrolling, the soldiers return to their encampment to eat and rest.
+
+MODERNIZATION
+the process of transforming something to make it adapt into the present time
+
+High-rise buildings, condominiums, malls and multiple businesses and are some of the signs of modernization in the city.
+
+NOMADIC
+describing a group of people who move from place to place instead of staying in one place
+
+The nomadic tribe settled in a valley at the foot of the mountain until the winter has passed.
+
+HERITAGE
+the culture, traditions, beliefs, etc., that are part of the history of a country or group of people
+
+People are taught folk dances, songs and stories to preserve their heritage.
+
+INDUSTRIALIZING
+developing businesses from being primarily traditional to being based on manufacturing
+
+Britain began industrializing in the 1780s, when steam power began to be used for running manufacturing equipment.
+
+PRODUCTION LINE
+the set of machines, equipment and people arranged to manufacture something
+
+There was a pause in the production line because one of the machines stopped working properly.
+
+RUNOFF
+rainwater that is not absorbed by the ground and that flows into bodies of water, such as streams
+
+The building has pipes that direct the flow of runoff to the sewers below the road.
+
+IRRIGATION
+the distribution of water on land through pipes or ditches to help in the production of crops
+
+The irrigation of the farmland helped supply water to the fields during the dry seasons.
+
+HEART
+the central or most important area of something
+
+The city capital is heart of the business and commerce of the country.
+
+__________________
+
+Here is a list of different vehicles used to transport goods:
+
+By air
+
+air carrier
+combi
+By sea
+
+barge
+ferry boat
+liner
+roll-on/roll-off (RORO)
+tanker
+vessel
+
+________________
+
