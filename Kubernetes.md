@@ -15,11 +15,13 @@ disaster recovery backuo and restore
 
 - api server: entrypoint to K8s cluster, expose Kubernetes API
 
-- controll manager: keeps track of whats happening in the cluster
+- controll manager: keeps track of whats happening in the cluster (node controller, replication controller, endpoint controller, service account and token controllers)
 
 - Scheduler: ensures pods placement
 
 - etcd: kubernetes backing store, key value store for critical cluster info
+
+- si se desplega en nube se adiciona un nuevo elemento el cloud controller manager 
 
 NODE PROCESS
 

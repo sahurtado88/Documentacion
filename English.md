@@ -1354,3 +1354,531 @@ vessel
 
 ________________
 
+BITTERSWEET
+refers to something that has both positive and negative aspects
+
+The state of the country's economy is bittersweet, with a low unemployment rate but a shortage of labor.
+
+GOOSE LAYING GOLDEN EGGS
+a rich source of something valuable, such as financial income
+
+The shipbuilding industry has been the goose laying golden eggs for the country's economy for more than 30 years.
+
+MOUNTING
+rising; increasing
+
+The company's constantly mounting debt is a major cause of concern for executives, analysts, and investors.
+
+STOP-GAP MEASURE
+referring to a makeshift or temporary solution to address something that is lacking
+
+As a stop-gap measure, the website's managers are blocking user access to problematic parts of the site until the issues can be fixed.
+
+WRAPPED UP
+finished
+
+The trade show will be wrapped up with an awarding ceremony at the end of the week.
+
+STUNT
+to stop something from growing or developing
+
+The long dry season will stunt the growth of crops, leading to fewer or lower quality harvests.
+
+LEGACY
+a situation in the present caused by something that happened in the past
+
+The city's infrastructure, including coal plants and a rail transport system, is a legacy of its once powerful coal industry.
+
+BAILOUT
+financial aid provided to an organization or national economy to prevent it from collapsing
+
+The struggling car company, which is one of the country's biggest employers, received a bailout worth billions of dollars from the government.
+
+_____________________
+
+I would like to book a flight to (destination) for (date or day).
+
+I would like to book a flight to Bucharest for October 9/the 9th of October.
+I would like to book a flight to Bucharest for Wednesday.
+
+
+Could you please book me on a flight to (destination) for (date or day)?
+
+Could you please book me on a flight to Athens for October 12/the 12th of October?
+Could you please book me on a flight to Athens for Thursday?
+
+
+Could you please check if (name of airlines) has any flights to (destination) on (date or day)?
+
+Could you please check if BlueCloud Air has any flights to Prague on May 21/the 21st of May?
+Could you please check if BlueCloud Air has any flights to Prague on Saturday?
+
+I will be departing from (place of origin).
+
+I will be departing from Tel Aviv.
+
+
+Please book me for the (time) flight.
+
+Please book me for the morning/afternoon/evening flight.
+Please book me for the 3:20 p.m. flight.
+
+
+How much does/would … cost?
+
+How much does the ticket cost?
+How much would an economy-class ticket cost?
+
+one-way
+
+I'd like to book a one-way flight to Shanghai.
+
+NOTE: A one-way ticket allows you to travel to your destination but does not let you return home.
+
+
+round-trip
+
+I'd like to buy a round-trip ticket to Dubai.
+
+NOTE: A round-trip ticket lets you travel to your destination and return home.
+
+
+(For round-trip flights) I will be returning on (date or day).
+
+I will be returning on Sunday.
+I will be returning on December 21/the 21st of December.
+
+____________________________
+
+Ladies and gentlemen, may we have your attention, please?
+
+
+Ladies and gentlemen, this is ... speaking.
+
+Ladies and gentlemen, this is your captain speaking.
+
+We are sorry to announce that ... has delayed flight ...
+
+We are sorry to announce that a snow storm in London has delayed the following flights.
+
+
+Flight ... will be rescheduled/delayed/canceled due to …
+
+This flight will be delayed for two hours due to technical aircraft issues.
+
+
+We regret to inform you that this flight has been canceled …
+
+We regret to inform you that this flight has been canceled.
+
+On behalf of ... I would like to apologize for …
+
+On behalf of Creatas Pacific, I would like to apologize for the delay of your flight.
+
+
+We've received word of ... Because of this ... has been canceled/rescheduled/delayed.
+
+We have received word of a thunderstorm approaching the area that we will be passing through. Because of this, we regret to inform you that this flight has been canceled.
+
+When announcing a flight delay or cancelation, it is important to:
+
+State the flight details
+… Eastern Airlines flight 204 to Dubai, departing at 10 a.m. from gate 32 …
+ 
+Explain the status and give the reason for the change
+… will be delayed due to heavy air traffic.
+… has been canceled due to the typhoon.
+ 
+State other new information
+… will now be departing at approximately 1:30 a.m.
+ 
+Apologize
+We are sorry for the inconvenience.
+
+
+on behalf en nombre de
+
+___________________
+
+
+ailerons
+
+located at the back edge or tailing edge of an aircraft's horizontal wings. They are used to make the aircraft bank or roll to the left or right.
+
+
+elevators
+
+connected to the horizontal stabilizers on the tail of a plane. They control the pitch or the upward and downward direction of the nose of a plane.
+
+
+rudder
+
+a thin blade attached to the vertical stabilizer or fin on the tail of a plane. It swings from side to side to turn the aircraft to the left or right on its vertical axis.
+
+flaps
+
+located at the trailing edge or back edge of a wing, in between the aileron and the body or fuselage of a plane. They are used to change the wing shape to increase lift or drag during takeoff and landing.
+
+
+slats
+
+located at the leading or front edge of the wings. They are used to increase the lift needed when an aircraft is maneuvering or landing.
+
+trim tabs
+
+plates connected to primary control surfaces such as ailerons, rudders and elevators. They are used to balance or increase the force a control surface is creating.
+
+
+spoilers
+
+long, moveable plate along the upper surface of an aircraft's wings. They are used when landing to increase drag and reduce lift.
+
+Ailerons help an aircraft roll to one side, while the rudder ensures that the nose of the aircraft stays in position.
+
+Spoilerons are types of spoilers that reduce the speed of an aircraft during a roll.
+
+Wing flaps, located behind spoilers, can be found on almost every aircraft, but each type of flap has a specific function.
+
+__________________
+
+A gerund is a verbal. It is a word that is based on a verb but functions as a noun. It always ends in -ing.
+
+A gerund phrase is made of a gerund plus other words related to the gerund.
+
+smoking in public places
+designing websites
+reading blogs
+
+A gerund phrase may include a direct object.
+
+giving the report
+
+It may include an indirect object (with the direct object).
+
+giving him the report
+
+A gerund phrase may include a preposition and an object of the preposition.
+
+giving this project to him
+
+It may also include other adjectives or adverbs.
+
+giving this difficult project to him
+suddenly giving this project to him
+
+Here are some examples of how a gerund phrase may be used in a sentence:
+
+- I appreciate your offering me this job.
+- He is very good at designing websites.
+- Her favorite part of the job is mentoring new employees.
+- Smoking in public places is not allowed in some countries.
+- Mark's hobby, reading blogs, has given him many insights on the job market.
+
+A gerund is a word that is based on a verb but functions as a noun. It always ends in -ing. 
+
+Here are ways to form a gerund phrase:
+
+gerund phrase with a direct object
+giving the report
+ 
+gerund phrase with an indirect object
+giving him the report
+ 
+gerund phrase with a preposition and an object of the preposition
+giving this project to him
+ 
+gerund phrase with adjectives or adverbs
+giving this difficult project to him
+
+_________________
+
+An infinitive is a verbal. It is based on a verb but functions as a noun, adjective or adverb. It is made up of "to" + base form of a verb.
+
+An infinitive phrase is made of an infinitive + other words related to the infinitive.
+
+Here are some examples of how an infinitive phrase may be used in a sentence:
+
+To be the CEO of his own company has always been Robert's ambition.
+We all need to find time for rest and relaxation.
+My plan is to stay home the whole weekend.
+Ethan fulfilled his dream to become a manager by the time he turned 30.
+Our team worked hard to submit the report on time.
+
+An infinitive phrase may include a direct object.
+
+to write an email
+
+It may include an indirect object.
+
+to write the boss an email
+
+It may include a preposition and an object of the preposition.
+
+to write the boss an email for the meeting on Thursday
+
+It may also include other adjectives or adverbs.
+
+to write a long email to the boss
+to quickly write an email to the boss
+
+An infinitive is a verbal. It is based on a verb but functions as a noun, adjective or adverb.
+
+Here is an example of how an infinitive phrase may be used in a sentence:
+
+We all need to find time for rest and relaxation.
+_____________________
+
+COMMERCIAL FLIGHT
+a journey that transports people and goods from one place to another using an aircraft
+
+Various commercial flights to different cities arrive and leave the country every day.
+
+ECONOMY
+describing something that is inexpensive or costs less money
+
+Keri is staying in an economy hotel: She booked a cheap room with a small bed and bathroom.
+
+REVENUE
+the money that a business receives from the sale of its goods and services
+
+The XYZ clothing company doubled their revenue as their newest summer line became popular in the market.
+
+LONG-HAUL
+describing something that involves a long distance
+
+Kenny and Eric are going on a long-haul trip, passing through multiple cities and driving through different U.S. states.
+
+CABIN CREW
+people whose job is to take care of passengers on an airplane
+
+The cabin crew can provide food, drinks, blankets or pillows at a passenger's request.
+
+PIONEERED
+created or started the development of something first
+
+In 1992, IBM pioneered the use of touchscreen technology on cellphones.
+
+INDUSTRY STANDARD
+an established and generally accepted requirement in a certain field
+
+Microsoft Excel set the industry standard in spreadsheet software all over the world.
+
+CONSOLIDATED
+combined
+
+Mari consolidated all of the meeting's important points in her notes.
+
+STREAMLINING
+making something more efficient through simpler and faster methods
+
+Letting companies submit requirements online is a way of streamlining the permit approval process.
+
+________________________
+
+Welcome aboard ...
+
+Welcome aboard!
+
+
+What's your seat number, sir/ma'am?
+
+What's your seat number, please?
+
+
+Go straight down this aisle toward ...
+
+Go straight down this aisle toward the back, please.
+
+
+Please go to ...
+
+Please go to the other aisle, turn left, and go forward a few seats.
+
+
+You'll find ... on the left/right side ... 
+
+You'll find 13-E on the left side.
+
+
+(Seat number) is on the right/left side of the aisle.
+
+4-C is on the right side of the aisle.
+
+Thank you for flying ...
+
+Thank you for flying with us!
+
+
+Enjoy your stay in (name of city you've just landed in)!
+
+Enjoy your stay in Bangkok!
+
+
+We hope to see you again/you fly with us again!
+
+We hope you fly with us again!
+
+___________________
+
+Would you like ...?
+
+Would you like anything to drink?
+Would you like an extra blanket?
+
+
+Would you like anything else ... ? Some ... , perhaps?/Maybe some ... ?
+
+Would you like anything else, sir? Some bread, perhaps?
+Would you like anything else, sir? Maybe some bread?
+
+
+I'll be (right) back with your ...
+
+I'll be right back with your tea.
+
+
+Yes, we do.
+Yes, we have ...
+
+Yes, we have some strawberry yogurt.
+
+
+I'm afraid we don't, ma'am/sir. We do have ...
+
+I'm afraid we don't, ma'am. We do have Earl Grey and peppermint tea.
+
+
+I'm afraid we don't have any ... We do have ...
+
+I'm afraid we don't have any chrysanthemum tea. We do have Earl Grey and peppermint.
+
+How may I help you, ma'am/sir?
+
+
+Is there anything else I can help you with, ma'am/sir?
+
+
+How may I help you, ma'am/sir?
+
+
+Is there anything else I can help you with, ma'am/sir?
+
+
+Excuse me, ma'am/sir. Could you kindly ... ?
+
+Excuse me, ma'am. Could you kindly wear your seatbelt?
+
+
+Please/Kindly (describe what the passenger should do).
+
+Kindly press the power button to turn on your video screen. Then, you can scroll through the channels by pressing the up and down buttons marked CH on your remote control. You can also adjust the volume by pressing the VOL buttons.
+
+_________________________
+# zero conditional
+
+
+# first conditional
+The first conditional describes what will happen if a condition is met.
+
+If you prepare well, you will win the account.
+
+The first conditional sentence is formed by combining a condition (simple present tense) + a result (simple future tense).
+
+If you don’t lower the price, the client will reject the proposal.
+Unless you lower the price, the client will reject the proposal.
+
+The first conditional or "the real conditional" talks about real possibilities.
+
+It is formed with a condition (simple present tense) + a result (simple future tense).
+
+
+# second conditional
+
+The second conditional is often called "the unreal conditional" because it is used for situations that are impossible or not likely to happen.
+
+The second conditional describes an imaginary result for an unreal situation.
+
+If I won the lottery, I would buy a big house.
+If we had a billion dollars, we would set up a movie production company.
+
+The second conditional sentence is formed by combining CONDITION ("if" clause using the simple past tense) + RESULT (main clause using "would" + main verb).
+
+If I were rich, I would quit my job.
+
+We can contract "would" into "'d," and "would not" into "wouldn't":
+
+I'd lower taxes if I were* the president.
+He wouldn't lower taxes if he were* the president. 
+
+*Although some people use "was" in second conditional statements, the more correct verb to use for both singular and plural nouns/pronouns in the second conditional is "were."
+
+The second conditional is used for situations that are impossible or not likely to happen.
+
+The second conditional is formed by combining the CONDITION ("if" clause using the simple past tense ) + RESULT (main clause using "would" + main verb).
+
+# third conditional
+
+The third conditional is often called "the past conditional" because it concerns only past situations.
+
+It is used to talk about a past result that can no longer exist because the chance for its condition to be fulfilled has passed. There is always an unspoken "but ..." phrase.
+
+If Greg had saved more money, he would have bought a bigger car.
+(... but Greg did not save more money.)
+
+You would have met the deadline if you had worked harder.
+(... but you did not work harder.)
+
+The third conditional sentence is formed by combining CONDITION ("if" + past perfect) +  RESULT (the main clause using "would" + "have" + past participle).
+
+If we had arrived earlier, we would have been able to buy tickets.
+If their goalkeeper had not been so good, we would have won the game.
+
+An alternative form to "If ... had/had not ..." is "Had … would have …".
+
+Had Greg saved more money, he would have bought a bigger car.
+Had you worked harder, you would have met the deadline.
+
+The third conditional is used to talk about a past result that is no longer possible. It follows the format:
+
+CONDITION ("If" + past perfect) + RESULT ("... would have …" + past participle)
+
+If you had arrived earlier, you would have seen the presentation.
+If we had waited longer, we would have been caught in the rain.
+
+
+# conditional mixt
+
+# Conditionals using could
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+__________________________
+
+pronunciacion https://www.adurcal.com/enlaces/ingles.htm
+
+https://englishlive.ef.com/es-mx/blog/tips-para-estudiar/reglas-de-fonetica-para-leer-y-escribir-hablar/
+
+https://global-exam.com/blog/es/general-english-reglas-de-pronunciacion-del-ingles-cuales-son/
+
+https://www.inglesmundial.com/Pronunciacion-en-Ingles.html
+
+________________________
+
+# Reportes speech
+
+![](./Images/Direct-and-Indirect-Speech-With-Examples-and-Detailed-Explanations.png)
