@@ -1850,20 +1850,446 @@ If we had waited longer, we would have been caught in the rain.
 
 # Conditionals using could
 
+The use of "could" changes the level of certainty expressed in a conditional sentence.
+
+In the second conditional, replace "would" with "could" to express less certainty about a hypothetical future result.
+
+If I learned another language, I would get a better job. (certain)
+If I learned another language, I could get a better job. (less certain)
+
+In the third conditional, replace "would" with "could" to express less certainty about a hypothetical past result.
+
+You would have gotten the job if you had gone to the interview. (certain)
+You could have gotten the job if you had gone to the interview. (less certain)
 
 
 
+_______________________
+
+Yes, it is a career shift when you consider the differences between the ... and ... For the past (number) years, however ...
+
+Yes, it is a career shift when you consider the differences between the IT industry and marketing. For the past two years, however, I have been more motivated in management than in actual IT programming.
+
+
+While it is true that ... was not part of my job description as a ..., for the past (number) years, I have been ...
+
+While it is true that selling was not part of my job description as a secretary, for the past five years I have been answering phone calls and meeting our customers.
+
+
+My (former job) has given me (skills). I am eager to use these skills in a company such as yours.
+
+My job in a BPO company has given me excellent task management skills. I am eager to use these skills in a company such as yours.
+
+Here are useful structures when explaining a career shift during a job interview:
+
+Verbs in the present perfect and present perfect continuous tenses
+
+For the past (number) months/years, I have/ have been ...
+Since (month/year) ..., I have/have been ...
+My (former job) has given/allowed/taught (me) ...
+ 
+Conjunctions
+
+It is a career shift when you consider the differences between ... and ...
+While/Although/Though it is true that ... was not part of my job description as a/an ...
+ 
+Infinitives
+
+I will work hard to be/do/contribute ...
+ 
+Participles
+
+I see myself taking on/contributing/doing ...
+ 
+Adjectives with infinitives
+
+I am eager/excited/etc. to be/use/work ...
+
+____________________
+
+PENTHOUSE
+an expensive apartment or set of rooms on the top floor of a building
+
+The CEO lives in a penthouse that has a great view of Manhattan.
+
+TYCOON
+a very powerful and rich businessperson
+
+Jeff Bezos is the business tycoon who founded Amazon.
+
+TENANTS
+people who pay to use a building, house, apartment, office, etc.
+
+The building owner informed the tenants that the rental fees will increase next year.
+
+LEASEHOLD
+refers to a property or estate that is owned for a particular period of time, as stated by a contract
+
+In Singapore, leasehold properties are more affordable, but these are taken back by the state after 99 years.
+
+EN SUITE
+refers to a bathroom that is connected to a bedroom
+
+Mary's hotel room has an en suite facility; she can use the bathroom without going out of her room.
+
+ROUND-THE-CLOCK
+happening all day and all night
+
+For safety, the building has round-the-clock security services.
+
+BOOMING
+growing or expanding very quickly
+
+The country has a booming economy because a number of tech and manufacturing companies opened last year.
+
+FUEL
+make something more intense
+
+The growth of digital businesses fuel the demand for employees with skills related to information technology.
+
+COOL
+to reduce or slow the growth of something, such as an economy or market
+
+Analysts say that the change of government leadership may cool the stock market.
+
+PLANT
+a factory; a place where things are made
+
+Volkswagen's plant in Wolfsburg, Germany is one of the largest car plants in the world.
+
+__________________
+
+IMPERIAL
+relates to a group of places that is ruled by one person or government
+
+According to the law, the imperial family will receive a part of the taxes from all the countries under their rule.
+
+BUSTLING
+busy; crowded
+
+The market is bustling with people selling and buying different things.
+
+RENOVATIONS
+the process of making repairs and changes to make a building or room better than before
+
+Renovations to add a second floor of the house began last month.
+
+HANDICRAFT
+relating to an activity or the product of such an activity that involves skillfully using the hands to create or decorate something
+
+Jack has a handicraft shop where he sells the ceramic and clay pots he makes.
+
+TREATISES
+books or written works that discuss a topic carefully and thoroughly
+
+As a doctor, Arnold has written a few treatises on different types of viruses and what diseases the viruses can bring.
+
+NESTLED
+describing something that is found beside or into something else
+
+The small town is nestled between a mountain and a lake.
+
+SOUNDED THE ALARM
+warned people about something unpleasant or dangerous
+
+The manager sounded the alarm about the storm, that's why most of the employees did not report to work.
+
+INAUGURATE
+to officially declare that something is ready for use
+
+The CEO was present to inaugurate the company's new branch office.
+
+TANNERS
+Tanners are people who make leather by changing an animal's skin through a chemical process.
+
+DEGRADATION
+the process of being damaged or changed to something worse
+
+The degradation of the building was slow due to constant maintenance and repair.
+
+CACOPHONY
+a combination of sounds that can be loud and unpleasant
+
+The cacophony of people talking during the event is louder than usual because the location is a small place.
+
+__________________
+
+unless a menos que
+whereas mientras que
+whenever siempre que
+even though aunque
+
+___________________
+
+Verbs followed by gerunds and infinitives
+
+For some verbs such as "like," "love" and "hate," it makes no difference if they are followed by a gerund or an infinitive. The meaning of the sentence does not change: "I like swimming" (gerund) and "I like to swim" mean the same thing.
+
+However, for other verbs such as "stop," "go on," and "try," the sentence means one thing when the verb is followed by a gerund, and another thing when the verb is followed by an infinitive.
+
+- "Stop" + gerund means to stop an activity completely.
+
+Jack stopped smoking when he turned 40.
+Philip and Rachel stopped buying soda because they wanted to limit their sugar intake.
+
+- "Stop" + infinitive means to stop another activity in order to do the action stated in the infinitive phrase.
+
+I worked the whole morning, but I stopped to smoke for 15 minutes.
+We drove for two hours then stopped to buy some soda.
+
+-"Go on" + gerund means to continue what one is already doing.
+
+When I am interrupted by phone calls, it's difficult for me to go on working.
+The presentation was over, but Mark went on asking one question after another.
+
+- "Go on" + infinitive means to move on to a different action that is related to the first one.
+
+When you write an email, keep the introduction short and go on to state the purpose of your email immediately.
+After the speaker gave her presentation, she went on to ask the audience for comments. 
+
+- "Try" + gerund means to test out an option.
+
+Have you tried restarting your computer?
+If the customer can't be reached by phone, try sending him an email.
+
+- "Try" + infinitive means to make an effort or to attempt.
+
+I have tried to access my email several times already, but the system just won't work.
+Try to call the customer and see if he will accept your apology.
+
+- "Regret" + gerund expresses that one feels bad about an action and wishes that it had not been done.
+
+Margaret regrets informing her colleagues about the changes in the software they will be using for their work. Now, they are all complaining about it.
+
+Dan regrets announcing his transfer to New York too early because he doesn't want to work in New York anymore.
+
+- "Regret" + infinitive is usually used to give negative information with verbs such as "inform," "announce," "tell" or "say."
+
+We regret to inform you that the flight has been cancelled.
+The company regrets to announce the closure of its office in Berlin.
+
+- "Forget" + gerund is often used with "can't" or "will never" to talk about a memorable (unforgettable) event.
+
+Charisse will never forget meeting Placido Domingo in London. He is her favorite singer.
+I can't forget seeing "Guernica" for the first time. It's a very powerful painting.
+
+- "Forget" + infinitive means to fail to remember something.
+
+Rebecca forgot to lock the door again.
+Don't forget to print another copy of the contract.
+
+- "Remember" + gerund usually refers to things you have already done.
+
+I remember replying to that email. I did it yesterday morning.
+Tom remembers sending the report to Guillaume, but Guillaume hasn't received it yet.
+
+- "Remember" + infinitive usually refers to obligations -- things you have to do.
+
+I always remember to reply to my emails.
+Did you remember to send a copy of the report to Guillaume?
 
 
 
+_________________
+Remember
+If we remember someone or something, we keep that person or thing in our mind or we bring that person or thing back to our mind:
+
+- I will always remember you. You have helped me so much.
+
+Remind
+If a person or thing reminds you of someone or something, they make you think of that person or thing, or they resemble that person or thing:
+
+- That song always reminds me of the time I fell in love with an Italian girl.
+- Jason reminded me of my father. They had the same eyes and the same way of talking.
+
+______________________
+
+wrapping up: finishing, completing or ending something
+
+Julie was wrapping up the meeting, so she asked people to review what they've learned.
+
+"... designer Louis Gabriel Nouchi is already close to wrapping up his orders."
+
+clothing line: various types of clothing made by a person or company for a particular time period
+
+For this winter's clothing line, Tricia created a few coats, jackets and sweaters.
+
+"Creating a clothing line takes a full year from start to finish ..."
+
+mills: factories where various materials are made
+
+Steve's job is to oversee the mills that manufacture the company's plastic products.
+
+"Nouchi has to coordinate all kinds of players, from garment manufacturers, to pattern makers and, of course, fabric mills."
+
+jersey: material usually made out of wool or cotton that is used to make clothes
+
+The sweater that Benny wears during colder weather is made out of cotton jersey.
+
+"This mill makes some of the best jersey in the world."
+
+crucial: extremely important
+
+It is crucial to follow directions to prevent accidents, such as cuts and burns, during cooking.
+
+"The textile show is a crucial moment: the place where Nouchi gets to feel his fabrics and meet with the people behind them."
+
+follow-ups: things done to continue what has been started
+
+Melody goes to the hospital for follow-ups with her vaccine injections.
+
+"All the textile agents, the follow-ups on orders, and where they're going."
+
+Grammar tip: Infinitives
+
+Infinitives are verbals that are formed with to + the base form of a verb. They can function as nouns, adjectives or adverbs.
+
+"I wanted to know whether you have this quality in black."
+
+"... the designer also says he spends a huge amount of time emailing to make his designs a reality ..."
+
+"I work with a model maker who makes the patterns and then you have to coordinate everything ..."
+
+More examples:
+
+The family decided to volunteer at the local shelter next weekend.
+Participants are asked to register at the front desk before entering the venue.
+Lisa had a few jobs: to distribute fliers and advertise their company's newest products.
+
+______________________
+
+bouncer: a person hired to stop people who cause trouble or take them out of the venue
+
+The bouncer makes sure that nobody from the crowd disturbs the musician's performance during the concert.
+
+"He hired a bouncer ... to drive him."
+
+comes through: becomes evident, understandable or visible
+
+While giving a speech, Jeff's uneasiness comes through from the tone of his voice and his body movements.
+
+"The thing that really comes through here is a parent-child relationship is forming."
+
+pay attention: to look at and listen to something carefully
+
+Bikers must pay attention to how cars and pedestrians move in order to avoid accidents.
+
+"... sixth-grade education, but really didn't pay attention after the third grade."
+
+in control: refers to someone who is in a position to direct something
+
+As a manager, Amy stays in control by asking her colleagues to report their weekly tasks to her.
+
+"It helps that Dr. Shirley's in control."
+
+at a disadvantage: When a person is at a disadvantage, they have difficulty doing something and are less likely to succeed compared to others.
+
+Fishermen who own small fishing boats are at a disadvantage compared to those with larger boats that can hold more fish.
+
+"... it just felt like he was at a disadvantage in that scene."
+
+empower: to enable someone to succeed or do something
+
+The manager's compliments and praise helped empower Kate and motivated her to work on more projects.
+
+"... it helped empower Dr. Shirley ..."
+
+Grammar tip: Using verbs with infinitives
+
+An infinitive is a verbal used as a noun, adjective or adverb. It takes the form to + the base form of a verb.
+
+Certain verbs such as "need," "try," and "have" can be combined with infinitives.
+
+"... we need to have a talk."
+
+"... he's trying to help him, in the way he talks ..."
+
+"... Don Shirley ... had to go on a tour of the South."
+
+More examples:
+
+Guy learned to speak English while working for an American car company.
+The company expects to finish negotiations with the other firm next month.
+Mandy will offer to drive the guests to the airport after they check out of the hotel.
+
+____________________
+
+affidavit/sworn statement
+
+a document written to verify a statement and signed in front of someone with the legal authority to act as a witness
+example: affidavit of loss
 
 
+bill of indictment
+
+a written document that formally charges an individual or entity with a crime
+
+certificate
+
+a document that confirms information about someone or something
+examples: birth certificate; certificate of graduation
 
 
+contract/covenant
+
+a formal agreement where parties promise to do or not do something
+example: lease contract
 
 
+deed
+
+a document that grants a right, privilege, or object to somebody
+example: deed of sale
 
 
+license/permit
+
+formal permission from a government authority to do something that is otherwise considered illegal
+examples: driver’s license; work permit
+
+
+passport
+
+a document that allows an individual to travel to other countries. (However, actual entry and exit depend on visa requirements which vary from one country to another.) A passport is also strong proof of one’s identity and citizenship.
+
+
+petition/prayer
+
+a formal written request, authorized by a public official (notarized) and then submitted to a court of law
+examples: petition for citizenship; petition for adoption of a child
+
+
+summons/claim form
+
+a written order to appear or serve in court
+example: jury summons
+
+
+will
+
+a person’s statement of what he wants to be done when he is dead or no longer conscious. Usually this includes how he wants his property and other assets distributed after his death.
+examples: last will and testament; living will
+
+___________
+
+Here are useful phrases for accepting or declining a job offer.
+
+(Yes,) I accept your offer.
+I regret that I cannot accept the offer of (name of company).
+I'm sorry, but I cannot accept your offer.
+I (do) hope for an opportunity to do business with (name of company) in the future.
+ 
+Modals and if-clauses are useful when saying you will think about a job offer.
+
+May I have some time to think about it?
+Can I ask for some time to think it over?
+I'd like to think it over, if it's OK.
+ 
+Conjunctions and relative clauses are useful when explaining why you are declining a job offer.
+
+I appreciate the generous offer, but...
+I received the same offer from another company which is nearer to my home.
+My daily commute will be significantly shorter, and this is one advantage that I cannot ignore.
 
 
 

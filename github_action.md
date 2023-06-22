@@ -664,3 +664,398 @@ jobs:
           echo "Something went wrong"
           echo "${{ toJSON(github) }}"
 ```
+
+![](./Images/conditional_functions.png)
+
+
+# Ignoring errors and failures with "continue-on-error"
+
+continue-on-error - Setting this to true means that the even if the current step fails, the job will continue on to the next one (by default failure stops a job's running).
+
+```
+name: Contiue Website Deployment
+on:
+  push:
+    branches:
+      - main
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Lint code
+        run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Test code
+        continue-on-error: true
+        id: run-tests
+        run: npm run test
+      - name: Upload test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: test.json
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build website
+        id: build-website
+        run: npm run build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
+      - name: Output contents
+        run: ls
+      - name: Deploy
+        run: echo "Deploying..."
+  report:
+    needs: [lint, deploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: | 
+          echo "Something went wrong"
+          echo "${{ toJSON(github) }}"
+
+```
+
+## Understanding and Using Matrix strategies
+```
+name: Matrix Demo
+on: push
+jobs:
+  build:
+    continue-on-error: true
+    strategy:
+      matrix:
+        node-version: [12, 14, 16]
+        operating-system: [ubuntu-latest, windows-latest]
+        include:
+          - node-version: 18
+            operating-system: ubuntu-latest
+        exclude:
+          - node-version: 12
+            operating-system: windows-latest
+    runs-on: ${{ matrix.operating-system }}
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build
+```
+## Reusable Workflows
+
+```
+name: Reusable Deploy
+on: 
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: The name of the deployable artifact files
+        required: false
+        default: dist
+        type: string
+    outputs:
+      result:
+        description: The result of the deployment operation
+        value: ${{ jobs.deploy.outputs.outcome }}
+    # secrets:
+      # some-secret:
+        # required: false
+jobs:
+  deploy:
+    outputs:
+      outcome: ${{ steps.set-result.outputs.step-result }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ inputs.artifact-name }}
+      - name: List files
+        run: ls
+      - name: Output information
+        run: echo "Deploying & uploading..."
+      - name: Set result output
+        id: set-result
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
+```
+
+```
+name: Using Reusable Workflow
+on:
+  push:
+    branches:
+      - main
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Lint code
+        run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Test code
+        id: run-tests
+        run: npm run test
+      - name: Upload test report
+        if: failure() && steps.run-tests.outcome == 'failure'
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: test.json
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build website
+        id: build-website
+        run: npm run build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: dist
+  deploy:
+    needs: build
+    uses: ./.github/workflows/reusable.yml
+    with:
+      artifact-name: dist-files
+    # secrets:
+      # some-secret: ${{ secrets.some-secret }}
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print deploy output
+        run: echo "${{ needs.deploy.outputs.result }}"
+  report:
+    needs: [lint, deploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: | 
+          echo "Something went wrong"
+          echo "${{ toJSON(github) }}"
+```
+
+# Using container with github action
+
+
+You can configure jobs in a workflow to run directly on a runner machine or in a Docker container. Communication between a job and its service containers is different depending on whether a job runs directly on the runner machine or in a container.
+
+### Running jobs in a container
+
+When you run jobs in a container, GitHub connects service containers to the job using Docker's user-defined bridge networks. 
+
+Running the job and services in a container simplifies network access
+
+```
+name: Deployment (Container)
+on:
+  push:
+    branches:
+      - main
+      - dev
+env:
+  CACHE_KEY: node-deps
+  MONGODB_DB_NAME: gha-demo
+jobs:
+  test:
+    environment: testing
+    runs-on: ubuntu-latest
+    container:
+      image: node:16
+    env:
+      MONGODB_CONNECTION_PROTOCOL: mongodb
+      MONGODB_CLUSTER_ADDRESS: mongodb
+      MONGODB_USERNAME: root
+      MONGODB_PASSWORD: example
+      PORT: 8080
+    services:
+      mongodb:
+        image: mongo
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: example
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ env.CACHE_KEY }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run server
+        run: npm start & npx wait-on http://127.0.0.1:$PORT # requires MongoDB Atlas to accept requests from anywhere!
+      - name: Run tests
+        run: npm test
+      - name: Output information
+        run: |
+          echo "MONGODB_USERNAME: $MONGODB_USERNAME"
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        env:
+          PORT: 3000
+        run: |        
+          echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
+          echo "MONGODB_USERNAME: $MONGODB_USERNAME"
+          echo "${{ env.PORT }}"
+
+```
+
+credential are expose becasue is a dummy mongo db an only exists while github action is executed
+
+### Running jobs on the runner machine
+When running jobs directly on the runner machine, you can access service containers using localhost:<port> or 127.0.0.1:<port>. GitHub configures the container network to enable communication from the service container to the Docker host.
+
+```
+name: Deployment (Container)
+on:
+  push:
+    branches:
+      - main
+      - dev
+env:
+  CACHE_KEY: node-deps
+  MONGODB_DB_NAME: gha-demo
+jobs:
+  test:
+    environment: testing
+    runs-on: ubuntu-latest
+    env:
+      MONGODB_CONNECTION_PROTOCOL: mongodb
+      MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017
+      MONGODB_USERNAME: root
+      MONGODB_PASSWORD: example
+      PORT: 8080
+    services:
+      mongodb:
+        image: mongo
+        ports:
+          - 27017:27017
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: example
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ env.CACHE_KEY }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run server
+        run: npm start & npx wait-on http://127.0.0.1:$PORT # requires MongoDB Atlas to accept requests from anywhere!
+      - name: Run tests
+        run: npm test
+      - name: Output information
+        run: |
+          echo "MONGODB_USERNAME: $MONGODB_USERNAME"
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        env:
+          PORT: 3000
+        run: |        
+          echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
+          echo "MONGODB_USERNAME: $MONGODB_USERNAME"
+          echo "${{ env.PORT }}"
+
+```
