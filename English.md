@@ -2290,6 +2290,230 @@ Conjunctions and relative clauses are useful when explaining why you are declini
 I appreciate the generous offer, but...
 I received the same offer from another company which is nearer to my home.
 My daily commute will be significantly shorter, and this is one advantage that I cannot ignore.
+___________________
+
+My previous work experience has provided me with/has given me … for the position of …
+
+My previous work experience has provided me with the skills needed for the position of editor.
+My previous work experience has given me the skills needed for the position of editor.
+
+ 
+
+
+My experience as a … developed my skills for …
+
+My experience as a paralegal has developed my skills for the tasks involved in being an executive assistant.
+
+I am adept/excellent/skilled/good at …
+
+I am adept at crafting training modules and executing them.
+I am excellent at handling difficult customers and their complaints.
+I am skilled at handling and managing people.
+I am good at making and giving presentations.
+
+
+I am confident/self-assured when …
+
+I am confident when making a pitch to prospects.
+I am self-assured when speaking in front of an audience.
+
+I must confess I had/have a problem with … But/However, … I believe this shows that I …
+
+I must confess I had a problem with how to prioritize my tasks. However, I decided to make a checklist of all my tasks and their deadlines. So, after doing this, I was able to do everything on time. I believe this shows that I can work with minimal supervision.
+
+I must confess I have a problem with numbers. But I don't mind working with numbers as long as I can get someone to check my reports first before I submit them. I believe this shows that I can get the job done and am not afraid to ask for help when I need it.
+
+
+I must admit I had/have difficulties with … But/However, … I believe this shows that I …
+
+I must admit I had difficulties with working in a group. But I voluntarily enrolled in a workshop on teamwork. So, after the workshop, I was able to work better with my team. I believe this shows that I am proactive and flexible.
+
+I must admit I have difficulties with using new software. However, I am a fast learner and am interested in learning how to use new programs. I believe this shows that I am eager to learn new things.
+
+
+Here are useful structures for talking about strengths and weaknesses in an interview.
+
+The present perfect tense 
+My previous work experience has provided me with/given me the skills needed for the position of...
+My experience as a/an... has developed my...skills.
+
+Gerunds and infinitives
+I am adept/excellent/skilled/good at creating/handling/etc...
+I am confident/self-assured when speaking/giving/etc...
+I must confess/admit I had/have (a) problem/difficulties with prioritizing/managing/etc...
+
+Infinitives
+But/However, I decided to make/talk/etc...
+
+Adjectives with infinitives
+I believe this shows that I'm eager to learn new things. 
+I’m not afraid to ask for help when I need it.
+________________________
+
+accountability
+
+responsibility
+
+_______________
+
+board of directors
+
+people who have been elected by a company’s shareholders to make major policy decisions
+
+
+chairman of the board
+
+the elected head of the board of directors
+
+
+chief executive officer (CEO)
+
+the highest executive officer in charge of long-range planning. He or she also acts as a bridge between the board of directors and stockholders, and the rest of the company.
+
+
+chief financial officer (CFO)
+
+the executive officer who controls where and how the company's money can be spent
+
+manager
+
+responsible for the day-to-day operations in a department or an office
+
+
+president
+
+in charge of the company's overall day-to-day operations; manages the managers
+
+
+vice president
+
+any of several executive officers who are responsible for a specific division, for example, vice president of sales or vice president of finance. The vice president reports to the president or CEO of the company.
+
+rank-and-file employees
+
+non-executive and non-managerial employees of the company
+
+____________________________
+
+Some adjectives that describe feelings are often followed by infinitives.
+
+I am glad to meet you.
+She's afraid to speak in public.
+He was surprised to hear about his promotion.
+
+Ordinal adjectives ("first," "second," "third," etc.) can also be followed by infinitives to give essential information about a noun.
+
+You are the first person to visit my shop.
+They were the third client to express interest in the project.
+He was the second manager to accept an overseas assignment.
+
+
+Superlative adjectives can be followed by infinitives to place emphasis on something.
+
+It was the worst day to be late for work.
+She was the oldest employee to be appointed to the position.
+
+Adjectives along with "too" and "enough" can also be used with infinitives to express emphasis.
+
+This office location is too good to be true.
+His proposal was convincing enough to change his manager’s decision.
+
+Other adjectives such as "ready," "hesitant," "determined," "wrong" and "certain" are often followed by infinitives.
+
+I’m ready to take the exam.
+It’s wrong to steal food from the office pantry.
+She was determined to win the account for the agency.
+We were hesitant to submit the proposal without our manager's consent.
+
+______________
+
+recruits: finds people who are suitable for certain job positions
+
+The military recruits healthy young adults of legal age to serve as soldiers.
+
+"Each year, Goldman Sachs recruits thousands of students off college campuses."
+
+asynchronous: not happening at the same time
+
+The school offers asynchronous online video lessons that students from around the world can watch at any time.
+
+"... they introduced technology, something called "asynchronous video interviewing," in which they send invitations to students to do the interview online ..."
+
+colleagues: the people that a person works with
+
+Maria eats lunch with a few colleagues at the office pantry.
+
+"Only Goldman Sachs recruiters and colleagues review your interview."
+
+audition: a short performance to show that one is suitable for employment, such as in a film
+
+Carla sang a song at an audition, hoping to get a major character role in a musical.
+
+"Treat [the interview] like a conversation, not a formal presentation or audition."
+
+extracurricular: referring to activities that are not part of a school's regular program of study
+
+Karlo's extracurricular activity is playing volleyball for the school's varsity team. So, he practices with his teammates after classes.
+
+"Provide an example that best illustrates your desire to excel in or outside of school. ... I'm trying to think of like, extracurricular activities."
+
+et cetera: and other things of the same type or kind
+
+To build a house, multiple construction materials are required, such as wood, concrete, metal, et cetera.
+
+"' ... from how we put our socks on, to how, you know, the accuracy with which we weigh out our food,' et cetera."
+
+repository: a place where data is stored and managed
+
+The department has an online repository of documents that employees can access from their computers.
+
+"So it has this repository of video interviews ... and then they can see over time what correlates to success."
+
+in person: used to say that someone is physically present at a place to do or say something
+
+When Betty met Veron in person, she shook his hand first.
+
+"We always bring people into our offices to meet us in person before making any final hiring decisions."
+
+on (one's) own time: to do something in the speed that one chooses
+
+Sally is learning how to drive on her own time; she studies the instructions first before practicing with a car.
+
+"I liked that I could take [the interview] on my own time."
+
+prattling: talking about unimportant things for a long time
+
+During the long car ride, the group of friends kept on prattling about the things they saw on the road.
+
+"I feel like we can all end up prattling on, especially when we're nervous."
+
+concise: expressing something with only a few words
+
+The recipes in the cookbook had clear, concise instructions.
+
+"And the fact that I knew that I had to be concise really focused my attention onto forming one or two points."
+
+Grammar tip: Restrictive clauses
+
+A restrictive clause gives more information about a noun or noun phrase in a sentence. These clauses usually begin with relative pronouns, such as who, which, when, where or that.
+
+A restrictive clause that starts with "who" is used when the noun or noun phrase is a person.
+
+"My video answers will be assessed by recruiters and professionals who will rate me ..."
+
+A restrictive clause that starts with "that" is used when the noun or noun phrase is a thing.
+
+"Provide an example that best illustrates your desire to excel in or outside of school."
+
+"So now I have a clock here that gives me two minutes to give my answer."
+
+More examples:
+
+Fiora remembered a time when it just rained all day and night.
+Kelly is the employee who works the quickest in the department.
+The group wants to eat at a restaurant that has an eat-all-you-can buffet.
+________________
+
 
 
 
