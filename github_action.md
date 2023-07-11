@@ -1405,7 +1405,28 @@ six==1.16.0
 urllib3==1.26.12
 ```
 
-
+action
+```
+name: 'Deploy to AWS S3'
+description: 'Deploy a static website via AWS S3.'
+inputs:
+  bucket:
+    description: 'The S3 bucket name.'
+    required: true
+  bucket-region: 
+    description: 'The region of the S3 bucket.'
+    required: false
+    default: 'us-east-1'
+  dist-folder:
+    description: 'The folder containing the deployable files.'
+    required: true
+outputs:
+  website-url:
+    description: 'The URL of the deployed website.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+```
 
 
 call the custom action Docker job 
@@ -1491,3 +1512,161 @@ jobs:
         run: |
           echo "Live URL: ${{ steps.deploy.outputs.website-url }}"
 ```
+
+### Storing Actions In Repositories & Sharing Actions With Others
+
+We could've stored the custom Actions in separate repositories (which therefore then only include the Action definition + code).
+
+This is actually quite straightforward:
+
+1. Create a new, local project folder which contains your action.yml file + all the code belonging to the action (Important: Don't put your action.yml file or code in a .github/actions folder or anything like that - just keep it directly on the root level of your created project!)
+
+2. Add a local Git repository to your created project (via git init)
+
+3. Create your commit(s) via git add and git commit
+
+4. Create a GitHub repository and connect it to your local Git repository (via git remote add)
+
+5. Add a tag via git tag -a -m "My action release" v1
+
+6. Push your local code to the remote GitHub repository (via git push --follow tags)
+
+7. Use your custom Action in any other Workflow (in any other project and repository) by referencing the repository which contains your action (e.g., my-account/my-action@v1)
+
+If your custom Action is stored in a public repository, it can also be published to the GitHub Actions Marketplace as described here: https://docs.github.com/en/actions/creating-actions/publishing-actions-in-github-marketplace#publishing-an-action
+
+## Security and Concerns
+
+![](./Images/Securityconcerns.png)
+
+![](./Images/actionssecurely.png)
+
+### permision jobs
+
+https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
+
+```
+name: Label Issues (Permissions Example)
+on:
+  issues:
+    types:
+      - opened
+jobs:
+  assign-label:
+    permissions:
+      issues: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign label
+        if: contains(github.event.issue.title, 'bug')
+        run: |
+          curl -X POST \
+          --url https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/labels \
+          -H 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          -H 'content-type: application/json' \
+          -d '{
+              "labels": ["bug"]
+            }' \
+          --fail
+```
+### Third party permission
+
+https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services
+
+```
+name: Deployment
+on:
+  push:
+    branches:
+      - main
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Load & cache dependencies
+        id: cache-deps
+        uses: ./.github/actions/cached-deps
+        with:
+          caching: 'false'
+      - name: Output information
+        run: echo "Cache used? ${{ steps.cache-deps.outputs.used-cache }}"
+      - name: Lint code
+        run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Load & cache dependencies
+        uses: ./.github/actions/cached-deps
+      - name: Test code
+        id: run-tests
+        run: npm run test
+      - name: Upload test report
+        if: failure() && steps.run-tests.outcome == 'failure'
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: test.json
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Load & cache dependencies
+        uses: ./.github/actions/cached-deps
+      - name: Build website
+        run: npm run build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: dist
+  deploy:
+    permissions:
+      id-token: write
+      contents: read
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
+          path: ./dist
+      - name: Output contents
+        run: ls
+      - name: Get AWS permissions
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::434325423:role/githubdemo
+          aws-region: us-east-1
+      - name: Deploy site
+        id: deploy
+        uses: ./.github/actions/deploy-s3-docker
+        with:
+          bucket: gha-security-hosting-demo
+          dist-folder: ./dist
+          # bucket-region: us-east-2
+      - name: Output information
+        run: |
+          echo "Live URL: ${{ steps.deploy.outputs.website-url }}"
+```
+
+In addition you should absolutely also explore the security guides by GitHub itself:
+
+General overview & important concepts: https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
+
+More on Secrets: https://docs.github.com/en/actions/security-guides/encrypted-secrets
+
+Using GITHUB_TOKEN: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+
+Advanced - Preventing Fork Pull Requests Attacks: https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
+
+Security Hardening with OpenID Connect: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect
+
