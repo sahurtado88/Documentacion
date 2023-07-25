@@ -6,3 +6,8 @@ En Istio Kubernetes, esto se consigue configurando proxies basados en â€œEnvoyâ€
 
 service Mesh: is an extra layer of software you deploy alongside your cluster
 
+Istio sidecar injection
+
+```
+kubectl label namespace <deafult> istio-injection=enabled
+```

@@ -2514,7 +2514,1198 @@ Kelly is the employee who works the quickest in the department.
 The group wants to eat at a restaurant that has an eat-all-you-can buffet.
 ________________
 
+FALLOUT
+a bad or unpleasant effect of something
 
+Immediately addressing personal and professional conflicts can prevent fallout in the future.
+
+PEDIGREE
+a person's impressive recorded history, with regard to education, training, and skills from distinguished institutions
+
+A candidate who comes from a prestigious and well-regarded business school will usually have a good pedigree.
+
+COMPETENCIES
+different behaviors shown by a person, which can be used to evaluate him or her
+
+Department managers may decide to examine their employees' competencies in order to learn how best to develop them.
+
+GAME
+to manipulate or control a situation so as to gain an unfair advantage
+
+It will be difficult for elected officials to game the political system for their personal benefit if voters remain watchful.
+
+IDEALIZED
+very well-developed, but imaginary
+
+Voters are advised to examine political candidates' actual behavior and accomplishments rather than developing idealized versions.
+
+PROTAGONIST
+the main character in a story
+
+Luke Skywalker is the protagonist of the science fiction movie "Star Wars: A New Hope."
+
+OVERVIEW
+a general summary of something
+
+During mentoring sessions, a manager may provide an overview of the employee's performance before discussing specific details.
+
+VANTAGE POINTS
+positions or places from where someone can get a good or wide view of or insight into something
+
+David realized that his situation at work was very complex, but he was able to understand it after viewing it
+
+__________________________________
+
+The second conditional is useful when talking about hypothetical situations. 
+
+Here are useful phrases when asking hypothetical questions:
+If…were/had/could…, what/which/who/where/when/why/how would…?
+If…(verb in the simple past)…, what/which/who/where/when/why/how would…?What would happen if…? 
+ 
+Here are useful phrases when giving hypothetical answers:
+If it were up to me, I would…
+He/She/It/You/We/They would…
+ 
+Could or might can be used in the main clause of a sentence in the second conditional to express ability or possibility.
+…  (ability)couldIf…, I/He/She/It/You/We
+If…., I/He/She/It/You/We/ might… (possibility)
+
+_____________________
+
+power
+
+a person's ability to control and exert influence over the personnel and resources around him or her
+
+legitimate/positional power
+
+power given to a person because of his or her job, position or status within an organization. This power is removed from the person when he or she no longer holds the position.
+
+
+expert power
+
+power that is grounded in the sense that a person's expertise or specialized knowledge gives him or her superiority over another person who does not have the same knowledge. This can be based on years of experience, reputation or demonstration of the expertise or skill.
+
+
+information/informational power
+
+power that comes from having or being able to get the information or knowledge that people need. A person acquires power depending on how much information he or she knows and by choosing to let the information be known to others or not.
+
+
+referent power
+
+power that depends on charisma and popularity, or one's personal appeal to other people. This can come from positive or negative perceptions of one's affiliation with other people, events or organizations.
+
+
+reward power
+
+power that is based on one's ability to give prizes or benefits to those who succeed in their tasks and to give punishment to those who fail
+
+
+coercive power
+
+power that is grounded on intimidation and punishment and uses coercion or force to achieve an end
+
+
+authority
+
+power that is assigned through a position; therefore, authority is also legitimate/positional power. It includes the right to make decisions, use resources, and delegate tasks or give orders to subordinates. This always comes with accountability for one's action or inaction.
+
+
+functional authority
+
+the ability of a department's staff to direct another department's personnel within its area of expertise. A person with functional authority has the right to enforce company rules and directives so that he or she can perform his or her function.
+
+
+line authority
+
+one's authority over subordinates that are directly under his or her supervision in the chain of command
+
+
+staff authority
+
+the right and authority to give counsel, recommendations, and support, but not to command personnel with line authority
+
+
+team authority
+
+authority held by teams or committees within an organization to do their own work with only minimal supervision
+
+
+
+chain of command
+
+the line of authority from the top of an organization down to the lowest rank of employees. It shows to whom the employees are accountable.
+
+
+unity of command
+
+a system that prevents confusion by making sure that each employee reports to and receives orders from only one supervisor
+
+delegation/deputation
+
+the act of sharing authority and responsibilities with a subordinate who represents or acts on behalf of a superior to accomplish a particular task
+
+
+span of control
+
+the number of subordinates that a superior officer manages
+___________________________
+
+When talking about bad habits, you may:
+
+Identify bad habits
+I used to be content with a mediocre performance.
+I thought it was fine to procrastinate at work.
+I told myself I could simply make up for my tardiness with excessive overtime hours.
+I would put off working on a project or a task until the very last minute.
+ 
+Describe the consequences of bad habits
+It got to a point where I didn't prioritize my work anymore.
+I almost got fired because of my tardiness.
+However, I soon realized I was creating more problems for myself.
+ 
+Discuss changes made to stop bad habits
+But then one day, my boss pulled me aside to point out my negative attitude.
+Now, I come to work on time.
+Since then, I've learned to prioritize and manage my time wisely.
+I've since taught myself to become more disciplined.
+Following are phrase structures you may use to talk about bad habits.
+
+Infinitives
+I used to play video games for hours.
+I thought it was fine to have a mediocre performance.
+I disciplined myself to go to work on time.
+ 
+Conjunctions
+However ...
+But ...
+Since then ...
+Then ...
+
+__________________
+
+Here are useful structures when  giving advice and making recommendations related to business customs.
+
+Gerunds
+Speaking with a firm voice is necessary to make a good impression.
+Greeting representatives must be done in a formal manner. 
+ 
+Adjectives followed by infinitives
+It is necessary (for you) to arrive at least 20 minutes before the meeting.
+It would be appropriate (for you) to bring flowers, wine, or fruit when invited to your boss's home.
+ 
+Adjectives followed by nouns and infinitives
+The polite way to ask someone to repeat himself is to say, "I beg your pardon?
+The first thing to remember is to greet everyone with a firm handshake. 
+Modals
+You should/must/have to/ought to be careful when stating your opinions.
+You should not/must not/ought not to stare at someone with a disability.
+You can wear only business attire.
+
+____________________
+
+Here are useful questions when asking someone about his/her travel experience, personal preferences, and/or family to break the ice before a business meeting.
+
+How is/are/was/were... (in...)?
+Did you have a good/nice/pleasant/great...?
+What do you think of/about... (in...)?
+What/How about...?
+Do you like/enjoy...?
+ 
+Here are common structures used when describing one's travel experience, personal preferences, and family during small talk.
+
+Adjectives with infinitives
+It's good to see you again.
+It's nice to be here.
+It felt great to experience the local culture.
+
+Verbs with gerunds or infinitives
+I enjoy working with colleagues from other countries.
+I like going on business trips.
+I plan to bring my entire family here for a holiday.
+
+____________________
+
+stands out: is easily noticeable
+
+Mika stands out from her co-workers as she is the most efficient, punctual and detail-oriented employee.
+
+"One of the reasons this range stands out is the ingredients."
+
+inherited: received money or property from a person, usually someone who has died
+
+Will inherited some land from his uncle, who had no children.
+
+"... farmers who have often inherited land from father to son."
+
+agribusiness: an industry which applies commercial principles to farming activities
+
+Agribusiness concerns itself with the supply and demand of farming tools and equipment to farms.
+
+"Aïssata Diakite launched the company, Zabbaan, in 2016 after studying agribusiness in France."
+
+certification: an official document allowing someone to do something legally or professionally
+
+After passing an exam, Michaella received her certification as a professional physical therapist.
+
+"The next step is organic certification, which will allow her to trade internationally."
+
+essential: needed and important
+
+Water is essential to life as all living things need it for continued survival.
+
+"We just had a focus group taste it, which is essential."
+
+diaspora: a community or group of people who have moved away from their original homeland
+
+In the past, a diaspora of European immigrants moved to America to start a new life.
+
+"... because, she's a young lady of the diaspora who left that country to return and invest in her country."
+
+innovation: the act or process of using a new concept, idea, system, etc. to make something better
+
+Innovations in technology and communication helped developed the wireless devices we use today.
+
+"Diakite has claimed nearly a dozen awards for innovation."
+
+Grammar tip: Restrictive and nonrestrictive clauses with "which"
+
+Restrictive and nonrestrictive clauses give information about nouns or noun phrases without starting another sentence. These clauses usually begin with relative pronouns.
+
+The relative pronoun which is used to refer to things.
+
+A restrictive clause gives information that is needed in order to understand a sentence correctly.
+
+"There are some raw materials which no one is farming."
+
+"They are often products which are used in traditional African medicine."
+
+A nonrestrictive clause gives extra but nonessential information. Removing nonrestrictive clauses do not change the meaning of sentences.
+
+"We just had a focus group taste it, which is essential."
+
+"The next step is organic certification, which will allow her to trade internationally."
+
+More examples:
+
+Restrictive clauses
+The family bought the car which can fit eight people inside.
+The participants prepared the material which will be used for the seminar.
+
+Nonrestrictive clauses
+Before going to work, Henry drinks coffee, which wakes him up and energizes him.
+The make up company revealed the new lipstick, which has multiple shades and comes in liquid and stick form.
+
+_______________________
+
+COMMERCIAL VEHICLES
+vehicles that are used by a company to transport products or passengers
+
+B. & Co. Farms, Inc. uses commercial vehicles, such as trucks, to transport the fruits and vegetables they will sell.
+
+STARTUP
+a new business
+
+To operate in full capacity, the startup needed more investors.
+
+AUTONOMOUS
+able to work or operate without being directly controlled by a person
+
+Autonomous cars use a combination of sensors and software to change lanes, speed up or slow down.
+
+INTEGRATED
+made a thing a part of something bigger
+
+To show variety, different types of dances were integrated into the two-hour performance.
+
+FORGE
+to create or form a relationship, often with a lot of effort
+
+After multiple talks, the two countries forged an alliance that would lead to economic benefits.
+
+VENTURE CAPITAL
+relating to money or funding that is invested to small or new companies
+
+A venture capital corporation invested $3 million to a startup because the startup's products were impressive and useful.
+
+DEPLOY
+to organize and send out something or someone for a specific purpose
+
+The police department will deploy a few officers to help control road traffic during the parade.
+
+_______________
+
+Giving the floor to someone else
+(Name of person), the floor is yours.
+
+I'd like to call on (name of person) to continue with …
+
+I'd like to hand over to (name of person), who is going to lead the next point.
+
+Are there any more comments?
+
+What do you think, (name of person)?
+
+
+What do you think about this proposal?
+
+Would you like to add anything, (name of person)?
+
+
+Has anyone else got anything to contribute?
+
+(Name of person), is there anything on your mind?
+
+Are you sure about …?
+
+Could you please tell us …?
+
+Can you please explain …?
+
+Why did you decide …?
+
+(Name of person), your new task/assignment is …
+
+(Name of person), would you mind [verb+ing] …?
+
+Let's put this to a vote.
+
+By show of hands, let's decide …
+
+
+Are we ready to make a decision?
+
+
+Let's please settle down.
+
+
+Everyone, I'm sure we can do this quietly.
+
+
+Keeping the meeting on time
+
+Please be brief.
+
+
+Keep to the point, please.
+
+
+I'm afraid we've run out of time.
+
+Keeping the meeting on time
+
+We'll have to leave that to another time.
+
+
+Well, that seems to be all the time we have today.
+
+
+Why don't we return to the main focus of today's meeting.
+
+The meeting is closed.
+
+
+I declare the meeting closed.
+
+
+This meeting is adjourned.
+
+Here are useful phrases when leading a meeting.
+
+..., the floor is yours.
+..., do you have something/anything in mind?
+What do you think...?
+Does everyone agree that...?
+Your new task/assignment is...
+Why don't we return to the main focus of today's meeting?
+I'm afraid...
+The meeting is adjourned/closed.
+I declare the meeting closed.
+ 
+Here are useful structures when giving the floor to someone, keeping the order, and closing a meeting.
+
+Infinitives
+
+Has anyone else got anything to contribute?
+Are we ready to make a decision?
+
+Let's + (base form of a verb)
+
+Let's put this to a vote.
+By show of hands, let's decide...
+Let's (all) settle down.
+
+Please + (base form of a verb)
+
+Please make it brief.
+Keep to the point, please.
+ 
+Modals with or without gerunds and infinitives
+
+I'd like to call on...to...
+Can/Could you (please) tell us/explain/etc...?
+Would you mind taking over/taking the minutes/etc..?
+I'm sure we can do this quietly.
+We'll have to leave that to another time.
+____________________
+
+Phrases for starting the meeting
+
+Good morning, everyone. Shall we begin?
+
+
+Good afternoon. This meeting is called to order.
+
+During our last meeting ...
+
+When we met last week ...
+
+Phrases for introducing and discussing the agenda
+
+Today, we're here to give our status reports.
+
+This meeting will focus on ...
+
+When we met last week ...
+
+We need more information on that matter. Let's discuss it next week.
+
+
+Shall we listen to David's report now?
+
+
+Let's start with ...
+
+
+Does anyone have any more ideas?
+
+I would like to get your suggestions for ...
+
+I think that's ...
+
+
+Those are all really good suggestions.
+
+
+Yes, that's important to consider.
+
+Phrases for ending the meeting
+So today we heard from ...
+
+
+It looks like our plans are all prepared now.
+
+
+We will meet again next week.
+
+On Thursday we will meet about ...
+
+The meeting is now adjourned.
+
+
+That will be all for today.
+
+
+That's all for now.
+
+Here are useful phrases for conducting a business meeting:
+
+Good morning/afternoon/evening. This meeting is called to order.
+Today we're here to...
+This meeting will focus on...
+Let's start with...
+Shall we...?
+Does anyone have anything to add? 
+Does anyone have any more ideas? 
+I would like to get your suggestions for...
+I think that's...
+Those are all (really) good suggestions.
+We need more information on that matter.
+Today we heard from...
+That's all for now.... 
+We will meet again on/next...
+On/Next...we will discuss...
+The meeting is now adjourned. 
+ 
+Gerunds and infinitives are useful for reviewing and reporting on past meeting agendas.
+The TV ads started airing last Monday.
+We agreed to work with some travel agencies.
+ 
+Will and going to are used to talk about plans for achieving targets. 
+
+We will discuss updates on our tie-up with travel agencies next week.
+A few travel agencies are going to provide gift certificates to our hotels.
+____________________
+
+Minutes are formal written records of a meeting. They usually describe the events of the meeting. They include a list of the people present, issues discussed, information shared, and decisions made or actions taken.
+
+Title (including the purpose of the meeting and the group that is meeting):
+Minutes of the Regular Board Meeting
+
+Date/Time:
+May 27, 2009
+
+Venue:
+Healthy Habits Conference Room
+
+Attendance and certification that a quorum is present
+Present were:
+Absent were:
+Quorum present?
+
+Call to order
+The meeting was called to order at ... by ...
+
+Approval of past minutes
+The minutes of the ... were approved ...
+
+Reporting the proceedings
+... reported that …
+... congratulated ...
+... introduced ...
+... gave the report ...
+... proposed ...
+... moved that ...
+The motion was seconded ... voted on ... approved.
+
+Ending the meeting
+The meeting adjourned at ...
+
+
+Here are the basic part of the minutes:
+
+Title (including the purpose of the meeting and the group that is meeting)
+Minutes of the Regular Board Meeting
+ 
+Date/Time
+May 27, 2009
+ 
+Venue
+Healthy Habits Conference Room
+ 
+Attendance and certification that a quorum is present
+Present were:
+Absent were:
+Quorum present?
+The following are common phrases used when taking the minutes:
+
+Call to order
+The meeting was called to order at ... by ...
+ 
+Approval of past minutes
+The minutes of the ... were approved ...
+ 
+Reporting the proceedings
+... reported that …
+… congratulated ...
+... introduced ...
+... gave the report ...
+... proposed ...
+... moved that ...
+The motion was seconded ... voted on ... approved.
+ 
+Ending the meeting
+The meeting adjourned at ...
+____________________
+
+SHORT OF
+referring to a person or a thing that does not have enough of something
+
+Paris has a lot of museums, so tourists will never be short of places to visit.
+
+GIG ECONOMY
+A gig economy is a system in which temporary jobs are more common. Unlike in a traditional economy where employees' jobs are long-term and full-time, jobs are usually short-term in a gig economy.
+
+TAKING OVER
+replacing someone or something
+
+The machine is malfunctioning, so the election officers are taking over by manually counting the votes.
+
+KARAOKE
+related to an activity where a person sings along to recorded music with the words edited out, while lyrics are displayed on a screen
+
+Brit and her friends were singing and dancing inside the karaoke room.
+
+SOUNDPROOF
+referring to a closed area where sound cannot get in or out
+
+The people inside the soundproof studio cannot hear the raging storm outside.
+
+FREELANCERS
+workers who work for people or companies on a short-term basis. They may have several projects simultaneously.
+
+The publishing company hired freelancers to write articles for the first few months of its new online magazine.
+
+SHAKE UP
+to make many changes to how something is done
+
+The presidential candidate wants to shake up the economy by inviting more foreign companies to invest in the country.
+
+HARD-PRESSED
+referring to someone or something experiencing a lot of difficulty
+
+The hard-pressed basketball team visibly struggled during the game when the
+
+__________________
+
+ROMANTICIZE
+to think or say that someone or something is better or more exciting than what the reality is
+
+Some people tend to romanticize the idea of quitting work to travel, not realizing the amount of planning and money that's needed for traveling to even be possible.
+
+SLAP (SOMEONE) ON THE BACK
+to give someone praise or congratulations
+
+Whenever the team launches projects successfully, we slap each other on the back.
+
+FLIP SIDE
+the reverse or opposite aspect of something
+
+While chemotherapy is used to treat cancer, its flip side includes weakness and hair loss in a patient.
+
+MULTITUDE
+a large number of things
+
+Rushing the completion of the project can have a multitude of problems, including sacrificing the quality of the output.
+
+COMPOUNDED
+added something to make another thing, such as a problem, worse
+
+The bad storm compounded with the already poor structure of the house, causing it to collapse.
+
+DISCONCERTING
+describing something or someone that makes a person feel upset, confused or embarrassed
+
+Chris's consistent tardiness is disconcerting to his co-workers, as they would need to wait for him before starting any team task.
+
+TIED TO (SOMETHING)
+to be dependent on something
+
+Carl is tied to an imporant dinner engagement that would determine his promotion to manager.
+
+SURVEYED
+carefully looked or examined the condition of something or someone
+
+An academic group surveyed a tribe to know about their unique customs and traditions.
+
+SUBSEQUENTLY
+happening after a previous event
+
+News of the CEO's resignation had subsequently spread to the entire company after the initial morning announcement.
+
+OFFSET (SOMETHING)
+to balance the effect of something with another thing
+
+The company's adjustment to its employees' salaries will help offset the inflation of prices in the market.
+
+_____________________
+
+Opening the presentation
+
+To open the presentation, you need to welcome the audience.
+
+Kristine: Good morning, everyone. Thank you for coming!
+
+
+Then, you should introduce yourself. State the purpose of your presentation. Tell the listeners what the presentation is about.
+
+Kristine: My name is Kristine Rivera from the IT department. I'm here to talk about my department.
+
+Introducing your topic in an interesting way
+
+You can also use a startling statement or a quotation.
+
+Kristine: As Jim McCarthy once said, "You can’t have great software without a great team, and most software teams behave like dysfunctional families."
+
+
+You can also ask a rhetorical question.
+
+Kristine: Have you ever wondered exactly what your IT department does for you?
+
+Phrases for welcoming the audience
+Good morning/afternoon/evening, everyone. Thank you for coming.
+
+Good morning/afternoon/evening, everyone. Thank you for having me.
+
+Good morning/afternoon/evening, everyone. It's a pleasure/an honor to be here. (Formal)
+
+Infinitives are useful for introducing yourself and stating the purpose of your presentation.
+
+My name is ... from ... I'm here to talk about/discuss/etc. ...
+I'm ...  from ... I'd like to introduce/present/etc. ...
+ 
+Here are useful structures for introducing your topic in an interesting way:
+
+Conjunctions
+I remember when ...
+Did you know that ...?
+... is an important topic because ...
+
+Adjectives with infinitives
+It's important to know ...
+It's essential to understand ...
+
+The present perfect tense in rhetorical questions
+Have you ever thought about/wondered/wanted/etc. ... ?
+
+CONCLUSION
+
+Summarizing
+
+Before ending your presentation, you will want to briefly repeat the main points discussed in the body.
+
+Kristine: Let me give you a recap. First, I discussed our department's history. Second, I talked about our main projects. Lastly, I talked about our new role in the organization.
+
+
+
+You can thank your listeners again.
+
+Kristine: Thank you for coming. I hope you learned a lot about the IT department from my presentation.
+
+You can also give people the opportunity to ask questions.
+
+Kristine: I will be happy to answer your questions now. Anyone?
+
+First, … Second, … Third, …
+
+First of all … then … next … after that … finally/lastly …
+
+To start with … later … to finish up …
+
+
+In conclusion, …
+
+In conclusion, our team has a wide range of expertise behind it.
+
+To sum up, …
+
+To sum up, our main project right now is to complete our archives.
+
+Let me give you a recap.
+
+Let me give you a recap. First, I talked about our team's goals. Next, I shared with you our vision.
+
+Let's summarize what we've discussed.
+
+I'd like to conclude by …
+
+I'd like to conclude by sharing with you what one of our clients said.
+
+Thank you for coming.
+
+Thank you for listening.
+
+Well, that's it from me. Thanks very much.
+
+Thank you all for listening. It was a pleasure being here today.
+
+That brings me to the end of my presentation. Thank you for listening/for your attention.
+
+Does anyone have any questions?
+
+I will be happy to answer your questions now.
+
+If you have any questions, please don't hesitate to ask.
+
+If you have any further questions, I will be happy to talk to you at the end.
+
+Here are phrases you can use in the conclusion part of a presentation.
+
+Let me give you a recap.
+In conclusion,...
+Let's summarize...
+Are there any questions?
+ 
+Infinitives and gerunds are useful for sequencing and summarizing ideas and for closing a presentation.
+
+To start/begin with,...
+To summarize/sum up/conclude,...
+I'd like to conclude by saying/telling/sharing/etc...
+Thank you (all) for coming/listening.
+It was a pleasure/ an honor being here today.
+ 
+Adjectives with infinitives are useful for inviting questions at the end of a presentation.
+
+I'll be happy/glad to answer your questions.
+If you have any (further) questions, I’ll be happy/glad to answer them.
+
+____________________
+overwhelming: having a very great amount, number or effect
+
+The political candidate received overwhelming support from thousands of supporters.
+
+"At times, the scale is overwhelming. I mean, we participate in every major city, every continent."
+
+married (something) with (something): combined something with something else
+
+Some bakeries married brownies with donuts to create the bronut.
+
+"... so we just said, 'Well, what if we actually married fake grass [with] the bottom of your shoe?'"
+
+enduring: able to continue or last long
+
+The country's enduring traditional festivals are still celebrated around the nation today.
+
+"I'm incredibly excited to have this enduring brand of the NBA -- decades old -- meet this innovation brand of Nike, come together."
+
+case study: a real-life scenario that can be studied in order to learn something
+
+Kim conducted a case study that investigated the effects of social media to people's lifestyles.
+
+"Our process [of] designing the jersey is kind of a case study of the way that I think we design."
+
+intel: also intelligence; useful information about a certain subject of interest
+
+The police received intel from a reliable source that a robbery was going to take place at the bank.
+
+"Typically, we will start lots of our design work with intel from the NSRL -- Nike Sports Research Lab."
+
+distractions: things that prevent someone from giving their full attention to something that they are doing
+
+Distractions in the office, such as non-work-related internet browsing, can affect a team's productivity.
+
+"We start with knowing exactly what those bodies are meaning to do, where their friction points are, where their distractions are ..."
+
+ventilate: to allow fresh air in and move around an area
+
+The tiny holes on the side of the workout shirt can ventilate the wearer during sports activities.
+
+"... what you see in the lower area is where we need the garment to really ventilate."
+
+specialized: concentrated on a specific job or field; focused on doing a specific task or activity
+
+Wilson specialized in computer science so he was able to secure a job in the IT department.
+
+"We actually have a design team that specialized in knit and they'll design all these knit structures ..."
+
+applied: used something, such as a material or method
+
+The designer applied different kinds of fabric to the dress that he created for the fashion show.
+
+"You can see exactly then how we've taken the original kind of swatches and then applied them through the design."
+
+stabilize: to make something steady
+
+The injured patient was given a cast to stabilize his arm, avoiding further damage.
+
+"... we're using this kind of lock-down effect around the heel to really stabilize him -- lock him in."
+
+iconic: very famous or popular symbol of something
+
+The Eiffel Tower is an iconic landmark in Paris.
+
+"And then, 'Is there a cultural, iconic narrative that's baked into the uniform that breeds emotion?'"
+
+Grammar tip: Common suffixes that form nouns
+
+Suffixes are groups of letters that are added to the end of words to form other words. Some suffixes can be used to form nouns.
+
+The suffixes -ation and -ment mean "an action or a result of an action."
+
+"I'm incredibly excited to have this enduring brand of the NBA -- decades old -- meet this innovation brand of Nike, come together."
+
+"We try and understand the movements of the athletes, the forces that are on their body ..."
+
+The suffix -ism means "an act, belief, practice or behavior."
+
+"We believe that they're going to show us whole new chapters of athleticism in the game -- take the game some place new."
+
+More examples:
+
+The preparation of raw materials for creating shoes takes a long time.
+Designers need to take criticism constructively so they can improve their work.
+One of the company's biggest accomplishments is its partnership with a popular NBA team.
+______________
+
+ARRAY
+a large group, collection or set of things
+
+There is an array of phones and laptops for sale in the electronics store.
+
+BOOMING
+increasing, developing or growing very quickly
+
+The restaurant's business has been booming due to the large number of customers who come in and eat.
+
+BIO-DEGRADABLE
+describing something that breaks down or separates into small pieces over time due to natural processes, and does not damage the environment as a result
+
+Some examples of bio-degradable items are paper and most foods.
+
+SIMULATE (SOMETHING)
+to imitate or copy something
+
+In training, medical students use dolls or mannequins to simulate patients.
+
+THREE-DIMENSIONAL PRINTER
+a machine that creates solid objects by building up multiple layers based on a digital file
+
+Once Jules obtained the proper files, he used his three-dimensional printer to create small figures of people and animals.
+
+PROTEIN
+a substance found in food such as meat and milk that people need to eat to grow and remain healthy
+
+People who want to build their muscles are encouraged to eat food that is high in protein.
+
+VENTURE CAPITAL FUNDS
+groups, organizations or people that manage money invested in small businesses or start-ups
+
+The manager of the venture capital fund chose three new businesses to put investors' money into: a restaurant, a clothing store, and a salon.
+
+_____________
+
+"Which" often introduces a clause describing an object, animal or place.
+
+My phone, which I bought yesterday, is lost.
+
+"Which" can also introduce a clause describing the whole sentence (not just an object, animal or place) that goes before it.
+
+I've lost my cell phone, which means I need to buy another one.
+I feel like it was all my fault, which is not very comforting.
+
+"Whom" describes a noun or pronoun that is receiving the action in the clause. It can usually be replaced with "that," or it can be completely removed.
+
+The woman whom Sophie is speaking with is her client.
+The woman that Sophie is speaking with is her client.
+The woman Sophie is speaking with is her client.
+
+"Whose" talks about ownership. It goes between a noun and the object owned by the noun.
+
+Employees whose promotions have been announced went out to celebrate.
+The passenger whose seat you took looks very upset.
+
+"Which," "whom," and "whose" are relative pronouns that sometimes cause confusion.
+
+"Which" often introduces a clause describing an object, animal, or place. It can also introduce a clause describing the whole sentence (not just an object, animal or place) that goes before it.
+ 
+"Whom" describes a noun or pronoun that is receiving the action in the clause. It can usually be replaced with "that," or it can be completely removed.
+ 
+"Whose" talks about ownership. It goes between a noun and the object owned by the noun.
+_________________
+
+Restrictive clauses provide information about a noun.
+
+Restrictive clauses give information that you need in order to understand the sentence correctly. They are not enclosed by commas.
+
+The player who has the number 10 printed on his shirt is the team captain.
+
+If you take the restrictive clause away, the sentence loses very important information. You can no longer distinguish who among the players is the team captain.
+
+The player is the team captain.
+
+Nonrestrictive clauses also provide information about a noun.
+
+Unlike restrictive clauses, nonrestrictive clauses give extra information. They are always written between commas.
+
+Player number 10, who is the team captain, will take the trophy home.
+
+If you leave out the nonrestrictive clause between the commas, the sentence still gives the same basic information.
+
+Player number 10 will take the trophy home.
+
+_________________________
+
+staple goods
+
+items that are needed and bought often and regularly.
+Examples: bread, toilet paper
+
+
+impulse goods
+
+items that can be bought easily and usually without planning, simply because one suddenly wants to.
+Examples: candy bars, fashion magazines
+
+
+emergency goods
+
+items that are bought because they are suddenly needed.
+Examples: medicine, umbrellas
+
+
+unsought goods
+
+items that are not usually searched for by buyers. These goods need to be presented and the buyers convinced that they need them.
+Examples: cemetery plots, life insurance plans
+
+shopping goods
+
+items that are bought only after careful comparison with other brands in terms of quality, cost, and style.
+Examples: cars, computers, furniture
+
+
+specialty goods
+
+items that have unique characteristics that make buyers still willing to buy them even if they cost more than regular goods.
+Examples: sports cars, athletic shoes, designer bags
+
+durable goods
+
+items that can be used many times and do not spoil.
+Examples: clothing, repair tools
+
+
+non-durable goods
+
+items that are meant to be drunk/eaten, completely used up, or used only a few times then thrown away.
+Examples: food, soap, make-up
+
+____________________________
+
+Gerunds and infinitives are useful when starting a product presentation.
+
+I'm here to talk about/discuss/etc...
+I'd like to introduce/present/show/etc...
+I'd like to begin by presenting/showing/etc...
+ 
+Here are useful structures for introducing your product in an interesting way.
+
+Conjunctions
+I remember when...
+Did you know that...?
+...is an important topic because...
+
+Adjectives with infinitives
+It's important to understand...
+It's essential to know...
+It may be helpful to recall...
+
+Reporting verbs
+...said/stated/told/etc. (that)...
+
+The present perfect tense in rhetorical questions
+How many/much...have you...?
+Have you ever thought about/wondered/wanted/etc…?
+___________________________
+
+Here are phrases you can use when discussing ideas in a product presentation.
+
+For instance,...
+A good example of this is...
+That's it for...
+Let's (now) move on to...
+(So) What does this mean?
+Where does this leave us?
+You raise an interesting point. My answer to that is...
+I'm afraid that is beyond my topic/field of expertise.
+Let's tackle/discuss that at the end of the presentation, shall we?
+ 
+Infinitives and participles are useful when giving examples, analyzing points, and moving to the next ideas during a presentation.
+
+To illustrate/demonstrate,...
+Moving on (to the next…),
+To put... in(to) perspective,...
+ 
+Modals and if-clauses are useful when making recommendations.
+
+You may/ might want to...
+What I would do is...
+You must/should/have to...
+If you ask me,...
+ 
+Here are useful structures when dealing with questions.
+
+Adjectives with infinitives
+I'll be happy/glad to answer your questions.
+
+Conjunctions
+I'm sorry, but I don't have that information right now.
+I'll check my resources and then get back to you.
+
+_____________________
+
+Here are phrases you can use to conclude a product presentation:
+
+That completes/covers/brings (me/us)...
+In conclusion, (let me…)...
+Let's summarize/recap...
+Let's look back (for a moment) on...
+Are there any/Do you have any questions?
+That's a/an...point/question/comment.
+I'm afraid...
+Does that answer your question?
+I'd like to thank you all on behalf of...
+ 
+Gerunds and infinitives are useful when summarizing and closing a presentation.
+
+I'm going to conclude by saying/quoting/inviting/etc...
+To go back to/recap/summarize/sum up/conclude,...
+Thank you for coming/listening/participating/etc...
+ 
+Here are useful structures when handling questions:
+
+Modals
+Can/Could you go over that again (, please)?
+I'm sure (name of person) can/could answer this question.
+
+Conjunctions
+If I understand you correctly, you are saying/asking if...
+I'm sorry, but I don't have that information at this moment.
+I'll get back to you if time permits.
+
+________________
+
+
+In order to effectively give a persuasive presentation, you should:
+
+Identify your goal
+
+The goal is to sell $20,000 worth of computer equipment.
+
+Identify your main idea
+
+The ad agency's computers will soon be outdated and upgrading their computer equipment will increase their profitability by 50 percent.
+
+Provide supporting details
+
+In fact, 200 people bought our product within the first five minutes after it was launched.
+Actually, recent surveys disprove this argument.
+
+Create a feeling of urgency
+There is a limited time for this offer.
+Now that you know the benefits of this product, when will you decide to switch?
+
+Change statements to questions
+Isn't it that more consumers prefer Brand X to Brand Y?
+Don't you think that replacing your computers now would help you prepare for the end-of-the-year rush?
+
+You may use modals of obligation followed by infinitives to create feeling of urgency:
+
+Must...
+
+The company must take advantage of this positive stock performance so...
+
+Have to...
+
+The employees have to improve their customer relation skills so that...
+
+Should...
+
+Company ABC should increase their marketing budget allocation in order to...
+
+You may also you conjunctions and conjunctive adverbs when providing supporting details:
+
+Conjunctions
+
+while...
+as far as...
+so that...
+now that...
+
+Conjunctive adverbs
+
+in addition...
+for example...
+on the contrary...
+furthermore...
+meanwhile...
+___________________
+
+
+_____________________
+Pasive voice
+
+![](./Images/pasive%20voice.png)
 
 
 __________________________
