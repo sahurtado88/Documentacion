@@ -463,7 +463,37 @@ test condition or [condition] or [[condition]]
 
 ### Comparion Operators with test command
 
+![](./Images/comparasionoperators.png)
+0 is true 1 is false
 
+### File text operators
 
+![](./Images/filetextoperators.png)
+0 is true 1 is false
 
-### 
+## Command chaining operators
+
+are useful to combine several commands so that we can write simple and short shell scripts
+
+chainging operators are:
+ - semi colon ; cmd1 ; cmd2 run cmd1 and cmd2, sin importar si es exitoso o no el cmd1 which jenkins; ls
+ - logical and && cmd1 && cmd2 run cmd2 only if cmd1 succeeded
+ - logical or || cmd1 || cmd2 run cmd2 only if cmd1 failed which apache2 || echo "apache2 is not installed"
+ - logical and or operator && || cm1 && cmd2 || cmd3 run cmd2 if cmd1 is success else run cmd3
+
+ 2>&1 redirects standard error (2) to standard output (1), which then discards it as well since standard output has already been redirected.
+
+ >> /dev/null redirects standard output (stdout) to /dev/null, which discards it.
+
+ El número 1 representa a la salida estándar stdout y el número 2 representa a la salida de errores stderr.
+
+2>&1
+Aunque no es totalmente preciso, este es uno de los trucos que puedes utilizar para acordarte: utilizar 2>1 puede parecer una buena idea para redirigir los errores a la salida estándar. Sin embargo, esto significa "redirige la salida de errores a un archivo llamado 1". Así que gracias al símbolo & podemos distinguir los archivos normales de los descriptores especiales: 1 es un archivo llamado 1 y &1 es el descriptor de la salida estándar (stdout).
+
+## Executing block of code using {}
+
+```
+#!/usr/bin/env bash
+which docker && { echo "docker is installed on this host" ; echo "the docker version is: $(docker -v)" ; }
+
+```

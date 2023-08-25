@@ -11,3 +11,5 @@ Istio sidecar injection
 ```
 kubectl label namespace <deafult> istio-injection=enabled
 ```
+
+Istio simplifies Envoy, istio understands Kubernetes

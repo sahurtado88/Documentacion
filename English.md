@@ -1,3 +1,15 @@
+The verb "to be" is used to connect a description/characteristics to the subject. Here are ways to use the verb "to be" with other parts of speech:
+
+"to be" followed by a noun or noun phrase
+Christopher is a chemical engineer.
+ 
+"to be" followed by an adjective
+Helen is extremely talented.
+ 
+"to be" followed by verb + ing to show continuous action
+They will be joining the seminar on Friday.
+
+_____________________
 stilted: This refers to something that appears unnatural and funny from being too formal. The talk show host spoke very well, but his guest spoke in a stilted way.
 
 "... you always had to speak to it in a very, kind of, stilted language ..."
@@ -3701,8 +3713,773 @@ furthermore...
 meanwhile...
 ___________________
 
+HAND IN HAND
+closely connected or related
 
+Tristan believes that hard work and success usually work hand in hand.
+
+TOOK CENTER STAGE
+attracted a lot of attention or interest
+
+Every dish served at the event looked and tasted great, but the beautifully-made gigantic cake definitely took center stage.
+
+CONCEIVED
+formed an idea and ways to do it
+
+The fashion designer's new set of clothes was conceived with the idea of using only recycled materials.
+
+CONJURE UP (SOMETHING)
+to make or achieve something challenging or surprising
+
+The manager was able to conjure up a detailed project proposal in less than 24 hours.
+
+EYE-CATCHING
+noticeably attractive or unusual
+
+The diamonds on the model's gown were eye-catching especially when the light hit them.
+
+FROCK
+dress
+
+Mary used her mother's old frock as her own wedding dress.
+
+APPLIQUED
+When something is appliqued, it has shapes or other small decorations attached or sewn to it.
+
+Hannah bought a blanket with heart-shaped cutouts appliqued all over the fabric.
+
+UNDULATE
+slowly move up and down like waves on the sea
+
+The dancers undulate gracefully along with the soft background music.
+
+PHENOMENAL
+extraordinary or outstanding
+
+When the first iPhone was released, many people thought it was a phenomenal product.
+
+UNNERVING
+scary or disturbing
+
+Elizabeth finds the loud ticking of the clock on a quiet night very unnerving.
+
+___________________
+
+
+Infinitives and gerunds are useful for asking and answering questions as well as expressing opinions in a Q&A session.
+
+Just to clarify ... ?
+I just want to say that ...
+Thank you for expressing your opinion on ...
+ 
+We can use conjunctions to provide details when answering questions.
+
+We understand that ... , but ...
+We ... because …
+
+________________________
+
+
+steampunk: relates to a type of science fiction that is usually set in the past and features machines powered by steam
+
+The movie shows several steampunk elements, such as a steam-powered wheelchair and a mechanical train.
+
+"From its steampunk machine rooms ..."
+
+icon: a famous symbol or representation of something
+
+The White House is one of the important icons of the United States.
+
+"... the Eiffel Tower ... is a moving, humming tourist center that's been an icon of the French capital ..."
+
+test runs: acts of trying a product or process to see if it works correctly
+
+The company made several test runs of its new aircraft before launching the vehicle to the public.
+
+"Henri-Claude, one of the elevator mechanics, is making the daily test runs."
+
+turn-of-the-century: relates to the time when one century ends and the next one begins
+
+A grand turn-of-the-century party was held in Times Square on the eve of January 1, 2000.
+
+"Some of the elevators are still hydraulic, true to their turn-of-the-century origins."
+
+summit: the highest point or surface of something
+
+It took Peter and his friends two days to reach the mountain's summit.
+
+"... on top a ray of light appears to circle the summit."
+
+faint of heart: describes a person who lacks the courage to handle unpleasant or dangerous situations
+
+The race car driver says that racing is not for the faint of heart.
+
+"... it isn't a job for the faint of heart."
+
+wind up: end or finish
+
+The engineer said that the building's construction is expected to wind up in three days.
+
+"Repairs to the lamps are scheduled to wind up in two weeks ..."
+
+Grammar tip: Verb + infinitive
+
+An infinitive is a verbal made by combining to + a verb in its base form.
+
+There are certain verbs that can be followed by infinitives. There are no fixed rules about which verbs are followed by infinitives. We learn them by exposure and practice. Below are examples of verbs followed by infinitives in the video:
+
+"The top is where everyone wants to go …"
+
+"Proposals tend to happen at night …"
+
+"It's a view not many will get to experience ..."
+
+More examples:
+
+The senator refused to say anything about the issue.
+The team decided to go on a vacation during the weekend.
+The company plans to have its year-end party at a five-star hotel.
 _____________________
+
+immortalized: made someone or something unforgettable and be remembered for a long time
+
+The conqueror's name was immortalized when the land was named after him.
+
+"... and his character Mario Conde immortalized in a Netflix mini-series."
+
+relatively: in a way that is compared to someone or something else
+
+The second-hand car is relatively new since the seller only used it for a month.
+
+"... and the 61-year-old is relatively little-known."
+
+acclaim: strong praise
+
+The company's innovative products received much acclaim.
+
+"Padura won international acclaim ..."
+
+slew: a large amount
+
+The secretary has a slew of tasks to finish today.
+
+"... thousands of books sold and a slew of prizes under his belt ..."
+
+under (one's) belt: having achieved or experienced something
+
+The company's CEO has nine years of field work under his belt.
+
+"... thousands of books sold and a slew of prizes under his belt ..."
+
+outskirts: the area that is far from a city's center
+
+The business district is about ten miles away from the outskirts of the city.
+
+"... to remain in his childhood home on the outskirts of Havana ..."
+
+anonymity: the state of being unknown
+
+The witness of the crime was given anonymity during an interview with the news reporter.
+
+"... Padura's relative anonymity at home ..."
+
+roots: a person's family history or the place where he comes from
+
+The migrant worker's unique cultural practices can be traced back to his roots.
+
+"... at home has allowed him to stay in touch with his roots."
+
+Grammar tip: The passive voice
+
+The passive voice is a type of sentence form. We use this when we want to emphasize the thing or person receiving the action, instead of focusing on the person or thing doing the action.
+
+The passive voice sentence form is constructed this way: subject + helping verb + past participle. Below are some examples found in the video.
+
+"[His books have been] translated into 20 languages ..."
+
+"... his character Mario Conde [is] immortalized in a Netflix mini-series."
+
+"... his books are published in limited batches ..."
+
+More examples:
+
+Our project has been approved.
+This old building was built in the 19th century.
+The presentation is being delivered by the marketing team.
+____________________
+
+Open leadership styles
+
+
+democratic/participative
+
+the leader lets his subordinates be part of the decision making but retains the final authority
+
+
+people-oriented
+
+organizes, guides and supports the team towards accomplishing a task. The focus is on the people doing the job, not on actually getting the job done.
+
+
+transformational
+
+the leader identifies the needed change, creates a vision, inspires the team to share the vision, and gains their support in working towards reaching it. This style involves a lot of communication and delegation with the team members.
+
+Closed leadership styles
+
+
+autocratic/authoritarian
+
+the leader decides, directs and controls all activities without asking input from subordinates
+
+
+bureaucratic
+
+makes sure everyone follows procedures and does all things in exactly the way they have always been done
+
+
+task-oriented
+
+plans, organizes and guides towards accomplishing a task. This style focuses on getting the job done, not on the people doing the job.
+
+
+transactional
+
+the "transaction" is that "the company pays you to do your job." This style uses rewards for employees when they do a good job and punishment when they don't.
+
+_________________
+PRANKS
+tricks that are meant to surprise people
+
+In 1957, a television program made one of the greatest pranks in history. It made people believe that spaghetti noodles grow on trees.
+
+AUCTION
+a public event where items are sold to the person who offers to pay the highest amount of money
+
+Chris offered to pay $30,000 for the old jar at the auction. Because no one wanted to pay more than that, Chris got the jar.
+
+STUNT
+an unusual or interesting action done to get public attention
+
+For the man's last stunt, he jumped through a ring of fire.
+
+PERFORMANCE ART
+a form of art that is meant to be presented to a live audience
+
+Musical plays and ballet shows are some examples of performance art.
+
+REHEARSAL
+an event in which people practice a performance that they will later show in public
+
+The band members had a rehearsal on stage before the actual concert.
+
+IDENTICAL
+referring to something that is exactly the same as another thing
+
+The bank employee carefully checked if the clients' signatures were identical to the ones in the bank's records.
+
+SHOOTS UP
+increases very quickly by large amounts
+
+When the price of crude oil shoots up, gas becomes more expensive, too.
+_______________
+
+I'd like to start by ...
+
+I'd like to start by explaining why I am in favor of opening an office in Singapore.
+
+
+Let's begin by ...
+
+Let's begin by discussing the benefits of this merger.
+
+
+First of all, I'll ...
+
+First of all, I'll explain why I am in favor of the merger.
+
+
+I've told you about ...
+
+I've told you about how opening an office in Singapore will boost our international image.
+
+
+That's all I have to say about ...
+
+That's all I have to say about the subject.
+
+
+We've looked at ...
+
+We've looked at why we need to close this deal right away.
+
+
+Now we'll move on to ...
+
+Now we'll move on to how this will affect our market share.
+
+
+Let me turn now to ...
+
+Let me turn now to how this move will help expand our market share.
+
+
+I'd like now to discuss ...
+
+I'd like now to discuss how that decision will affect our output.
+
+Where does that lead us?
+
+
+Let's consider this in more detail ...
+
+Well, let's consider this in more detail. Opening a new office in Singapore will cost us.
+
+
+What does this mean for our company?
+
+Yes, but what does this mean for our company?
+
+Here are useful phrases for presenting, ending, and analyzing arguments in a debate:
+I'd like to start by...
+Let's begin by…
+First of all, I'll…
+I've told you about…
+That's all I have to say about…
+We've looked at…
+Now we'll move on to…
+Let me turn now to…
+I'd now like to discuss…
+Where does that lead us?
+Let's consider this in more detail.
+What does this mean for…?
+
+The second conditional is used to talk about hypothetical situations. 
+It would boost our image if we had a presence in Asia.
+
+Conjunctions are used to connect similar or opposite ideas.
+We'll have to rent a space and find people.
+That's more cost for now, but more profit in the long term.
+_______________
+
+We'll be examining that point in more detail later on.
+
+
+I'd like to deal with this question later, if I may.
+
+
+Perhaps you'd like to raise this point at the end.
+
+For example, ...
+
+For example, when our competitor switched to a new server, the quality of their service went down.
+
+
+A good example of this is ...
+
+A good example of this is how Facebook now has over 8 million active users.
+
+
+To illustrate this point ...
+
+To illustrate this point, consider how print media is going digital.
+
+
+In conclusion ...
+
+In conclusion, signing this contract can only mean good things for our company.
+
+
+I'd like now to recap ...
+
+I'd like now to recap my points. First, I showed you how outsourcing most of our services can save us money.
+
+
+Let's summarize briefly what we've looked at ...
+
+Let's summarize briefly what we've looked at. First, we saw how going paperless can help our bottom line.
+
+Infinitives are useful when organizing and summarizing ideas in a debate.
+
+For presenting ideas in order of time
+To start/begin with,...
+To finish up,...
+ 
+For giving examples
+To illustrate/demonstrate (this point),...
+ 
+For summarizing ideas
+To sum up/summarize/recap,...
+Certain verbs in the future continuous tense can be used to focus on a point when another one has been raised.
+
+We’ll be examining that point in greater detail later on.
+We’ll be discussing that point in a while. 
+
+Perhaps you'd like to raise this point at the end.
+
+We'll be examining that point in more detail later on.
+____________________
+
+by (one's) own account: according to what a person says himself or herself
+
+By his own account, the new employee did not know much about editing videos; he knew he had to receive training before working on video frames.
+
+"... and by his own account, his career has been full of highs and lows."
+
+highs and lows: both bad and good events in the life of a person or group
+
+The members of the company celebrated their 50th anniversary, remembering all the highs and lows that contributed to their present success.
+
+"... and by his own account, his career has been full of highs and lows."
+
+creature comforts: physical things that make a person's life more pleasant, easier and more comfortable
+
+Some of the creature comforts Raina enjoys when traveling are nice hotel rooms, good food and affordable leisure activities.
+
+"And now, I have got a million-dollar car and quite a few creature comforts."
+
+ousted: forced to leave a position, rank, etc.
+
+The CEO was ousted from her position in the company due to her failing health.
+
+"Musk was ousted as CEO because of internal turmoil."
+
+went public: referring to a company that began selling company shares on the public stock market
+
+Many investors immediately bought shares in the successful car company when it went public.
+
+"But when PayPal went public in 2002 and then was sold to eBay ..."
+
+burning through (something): consuming a lot of something, such as money or other resources, in a wasteful manner
+
+Alice was burning through her first paycheck, buying expensive clothes and bags that she didn't need.
+
+"Their first three rocket launches failed, burning through almost all of the company's assets."
+
+disrupted: created an innovative product or service that changed a certain industry
+
+The arrival of mobile phones disrupted the telecommunications industry, allowing people to communicate quickly and easily from any part of the world.
+
+"It's also successfully disrupted the auto industry."
+
+bailout: the act of saving a company from failure or bankruptcy by providing it with financial aid
+
+The government provided a bailout for the construction company, on the condition that the company would create government buildings at a discount in the future.
+
+"SolarCity's shared quickly lost value, and Tesla had to take over in what was widely seen as a bailout."
+
+flirting with (something): making oneself vulnerable to something unpleasant, such as failure or harm
+
+Fred works as a stuntman; because he regularly performs risky physical actions, he is always flirting with danger.
+
+"... while Musk may have been flirting with bankruptcy and calamity for years ..."
+
+Grammar tip: Present vs past participles
+
+Participles are words that look like verbs but are used as adjectives or adverbs.
+
+Present participles describe the state of an object, or show what an object is used for. They can also be used to change the tense of a verb. Present participles end with the suffix -ing.
+
+"... and it carried an interesting payload: a dummy astronaut riding a Tesla car that was orbiting space."
+
+Past participles are used to describe an action that was done to an object or person. Most past participles end in -ed, -en, -d, -t, or -n.
+
+"The company is valued at over $50 billion."
+
+More examples:
+
+Rica was treasured by her teammates because of her hard work and dedication to her job.
+Peter is stationed in the airport, waiting for his sister who is arriving from abroad.
+The walking woman stopped when she saw a restaurant.
+____________
+
+
+sole proprietorship/single proprietorship
+
+a business organization with only one investor who is solely responsible for all the liabilities and taxes of the business
+
+general partnership
+
+business organization with two or more investors, where each investor is liable for the debts and taxes of the business. The business is dissolved when at least one partner chooses to end his relationship with the company. Personal properties of partners may also be involved in case the company suffers from insolvency.
+
+
+joint venture
+
+a contractual agreement between two or more business organizations in order to do a business activity. Each organization keeps its own identity, and the relationship ends when the business activity ends.
+
+
+limited partnership
+
+similar to a general partnership, but partners are liable to debtors only to the extent of their individual investments
+
+limited liability company (LLC)/limited liability partnership (LLP)
+
+a type of company whose owners receive limited liability and tax benefits of a corporation, without having to follow all corporation requirements. Many professional organizations, such as law and accounting firms, are LLCs.
+
+
+corporation
+
+a company owned by a group of people or companies. A corporation is recognized by law to be a single entity. Ownership in a corporation is based on number of shares of stocks.
+
+
+S corporation
+
+a corporation where 50% of the stocks are owned by very few people. S corporations enjoy the legal benefits of a corporation but is taxed like a general partnership.
+
+affiliate company
+
+a company related to another organization either through common ownership or control
+
+
+conglomerate
+
+a group of companies where the member companies are engaged in different types of businesses
+
+
+parent company/holding company
+
+a company that controls the common stocks, management, and operations of another company, called a subsidiary
+
+
+subsidiary/controlled company
+
+a company that is controlled by a parent/holding company
+
+consolidation
+
+the combination of two or more companies to form one organization. Unlike the merger, a new entity/business name is created with this action.
+
+
+merger
+
+the combination of two or more entities combined to form one organization but, unlike a consolidation, each company keeps its own identity
+
+
+
+non-profit organization/not-for-profit organization
+
+an organization that exists for various causes, such as education or human welfare. Shareholders or partners of such an organization do not get dividends or any other financial benefit. Examples are religious and civic groups.
+
+
+trust
+
+a legal entity that holds the ownership, but not the control, of the assets of another entity
+_______________
+
+Use conditionals to discuss business options:
+
+If we implement a workforce reduction plan, our company will be able to cope with the global recession.
+If we freeze hiring employees, we won't have to fire some of our best employees.
+If we do this, then the company will lose a great deal of talent.
+Here are other helpful phrases used to discuss business options:
+
+What if ...
+What if we consider outsourcing overseas?
+
+An alternative ...
+An alternative could be stopping all salary increases and bonuses.
+
+How about ...
+How about we implement cost-cutting strategies?
+
+______________
+___________________
+ with verb use well
+
+ the team played well
+ she sings well 
+ with noun use good
+
+ the song is good
+
+_____________
+
+I look forward to your answer
+
+menos formal 
+
+I'll be awaiting your answer
+
+I'll stay tuned for any update
+
+________________
+
+The past continuous tense is formed by: "was/were" + verb + "-ing."
+
+We use the past continuous tense to talk about:
+
+a continuing action in the past
+I was reading a book all night.
+ 
+a continuing action that was interrupted by another event
+I was reading a book when he called.
+ 
+a past action that began before and finished after a specific time
+What were you doing at 1 p.m. yesterday? -- I was having lunch with my friend.
+ 
+two or more past actions happening continuously at the same time
+I was creating a presentation while Benjamin was negotiating a new deal.
+
+_______________
+
+The following words express the capacity to do something in either the past or the present:
+
+"Can" and its negative form describe present ability or inability.
+ 
+"Could" and its negative form describe past ability or inability.
+ 
+"Be able to" and its negative form are used to describe or talk about:
+future ability or inability
+present, past and future accomplishments
+the inability to accomplish something
+
+________________
+
+The modals "can" and "could" are used in different contexts.
+
+"Can" is used
+
+to describe a usual or frequent condition
+Scotland can be very warm in September.
+"Could" is used
+
+to talk about possibilities
+He could get lost if he doesn't bring a map with him.
+ 
+to make suggestions
+We could go on a picnic.
+The negative form "can't" is used
+
+to say that a condition is not normal or not likely to happen
+You can't be finished reading the book already.
+ 
+to say that an action should not happen
+I can't be late tomorrow.
+
+_____________
+
+The adjectives "current" and "actual" are used in different contexts.
+
+Current is used to say something is of the present.
+This is our current house.
+ 
+Actual is used to say something is real, not imaginary.
+Our actual house has a gray roof and white walls.
+
+________________
+
+GLUT
+an excess of something
+
+The glut of rice and grain resulted in lower market prices for these products.
+
+KEY PART OF (SOMETHING)
+an important or necessary piece of something else
+
+Good positioning and quick passes were key parts of the team's strategy during the basketball game.
+
+REAL ESTATE
+relating to the business of selling and buying land, buildings or property
+
+The couple talked with a real estate agent about looking for a new house.
+
+SHEDDING (SOMETHING)
+losing something or a portion of something
+
+The house has been shedding more of its value because the owners do not maintain the property.
+
+GROSS DOMESTIC PRODUCT
+in a given year, the total value of all goods and services made in a country, which can be used as a measure of economic growth and standard of living
+
+The country's gross domestic product has increased due to its exports of valuable metals such as steel and iron.
+
+GLITZY
+having a fancy and attractive quality, often associated with wealth
+
+The actors' awards ceremony was a glitzy affair, with many well-dressed celebrities in attendance.
+
+________________________
+
+presumably: most likely
+
+Carl left for work early today, so presumably he will arrive at the office before 8 a.m.
+
+"... that means that they will presumably know what to fix."
+
+binary: two things or groups that are opposite each other
+
+Most literary stories have a binary of good and evil characters.
+
+"We definitely have this idea that trust is a binary, where you either trust or you don't."
+
+permanent: describes something that will last for a very long period of time
+
+Martin bought his own house, so he can have a permanent place to stay in.
+
+"And once it's broken, that's permanent. There's no coming back."
+
+myth: an idea or belief commonly thought to be true, but actually is not
+
+"People say that money can buy everything, but to me, it's a myth," says Tricia.
+
+"But that's such a myth. Because in actuality ... trust is based on multiple dimensions."
+
+unveiled: revealed or made known to others
+
+The organization unveiled the results of its recent study about robotics to the public.
+
+"... in this model that Sandra and I have unveiled and analyzed through our research ..."
+
+dimensions: aspects or parts of something
+
+Caring for oneself has physical, mental and emotional dimensions.
+
+"... trust is based on multiple dimensions."
+
+fragile: easily weakened or destroyed
+
+The company's leadership became fragile because three of its top executives unexpectedly resigned.
+
+"... trust is much less fragile than we think."
+
+Grammar tip: Restrictive clauses
+
+A restrictive clause gives information about a noun used in a sentence. This clause cannot be removed because doing so will change the sentence's meaning.
+
+A restrictive clause is not set off by commas, and it usually begins with the relative pronoun "that."
+
+"If you are making an apology, there are three questions that you want to be able to answer."
+
+"One is it gives them confidence that they know what went wrong."
+
+"So, what is it that we're going to do in the future ..."
+
+More examples:
+
+The shoes that I want are on sale.
+The group that scores the most wins the game.
+She is the woman that owns the new company.
+________________________
+
+Certain structures are useful for expressing opinions in a debate assertively.
+
+Gerunds are useful when stating opinions.
+I/We support having a paperless office.
+I/We are putting our vote behind exploring business opportunities in China.
+ 
+Modals are useful when making arguments.
+The way I see it, we should charge the client for shipping.
+I am convinced that we must expand our marketing efforts to digital media.
+If you look at it from my perspective, you'll see why we have to revisit the contract. 
+ 
+Certain conjunctions and adverbs are useful when expressing objections and making counterarguments.
+But don't you think…?
+I hate to be the one to point out that.., but…
+You have a point. However,…
+You could say that, but/although…
+That may be true, but/although…
+
+_________________
 Pasive voice
 
 ![](./Images/pasive%20voice.png)

@@ -839,8 +839,206 @@ ___________
 ### uname Command 
 The uname tool is most commonly used to determine the processor architecture, the system hostname and the version of the kernel running on the system.
 
+__________________________
+ 
+ # Linux Package Manager (and Distro)
+
+- **APT** Apt is a dependency resolver for Debian based systems, including Ubuntu. In conjunction with dpkg, the package manager, Apt provides an easy way to update, upgrade, install and remove software.
+
+To update software repositories and upgrade your software
+```
+sudo apt-get update && sudo apt-get upgrade
+
+sudo apt update && sudo apt upgrade
+```
+To install software, the command is:
+
+```
+sudo apt-get install $packageName
+```
+To remove a package:
+
+```
+sudo apt-get remove $packageName
 
 
+sudo apt remove $packageName
+```
+When removing software from your system using the apt-get remove command, Apt does a good job of removing unused dependencies, however sometimes in the course of software removal or an upgrade, some straggler dependencies may remain on your system. If you have OCD like me, you may want these packages removed from your system. Apt includes a command I am quite fond of in this regard:
+
+```
+sudo apt autoremove
+```
+
+Searching for an installable package:
+```
+sudo apt-cache search $packageName
+
+sudo apt search $packageName
+```
+Apt does not currently offer the ability to install a package from a URL, meaning the user must find and download the package to be installed on their own. Ubuntu and some of its derivitaves have managed to combat this with single-click apturl links, found on some websites.
+
+
+- **YUM**  is a dependency resolver for the underlying package manager, RPM. YUM is the default package management system included in quite a few Red Hat based derivitaves, including Fedora 21 and below, and CentOS. The syntax for YUM is simple, and Apt users should have no problem making the switch.
+
+Updating and upgrading through YUM is very simple, where the following command handles both tasks:
+
+```
+sudo yum update
+```
+To install a package, the following command is used:
+
+```
+sudo yum install $packageName
+```
+Likewise, to remove a package, the command is:
+```
+sudo yum remove $packageName
+```
+To search for an installable package:
+```
+sudo yum search $packageName
+```
+YUM does not include an autoremove command for finding and removing unused dependencies, however it does include a great feature for installing a package from a URL, which Apt does not include:
+```
+sudo yum install $url
+```
+
+- **ZYpp** is another dependency resolver for the RPM package management system, and is the default package manager for OpenSUSE and SUSE Linux Enterpise. ZYpp utilizes .rpm binaries, just like YUM, but is a bit faster due to being written in C++, where YUM is written in Python. ZYpp is extremely easy to use, as it includes command shortcuts which can be used in place of the full command.
+
+Like YUM, ZYpp both updates and upgrades all packages using the following command:
+```
+sudo zypper update
+
+or
+
+sudo zypper up
+```
+To install a package:
+```
+sudo zypper install $packageName
+or
+
+sudo zypper in $packageName
+```
+To remove a package, use the command:
+```
+sudo zypper remove $packageName
+or
+
+sudo zypper rm $packageName
+```
+Search for an installable package:
+```
+sudo zypper search $packageName
+```
+Like YUM, there is no autoremove command included in ZYpp. Additionally, like Ubuntu, OpenSUSE has one-click install links for web based package installation.
+
+- **DNF, or Dandified YUM** is a rewrite of YUM which utilizes features from ZYpp, most notably, the dependency resolving capabilities. DNF is the default package manager for Fedora 22 and higher, and should become the default system in CentOS in the future.
+
+To update and upgrade all software:
+```
+sudo dnf update
+```
+To install a package:
+```
+sudo install $packageName
+```
+To remove a package:
+```
+sudo dnf remove $packageName
+```
+Search for an installable package:
+```
+sudo dnf search $packageName
+```
+
+Unlike YUM and ZYpp, DNF provides the autoremove command to search your system and remove unused dependencies:
+
+```
+sudo dnf autoremove
+```
+And DNF also allows for package installation from a URL:
+```
+sudo dnf install $url
+```
+
+- **Entropy** is the default package management system for Sabayon Linux, a Gentoo derivitave. What makes Entropy interesting is Sabayon utilizes binary files through Entropy, and also source code through Gentoo's package management system, Portage. A basic rundown for this system is as follows:
+
+    - Source packages are built into binaries through Entropy, using Portage.
+    - Entropy converts the built binary to an Entropy package.
+    - The Entropy packages are added to the Sabayon repos.
+    - The user installs a binary file through Entropy.
+
+Entropy is comparable to Apt, YUM, ZYpp, and DNF, meaning it is beginner friendly with easy to use commands. Entropy also includes shortcuts for brevity.
+
+To update software sources:
+
+```
+sudo equo update
+
+or
+
+sudo equo up
+
+```
+
+To upgrade all packages
+```
+sudo equo upgrade
+or
+
+sudo equo u
+```
+These commands can be used at the same time:
+```
+sudo equo update && sudo equo upgrade
+or
+
+sudo equo up && sudo equo u
+```
+To install a package:
+```
+sudo equo install $packageName
+or
+
+sudo equo in $packageName
+```
+To remove a package:
+```
+sudo equo remove $packageName
+or
+
+sudo equo rm $packageName
+```
+To search for an installable package:
+```
+sudo equo search $packageName
+```
+
+- **Pacman** is the default package management system for Arch Linux and its derivitaves, and is a complete package manager, not relying on underlying systems or frontends to resolve dependencies. Pacman utilizes a simple compressed .pkg.tar.xz file system, which contains all information needed to build source code into a working program. Think of pacman as a system to automate the process of manually building software from source code. Pacman utilizes a "helper" program, Yaourt, to install unofficial software found in the Arch User Repository, and when doing so, the command "pacman" is replaced by "yaourt."
+
+When working with packages, you will mostly utilize the "sync" flag (-S), which compares your system with the software repository. To refresh your software repos (-y):
+```
+sudo pacman -Sy
+```
+To upgrade your system, you modify your previous sync command with the sysupgrade flag (-u):
+```
+sudo pacman -Syu
+```
+To install a package, you must sync the package:
+```
+sudo pacman -S $packageName
+```
+To remove a package, pacman has a remove flag. To remove a package (-R), its configuration files (-n), and all unused dependencies, recursively, not installed explicitly by the user (-s). Note: this -s flag is different to the -s flag used in the sync command:
+```
+sudo pacman -Rns
+```
+To search for an installable package, you will sync and search (-s):
+```
+sudo pacman -Ss $packageName
+```
+Pacman does not include an autoremove command, however you can search for and remove any unused dependencies using the Query command. Note: again, these flags are not the same as the sync flags or remove flags. This command will query the database (-Q), check for orphaned dependencies (-t), restrict the search to dependencies (-d), and will not print the process out verbosely (-q, meaning "quiet").
 _____________________________
 # Linux for cloud and Devops Engineers
 

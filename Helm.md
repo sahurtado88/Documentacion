@@ -433,10 +433,65 @@ values.yaml contain all the values
 
 aqui esta la metadata  son obligatorios la apiVersion, name and version the rest is optional
 
-hem lint
+helm lint
 
 helm lint firstchart
 
 ________________________
 
+## Inicializar un Repositorio de Helm Chart
+Una vez que tengas Helm listo, puede agregar un repositorio de Charts. Consulta Artifact Hub para conocer los repositorios de Helm Chart disponibles.
 
+helm repo add stable https://charts.helm.sh/stable
+
+## Instalar un Chart de Ejemplo
+Para instalar un chart, puede ejecutar el comando helm install. Helm tiene varias formas de buscar e instalar un chart, pero la más fácil es utilizar uno de los charts stable oficiales.
+
+helm repo update  # Asegúrese de obtener la última lista de charts
+
+helm install stable/mysql --generate-name
+
+Released smiling-penguin
+
+La función helm list le mostrará una lista de todos los releases desplegados.
+
+## Desinstalar un Release
+Para desinstalar un release, utilice el comando helm uninstall:
+
+helm uninstall smiling-penguin
+
+Esto desinstalará smiling-penguin de Kubernetes, lo que eliminará todos los recursos asociados con el release, así como el historial del release.
+
+Si la bandera --keep-history es utilizada, el historial del release será mantenido. Podrás solicitar información sobre ese release:
+
+## La Estructura de Archivos del Chart
+Un chart se organiza como una colección de archivos dentro de un directorio. El nombre del directorio es el nombre del chart (sin información de versiones). Por lo tanto, un chart que describa WordPress se almacenaría en un directorio wordpress/.
+
+Dentro de este directorio, Helm esperará una estructura que coincida con esto:
+
+![](./Images/chartsstructure.png)
+
+
+
+Helm se reserva el uso de los directorios charts/, crds/ y templates/, y de los nombres de archivo listados. Los demás archivos se dejarán como están.
+
+___________________________
+
+
+helm get manifest nombrechart
+
+helm install --debug --dry-run nombrerelease nombrecharts
+
+set values have precedence
+
+helm install nombrerelease nombrechart --set variable=valorvariable
+
+you cna use function http://masterminds.github.io/sprig/ to quote or upper a text value
+
+si se necesita aplicar mas d euna funcion se usa el pipe {{Value.projecCode | upper | quote}}
+
+valor por defecto {{ Values.contact | default "1-800-123-0000"} | quote}
+
+## Flow control - If/else
+
+![](./Images/flowcontrol.png)
