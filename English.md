@@ -4497,6 +4497,150 @@ https://www.inglesmundial.com/Pronunciacion-en-Ingles.html
 
 ________________________
 
+party: a person or group that is taking part in a discussion or negotiation
+
+After several hours of talk and compromise, each party in the meeting was able to get what he or she wanted.
+
+"In some cultures, it's appropriate [...] to tell the other party he's wrong."
+
+irreconcilable: describing a situation or event that is impossible to fix, resolve or deal with
+
+The partnership between the two firms was unsuccessful because there were irreconcilable differences between the companies' desired goals.
+
+"In other cultures, the same behavior would provoke anger and possibly an irreconcilable breakdown of the relationship."
+
+verbal cues: specific signals given during speech, such as choice of words or tone of voice, that can mean certain things
+
+The manager's verbal cues, such as his low tone and his short responses, showed that he was disappointed with the team's presentation.
+
+"The key is to listen for verbal cues ..."
+
+counterpart: someone who has the same tasks as another person, but in another system, location or company
+
+Daniel is a marketing specialist for Sunlight Inc. in the U.S.; he often has discussions about global marketing solutions with Michelle, his counterpart in Sunlight Inc., France.
+
+"If your German counterpart says he completely disagrees, you may be on the verge of a highly enjoyable debate."
+
+on the verge of (something): close to achieving something; close to making or seeing something happen
+
+Three months after starting the video project, the team was on the verge of having a final product to show clients.
+
+"... you may be on the verge of a highly enjoyable debate."
+
+brewing: beginning to form or develop
+
+Hannah knew that problems were brewing in her company after she heard managers discuss reductions in budget.
+
+"If a Peruvian you're negotiating with says he disagrees a little, it might actually mean that a serious problem is brewing."
+
+unfiltered: without moderating or softening something in tone, such as an opinion
+
+Being direct and unfiltered is helpful when negotiating with people from some cultures -- if something cannot be done, it may be better to say, "It is impossible!"
+
+"But to a very direct and unfiltered culture like the Dutch, these understatements lead to massive miscommunication."
+
+knee-jerk response: an answer given automatically or based on habit, rather than after consideration
+
+When Gina heard an opinion that she believed to be incorrect, her knee-jerk response was to disagree before hearing the entire argument.
+
+"In other cultures, 'no' is the most frequent knee-jerk response ..."
+
+body language: physical movements or facial expressions, that can show a person's true feelings
+
+To help give better presentations, Regina makes sure to display confident body language: she stands straight, makes eye contact, and uses minimal hand movements.
+
+"... By [...] paying attention to tone and body language, you can usually tell when a 'yes' feels more like a 'no' ..."
+
+Grammar tip: The causative "get"
+
+Causatives are verbs that express the idea that a person is doing something for someone else. In a sentence with a causative, the subject causes an action to happen, but the subject does not perform the action himself or herself. Some examples of causatives are get, let, make, have and help.
+
+Get can be used to talk about achieving a certain objective or state, or ensuring that an action is done. The following formula can be used: get + person + to + infinitive.
+
+"Managers are constantly learning that what gets you to [say] 'yes' in one culture gets you to [say] 'no' in another."
+
+More examples:
+
+Anna usually gets suppliers to reduce prices for her company.
+Mark, a software salesman, aims to get the clients to upgrade their programs.
+The manager will get the department head to review the proposal by this afternoon.
+
+Another formula that can be used is get + object + past participle. In this case, the doer of the action is not mentioned, so the action is emphasized.
+
+Melie got her car fixed yesterday.
+Franco will get the garden's grass cut before 7:00 p.m.
+The writer gets her feature articles published every month.
+__________________________
+
+brand equity
+
+the value of a brand name, separate from the product it labels
+
+
+brand extension
+
+the addition of products or services that use a certain brand name, riding on the success of the original product that carried that brand
+
+
+cannibalization
+
+a reduction in the sales volume/revenue of one product as a result of the introduction of a new product by the same producer
+
+cluster analysis
+
+data gathered and charted to show groupings
+
+
+competitiveness
+
+a strong desire to fight, like in a contest
+
+mass market
+
+the largest group of consumers for a specific product; a general, non-specific, average group of people; opposite of niche market
+
+
+market potential
+
+the likely demand for a product or service in a specific area
+
+
+market share
+
+the specific percentage of total industry sales of a particular product achieved by a single company in a given period of time
+
+merchandiser
+
+a retailer; one who sells items by piece instead of in bulk (huge numbers or amounts)
+
+
+minimarket
+
+a grocery store
+
+niche market
+
+a small group of consumers with a specific need; for example, mothers with children under two years of age
+
+
+point of sale (POS)
+
+the place where an item is sold (transferred from seller to buyer)
+
+
+positioning
+
+what makes your product different from others, and showing that difference to your consumers/buyers
+
+potential market
+
+the group of people who show interest in your product or service
+
+
+premium price
+
+a price that is clearly higher than average, to reflect better product quality, exclusivity or status
+_________________
 # Reportes speech
 
 ![](./Images/Direct-and-Indirect-Speech-With-Examples-and-Detailed-Explanations.png)

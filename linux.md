@@ -1095,4 +1095,45 @@ Option | Usage |
 |-group| for files belonging to particular group|
 
 
+__________________________
+
+## How to Give Sudo Privileges to a User in Linux
+
+### Giving Full Sudo Access to a User
+
+A user that has full sudo privileges can run all Linux commands as root. This is required when we run commands in the terminal that need to access root directories or files in the filesystem. There are two ways we can give full sudo privileges to a user.
+
+- Editing the Sudoers File
+
+  First, we’ll log in as a user that has full sudo privileges. Then we’ll run sudo visudo. This will open up an editor on the command line. Next, we’ll add this line at the end of the file:
+
+        <user> ALL=(ALL) ALL
+
+     This will give full sudo privileges to \<user>. We’ll replace <user> with the actual user.
+
+     In addition, we can add NOPASSWD to the line, so that <user> won’t have to enter the password every time they run a command with sudo:
+
+         <user> ALL=(ALL) NOPASSWD: ALL
+
+     To exit the editor, we’ll press CTRL+X, and then press Y to modify the file. Finally, we’ll press ENTER to exit the editor.
+
+- Adding the User to the Sudo Group
+Alternatively, we can add the user to the sudo group using usermod:
+
+    sudo usermod -aG sudo <user>
+
+   This will add <user> to the sudo group. Members of the sudo group have full sudo privileges. We need to make sure we replace <user> with the actual user.
+
+### Giving Limited Sudo Access to a User
+
+A user with limited sudo access can only run a particular set of commands as root.
+
+After logging in as a user that already has full sudo privileges, we’ll run sudo visudo, and add this line at the end of the file:
+
+        <user> ALL=(ALL) NOPASSWD: <commands>
+
+This will allow <user> to execute the specified commands with sudo, and they won’t be asked for a password each time. We need to make sure we replace <commands> with the location of each command and separate them with a comma. So, for example, it would look something like this:
+
+    baeldung ALL=(ALL) NOPASSWD: /usr/bin/apt, /usr/bin/whoami
+The user, baeldung, can run apt and whoami with sudo privileges.
 

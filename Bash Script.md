@@ -497,3 +497,124 @@ Aunque no es totalmente preciso, este es uno de los trucos que puedes utilizar p
 which docker && { echo "docker is installed on this host" ; echo "the docker version is: $(docker -v)" ; }
 
 ```
+```
+#!/usr/bin/env bash
+which apache2 && { echo "apache is installed" ; echo "apache version info is: $(apache2 -v)" ; } || echo "apache is nt intalled"
+```
+
+## If- else condition statement
+
+syntax:
+    cmd 1 && cmd2
+
+    if cmd1
+    then
+        cmd2
+    fi    
+
+```
+#!/usr/bin/env bash
+if  which apache2 2>dev/null 1>dev/null
+then
+   echo "apache is installed"
+   echo "apache version info is: $(apache2 -v)" 
+fi
+```
+```
+#!/usr/bin/env bash
+which docker 2>&1 1>dev/null
+if [[ $? -eq 0 ]] 
+then
+   echo "docker is installed"
+   echo "docker version info is: $(docker -v)" 
+fi
+```
+
+syntax:
+    cmd 1 && cmd2 || cmd3
+
+    if cmd1
+    then
+        cmd2
+    else
+        cmd3    
+    fi    
+
+```
+#!/usr/bin/env bash
+if which apache2 2>&1 1>/dev/null
+then
+    echo "apache is installed"
+    echo "apache version is: $(apache2 -v)"
+else
+    echo "apache is not installed"
+```
+
+## Simple sheel script to verify the user is root and user is having sudo
+
+```
+#!/usr/bin/env bash
+userId=$(id -u)
+[[ $userId -eq 0]] && echo"you are root" || echo"you are not root"
+```
+ ```
+#!/usr/bin/env bash
+userId=$(id -u)
+if [[ $userId -eq 0]] 
+then
+    echo"you are root"
+else
+    echo"you are not root"
+fi
+ ```
+
+ sudo -v saber si un usuario tiene sudo privilegios
+
+ ```
+#!/usr/bin/env bash
+sudo -v 1>/dev/null 2>/dev/null echo "the user $(id -un) is having sudo privilages" || echo "the user $(id -un) is not having sudo privileges on this host $(hostname)"
+ ```
+
+ ## Shel script to star docker service
+
+ ```
+ #!/usr/bin/env bash
+if [[ S(id -u) -eq 0]]
+    then
+        if systemct status docker 1>/dev/null 2>/dev/null
+            then
+             echo "already docker is up and running
+        else
+            echo "Starting docker service ..."
+            systemctl start docker
+            echo "Successfully started docker service"
+         fi
+    else
+        if sudo -v 1>/dev/null 2>/dev/null
+            then
+                echo "already docker is up and running"
+        else
+            echo "starting docker service ..."
+            sudo systemctl start docker
+            echo "successfully started docker service"    
+        fi
+    else
+    echo "sorry, you are not allowed to start docker service, beacuse you are not the root user and also dont have sudo privileges"
+    fi
+fi
+```
+## Logical operator
+
+- Logical and && or -a
+
+```
+#!/usr/bin/env bash
+read -p "enter your number: " num
+if [[ $num -ge 50 ]] && [[ $num -le 100]]
+then
+    echo "$num is in the range of 5 - 100"
+else
+    echo "$num is in the range of 5 - 100"
+```
+- Logical OR || or -o
+- Logical Not !
