@@ -4644,3 +4644,261 @@ _________________
 # Reportes speech
 
 ![](./Images/Direct-and-Indirect-Speech-With-Examples-and-Detailed-Explanations.png)
+
+__________________
+
+The following verbs are usually followed by gerunds:
+
+admit
+appreciate
+avoid
+consider
+deny
+dislike
+enjoy
+finish
+imagine
+involve
+keep (continue)
+mention
+suggest
+
+The following verbs are usually followed by infinitives:
+
+agree
+aim
+appear/seem
+beg/demand
+care
+choose
+claim
+decide
+deserve
+expect
+fail
+hope/wish/long
+launch
+
+___________
+
+Phrases for describing one's lifestyle
+
+He/She is a …
+
+Jim is a vegetarian.
+
+
+He/She prefers to …
+
+Mark prefers to live a paperless lifestyle.
+
+He/She lives a … lifestyle.
+
+David lives a very carefree lifestyle.
+
+
+He/She wants to …
+
+Andy wants to work freelance.
+
+He/She is not a …
+
+Michelle is not a religious person.
+
+
+He/She does not …
+
+Lola does not eat red meat.
+
+
+He/She has made the decision not to …
+
+Juno has made the decision not to own a car.
+
+He/She refuses to …
+
+Joelle refuses to wear fur.
+
+
+He/She does not want to …
+
+She does not want to work five days a week.
+
+He/She has a deep respect for …
+
+I have a deep respect for all living things.
+
+
+He/She believes in …
+
+Yumi believes in animal rights.
+
+
+He/She believes that …
+
+I believe that all men are created equal.
+
+Here are the most common structures used when talking about lifestyles:
+
+Adjectives followed by prepositions
+keen on …
+interested in …
+serious about …
+enthusiastic about …
+ 
+Verbs followed by gerunds
+enjoys helping …
+appreciates learning …
+avoids eating …
+dislikes buying …
+______________
+
+Here is a list of words you can use to describe a person's personality and character:
+
+    Personality:refers to a person's outer qualities.
+
+intelligent
+stupid
+gentle
+tough
+friendly
+shy
+talkative
+quiet
+
+    Character: refers to a person's inner qualities.
+
+hardworking
+lazy
+generous
+selfish
+honest
+dishonest
+brave
+cowardly
+obedient
+stubborn
+___________
+
+Difference between "get" and "become"
+
+"Get" is used for changes that happen seemingly quickly. When "become" is used, the change sounds more gradual or passive.
+
+Our team got so big this year. We started with 15 members; now we have 25 employees.
+As orders came in for our products, our company has become a more significant player in the market.
+
+"Get" can also be used for passive changes, but in these cases, it is more commonly used in everyday speech and informal writing. "Become" is used when the speaker/writer wants to sound more formal.
+
+The Earth is getting hotter every year. I am dreading the summer months!
+According to the XYZ Science Institute, the Earth is becoming hotter every year.
+
+"Get" is used when followed by a past participle (without a noun). "Become" is used when followed by a noun or noun phrase.
+
+He got hurt when his bosses did not promote him.
+It is easy for a disappointment to become a lifelong hurt.
+
+PROLIFIC
+highly productive or fruitful in terms of output
+
+Georgiana is a prolific film director who has made ten movies in five years.
+
+MAKE ENDS MEET
+to earn just enough money to pay for necessities and living expenses
+
+In order to make ends meet, Paul has to work two jobs as a delivery person and a waiter.
+
+HEMMED IN
+describing a person who is being stopped or limited from doing what he or she wants to do
+
+The company's excessively strict guidelines and policies made the employees feel hemmed in.
+
+GIGS
+temporary or short-term jobs
+
+To help her pay for daily expenses, Valerie has gigs as a tutor and a bartender.
+
+SET UP SHOP
+to start a life or business in one particular location, possibly with the intention of staying there for a long time
+
+After working in the city for years, Billy returned to his hometown and set up shop as a mechanic and plumber.
+
+WHEREWITHAL
+the money or skill needed to achieve something
+
+After discussions and agreements with investors, Ben has the wherewithal to start his delivery business.
+
+MAKE THE MOST OF (SOMETHING)
+to take advantage of something as much as possible; to maximize the gain from a certain situation
+
+The group made the most of the warm summer weather and went on a long vacation to the beach.
+
+HOLDING (SOMEONE) BACK
+stopping someone from doing as well as he or she could be
+
+The basketball player's arm injury is holding him back from performing well in the game.
+
+TAKING (ONE'S) TIME
+not hurrying; using as much time as necessary to do something
+
+Tristan always wakes up early, because he likes taking his time in preparing for work.
+
+ACE (SOMETHING)
+to do well or be successful at something
+
+Walter was offered a position in the company because he managed to ace the test and job interview.
+
+HELICOPTER PARENTS
+people who are highly involved in the lives of their children, often to the point of doing unintentional harm
+
+Andrew does not want to be a helicopter parent, so he lets his children choose their own hobbies and have a certain level of independence.
+
+SOMMELIERS
+people whose job is to serve wines as well as give advice about wines to clients
+
+The sommelier recommended a red wine to go with the customer's chosen dish.
+______________
+
+"Due to" and "because" are conjunctions. They connect phrases.
+
+"Due to" is conventionally used for negative causes or situations.
+
+"Due to" is followed by a noun (or noun clause) that is the cause of the given result.
+
+The economic problem is due to high oil prices.
+The economy is suffering due to high oil prices.
+Due to the high oil prices, the economy is suffering.
+
+
+"Because" is followed by a clause with a subject and an action.
+
+The economy is suffering because oil prices have gone so high.
+
+We can replace "due to" with "caused by" or "because of."
+
+The economic problem is caused by the high oil prices.
+The economy is suffering because of the high oil prices.
+
+We can also replace "because" with "due to the fact that."
+
+The economy is suffering due to the fact that oil prices have gone so high.
+
+
+"Due to" and "because" are conjunctions. They connect phrases.
+
+"Due to" is followed by a noun (or noun clause) that is the cause of the given result.
+
+"Because" is followed by a clause with a subject and an action.
+
+We can replace "due to" with "caused by" or "because of," but "due to" is conventionally used for negative causes or situations.
+
+We can also replace "because" with "due to the fact that."
+_______________
+dairy: a building or room for the processing, storage, and distribution of milk and milk products.
+
+deed: an action that is performed intentionally or consciously.
+
+talkative: Sarah is very talkative; she never stops talking
+
+stubborn: The stubborn women could not reach an agreement. (obstinado)
+
+nimble: able to think and understand quickly

@@ -611,10 +611,269 @@ fi
 #!/usr/bin/env bash
 read -p "enter your number: " num
 if [[ $num -ge 50 ]] && [[ $num -le 100]]
+# if [ $num -ge 50 -a $num -le 100]
 then
     echo "$num is in the range of 5 - 100"
 else
     echo "$num is in the range of 5 - 100"
 ```
 - Logical OR || or -o
-- Logical Not !
+
+```
+#!/usr/bin/env bash
+read -p "enter your confirmation to start docker: (say yes or no)" cnf
+if [[ $cnf == "yes" ]] || [[ $cnf == "y" ]]
+#if [ $cnf == "yes" -o $cnf == "y" ]
+then
+    echo "starting docker..."
+    sudo systemctl start docker
+else
+    echo "skipping"
+fi
+```
+- Logical Not ! will return true when condition is false and return false if the condition is true
+
+## Difference between [] and [[ ]]
+
+- [[ is the improvement version of [
+- [[ have several benefits compare to [
+-  They are:
+    - No need to use quotes to handle empty strings.
+    - We can also use < and > operators for strings.
+    -  [[ $x = y ]] && [[ $x = yes ]] -> [[ $x = y && $x = yes ]]
+    - There is one case where quoting will still make a difference inside a double bracket conditional expression and that is in regards to pattern matching.
+      - Simple Example:
+        - [[ x =“x*” ]] false
+        - [[ x =~ x* ]] true
+
+cuando se compran valores se pueden usar dobe parentesis
+
+((2 > 1)) en vez de [[ 2 -gt 1]]
+
+## I-elif-elif-else conditional statement
+
+```
+#!/usr/bin/env bash
+read -p "enter you option: " option
+if [[ $option == start]]
+then
+    escho "Starting docker..."
+    systmctl start docker
+elsif [[ $option == stop ]]
+then
+    echo "stopping docker..."
+    systemctl stop docker
+elif [[ $option == restart ]]
+then
+    echo "Restarting docker ..."
+    systemctl restart docker
+elif [[ $option == version ]]
+then
+    version=$(docker -v | cut -d "" -f 3 | tr -d ",")
+else
+    echo "you option is invaslid"
+    echo "Valid option are: start stop restart and version"
+```
+
+## Case flow
+
+La sintaxis es la siguiente:
+```
+case expresion in
+  caso1)
+    comandos
+  ;;
+  caso2)
+    comandos
+  ;;
+#...
+  *)
+    comandos
+  ;;
+esac
+```
+
+```
+#!/bin/bash
+#Control de flujo: case
+echo "Adivina mi edad"
+read edad
+case $edad in
+  30)
+    echo "¡Correcto!"
+  ;;
+  *)
+    echo "¡Incorrecto!"
+  ;;
+esac
+```
+
+```
+#!/bin/bash
+#Control de flujo: case
+echo "Escribe una frase"
+read frase
+case $frase in
+  a*)
+    echo "La frase empieza con a"
+  ;;
+  c*t)
+    echo "La frase empieza con c y termina con t"
+  ;;
+  *com)
+    echo "La frase termina con la cadena com"
+  ;;
+  *)
+    echo "La frase no cumple con ninguna de las condiciones"
+  ;;
+esac
+
+```
+
+Algunas reglas para tomar en cuenta
+- Paréntesis de cierre ) después de cada caso (condición).
+
+- Doble punto y coma ;; delimita la lista de comandos que serán ejecutados cuando se cumpla el caso (condición).
+
+- Finalmente cerrar la sentencia case con esac.
+
+## Handle command line argument
+```
+#!/bin/bash
+#read -p "enter your service to execute your action on it: " serviceName
+#read -p "enter your action to execute on your service. $serviceName " action
+if [[ $# -ne 2]]
+then
+    echo "hey admin, please run this script as follows"
+    echo "usage: $0 <serviceName> <ActionToExecuteonService>
+    echo "valid ctionToExecuteon Service are: start stop restart status
+    exit 1
+fi
+serviceName=$1
+action=$2
+sudo systemctl $action ${serviceName}
+```
+- $0 = scriptname
+- first_argument = $1: We can assign it to variables
+- $#: This variable contains the number of arguments supplied to the script.
+- $?: The exit status of the last command executed. Most commands return 0 if they were successful and 1 if they were unsuccessful.
+
+## Scheduling jobs with at 
+
+- at command is very useful for scheduling one time tasks.
+- Example:
+    - Shutdown system at the specified time
+    - Taking a one-time backup.
+- Syntax:
+    - echo “bash backup.sh" | at 9:00 AM
+    - Or
+    - Run first: at 9:00 AM then enter and give the cmd or script to run and press ctrl+D.
+- Commands used with at:
+    - at : execute commands at specified time.
+    - atq : lists the pending jobs of users.
+    - atrm : delete jobs by their job number.
+
+Examples of at command:
+-  Ex-1: Schedule task at coming 10:00 AM.
+ at 10:00 AM
+- Ex-2: Schedule task at 10:00 AM on coming Sunday.
+ at 10:00 AM Sun
+- Ex-3: Schedule task at 10:00 AM on coming 25’th July.
+ at 10:00 AM July 25
+- Ex-4: Schedule task at 10:00 AM on coming 22’nd June 2025.
+ at 10:00 AM 6/22/2015
+ at 10:00 AM 6.22.2015
+- Ex-5: Schedule task at 10:00 AM on the same date at next month.
+ at 10:00 AM next month
+- Ex-6: Schedule task at 10:00 AM tomorrow.
+ at 10:00 AM tomorrow
+- Ex-7: Schedule task to execute just after 1 hour.
+at now + 1 hour
+- Ex-8: Schedule task to execute just after 30 minutes.
+ at now + 30 minutes
+- Ex-9: Schedule task to execute just after 1 and 2 weeks.
+ at now + 1 week
+ at now + 2 weeks
+- Ex-10: Schedule task to execute just after 1 and 2 years.
+ at now + 1 year
+ at now + 2 years
+- Ex-1: Schedule task to execute at midnight.
+ at midnight
+
+## Scheduling jobs with crontab:
+- The crontab is used for running specific tasks on a regular interval.
+- Each user can schedule jobs using crontab.
+-  Syntax:
+     - minute(s) hour(s) day(s) month(s) weekday(s) command/script
+- Each scheduled job has six fields 
+- Don’t change the order and six fields are separated by space
+- The first five are integer patterns and the sixth is the command/script to execute
+
+![](./Images/crontab.png)
+
+Useful crontab commands:
+
+- Use crontab -e to schedule a job.
+- Use crontab -l to list the jobs (crontab -u user_name -l )
+- Use crontab -r to remove all jobs
+-If you want remove a particular job, you need to erase the job using crontab -e
+```
+- 30 9 15 11 6 /root/my_backup.sh 
+- 30 9 15 * 6 /root/my_backup.sh 
+- 30 9 15 * * /root/my_backup.sh every month
+- 30 9 * * * /root/my_backup.sh every day
+- 30 * * * * /root/my_backup.sh every hour
+- * * * * /root/my_backup.sh every minute
+- Schedule a crontab to execute on every Sunday at 5 PM.
+- 0 17 * * 0 /root/my_backup.sh
+- Schedule a crontab to execute on every Sunday at 5 AM and 5 PM
+- 0 5,17 * * 0 /root/my_backup.sh
+- Schedule a crontab to execute on every two hours.
+- 0 */2 * * * /root/my_backup.sh
+-Yearly once:
+- 0 0 1 1 * /root/my_backup.sh
+- @yearly /root/my_backup.sh 0 0 1 1 *
+- @monthly  is similar to 0 0 1 * *
+- @weekly is similar 0 0 * * 0
+- @daily is similar 0 0 * * *
+- @hourly is similar 0 * * * *
+- @reboot It useful for those tasks which you want to run on your system 
+startup.
+
+```
+https://crontab.guru/
+
+## Shell script to send Automatic email alert when ram memory gets low
+
+```
+send_automatic_mail_alert_when_ram_size_is_low.sh
+==========================================================
+#!/bin/bash
+TO="dowithscripting@gmail.com"
+TH_L=400
+free_RAM=$(free -mt | grep -E "Total" | awk '{print $4}')
+
+if [[ $free_RAM -lt $TH_L ]]
+then
+  echo -e "Server is running with low RAM Size\nAvaialbe RAM is: $free_RAM" | /bin/mail -s "RAM INFO $(date)" $TO
+fi
+==================================================================================================================
+Cronjob:
+-------
+crontab -e
+then write below and save it (for every min)
+* * * * *  /bin/bash send_automatic_mail_alert_when_ram_size_is_low.sh
+=======================================================================
+
+```
+## Shell script to monitor disk space usage with email alert
+
+```
+#!/bin/bash
+MailId="dowithscripting@gmail.com"
+
+echo -e"the file system utilization on $(hostname -s) is: \n $(df -H | grep -Ev "udev|tmpfs")" | /usr/bin/mail -s "filesystem utilization" "$MailId"
+
+====================
+
+```
