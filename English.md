@@ -4902,3 +4902,74 @@ talkative: Sarah is very talkative; she never stops talking
 stubborn: The stubborn women could not reach an agreement. (obstinado)
 
 nimble: able to think and understand quickly
+
+___________________________________
+
+PATHBREAKING
+being the first to do something and causing others to follow
+
+The composer had a pathbreaking musical style which inspired many musicians worldwide.
+
+CATAPULT
+to cause someone or something to move up to a better position quickly
+
+The successful movie managed to catapult the actress' career after playing mostly minor roles.
+
+NOSTALGIC
+refers to having feelings of pleasure, sadness and longing upon remembering past things or events
+
+Alfred feels nostalgic every time he sees the tools he used when he worked as a carpenter.
+
+TRAJECTORY
+path; development
+
+The CEO wants a new trajectory for her company by engaging in projects outside its core business.
+
+DELVES INTO (SOMETHING)
+to examine or study something deeply
+
+The documentary delves into the life of people living in the countryside and discusses their past and current hardships.
+
+EXQUISITE
+refers to things that are very beautifully made and of high quality
+
+Archaeologists discovered an exquisite glass vase with elaborate designs while excavating a historical site.
+
+SCOUT OUT (SOMETHING)
+to look for something
+
+Joey wants to scout out a suitable place to hold a meeting with his clients for next week.
+
+SYNTHETIC
+artificial; man-made
+
+The bike's rubber tires are synthetic and not made of natural materials.
+
+METICULOUS
+refers to something done very carefully and thoroughly
+
+Thanks to the chef's meticulous cooking, many of his dishes taste very good and look perfect.
+
+AUDACIOUS
+referring to something surprising, bold and daring
+
+The house's audacious design, with a round roof and circular windows, contrasts with the simple looks of the neighboring buildings.
+
+________________________
+
+no sweat
+
+no problem; it can be done very easily
+
+
+not by a long shot
+
+not at all
+
+The pizza restaurant's branch in this city isn't doing as well as its counterparts in other areas -- not by a long shot.
+
+
+two can play at that game
+
+This idiom is usually said when someone does something bad to you. It means that if a person can do a bad thing to you, you can do the same bad thing to that person.
+
