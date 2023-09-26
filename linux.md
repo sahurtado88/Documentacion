@@ -1137,3 +1137,8 @@ This will allow <user> to execute the specified commands with sudo, and they won
     baeldung ALL=(ALL) NOPASSWD: /usr/bin/apt, /usr/bin/whoami
 The user, baeldung, can run apt and whoami with sudo privileges.
 
+___________________
+
+saber la version de linux
+
+        lsb_release -a
