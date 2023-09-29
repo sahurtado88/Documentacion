@@ -354,7 +354,7 @@ WORKDIR /app
 CMD ["/app/server"]
 ````
 
-##Security DOCKER
+## Security DOCKER
 
 - Don't run the container as the root user
 - use multi-stage build + distroless base image
@@ -597,3 +597,115 @@ The VOLUME instruction creates a mount point with the specified name and marks i
 WORKDIR /path/to/workdir
 
 The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile
+
+_____________________________
+Show the history of an image
+```
+docker history -H <NAMEIMAGEs>
+```
+_________________________
+
+Docker rm
+docker rm removes containers by their name or ID.
+
+When you have Docker containers running, you first need to stop them before deleting them.
+
+- Stop all running containers: docker stop $(docker ps -a -q)
+- Delete all stopped containers: docker rm $(docker ps -a -q)
+
+Remove multiple containers
+You can stop and delete multiple containers by passing the commands a list of the containers you want to remove. The shell syntax $() returns the results of whatever is executed within the brackets. So you can create your list of containers within this to be passed to the stop and rm commands.
+
+Docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+Description
+Remove one or more containers
+
+Options
+Option	Short	Default	Description
+--force	-f		Force the removal of a running container (uses SIGKILL)
+--link	-l		Remove the specified link
+--volumes	-v		Remove anonymous volumes associated with the container
+
+```
+docker rm -fv
+```
+
+_______________________
+
+## Buenas practicas Docker
+
+- efimeros
+- Un servicio por contenedor
+- build context -> .dockerignore
+- pocas capas
+- Multi linea \
+- Varios argumentos en una sola capa
+- No instalar paquetes innecesarios
+- Labels
+
+___________________
+
+```
+docker build -t test -f <NAMEFILE> <PATH dockerfile> 
+```
+
+___________________
+
+## Dangling images
+
+Dangling images are untagged Docker images that aren't used by a container or depended on by a descendant. They usually serve no purpose but still consume disk space. You'll accumulate dangling images when you replace an existing tag by starting a new build
+
+se da debido a que las capas en las imagenes de dcoker son solo de lectura entonce al tener una imagen con el mismo nombre pero con un cambio en la capa queda huerfana la anterior
+
+para filtar la imagenees danglingse puede ejecutar este comando
+
+```
+docker images -f dangling=true
+```
+
+para borrar del todo
+
+primero se ejecuta este comando para listar los ID
+
+```
+docker images -f dangling=true -q
+```
+
+con linux se usa xargs para elimianr todo
+```
+docker images -f dangling=true -q | xargs docker rmi
+
+```
+
+## Containers
+
+docker run -d <NOMBREIMAGEN> ejecucion segundo plano
+
+docker run -d  -p <Puertohost>:<PUERTO_CONTAINER> <Nombreimagen> 
+
+docker rm -f <nombrecontenedor> borrado forzado
+
+docker rename <nombre_viejo> <nombre_nuevo>
+
+docker stop <nombrecontenedor o Container_ID>
+
+docker start <nombrecontenedor o Container_ID>
+
+docker restart <nombrecontenedor o Container_ID>
+
+docker exec -ti <nombrecontenedor o Container_ID> bash
+
+docker exec -u root  -ti <nombrecontenedor o Container_ID> bash
+
+docker ps -q | xargs docker rm -f
+
+docker run -dti -e "variable=valor" --name <Nombre> <NOMBREIMAGEN> crear variable variable=valor 
+
+docker logs -f <Nombrecontenedor> f para follow
+
+docker inspect <nombre_contenedor>
+
+docker rm -fv $(docker ps -aq) eliminar todos los contenedores
+
+docker stat <nombrecontenedor o Container_ID>

@@ -186,7 +186,7 @@ or
 Use a comma to separate roles and recipes when adding more than one item the run-list:
 
 ```
-"recipe[COOKBOOK::RECIPE],COOKBOOK::RECIPE,role[NAME]"
+"recipe[COOKBOOK::RECIPE],recipe [COOKBOOK::RECIPE2]"
 ```
 
 Use an empty run-list to determine if a failed Chef Infra Client run has anything to do with the recipes that are defined within that run-list. This is a quick way to discover if the underlying cause of a Chef Infra Client run failure is a configuration issue. If a failure persists even if the run-list is empty, check the following:
@@ -201,3 +201,136 @@ chef choose de default recipe
 ```
 chef-client --runlist "recipe[cookbook-Name]"
 ```
+
+## Include Recipe
+
+A recipe can include one (or more) recipes from cookbooks by using the include_recipe method. When a recipe is included, the resources found in that recipe will be inserted (in the same exact order) at the point where the include_recipe keyword is located.
+
+The syntax for including a recipe is like this:
+
+```
+include_recipe 'recipe'
+```
+For example:
+
+```
+include_recipe 'apache2::mod_ssl'
+```
+Multiple recipes can be included within a recipe. For example:
+
+```
+include_recipe 'cookbook::setup'
+include_recipe 'cookbook::install'
+include_recipe 'cookbook::configure'
+```
+![](./Images/includerecipe.png)
+
+## Cookbook Dependencies
+
+Quite often, you might want to use features of other cookbooks in your own cookbooks. For example, if you want to make sure that all packages required for compiling software written in C are installed, you might want to include the build-essential cookbook, which does just that. Chef server needs to know about such dependencies in your cookbooks. You declare them in a cookbook's metadata.
+
+![](./Images/dependenciescookbook.png
+)
+
+## Server-Client Model
+
+![](./Images/server-client-model.png)
+
+1. Create
+2. Upload Code:
+  ![](./Images/knife.png)
+  ```
+  knife cookbook upload
+  ```
+
+3. Create RunList
+```
+knife node run_list add NODE_NAME RUN_LIST_ITEM
+```
+```
+knife node run_list add node1 'recipe[WEB]'
+```
+
+4. Apply code
+
+```
+knife ssh 'name:*' 'chef-client'
+```
+
+## Others commands
+![](./Images/knifecommands.png)
+![](./Images/commnads.png)
+
+## Workstation conectivity
+
+
+you need to downloades de chef-starter.zip
+
+https://docs.chef.io/workstation/install_workstation/
+
+https://docs.chef.io/workstation/getting_started/
+
+Chef Infra Client (executable)
+Chef Infra Client is an agent that runs locally on every node that is under management by Chef Infra Server. When Chef Infra Client runs, it performs all of the steps required for bringing a node into the expected state, including:
+
+Registering and authenticating the node with Chef Infra Server
+Synchronizing cookbooks from the Chef Infra Server to the node
+Compiling the resource collection by loading each of the required cookbooks, including recipes, attributes, and all other dependencies
+Taking the appropriate and required actions to configure the node based on recipes and attributes
+Reporting summary information on the run to Chef Automate
+
+https://docs.chef.io/install_bootstrap/
+
+## Other topics
+
+- OHAI
+
+Ohai is a tool for collecting system configuration data, which it then provides to Chef Infra Client to use in cookbooks. Chef Infra Client runs Ohai at the start of every Chef Infra run to determine system state. The attributes that Ohai collects are called automatic attributes. Chef Infra Client uses these attributes to ensure that nodes are in the desired state after each configuration run.
+
+The types of attributes Ohai collects include but are not limited to:
+
+- Operating System
+- Network
+- Memory
+- Disk
+- CPU
+- Kernel
+- Host names
+- Fully qualified domain names
+- Virtualization
+- Cloud provider metadata
+
+- Kitchen testing
+
+Use Test Kitchen to automatically test cookbooks across any combination of platforms and test suites:
+
+- Test suites are defined in a kitchen.yml file. See the configuration documentation for options and syntax information.
+- Supports cookbook testing across many cloud providers and virtualization technologies.
+- Uses a comprehensive set of operating system base images from Chef’s Bento project.
+
+The key concepts in Test Kitchen are:
+
+- A platform is the operating system or target environment on which a cookbook is to be tested
+- A suite is the Chef Infra Client configuration, a Policyfile or run-list, and (optionally) node attributes
+- An instance is the combination of a specific platform and a specific suite, with each instance being assigned an auto-generated name
+- A driver is the lifecycle that implements the actions associated with a specific instance—create the instance, do what is needed to converge on that instance (such as installing Chef Infra Client, uploading cookbooks, starting a Chef Infra Client run, and so on), setup anything else needed for testing, verify one (or more) suites post-converge, and then destroy that instance
+- A provisioner is the component on which the Chef Infra Client code will be run, either using chef-zero or chef-solo via the chef_zero and chef_solo provisioners, respectively
+
+- Roles 
+A role is a way to define certain patterns and processes that exist across nodes in an organization as belonging to a single job function. Each role consists of zero (or more) attributes and a run-list. Each node can have zero (or more) roles assigned to it. When a role is run against a node, the configuration details of that node are compared against the attributes of the role, and then the contents of that role’s run-list are applied to the node’s configuration details. When a Chef Infra Client runs, it merges its own attributes and run-lists with those contained within each assigned role.
+
+An attribute can be defined in a role and then used to override the default settings on a node. When a role is applied during a Chef Infra Client run, these attributes are compared to the attributes that are already present on the node. When the role attributes take precedence over the default attributes, Chef Infra Client applies those new settings and values during a Chef Infra Client run.
+
+A role attribute can only be set to be a default attribute or an override attribute. A role attribute cannot be set to be a normal attribute. Use the default_attribute and override_attribute methods in the .rb attributes file or the default_attributes and override_attributes hashes in a JSON data file.
+
+- Environments 
+An environment is a way to map an organization’s real-life workflow to what can be configured and managed when using Chef Infra. This mapping is accomplished by setting attributes and pinning cookbooks at the environment level. With environments, you can change cookbook configurations depending on the system’s designation. For example, by designating different staging and production environments, you can then define the correct URL of a database server for each environment. Environments also allow organizations to move new cookbook releases from staging to production with confidence by stepping releases through testing environments before entering production.
+
+- Supermarket
+
+Chef Supermarket is the site for community cookbooks. It provides a searchable cookbook repository and a friendly web UI. Cookbooks that are part of the Chef Supermarket are accessible by any Chef user.
+
+There are two ways to use Chef Supermarket:
+
+- The public Chef Supermarket is hosted by Chef Software and is located at Chef Supermarket.
+- A private Chef Supermarket may be installed on-premise behind the firewall on the internal network. Cookbook retrieval from a private Chef Supermarket is often faster than from the public Chef Supermarket because of closer proximity and fewer cookbooks to resolve. A private Chef Supermarket can also help formalize internal cookbook release management processes (e.g. “a cookbook is not released until it is published on the private Chef Supermarket”).

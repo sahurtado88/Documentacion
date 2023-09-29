@@ -200,6 +200,24 @@ SU usuario cambiar usuario
 ~/USR user system resource archivos solo lectura software gestores
 ~/VAR archvios con informacion del sistema registro del sistema
 
+||||
+|-|-|-|
+|/|Root Directory|Is the starting point of the linux file system hierarchy|
+|/bin|Binary Programs|Contains essential binary executables (programs) that are available to all users. Common commands like ls,cp,mv, etc are located here|
+|/boot|Bootloaders Files|Contains boot-related files, such as the linux kernel, initial RAM disk (initrd), and boot loader configurations. The boot loader is responsible for loading the operating system during the boot process|
+|/dev|Devices Files|Contains device files that represent various hardware devices on the system. These files allow access to devices such as hard drives, USB devices, serial ports,etc|
+|/etc|System configuration Files|Contains system-wide configuration files and scripts. Configuration files for various services, network settings, user information,etc, are stored here|
+|/home|Home directories|Contains personal home directories for each user on the system. Each user has a subdirectory here with their username, where they can store their personal files and settings|
+|/lib|Shared libraries|Contains shared libraries requiered by the system and various programs. These libraries provide common functions and features to multiple applications|
+|/mnt|Mount directory|Used as a temporary mount point for mounting external file systems, such as removable media or networks shares|
+|/opt|Optional Software|Typically used for installing additional software packages that are not part of the default system installation. Third party applications or programs that are not managed by the system's package manager may be installed here|
+|/proc|Process Information|A virtual file system that provides information about running processes and system resources. Each process has a directory named after its process ID (PID), containing information about the proccess|
+|/sbin|System binaries|Contains system-related binaries (programs) that are mostly used by system administrator. Commands necessary for systems maintenance or system recovery are located here|
+|/tmp|Temporary files|Used for storing temporary files created by the system and users. Files in this directory are typically deleted when the system is rebooted|
+|/usr|User Programs Data| Contains user-related programs, libraries, and data files It is one of the largest directories and is further divided into subdirectories such as /usr/bin, usr/lib, usr/include, etc|
+|/var|Variable Data|Contains variable files that change during system|
+
+
 
 # BASH
 
@@ -1142,3 +1160,26 @@ ___________________
 saber la version de linux
 
         lsb_release -a
+
+_____________
+
+Linux Directories mkdir -p
+With the help of mkdir -p command you can create sub-directories of a directory. It will create parent directory first, if it doesn't exist. But if it already exists, then it will not print an error message and will move further to create sub-directories.
+
+____________________
+
+nux's fallocate command
+The "fallocate" command is probably one of the lesser known commands that can be used within Linux to create a file. fallocate is used to preallocate blocks to a file. For filesystems that support the "fallocate" system call, this is done quickly by allocating blocks and marking them as uninitialised, thus requiring no I/O to the data blocks. This is a much faster method of creating a file rather than filling it with zeros. Large files can be created almost instantly without having to wait for any I/O operations to complete. The fallocate system call is supported on the following filesystems: btrfs, ext4, ocfs2, and xfs filesystems. Below are some examples of how you can use the fallocate command.
+
+fallocate command examples
+General Syntax: fallocate [-n] [-o offset] -l length filename
+
+The length and offset arguments may be followed by binary (2^N) suffixes KiB, MiB, GiB, TiB, PiB and EiB (the "iB" is optional, e.g. "K" has the same meaning as "KiB") or decimal (10^N) suffixes KB, MB, GB, PB and EB.
+
+use fallocate command to create a 1gb file
+The following command will allocate a file with a size of 1GB.
+
+
+fallocate -l 1G test_file1.img
+
+_____________________
