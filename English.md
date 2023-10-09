@@ -4973,3 +4973,351 @@ two can play at that game
 
 This idiom is usually said when someone does something bad to you. It means that if a person can do a bad thing to you, you can do the same bad thing to that person.
 
+________________________
+
+carried to extremes: overdone
+
+When carried to extremes, exercising can cause fatigue and insomnia.
+
+"... created an inventory of dark-side traits ... that can be damaging when carried to extremes."
+
+at risk: in danger
+
+Because of the economic crisis, Jack's business is at risk of closing down.
+
+" ... people exhibit one or two traits so strongly that their careers may be at risk."
+
+draw out: to cause a person to show a quality they possess
+
+Jeremy is usually serious at work, but company parties draw out his fun-loving personality.
+
+"Stressful situations ... can draw out these dark-side traits."
+
+shoots down: rejects something, such as an idea or plan
+
+The magazine editor shoots down topic proposals that are unoriginal.
+
+"... and shoots down ideas before they have a chance to develop."
+
+pull (someone) in: to attract or get someone's interest
+
+The candy store's colorful products pull people in; the store is always full of customers.
+
+"This is one of the seductive traits. They're intended to pull people in ..."
+
+stepping into: taking a role
+
+Yvanna has been promoted, and is now stepping into the position of company director.
+
+"... prevents Connie from stepping into strong leadership."
+
+curbs: controls or limits something
+
+Higher income tax rates should curb the increase of food and fuel prices.
+
+"Next, Alejando curbs his colorful side."
+
+take center stage: to have the main role; to be the most important person in a situation
+
+The football players took center stage in the media after they won the World Cup.
+
+"By allowing someone else to take center stage, he cedes the primary presenter role to Connie."
+
+susceptible: easily influenced, or likely to be harmed by something
+
+Some tourists are unaware of the local market prices, so they become susceptible to buying overpriced souvenirs.
+
+"Many of us are susceptible to overindulging these aspects of ourselves."
+
+Grammar tip: Participial clauses
+
+A participial clause adds more information about a sentence's main clause, showing a condition, reason, result or time.
+
+A participial clause begins with a present or past participle. Participles are adjectives that are formed from verbs. A present participle, for example, would have an -ing added at the end of a verb.
+
+In the following examples from the video, the participial clauses show the results of the main clause's situation.
+
+"Meanwhile, Alejandro frequently talks over his teammates, dominating the conversation."
+
+"He also responds dramatically to Neha's objections, escalating the conflict."
+
+In the next example, the participial clause shows a condition.
+
+"Left unchecked, dark-side traits can cause chaos in the workplace."
+
+More examples:
+
+Frozen for three days, the food needed more time to thaw.
+Driving on the highway, I suddenly realized that I left my smartphone at home.
+Patty was not able to finish the report, having spent so much time on other tasks.
+
+____________________________
+
+VIE
+to compete with others
+
+Three employees vie to become the team's manager.
+
+SELFIE
+a picture that a person takes of himself or herself, usually with a mobile phone
+
+Tina took a selfie by the Taj Mahal, so she can show her family and friends that she has arrived in India.
+
+VIRAL
+describes something that quickly spread on the internet and became popular
+
+Pictures of amusing cats become viral because a lot of people share these on social media.
+
+HOT SPOT
+a popular or lively place
+
+Manhattan is one of New York's hot spots; tourists can visit famous places there, such as Central Park and Times Square.
+
+TAKE ADVANTAGE OF (SOMETHING)
+to use something for one's benefit
+
+Hubert wants to take advantage of his office's free sports facility, so he goes there to play some sports with his colleagues.
+
+FLEETING
+lasting for only a short period of time
+
+Fred stopped by the gas station for a fleeting moment before he drove to work.
+
+EXPENDITURES
+the total amount of money spent
+
+The mayor's office released a document that showed all of the city's expenditures for the year.
+
+HOTEL CHAIN
+a group of hotels owned by the same company or person
+
+The InterContinental Hotel Group has various hotel chains around the world, including brands such as the Crowne Plaza, the Holiday Inn and the Regent.
+
+TEAMING UP
+the act of working together with another person or group
+
+Stephanie, a film director, wants to make a movie based on a popular novel. So, she starts the movie project by first teaming up with the novel's author.
+
+AUGMENTED REALITY
+Augmented reality is a kind of technology in which images and information produced by a computer is combined with a view of the real world.
+
+INFANCY
+the beginning or early stage of something
+
+The company is still at its infancy, so its CEO is looking for more investors.
+
+____________________
+
+The teams were tied.
+
+
+It was a very tight game/race.
+
+
+The teams were evenly matched.
+
+
+Team A started out strong.
+
+
+Team B took control.
+
+
+Team C was ahead by 10 points.
+
+Team B quickly recovered.
+
+
+Player 1 gained a huge lead.
+
+
+Player 2 maintained his lead.
+
+Team A was unable to recover.
+
+
+Player 3 was unable to regain his lead.
+
+Here are useful phrases when describing sports game results and situations.
+a (very) tight game/match/race
+tied/ evenly matched teams
+started out strong (with)...
+took control (of)...
+able/unable to regain his lead/ recover...
+kept/maintained/gained a lead of...
+ahead/behind by…
+ 
+Mixed conditionals are useful when talking about hypothetical results of hypothetical situations in past games. 
+If it were not for that handball, the game would have ended with the teams tied.
+If the free kick had not been awarded to Arsenal, Manchester United would have a better standing now. 
+ 
+Compound adjectives with numbers are useful when describing game teams and performances.
+five-man team
+10-point lead
+three-point shot
+second-half performance
+
+________________________________
+
+abrasion
+
+an injury where skin is scraped off
+
+
+blister
+
+a bubble filled with fluid that forms on the skin due to too much rubbing
+
+dislocation
+
+a joint injury where the ends of the bones are pushed out of place. Dislocations can happen to ankles, knees, shoulders, hips, elbows and fingers.
+
+
+sprain
+
+a joint injury where the ligament which holds the bones together is stretched or torn, usually occurring in the ankle and wrist
+
+muscle cramp
+
+sudden, involuntary and painful contraction of a muscle
+
+
+strain/tendonitis
+
+an injury to the tendon, the tissue that connects the muscle to the bone
+
+
+shin splint
+
+pain along the shin bone at the front of the lower leg
+
+
+side stitch
+
+stabbing pain under the lower edge of the rib cage caused by up-and-down movement
+
+
+concussion
+
+an injury to the brain caused by a violent blow that may result in temporary unconsciousness
+
+Treating abrasions usually involves cleaning the wound with warm water and mild soap, applying a thin layer of disinfectant on it, and covering it with a non-stick dressing.
+
+Ankle sprains are common in sports like basketball, tennis, football and soccer, all of which require jumping or rolling or twisting the foot.
+
+Concussion symptoms may include confusion, clumsiness, dizziness, and nausea.
+
+______________________
+
+Meaning of "few"
+"Few" means "not many."
+
+His ideas are difficult, and few people understand them.
+(Not many people understand his ideas.)
+
+Meaning of "a few"
+"A few" means "some" or "there are some."
+
+His ideas are difficult, but a few people understand them.
+(There are some people who understand his ideas.)
+
+Both "few" and "a few" can be used without a noun.
+
+Few understand his ideas.
+(Not many people understand his ideas.)
+
+A few understand his ideas.
+(There are some people who understand his ideas.)
+
+"Few" is normally used in formal English.
+
+Few people can speak a foreign language perfectly. (formal)
+
+In informal English, we often say "only a few." This also means "not many."
+
+Only a few people can speak a foreign language perfectly. (informal)
+
+"Few" and "a few" both refer to quantity, but have slightly different meanings. 
+
+"Few":
+
+means "not many"
+is used in formal English
+
+"A few":
+
+means "some" or "there are some."
+is used in informal English.
+Both "few" and "a few" can be used without a noun.
+
+______________________
+
+For compound subjects
+A tag question is a question used after a statement to seek confirmation of the statement. 
+ 
+When there is more than one subject (a compound subject), the pronoun in the question tag follows the pronoun used when the subjects are combined.
+
+You and I should go to the seminar, shouldn't we? (you + I = we)
+Michelle and Claudia are both accountants, aren't they? (Michelle + Claudia = they)
+
+When there are two or more verbs (a compound verb), the question tag follows the same rule as when there is only one verb.
+
+Blake can sing and play the guitar, can't he?
+Blake sang and played the guitar at the company picnic, didn't he?
+
+For sentences that have two or more subject-verb sets (a compound sentence), the question tag is based on the last subject-verb set.
+
+Hugues is a good teacher, and he taught you well, didn't he?
+John and Marla can speak Japanese, but John can’t read it, can he?
+
+A tag question is a question used after a statement to seek confirmation of the statement. Here are the rules for forming tag questions:
+
+For complex sentences, the tag question is based on the independent clause.
+Before we can enter the exhibit, we'll need to buy tickets, won't we?
+ 
+For compound-complex sentences, the question tag is based on the last independent clause.
+I plan to visit Japan a month from now, but I'll have to file the leave right away, won't I?
+
+___________________
+
+The question tag "won't you" is used to invite somebody to do something.
+
+Sit down, won't you?
+Have some coffee, won't you?
+
+For suggestions that include yourself, begin the imperative with "let's" and add "shall we?"
+
+Let's sit down, shall we?
+Let's have some coffee, shall we?
+
+"Would you" is for polite commands.
+
+Get me something to drink, would you?
+Send him an email, would you?
+
+"Can you" is for friendly commands. It is less formal.
+
+Pick up the phone, can you?
+Carry this bag, can you?
+
+"Will you" and "can't you" are less friendly and less polite.
+
+Be quiet, will you?
+Work faster, can't you?
+
+"Will you" is the only question tag used with negative imperatives.
+
+Don’t tell anybody, will you?
+Don't get mad, will you?
+
+Imperatives can have question tags. The question tags would allow the speaker to:
+
+invite somebody to do something
+Sit down, won't you?
+ 
+make suggestions
+Let's sit down, shall we?
+ 
+make commands or requests
+Get me something to drink, would you?
+Don’t tell anybody, will you?
