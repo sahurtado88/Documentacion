@@ -877,3 +877,61 @@ echo -e"the file system utilization on $(hostname -s) is: \n $(df -H | grep -Ev 
 ====================
 
 ```
+
+## Arrays for Bash
+
+- An Array is the data structure of the bash shell, which is used to store multiple data’
+s.
+- Simple array: myarray=( ls pwd date 2 5.6 ) #No limit for length of an array
+
+There are different ways to define an array in bash shell scripting.
+- Empty Array: myArray=()
+- mycmds=( ls pwd date 2 5.6 )
+- myNewArray=( ls -lrt hostname -s )
+- myNewArray=( “ls –lrt” “hostname –s" )
+- declare -a NewArray
+- NewArray=( 1 3 4 5 bash scripting)
+
+Basically, Bash Shell Array is the zero-based Array (i.e., indexing start with 0)
+
+- echo “$myarray” prints first element of the array 
+- echo “${myarray}” prints first element of the array 
+- echo “${myarray[*]}” print all values
+- echo “${myarray[@]” print all values
+- echo “${myarray[0]” -> Prints first value
+- echo “${myarray[-1]}”  -> Prints last value
+- echo “${myarray[*]:0}”  Prints all the values starting from index-0
+- echo “${myarray[*]:1}”  Prints all the values starting from index 1
+- echo “${myarray[*]:0:2}”  Prints two values starting from index-o
+- echo “${myarray[*]:1:2}”  Prints two values starting from index 1
+- echo "${!myarray[*]}"  Prints index values of array
+- echo “${#myarray[*]}”  Find the length (number elements) of array
+- We can also customize index numbers:
+- newarray[5]=“bash”
+- newarray[9]=“shell scriting” Or
+- newarray=([5]=“bash” [9]=“shell scripting”
+
+### Types of array 
+
+We have two types of arrays in Bash Shell Scripting.
+They are:
+- Index Based Arrays or Arrays
+- Associative Arrays
+
+
+### Basic operation with arrays
+
+- Storing the output of a command into array:
+    - arraywithcmd=( $(command) )
+
+- Delete an array or even normal variable:
+    - unset variable/arrayvariable
+
+- Updating an exiting array:
+    - myarray=(1,2,3)
+    - myarray+=(4,5,6)
+
+- Rad an array using read command
+Syntax:
+-  read -a myarray
+-  read –p “Enter your array” -a myarray
