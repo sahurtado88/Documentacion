@@ -448,3 +448,21 @@ git push --set-upstream origin main
 git push Anyname remotenamerepository
 
 git remote set-url origin https://usergithub@github.com/repo
+
+
+_________________________________
+
+git merge
+
+git rebase
+
+git cherry-pick
+
+git stash
+
+git squash
+
+resolve merge conflict in GIT
+
+you can use visual studio code the current is your branch incoming is the other branch
+

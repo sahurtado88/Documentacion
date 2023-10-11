@@ -5321,3 +5321,108 @@ Let's sit down, shall we?
 make commands or requests
 Get me something to drink, would you?
 Don’t tell anybody, will you?
+
+________________
+
+ESPORTS
+also electronic sports; professional online gaming competitions, usually viewed in special organized events
+
+eSports are usually held around the world, with multiple teams playing different games.
+
+FOLLOWING
+a group of people who support something or someone
+
+Jake has a huge online following: His Twitter, Facebook and Instagram pages have millions of followers.
+
+FLOCKED
+gathered together in large numbers
+
+The team members flocked to the manager's desk for a quick huddle.
+
+DIEHARD
+very loyal and determined in supporting something or someone
+
+As a diehard supporter of the Chicago Bulls, Evan goes to each one of their games and buys all of the team's merchandise.
+
+HYPE
+heavy promotion and advertising to make people more interested in something
+
+The hype surrounding the new smartphone increased when a famous actress advertised the device on social media.
+
+LANDSLIDE VICTORY
+an overwhelming win with a large margin
+
+It was a landslide victory for Finn when the department elected a leader for the project.
+
+STREAMING
+related to a method of playing audio or video files continously over the Internet
+
+Youtube is a well-known streaming platform where people can watch videos and listen to music online.
+
+___________________
+
+Superlatives express that the object being described has the highest degree of quality.
+
+For most one-syllable adjectives, add -est.
+
+Mt. Everest is the highest mountain peak on Earth.
+He is the kindest boss I've ever had.
+
+For one-syllable adjectives ending in "e," add -st.
+
+She wore her nicest dress to the company party.
+Missing a deadline is the surest way to lose a client.
+
+If the one-syllable adjective ends in a vowel using the short vowel sound and a consonant, double the consonant then add -est.
+
+I won our company's biggest account through a combination of luck and careful planning.
+Jordan is the fittest athlete on their team.
+
+For most two-syllable adjectives, add "most" before the word.
+
+This is the most crucial stage of the project.  We need to make sure we make no mistakes.
+Mr. Davis is known to be the most gracious manager in the company.  Everyone likes working with him.
+
+For some two-syllable adjectives, add -est.
+
+Monday is the quietest day in the mall.
+
+For two-syllable adjectives ending in "y," change "y" to "i" and add -est.
+
+Stella was the prettiest speaker at the conference.
+Carl is the funniest guy in the department.  He always gets asked to host events.
+
+For adjectives with three or more syllables, add "most" before the word.
+
+I absolutely enjoyed my trip to Rome.  It's the most beautiful city I've ever been.
+Anne is resigning from the company next month.  We are all sorry to lose our most talented employee.
+
+Some adjectives change their spelling when put in superlative form.
+
+good - better - best
+
+Last year was good, but this year was the best year of my whole career.
+
+bad - worse - worst
+
+Things were not going well already, but then the worst thing happened:  I accidentally deleted my file right before my presentation!
+
+little - less - least
+
+Of all his colleagues, he has the least talent.  It's hard to explain his success.
+
+much/many - more - most
+
+You've had the most luck with our difficult customers.  I think you should handle this complaint letter.
+
+Superlatives express that the object being described has the highest degree of quality. To form superlatives, add:
+
+-est at the end of the word
+"most" before the word
+Some adjectives change their spelling when put in superlative form. Here are some examples:
+
+good - better - best
+bad - worse - worst
+
+___________________________
+

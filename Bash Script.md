@@ -916,7 +916,76 @@ Basically, Bash Shell Array is the zero-based Array (i.e., indexing start with 0
 We have two types of arrays in Bash Shell Scripting.
 They are:
 - Index Based Arrays or Arrays
-- Associative Arrays
+- Associative Arrays:
+    We already know about Normal arrays or Indexed Arrays or Index Based Arrays and for these arrays  Index  values or Indices  are Numbers (Integer Number)  
+    Associative arrays are the arrays with index values as strings.
+    Generally no need to declare normal arrays before using them but we have to declare Associative arrays before using them.
+    declare -A  myassarray
+    Defining Associative Arrays:
+    myassarray=([name]=“bash shell scripting”  [version]=4.4)
+    Or
+    myassarray[name]=“bash shell scripting”
+    myassarray[version]=4.4
+
+    Simply Associative Arrays are called key-value pair representation.
+
+    Associative arrays are the arrays with index values as strings  
+
+    Associative Arrays should be declare before using them (declare –A myassarray).
+    echo “${indexarray}”    will print first value by default
+    echo “${myassarray}”   wont print any value
+    Indexed Array Indices are numbers
+    Associative Array Indices are strings 
+
+    l contrario de lo que viste en el caso de los arrays, en el caso de los diccionarios, hay que declararlos de forma explícita. Es decir, por ejemplo,
+
+declare -A telefonos
+Por otro lado para añadir valores a un diccionario, una vez que ya lo hayas declarado, lo puedes hacer conforme al ejemplo siguiente,
+
+declare -A telefonos
+telefonos[Juan]='123'
+telefonos[Pedro]='456'
+telefonos[Andres]='789'
+También es posible añadir valores en una sola línea. Así por ejemplo, lo puedes hacer conforme ves a continuación, recordando declarar el diccionario previamente,
+
+declare -A telefonos
+telefonos=([Juan]='123' [Pedro]='456' [Andres]='789')
+
+Accediendo al contenido de los diccionarios en Bash
+Ahora que ya sabes como declarar diccionarios en Bash, el siguiente paso es acceder a su contenido. Por su puesto, que se trata de acceder de todas las formas, tanto de uno en uno, como de forma masiva. Pero además tienes que acceder no solo al valor, sino a la clave. En este caso la pareja clave-valor es lo que realmente cobra importancia.
+
+Así, para acceder a un elemento concreto tienes que ejecutar la siguiente instrucción, por ejemplo,
+
+echo ${telefonos[Juan]}
+Para acceder a los valores del diccionario tienes dos opciones,
+
+echo ${telefonos[@]}
+echo ${telefonos[*]}
+
+Mientras que si lo que quieres es obtener las claves, en este caso, los propietarios de esos números de teléfono, la instrucción a ejecutar será,
+
+echo ${!telefonos[*]}
+Igual que sucede en el caso de los valores, también puedes hacer lo mismo para el caso de las claves. Es decir, también puedes obtener todas las claves con echo ${!telefonos[@]}.
+
+Si quiere iterar entre los valores del diccionario tan solo tienes que ejecutar,
+
+for i in ${telefonos[@]}
+do
+    echo $i
+done
+Y lo mismo puedes hacer para el caso de las claves, que además puedes combinar como puedes ver en el siguiente ejemplo,
+
+for i in ${!telefonos[@]}
+do
+    echo "El telefono de $i es ${telefonos[$i]}"
+done
+
+Cuantos elementos tiene el diccionario
+Este procedimiento es exactamente igual que el que utilizaste con los arrays, simplemente tienes que utilizar #. Así, para saber cuantos teléfonos tienes guardados, tan solo tienes que ejecutar,
+
+echo ${#telefonos[@]}
+
+https://atareao.es/tutorial/scripts-en-bash/diccionarios-en-bash/#:~:text=Una%20caracter%C3%ADstica%20interesante%20son%20los,una%20clave%2C%20definida%20por%20ti.
 
 
 ### Basic operation with arrays
@@ -931,7 +1000,88 @@ They are:
     - myarray=(1,2,3)
     - myarray+=(4,5,6)
 
-- Rad an array using read command
+- Read an array using read command
 Syntax:
 -  read -a myarray
 -  read –p “Enter your array” -a myarray
+
+## Loops
+
+Most languages have the concept of loops and they are very useful to execute 
+series of commands for n number of times.
+
+###  Types of loops:
+- for loop
+    - basic loop
+    ```
+        for variable in list_of_values
+        do
+            command 1
+            command 2
+        done   
+    ``` 
+    - C-Language type for loop
+        ```
+        for ((initialization; condition; increment/decrement))
+        do
+            command 1
+            command 2
+        done   
+    ``` 
+
+
+        for each in $(ls)
+        do
+        if [[ -x $each ]]
+        then
+            echo "$each is having execution permission" 
+        else
+            echo "$each is not having execution permission"
+        fi
+        done
+
+- while loop
+
+- until loop
+
+- select loop
+
+
+#### Install multiple packages
+
+```
+#!/bin/bash
+#Installing mutliple pkags
+
+if [[ $# -eq 0 ]]
+then
+  echo "Usage: $0 pkg1 pkg2 ...."
+  exit 1
+fi
+
+
+if [[ $(id -u) -ne 0 ]]
+then
+  echo "Please run from root user or with sudo privilage"
+  exit 2
+fi
+
+
+for each_pkg in $@
+do
+  if which $each_pkg &> /dev/null
+  then
+     echo "Already $each_pkg is installed"
+  else
+     echo "Installing $each_pkg ......"
+     yum install $each_pkg -y &> /dev/null 
+     if [[ $? -eq 0 ]]
+     then
+       echo "Successfully installed $each_pkg pkg"
+     else
+       echo "Unable to install vim $each_pkg"
+     fi
+  fi
+
+done
+```
