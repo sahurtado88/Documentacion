@@ -1234,7 +1234,7 @@ Two ways (for both password and password less Authentication)
  This is good for automation, if the connection is password less
 authentication
  Note: ssh -t user_name@remote_server “command”
- ssh -t -o StrictHostKeyChecking=No user_name@remote_server “command” 
+ ssh -t -o StrictHostKeyChecking=No user_name@remote_server “command”  
 
  Executing command on remote server without logging into remote server:
 - ssh -t -o StrictHostKeyChecking=No user_name@remote_server “command”
