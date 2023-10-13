@@ -5426,3 +5426,488 @@ bad - worse - worst
 
 ___________________________
 
+Reflexive pronouns show that the person who does the action is the same person who receives the action.
+
+He cut himself when he was slicing vegetables.
+She bought herself a new dress.
+
+When the reflexive pronoun follows the preposition "by," it means that the action was done by the subject/s and nobody/nothing else.
+
+I painted the house by myself. I did it in two weeks.
+We worked on this report by ourselves. Our boss was on a business trip.
+
+Intensive pronouns emphasize a noun or a pronoun.
+
+I don't want to talk to the CEO's assistant. I want to talk to the CEO herself.
+
+Unlike reflexive pronouns, intensive pronouns can be removed from a sentence without making the sentence lose its meaning.
+
+He asked his team to come early, but he himself arrived late.
+_________________________________________________
+
+The following suffixes form nouns that indicate an action or a result of an action.
+
+-age 
+
+breakage
+shrinkage
+
+All breakages will be charged to the customer. 
+
+-ation 
+
+exploration
+starvation
+
+Sea exploration resulted in the discovery of new places.
+
+-ment 
+
+government
+arrangement
+
+The seating arrangement can have a significant effect on the participants in a meeting.
+
+The following suffixes form nouns that indicate a state of being.
+
+-ence
+
+independence
+confidence
+
+The United States of America celebrates its independence every 4th of July.
+
+-hood
+
+brotherhood
+childhood
+
+Visiting his hometown brought back memories of his childhood.
+
+-ness
+
+happiness
+meanness
+
+Alice couldn't hide her happiness when she learned of her promotion.
+
+-ship
+
+friendship
+leadership
+
+Under Tony's leadership, the company grew faster than anyone expected.
+
+The following suffix forms nouns that indicate an act, belief, practice or behavior.
+
+-ism
+
+Confucianism
+Impressionism
+
+Claude Monet developed Impressionism, a style of painting that focuses on light, color and brush strokes.
+
+_____________________________
+
+-able
+can receive an action;
+inclined towards something
+
+washable
+drinkable
+readable
+
+sociable
+charitable
+agreeable
+
+I need to choose a more readable font for my report.
+She looks friendly and agreeable.
+
+-al
+having the qualities of
+
+accidental
+seasonal
+medical
+
+Their accidental meeting led to a discussion of a new business idea.
+
+-ful
+full of
+
+useful
+successful
+beautiful
+
+Mr. Anderson is a successful manager.
+
+-ic
+possesses or uses up something
+
+electric
+hygienic
+historic
+
+He plays an electric guitar.
+
+-ish
+has some qualities of
+
+childish
+boyish
+whitish
+
+His childish behavior makes him very unreliable at work.
+
+-less
+without
+
+careless
+homeless
+loveless
+
+You shouldn't be careless in calculating the costs of the project.
+
+-ly
+acts like
+
+friendly
+motherly
+fatherly
+
+Laura’s friendly smile welcomed the participants to the conference.
+
+-ous
+having a lot of; full of
+
+virtuous
+ambitious
+amorous
+
+Ms. David is very ambitious.
+
+________________________________
+
+A suffix is a group of letters that may be added to the end of a root word to form another word. A suffix can be used to form verbs.
+
+liquidate
+weaken
+classify
+familiarize
+
+A suffix is a group of letters that may be added to the end of a root word to form another word. A suffix can be used to form verbs.
+
+liquidate
+weaken
+classify
+familiarize
+
+-en 
+
+weaken
+shorten
+hasten
+
+The addition of new team members will hasten the completion of the project.
+
+-fy or -ify 
+
+classify
+simplify
+justify
+
+You must be able to justify your decisions to your boss.
+
+-ize (American) or -ise (British)
+
+familiarize
+finalize
+visualize
+
+Brian drew some sketches to help his clients visualize his plans for the building.
+
+_____________________________
+
+The suffix -ly added to an adjective forms an adverb that means “in a certain manner.”
+
+happily
+slowly
+quietly
+
+Everyone worked quietly while waiting for feedback on the project.
+
+If the root word is not an adjective, turn it into an adjective first before adding -ly. 
+
+root word = beauty; adjective = beautiful; adverb = beautifully
+root word = sleep; adjective = sleepy; adverb = sleepily
+
+The suffix -ward(s) added to directions forms an adverb that means “in a certain direction.”
+
+backwards
+sidewards
+eastward
+
+Gregory walked away without glancing backwards.
+
+The suffix -way(s) added to a root word forms an adverb that means "in a certain position."
+
+sideways
+midway
+halfway
+
+Our office is halfway between the museum and the train station.
+
+The suffix -wide added to certain nouns forms an adverb that means “throughout.”
+
+nationwide
+countrywide
+worldwide
+
+The effects of the workers' strike were felt nationwide.
+
+A suffix is a group of letters that may be added to the end of a root word to form another word. Here are some suffixes that form adverbs.
+
+-ly
+forms an adverb that means “in a certain manner”
+ 
+-ward(s)
+forms an adverb that means “in a certain direction”
+ 
+-way(s)
+forms an adverb that means “in a certain position”
+ 
+-wide
+forms an adverb that means “throughout”
+
+_________________________
+
+# Present perfect vs simple past
+
+The present perfect tense says that the subject possesses ("has") a past experience. The simple past tense simply says that the subject did an action in the past.
+
+I have studied the trends in the market.
+I studied the trends in the market.
+
+The present perfect tense expresses that an action started in an unspecified or unknown time in the past and has not yet been completed. It is also used with adverbs such as "just", "already," "recently," "yet", etc. The simple past tense expresses that an action began in the past and ended in the past.
+
+My English has improved since I moved to Australia.
+(My English is still getting better every day.)
+
+My English improved when I moved to Australia.
+(My English is not improving anymore.)
+
+The present perfect tense can also be used to express that an action is finished but still affects the present. The simple past tense expresses that the past action is not connected to the present.
+
+We have hired only eight new sales agents. We need to hire two more.
+We hired eight new sales agents last week.
+
+In its negative form, the present perfect tense talks about an action or event that you expected but didn't happen. In its negative form, the simple past tense talks about an action that didn't happen.
+
+I thought my English would improve when I moved to Australia, but it hasn't.
+My English did not improve when I moved to Australia.
+
+The present perfect tense and simple past tense are used in different ways.
+
+The present perfect tense: 
+
+says that the subject possesses ("has") a past experience 
+expresses that an action started in an unspecified or unknown time in the past and has not yet been completed
+expresses that an action is finished but still affects the present
+in its negative form, talks about an action or event that you expected but didn't happen
+The simple past tense:
+
+says that the subject did an action in the past
+expresses that an action began in the past and ended in the past
+expresses that the past action is not connected to the present
+In its negative form, talks about an action that didn't happen
+
+_________________________________
+
+The words a, an, and the are called articles.
+
+Both "a" and "an" are used to show things in general.
+
+This is a bag.
+This is an orange.
+
+"The" is used in two different ways:
+
+to show something that is among a group of similar things
+This is the blue book.
+This is the yellow ball.
+ 
+to show what something looks like
+The car is red.
+The house is blue.
+
+___________________________
+
+The present continuous tense is used to talk about things that are happening now.
+
+I am walking.
+You are carrying a laptop.
+She is calling a friend.
+They are talking.
+
+__________________________
+
+# FROM FOR OF
+
+"From" can be used to indicate the following:
+
+source or origin
+
+The email is from a client.
+
+cause or reason for something
+
+Linda was tired from running all morning.
+
+starting point in place or time
+
+I work from 9:00 in the morning to 6:00 in the evening.
+
+separation
+
+Please move the computers away from the window.
+
+"For" can be used to indicate the following:
+
+direction, destination or recipient
+
+This package is for you.
+
+length of time
+
+I work for eight hours every day.
+
+substitution
+
+The customer exchanged the computer for a better unit.
+
+purpose
+
+A party was held for the company anniversary.
+
+"Of" can be used to talk about the following:
+
+ownership
+
+This is the best product of the company.
+
+composition
+
+Brian likes to use tables that are made of wood.
+
+quality
+
+Our company makes sure that the products are always of great quality.
+
+"From, "for" and "of" have different uses.
+
+"From" can be used to indicate:
+
+source
+cause
+starting point
+separation
+"For" can be used to indicate:
+
+direction/destination/ recipient,
+length of time,
+substitution
+purpose
+"Of" can be used to talk about:
+
+ownership
+composition
+quality
+_____________________________________________
+
+
+The simple past tense talks about actions that started and ended in the past. The simple past tense is commonly used with time expressions such as "yesterday," "last month," "last week," "last year," "a while ago."
+
+The manager called for a meeting yesterday.
+
+Form
+
+regular verb: + -d or -ed
+used, worked
+
+irregular verb: change spelling
+had, said, went
+
+The simple present tense talks about actions that happen in the present, habits or regular actions, and facts.
+
+The manager calls for a meeting.
+The manager calls for a meeting every week.
+The manager calls for meetings.
+
+Form
+
+singular: base form + -s
+she works
+
+plural: base form
+they work
+
+The simple future tense talks about actions that will happen at a later time, plans, and predictions. The simple future tense is commonly used with time expressions such as "tomorrow," "next week," "next month," "later," etc.
+
+The manager will call for a meeting tomorrow.
+The manager is going to call for a meeting tomorrow.
+
+Form
+
+"will" + verb
+will work
+
+"am going to" + verb
+am going to work
+
+"is going to" + verb
+is going to work
+
+"are going to" + verb
+are going to work
+
+The past continuous tense talks about continuing actions in the past.
+
+The programmers were arguing about technology when the project leader entered the conference room.
+
+Form
+
+"was" + verb + -ing
+was listening
+
+"were" + verb + -ing
+were listening
+
+The present continuous tense talks about actions that are happening at the moment. The present continuous tense is used with time expressions such as "at the moment," "right now," "currently," etc.
+
+Right now, the programmers are arguing about the technology to use for their latest project.
+
+Form
+
+"am" + verb + -ing
+am computing
+
+"is" + verb + -ing
+is computing
+
+"are" + verb + -ing
+are computing
+
+The future continuous tense talks about a prolonged action that will be done at a later time.
+
+The programmers will be arguing about the technology to use for their latest project.
+The programmers are going to be arguing about the technology to use for their latest project.
+
+Form
+
+"will be" + verb + -ing
+will be writing
+
+"(be) going to be" + verb + -ing
+is computing
+

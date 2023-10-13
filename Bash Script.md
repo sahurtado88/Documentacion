@@ -1085,3 +1085,194 @@ do
 
 done
 ```
+## Difference  between \$@ y $*
+
+- \$# numero de argumentos
+- \$@ act like array with quotation
+- \$* act like single string with quotation
+- \$? resultado ultimo comando
+
+## Loop Control commands (break and continue)
+
+Break and continue commands are used to control the execution of loops
+
+- **Break** 
+
+break command is used to terminate/exit current loop completely before the actual ending loop
+
+- **Continue**
+
+Continue command is used in script to skip current iteration of loop and continue to next iteration of the loop
+
+```
+display_files.sh
+------------------
+#!/bin/bash
+#ls
+<< mcom
+for each_file in $(ls)
+do
+   echo "$each_file"
+done
+mcom
+
+<< scom
+cnt=1
+for each_file in $(ls *.txt)
+do
+  if [[ $cnt -eq 1 ]]
+  then 
+     echo "$each_file"
+     ((cnt++))
+  fi
+done
+scom
+
+echo "starting for loop"
+cnt=1
+for each_file in $(ls *.txt)
+do
+	if [[ $cnt -eq 1 ]]
+	then
+           echo "$each_file"
+	   break
+	fi
+done
+
+echo "for loop is over"
+===============================
+display_numbers.sh
+-----------------
+#!/bin/bash
+echo "starting for loop"
+<< mycom
+for each in $(seq 1 10)
+do
+  if [[ $each -gt 5 ]]
+  then
+	 break
+  fi 
+  echo "$each"
+done
+mycom
+
+<< com
+for each in $(seq 1 10)
+do
+  if [[ $each -ne 5 ]]
+  then
+     echo "$each"
+  fi
+
+done
+
+com
+
+for each in $(seq 1 10)
+do
+   if [[ $each -eq 5 ]]
+   then
+	   continue
+   fi	 
+
+   echo "$each"
+done
+
+echo "for loop is over"
+=============================
+```
+
+## For loop with arrays
+
+```
+myServices=(docker nginx)
+for eachValue in ${myServices[@]}
+do
+  systemctl status $eachService 1>dev/null 2>/dev/null
+  if [[ $? -ne 0 ]]
+  then
+    echo “The service $eachService is not running"
+    ecgo "the service $eachService is not running on $($hostanme -s)" | /usr/bin/mail -s "Status of $eachService" "dowithscripting@gmail.com"
+done
+```
+# Working with remote server
+
+## Loging into remote server using ssh
+
+Using Password:
+
+ssh user_name@remote_ip
+
+ssh remote_ip   (here remote user name is same as local terminal user)
+
+vi /etc/ssh/sshd_config (Make it; PasswordAuthentication yes  in remote server after restart sshd (systemctl restart sshd or service sshd restart less than 7 version))
+========================================================================
+
+Using passwordless:
+-------------------
+Step1: On local server generate keys using ssh-keygen
+Step2: go to user_home/.ssh then here you will find two files
+		id_rsa  (private key, it should be safe)
+		id_rsa.pub (public, this has to share with remote servers)
+Step3: use below command to share public key with remtoe server, it will ask password
+       ssh-copy-id username@remote_server_ip    
+Step4: if step3 is success then use below command to login with remote server, it wont ask password now
+        ssh username@remote_server_ip
+
+## Executing commnad on remote server
+
+Two ways (for both password and password less Authentication)
+-  First way:
+ ssh user_name@remote_server
+ Provide the password if it is password authentication connection.
+ Now run the command and see the result
+ Run exit command to close remote session
+ Note: This is not good for automation
+-  Second way:
+ ssh user_name@remote_server “command”
+ Provide the password if it is password authentication connection.
+ This is good for automation, if the connection is password less
+authentication
+ Note: ssh -t user_name@remote_server “command”
+ ssh -t -o StrictHostKeyChecking=No user_name@remote_server “command” 
+
+ Executing command on remote server without logging into remote server:
+- ssh -t -o StrictHostKeyChecking=No user_name@remote_server “command”
+Executing multiple commands on remote server without logging into remote server
+- ssh -t -o StrictHostKeyChecking=No user_name@remote_server “cmd1;cmd2;cmd3” 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+___________________________________________
+
+(( expresión )) permite evaluar expresiones aritméticas. Si el valor de la expresión es no-cero, el estado de retorno es 0; en caso contrario, el estado de retorno es 1.
+
+[[ expresión ]] es un bashism (algo propio de Bash, mientras que [ es genérico -- puedes leer sobre la diferencia entre [ y [[) y sirve para evaluar expresiones, que pueden ser mucho más complejas que las aritméticas.

@@ -1887,3 +1887,17 @@ Conclusion
 
 Kubernetes Deployment and Kubernetes StatefulSet are two powerful resources for managing containerized applications on Kubernetes. Deployments are useful for managing stateless applications, while StatefulSets are useful for managing stateful applications that require stable network identities and persistent storage. By understanding their differences and use cases, you can decide which one to use for your application and ensure that your application is reliable, scalable, and consistent.
 
+## Contenedores de Inicialización
+Esta página proporciona una descripción general de los contenedores de inicialización (init containers): contenedores especializados que se ejecutan antes de los contenedores de aplicación en un Pod. Los contenedores de inicialización pueden contener utilidades o scripts de instalación no presentes en una imagen de aplicación.
+
+Un Pod puede tener múltiples contenedores ejecutando aplicaciones dentro de él, pero también puede tener uno o más contenedores de inicialización que se ejecutan antes de que se inicien los contenedores de aplicación.
+
+Los contenedores de inicialización son exactamente iguales a los contenedores regulares excepto por:
+
+Los contenedores de inicialización siempre se ejecutan hasta su finalización.
+Cada contenedor de inicialiación debe completarse correctamente antes de que comience el siguiente.
+Si el contenedor de inicialización de un Pod falla, kubelet reinicia repetidamente ese contenedor de inicialización hasta que tenga éxito. Sin embargo, si el Pod tiene una restartPolicy de Never y un contenedor de inicialización falla durante el inicio de ese Pod, Kubernetes trata al Pod en general como fallido
+
+Los contenedores de inicialización admiten todos los campos y características de los contenedores de aplicaciones, incluidos los límites de recursos, los volúmenes y la configuración de seguridad. Sin embargo, las solicitudes de recursos y los límites para un contenedor de inicialización se manejan de manera diferente, como se documenta en Recursos.
+
+Además, los contenedores de inicialización no admiten lifecycle, livenessProbe, readinessProbe o startupProbe porque deben de ejecutarse hasta su finalización antes de que el Pod pueda estar listo.
