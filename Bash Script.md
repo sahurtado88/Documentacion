@@ -1041,11 +1041,126 @@ series of commands for n number of times.
         done
 
 - while loop
+A while loop is a statement that iterates over a block of code till the condition specified is evaluated to false. We can use this statement or loop in our program when do not know how many times the condition is going to evaluate to true before evaluating to false.  
+
+The syntax of a while loop in BASH is something like below:
+```
+while [ condition ];
+do
+    # statements
+    # commands
+done  
+```
+If the condition is true then the commands inside the while block are executed and are iterated again after checking the condition. Also if the condition is false the statements inside the while block are skipped and the statements after the while block are executed. 
+
+### Reading a file with a while loop  
+We can read a file with a while loop in BASH.  By parsing certain parameters to the while loop condition, we can iterate over the file line by line or by other groups like characters or words.   
+```
+#!/usr/bin/bash 
+
+file=temp.txt
+
+while read -r line;
+do
+    echo $line
+done < "$file"
+```
+
+### Infinite while loop
+To create an infinite loop using a while loop statement. We don’t need to put any condition in the while loop and hence the loop iterates infinitely. The below is the example of an infinite while loop:
+```
+#!/usr/bin/bash 
+
+while :
+do
+  echo "An Infinite loop"
+  # We can press Ctrl + C to exit the script
+done
+```
+### Reading commnad output
+
+```
+command | while read line
+do
+  statements/commnads
+done
+```
+
+
 
 - until loop
+The Until loop is used to iterate over a block of commands until the required condition is false.
+
+Syntax of **Until** Loop
+```
+until [ condition ];
+do
+ block-of-statements
+done
+```
+Here, the flow of the above syntax will be –
+
+- Check the condition.
+- If the condition is false, then execute the statements and go back to step 1.
+- If the condition is true, then the program control moves to the next command in the script.
+
+Example:
+```
+#!/bin/bash
+echo "until loop"
+i=10
+until [ $i == 1 ]
+do
+    echo "$i is not equal to 1";
+    i=$((i-1))
+done
+echo "i value is $i"
+echo "loop terminated"
+```
 
 - select loop
 
+The select loop is one of the categories of loops in bash programming. A select-loop in the shell can be stopped in two cases only if there is a break statement or a keyboard interrupt. The main objective of using a select loop is that it represents different data elements in the form of a numbered list to the user. The user can easily select one of the options as listed by the program.
+
+ The syntax of a general select loop is given below,
+
+Syntax:
+```
+select myVariable in variable1 variable2 ... variableN
+do
+    # body to be executed for 
+    # every value in the sequence.
+done
+```
+Here, myVariable is a variable that is used to refer to each of the values from variable1 to variableN.
+
+In the below program we are creating a numbered menu to allow a user to select a number. Once a number is selected by the user we are displaying whether the number is even or odd.  
+
+Source Code:
+```
+# Program to demonstrate the working of
+# a select-loop in shell scripting
+
+# PS3="Enter your choice ==> "
+# echo "Choose a number:"
+  
+select num in 1 2 3 4 5 6 7
+do
+   case $num in
+      2|4|6|8) 
+         echo "Even number."
+         ;;
+      1|3|5|7)
+         echo "Odd number."
+      ;;
+      none) 
+         break 
+      ;;
+      *) echo "ERROR: Invalid selection" 
+      ;;
+   esac
+done
+```
 
 #### Install multiple packages
 
@@ -1241,9 +1356,249 @@ authentication
 Executing multiple commands on remote server without logging into remote server
 - ssh -t -o StrictHostKeyChecking=No user_name@remote_server “cmd1;cmd2;cmd3” 
 
+### Providing password for ssh using sshpass utility
+
+Basic ssh command to run commands on remote server:
+
+ssh -t -o StrictHostKeyChecking=No automation@54.91.148.241 "date"
+----------------------------
+Using sshpass (providing password for ssh):
+
+sshpass -p "automation@123" ssh -t -o StrictHostKeyChecking=No automation@54.91.148.241 "date"
+or
+sshpass -f  path_for_password_file ssh -t -o StrictHostKeyChecking=No automation@54.91.148.241 "date"
+or
+export SSHPASS="automation@123"
+sshpass -e ssh -t -o StrictHostKeyChecking=No automation@54.91.148.241 "date"
+
+ Amazon Linux EPEL:
+ cd /opt 
+ wget -r --no-parent -A 'epel-release-*.rpm' http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/
+ yum install dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-12.noarch.rpm
+ 
+ RHEL8 EPEL:
+    yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+
+___________________________
+
+## Executing multiple commands on Multiple servers
+
+```
+#!/bin/bash
+
+<< my_com
+echo "The date command output on the server: 100.26.187.33"
+sshpass -f pass ssh -o StrictHostKeyChecking=No automation@100.26.187.33 "date"
+echo "-------------------------------------------------------"
+echo "The uptime command output on the server: 100.26.187.33"
+sshpass -f pass ssh -o StrictHostKeyChecking=No automation@100.26.187.33 "uptime"
+echo "-------------------------------------------------------"
+echo "The free -m command output on the server: 100.26.187.33"
+sshpass -f pass ssh -o StrictHostKeyChecking=No automation@100.26.187.33 "free -m"
+echo "-------------------------------------------------------"
+my_com
 
 
+for each_ser in $(cat remote_servers.txt)
+do
+  echo "Executing cmds on $each_ser"
+  echo "============================" 
+  for each_cmd in date uptime "free -m"
+  do
+    echo "The $each_md command output on the server: $each_ser"
+    #sshpass -f pass ssh -o StrictHostKeyChecking=No automation@$each_ser "$each_cmd"
+    ssh -o StrictHostKeyChecking=No automation@$each_ser "$each_cmd"
+    echo "-------------------------------------------------------"
+  done
 
+done 
+```
+
+## Shell Script to execute different commands on different servers with different users and different passwords
+
+```
+servers_info.txt
+----------------
+18.212.27.210  automation automation@123 date
+18.212.185.2   tomcat tomcat123 whoami
+
+execute_different_cmds_on_different_servers_with_differnt_users_and_passwords.sh
+--------------------------------------------------------------------------------
+#!/bin/bash
+while read ser user pass cmd1 cmd2
+do
+  echo "Executing $cmd1 on $ser with user as $user and password $pass"
+  sshpass -p $pass ssh -n -o StrictHostKeyChecking=No $user@$ser "$cmd1" 
+  echo "Executing $cmd2 on $ser with user as $user and password $pass"
+  sshpass -p $pass ssh -n -o StrictHostKeyChecking=No $user@$ser "$cmd2"
+  echo "---------------------------------------------------------"
+done < servers_info.txt
+
+```
+
+## While loops with IFS
+
+- IFS: Internal Field Separator, which is one of the shell or environment variable.
+-  The IFS variable is used as a word separator (token) for the loops.
+-  If we are going to change the default IFS, then it is a good practice to store the original IFS in a variable. 
+
+```
+#!/bin/bash
+OLD_IFS=$IFS
+while IFS="," read f1 f2 f3 f4 f5
+do
+  echo "$f2
+done < server_info.txt
+IFS=$OLD_IFS
+```
+
+## FUNCTIONS
+
+-  Function is a block of code that performs a specific task and which is reusable.
+-  Functions concept reduces the code length.
+-  Two ways to define a function:
+
+```
+function function_name
+{
+    commands/statements
+}
+```
+```
+function_name()
+{
+    commands/statments
+}
+```
+
+```
+#!/bin/bash
+mycode()
+{
+   read -p "Enter first number: " num1
+   read -p "Enter second number: " num2
+}
+clear
+echo "--------------------------------"
+echo "Welcome to Arithmetic Calculator"
+echo "--------------------------------"
+echo -e "[a]ddition\n[b]Subtraction\n[c]Multiplication\n[d]Division\n"
+read -p "Enter your choice: " choice
+case $choice in
+   [aA])
+        mycode
+        result=$((num1+num2))
+        echo "The result for your choice is: $result"
+        ;;
+   [bB])
+        mycode
+        result=$((num1-num2))
+        echo "The result for your choice is: $result"
+        ;;
+   [cC])
+        mycode
+        result=$((num1*num2))
+        echo "The result for your choice is: $result"
+        ;;
+   [dD])
+        mycode
+        result=$((num1/num2))
+        echo "The result for your choice is: $result"
+        ;;
+   *)
+       echo "Wrong choice"
+       ;;
+esac
+
+```
+
+## Types of Functions
+The functions in shell scripting can be boxed into a number of categories. The following are some of them:
+
+1. The functions that return a value to the caller. The return keyword is used by the functions for this purpose.
+
+The following is one such function used to calculate the average of the given numbers.
+
+```
+find_avg(){ 
+  len=$#
+  sum=0
+  for x in "$@"
+  do
+     sum=$((sum + x))
+  done
+  avg=$((sum/len))
+  return $avg
+}
+find_avg 30 40 50 60
+printf "%f" "$?"
+printf "\n"
+```
+return can only return a number (0-255).
+
+2. The functions that terminate the shell using the exit keyword.
+
+```
+is_odd(){ 
+  x=$1
+  if [ $((x%2)) == 0 ]; then
+     echo "Invalid Input"
+     exit 1
+  else
+     echo "Number is Odd"
+  fi
+}
+is_odd 64
+```
+3. The functions that alter the value of a variable or variables.
+```
+a=1
+increment(){ 
+  a=$((a+1))
+  return
+}
+increment
+echo "$a"
+```
+
+4. The functions that echo output to the standard output.
+
+```
+hello_world(){ 
+  echo "Hello World"
+  return
+}
+hello_world
+```
+
+
+```
+#!/bin/bash
+
+
+read_inputs()
+{
+  read -p "Enter first num: " num1
+  read -p "Enter second num: " num2
+}
+
+addition()
+{
+  sum=$((num1+num2))
+  echo "The addition of $num1 and $num2 is: $sum"
+}
+
+subtraction()
+{
+  sub=$((num1-num2))
+  echo "The sub of $Num1 and $num2 is: $sub"
+}
+
+
+read_inputs
+addition
+subtraction
+```
 
 
 

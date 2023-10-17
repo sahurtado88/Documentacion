@@ -709,3 +709,5 @@ docker inspect <nombre_contenedor>
 docker rm -fv $(docker ps -aq) eliminar todos los contenedores
 
 docker stat <nombrecontenedor o Container_ID>
+
+

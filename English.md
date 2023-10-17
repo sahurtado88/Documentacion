@@ -5825,8 +5825,8 @@ composition
 quality
 _____________________________________________
 
-
-The simple past tense talks about actions that started and ended in the past. The simple past tense is commonly used with time expressions such as "yesterday," "last month," "last week," "last year," "a while ago."
+## Simple tenses
+- The simple past tense talks about actions that started and ended in the past. The simple past tense is commonly used with time expressions such as "yesterday," "last month," "last week," "last year," "a while ago."
 
 The manager called for a meeting yesterday.
 
@@ -5838,7 +5838,7 @@ used, worked
 irregular verb: change spelling
 had, said, went
 
-The simple present tense talks about actions that happen in the present, habits or regular actions, and facts.
+- The simple present tense talks about actions that happen in the present, habits or regular actions, and facts.
 
 The manager calls for a meeting.
 The manager calls for a meeting every week.
@@ -5852,7 +5852,7 @@ she works
 plural: base form
 they work
 
-The simple future tense talks about actions that will happen at a later time, plans, and predictions. The simple future tense is commonly used with time expressions such as "tomorrow," "next week," "next month," "later," etc.
+- The simple future tense talks about actions that will happen at a later time, plans, and predictions. The simple future tense is commonly used with time expressions such as "tomorrow," "next week," "next month," "later," etc.
 
 The manager will call for a meeting tomorrow.
 The manager is going to call for a meeting tomorrow.
@@ -5871,7 +5871,9 @@ is going to work
 "are going to" + verb
 are going to work
 
-The past continuous tense talks about continuing actions in the past.
+## Continous tenses
+
+- The past continuous tense talks about continuing actions in the past.
 
 The programmers were arguing about technology when the project leader entered the conference room.
 
@@ -5883,7 +5885,7 @@ was listening
 "were" + verb + -ing
 were listening
 
-The present continuous tense talks about actions that are happening at the moment. The present continuous tense is used with time expressions such as "at the moment," "right now," "currently," etc.
+- The present continuous tense talks about actions that are happening at the moment. The present continuous tense is used with time expressions such as "at the moment," "right now," "currently," etc.
 
 Right now, the programmers are arguing about the technology to use for their latest project.
 
@@ -5898,7 +5900,7 @@ is computing
 "are" + verb + -ing
 are computing
 
-The future continuous tense talks about a prolonged action that will be done at a later time.
+- The future continuous tense talks about a prolonged action that will be done at a later time.
 
 The programmers will be arguing about the technology to use for their latest project.
 The programmers are going to be arguing about the technology to use for their latest project.
@@ -5911,3 +5913,308 @@ will be writing
 "(be) going to be" + verb + -ing
 is computing
 
+## Perfect tenses
+- The past perfect tense talks about a completed past action that took place before another past action. Use the time expressions "before" and "after" with the simple past tense when writing the past perfect tense.
+
+They had been colleagues for a decade before the project closed.
+
+ 
+
+Form
+
+"had" + past participle
+had gone
+
+- The present perfect tense talks about actions that were completed at a certain time before the present or actions that extend up to the present time. Use the time expressions "since" (for beginnings) and "for" (for duration) when talking about the present perfect tense.
+
+They have been colleagues for a decade.
+They have been colleagues since 2005.
+
+Form
+
+"has" + past participle
+has flown
+
+"have" + past participle
+have flown
+
+- The future perfect tense talks about actions that will be completed or perfected at a later time. Use the time expressions "by" and "by the time" with the future perfect tense.
+
+They will have been colleagues for eleven years by 2016.
+They are going to have been colleagues for eleven years by 2016.
+
+ 
+
+Form
+
+"will have" + past participle
+will have finished
+
+"(be) going to have" + past participle
+(be) going to have finished
+
+## Perfect continuous tenses
+
+The past perfect continuous tense talks about continuous past actions that have been completed before another action (usually used with the simple past).
+
+The team had been working on the same project for six months when the team leader got transferred.
+
+Form
+
+"had been" + verb + -ing
+had been writing
+
+The present perfect continuous tense talks about repeated or continuous actions in the past or actions that may still be continuing in the present or will be continued in the future.
+
+The team has been working on the same project for six months.
+
+Form
+
+"has been" + verb + -ing
+has been telling
+
+"have been" + verb + -ing
+have been telling
+
+
+The future perfect continuous tense talks about continuous actions that will be completed at a later time or in the future. ("Will" is more frequently used than "be going to.")
+
+The team will have been working on the same project for six months by September.
+
+Form
+
+"will have been" + verb + -ing
+will have been signing
+
+"(be) going to have been" + verb + -ing
+(be) going to have been signing
+
+The future perfect continuous tense talks about continuous actions that will be completed at a later time or in the future. ("Will" is more frequently used than "be going to.")
+
+The team will have been working on the same project for six months by September.
+
+Form
+
+"will have been" + verb + -ing
+will have been signing
+
+"(be) going to have been" + verb + -ing
+(be) going to have been signing
+
+________________________
+
+black sheep
+
+the bad one in a group of good or successful people
+
+
+blackout
+
+a widespread loss of electricity
+
+
+green light
+
+a signal to begin
+The CEO gave the green light to start the construction of the new building.
+
+
+green thumb
+
+skill in growing plants
+
+red carpet treatment
+
+the very best treatment reserved for important people
+
+
+red tape
+
+formal procedures that are not really important
+
+
+white lie
+
+a lie, often harmless, told to be polite
+
+blacklisted
+
+included in a list of unwelcome people
+The former employee who caused massive losses to the company is blacklisted in the industry.
+
+
+feeling blue
+
+very sad
+
+
+green with envy
+
+very jealous or desirous of another's property
+
+
+yellow-bellied
+
+cowardly
+The president accused the vice-president of being yellow-bellied during the negotiation; as a result, they did not get the best deal for the company.
+
+in black and white
+
+in clear and simple terms
+
+gray area
+
+something that is not clearly defined and does not belong to a specific category
+There are a lot of gray areas in the law that need to be clarified.
+
+
+greenhorn
+
+an inexperienced or untrained person; a newcomer
+
+
+pink slip
+
+a notice of termination from a job
+
+red flag
+
+a warning sign
+
+
+white elephant
+
+a useless object that is expensive to maintain
+
+
+black and blue
+
+bruised
+
+
+green/blue around the gills
+
+looking sick
+Chelsea seemed blue around the gills so her boss allowed her to go home early.
+
+
+in the black
+
+to be profitable; to be in good financial condition
+
+
+in the red
+
+to be in debt; to be in bad financial condition
+
+
+tickled pink
+
+to be very delighted or pleased
+
+once in a blue moon
+
+very rarely
+
+
+out of the blue
+
+suddenly; without any warning
+The employees were surprised because the manager decided to treat them to lunch out of the blue.
+
+
+blackmail (someone)
+
+to threaten someone to get money or something valuable from him or her
+
+
+catch (someone) red-handed
+
+to catch someone in the act of doing something wrong
+The police arrived on time and caught the thieves red-handed.
+
+
+paint the town red
+
+to go out and have a good time
+
+________________________________________
+
+How to form a mixed third and second conditional
+The mixed third and second conditional sentence is formed by combining CONDITION ("if" + "had" + past participle) + RESULT ("would" + base verb).
+
+If you had learned English, you would feel more confident about speaking at the conference.
+
+The mixed third and second conditional indicates that if a past action had been different, the present result would be different as well.
+
+If John had finished his work yesterday, he would not need to rush today.
+(Past action: John did not finish his work. Present result: He needs to rush today.)
+
+If I had not prepared for this negotiation, I would be very anxious about the results.
+(Past action: I prepared for the negotiation. Present result: I am not anxious about the results.)
+________________________
+
+The mixed third and second conditional is also called "the blame conditional." It indicates a past action as the cause of a present result, which may be good or bad.
+
+A mixed third and second conditional sentence takes the form CONDITION ("if" + "had" + past participle) + RESULT ("would" + base verb).
+
+The mixed second and third conditional says that if a present situation were NOT true, the past action would have been different.
+
+If John did not love his job, he would have quit a long time ago.
+
+Present situation: John loves his job.
+Past action: He did not quit his job.
+
+If Nellie had her smartphone, she would have called you already.
+
+Present situation: Nelli doesn't have her smartphone with her.
+Past action: She did not call you.
+
+The mixed second and third conditional sentence is formed by combining CONDITION ("if" + simple past tense) + RESULT ("would have" + past participle).
+
+If I were good at math, I would have been an accountant.
+
+The mixed second and third conditional is used to say that a present situation is the cause of a past result or action.
+
+The mixed second and third conditional sentence is formed by combining CONDITION ("if" + simple past tense) + RESULT ("would have" + past participle).
+
+________________________
+
+I wish (I/you/he/she/we/they/it) were ...
+
+I wish we were done with this project. (but we're not)
+
+
+I wish (I/you/he/she/we/they/it) + (verb in past tense) ...
+
+I wish I had enough capital to start the business soon. (but I don't)
+
+I wish (I/you/he/she/we/they/it) could ...
+
+I wish we could have more time to talk next time.
+
+
+I wish (I/you/he/she/we/they/it) would ...
+
+I wish Mr. Martin would call within the week.
+
+
+I hope (I/you/he/she/we/they/it) can ...
+
+I hope they can let us know their response by tomorrow.
+
+Wish and if only are used with verbs in different tenses to talk about things we want to change about the past or present.
+
+We use verbs in the simple past tense to talk about things we would like to change about the present or future.
+
+I wish we included  more tomato-based dishes in our new menu.
+I wish they would stop using pesticides. 
+If only they were more careful in handling the produce.
+If only I had enough capital to start the business soon. 
+ 
+We use verbs in the past perfect tense to talk about things we would like to change about the past.
+
+I wish I had studied harder when I was at university.
+I wish you hadn't eaten the whole pizza.
+If only he had called me before coming here.
+If only they had arrived on time for the meeting.
