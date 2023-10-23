@@ -1599,14 +1599,128 @@ read_inputs
 addition
 subtraction
 ```
+## Scope of variables (global and local variables)
+
+They are two types of variables: global and  local
+- all variables are global by default
+- local variables are allowed to define inside of function only
+- with the word local you can define a local variable 
+
+## return a variable value
+return command only works with numeric arguments
+```
+#!/bin/bash
+
+return_variable()
+{
+  local x="shell"
+  return $x
+}
 
 
+return_variable
+y=$?
+echo "The value of y is: $y"
+
+```
+```
+#!/bin/bash
+define_variables()
+{
+ local x=6
+ echo "$x"
+}
 
 
+y=$(define_variables)
+echo "The y value is: $y"
+```
+## Passing parameters to a function
+
+- function_name $x $y
+- we can access passes parameters inside a funtion using $1 $2 .....
+
+```
+#!/bin/bash
+
+addition()
+{
+  #echo "The \$0 value is: $0" shell script name
+  m=$1
+  n=$2
+  result=$((m+n))
+  echo "The addition of $m and $n is: $result"
+
+}
 
 
+x=6
+y=2
+addition $x $y
+
+p=3
+q=7
+addition $p $q
+
+addition 4 9
+```
+
+# Printf Command
+
+- Both echo and printf commands are used to display string or value of a variable.
+- The difference is that echo sends a newline at the end of its output, there is no way to
+"send" an EOF in printf command.
+- The advantage of printf command:
+- We can format the output
+- Useful in awk command/scripting as well
+- Syntax:
+  - printf “format\n” “arguments”
+  - printf “format_with_modifiers\n” “arguments”
+- Note: format/format_with_modifiers is an optional and we can omit it.
+
+Syntax:
+- printf “format\n” “arguments”
+- Different types of formats are:
+
+![](./Images/printf.png)
+
+printf command: format with modifiers:
+- Syntax:
+  - printf “format_with_modifiers\n” “arguments”
+- Different types of format modifiers are:
+
+![](./Images/printfmodifiers.png)
 
 
+## AWK Command
+
+- the awk command is programming language, which requieres no compiling, and allows the user to use varaibles, numeric functions, string functions and logical operators
+- the awk command in unix is juust like a scripting language which is used for text processing
+- awk is used like:
+  - a command
+  - a scripting laguage
+
+- Awk read data from a file or from its standar input, and outputs to its standard output
+- Awk views a text file as records and fields
+- each line is a record and columns in lines/record are called fields
+- by deafult fields are separeted based on space (Note: We can also change the field separator with -F option)
+- awk commands works on each line individually
+
+### Basic syntax of awk command
+
+- awk options 'pattern{action}' filename 
+- command | awk options 'pattern {action}'
+
+awk can take the following options:
+- F fs to specify a field separator
+- V var=value to declare a varaible
+- f file To specify a file that contains awk script
+
+### basic variables
+- $0 ,$1, $2 ...
+- NR number of records
+- NF number of fields $NF last field
+- FILENAME 
 
 
 

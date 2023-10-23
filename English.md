@@ -6218,3 +6218,187 @@ I wish I had studied harder when I was at university.
 I wish you hadn't eaten the whole pizza.
 If only he had called me before coming here.
 If only they had arrived on time for the meeting.
+
+_______________________
+
+"In case" is a conjunction that connects clauses together.
+
+"In case" expresses precaution – doing things in order to be ready for possible future situations.
+
+I brought an umbrella in case it rains.
+Please call me before our meeting in case I forget.
+
+"Unless" is another conjunction that is used to connect clauses.
+
+"Unless" expresses a negative condition – an action will be done if the condition is not true. It is usually followed by a verb in the simple present tense.
+
+We will get to the airport before our flight unless traffic is bad.
+Let's hire the first applicant unless we find better candidates.
+
+"Unless" can also be followed by a verb in the simple past or the past perfect tense, depending on the type of conditional used. It is never followed by a verb in the future tense.
+
+Vincent will be there by 9:00 -- unless his  flight is delayed. (first conditional)
+I wouldn't fire Carl unless I had a replacement for him. (second conditional)
+They wouldn't have won the account unless they had worked very hard on the preliminary research. (third conditional)  
+
+We use the conjunctions "in case" and "unless" to connect clauses together.
+
+"In case" is used to express precaution.
+"Unless" is used to express a negative condition.
+________________________________
+
+Remember
+
+“Remember” means to keep a person or thing in your mind or to bring a person or thing back to your mind. Think of “remember” as the opposite of “forget.” Listen to some examples:
+
+I just remembered I left the water on.
+
+Remember to bring a lock to store your belongings.
+
+In the first example, notice that “remember” is followed by a clause. In the second, it is followed by an infinitive, also known as to + verb. “Remember” can also be followed by a noun that ends in -ing, as in “I remember leaving the water on.”
+
+Remind
+
+Now, let’s talk about “remind.”
+
+“Remind” means to cause someone else to remember something. In other words, a person can make sure someone else does not forget something. Listen to an example:
+
+Can you remind him to buy more cat food? We ran out.
+
+When we use “remind” this way, the verb is followed by an object. In this case, the object is “him.”
+
+Another way we use “remind” is to say that a similarity causes us to think of someone or something. Listen to an example:
+
+That actor reminds me so much of my brother. They have the same eyes and laugh.
+
+When we use “remind” this way, we always include the word “of.”
+_________________________
+
+take away
+
+get rid
+
+A short vacation will help take your stress away.
+
+
+take down
+
+remove; disassemble
+
+We took down the bulletin board and replaced it with a whiteboard.
+
+
+take off
+
+remove
+
+In Asia, you may be expected to take off your shoes before entering a house.
+
+
+take out
+
+remove
+
+Greg took out all the trash from the shredding machine.
+
+take back
+
+reclaim something that was initially yours; to withdraw something you have said or offered
+
+If the product doesn't work, just return it with the receipt, and you can take your money back.
+
+
+take in
+
+understand; comprehend
+
+I couldn't take in what the speaker was saying, so I asked him to explain it further.
+
+
+take on
+
+hire
+
+The diner had to take on more waiters to handle the holiday crowd.
+
+take up
+
+learn or start something new
+
+Even if I don't like it, I will take up golf because it is good for business.
+
+
+take up with
+
+associate with; spend much time with 
+(This phrase is used to express disapproval.)
+
+Be careful not to take up with the wrong people when starting a business.
+
+
+take up (space)
+
+fill or occupy space
+
+All these files are taking up the space on my desk; I can't work anymore.
+
+take off
+
+begin flying
+
+Please fasten your seat belts. The plane is about to take off.
+
+
+take up
+
+begin again; resume
+
+Paul, it's your turn to discuss the guidelines. Just take up where we left off last week.
+
+
+take charge
+
+lead; control
+
+Debbie, you're the one who knows the most about this project, so you take charge.
+
+
+take over
+
+get control from somebody
+
+When Jacob resigned, Pete took over his position in the company.
+
+take after
+
+be similar to; look like
+
+John takes after his father. He looks exactly like his father did 20 years ago.
+
+
+take to
+
+like; feel comfortable with
+
+Dimitri has great people skills. Clients take to him immediately.
+
+take apart
+
+separate something into its parts
+
+If you take apart the fax machine, make sure you know how to put it back together.
+
+
+take down
+
+record in writing
+
+Who will take down the minutes of today's meeting?
+
+
+take out
+
+escort; accompany
+
+After the conference, the president's bodyguards took him out to the hall.
+

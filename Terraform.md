@@ -692,3 +692,5 @@ terraform workspace select <NAMEPROJECT>
 
 ______________________________
 
+# Terraform en Azure
+
