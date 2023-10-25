@@ -1183,3 +1183,7 @@ The following command will allocate a file with a size of 1GB.
 fallocate -l 1G test_file1.img
 
 _____________________
+
+cuantas cpu tenog en linux
+
+grep "model name" /proc/cpuinfo | wc -1

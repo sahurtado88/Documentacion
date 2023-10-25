@@ -6402,3 +6402,111 @@ escort; accompany
 
 After the conference, the president's bodyguards took him out to the hall.
 
+take off
+
+leave; go away
+
+Lily and Ronald took off early this morning to meet up with a client.
+
+
+take on
+
+accept a challenge
+
+He takes on the work no one else wants to do, and he does it very well.
+
+
+take apart
+
+criticized harshly
+
+George's boss didn't like his work. In fact, she completely took him apart over his latest output.
+
+
+taken in
+
+fooled or deceived
+
+Bill was taken in by an illegal investment company.
+
+take (something) up with
+
+discuss
+
+This is a good project. You should take it up with your manager.
+
+
+take down
+
+beat somebody in a game or a contest
+
+Mark always won at chess, but today, I was able to take him down.
+
+
+take for
+
+regard as; think wrongly as
+
+Because of your new haircut, I took you for your sister.
+
+_______________________
+
+## PAST PErfect
+
+The past perfect tense is formed with "had" + the past participle of the verb.
+
+I had written the report by the time the client called.
+
+Use the past perfect tense when talking about a past event that happened earlier than another past event.
+
+They had found out about the merger two weeks before it was announced.
+
+The past perfect tense is formed with "had" + the past participle of the verb.
+
+had picked
+had written
+had acknowledged
+The past perfect tense is used to talk about a past event that happened earlier than another past event.
+
+Bernard had chosen a suit when he found out that the dinner meeting was canceled.
+Haley had spent too much money before she realized that she needed it for her rent.
+
+____________
+
+## PAST perfect continuos sentence
+
+The past perfect continuous tense is formed by combining "had been" + verb + "-ing."
+
+By the time she turned 40, she had been teaching Economics for eight years.
+
+The past perfect continuous tense is used when describing how long a past action had been in progress when another past event occurred.
+
+She had been trying to call him for an hour before her call finally got through.
+Mr. Santiago had been running the company for 55 years when he retired in 1988.
+
+The past perfect continuous tense can be used to describe a past action that had been -- but no longer is -- in progress, and caused a past result.
+
+He was unable to go to work this morning. He had been watching movies all night last night.
+They celebrated last night. They had been working hard on a special account since November.
+
+When describing an event that occurred before another event, we can use two tenses: the past perfect continuous and the past perfect.
+
+We use the past perfect continuous when the duration of the action is given, e.g. "for an hour," "for 55 years."
+
+We use the past perfect tense if the duration of the action is not given. This changes the meaning of the sentence.
+
+He was unable to go to work this morning. He had watched movies last night.
+(This does not explain why he could not go to work. He could have simply watched two movies from 6 p.m. until midnight.)
+
+They celebrated last night. They had worked hard on a special account.
+(This says that they celebrated because they completed work on a special account. It gives no hint as to how long they worked on it. For all we know, the project was difficult but was completed in only one day.)
+
+The past perfect continuous tense is formed by combining: "had been" + verb + "-ing."
+
+We use the past perfect continuous tense to:
+
+Describe how long a past action had been in progress when another past event occurred.
+Describe a past action that had been -- but no longer is -- in progress and caused a past result.
+
+
+

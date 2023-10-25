@@ -694,3 +694,126 @@ ______________________________
 
 # Terraform en Azure
 
+![](./Images/terraformblocks.png)
+
+```
+#####################################################################
+# Block-1: Terraform Settings Block
+terraform {
+  required_version = ">= 1.0.0"
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = ">= 2.0"
+    }
+  }
+# Terraform State Storage to Azure Storage Container
+  backend "azurerm" {
+    resource_group_name   = "terraform-storage-rg"
+    storage_account_name  = "terraformstate201"
+    container_name        = "tfstatefiles"
+    key                   = "terraform.tfstate"
+  }   
+}
+
+#####################################################################
+# Block-2: Provider Block
+provider "azurerm" {
+  features {}
+}
+#####################################################################
+# Block-3: Resource Block
+# Create a resource group
+resource "azurerm_resource_group" "myrg" {
+  name = "myrg-1"
+  location = var.azure_region 
+}
+# Create Virtual Network
+resource "azurerm_virtual_network" "myvnet" {
+  name                = "myvnet-1"
+  address_space       = ["10.0.0.0/16"]
+  location            = azurerm_resource_group.myrg.location
+  resource_group_name = azurerm_resource_group.myrg.name
+}
+#####################################################################
+# Block-4: Input Variables Block
+# Define a Input Variable for Azure Region 
+variable "azure_region" {
+  default = "eastus"
+  description = "Azure Region where resources to be created"
+  type = string
+}
+#####################################################################
+# Block-5: Output Values Block
+# Output the Azure Resource Group ID 
+output "azure_resourcegroup_id" {
+  description = "My Azure Resource Group ID"
+  value = azurerm_resource_group.myrg.id 
+}
+#####################################################################
+# Block-6: Local Values Block
+# Define Local Value with Business Unit and Environment Name combined
+locals {
+  name = "${var.business_unit}-${var.environment_name}"
+}
+#####################################################################
+# Block-7: Data sources Block
+# Use this data source to access information about an existing Resource Group.
+data "azurerm_resource_group" "example" {
+  name = "existing"
+}
+output "id" {
+  value = data.azurerm_resource_group.example.id
+}
+#####################################################################
+# Block-8: Modules Block
+# Azure Virtual Network Block using Terraform Modules (https://registry.terraform.io/modules/Azure/network/azurerm/latest)
+module "network" {
+  source              = "Azure/network/azurerm"
+  resource_group_name = azurerm_resource_group.example.name
+  address_spaces      = ["10.0.0.0/16", "10.2.0.0/16"]
+  subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  subnet_names        = ["subnet1", "subnet2", "subnet3"]
+
+  tags = {
+    environment = "dev"
+    costcenter  = "it"
+  }
+
+  depends_on = [azurerm_resource_group.example]
+}
+#####################################################################
+
+```
+
+## Terraform Fundamental blocks
+
+![](./Images/terraformfunda.png)
+
+### Terraform block
+
+- This block can be called in 3 ways. All means the same. 
+  - Terraform Block
+  - Terraform Settings Block
+  - Terraform Configuration Block
+- Each terraform block can contain a number of settings related to Terraform's behavior. 
+- Within a terraform block, only constant values can be used; arguments may not refer to named objects such as resources, input variables, etc, and may not use any of the Terraform language built-in functions.
+
+![](./Images/terraformblock.png)
+
+### versionconstraints
+
+Version numbers should be a series of numbers separated by periods (like 1.2.0), optionally with a suffix to indicate a beta release.
+
+The following operators are valid:
+
+= (or no operator): Allows only one exact version number. Cannot be combined with other conditions.
+
+!=: Excludes an exact version number.
+
+>, >=, <, <=: Comparisons against a specified version, allowing versions for which the comparison is true. "Greater-than" requests newer versions, and "less-than" requests older versions.
+
+~>: Allows only the rightmost version component to increment. This format is referred to as the pessimistic constraint operator. For example, to allow new patch releases within a specific minor release, use the full version number:
+
+~> 1.0.4: Allows Terraform to install 1.0.5 and 1.0.10 but not 1.1.0.
+~> 1.1: Allows Terraform to install 1.2 and 1.10 but not 2.0.

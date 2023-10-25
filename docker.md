@@ -708,6 +708,73 @@ docker inspect <nombre_contenedor>
 
 docker rm -fv $(docker ps -aq) eliminar todos los contenedores
 
-docker stat <nombrecontenedor o Container_ID>
+docker stat <nombrecontenedor o Container_ID> mirar estadisticas de cpu y memoria
+
+## Limitar recursos a un contenedor
+
+docker run -d -m "500mb" --name <docker_name> <docker_image>  limitar memoria a 500mb
+
+docker run -d -m "1gb" --cpuset-cpus 0-1 -name <docker_name> <docker_image> limitar memoria a 1gb y a 2 cpus
+
+## Copiar archivos a un contenedor
+
+docker cp <archivolocal> nombrecontenedor:<rutacontenedor>
+
+docker cp nombrecontenedor:<rutacontenedor> rutalocal
+
+## Convienrte un contenedor en una imagen
+
+docker commit <nombrecontenedor> <nombrecontenedorresultante>
+
+lo que este en VOLUME no se va a guardar
+
+## Sobreescribir el CMD de una imagen sin un dockerfile
+
+docker run -d -p 80:80 <nombre_contenedor> <CMD>
+
+##
+
+
+La idea de este articulo es que le des solución al siguiente problema utilizando lo que has aprendido.
+
+
+
+En donde trabajas, solicitan los siguientes contendores con las siguientes características:
+
+- Un contenedor con la imagen de Apache + php creada en la anterior solicitud con:
+
+  * 50Mb límites de RAM
+
+  * Solo podrá acceder a la CPU 0
+
+   * Debe tener dos variables de entorno:
+
+      * ENV = dev
+
+      * VIRTUALIZATION = docker
+
+  * El webserver debe ser accesible vía puerto 5555 en el navegador
+
+---
+
+- Un contenedor con la imagen de Apache + php creada en la anterior solicitud con:
+
+  * 100Mb límites de RAM
+
+  * Podrá acceder a la cpu 0 y 1
+
+   * Debe tener tres variables de entorno:
+
+      * ENV = stg
+
+      * VIRTUALIZATION = docker
+
+      * TYPE = container
+
+  * El webserver debe ser accesible vía puerto 8181 en el navegador
+
+Deberás comprobar su funcionamiento ingresando a tu localhost:5555 y localhost:8181
+
+Que te diviertas!
 
 
