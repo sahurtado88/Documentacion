@@ -730,7 +730,7 @@ lo que este en VOLUME no se va a guardar
 
 ## Sobreescribir el CMD de una imagen sin un dockerfile
 
-docker run -d -p 80:80 <nombre_contenedor> <CMD>
+docker run -d -p <host>:<container> <nombre_contenedor> <CMD>
 
 ##
 
@@ -755,7 +755,148 @@ En donde trabajas, solicitan los siguientes contendores con las siguientes carac
 
   * El webserver debe ser accesible vía puerto 5555 en el navegador
 
----
+
+## eliminar contenedores
+
+docker rm -fv <nombrecontenedor>
+
+docker run --rm  --ti  <nombreimagen> <CMD> eg
+docker run --rm --ti --name centos centos bash
+
+## cambiar document root de docker
+
+docker info | grep -i root
+
+Dir: /var/lib/docker 
+
+editar vi /lib/systemd/system/docker.service
+
+se cambia el ExecStart
+
+ExecStart= /usr/bin/dockerd --data-root <nueva_ruta>
+
+![](./Images/changeroot.png)
+
+y luego systemctl daemon-reload y systemctl restart docker para que aplique el cambio
+
+## Volumnes en docker
+
+los volumenes nos permiten almacenar data de forma persistente del contenedor
+
+### tipos de volumenes
+
+- **Host** 
+```
+ docker run -d  --name de -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=12345678" -v <carpethost>:<carpetadocker> mysql:5.7
+```
+
+- **Anonymus**
+no se especifica la carpeta donde estara el volumen en el host se crea en docker info | grep -i root
+
+Dir: /var/lib/docker en la carpeta volumenes
+
+```
+ docker run -d  --name de -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=12345678" -v <carpetadocker> mysql:5.7
+```
+- **Named values** 
+```
+crearlo
+docker volume create <nombrevolumen>
+
+para borrarlo 
+docker volume rm <nombrevolumen>
+
+
+asigrarlo
+
+docker run -d  --name de -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=12345678" -v <volumencreado>:<carpetadocker> mysql:5.7
+```
+
+
+### Volume en docker file
+
+```
+FROM centos
+
+VOLUME /opt/ # crea volumen anonimo
+```
+### Dangling volumes
+
+docker volume ls -f dangling=true #volumenes no referenciados con ningun contenedor
+
+eliminarlos
+
+docker volume ls -f dangling=true -q | xargs docker volume rm
+
+
+
+docker exec <nombre_contenedor> bash -c "cat /var/jenkins" ejecutar comando sin entrar de manera interactiva
+
+
+## Docker networks
+
+ip a| grep docker listar interfaces
+
+docker0 es la red por defecto
+
+docker network ls | grep bridge
+
+docker network inspect bridge
+
+en bridge se ve por ip no por nombre
+
+### crear una red definida por el usuario
+
+docker network create <nombrered>
+
+docker network create -d bridge --subnet 172.124.10.0/24 --gateway 172.124.10.1 <nombrered> 
+
+docker network inspect <nombrered>
+
+### Agreagr contenedores a una red distinta a la por defecto
+
+docker run --network <nombrered> -d --name <namecontenedor> -ti <nombre_imagen>
+
+### conectar contenedores en la misma red
+
+se puede buscar ping por nombre si es una red creada por el usuario
+
+los contenedores se pueden conectar siempre que esten en la misma red por defecto
+
+### Conectar contenedores en diferente red
+```
+docker network connect <nombrered> <nombrecontenedorquesequiereconectar>
+
+docker network disconnect <nombrered> <nombrecontenedorquesequieredesconectar>
+```
+### eliminar network
+
+docker network rm <nombrered> pero primero se deben eliminar los contenedores
+
+### Asignar ip a un contenedor
+
+docker run --network <nombrered> --ip <ipperteneciente a la subnet de la red> -d --name <nombrecontenedor> -ti <nombre_imagen>
+
+### la red de host
+
+docker run --network host -d --name <nombrecontenedor> -ti <nombre_imagen>
+
+comparte la red del host
+
+### red none
+
+La red none no configurará ninguna IP para el contenedor y no tiene acceso a la red externa ni a otros contenedores. Tiene la dirección loopback y se puede usar para ejecutar trabajos por lotes.
+
+docker run --network none -d --name <nombrecontenedor> -ti <nombre_imagen>
+
+## Docker Compose
+
+
+
+
+
+
+______________________________________
 
 - Un contenedor con la imagen de Apache + php creada en la anterior solicitud con:
 
@@ -776,5 +917,29 @@ En donde trabajas, solicitan los siguientes contendores con las siguientes carac
 Deberás comprobar su funcionamiento ingresando a tu localhost:5555 y localhost:8181
 
 Que te diviertas!
+
+
+En donde trabajas, solicitan los siguientes contendores con las siguientes características:
+
+- Un contenedor con la imagen de Apache + php creada en la anterior solicitud con:
+
+  * 50Mb límites de RAM
+
+  * Solo podrá acceder a la CPU 0
+
+   * Debe tener dos variables de entorno:
+
+      * ENV = dev
+
+      * VIRTUALIZATION = docker
+
+  * El webserver debe ser accesible vía puerto 5555 en el navegador
+
+  * En /opt/source1 (Debes crear el directorio en tu máquina local) debe persistir el código que se incluya en el webserver. En este caso, para pruebas, utilizarás un phpinfo que debe sobrevivir a la eliminación del contenedor.
+
+Que te diviertas!
+
+
+_________________________
 
 
