@@ -817,3 +817,15 @@ The following operators are valid:
 
 ~> 1.0.4: Allows Terraform to install 1.0.5 and 1.0.10 but not 1.1.0.
 ~> 1.1: Allows Terraform to install 1.2 and 1.10 but not 2.0.
+
+## Terraform providers
+
+![](./Images/providers.png)
+
+![](./Images/requieredproviders.png)
+
+## Terraform multiple providers
+
+![](./Images/multipleproviders.png)
+
+![](./Images/multiple.png)
