@@ -1848,10 +1848,86 @@ https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#back
 
 ![](./Images/tlsinkubernetes.png)
 
+![Alt text](./Images/image-4.png)
+
+![Alt text](./Imagesimage-5.png)
+
+![](./Imagesimage-6.png)
+
+### Certificates API
+
+![Alt text](./Images/image-7.png)
+
+![](./Images/image-8.png)
+
+![Alt text](./Images/image-9.png)
+
+Contorller manager is the component that sign this certificate
+
+![Alt text](./Images/image-10.png)
+
+para negar un cartificado se utiliza el comando: 
+
+kubectl certificate deny <nombrecertificado>
+
+CSR certificateSigningRequest
+
+### Kubeconfig
+
+kubeConfig file is by default on $HOME/.kube/config
+
+![](./Images/image-11.png)
+
+to see de config file you cna use
+
+kubctl config view
+
+to change the current context you can use
+
+kubectl config use-context \<nameUser>@\<nameCluster>
+
+![Alt text](./Images/image-12.png)
 
 
+### Authorization
+
+![Alt text](./Images/image-13.png)
+
+
+![Alt text](./Images/image-14.png)
+
+
+### RBAC
+
+![Alt text](./Images/image-15.png)
+
+kubectl create -f developer-role.yaml
+
+![Alt text](./Images/image-16.png)
+
+![Alt text](./Images/image-17.png)
+
+
+![Alt text](./Images/image-18.png)
+
+![Alt text](./Images/image-19.png)
+
+### Cluster roles
+
+![Alt text](./Images/image-20.png)
+
+![Alt text](./Images/image-21.png)
+
+### Service account
+A service account is a type of non-human account that, in Kubernetes, provides a distinct identity in a Kubernetes cluster. Application Pods, system components, and entities inside and outside the cluster can use a specific ServiceAccount's credentials to identify as that ServiceAccount. This identity is useful in various situations, including authenticating to the API server or implementing identity-based security policies.
+
+![Alt text](image-4.png)
+
+![Alt text](image-5.png) 
 
 _____________________
+
+kubectl api-resources  lista todos los recursos 
 
 Kubernetes Deployment
 Kubernetes Deployment is a resource that manages a set of identical pods. It provides declarative updates for pods and their associated ReplicaSets. Deployments allow you to manage the desired state of your application and ensure that the correct number of replicas is running at all times.
