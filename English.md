@@ -6508,5 +6508,791 @@ We use the past perfect continuous tense to:
 Describe how long a past action had been in progress when another past event occurred.
 Describe a past action that had been -- but no longer is -- in progress and caused a past result.
 
+_____________________
+
+Collocations are conventional word combinations -- that is, words that are used together simply because native speakers normally use them together.
+
+For example, it is better to say:
+
+Her stubborn determination to always have her way often caused a blazing row between them.
+
+… instead of:
+
+Her hard-headed decision to always get her own system often caused a burning quarrel between them.
+
+
+Here are some examples of collocations that are noun phrases:
+
+Our competition has an unfair advantage. (RIGHT)
+Our competition has an unjust advantage. (WRONG)
+
+He has a strong inner drive to succeed. (RIGHT)
+He has a strong inner energy to succeed. (WRONG)
+
+I need some peace and quiet so I can think. (RIGHT)
+I need some peace and silence so I can think. (WRONG)
+
+If you don't wear a hat, you will catch cold. (RIGHT)
+If you don't wear a hat, you will have cold. (WRONG)
+
+You must hold your breath underwater. (RIGHT)
+You must stop your breath underwater. (WRONG)
+
+Goodbye! Take care! (RIGHT)
+Goodbye! Have care! (WRONG)
+
+Here are some examples of collocations that are adjective phrases:
+
+A hot-tempered man gets angry easily. (RIGHT)
+A fast-tempered man gets angry easily. (WRONG)
+
+She is scared stiff of speaking in public. (RIGHT)
+She is scared frozen of speaking in public. (WRONG)
+
+He will be fuming mad when he finds out the project has been delayed. (RIGHT)
+He will be exploding mad when he finds out the project has been delayed. (WRONG)
+
+Collocations are combinations of words that are frequently used together. Examples of collocations include:
+
+noun phrases
+core values
+report card
+strong coffee
+regular exercise
+verb phrases
+keep calm
+make the bed
+make an effort
+come to an agreement
+adjective phrases
+highly successful 
+deeply ashamed
+strongly opposed
+ridiculously expensive
+
+______________
+
+Adjectives followed by "to"
+accustomed/used
+
+We are all accustomed to receiving praise from our manager.  
+We are all used to receiving praise from our manager.
+
+unaccustomed/unused
+
+We are unaccustomed to being criticized.
+We are unused to being criticized.
+
+amenable
+
+Ann is amenable to almost all of Joan's plans.
+
+limited
+
+Their disagreements are limited to the timeline.
+
+engaged
+
+Harry is engaged to Sally.
+
+married
+
+William is married to Kate.
+
+opposed
+
+Ann is not opposed to Joan's ideas for the project.
+
+similar
+
+Ann's management style is similar to Joan's.
+
+related
+
+The key to fulfillment is finding a job that is related to your skills and interests.
+
+unrelated
+
+Cathy's work is unrelated to her abilities. She works in finance, but she has always been better at artistic activities.
+
+The following are adjectives used with "to":
+
+accustomed/used
+unaccustomed/unused
+amenable
+limited
+engaged
+married
+opposed
+similar
+related
+unrelated
+
+__________________________
+
+
+blow off
+
+to not keep an appointment
+
+
+burned out
+
+physically and mentally exhausted; to be dull or lifeless due to too much work or stress
+
+
+call it a day
+
+to stop working for the day
+
+
+call the shots
+
+to take charge of something
+
+
+cop out
+
+to fail to fulfill a responsibility or promise
+
+
+goof off
+
+avoid work; waste time
+
+
+psych up
+
+to prepare oneself mentally for something
+
+
+pull an all-nighter
+
+to work the whole night
+
+
+take a rain check
+
+politely turn down an invitation you would welcome some other time
+
+
+zero in on
+
+to focus or concentrate on something
+
+______________________________
+
+Adjectives followed by "of"
+ashamed
+
+He is not ashamed of his work.
+
+proud
+
+Carlo is proud of his designs.
+
+aware
+
+You are all aware of the deadline.
+
+unaware
+
+The product needs to be recalled while the market is still unaware of its defects.
+
+capable
+
+She is capable of working on complicated formulas.
+
+incapable
+
+I am incapable of the work that Amelie does.
+
+fond
+
+Amelie is fond of math.
+
+tired
+
+Consumers are tired of hearing about defective products.
+
+jealous/envious
+
+We are all jealous of Amelie's skills.
+We are all envious of Amelie's skills.
+
+short
+
+Our team is short of time.
+
+sure
+
+We are sure of his success.
+
+______________________
+## Adjectives followed by "about"
+
+anxious
+
+We are all anxious about the launching of our new product.
+
+confident
+
+We are confident about our existing clients' response to the new product.
+
+doubtful
+
+Our boss is doubtful about the product's appeal to new clients.
+
+sure
+
+Jim is very sure about the positive results of his performance evaluation.
+
+optimistic
+
+He is very optimistic about getting a promotion next month.
+
+pessimistic
+
+Chloe is pessimistic about her promotion because her sales have decreased this quarter.
+
+## Adjectives followed by "for"
+
+famous
+
+Our company is famous for its fast and efficient service.
+
+possible
+
+It is possible for us to complete repairs within 24 hours.
+
+impossible
+
+It is impossible for us to be late.
+
+## Adjectives followed by "in"
+interested
+
+Martha is interested in becoming a research analyst.
+
+proficient
+
+She is proficient in research and statistics.
+
+## Adjectives followed by "with"
+bored
+
+Sandra gets easily bored with easy assignments.
+
+patient
+
+Diana is very patient with new employees. She is in charge of their training.
+
+impatient
+
+Stephen gets impatient with employees who are not comfortable with technology. He doesn't enjoy helping them with the software.
+
+The following adjectives are used with these prepositions:
+
+**about**
+anxious
+confident
+doubtful
+sure
+optimistic
+pessimistic
+ 
+**for**
+famous
+possible
+impossible
+ 
+**in**
+interested
+proficient
+ 
+**with**
+bored
+patient
+impatient
+
+___________________
+
+What are some of the skills you are exceptionally good at? How would you relate them to the position you are applying for? Why?
+
+
+I am exceptionally good at organizing a team and making sure that deadlines are met. These skills will help me as a manager to make sure the members of the team use their time productively. I believe that aiming to meet deadlines is aiming to meet the company's expectations.
+
+What are the personal characteristics that mark you as different from other candidates?
+
+
+I am driven to innovate and find better, more efficient ways of doing things, especially when it comes to finding new ingredients for cooking. As a senior chef at Sugarcoats Company, I was able to discover various alternatives for the ingredients that we used to buy abroad. The imported ingredients were very expensive, so by using the alternatives, we were able to save about $20,000 a month. And the taste of our products even improved.
+
+If you were to improve something about yourself, what would it be? How would you do it?
+
+
+I would like to broaden my knowledge about creating multimedia web content. I attended a three-day Web content creation workshop last month, and I am looking into online courses. I also look out for best practices on the Internet and participate in some online fora and wikis.
+
+Tell me about your most stressful and frustrating experience at work. How did you handle it?
+
+
+Last year, my two teammates got sick and couldn't work. I had to cover for them for a week. I had to come in early and work overtime to make sure our deadlines were met. But with the proper mindset, adequate planning and several pots of coffee, I was able to finish all our deliverables.
+
+What are your short-term and long-term goals? How do you plan to achieve them?
+
+
+My short-term goal is to work for a large advertising firm where I can apply and hone my creative and administrative skills. I aim to learn the various tasks that are involved in advertising and to acquire the skills needed to accomplish them well. I hope to grow with the firm and to handle additional responsibilities along the way. For the long term, I hope to stay with the company and become a creative director.
+
+What circumstances led you to apply for this job?
+
+
+Clemence Advertising Company has been consistently ranked as the best in the industry. I was in college when I first discovered your company's influence in the field of advertising. I wrote a research paper about your firm and have always wanted to become a part of it since then.
+
+If you were to work with a team, how would you raise work standards for yourself and for the others?
+
+
+I will constantly strive for excellence in my work. By setting an example, I will be able to motivate my team to strive for excellence as well.
+
+What kind of work environment do you picture yourself in?
+
+
+I imagine myself in an environment that encourages creativity, respects individuality and fosters camaraderie. I can picture myself working in a department where each employee has his or her own space but at the same time feels a part of the group.
+
+What do you know about our company? Where did you first hear about us?
+
+
+Vibrant Pages Inc. publishes Franchise Journal, one of the best business magazines in the country. The journal has been around for 15 years and now has a readership of around 600,000. I learned about it through my parents. They are entrepreneurs who have read Franchise Journal regularly from the first issue.
+
+If you are hired for the position, how will you contribute to the development of the company?
+
+
+My experience as a senior accountant has given me the skills to manage people and accounts at the same time. Additionally, my background in SAP can help the company develop a more comprehensive accounting database.
+
+To answer questions about your personality:
+
+
+I am exceptionally good at ...
+
+I believe I am exceptionally good at dealing with customer complaints.
+
+
+I believe that ...
+
+I believe that I possess characteristics of an effective leader.
+
+
+I am driven to ...
+
+I am driven to learn and master as many skills as possible.
+
+
+My short-/long-term goals include ...
+
+My long-term goals include getting a doctorate degree in psychology and buying my own house.
+
+
+I would like to broaden my knowledge in ...
+
+I would like to broaden my knowledge in graphic design.
+
+
+I am looking into ...
+
+I am looking into schools that offer crash courses.
+
+To narrate experiences:
+
+
+Last year/month ... I had to ...
+
+Last year there was a power outage at our office and I had to work with an emergency light.
+
+
+I was able to ...
+
+I was able to sign the new customer.
+
+
+My background in ...
+
+My background in accounting has honed my skills in making financial reports and analyzing data.
+
+
+My experience as a ...
+
+My experience as an assistant manager in Sunny Firm taught me how to delegate tasks effectively.
+
+
+I was able to ...
+
+I was able to finish the task in three days.
+
+To talk about being part of a team:
+
+
+I can picture myself working in a department where ...
+
+I can picture myself working in a department where my opinions are valued.
+
+
+I imagine myself in an environment that encourages ...
+
+I imagine myself in an environment that encourages innovation and broad-mindedness.
+
+
+To talk about the company and what you can do for it:
+
+
+Your company is one of the best ...
+
+You company is one of the best in the BPO industry.
+
+
+... has been around for ...
+
+Your company has been around for 10 years.
+
+
+I learned about your company through...
+
+I learned about your company through an in-depth research I did on marketing strategies.
+
+
+... when I first discovered your company.
+
+I was working as an editorial assistant when I first discovered your company.
+
+
+I will constantly strive for ...
+
+I will constantly strive for fineness and accuracy.
+
+Here are useful phrases for answering questions in a job interview.
+
+On describing skills and personality
+I am exceptionally good at...
+I am driven to...
+
+On narrating work experiences
+My background/experience in...
+As a/an...at..., I was able to...
+
+On describing one's ideal work environment
+I can picture myself working in a department where...
+I imagine myself in an environment that...
+
+On talking about the company
+...has been around for...
+
+On discussing what you can do for the company
+I will constantly strive for...
+ 
+You can use verbs with infinitives to describe short- and long-term goals.
+I aim to learn ...
+I hope to grow ...
+
+__________________________
+
+## question you can ask
+
+About the company
+
+What is the company culture like?
+What is the company’s vision for the next three to five years?
+
+
+About the working relationships in the company
+
+Could you describe the general management style in the company?
+Could you explain the organizational structure of the company?
+
+
+About the company’s clients
+
+What are the top three needs of the company’s clients?
+How can this position have a positive impact on the company’s relationships with its clients?
+
+
+About the department you are applying to
+
+Could you explain the structure of the department?
+What departments does this team work closely with?
+
+
+About the position you are applying for
+
+What is the successful candidate expected to achieve in his/her first six months, and how will the fulfillment of these expectations be measured?
+How has this job been performed in the past? What improvements is the company looking for?
+
+The key to asking good questions is good research. Before the interview, learn as much about the company as you can.
+
+
+Focus on the job and the organization, not on your own preferences and needs.
+
+
+Make sure you phrase the questions in a way that suits you so they don’t sound rehearsed.
+
+
+Listen well. Formulate your questions based on information you hear during the interview so the interviewer knows you are paying attention and thinking through the issues.
+
+
+Don’t ask questions just for the sake of asking them. Pay attention to your interviewer’s body language. Does he/she seem willing to discuss your questions lengthily? Or does he/she seem to be in a hurry?
+
+____________________________
+
+COMPANY CULTURE
+Company culture is the set of beliefs, systems and goals which make up the environment in an organization, and affect the way a company does business and how its employees behave.
+
+CONTROVERSIAL
+likely to cause disagreement and debate between people
+
+Political issues are often controversial topics of discussion.
+
+BOILS DOWN TO (SOMETHING)
+can be summarized by something; is dependent on something
+
+People may think about several factors before buying something. But often, their decision boils down to two major factors: the quality and the price of the product.
+
+NECESSITY
+something that is needed and not optional
+
+"Because I am a salesman who visits several stores every day, having a car is a necessity," said Timothy.
+
+FIT IN
+to integrate into a group well because you are similar to its members
+
+Lissa and her colleagues at her new job have many things in common. So, she did not find it hard to fit in.
+
+ADHERE TO (SOMETHING)
+obey, follow or support something, such as a belief, an opinion, an idea, etc.
+
+Even as an adult, Lucy adheres to the values she learned from her parents.
+
+META-ANALYSES
+Meta-analysis refers to the process of getting, selecting and combining the results of studies that are related but were conducted separately. The plural form of this term is meta-analyses.
+
+UNDERMINES
+gradually reduces the effectiveness, power or ability of something or someone
+
+Unresolved conflicts undermine the group members' trust in one another.
+
+FROWN UPON (SOMETHING)
+to be against or disapprove of something
+
+Many people frown upon loud conversation inside movie cinemas.
+
+ALGORITHMS
+An algorithm is a set of procedures that must be followed in a fixed order, with the goal of finding an answer to a particular kind of problem or question.
+
+The retail company asked an expert to create an algorithm to determine which of its products has the highest sales in certain countries.
+
+BIAS
+a strong and sometimes unreasonable belief in or preference for something
+
+The human resources department shows no bias towards any job applicant. The department treats everyone equally, regardless of factors such as race, gender and age.
+______________
+## Reported speech
+
+Rules for reported speech
+Reported speech is used to talk about what someone said in the past. The tense of the verb in the direct quote often changes in reported speech.
+
+simple present to simple past:
+
+"You are late," the boss told him.
+The boss told him he was late.
+
+simple past to past perfect:
+
+"The shipment arrived at noon," Mike said.
+Mike said that the shipment had arrived at noon.
+
+present perfect to past perfect:
+
+"I have seen the samples already," she announced.
+She announced that she had seen the samples already.
+
+If the tense of the verb in the direct quote is in the past perfect, it remains in the past perfect tense in reported speech.
+
+"I had decided to accept another job offer before you told me about my promotion," Elizabeth informed her manager.
+Elizabeth informed her manager that she had decided to accept another job offer before he told her about her promotion.
+
+If the modals could, might, would, should, ought, and had better are used in the direct quote, they do not change in reported speech.
+
+"I should finish the report today," Justin said.
+Justin said that he should finish the report today.
+
+**summary**
+
+Reported speech is used to talk about what someone said in the past. 
+
+Here are the rules for changing direct to indirect speech:
+
+Change simple present to simple past.
+
+"I am hungry," he said.
+He said he was hungry.
+
+Change simple past to past perfect.
+
+"I received the package this morning," Ron said.
+Ron said he had received the package this morning.
+
+Change present perfect to past perfect.
+
+"I have seen the movie twice," Lisa said.
+Lisa said she had seen the movie twice.
+
+Retain the past perfect (no change).
+
+"We had started cooking when the guests arrived," Bill said.
+Bill said they had started cooking when the guests arrived.
+
+Retain the modals could, might, would, should, ought, and had better (no change).
+
+"I might buy a new laptop tomorrow," Tim said.
+Tim said that he might buy a new laptop tomorrow.
+
+______________________________
+
+## Present participle vs. past participle
+
+- Present participle
+Participles are words that look like verbs but are used as adjectives.
+
+The present participle ends in -ing. It describes the state of an object, or what an object is used for.
+
+The water sparkles; it is sparkling water.
+This water is for drinking; it is drinking water.
+
+- Past participle
+The past participle takes the perfect form of the verb, e.g., "taken," "gone," "been." It describes the action that was done to the object.
+
+John edited the draft of this report last night. This is an edited report.
+That's the approved budget. The officers discussed and approved it yesterday.
+
+Compare the examples below:
+
+The story bores me. It's a boring story. I am bored.
+
+That magic trick amazed the crowd. It's an amazing trick. The amazed crowd applauded.
+
+I used a washing machine to wash these clothes. Here are the washed shirts.
+
+The teacher prepared an interesting lesson. The interested students discussed it for a long time.
+
+__________________________
+
+- Borrow
+To "borrow" something means to get something from someone and return it to the owner after a period of time.
+
+Can I borrow that file, please?
+I need to borrow a book from the library.
+
+- lend 
+
+When you "lend" something, it means that you are the owner of an object. You are giving the object to someone, but you expect him or her to return it to you after a period of time.
+
+It's raining outside. I can lend you my umbrella.
+You might be late for the meeting. I will lend you my car.
+
+- How to use borrow and lend in a sentence
+You can use "borrow" and "lend" when you want to get something from someone for a period of time. Study the examples below.
+
+Can I borrow your stapler? / Can you lend me your stapler?
+May I borrow your laptop? / Can you lend me your laptop?
+
+You can use "borrow" and "lend" when making an offer to give something to someone for a period of time. Study the examples below.
+
+Would you like to borrow some money? / Would you like me to lend you some money?
+If you need to make a phone call, you can borrow my phone. / If you need to make a phone call, I can lend you my phone.
+
+"Borrow" and "lend" are verbs that are often used in the same context.
+
+"Borrow" means to get something from someone and return it to the owner after a period of time.
+
+Can I borrow that file, please?
+
+When you lend something, it means that you are the owner of an object.
+
+I can lend you my umbrella.
+
+___________________________
+
+## THAT vs. WHICH
+
+"That”and "which" introduce clauses that provide information about a noun.
+
+"That" introduces a restrictive clause, or a clause that contains essential information about a noun. It differentiates a noun from other nouns similar to it. A "that" clause cannot be removed from the sentence without changing its meaning.
+
+The iPad that will be released in August will cost a thousand dollars, while the iPad that will be released in December will cost half that price.
+(The sentence says there are two iPads - one to be released in August and one to be released in December.)
+
+Removing the clauses introduced by "that" will make the sentence meaningless.
+
+The iPad will cost a thousand dollars while the iPad will cost half that price.
+
+"Which" introduces a non-restrictive clause, or a clause that contains additional information about a noun. It can be removed from the sentence without changing its meaning.
+
+The iPad, which will be released in August, will cost a thousand dollars.
+(The sentence says there is only one iPad.)  
+
+Removing the clause introduced by "which" does not change the meaning of the sentence.
+
+The iPad will cost a thousand dollars.
+
+
+"That" is not preceded by a comma. "Which" should be preceded by a comma. However, people habitually use "which" when they mean "that." If this is the case, "which" should not be preceded by a comma.
+
+"That" and "which" introduce clauses that provide information about a noun.
+
+"That" introduces a restrictive clause. A restrictive clause cannot be removed from the sentence without changing its meaning.
+
+"Which" introduces a non-restrictive clause. A non-restrictive clause can be removed from the sentence without changing its meaning.
+
+"That" is not preceded by a comma. "Which" should be preceded by a comma. However, people habitually use "which" when they mean "that." If this is the case, "which" should not be preceded by a comma.
+
+________________________
+
+
+Phrases for expressing opinions
+
+I think that ...
+
+I think that having a strict boss is not good for any team.
+
+
+I like/don't like ...
+
+I don't like to work from home.
+
+
+I feel ...
+
+I feel that working for the government is better than working for a private company.
+
+I agree/disagree ...
+
+I agree that people should only work four days a week.
+
+
+I believe that ...
+
+I believe that offices should go paperless.
+
+
+I'm not too sure about ...
+
+I'm not too sure about hiring two more people.
+
+Here are some verbs that are useful for expressing opinions politely:
+I think (that) ...
+I feel (that) ...
+I believe (that) ...
+I agree/disagree (that) ...
+
+Here are some phrases for expressing preferences:
+I like/don’t like …
+I would like ...
+I prefer …
+I would rather ...
 
 

@@ -829,3 +829,18 @@ The following operators are valid:
 ![](./Images/multipleproviders.png)
 
 ![](./Images/multiple.png)
+
+## Terraform dependency lock file
+
+![Alt text](./Images/lockfile.png)
+
+If terraform did not find a lock file, it would download the latest version of the providers that fulfill the version constraints you defined in the requiered_providers block inside terraform setting blocks
+
+If we have lock file, the lock file causes terraform to always install the same provider versio, ensuring that runs across your team or remote sessions will be consistent
+
+## Resources syntax
+
+![Alt text](image-6.png)
+
+## Terraform resource behavior
+

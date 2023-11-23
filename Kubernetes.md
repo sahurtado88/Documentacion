@@ -15,7 +15,7 @@ disaster recovery backuo and restore
 
 - api server: entrypoint to K8s cluster, expose Kubernetes API
 
-- controll manager: keeps track of whats happening in the cluster (node controller, replication controller, endpoint controller, service account and token controllers)
+- controller manager: keeps track of whats happening in the cluster (node controller, replication controller, endpoint controller, service account and token controllers)
 
 - Scheduler: ensures pods placement
 
@@ -67,7 +67,7 @@ ADD NEW MASTER/ NODE SERVER
 
 ## YAML in kubernetes
 
-alway have 4 fields
+always have 4 fields
 - apiVersion: version create object (v1, apps/v1)
 - kind: refers type of objects (pod, replicaset, deployment, service)
 - metadata: is data about the object form or dictionary (name, labels) you can specify names or lables that k8s expect

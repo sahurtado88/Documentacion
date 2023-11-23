@@ -16,6 +16,7 @@ begin with shebang must change executable CHMOD +X
 |$| Denottes an exansion for use with variables, commands, substitutions, aritmetic substitutions,etc|
 |\\ | Escape character|
 |#| Comments|
+|:<<comment   comment| Multiline commentComments|
 |=| Assignment|
 |[] or [[]]| test evaluates for either true or false|
 |!|Negation|
@@ -1722,9 +1723,54 @@ awk can take the following options:
 - NF number of fields $NF last field
 - FILENAME 
 
+### awk scriptin syntax
+
+- awk 'BEGIN {start_action} pattern/condition {action to perform on each line} END {stop_actio}' filename
+
+- awk -f awk_script.awk filename
+
+```
+awk 'BEGIN { print "=======working on /etc/passwd file =="} /root/ { print $0 } END { print "====completed==== work on /etc/passwd file===="}' /etcd/passwd
+
+```
+
+![Alt text](image-7.png)
+
+### awk command with option, action and basic variables
+
+- awk -F / '{ print $2}' separador /
+- awk - F ec2 '{ print $2}' separador ec2
+- awk -F ec2 -v x=5 '{ print $2}, x' declarar variables
+- awk -f awk_script.awk filename
+
+### simple Hello world awk script
+
+hello.awk
+```
+#!/bin/awk -f
+BEGIN
+  print "hello world!!"
+
+```
+
+chmod +x hello.awk
+
+./hello.awk
+
+### awk script concepts
+
+![](image-8.png)
 
 
+awk 'BEGIN { a=5 ; prnt a}
 
+```
+#!/bin/awk -f
+BEGIN{
+  a=5 ;
+  print a
+}
+```
 
 
 
@@ -1745,3 +1791,33 @@ ___________________________________________
 (( expresión )) permite evaluar expresiones aritméticas. Si el valor de la expresión es no-cero, el estado de retorno es 0; en caso contrario, el estado de retorno es 1.
 
 [[ expresión ]] es un bashism (algo propio de Bash, mientras que [ es genérico -- puedes leer sobre la diferencia entre [ y [[) y sirve para evaluar expresiones, que pueden ser mucho más complejas que las aritméticas.
+
+______________________________
+
+
+27
+
+I have a folder in my server which contains some files. These are automated that means everyday we get new files automatically which will overwrite the old ones. So want to take a back up for this data. How can I copy all these files into another folder by renaming the files with current date while copying.
+
+ex : I have home/webapps/project1/folder1 folder which contains 4 files:
+
+aaa.csv
+bbb.csv
+ccc.csv
+ddd.csv
+Now, I want to copy all these four files in to a different location, like home/webapps/project1/folder2.
+While copying these files I want to rename each file and add the current date to the file. So my file names in folder2 should be:
+
+aaa091012.csv
+bbb091012.csv
+ccc091012.csv
+ddd091012.csv
+I want to write a shell script for this. Please give me some idea or some sample scripts related to this.
+
+In bash, provided you files names have no spaces:
+
+cd /home/webapps/project1/folder1
+for f in *.csv
+do 
+   cp -v "$f" /home/webapps/project1/folder2/"${f%.csv}"$(date +%m%d%y).csv
+done
