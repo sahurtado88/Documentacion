@@ -844,3 +844,31 @@ If we have lock file, the lock file causes terraform to always install the same 
 
 ## Terraform resource behavior
 
+![](image-9.png)
+
+## Terraform state
+
+![Alt text](image-10.png)
+
+![Alt text](image-11.png)
+
+## Input variables
+
+Input variables serve as parameters for a terraform module, allowing aspects of the module to bve customized without altering the module's own source code, and allowing modules to be shared between different configurations
+
+## Local Values
+
+![Alt text](image-12.png)
+
+## Meta arguments
+
+![Alt text](image-13.png)
+
+![Alt text](image-14.png)
+
+### Depends on
+
+![Alt text](image-15.png)
+
+![Alt text](image-16.png)
+

@@ -7295,4 +7295,535 @@ I would like ...
 I prefer …
 I would rather ...
 
+_______________________
+
+TAKES (TO) THE FIELD
+begins an activity, usually a game
+
+The world's athletes will take to the field after the Olympics' opening ceremony.
+
+GET IN THE WAY OF (SOMETHING)
+to prevent a situation or action from happening
+
+The rainy weather might get in the way of Ingrid's planned beach vacation.
+
+TERRACING
+the layered area in a sports stadium where people can sit or stand to watch a sports game
+
+Peter and Moira stood at the top step of the terracing when they watched the football game.
+
+TURF
+a piece of land with short grass on it
+
+To practice golf indoors, Kelly uses an artificual turf.
+
+HOOKED
+enthusiastic about or interested in something
+
+On weekends, Hannah plays video games; she gets hooked all day.
+
+EXPATRIATE
+referring to a person who lives away from his or her home country
+
+The company in India has an expatriate employee -- an American -- who is still trying to learn the local languages.
+
+SLACKING OFF
+the act of being less productive or of not giving attention to work
+
+I have not been exercising regularly; this slacking off weakened my muscle strength.
+
+GLUED TO (SOMETHING)
+attentive towards something
+
+Howard is glued to his smartphone; he checks his social media accounts almost every minute!
+
+__________________
+
+
+I need it for …
+
+I need it for doing research online.
+
+
+I want to use it for …
+
+I want to use it for editing images and videos.
+
+This (gadget) has …
+
+This laptop has a 12-inch screen.
+
+
+The (feature) is where you …
+
+The hard drive is where you keep your files.
+
+
+The (feature) lets you …
+
+The trackpad lets you control the cursor without a mouse.
+
+
+Most (gadgets) have …
+
+Most laptops have longer battery lives now.
+
+
+(This feature) makes it easy to …
+
+The new feature called the USB-C port makes it easy to connect different gadgets directly to the laptop.
+
+
+The specifications you need are …
+
+The specifications you need are a large RAM, a fast processor, a graphics card, large storage, and a huge monitor.
+
+
+The model that fits the specifications is …
+
+The model that fits the specifications is the Dell XPS 13 (2020).
+
+Here are phrases you can use to talk about technological devices:
+This (gadget) has...
+The (feature) is where you...
+The specifications you need are...
+The model that fits these/those specifications is...
+Most (gadgets) (in the market) have/offer...
+
+Gerunds and infinitives are useful for expressing gadget user needs.
+I need it for doing/designing/etc...
+I want to use it for editing/calling/etc...
+The most important specifications you need to consider are...
+
+Here are useful structures for describing gadget features and specifications.
+Causative verbs like let, make, have, and get
+
+This feature makes your files and programs load faster.
+The keyboard size will let you type comfortably.
+
+Compound adjectives
+
+a 13-inch screen
+a ready-to-use laptop
+
+________________________________
+
+ORIENTING (SOMEONE)
+the act of helping someone become familiar with a new place or situation
+
+Anya spent the entire morning orienting the new interns on the department's tasks and responsibilities.
+
+INTEGRATING
+becoming an effective part of a bigger thing or group
+
+After months of integrating into her new team, Diana showed strong teamwork and communication with the other members.
+
+ONBOARDING
+the process by which new employees are welcomed into a company and are given skills and knowledge to help them fulfill their roles
+
+During onboarding, new hires meet employees from other departments, who explain what each team's role is.
+
+RETENTION
+the ability of a company to keep its employees
+
+Retention in the company was high this year, as many employees said they were satisfied with their jobs.
+
+INCONSISTENT
+having or containing parts that do not agree or do not match with one another
+
+The manager asked Hailey to analyze her data again, because her data and her conclusions were inconsistent with each other.
+
+TAKES (SOMETHING) INTO ACCOUNT
+considers a particular thing during a decision-making process
+
+When packing clothes for a long trip, George takes into account the weather forecasts for the next few days.
+
+ORGANIZATIONAL CULTURE
+Organizational culture refers to the values and beliefs that contribute to the social and psychological environment of a company.
+
+PERSONAS
+fictional characters or models of people that are created based on the features of a target audience, in order to make sure that audience's needs are met
+
+In order to sell their home appliances more effectively, the company analyzes personas such as "busy housewives" and "wealthy families."
+
+ROBUST
+strong, effective and impressive
+
+The project team delivered a robust final product despite the tight deadlines.
+
+LEVERAGED
+used or taken advantage of, in order to achieve a result
+
+Fiona leveraged her professional connections to quickly find an investor who was willing to fund her new company.
+
+________________________
+
+
+It was a very … month/quarter/period/year.
+
+It was a very difficult quarter.
+It was a very satisfying year.
+
+
+I had difficulty …
+
+I had difficulty meeting the deadlines.
+
+
+I had to deal with …
+
+I had to deal with several clients a day.
+
+
+I was overwhelmed with/by …
+
+I was overwhelmed by the work load.
+
+At first, …
+
+At first, I had difficulty managing my time.
+
+
+After that, …
+
+After that, I had to deal with my responsibilities as a manager and programmer.
+
+
+I resolved the problem by …
+
+I resolved the problem by redesigning the program.
+
+We now have …
+
+We now have a new strategy.
+
+
+We have implemented …
+
+We have implemented a system for dealing with network problems.
+
+
+I believe/feel/ think …
+
+I believe this has been a learning experience for me.
+I feel that the problems demanded so much of my time. I think the situation brought out the best in me.
+
+
+I'd like to bring up …
+
+I'd like to bring up some of the things I noticed about the new software.
+
+Here are useful phrases for answering in a performance interview:
+
+It was a...month/quarter/period/year.
+I had difficulty...
+I had to deal with...
+I resolved the problem by...
+We have implemented...
+I'd like to bring up...
+ 
+Here are useful structures for describing how we find our duties and responsibilities at work.
+
+Adjectives with prepositions
+...pleased/satisfied with...
+...thankful/grateful for...
+...overwhelmed by/with...
+...anxious/concerned/hesitant about...
+
+Verbs with gerunds or infinitives
+I enjoyed working with my team.
+I struggled to meet deadlines.
+
+Compound adjectives
+Just keeping our network running is very time-consuming.
+Dealing with my clients these past three months been an eye-opening experience.
+ 
+Causative verbs are useful when discussing ways to improve our performance at work.
+I have my teammates do tasks that don't require any decision-making so I can allot more time to programming.
+Our system for sharing best practices helps us solve network problems quickly.
+
+_______________________
+
+Singular indefinite pronouns take the singular form. Singular indefinite pronouns include:
+
+each
+neither
+either
+one
+nobody
+nothing
+anyone
+no one
+anybody
+something
+More examples: anything, someone, somebody, everything, everybody and everyone.
+
+Something is wrong with the machine.
+
+Plural indefinite pronouns take the plural form. Plural indefinite pronouns include: "several," "both," "few" and "many."
+
+Few drive to work.
+
+Some indefinite pronouns may be singular or plural, depending on the object of the preposition. Indefinite pronouns that may be singular or plural are: "some," "any," "none," "all," and "most."
+
+All of the book is interesting.
+All of the books are interesting.
+
+
+A phrase or clause between subject and verb does not change the number of the subject.
+
+The room of the guests is near the elevator.
+The rooms booked for the company are on the third floor.
+
+Here are some rules for subject-verb agreement:
+
+Add -s to a regular verb only for subjects in the third person singular form.
+He jogs every morning.
+Dave jogs every morning.
+ 
+Do not add -s for plural subjects and for singular subjects in the first or second person.
+They jog every morning.
+I jog every morning.
+ 
+A phrase or clause between subject and verb does not change the number of the subject.
+My neighbors in the city jog every morning.
+ 
+Common singular indefinite pronouns that take a singular verb: anybody, everyone, something, nobody
+ 
+Common plural indefinite pronouns that take a plural verb: several, both, few, many
+
+_________________________
+
+"In" is used before spans of time, such as seconds, minutes, days, weeks, months, seasons and years. "In" is also used for parts of the day.
+
+We met in January.
+We will visit you in the spring.
+I visited France in 1977.
+She goes home in the afternoon.
+He will be home in a day or two.
+
+"On" is used before days and dates.
+
+He will come on Tuesday.
+She was born on Jan. 6, 1982.
+
+"At" is used before precise times.
+
+We will meet at 9:00.
+I am leaving at 5:00.
+
+"In," "on" and "at" are the most common prepositions of time.
+
+"In" is used before spans of time, such as seconds, minutes, days, weeks, months, seasons and years. "In" is also used for parts of the day.
+ 
+"On" is used before days and dates.
+ 
+"At" is used before precise times.
+
+________________________
+
+The present continuous (or present progressive) tense is used for:
+
+actions happening now
+
+She is teaching English.
+I am writing an email.
+
+actions that are still in progress, even if they are not happening at the very moment
+
+John is studying English.
+They are working on a big project.
+
+The present continuous tense can also be used for actions that you plan to do in the future. In this case, the future time must be clearly given.
+
+I am visiting my friends tonight.
+I am going out with my colleagues after work.
+
+The present continuous (or present progressive) tense is used for:
+
+actions happening now
+actions that are still in progress, even if they are not happening at the very moment
+actions that you plan to do in the future (In this case, the future time must be clearly given.)
+
+_________________
+
+Do NOT use "a" or "an" for:
+
+plural nouns
+uncountable nouns: liquids, powders, names of materials, etc.
+names of languages
+names of sports
+names of academic subjects
+
+____________________________
+
+# When to use "the"
+
+Use "the" when talking about things known to both the speaker and the listener.
+
+I like the food in this restaurant.
+
+"The" is placed before a noun when the listener can easily identify which person/s, thing/s, etc., are being talked about.
+
+Answer the phone.
+
+Use "the" when the thing being talked about is the only one that exists anywhere, like the sun, the Earth, or the universe.
+
+Martha enjoys running under the sun.
+
+Use "the" before superlative adjectives, like "the best," "the biggest," etc.
+
+Bill is the wealthiest man in the world.
+
+# When not to use "the"
+Do not use "the" with determiners like "your," "her," "that," "these," etc.
+
+This is her car.
+I want those pens.
+
+Do not use "the" with singular proper nouns.
+
+Mary lives in Switzerland.
+
+Do not use "the" when talking about things in general.
+
+Life is beautiful.
+
+"The" can be used
+
+to talk about things known to both the speaker and the listener.
+to talk about something that is the only one that exists anywhere, like the sun, the Earth, or the universe
+with superlative adjectives
+"The" is NOT used
+
+to talk about things in general
+with singular proper nouns or pronouns like “your,” "her," "that," and "these"
+
+Use "the" with titles of people.
+
+the president
+the Queen of England
+the judge
+
+Do NOT use "the" with titles of people when they are followed by the name of the person.
+
+President Roosevelt
+Queen Victoria
+Judge Roberts
+
+Use "the" with names of island chains.
+
+the Aleutians
+the Hebrides
+the Canary Islands
+
+Do NOT use "the" with names of islands.
+
+Easter Island
+Maui
+Key West
+
+Use "the" with points of the globe.
+
+the equator
+the North Pole
+the South East  
+
+Do NOT use "the" with names of continents.
+
+Asia
+North America
+Europe
+
+Use "the" with regions of a country or of a continent, when the country/continent is not mentioned.
+
+the Midwest
+the Middle East
+
+Do NOT use "the" with regions of a country or of a continent when the country/continent is mentioned.
+
+Western Europe
+Southeast Asia
+
+Use "the" with names of rivers, oceans, seas.
+
+the Nile River
+the Pacific Ocean
+the South China Sea    
+
+Do NOT use "the" with names of lakes and bays (except for groups of lakes like the Great Lakes).
+
+Lake Erie
+Koenigs Bay
+
+Use "the" with names of deserts, forests, gulfs and peninsulas.
+
+the Sahara
+the Persian Gulf
+the Black Forest
+the Iberian Peninsula
+
+Do NOT use "the" with names of cities, towns, states and streets.
+
+Rome
+Toulouse
+California
+Fifth Avenue
+
+
+Use "the" with names of monuments, buildings and national shrines.
+
+the Statue of Liberty
+the Johns Hopkins Building
+the Eiffel Tower
+
+The article "the" is used in different contexts.
+
+Use “the” with the following:
+
+titles of people
+the president
+ 
+names of countries that refer to groups, or are in the plural form
+the Netherlands
+ 
+names of island chains
+the Aleutians
+ 
+points of the globe
+the equator
+ 
+regions of a country or of a continent, when the country/continent is not mentioned
+the Midwest
+ 
+names of rivers, oceans, seas
+the Nile River
+ 
+names of deserts, forests, gulfs and peninsulas
+the Sahara
+ 
+names of monuments, buildings and national shrines
+the Statue of Liberty
+Do NOT use “the” with the following:
+
+titles of people when they are followed by the name of the person
+President Roosevelt
+ 
+names of countries in the singular form
+Holland
+ 
+names of islands
+Easter Island
+ 
+names of continents
+Asia
+ 
+regions of a country or of a continent when the country/continent is mentioned
+Western Europe
+ 
+names of lakes and bays
+Lake Erie
+ 
+names of cities, towns, states and streets
+Rome
 

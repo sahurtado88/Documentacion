@@ -1767,10 +1767,11 @@ awk 'BEGIN { a=5 ; prnt a}
 ```
 #!/bin/awk -f
 BEGIN{
-  a=5 ;
-  print a
+  a=5 ;  print a
 }
 ```
+
+### awk variables read variable from command line
 
 
 
