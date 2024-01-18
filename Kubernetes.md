@@ -1977,3 +1977,7 @@ Si el contenedor de inicialización de un Pod falla, kubelet reinicia repetidame
 Los contenedores de inicialización admiten todos los campos y características de los contenedores de aplicaciones, incluidos los límites de recursos, los volúmenes y la configuración de seguridad. Sin embargo, las solicitudes de recursos y los límites para un contenedor de inicialización se manejan de manera diferente, como se documenta en Recursos.
 
 Además, los contenedores de inicialización no admiten lifecycle, livenessProbe, readinessProbe o startupProbe porque deben de ejecutarse hasta su finalización antes de que el Pod pueda estar listo.
+
+____________________
+
+https://www.turing.com/interview-questions/kubernetes

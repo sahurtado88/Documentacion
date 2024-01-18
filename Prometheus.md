@@ -244,3 +244,21 @@ __________________
 
 DEV/QA/STAG
 
+Si deseas realizar dos consultas distintas, una con count() y otra con sum() en Prometheus, puedes combinarlas en una sola consulta utilizando operadores y agrupadores. Aquí tienes un ejemplo genérico:
+
+
+    sum(metrico_total) by (etiqueta_comun) + count(metrico_distinto) by (etiqueta_comun)
+En este ejemplo:
+
+metrico_total y metrico_distinto son métricas diferentes que podrían representar diferentes tipos de datos.
+etiqueta_comun es una etiqueta que ambas métricas comparten y por la cual deseas agrupar los resultados.
+Asegúrate de reemplazar metrico_total y metrico_distinto con las métricas reales que estás utilizando y ajusta etiqueta_comun según las etiquetas compartidas que quieras usar para agrupar.
+
+Aquí hay un ejemplo más concreto utilizando métricas de Kubernetes:
+
+
+    sum(container_cpu_usage_seconds_total) by (namespace) + count(kube_pod_info) by (namespace)
+    
+En este caso, la consulta suma el tiempo total de CPU utilizado por los contenedores y cuenta el número de pods, ambos agrupados por el espacio de nombres (namespace).
+
+Ajusta las consultas según tus necesidades específicas y las métricas que estés utilizando en tu entorno.

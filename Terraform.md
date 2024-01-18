@@ -872,3 +872,57 @@ Input variables serve as parameters for a terraform module, allowing aspects of 
 
 ![Alt text](image-16.png)
 
+### Count
+
+![Alt text](image-17.png)
+
+![Alt text](image-18.png)
+
+#### ELement function
+
+element retrieves a single element from a list.
+
+element(list, index)
+
+The index is zero-based. This function produces an error if used with an empty list. The index must be a non-negative integer.
+
+Use the built-in index syntax list[index] in most cases. Use this function only for the special additional "wrap-around" behavior described below.
+
+> element(["a", "b", "c"], 1)
+b
+
+
+To get the last element from the list use length to find the size of the list (minus 1 as the list is zero-based) and then pick the last element:
+
+> element(["a", "b", "c"], length(["a", "b", "c"])-1)
+c
+
+
+
+#### length Function
+
+length determines the length of a given list, map, or string.
+
+If given a list or map, the result is the number of elements in that collection. If given a string, the result is the number of characters in the string.
+
+#### Splat Expressions
+
+A splat expression provides a more concise way to express a common operation that could otherwise be performed with a for expression.
+
+If var.list is a list of objects that all have an attribute id, then a list of the ids could be produced with the following for expression:
+
+    [for o in var.list : o.id]
+
+This is equivalent to the following splat expression:
+
+    var.list[*].id
+
+The special [*] symbol iterates over all of the elements of the list given to its left and accesses from each one the attribute name given on its right. A splat expression can also be used to access attributes and indexes from lists of complex types by extending the sequence of operations to the right of the symbol:
+
+    var.list[*].interfaces[0].name
+
+The above expression is equivalent to the following for expression:
+
+    [for o in var.list : o.interfaces[0].name]
+
+

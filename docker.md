@@ -943,3 +943,55 @@ Que te diviertas!
 _________________________
 
 
+![Alt text](image-33.png)
+
+![Alt text](image-34.png)
+
+How do you create a multi-stage build in Docker?
+
+
+Multi-stage builds in Docker allow you to create optimized Docker images by leveraging multiple build stages. Each stage can use a different base image and perform specific build steps. To create a multi-stage build, you define multiple FROM instructions in the Dockerfile, each representing a different build stage.
+
+Intermediate build artifacts can be copied between stages using the COPY --from instruction. This technique helps reduce the image size by excluding build tools and dependencies from the final image.
+
+ow do you update a Docker container without losing data?
+
+
+The steps to update a Docker container without losing data are:
+
+Create a backup of any important data stored within the container.
+Stop the container gracefully using the docker stop command.
+Pull the latest version of the container image using docker pull.
+Start a new container using the updated image, making sure to map any necessary volumes or bind mounts.
+Verify that the new container is functioning correctly and that the data is still intact.
+
+What is the difference between COPY and ADD instructions in a Dockerfile?
+
+
+In a Dockerfile, the COPY instruction copies files or directories from the host machine to the container's filesystem. It is used for straightforward file copying.
+
+On the other hand, the ADD instruction has additional capabilities. It can copy local files, extract compressed archives (tar, gzip, etc.) into the container, and even download files from URLs and automatically unpack them. Due to its added complexity and potential security risks, it is generally recommended to use COPY unless the extra functionality of ADD is explicitly required.
+
+How do you manage secrets in Docker using external secret stores?
+
+
+Docker provides support for managing secrets securely using external secret stores. To manage secrets in Docker, you can:
+
+Create or obtain the required secret values
+Store the secrets in an external secret store like HashiCorp Vault or Azure Key Vault
+Configure Docker to use the external secret store as the backend for secret management
+Create secrets in Docker Swarm or Kubernetes using the Docker CLI or API, referencing the secret values stored in the external secret store
+The secrets are securely retrieved at runtime and made available to the containers in a controlled manner, ensuring sensitive information remains protected.
+
+How do you manage Docker images in a private registry?
+
+To manage Docker images in a private registry, you can:
+
+Set up a private Docker registry using tools like Docker Registry or third-party solutions like Harbor or Nexus Repository Manager
+Push Docker images to the private registry using the docker push command and specify the registry's address and credentials
+Pull Docker images from the private registry using the docker pull command and provide the image's name and registry information
+Manage access and permissions to the private registry by configuring authentication and authorization settings
+Apply image retention and deletion policies to manage storage usage and keep the registry organized
+Monitor the private registry for storage capacity, performance, and security.
+
+https://www.turing.com/interview-questions/docker

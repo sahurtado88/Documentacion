@@ -7827,3 +7827,626 @@ Lake Erie
 names of cities, towns, states and streets
 Rome
 
+_____________________
+
+The present continuous tense expresses an action of the noun/pronoun. It includes the verb "is/are."
+
+Rebecca is reading.
+Thomas is editing photos.
+
+The present participle describes the noun. It does not work as a verb.
+
+Rebecca is wearing reading glasses.
+Thomas is using editing software.
+
+Some words have one meaning when used as a verb in the present continuous tense, and a different meaning when used as a present participle.
+
+Eric is working.  He is not resting.
+Let's count all the working computers in the room.  We need to separate them from the broken computers.
+
+The present continuous tense and the present participle both end in "-ing." But they are used in different contexts.
+
+The present continuous tense is used to express an action of a noun/pronoun.
+Rebecca is reading.
+ 
+The present participle is used to describe a noun.
+Rebecca is wearing reading glasses.
+
+________________
+
+"Fun" is an adjective referring to something or someone that gives enjoyment or amusement.
+
+Biking is fun.
+Michael is such a fun friend. He is always trying out new things.
+
+"Fun" is also a noun that means "enjoyment" or "amusement." It is usually used with the verb "have."
+
+Charles had a lot of fun swimming today.
+Did you have fun at the picnic?
+
+"Funny" is an adjective referring to something or someone that makes you laugh.
+
+We just couldn't stop laughing. The movie was so funny!
+Giselle is really funny. She is always joking around.
+
+"Funny" is also an adverb used to describe an action as "strange" or "odd."
+
+No one likes dancing with Tom. He dances funny.
+Stephanie loves making her dogs wear costumes. It makes them look funny.
+
+"Fun" and "funny" have different meanings and are used in different ways.
+
+“Fun” may be used as an adjective or a noun.
+
+"Funny” may be used as an adverb or adjective.
+
+__________________________
+
+Adverbs of the highest degree
+"Completely" means to the highest degree possible. It is used to modify verbs and adjectives.
+
+I have completely used my strength up.
+I am completely exhausted; I can't take another step!
+
+"Extremely" means to a very high degree; far above the normal level. It is used to modify adjectives and adverbs.
+
+The weather is extremely cold.
+The temperature is dropping extremely fast.
+
+
+"Very" means to a high degree. It is used to modify adjectives or adverbs.
+
+She is very happy.
+She is smiling very widely.
+
+"Really" means to a high degree (informal). It is used to modify verbs, adjectives and adverbs.
+
+I really enjoy your company.
+This was a really fun evening.
+We should do this again really soon.
+
+"So" means to a high degree. It is used to modify adjectives and adverbs. When "so" is used, it should be followed by a "that" clause. However, in informal conversation, the "that" clause is often omitted.
+
+The theater was so big.
+The show was so long that I got sleepy.
+
+"Slightly" means to a small degree. It is used to modify adjectives and verbs.
+
+The picture on the wall is slightly crooked.
+You need to adjust it slightly.
+
+Adverbs of degree are used to express the intensity of something. The adverbs below are arranged according to degree, from the highest to the lowest. 
+
+completely
+I have completely used my strength up.
+ 
+extremely
+The weather is extremely cold.
+ 
+very
+She is very happy.
+ 
+really
+I really enjoy your company.
+ 
+so
+The theater was so big.
+ 
+slightly
+The picture on the wall is slightly crooked.
+___________________
+
+"Much" and "many" are used to say that there is a lot of something. "Much" is used with uncountable nouns. "Many" is used with countable nouns.
+
+Marie drank too much coffee.
+Marie drank too many cups of coffee.
+
+"More" is used to say that there is a greater amount of something. It is the opposite of "less" and "fewer." "More" is used for both countable and uncountable nouns.
+
+You have more wine in your glass than I do.
+The second book has more pages than the first book.
+
+
+"Little" and "few" are used to say that there is NOT a lot of something. "Little" is used with uncountable nouns. "Few" is used with countable nouns.
+
+There is a little water in the cup.
+I see a few drops of water in the cup.
+
+"Less" and "fewer" are used to compare two things. They mean that one thing is not as much or as many as the other. "Less" is used with uncountable nouns. "Fewer" is used with countable nouns.
+
+I have less wine in my glass than you do.
+The first book has fewer pages than the second book.
+
+Quantifiers answer the question "How many?" or "How much?" without giving an exact number or amount.
+
+The following quantifiers are used with countable nouns:
+
+many
+few
+fewer
+more
+The following quantifiers are used with uncountable nouns:
+
+much
+little
+less
+more
+__________________________________
+
+Relative clauses are dependent clauses that begin with the following relative pronouns: 
+
+who
+which
+that
+when
+where
+why
+whom
+whose
+
+who
+for people
+
+That man, who comes here every day, bought a loaf of bread.
+
+which
+for things
+
+A loaf of bread, which many people buy, usually costs $5.
+
+that
+for people or things, when the clause is restrictive
+
+A loaf of bread that costs $2 cannot be bought here.
+
+when
+for times
+
+I remember the day when I got this job.
+
+where
+for places
+
+The office where I work is on Elm Street.
+
+
+why
+for reasons (and it normally follows the word "reason")
+
+Her pleasant disposition is the reason why her colleagues like working with her.
+
+whom
+for people who are receiving the action
+
+The client whom you emailed yesterday replied this morning.
+
+whose
+for the owner of the subject of the clause
+
+The chef whose cooking we enjoyed so much learned his art in Lyons.
+
+Relative clauses are dependent clauses that begin with the following relative pronouns:
+
+who
+who comes here every day
+ 
+which
+which many people buy
+ 
+that
+that costs $2
+ 
+when
+when I got this job
+ 
+where
+where I work
+ 
+why
+why her colleagues
+ 
+whom
+whom you emailed
+ 
+whose
+whose cooking we enjoyed
+__________________
+
+How was ...?
+
+How was your trip?
+How was Prague?
+
+
+How was the weather in ...?
+
+How was the weather in Queenstown?
+
+
+How was the food in ...?
+
+How was the food in Pretoria?
+
+
+Where did you go when you were in ...?
+
+Where did you go when you were in New Zealand?
+
+
+What did you do/see ...?
+
+What did you do there? What did you see there?
+What did you do in Budapest? What did you see in Budapest?
+
+
+I've heard about ...! How was it?
+
+I've heard about that place! How was it?
+I've heard about Akihabara! How was it?
+
+
+I'm not sure I've heard about ... What makes it special/interesting?
+
+I'm not sure I've heard about that place. What makes it interesting?
+I'm not sure I've heard about Waitomo. What makes it special?
+
+
+Did you see any (people, places of interest, objects, etc.)?
+
+Did you see any castles?
+
+Questions in the simple past tense are useful when asking about someone's trip.
+
+How was/were…(in…)?
+How did you find…?
+What did  you do/see/eat/buy…(in…)?
+Where did you go/stay (when you were) in…?
+Did you see/go…?
+ 
+Statements in the present perfect tense are useful when saying whether or not you are familiar with a person, place, thing, or activity.
+
+I've heard about…
+I'm not sure I've heard about…What makes it interesting/special? 
+
+_______________________
+
+big time: the highest level of success for a certain activity or sport
+
+The actor reached the big time when he was cast as the main character for a popular movie franchise.
+
+"These Melbourne kids are aiming for the big time."
+
+trailblazers: leaders in a particular field
+
+This year's Nobel prize winners are trailblazers in their respective fields.
+
+"A record high of eight Australian trailblazers played in the U.S. league last year."
+
+stepping stone: something that will lead to progress
+
+For the athlete, winning the national championship was a stepping stone towards competing on an international level.
+
+"Today, hundreds more young Australians play in the U.S. college system -- a stepping stone to the top flight."
+
+win-win: referring to a situation in which all parties will benefit
+
+The merger was a win-win for the companies as both of them will have better opportunities of increasing their profits.
+
+"So, it's a fantastic win-win situation for the individuals ..."
+
+tap into: to use something to one's advantage
+
+The government wants to tap into the country's hydroelectric power capabilities.
+
+"... we are able to tap into the resources that the United States have ..."
+
+gunning for: aiming to get something
+
+Marc is gunning for a managerial position, so he attended the company's leadership program.
+
+"... which is good news for young hopefuls gunning for a shot at the highest level."
+
+Grammar tip: The conjunction "and"
+
+Conjunctions are used to connect words, phrases or sentences. 'And' is a conjunction used to add information.
+
+Here are some examples from the video.
+
+"... knowing they've started where you started, and they made it all the way to the top, so, yeah."
+
+"Australia's reputation as a talent factory is growing and coaches are confident the gap between players like these and their U.S. counterparts is closing."
+
+"But then, down the other end they struggle to defend their structure and skill, and decision making."
+
+More examples:
+
+Janice can play the violin, piano and the trumpet.
+The basketball team has won three national competitions and one international league.
+The company's goal for this quarter is to increase their product's sales and improve on their product distribution.
+
+____________________
+
+bucket list: describing a list of things a person wants to do before a certain age or before they die
+
+One item on Sandra's bucket list is to visit all the European countries.
+
+"Skiing and snowboarding are bucket list items for many people."
+
+nestled: placed close, next to, or within something
+
+The small town is nestled on a valley surrounded by mountain ranges.
+
+"Afriski is nestled in Lesotho's stunning mountains at a height of 3,222 metres above sea-level."
+
+piste: an area covered in snow that is used for skiing
+
+When skiing, Fabien likes to start by going down the piste first before going to more advanced mountain tracks.
+
+"It's also pulling in winter sports enthusiasts from across the world, despite only having one kilometre of piste."
+
+alpine: related to high mountains, usually referring to the Alps in Europe
+
+The long hike includes a few hours of going through the alpine region before coming down to rest at the nearest town.
+
+"This unlikely resort also hosts South Africa's only Olympic alpine skier."
+
+potential: a good quality that something or someone has that can be developed
+
+Isabel was promoted because she had the potential to be a good manager.
+
+"... despite its size, he believes the venue has great potential."
+
+up-and-coming: likely to become successful and well-known
+
+Travis is an up-and-coming actor who grabbed the public's attention for his outstanding performance in an independent film.
+
+"One up-and-coming skier is 10-year-old Thabang Mubari, who started skiing here when he was three."
+
+follow in (someone's) footsteps: to do what another person previously did
+
+Carlo continues to follow in his manager's footsteps in getting to work on time by arriving at least an hour earlier.
+
+"He now hopes his son will one day follow in Wilson's Olympic footsteps."
+
+fly (something's) flag: to represent or support something, usually a certain region
+
+Jose will fly his country's flag as the only Spanish player in the competition.
+
+"... the Afriski team are hopeful that someone will one day fly Lesotho's flag at the Winter Olympics."
+
+Grammar tip: Compound adjectives
+
+Compound adjectives contain two or more words that, taken together, function like adjectives. An adjective does not necessarily have to be part of the combination.
+
+The words in a compound adjective are usually separated by a hyphen.
+
+"One up-and-coming skier is 10-year-old Thabang Mubari, who started skiing here when he was three."
+
+More examples:
+
+Nathaniel needs to prepare a to make a 10-page project proposal for the meeting next week.
+For dinner, Coral made spaghetti with mushrooms and sun-dried tomato sauce.
+Rina bought a secondhand, three-year-old car.
+
+_________________
+
+nuclear reaction
+
+a reaction that changes the number of protons or neutrons in the nucleus of an atom
+
+
+chain reaction
+
+when one nuclear reaction causes other nuclear reactions, which in turn cause others, etc.
+
+
+nuclear fission
+
+the splitting of a nucleus that releases a large amount of energy
+
+
+implosion
+
+the sudden squeezing of matter by shock waves or radiation
+
+
+thermonuclear
+
+involving nuclear fusion, not nuclear fission
+
+fissile
+
+material that is able to keep a chain reaction of nuclear fission going
+
+
+core
+
+the center of a nuclear reactor where the fissile material is held and where nuclear fission takes place
+
+
+critical mass
+
+the minimum amount of fissile material needed to sustain a nuclear chain reaction
+
+
+explosive
+
+a chemical compound that expands very quickly when heated or struck
+
+
+detonator/initiator
+
+the mechanism, sometimes a small amount of explosive, that is used to start a large explosion
+
+__________________
+
+
+eat humble pie
+
+to be forced to apologize or admit one's mistake
+
+
+egg (someone) on
+
+to urge or encourage someone to do something
+
+
+gravy train
+
+a job or any other source of income that requires little work for good pay
+
+
+hot potato
+
+a sensitive issue or problem
+
+
+in a nutshell
+
+briefly; in short; in summary
+In a nutshell, she left the company to look for a better job.
+
+in the soup
+
+to be in a difficult situation; in trouble
+
+
+one's cup of tea
+
+something that one likes or is interested in
+
+Note: The opposite of this idiom would be not one's cup of tea, which refers to something that one doesn't like or is not interested in.
+
+Reading crime and horror novels on a rainy afternoon is just my cup of tea.
+
+
+spice things up
+
+to make something more interesting, exciting or lively
+
+spill the beans
+
+to reveal information or the truth about something, especially a secret
+The auditor wants to spill the beans about the CEO’s dishonest transactions.
+
+
+take (something) with a pinch of salt
+
+to consider something as not totally true or reliable
+
+Peter has been egging Jane on to finish their team's monthly sales report because the deadline is tomorrow.
+
+The two countries' dispute over national borders is a political hot potato.
+
+Stationery manufacturers will be in the soup if all companies transition to paperless systems.
+
+________________
+
+big cheese
+
+a very important and influential person
+
+
+(someone's) bread and butter
+
+a person's main source of income or livelihood
+
+put all your eggs in one basket
+
+to depend or rely on one thing; to focus one's resources on one possibility
+Diversifying your investments simply means not to put all your eggs in one basket.
+
+
+bear fruit
+
+to produce results
+
+
+bring home the bacon
+
+to earn a living, especially for a family
+When I was promoted to manager, I began to bring home the bacon.
+
+butter someone up/butter up to someone
+
+to be very nice to someone in order to get something in return
+
+
+cry over spilled milk
+
+to get upset over something that can no longer be undone
+The advertising project has been given to another ad company already -- it's useless to cry over spilled milk now.
+
+as cool as a cucumber
+
+very calm and relaxed, especially in a difficult situation
+
+
+cream of the crop
+
+the best of a certain group
+
+
+be the toast of (a group or a place)
+
+to be the person who is most favored by a group of people or by the people in a place
+
+John is a fiction author; writing romance novels is his bread and butter.
+
+The branch staff prepared thoroughly for the arrival of the bank's big cheese -- the CEO.
+
+All of Matthew's hard work bore fruit when he got promoted to advertising manager.
+
+__________________
+
+Can you please … ?
+
+Can you please send Ana an email?
+
+
+Please …
+
+Please call Jim for me.
+
+
+I would like you to …
+
+I would like you to take charge of the office while I am gone.
+
+You should/must …
+
+You should meet them once a week.
+
+
+I want you to …
+
+I want you to send me a daily report.
+
+
+(imperative) Call me if/when …
+
+Call me if something important comes up.
+
+The following modals are useful when leaving instructions:
+should, must, can, have to, ought to
+ 
+An imperative sentence does not need the word "you." Simply use the base form of the verb.
+Give them updates.
+Invite them to the meeting.
+ 
+Use the word "please" to add politeness to your sentence.
+Give them updates, please.
+Please invite them to the meeting.
+
+Here are common structures used when giving instructions to an assistant:
+
+"Please" + verb
+Please call up our clients. 
+Please print five copies of this document.
+ 
+"Can/Could/Would you (please)" + verb
+Can you (please) sort these files?
+Would you (please) reschedule my meeting?
+Could you (please) dial this number?
+
+____________________________

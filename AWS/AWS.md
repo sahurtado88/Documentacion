@@ -419,3 +419,170 @@ You want cheaper option to store encrypted or unencrypted secrets.
 
 
 
+_______________
+
+. How can you recover/login to an EC2 instance for which you have lost the key?
+Follow the steps provided below to recover an EC2 instance if you have lost the key:
+
+Verify that the EC2Config service is running
+Detach the root volume for the instance
+Attach the volume to a temporary instance
+Modify the configuration file
+Restart the original instance
+
+How Do Amazon Rds, Dynamodb, and Redshift Differ from Each Other?
+Amazon RDS is a database management service for relational databases. It manages patching, upgrading, and data backups automatically. It’s a database management service for structured data only. On the other hand, DynamoDB is a NoSQL database service for dealing with unstructured data. Redshift is a data warehouse product used in data analysis.
+
+What is RTO and RPO in AWS?
+RTO or Recovery Time Objective is the maximum time your business or organization is willing to wait for a recovery to complete in the wake of an outage. On the other hand, RPO or Recovery Point Objective is the maximum amount of data loss your company is willing to accept as measured in time.
+
+How is AWS CloudFormation different from AWS Elastic Beanstalk?
+Here are some differences between AWS CloudFormation and AWS Elastic Beanstalk:
+
+AWS CloudFormation helps you provision and describe all of the infrastructure resources that are present in your cloud environment. On the other hand, AWS Elastic Beanstalk provides an environment that makes it easy to deploy and run applications in the cloud.
+AWS CloudFormation supports the infrastructure needs of various types of applications, like legacy applications and existing enterprise applications. On the other hand, AWS Elastic Beanstalk is combined with the developer tools to help you manage the lifecycle of your applications.
+
+What are the elements of an AWS CloudFormation template?
+AWS CloudFormation templates are YAML or JSON formatted text files that are comprised of five essential elements, they are:
+
+Template parameters
+Output values
+Data tables
+Resources
+File format version
+
+How can you automate EC2 backup using EBS?
+Use the following steps in order to automate EC2 backup using EBS:
+
+Get the list of instances and connect to AWS through API to list the Amazon EBS volumes that are attached locally to the instance.
+List the snapshots of each volume, and assign a retention period of the snapshot. Later on, create a snapshot of each volume.
+Make sure to remove the snapshot if it is older than the retention period.
+
+What is the difference between EBS and Instance Store?
+EBS is a kind of permanent storage in which the data can be restored at a later point. When you save data in the EBS, it stays even after the lifetime of the EC2 instance. On the other hand, Instance Store is temporary storage that is physically attached to a host machine. With an Instance Store, you cannot detach one instance and attach it to another. Unlike in EBS, data in an Instance Store is lost if any instance is stopped or terminated.
+
+Can you take a backup of EFS like EBS, and if yes, how?
+Yes, you can use the EFS-to-EFS backup solution to recover from unintended changes or deletion in Amazon EFS. Follow these steps:
+
+Sign in to the AWS Management Console
+Click the launch EFS-to-EFS-restore button
+Use the region selector in the console navigation bar to select region
+Verify if you have chosen the right template on the Select Template page
+Assign a name to your solution stack
+Review the parameters for the template and modify them if necessary
+
+What are the different uses of the various load balancers in AWS Elastic Load Balancing?
+Application Load Balancer
+Used if you need flexible application management and TLS termination.
+
+Network Load Balancer
+Used if you require extreme performance and static IPs for your applications.
+
+Classic Load Balancer
+Used if your application is built within the EC2 Classic network
+
+How can you use AWS WAF in monitoring your AWS applications?
+AWS WAF or AWS Web Application Firewall protects your web applications from web exploitations. It helps you control the traffic flow to your applications. With WAF, you can also create custom rules that block common attack patterns. It can be used for three cases: allow all requests, prevent all requests, and count all requests for a new policy
+
+What is the difference between an IAM role and an IAM user?
+The two key differences between the IAM role and IAM user are:
+
+An IAM role is an IAM entity that defines a set of permissions for making AWS service requests, while an IAM user has permanent long-term credentials and is used to interact with the AWS services directly.  
+In the IAM role, trusted entities, like IAM users, applications, or an AWS service, assume roles whereas the IAM user has full access to all the AWS IAM functionalities.
+
+What is the difference between Latency Based Routing and Geo DNS?
+The Geo Based DNS routing takes decisions based on the geographic location of the request. Whereas, the Latency Based Routing utilizes latency measurements between networks and AWS data centers. Latency Based Routing is used when you want to give your customers the lowest latency possible. On the other hand, Geo Based routing is used when you want to direct the customer to different websites based on the country or region they are browsing from. 
+
+What is the difference between a Domain and a Hosted Zone?
+Domain
+A domain is a collection of data describing a self-contained administrative and technical unit. For example, www.simplilearn.com is a domain and a general DNS concept.
+
+Hosted zone
+A hosted zone is a container that holds information about how you want to route traffic on the internet for a specific domain. For example, lms.simplilearn.com is a hosted zone.
+
+Which type of scaling would you recommend for RDS and why?
+There are two types of scaling - vertical scaling and horizontal scaling. Vertical scaling lets you vertically scale up your master database with the press of a button. A database can only be scaled vertically, and there are 18 different instances in which you can resize the RDS. On the other hand, horizontal scaling is good for replicas. These are read-only replicas that can only be done through Amazon Aurora.
+
+What are the consistency models in DynamoDB?
+There are two consistency models In DynamoDB. First, there is the Eventual Consistency Model, which maximizes your read throughput. However, it might not reflect the results of a recently completed write. Fortunately, all the copies of data usually reach consistency within a second. The second model is called the Strong Consistency Model. This model has a delay in writing the data, but it guarantees that you will always see the updated data every time you read it. 
+
+Explain can you vertically scale an Amazon instance? How?
+Yes, you can vertically scale on the Amazon instance. For that
+
+Spin up a new larger instance than the one you are currently running
+Pause that instance and detach the root webs volume from the server and discard
+Then stop your live instance and detach its root volume
+Note the unique device ID and attach that root volume to your new server
+And start it again
+
+What is a redshift?
+Redshift is a big data warehouse product. It is a fast and powerful, fully managed data warehouse service in the cloud.
+
+What is Data Warehouse?
+Data warehousing (DW) is the repository of a data and it is used for Management decision support system. Data warehouse consists of wide variety of data that has high level of business conditions at a single point in time.
+
+In single sentence, it is repository of integrated information which can be available for queries and analysis.
+
+What are the advantages of auto-scaling?
+Following are the advantages of autoscaling
+
+Offers fault tolerance
+Better availability
+Better cost management
+
+Explain Amazon ElasticCache
+Amazon Elasticcache is a web service which makes it easy to deploy, scale and store data in the cloud.
+
+How to connect EBS volume to multiple instances?
+We can’t be able to connect EBS volume to multiple instances.  However, you can connect various EBS Volumes to a single instance.
+
+In which situation you will select provisioned IOPS over Standard RDS storage?
+You should select provisioned IOPS storage over standard RDS storage if you want to perform batch-related workloads
+
+
+____________________
+
+https://www.turing.com/interview-questions/aws
+
+_______________________
+
+# AWS -DNS Records Type
+
+Dns records in AWs define how to route traffic on the internet for your domain, translating domain names innto IP addresses
+
+## A (Address record)
+Maps domain to IPv4 address is used to Hosting websites on IPv4
+
+## AAA /Ipv6 Address record)
+Maps domain to IPv6 address is used to Hosting websites on IPv6
+
+## CNAME (Canonical name record)
+redirects one domain to another, is used when creating domain aliases
+
+## MX (mail exchange record)
+Directs domain's email to mail servers is used to setting up email delivery
+
+## NS Name server record
+Direct to the server that contain authoritative DNS records for a Domain uses when specifying domain's DNS service
+
+## PTR (pointer record)
+associates ip with a canonical domain name, is used to enabling reverse DNS lookup
+
+## SOA Start of authority record
+List primary info about domain is used to managing DNS records
+
+## SPF Sender Policy framework
+Specifies authorize mail servers is used to preventing email spoofing
+
+## SRV Service locator
+locates servers for specific services is used to directing traffic to service-specifis servers
+
+## TXT text record
+contains domain verification info is used to proving domain ownership, other verifications
+
+## CAA Certification Authority Authorization
+Restricts certificates issuance is used to controlling SSl/TLS certificates issuing
+
+## NAPTR Name authority Pointer Record
+maps services to damin names is used to setting up complex communication services
+

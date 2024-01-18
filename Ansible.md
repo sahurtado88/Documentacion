@@ -339,5 +339,13 @@ A module is a reusable, standalone script that Ansible runs on your behalf, eith
 https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html
 
 
+_____
+
+https://www.interviewbit.com/ansible-interview-questions/
+__________
+
 # Ansible advanced
+
+
+
 
