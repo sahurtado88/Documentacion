@@ -1981,3 +1981,11 @@ Además, los contenedores de inicialización no admiten lifecycle, livenessProbe
 ____________________
 
 https://www.turing.com/interview-questions/kubernetes
+
+Rolling Update Deployment
+The rolling deployment is the default deployment strategy in Kubernetes. It replaces pods, one by one, of the previous version of our application with pods of the new version without any cluster downtime. A rolling deployment slowly replaces instances of the previous version of an application with instances of the new version of the application.
+
+maxSurge: The number of pods that can be created above the desired amount of pods during an update. This can be an absolute number or percentage of the replicas count. The default is 25%.
+
+maxUnavailable: The number of pods that can be unavailable during the update process. This can be an absolute number or a percentage of the replicas count; the default is 25%.
+

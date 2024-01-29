@@ -1187,3 +1187,7 @@ _____________________
 cuantas cpu tenog en linux
 
 grep "model name" /proc/cpuinfo | wc -1
+
+_______________
+![Alt text](image-37.png)
+_______________

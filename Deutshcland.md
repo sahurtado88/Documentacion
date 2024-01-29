@@ -165,8 +165,59 @@ Telefonnummer
 
 Meine Telefonnummer ist 0170 / 1234 567.
 Mi número de teléfono es 0170 / 1234 567.
+_______________________
+
+Wie man sich informell verabschiedet:
+
+Tschüss
+Bis bald
+Wir sehen uns
+Bis dann
+Tschau
+
+Wie man sich formell verabschiedet:
+
+Auf Wiedersehen
+
+________________
+
+## Die verben KOMMEN und WOHNEN
+
+Summary
+
+Wir kommen aus einem Land. (venir de)
+
+ich komme …
+du kommst …
+er/sie/es kommt …
+wir kommen …
+ihr kommt …
+Sie/sie kommen …
+
+
+Wir wohnen in einer Stadt. (vivir en)
+
+ich wohne …
+du wohnst …
+er/sie/es wohnt …
+wir wohnen …
+ihr wohnt …
+Sie/sie wohnen …
 
 _____________________
+## Bestimmte Artikel
+
+Bestimmte Artikel sind der (maskulin), die (feminin/Plural) und das (neutral). Diese Artikel werden verwendet:
+
+wenn wir von etwas Bestimmten sprechen
+Beispiel:
+Lena ist die Freundin von Franz. (die einzige – sie sind ein Paar)
+ 
+wenn wir etwas als bekannt voraussetzen
+Beispiel:
+Das Eis schmeckt sehr gut.
+
+___________________
 
 
 verbs used in german 
@@ -246,3 +297,6 @@ sagen (to say)
 machen (to do, to make)
 gehen (to go)
 kommen (to come)
+
+______________________
+

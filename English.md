@@ -8450,3 +8450,327 @@ Would you (please) reschedule my meeting?
 Could you (please) dial this number?
 
 ____________________________
+
+ 
+## Adverbs of certainty 
+
+Adverbs of certainty such as "definitely," "surely," "certainly," or "undoubtedly," can be used to talk about something that is sure.
+
+She is definitely going to work today.
+
+Adverbs of certainty such as "probably" or "most likely" can be used to talk about something that is not sure.
+
+She is probably going to work today.
+
+Adverbs of certainty go before the main verb.
+
+He probably went to the park.
+
+If the main verb is a form of "be" (am/is/are), the adverb of certainty may come before or after the main verb.
+
+He probably is at the park.
+He is probably at the park.
+
+When there is an auxiliary verb, the adverb of certainty may go before or after the auxiliary verb.
+
+He has certainly forgotten the meeting.
+He certainly has forgotten the meeting.
+
+Sometimes adverbs of certainty can be placed at the beginning of the sentence.
+
+Undoubtedly, he will finish the project next week.
+
+When the adverb "surely" is placed at the beginning of the sentence, it can mean that the speaker thinks something is true but is asking for confirmation.
+
+Surely he will finish the project next week?
+
+Adverbs of certainty express how sure we feel about an action or event.
+
+Here are some examples of adverbs of certainty:
+
+definitely
+surely
+certainly
+undoubtedly
+probably
+most likely
+
+____________________
+
+## Phrases for expressing certainty
+
+Yes.
+
+
+Of course.
+
+
+I'm very/quite/really/absolutely/definitely sure.
+
+
+I'm very/quite certain.
+
+
+Without a doubt.
+
+
+Absolutely.
+
+
+Definitely.
+
+Here are useful phrases when expressing certainty.
+
+Phrases with adjectives
+
+I'm sure/certain/confident/positive (about/of/that ...).
+ 
+Phrases with "doubt"
+
+Without (a) doubt, ...
+There's no doubt about/that ...
+ 
+Certain adverbs can be used with adjectives or on their own to express certainty when making statements or answering questions.
+
+I'm absolutely/definitely/very/quite sure (about/of/that ...).
+I'm very/quite/pretty sure/certain/confident (about/of/that ...).
+Absolutely/Definitely/Surely/Certainly (not).
+
+__________________________
+
+## Introducing the story
+
+This is an inspiring story about ...
+
+This is an inspiring story about a woman who succeeded against all odds.
+
+
+This story is all about ...
+
+This story is about a man who fell from power because of greed.
+
+
+What I'm about to tell you is the story of ...
+
+What I'm about to tell you is the story of a company that dared to be different.
+
+
+His/Her name is ...
+
+Her name is Anne Gilbert.
+
+
+He/She is the (role/identity) ...
+
+Jacob Smith is the son of a farmer and a school teacher.
+
+
+He/She is a (occupation/title) ...
+
+Bob is an electrical engineer.
+
+
+It all started with ...
+
+It all started with a dream.
+
+
+It all began when ...
+
+It all began when Anne thought of a way to sell the company's products online.
+
+
+The story begins with ...
+
+The story begins with two college computer geeks working in a garage.
+
+
+After that, ...
+
+After that, Online Experts Inc. offered to buy the software they created.
+
+
+... and then ...
+
+John decided to look for a job and then found one as a salesman.
+
+
+Eventually, ...
+
+Eventually, Cris was promoted to manager.
+
+
+Not long after, ...
+
+Not long after, the coffee company opened a second branch in another city.
+
+This led to ...
+
+This led to the company surpassing all its competitors in the industry.
+
+
+In the end, ...
+
+In the end, Arnie opened his own company, which we now know as the very successful Top Aces Corporation.
+
+When telling a story, you may:
+
+Introduce the story.
+This story is all about a man who fell from power because of greed.
+ 
+Introduce the main characters.
+Jacob Smith is the son of a farmer and a school teacher.
+ 
+Discuss the main story.
+John decided to look for a job and then found one as a salesman.
+Not long after, the coffee company opened a second brand in another city.
+ 
+Tell how the story ended.
+In the end, Arnie opened his own company.
+
+__________
+
+1998 se decía “nineteen ninety-eight”, 1987 era “nineteen eighty-seven”
+
+||||
+|-|-|-|
+|2018|	2009|
+Inglés británico	|Two thousand and eighteen	|Two thousand and nine
+Inglés americano|	Two thousand eighteen	|Two thousand nine
+En forma de dos números	|Twenty eighteen	|(poco frecuente) Twenty -“o”- nine
+
+el 2000 es simplemente “the year two thousand”.
+
+El milenio anterior
+
+Como hemos mencionado más arriba, la gran mayoría de los años del pasado milenio se expresan en la forma sencilla de dos números:
+
+1998	Nineteen ninety-eight
+1863	Eighteen sixty-three
+1066	Ten sixty-six
+
+Cuando el año termina en dos ceros (como 1900 o 1500).
+En ese caso, se expresa en forma de centenas:
+
+1900	Nineteen hundred
+1500	Fifteen hundred
+
+Fíjate en que la palabra “hundred” se utiliza en singular, sin “s” al final. A algunos alumnos les resulta extraño referirse a centenas cuando hablamos de números por encima del millar. Sin embargo, es bastante corriente en inglés. Por ejemplo, al hablar de dinero podemos expresar la cantidad “€1200” como “one thousand, two hundred euros”, o igualmente como “twelve hundred euros”. También es necesario emplear esta última forma cuando nos referimos a los cien años que 
+
+Cuando el año tiene un cero en la penúltima posición (por ejemplo, 1908, 1804).
+Aquí hay dos posibilidades, aunque la primera está mucho más difundida:
+||||
+|-|-|-|
+||Pronunciar el cero como la letra “o” (igual que la “o” de la palabra “phone”, que fonéticamente es /əʊ/)|	Utilizar la forma:____ hundred and _____ (poco frecuente)
+1908	|Nineteen - “o” - eight	|Nineteen hundred and eight
+1804	|Eighteen - “o” - four	|Eighteen hundred and four
+
+Antes del año 1000
+
+Una vez más, no hay un consenso claro sobre cómo expresar los años de esta época (por ejemplo el 821 o el 453). Hay dos opciones principales, aunque la segunda solo se usa en inglés británico:
+||||
+|-|-|-|
+||Decir la primera cifra y después el resto como un número de dos cifras	|Decir el número entero pero precedido de la expresión “the year”
+821	|Eight twenty-one	|The year eight hundred and twenty one
+453	|Four fifty-three	|The year four hundred and fifty three
+_____________
+
+LATENT
+present, but not yet fully developed or active
+
+Ben discovered his latent ability for composing music while helping his company's marketing department create background music for a video advertisement.
+
+HELD DOWN THE FORT
+managed or took responsibility for something while someone else is away
+
+Jeff held down the fort in the factory's warehouse when Al had to stay at home due to sickness.
+
+RUNNER-UP
+refers to things that are in second place
+
+NVNV Electric's air-conditioner was the runner-up for the Product of the Year award.
+
+MAJORITY STAKE
+the ownership of more than 50 percent of a company's stocks
+
+The founder's family holds a majority stake in the car company, so every business decision needs to take their interests into account.
+
+FLEDGLING
+young; new
+
+The country's fledgling space program expects to finish building its first satellite in two years.
+
+AVAILED (ONESELF) OF (SOMETHING)
+used something or someone for one's benefit
+
+Chris availed himself of his company's dental plan to help pay for his daughter's braces.
+
+ANGEL INVESTOR
+Angel investors are people who provide financial aid to startups to help them grow, rather than profit from the new business' success.
+
+KNEE-JERK REACTION
+automatic and usually emotional response to an event, statement, etc.
+
+The customers' knee-jerk reaction to the new bottle was negative, but they eventually liked it because the drink was easier to hold.
+
+ON DRAFT
+refers to drinks, such as beer, stored and taken from a barrel or keg instead of a bottle or can
+
+Zoe likes her beer served on draft as she thinks bottled and canned beers taste different.
+
+HOUSEHOLD NAME
+a person, brand, object, etc., that is well-known
+
+As a household name, Coca-Cola is one of the first brands people remember when thinking of soft drinks.
+
+THROUGH THICK AND THIN
+in good and bad times
+
+The employees are confident in their manager's ability to lead them through thick and thin.
+
+PLAY IT STRAIGHT
+do something in a serious and honest manner without fooling anyone or exploiting others to one's advantage
+
+The CEO played it straight by giving honest replies about her firm's losses in the last fiscal quarter.
+
+_________________
+
+Expressing regret
+
+I should have ...
+
+I should have called you earlier.
+
+
+If only we had ..., we would have ...
+
+If only we had hired more people, we would have met the deadline.
+
+
+If only we were ...
+
+If only we were more equipped, we would have been able to handle that big account.
+
+
+I wish (I/you/it/he/she/we/they) had ...
+
+I wish they had given us more time.
+
+
+(I/You/We) should have ...
+
+We should have planned better.
+
+Here are the three most common phrases used when expressing regret:
+
+If only we had created a contingency plan.
+I wish your company had been more careful about expanding.
+I should have listened to your advice.
+
+Take note of the use of the past perfect tense when using the phrases "if only" and "I wish."
+
+If only we had created a contingency plan.
+your company had been more careful about expanding
+
+___________
+

@@ -349,3 +349,156 @@ __________
 
 
 
+# Ansible desde Cero
+
+## Configurar SSH usuario root
+
+- primero generar un ssh key
+    ```
+    ssh-keygen
+    ```
+se genera una clave privada y una publica se comparte la .pub con los servidores a administrar
+
+para copiar la clave publica a los servidores administrados
+
+- crear directorio .ssh
+```
+ mkdir .ssh
+```
+
+- copiar la clave publica al servidor administrado
+
+```
+ssh-copy-id <serveradministrado>
+```
+aceptar fingerprint y luego dar el password del server administrado
+
+y se copia la clave publica en la carpeta authorized_keys dentro de la carpeta .ssh
+
+## Cofigurar usuario ansible
+
+crear usuario ansible en el server administrado
+
+```
+- useradd ansible crear usuario ansible
+- passwd ansible darle una password al usuario ansible
+```
+
+en /home/ansible aca debe estar la clave publica dle usuario ansible desde el servidor controlador
+
+crear usuario ansible en el server controlador
+
+```
+- useradd ansible crear usuario ansible
+- passwd ansible darle una password al usuario ansible
+```
+
+primero generar un ssh key
+    ```
+    ssh-keygen
+    ```
+se genera una clave privada y una publica se comparte la .pub con los servidores a administrar
+
+opiar la clave publica al servidor administrado
+
+```
+ssh-copy-id <serveradministrado>
+```
+
+aceptar fingerprint y luego dar el password del server administrado
+
+y se copia la clave publica en la carpeta authorized_keys dentro de la carpeta .ssh
+
+## Dar permisos a usuario para hacer SUDO
+
+con usuario root ingresar a /etc y editar el file sudoers en el server admnistrado
+
+![Alt text](image-35.png)
+
+quitar el password cuando se vuelve sudo editaR SUDOERS y escribir NOPASSWD:ALL
+
+![Alt text](image-36.png)
+
+
+Configure el acceso de sudo para el usuario recién creado:
+```
+cat << EOF >/etc/sudoers.d/USER_NAME
+$USER_NAME ALL = (root) NOPASSWD:ALL
+EOF
+```
+Sustituya USER_NAME por el nuevo nombre de usuario para el usuario Ansible .
+
+Asigne los permisos de archivo correctos al archivo nuevo:
+
+```
+chmod 0440 /etc/sudoers.d/USER_NAME
+```
+
+Sustituya USER_NAME por el nuevo nombre de usuario para el usuario Ansible .
+
+## Escalada privilegios
+
+La escalada de privilegios en Ansible se refiere a la capacidad de ejecutar tareas o comandos con permisos elevados en sistemas remotos. Esto es particularmente relevante en entornos de gestión de infraestructura donde es necesario realizar acciones administrativas que requieren privilegios adicionales, como instalar paquetes, reiniciar servicios, modificar archivos de configuración, entre otros.
+
+En Ansible, la escalada de privilegios se puede lograr de varias maneras:
+
+**Uso de sudo**: sudo es un comando de Unix/Linux que permite a los usuarios ejecutar comandos con los privilegios de otro usuario, comúnmente el superusuario (root). Ansible puede aprovechar sudo para ejecutar tareas con privilegios elevados en los sistemas remotos.
+
+**Uso de become**: Ansible proporciona un parámetro llamado become que permite especificar que una tarea debe ejecutarse con privilegios elevados. El parámetro become puede tomar diferentes formas, como **become: yes** para usar sudo de forma predeterminada o **become: true** para indicar que se requiere la escalada de privilegios sin necesariamente usar sudo.
+
+Uso de **become_user**:** Además del parámetro become, Ansible proporciona become_user para especificar el usuario con el que se debe ejecutar la tarea con privilegios elevados. Esto es útil cuando se necesita ejecutar comandos como un usuario específico con privilegios de sudo.
+
+![Alt text](image-38.png)
+
+![Alt text](image-39.png)
+
+## Ficheros de Configuracion
+
+- Ansible tiene un fichero denominado "ansible.cfg" donde ponemos los valores por defecto de nuestro ansible
+- En realidad esta formado por un conjunto de opciones y propiedades que ya tienen un valor predefinido y que yo necesito cambiar a través de este fichero
+- Por tanto solo necesito modificar el fichero si quiero cambiar algún valor original
+
+**Donde encontrar el fichero de config**
+
+Este fichero se puede encontrar en los siguientes sitios:
+
+ - ANSIBLE_CONFIG variable de entorno
+ - Ansible.cfg en el directorio actual
+ - ~/.ansible.cfg En el directorio home del usuario
+ - /etc/ansible/ansible.cfg
+
+![Alt text](image-40.png)
+
+Para crear un fichero config se puede usar este comnado
+```
+ansible-config init --disabled > ansible.cfg
+```
+o con todos los plugins
+```
+ansible-config init --disabled -t all > ansible.cfg
+```
+
+![Alt text](image-41.png)
+
+## Inventarios
+
+
+![Alt text](image-42.png)
+
+se pueden usar varios formatos como ejemplo ini o YAML
+
+![Alt text](image-43.png)
+
+![Alt text](image-44.png)
+
+![Alt text](image-45.png)
+
+![Alt text](image-46.png)
+
+![Alt text](image-47.png)
+
+![Alt text](image-48.png)
+
+![Alt text](image-49.png)
+
+![Alt text](image-50.png)
