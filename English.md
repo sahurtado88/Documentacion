@@ -8774,3 +8774,103 @@ your company had been more careful about expanding
 
 ___________
 
+To modify nouns
+A participial phrase is a past or present participle with a set of other words.
+
+A participial phrase functions as an adjective; it is used to modify the noun closest to it in a sentence.
+
+The lady serving our food is very pleasant.
+The food served in this restaurant is delicious.
+Wanting to earn a lot of tips, she did her job quickly and well.
+Cooked only after the order is given, the food here is always served hot.
+
+To modify nouns
+A participial phrase is a past or present participle with a set of other words.
+
+A participial phrase functions as an adjective; it is used to modify the noun closest to it in a sentence.
+
+The lady serving our food is very pleasant.
+The food served in this restaurant is delicious.
+Wanting to earn a lot of tips, she did her job quickly and well.
+Cooked only after the order is given, the food here is always served hot.
+
+A participial phrase is a past or present participle with a set of other words. It is used as an adjective to describe the noun closest to it in a sentence.
+
+Walking through the park, George admired the scenery.
+
+Some participial phrases use conjunctions at the beginning.
+
+Before getting out of the taxi, Rita paid the driver.
+
+____________________
+
+## Correcting incorrectly placed modifiers
+
+A participial phrase that is either placed in the wrong part of a sentence or written in the wrong way so that it modifies the wrong noun is called a dangling modifier.
+
+When implemented carefully, misunderstandings can be prevented by communication strategies.
+
+This sounds as if misunderstandings, not communication strategies, must be implemented carefully.  To correct this dangling modifier, we can move the noun being modified closer to the participial phrase:
+
+Communication strategies, when implemented carefully, can prevent misunderstandings.
+
+Sometimes, the noun modified by the participial phrase is not in the sentence.
+
+While waiting for the client's feedback, there was nothing else to do but read and reply to emails.
+
+To correct this dangling modifier, we need to add the correct noun and put the participial phrase beside it:
+
+While waiting for the client's feedback, we had nothing else to do but read and reply to emails.
+
+A dangling modifier is an error in sentence structure in which the modifier is placed in the wrong part of a sentence, or the noun modified by the participial phrase is not present.
+
+Incorrect:
+When implemented carefully, misunderstandings can be prevented by communication strategies.
+
+Correct:
+Communication strategies, when implemented carefully, can prevent misunderstandings.
+
+_____________________
+
+Here are common phrases for describing a product's features and functions:
+
+The product has (feature/s) which (function/s).
+The product, with its (feature/s), (function/s).
+It can (function).
+ 
+Made of and made from are useful for describing how a product is created.
+
+We say made of when the original material used to create the product has not changed.
+We say made from when the original material has changed. 
+ 
+Causative verbs like let, make, have, get, and help are useful for talking about the functions of a product.
+
+It has an improved lens which lets you take sharper, clearer pictures.
+Its compact design makes it fit easily into a small hand bag or pocket.
+It helps you clean your house without worrying about harsh smells.
+ 
+Compound adjectives are useful for describing product features. 
+
+point-and-shoot cameras
+germ-killing ingredients
+mild-smelling bleach
+
+_________________
+
+
+To make deductions, you may:
+
+Determine the problem.
+It seems that ...
+If you're ..., and ..., it could mean that ...
+It's very likely that ...
+If ..., then the problem is ...
+
+Use modal verbs followed by an infinitive without "to."
+it might/may be a ...
+it could have ...
+it can/can't be a ...
+It must be ...
+
+____________
+

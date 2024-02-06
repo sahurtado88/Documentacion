@@ -1,0 +1,28 @@
+---
+- name: Primer play de el curso
+  hosts: servidores_de_aplicaciones
+
+  tasks:
+  - name: Hacer un ping
+    ansible.builtin.ping:
+  - name: Crfear un fichero
+    ansible.builtin.shell:
+      touch /tmp/fichero1.txt
+
+- name: Instalar Nginx
+  hosts: debian
+
+  tasks:
+  - name: Parar Apache
+    ansible.builtin.service:
+      name : apache2 
+      state: stopped
+  - name: Instalar Nginx
+    ansible.builtin.apt:
+      name: nginx
+      state: present
+      update_cache: true
+  - name: Arrancar  Nginx
+    ansible.builtin.service:
+      name: nginx
+      state: started

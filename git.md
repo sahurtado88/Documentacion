@@ -466,3 +466,14 @@ resolve merge conflict in GIT
 
 you can use visual studio code the current is your branch incoming is the other branch
 
+____________________
+
+copiar de una rama a otra carpeta o archivo
+
+se usa el comando 
+
+```
+git checkout <rama_donde:esta:elarchivo> <nombrearchivo> # si es un directorio poner/ al final
+
+git checkout <el-otro-branch> -- path/a/tu/archivo
+```

@@ -1,0 +1,24 @@
+
+Which two features would you sacrifice if you choose a Microsoft-hosted agent instead of Self-hosted agent ?
+
+velocity and the ability to run pre-load custom software
+
+Microsoft-hosted agents lack the same level of flexibility as self-hosted agents when it comes to pre-loading custom software.
+
+
+
+Microsoft-hosted agents initiate a new virtual machine (VM) for each run, resulting in the absence of caching and the inability to save configurations. Consequently, Microsoft-hosted agents may exhibit slower performance when compared to self-hosted agents.
+
+
+
+Opting for a Microsoft-hosted agent does not require you to sacrifice the capability of performing maintenance and upgrades, as these tasks are automated.
+
+
+
+Microsoft-hosted agents provision a new VM for each build run, which means that you do not compromise this feature when selecting a Microsoft-hosted agent over a self-hosted agent.
+
+
+
+Microsoft-hosted agents do not impose limitations on running multiple builds with more than one agent concurrently, preserving this feature when choosing a Microsoft-hosted agent over a self-hosted agent.
+
+ **cycle time** Ability to provide the elapsed time to complete work items once they are marked as active. 

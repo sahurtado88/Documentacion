@@ -1060,7 +1060,7 @@ jobs:
 
 ```
 
-## CUstom Actions
+## Custom Actions
 
 You use custom action because:
 

@@ -502,3 +502,1558 @@ se pueden usar varios formatos como ejemplo ini o YAML
 ![Alt text](image-49.png)
 
 ![Alt text](image-50.png)
+
+## Validar inventario
+
+```
+ansible -i <inventoryfile> all --list-host
+```
+
+## PLAYBOOKS
+
+- es una especie de plantilla qque nos permite ejecutar entornos complejos dentro de ansible sin necesidad de intervencion humana
+- De esta forma se pueden automatizar multiples procesos de manera sencilla
+- se utilizan ficheros YAML
+
+![Alt text](image-51.png)
+
+![Alt text](image-52.png)
+
+![Alt text](image-53.png)
+
+```
+---
+- name: Primer play de el curso
+  hosts: servidores_de_aplicaciones
+
+  tasks:
+  - name: Hacer un ping
+    ansible.builtin.ping:
+  - name: Crfear un fichero
+    ansible.builtin.shell:
+      touch /tmp/fichero1.txt
+
+- name: Instalar Nginx
+  hosts: debian
+
+  tasks:
+  - name: Parar Apache
+    ansible.builtin.service:
+      name : apache2 
+      state: stopped
+  - name: Instalar Nginx
+    ansible.builtin.apt:
+      name: nginx
+      state: present
+      update_cache: true
+  - name: Arrancar  Nginx
+    ansible.builtin.service:
+      name: nginx
+      state: started
+  - name: copiar index.html
+    ansible.builtin.copy:
+      src: ./recursos/index.html
+      dest: /var/www/html
+      owner: root
+      group: root
+      mode: '0644'  
+   
+
+```
+
+para ejecutar un playbook se usa
+
+```
+ansible-playbook <nameplaybook.yaml>
+```
+
+Incluir tareas es decir agregar fichero a una tarea
+
+```
+---
+- name: Primer play de el curso
+  hosts: servidores_de_aplicaciones
+
+  tasks:
+  - name: Hacer un ping
+    ansible.builtin.ping:
+  - name: Crfear un fichero
+    ansible.builtin.shell:
+      touch /tmp/fichero1.txt
+
+- name: Instalar Nginx
+  hosts: debian
+
+  tasks:
+  - name: Parar Apache
+    include_tasks: parar_apache.yaml      
+  
+  - name: Instalar Nginx
+    ansible.builtin.apt:
+      name: nginx
+      state: present
+      update_cache: true
+  
+  - name: Arrancar  Nginx
+    ansible.builtin.service:
+      name: nginx
+      state: started
+  
+  - name: copiar index.html
+    ansible.builtin.copy:
+      src: ./recursos/index.html
+      dest: /var/www/html
+      owner: root
+      group: root
+      mode: '0644'  
+   
+```
+parar_apache.yaml
+
+```
+- name: Parar Apache Debian
+  ansible.builtin.service:
+      name : apache2 
+      state: stopped
+```
+
+## Variables
+
+![Alt text](image-54.png)
+
+![Alt text](image-55.png)
+
+![Alt text](image-56.png)
+
+### Variables en inventarios
+
+![Alt text](image-57.png)
+
+![Alt text](image-58.png)
+
+### variables grupo
+
+![Alt text](image-60.png)
+
+![Alt text](image-61.png)
+
+![Alt text](image-62.png)
+
+### Variables en ficheros externos
+
+la variabels se pueden poner en ficheros externos y deben estar en la misma ruta de inventario y deben tener los siguientes nombres
+
+directorio :host_vars y dentro la variable en extension .yaml
+
+![Alt text](image-64.png)
+
+directorio :group_vars y dentro la variable en extension .yaml con el nombre del grupo
+
+![Alt text](image-65.png)
+
+![Alt text](image-66.png)
+
+## Variables Fact
+
+Ansible facts are data related to your remote systems, including operating systems, IP addresses, attached filesystems, and more
+
+```
+ansible <maquinacontorlada> -m setup -a 'filter=ansible_system'
+```
+
+```
+ansible <maquinacontorlada> -m setup -a 'filter=ansible_system,ansible_os_family' 
+```
+
+## Variables Playbook
+
+```
+---
+- name: Prueba con Variables
+  hosts: debian1
+  vars: 
+    - mensaje: "Esto es otro  mensaje de Ansible"
+    - curso: "dentro del curso de Ansible"
+
+  tasks:
+  - name: Ver variables
+    debug:
+      msg: "En este caso es : {{mensaje}}   {{curso}}"
+...
+```
+
+listas y array en playbooks
+```
+---
+- name: Prueba con Variables
+  hosts: debian1
+  vars: 
+    - mensaje: "Esto es otro  mensaje de Ansible"
+    - curso: "dentro del curso de Ansible"
+    - entornos:
+      - desasrollo
+      - testing
+      - produccion
+    - responsables: ["Pepe", "juan"]
+
+
+    
+  tasks:
+  - name: Ver variables
+    debug:
+      msg: "entornos disponible {{entornos}} {{entornos[1:3]}} {{responsables}}"
+
+...
+
+```
+
+diccionarios en palaybooks
+
+```
+---
+- name: Prueba con Variables
+  hosts: debian1
+  vars: 
+    - mensaje: "Esto es otro  mensaje de Ansible"
+    - curso: "dentro del curso de Ansible"
+    - desarrollo:
+       tipo: linux
+       memoria: 4GB
+       disco: 500GB
+
+    
+  tasks:
+  - name: Ver variables
+    debug:
+      msg: "los ordenadores de desarrollo son: {{desarrollo}} y su memoria es {{desarrollo.memoria}}"
+
+...
+```
+
+Varibales en task
+
+```
+---
+- name: Prueba con Variables
+  hosts: debian1
+  vars:
+    - v1: "varialbe global"
+    
+  tasks:
+  - name: Variable local
+    vars:
+      v1: "prueba"
+    debug:
+      msg: "Este valor es local {{v1}}"
+
+  - name: Variable local 2
+    vars:
+       v1: "adios"
+    debug:
+      msg: "Este valor es local {{v1}}"
+  
+  - name: Variable local 3
+    debug:
+      msg: "Este valor es local {{v1}}"
+```
+## variables de inventarios en playbooks
+
+```
+---
+- name: Prueba con Variables del fichero de inventario
+  hosts: debian1
+  
+  tasks:
+  - name: Variable local
+    vars:
+      v1: "prueba"
+    debug:
+      msg: "Este valor es local {{v1}}"
+
+  - name: Variable que viene del inventario
+    debug:
+      msg: "Este valor es local {{v2}}"
+  
+```
+crear variable en inventario
+
+![Alt text](image-67.png)
+
+## Variables ficheros externos
+
+```
+---
+- name: Prueba con Variables deficheros externos
+  hosts: debian1
+  vars_files:
+     - recursos/fichero1.yaml
+     - recursos/fichero2.yaml
+  tasks:
+  - name: Variable primer fichero
+    debug:
+      msg: "Este valor es del primer fichero --> {{f1}}"
+
+  - name: Variable del segundo fichero
+    debug:
+      msg: "Este valor es del segundo fichero --> {{f2}}"
+```
+
+![Alt text](image-68.png)
+
+![Alt text](image-69.png)
+
+## Variables desde linea de comando
+
+```
+---
+- name: Prueba con Variables desde linea de comandos
+  hosts: debian1
+  
+  tasks:
+  - name: Variables de línea de comandos
+    debug:
+      msg: "En este caso es me has pasado el mensaje: {{mensaje}} "
+```
+
+se ejecuta con:
+```
+ansible-playbook  <nombreplaybook> --extra-vars "mensaje='esto es una prueba'"
+
+```
+
+## Variables FACT en playbook
+
+```
+---
+- name: Prueba con Variables FACT
+  hosts: debian1
+  
+  tasks:
+  - name: Ver variables FACT
+    debug:
+      msg: "Arquitectura  {{ansible_facts.architecture}} {{ansible_facts['bios_vendor']}} {{ansible_facts['all_ipv4_addresses'][0]}} "
+
+```
+facts de diccionarios
+```
+---
+- name: Prueba con Variables FACT
+  hosts: servidores_de_aplicaciones
+  
+  tasks:
+  - name: Ver variables FACT
+    debug:
+      msg: "Arquitectura  {{ansible_facts.architecture}} {{ansible_facts['bios_vendor']}} {{ansible_facts['all_ipv4_addresses'][0]}} "
+
+  - name: Usar diccionarios FACT
+    debug:
+      var: ansible_facts.date_time.day
+
+```
+
+Desactivar la recopilación de FACTS
+Hay veces que no queremos recopilar las variables FACTS, sobre todo si no las necesitamos y tenemos muchos entornos.
+
+Para ello podemo susar la opción "gather_facts=no"
+```
+- hosts: all
+  gather_facts: no
+  tasks:
+  - name: Instalar Apache
+    yum:
+      name: httpd
+      state: present
+```
+
+## Variables registradas
+
+```
+---
+- name: Prueba con Variables Registradas
+  hosts: debian1
+
+  tasks:
+  - name: Capturar fecha
+    shell:
+     cmd: date
+    register: fecha
+
+  - name: Visualizar fecha
+    ansible.builtin.debug:
+      var: fecha
+  
+  - name: Visualizar fecha
+    ansible.builtin.debug:
+      msg: "{{fecha.stdout}}"
+
+```
+## Otros modulos
+
+### modulo file
+- permite trabajar con ficheros, directorios, enlaces, etc
+- pertenece a la coleccion ansible.builtin y por tanto forma parte del core de ansible
+
+```
+---
+- name: Trabajar con ficheros
+  hosts: debian
+      
+  tasks:
+  - name: Crear un fichero vacío
+    file:
+      path: "/tmp/prueba.txt"
+      state: "touch"
+
+  - name: Borrar el fichero anterior
+    file: 
+      path: "/tmp/prueba.txt"
+      state: "absent"
+...
+
+```
+
+```
+---
+- name: Trabajar con ficheros
+  hosts: debian
+  vars:
+    - fichero: /tmp/prueba1.txt
+      
+  tasks:
+  - name: Crear un fichero vacío
+    file:
+      path: "{{fichero}}"
+      state: "touch"
+
+  - name: cambiar persmisos y propietario
+    file: 
+      path: "{{fichero}}"
+      owner: ansible
+      group: ansible
+      mode: '0777'
+```
+
+```
+---
+- name: Trabajar con ficheros
+  hosts: debian
+  vars:
+    - fichero: /tmp/prueba1.txt
+      
+  tasks:
+  - name: Crear un fichero vacío
+    file:
+      path: "{{fichero}}"
+      state: "touch"
+
+  - name: cambiar permisos y propietario
+    file: 
+      path: "{{fichero}}"
+      owner: ansible
+      group: ansible
+      mode: '0777'
+
+
+- name: Trabajar con directorios
+  hosts: rocky
+  vars:
+    directorio: /tmp/dir1
+
+  tasks:
+  - name: Crear directorio
+    file:
+      path: "{{directorio}}"
+      state: directory
+      mode: '0755'
+  - name: Crear fichero
+    file:
+      path: "{{directorio}}/p1.txt"
+      state: touch
+  - name: Borrar directorio
+    file:  
+      path: "{{directorio}}"
+      state: "absent"
+...
+
+```
+
+### modulo usuarios y grupos
+
+```
+---
+- name: Trabajar con usuarios
+  hosts: debian
+      
+  tasks:
+  - name: Crear un usuario simple
+    user:
+      name: usu1
+
+  - name: Crear un grupo
+    group:
+      name: grupo1
+      state: present
+
+  - name: Crear un usuario del grupo grupo1
+    user:
+      name: usu2
+      group: grupo1
+      shell: /bin/bash
+      home: /home/usuario1
+```
+
+### Instalar tomcat
+```
+---
+# 1- Crear usuario y grupo
+# 2- Instalar JAVA
+# 3- Crear directorio para Tomcat
+# 4- Descargar y decomprimir el software
+# 5- Asociar el usurio y el grupo
+# 6- Crear un fichero para el arranque con SYSTEMD
+# 7- Arrancar el servicio
+
+- name: Intalar Tomcat 10
+  hosts: servidores_de_aplicaciones
+  vars:
+    url_descarga: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.7/bin/apache-tomcat-10.1.7.tar.gz
+    
+  tasks:
+     
+    - name: Crear usuario
+      user:
+        name: tomcat
+ 
+    - name: Crear grupo
+      group:
+        name: tomcat
+ 
+    - name: Instalar JAVA
+      apt:
+        name: default-jdk
+        state: present
+  
+    - name: Crea un directorio para guardar TOMCAT
+      file:
+        path: /opt/tomcat
+        owner: tomcat
+        group: tomcat
+        mode: 755
+        recurse: yes
+ 
+    - name: descargamos y descomprimimos 
+      unarchive:
+        src: "{{url_descarga}}"
+        dest: /opt/tomcat
+        remote_src: yes
+        extra_opts: [--strip-components=1]
+ 
+    - name: Cambiar el propietario del directorio de Tomcat
+      file:
+        path: /opt/tomcat
+        owner: tomcat
+        group: tomcat
+        mode: "u+rwx,g+rx,o=rx"
+        recurse: yes
+        state: directory
+
+      
+    - name: Cambiar el propietario del directorio de Tomcat
+      file:
+        path: /opt/tomcat
+        owner: tomcat
+        group: tomcat
+    
+    - name: Crear uin fichero de servicio
+      copy: 
+        content: |-
+          [Unit]
+          Description=Mi Servicio de TOMCAT
+          Requires=network.target
+          After=network.target
+          
+          [Service]
+          Type=forking
+          User=tomcat
+          Environment="CATALINA_PID=/opt/tomcat/logs/tomcat.pid"
+          Environment="CATALINA_BASE=/opt/tomcat"
+          Environment="CATALINA_HOME=/opt/tomcat"
+          Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+          ExecStart=/opt/tomcat/bin/startup.sh
+          ExecStop=/opt/tomcat/bin/shutdown.sh
+          Restart=on-abnormal
+          
+          [Install]
+          WantedBy=multi-user.target
+        dest: /etc/systemd/system/tomcat.service
+
+    - name: Arrancar Tomcat
+      service:
+        name: tomcat
+        state: started
+```
+
+## Desplegar WAr en tomcat
+
+```
+--
+# 1- Crear usuario y grupo
+# 2- Instalar JAVA
+# 3- Crear directorio para Tomcat
+# 4- Descargar y decomprimir el software
+# 5- Asociar el usurio y el grupo
+# 6- Crear un fichero para el arranque con SYSTEMD
+# 7- Arrancar el servicio
+
+- name: Intalar Tomcat 10
+  hosts: servidores_de_aplicaciones
+  vars:
+    url_descarga: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.7/bin/apache-tomcat-10.1.7.tar.gz
+    
+  tasks:
+     
+    - name: Crear usuario
+      user:
+        name: tomcat
+ 
+    - name: Crear grupo
+      group:
+        name: tomcat
+ 
+    - name: Instalar JAVA
+      apt:
+        name: default-jdk
+        state: present
+  
+    - name: Crea un directorio para guardar TOMCAT
+      file:
+        path: /opt/tomcat
+        owner: tomcat
+        group: tomcat
+        mode: 755
+        recurse: yes
+ 
+    - name: descargamos y descomprimimos 
+      unarchive:
+        src: "{{url_descarga}}"
+        dest: /opt/tomcat
+        remote_src: yes
+        extra_opts: [--strip-components=1]
+ 
+    - name: Cambiar el propietario del directorio de Tomcat
+      file:
+        path: /opt/tomcat
+        owner: tomcat
+        group: tomcat
+        mode: "u+rwx,g+rx,o=rx"
+        recurse: yes
+        state: directory
+
+    - name: copiar el WAR de la aplicación
+      copy:
+        src: ejemplo.war 
+        dest: /opt/tomcat/webapps
+    
+    - name: Cambiar el propietario del WAR
+      file:
+        path: /opt/tomcat/webapps/ejemplo.war
+        owner: tomcat
+        group: tomcat
+    
+    - name: Crear un fichero de servicio
+      copy: 
+        content: |-
+          [Unit]
+          Description=Mi Servicio de TOMCAT
+          Requires=network.target
+          After=network.target
+          
+          [Service]
+          Type=forking
+          User=tomcat
+          Environment="CATALINA_PID=/opt/tomcat/logs/tomcat.pid"
+          Environment="CATALINA_BASE=/opt/tomcat"
+          Environment="CATALINA_HOME=/opt/tomcat"
+          Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+          ExecStart=/opt/tomcat/bin/startup.sh
+          ExecStop=/opt/tomcat/bin/shutdown.sh
+          Restart=on-abnormal
+          
+          [Install]
+          WantedBy=multi-user.target
+        dest: /etc/systemd/system/tomcat.service
+
+    - name: Arrancar Tomcat
+      service:
+        name: tomcat
+        state: started
+        
+```
+
+### modulo lineinfile
+
+sirve para cambair un file
+
+```
+---
+- name: Trabajar con lineinfile
+  hosts: ubuntu1
+      
+  tasks:
+  - name: Copiar un fichero sencillo de ejemplo
+    copy:
+      src: ejemplo.txt
+      dest: /tmp/ejemplo.txt
+
+  - name: Añadir un línea al fichero
+    ansible.builtin.lineinfile:
+      path: /tmp/ejemplo.txt
+      line: linea 4
+
+  - name: Cambiar la línea1
+    ansible.builtin.lineinfile:
+      path: /tmp/ejemplo.txt
+      search_string: linea 1
+      line: He cambiado la linea 1
+
+  - name: Borrar la línea 2
+    ansible.builtin.lineinfile:
+      path: /tmp/ejemplo.txt
+      search_string: linea 2
+      state: absent
+
+  - name: Reemplazar la linea 4
+    ansible.builtin.lineinfile:
+      path: /tmp/ejemplo.txt
+      regexp: '^linea 4'
+      line: "Cambiado con REGEX"
+```
+
+### Modulo SET_FACT
+
+este modulo permite crear variables de forma dinamica
+
+```
+---
+- name: Probar con set_fact
+  hosts: debian1
+  
+  tasks:
+  - name: Crear una variable
+    ansible.builtin.set_fact:
+      fichero: ejemplo.txt
+
+  - name: Usar la variable en un módulo
+    ansible.builtin.file:
+      path: /tmp/{{fichero}}
+      state: touch
+
+  - name: Crear una variable con una expresion
+    ansible.builtin.set_fact:
+      nombre: "{{ansible_facts['hostname'] | upper }}"
+
+  - name: Visualizar la variable
+    ansible.builtin.debug:
+      msg: El nombre de la maquina en mayusculas es {{nombre}}
+```
+
+### Instalar LAMP
+
+```
+---
+- name: Playbook para instalar la pila LAMP
+  hosts: debian1
+  become: yes
+
+  tasks:
+
+    - name: Actualizar los repositorios
+      apt:
+        update_cache: yes
+
+    - name: Instalar el servidor web Apache
+      apt:
+        name: apache2
+        state: present
+
+    - name: Instalar el sistema gestor de bases de datos MariaDB
+      apt:
+        name: mariadb-server
+        state: present
+
+    - name: Instalar PHP y los módulos necesarios
+      apt:
+        name:
+          - php
+          - php-mysql
+          - libapache2-mod-php
+        state: present
+
+    - name: Reiniciar el servidor web Apache
+      service:
+        name: apache2
+        state: restarted
+
+    - name: Copiar el archivo phpinfo.php
+      copy:
+        src: phpinfo.php
+        dest: /var/www/html/
+        mode: 0755
+```
+
+# Ansible con windows
+
+![Alt text](image-70.png)
+
+
+![Alt text](image-71.png)
+
+requisitos maquinas windows
+![Alt text](image-72.png)
+
+![Alt text](image-73.png)
+
+![Alt text](image-74.png)
+
+![Alt text](image-75.png)
+
+![Alt text](image-76.png)
+
+## configurar un host de windows
+
+https://docs.ansible.com/ansible/latest/os_guide/windows_setup.html
+
+abrir windows powershell en modo administrador
+
+## inventario windows
+
+```
+[windows]
+192.168.27.130
+192.168.27.129
+
+[windows:vars]
+ansible_user=vagrant
+ansible_password="vagrant"
+ansible_port=5986
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+```
+
+## comandos en windows
+
+![Alt text](image-77.png)
+
+
+## instalar ejecutable
+
+```
+---
+- name: Trabajar con windows. Instalar un paquete
+  hosts: 
+      - 192.168.27.129
+  
+  tasks:
+
+  - name: Descargar GIT
+    ansible.windows.win_get_url:
+      url: https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/Git-2.40.0-64-bit.exe
+      dest: c:\prueba\git.exe
+
+
+  - name: Instalar  GIT
+    ansible.windows.win_package:
+      path: c:\prueba\git.exe
+      state: present
+      arguments: 
+        - /VERYSILENT
+        - /NORESTART
+```
+## servicios windows
+
+```
+---
+- name: Trabajar con windows. Prar servicio
+  hosts: 
+      - 192.168.27.129
+  
+  tasks:
+
+  - name: Parar servicio de Audio
+    ansible.windows.win_service:
+      name: Audiosrv
+      state: stopped
+  
+  - name: Arrancar servicio de Audio
+    ansible.windows.win_service:
+      name: Audiosrv
+      state: started
+```
+## Desinstalar ejecutables
+
+```
+---
+- name: Trabajar con windows. Desinstalar software
+  hosts: 
+      - 192.168.27.129
+  
+  tasks:
+
+  - name: Desisntalar GIT 
+    ansible.windows.win_package:
+     path: C:\Program Files\Git\unins000.exe
+     state: absent
+     arguments: 
+         - /VERYSILENT
+         - /NORESTART
+```
+
+## Facts en Windows
+
+```
+---
+- name: Trabajar con windows. Variables FACT
+  hosts:
+      - 192.168.27.129
+  
+  tasks:
+
+  - name: Distribución
+    debug:
+      var:  ansible_facts['distribution']
+  
+  - name: Memoeira libre
+    debug:
+      var:  ansible_facts['memfree_mb']
+
+```
+
+## Control de flujo
+
+### When
+
+```
+# WHEN  Condicional básico de Ansible
+# Se trata de una expresión Jinja2
+# No se utilizan doble llaves
+# Se evalua para todos los hosts
+
+
+# Los operadores son los habituales: < > >= <= !=  
+# La comparación es con ==
+# "is defined"  permite saber si una variable existe
+# "not" permite usar la negación
+# para buscar en un array se puede usar el operador "in"
+
+---
+- name: Prueba con WHEN. visualizar la fecha en los debian
+  hosts: all
+
+  tasks:
+  - name: Capturar fecha
+    shell:
+     cmd: date
+    register: fecha
+    when: ansible_distribution=='Debian'
+
+  - name: Visualizar fecha
+    ansible.builtin.debug:
+      msg: "{{fecha.stdout}}"
+    when: ansible_distribution=='Debian'
+
+```
+
+```
+---
+- name: Prueba con WHEN. visualizar la fecha en los debian
+  hosts: all
+
+  tasks:
+  - name: Capturar fecha
+    shell:
+     cmd: date
+    register: fecha
+    when: ansible_distribution=='Debian' or ansible_facts['distribution']=='Rocky'
+
+  - name: Visualizar fecha
+    ansible.builtin.debug:
+      msg: "{{fecha.stdout}}"
+    when: ansible_distribution=='Debian' or ansible_facts['distribution']=='Rocky'
+```
+
+```
+---
+- name: Prueba con WHEN. Uso con Variables
+  hosts: debian1
+  vars:
+      ejecutar: True
+
+  tasks:
+  - name: Instalar GIT
+    ansible.builtin.apt:
+     name: git
+     state: present
+    when:  not ejecutar
+
+```
+
+```
+---
+- name: Prueba con WHEN. Crear un fichero en un directorio si está vacio
+  hosts: debian1
+
+  tasks:
+  - name: Ver si el directorio está vacio
+    ansible.builtin.command:
+     cmd: ls /tmp/dir1     
+    register: resultado
+    
+
+  - name: Crear el fichero si no existe nada en el directorio
+    ansible.builtin.file:
+      path: /tmp/dir1/f1.txt
+      state: touch
+    when: resultado.stdout==""
+```
+
+instalar php version antigua para UBUNTU
+
+```
+---
+- name: Prueba con WHEN. Instalar PHP antiguo
+  hosts: ubuntu1
+
+  tasks:
+
+  - name: instalar gpg
+    ansible.builtin.apt:
+      name: gpg
+        
+  - name: Actualizar repositorio de php
+    ansible.builtin.shell:
+      cmd: add-apt-repository ppa:ondrej/php  -y
+
+  - name: Actualizar cache apt
+    ansible.builtin.apt:
+      update_cache: true
+      force_apt_get: true
+  
+  - name: Instalar version antigua de PHP
+    ansible.builtin.apt:
+      name: php7.4
+
+
+```
+
+Actualizar PHP
+
+```
+---
+- name: Prueba con WHEN. Actualizar PHP si es menor de 8.1
+  hosts: ubuntu1
+
+  tasks:
+
+  - name: Comprobar versión de PHP
+    ansible.builtin.shell:
+      cmd: php -v | php --version | head -n 1 | cut -c 5-10
+    register: resultado
+    
+  - name: Visualizar resultado. Solo como ejemplo
+    ansible.builtin.debug:
+      msg: "{{resultado.stdout}}"
+    when: resultado.stdout != "8.1.17"
+    
+  - name: Actualizar PHP
+    ansible.builtin.apt:
+      name: php8.1
+    when: resultado.stdout != "8.1.17"
+```
+
+## Ignorar Errores
+
+sirve para ignorar errores en pasos que no son criticos
+
+```
+---
+- name: Prueba con WHEN. Ignorar errores
+  hosts: debian1
+
+  tasks:
+  - name: acceder a un firectorio incorrecto
+    ansible.builtin.command:
+     cmd: ls /temporal
+    register: resultado
+    ignore_errors: true
+  
+  - name: Visualizar Resultado
+    ansible.builtin.debug:
+      msg: "{{resultado.stderr}}"
+    when: resultado.stderr !=""
+```
+
+## Ignorar servidores parados
+
+ignore_unreachable se puede usar a nivel de play o task
+
+```
+---
+- name: Control de errores
+  hosts: debian
+  
+
+  tasks:
+  - name: Visualizar un mensaje
+    ansible.builtin.debug:
+      msg: Mensaje del servidor    
+
+  - name: Visualizar directorio principal
+    ansible.builtin.command:
+      cmd: ls -l /
+    ignore_unreachable: true
+```
+
+## Failed_when
+
+
+
+```
+---
+- name: Control de errores. Failed When
+  hosts: debian1
+  
+  tasks: 
+  - name: Localizar directorio temporal
+    ansible.builtin.command:
+      cmd: ls -l /temporal
+    register: salida
+    failed_when: salida.rc==0
+
+  - name: visualizar salida
+    ansible.builtin.debug:
+      var: salida
+```
+
+## Activar log y opcion depuracion
+
+se puede crear en el ansible.cfg  crear un logh_path= directoriodelog
+
+![alt text](image-78.png)
+
+o la otra es usar la variable de entorno $ANSIBLE_LOG_PATH
+
+![alt text](image-79.png)
+
+ansible-playbook prueba.yaml -v
+
+## Bucles
+
+
+```
+####  BUCLES
+### Disponemos de varios BUCLES
+#
+#  - loop  Desde la versión 2.5 es el recomendado
+#  - whit_<lookup>   whit_items, whit_list,  with_sequence ......
+#  - until
+
+---
+- name: Prueba básica con LOOP
+  hosts: debian1
+
+  tasks:
+  - name: Visualizar contenido con loop
+    ansible.builtin.debug:
+      msg: "{{item}}"    
+    loop:
+       - valor1
+       - valor2
+       - valor3
+
+  - name: Visualizar contenido con with_items
+    ansible.builtin.debug:
+      msg: "{{item}}"    
+    with_items:
+       - valor1
+       - valor2
+       - valor3
+```
+
+
+```
+---
+- name: Prueba básica con LOOP
+  hosts: debian1
+
+  tasks:
+  - name: Crear varios grupos en el Sistema Operativo
+    ansible.builtin.group:
+     name: "{{item}}"
+     state: present
+    loop:
+       - grupo1
+       - grupo2
+       - grupo3
+
+  - name: Crear varios grupos en el Sistema Operativo
+    vars:
+      grupos:
+        - grupo4
+        - grupo5
+        - grupo6
+    ansible.builtin.group:
+     name: "{{item}}"
+     state: present
+    loop: "{{grupos}}"
+```
+
+### Bucles creando usuarios
+list_usu.yaml
+```
+usuarios:
+  - usu1
+  - usu2
+  - usu 3
+
+```
+
+```
+---
+- name: Crear usuarios con bucles
+  hosts: debian1
+  vars_files: list_usu.yaml
+  tasks:
+  - name: Crear varios usuarios en el Sistema Operativo con un fichero externo
+    
+    ansible.builtin.user:
+     name: "{{item}}"
+     state: present
+    loop: "{{usuarios}}"
+```
+
+### Bucles con diccionarios
+ loop requieres que sea lista por ello es necesario usar un filtro dict2items
+
+```
+---
+- name: Otras pruebas con LOOP
+  hosts: debian1
+
+  tasks:
+  - name: Diccionarios
+    vars:
+         entorno:
+           nombre: desarrollo
+           responsable: Pedro
+           personas: 10
+    ansible.builtin.debug:
+      msg: "{{item.key}} {{item.value}}"    
+    loop:  "{{entorno | dict2items}}"
+          
+  - name: Diccionarios with_item
+    vars:
+        entorno:
+           nombre: desarrollo
+           responsable: Pedro
+           personas: 10}
+    ansible.builtin.debug:
+      msg: "{{item.key}}  -- {{item.value}}"
+    with_dict: "{{entorno}}"
+```
+### Bucles con inventario
+
+```
+--
+- name: Otras pruebas con LOOP
+  hosts: debian1
+
+  tasks:
+  - name: Ver las máquinas del inventario
+    ansible.builtin.debug:
+      msg: "{{ item }}"
+    loop: "{{ groups['all'] }}" 
+    register: resultado
+
+  - name: Copiar el resultado en mi debian1
+    ansible.builtin.copy:
+      content: "{{resultado}}"
+      dest: /tmp/resultado.txt
+
+  - name: recuperar fichero
+    ansible.builtin.fetch:
+      src: /tmp/resultado.txt
+      dest: /tmp/resultado.txt
+      flat: true
+
+```
+
+### Indices con loops
+
+loop_control permite usar el index_var para saber la posicion de un elemento
+
+```
+---
+- name: Bucle con indice
+  hosts: debian1
+
+  tasks:
+  - name: Índices
+    ansible.builtin.debug:
+      msg: "{{item}} esta en la posicion {{indice}}"    
+    loop:  
+       - pepe
+       - juan
+       - antonio
+    loop_control: 
+      index_var: indice
+    when: indice == 1
+```
+
+### Bucle until
+
+delay en segundos, hacer 5 reintentos y cada reintento cada 2 segundos
+
+```
+---
+- name: Until
+  hosts: debian1
+
+  tasks:
+  
+  - name: Repite una tarea has que se cumple la condición
+    ansible.builtin.shell: 
+      cmd: cat /tmp/tarea1
+    register: result
+    until: result.stdout=="Fin de Proceso"
+    retries: 5
+    delay: 2
+```
+
+### ejemplo
+
+```
+software_debian:
+    - apache2
+    - nginx
+    - git
+```
+
+```
+software_rocky:
+    - httpd
+    - nginx
+    - git
+```
+```
+---
+- name: Instalar software 
+  hosts: all
+  vars_files:
+     - software_rocky.yaml
+     - software_debian.yaml
+
+  tasks:
+  - name: Instalar debian
+    ansible.builtin.apt:
+      name: "{{item}}"
+      state: present
+    loop: "{{software_debian}}"
+    when: ansible_distribution=='Debian' 
+  
+  
+  - name: Instalar rocky
+    ansible.builtin.yum:
+      name: "{{item}}"
+      state: present
+    loop: "{{software_rocky}}"
+    when: ansible_distribution=='Rocky'
+       
+```
+
+## Handlers
+
+```
+###   HANDLERS  ####
+## 
+## se utiliza para invocar una determinada tarea 
+## Se usa el comando notify
+## Se ejecutan despues de todas las tareas del PLAY
+## No pueden repetirse nombres en el playbook, ya que son globales
+## Solo se ejecutan una vez, aunque haya 2 tareas que los invoquen
+## se pueden notificar mas de una accion
+
+---
+- name: Ejemplo con un handler
+  hosts: debian1
+  
+  tasks:
+  - name: Copiar index1.html a /var/www/html
+    ansible.builtin.copy:
+      src: index1.html
+      dest: /var/www/html
+    notify: 
+      - rebotar_apache
+
+  handlers:
+  - name: rebotar_apache
+    ansible.builtin.service:
+        name: apache2
+        state: restarted
+       
+```
+
+### Practica
+
+script.ssh
+```
+#!/bin/bash
+## Borrar el resultado del backup anterior
+rm /tmp/backup.terminado
+rm /tmp/copia.tar
+
+### Hacer el backup 
+tar cvf /tmp/copia.tar /usr/*
+
+### Indicar que ha terminado
+echo "Fin de Backup" >/tmp/backup.terminado
+```
+
+```
+###   PRACTICA  ####
+## 
+## Vamos hacer un backup del directorio /usr del destino y traer la copia a la máquina de control
+## Tenemos un script llamado backup.sh que hay que copiar al destino y que hace la copia
+## Una vez terminada se genera un fichero llamado "backup.terminado" con  el contenido "Fin de Backup"  
+## Mientras se hace la copia, con un bucle until esperamos a que se genere el fichero con ese texto
+## Cuando se genera, lanzamos un handler para copiar el backup del destino a la maquina de control
+
+---
+- name: Ejemplo con un handler
+  hosts: debian1
+  
+  tasks:
+
+  - name: Copiar el programa de backup al destino
+    ansible.builtin.copy:
+      src: backup.sh
+      dest: /tmp/backup.sh
+      mode: '0744'
+  
+  - name: Lanzar el programa de backup en modo background
+    ansible.builtin.shell: nohup /tmp/backup.sh </dev/null >/dev/null 2>&1 &      
+    
+  - name: Esperar a que termine
+    shell:
+         cmd: cat /tmp/backup.terminado
+    register: result
+    until: result.stdout=="Fin de Backup"     
+    retries: 5
+    delay: 10
+    notify: 
+      - guardar_backup
+
+  handlers:
+  
+  # Traer Backup a la maquina de control
+  - name: guardar_backup
+    ansible.builtin.fetch:
+        src: /tmp/copia.tar 
+        dest: /tmp/copia.tar 
+        flat: true
+
+```
+
+### Bloques
+
+Es una agrupacion logica de tareas
+
+```
+###   BLOQUES  ####
+## 
+## Permiten la agrupación de tareas
+
+---
+- name: Ejemplo de bloques
+  hosts: all
+  
+  tasks:
+  #### PRIMER BLOQUE
+  - name: Instalar y arrancar  MariaDB en Debian
+    block:
+      - name: Instalar MariaDB
+        ansible.builtin.apt: 
+          name: mariadb-server
+          state: present
+       
+      - name: arrancar MariaDB
+        ansible.builtin.service:
+          name: mariadb
+          state: started
+    when: ansible_facts['distribution'] | lower =='debian'     
+    ignore_errors: true
+  
+  #### SEGUNDO BLOQUE
+  - name: Instalar y arrancar  MySQL en Rocky Linux
+    block:
+      - name: Instalar mysql
+        ansible.builtin.yum: 
+          name: mysql-server
+          state: present
+       
+      - name: arrancar Mysql
+        ansible.builtin.service:
+          name: mysqld
+          state: started
+    when: ansible_facts['distribution'] | lower =='rocky'     
+    ignore_errors: true
+```
+
+### Control de errores bloques
+
+se tienen dos clausuals 
+
+RESCUE: tareas a ejecutar cuando falla el bloque
+
+ALWAYS: se ejecuta la tarea independientemente de la salida del bloque
+
+```
+---
+- name: ejemplo de control bloques
+  hosts: debian1
+
+  tasks:
+  ### primer bloque
+  - name: ejemplo control
+    block:
+      - name: programa que falla
+        ansible.builtin.shell:
+          cmd: ls /tmp/no_existe.txt
+
+      - name: esto no llega a pintarse    
+        ansible.builtin.debug:
+          msg: "he terminado"
+
+### RESCUE
+    rescue:
+    - name: Visualizar ignore_error  
+      ansible.builtin.debug:
+        msg: "se ha producido un error"     
+### ALWAYS
+    always:
+      - name: siempre visualizo el mensaje
+        ansible.builtin.debug:
+        msg: "siempre me pinto"              
+
+```
+
+## FILTROS
+
+### Tipo de datos de una variable
+
+### Conversiones
+
+### Cadenas
+
+### Numeros
+
+### Listas
