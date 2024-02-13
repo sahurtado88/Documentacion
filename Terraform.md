@@ -926,3 +926,15 @@ The above expression is equivalent to the following for expression:
     [for o in var.list : o.interfaces[0].name]
 
 
+_______________________
+
+importar recursos existentes a terraform
+
+https://www.youtube.com/watch?v=znfh_00EDZ0
+
+https://spacelift.io/blog/importing-exisiting-infrastructure-into-terraform
+
+https://www.youtube.com/watch?v=JcV4nvG8vmU
+
+azure: azure terrafy
+AWS: terraformer, firefly (cost)

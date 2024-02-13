@@ -1852,3 +1852,37 @@ If the item to remove does not exist, discard() will NOT raise an error.
 
 Frozenset is similar to set in Python, except that frozensets are immutable, which implies that once generated, elements from the frozenset cannot be added or removed. This function accepts any iterable object as input and transforms it into an immutable object.
 
+_____________________
+
+
+```
+# Utilizamos una imagen oficial de Python como base
+FROM python:3.9-slim
+
+# Establecemos el directorio de trabajo en /app
+WORKDIR /app
+
+# Copiamos el archivo de requisitos a la imagen
+COPY requirements.txt requirements.txt
+
+# Instalamos las dependencias
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiamos solo el archivo ejecutable de Python a la imagen
+COPY app.py .
+
+# Configuramos un usuario no root para la imagen por motivos de seguridad
+RUN useradd appuser && chown -R appuser /app
+USER appuser
+
+# Exponemos el puerto 8080 para que la aplicación sea accesible desde fuera del contenedor
+EXPOSE 8080
+
+# Comando por defecto para ejecutar la aplicación
+CMD ["python", "app.py"]
+
+```
+_________________________________________
+
+# The complete Python bootcamp from zero to hero in Python
+

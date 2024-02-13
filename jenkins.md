@@ -257,3 +257,36 @@ systemctl restart jenkins
 
 Volvemos a iniciar la aplicación para validar que todo este correcto.
 
+_______________________________
+
+# La guia de Jenkins de cero a experto 
+
+Jenkins es una herramienta CI/CD de fuente abierta escrita en java
+
+es una aplicacion basada en servidor y requiere un servicdor web como apache tomcat
+
+![alt text](image-90.png)
+
+## Arquitectura jenkins
+
+**jenkins job:** tareas ejecutables qeu son supervisadas y controladas por jenkins
+
+### Master and Slave
+
+![alt text](image-91.png)
+
+![alt text](image-92.png)
+
+![alt text](image-93.png)
+
+![alt text](image-94.png)
+
+jenkins executor
+
+![alt text](image-95.png)
+
+un nodo puede tener uno o más ejecutores
+
+https://automatenow.io/jenkins-master-slave-architecture/#:~:text=Jenkins%20Master%2DSlave%20architecture%20allows,and%20accelerating%20the%20build%20process.
+
+https://medium.com/edureka/jenkins-interview-questions-7bb54bc8c679

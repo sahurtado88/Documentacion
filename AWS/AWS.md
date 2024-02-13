@@ -586,3 +586,93 @@ Restricts certificates issuance is used to controlling SSl/TLS certificates issu
 ## NAPTR Name authority Pointer Record
 maps services to damin names is used to setting up complex communication services
 
+______________________________
+
+Stop Paying $3.75 Per Month for a Public IPv4 Address on AWS (Starting Feb 1, 2024)
+
+
+As you would have read in AWS News Blog, starting February 1, 2024, there’s a new charge for public IPv4 addresses. Now, every public IPv4 address will come with a price tag of $0.005 per IP per hour or $3.75 per month or $45 per year. And yes, that applies whether the address is attached to a service or not.
+
+Now, let’s dive into the ‘why’ of it all. The cost of snagging a single public IPv4 address has shot up by over 300% in the last half-decade. So, AWS is adjusting its charges to reflect this reality and to, well, nudge us towards a more economical approach to these IPv4 addresses. In other words, they’re encouraging us to be a bit more mindful of our usage and consider adopting IPv6.
+
+Hold on, there’s more. This change covers a whole array of AWS services that can potentially assign a public IPv4 address — think Amazon EC2, Amazon RDS database instances, Amazon EKS nodes, Amazon RedShift nodes, Elastic Beanstalk, DMS, ECS, EMR, MSK, MQ, AppStream 2.0, Workspaces, ELB, NAT Gateway, Global Accelerator, S2S VPN, and Mainframe Modernisation.
+
+Now, let’s talk numbers — you know, just ballpark figures. If you crunch the numbers, this move could potentially ring in over a billion dollars a year in revenue for AWS.
+
+So, whether you’re a seasoned AWS pro or just dipping your toes into the cloud, keep this in mind as the new charge takes the stage in early 2024.
+
+Monitoring public IPv4 usage just got a whole lot smarter with the introduction of Amazon VPC IPAM Public IP Insights. The best part? — it’s free. Public IP Insights works seamlessly without requiring you to enable Amazon VPC IPAM.
+
+![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*feQOAXbyIU4hx9-NFxi_qw.png)
+
+Now, let’s get into the nitty-gritty of what Public IP Insights brings to the table. With this tool in your arsenal, you can effortlessly monitor, analyze, and even audit how those public IPv4 addresses are being put to work.
+
+But that’s not all — Public IP Insights is here to answer some crucial questions for you:
+
+Resource and Service Utilization: Ever wonder which resources and services within your AWS account are tapping into those public IPv4 addresses? Public IP Insights reveals where those addresses are being utilized.
+Address Allocation Rationale: Wouldn’t it be fantastic to know the ‘why’ behind the allocation of public IP addresses to specific resources? Public IP Insights gives you valuable insights into the reasons behind the scenes.
+Now, you might be wondering — how do we move forward from here? With the upcoming changes to public IPv4 charges, it’s a smart move to consider transitioning to IPv6. The accompanying blog post is a worth a read to identify and optimize your public IPv4 usage before planning to move your workloads to IPv6. The transition to IPv6 isn’t just about saving on costs; it’s also about embracing the modern standard of addressing that IPv6 brings to the table.
+
+The AWS IPv6-VPC documentation is a good starting point to migrate your VPC from IPv4 to IPv6. Please note that after migrating your VPC to IPv6, you can’t automatically remove the public IPv4 address from an already existing instance that is assigned a public IPv4 address at its launch (and if EC2 is in a public subnet). As this scenario is not covered in the documentation, the solution provided below shows how to remove the public IPv4 associated with an EC2 instance :
+
+Locate Your EC2 Instance:
+
+Launch AWS Management Console and navigate to the EC2 Dashboard.
+Locate the EC2 instance that’s housing those IPv4 public IPs.
+Create a New ENI:
+
+In the navigation pane, under “Network & Security,” click on “Network Interfaces.”
+Hit the “Create Network Interface” button.
+Configure your new ENI, making sure to:
+Set the subnet in which your instance resides.
+Assign a public IPv6 address to your new ENI (IPv6 addresses are always public).
+Attach the appropriate security group that has the required rules to allow IPv6 traffic from the source and destination.
+Attach New ENI:
+
+Select the freshly provisioned ENI and click on “Actions.”
+Choose “Attach Network Interface.”
+Associate the ENI with your EC2 instance. Yes, this is the power move that’ll make the public IPv4 addresses obsolete.
+Instance Restart:
+
+Now comes the final step to seal the deal. Restart your EC2 instance.
+Make sure to do this gracefully to ensure a smooth transition.
+Verification Time:
+
+After the instance restarts, it’s time for the moment of truth. Verify that your IPv4 public IPs are now a thing of the past.
+IPv6 address persists when you stop and start your instance and is released to the VPC IPv6 subnet pool when you terminate the EC2 instance.
+After you rerun the Public IP insights you will see “No public IPs found in this region” as shown below:
+Note: I would suggest AWS should update this wording to “No public IPv4 found in this Region” because IPv6 are always public and the EC2 is now associated with a public IPv6 address!
+
+![](https://miro.medium.com/v2/resize:fit:640/format:webp/1*Z31DWm778pN-LLD40JLNag.png)
+
+Traffic Testing:
+
+It’s not over until you’ve rigorously tested your traffic. Make sure that both IPv4 and IPv6 flows are performing as expected.
+Well, now the question comes to the mind how to communicate with any external IPv4 address from the IPv6 EC2 instances (in public subnet) that does not having any public IPv4 address anymore? If you have IPv6 workloads that need to transparently communicate with IPv4 services, you will need NAT64 (read “NAT six to four”) for the VPC NAT gateway and DNS64 (read “DNS six to four”) for the Amazon Route 53 resolver. This AWS Blog explains how to setup NAT64 and DNS64 for these types of workloads. Nevertheless, it’s essential to bear in mind that standard NAT gateway fees will be applicable. Hence, unless you have workloads on AWS with more than ~11 EC2 instances on IPv6 ENIs that need to communicate to external IPv4 addresses, opting for a NAT gateway (with NAT64 and DNS64 setup) might not provide the right cost-effective solution.
+
+I would like to highlight that during my testing of NAT64 / DNS64 functionality in the context of dual stack IPv6 architectures, I discovered an important detail. For a NAT gateway to effectively support NAT64, it must reside in a distinct subnet from the EC2 instances’ subnet, particularly when the EC2 instances are placed in a public subnet. To clarify, since NAT gateways inherently exist within public subnets, the successful operation of NAT64 relies on the important condition that the route table’s specific route 64:ff9b::/96 to the NAT gateway does not reside within the same public subnet as the one EC2 instances belongs to.
+
+Stepping into the broader terrain of IPv6 exploration, the part 1 of this blog post explores some of the common dual-stack IPv6 architectures you can leverage today for AWS and hybrid networks. The second part of the blog continues to explore some more complex IPv6 architectures that you can leverage. And yes, it’s worth noting that while the transition to IPv6 brings remarkable benefits, certain Cloud applications — Github, Bitbucket, Jenkins, Slack, Dropbox, and Jira — to name a few, are still in the process of embracing its full support towards IPv6.
+
+Docker and IPv6: If you’re harnessing the power of Docker in conjunction with IPv6 on EC2 instances, there are a few key configurations to master. To enable seamless interaction with Docker and IPv6, you’ll need to make a few modifications within the /etc/docker/daemon.json file as shown below and then restart the docker daemon on your EC2 instance.
+
+```
+{
+ "debug":true,
+ "experimental": true,
+ "ipv6": true,
+ "ip6tables": true,
+ "fixed-cidr-v6":"YOUR:IPV6:CIDR:RANGE::/64",
+ "registry-mirrors": ["https://registry.ipv6.docker.com"]
+}
+```
+
+
+Limitations of IPv6 supported AWS services:
+
+IPv6 is not currently supported for AWS Site-to-Site VPN connections and customer gateways, NAT devices, and VPC endpoints. Also Amazon-provided DNS hostnames are not supported on IPv6.
+IPv6 traffic is not supported for VPN connections with VGW however IPv6 is supported with VPN connection with Transit Gateway.
+EKS allows assigning IPv4 or IPv6 IP addresses to Pods (but not in dualstack mode)
+EKS Windows pods and services do not support IPv6 yet.
+AWS Load Balancer Controller with EKS allows IPv6 traffic for IP targets only.
+Conclusion: In wrapping up, we’ve embarked on an insightful journey through the world of IPv4 public IPs and the impending horizon of IPv6. Your thoughts, suggestions, and questions are invaluable — drop them in the comments section below. Stay curious, stay connected, and build on!

@@ -347,9 +347,30 @@ __________
 # Ansible advanced
 
 
-
+____________________________
 
 # Ansible desde Cero
+
+**Crear maquinas con docker**
+```
+docker pull apasoft/debian11-ansible
+docker pull apasoft/rocky9-ansible
+docker pull apasoft/ubuntu22-ansible
+
+```
+
+![alt text](image-80.png)
+
+```
+172.18.0.2  debian1
+172.18.0.3  debian2
+172.18.0.5 rocky1
+172.18.0.6 rocky2
+172.18.0.8 ubuntu1
+172.18.0.10 mysql1
+172.18.0.12 tomcat1
+172.18.0.13 tomcat2
+```
 
 ## Configurar SSH usuario root
 
@@ -2048,12 +2069,1004 @@ ALWAYS: se ejecuta la tarea independientemente de la salida del bloque
 
 ## FILTROS
 
+Filters let you transform JSON data into YAML data, split a URL to extract the hostname, get the SHA1 hash of a string, add or multiply integers, and much more. You can use the Ansible-specific filters documented here to manipulate your data, or use any of the standard filters shipped with Jinja2 - see the list of built-in filters in the official Jinja2 template documentation. You can also use Python methods to transform data. You can create custom Ansible filters as plugins, though we generally welcome new filters into the ansible-core repo so everyone can use them.
+
 ### Tipo de datos de una variable
+
+con type_debug nos muestra el tipo de una variable
+
+```
+###   FILTROS  ####
+## 
+## Permiten realizar distintas operaciones como pueden ser
+##      - conversion
+##      - transformacion
+##      - extracciones
+##      - manipular datos
+##      - etc...
+##
+##  NOTA: los filtros se ejecutan en el Controller no en la máquina remota
+## Se usa el símbolo | (pipe-tuberia) para indicarlos
+
+---
+- name: Ejemplos varios de filtros
+  hosts: debian1
+  vars:
+       cadena: "hola"
+       numero: 10
+       verdad: true
+       lista:
+          - pepe
+          - juan
+          - antonio
+       lista1: ['pepe','juan','antonio']  
+       diccionario:
+           nombre: juan
+           edad: 27  
+ 
+  tasks:
+  - name: Averiguar el tipo de una variable
+    ansible.builtin.debug:
+      var: diccionario | type_debug
+    
+       
+```
 
 ### Conversiones
 
+
+```
+---
+- name: Ejemplos varios de filtros
+  hosts: all
+  vars:
+       cadena: "true"
+       numero: 10
+       verdad: true
+       lista:
+          - pepe
+          - juan
+          - antonio
+       lista1: ['pepe','juan','antonio']  
+       diccionario:
+           nombre: juan
+           edad: 27  
+ 
+  tasks:
+  
+  - name: Convertir a cadena
+    ansible.builtin.debug:
+      var: numero 
+
+  - name: Convertir a cadena
+    ansible.builtin.debug:
+      var: numero | string 
+
+  - name: Convertir a entero
+    ansible.builtin.debug:
+      var: cadena | int
+
+  - name: Convertir a entero
+    ansible.builtin.debug:
+      var: cadena | bool
+
+  - name: visualizar version
+    ansible.builtin.debug:
+      msg: "{{ansible_facts['distribution_version']}}"
+    when: ansible_distribution_version | int > 10
+
+```
+
 ### Cadenas
+
+```
+####  EJEMPLOS CON CADENAS
+---
+- name: Ejemplos varios de filtros con CADENAS
+  hosts: debian1
+  vars:
+       cadena: "Esto es una cadena"
+       
+  tasks:
+  
+  - name: Mayusculas
+    ansible.builtin.debug:
+      var: cadena | upper  
+
+  - name: Minusculas
+    ansible.builtin.debug:
+      var: cadena  | lower
+
+  - name: Reemplazar
+    ansible.builtin.debug:
+      var: cadena | replace("e","*")
+
+  - name: Longitud de cadena
+    ansible.builtin.debug:
+      var: cadena | length
+```
 
 ### Numeros
 
+```
+####  EJEMPLOS CON NUMEROS
+---
+- name: Ejemplos varios de filtros con NUMEROS
+  hosts: debian1
+  vars:
+       numero: 10.40
+       
+  tasks:
+  
+  - name: Potencia
+    ansible.builtin.debug:
+      var: numero | pow(4)
+  
+  - name: Raiz cuadrada
+    ansible.builtin.debug:
+      var: numero  | root()
+  
+  - name: Redondear
+    ansible.builtin.debug:
+      var: numero  | round()
+
+  - name: Numero aleatorio
+    ansible.builtin.debug:
+      var: numero  | int | random
+```
+
 ### Listas
+
+```
+####  EJEMPLOS CON LISTAS
+---
+- name: Ejemplos varios de filtros con LISTAS
+  hosts: debian1
+  vars:
+       lista_numero:
+         - 2
+         - 10
+         - 9
+         - 1
+       lista_cadena:
+         - Pedro
+         - Juan
+         - Rosa
+         - Antonio
+       cadena: "Esto es una cadena"
+  tasks:
+  
+  - name: Valor menor numero
+    ansible.builtin.debug:
+      msg: "{{lista_numero | min }} --- {{lista_numero | max }} "
+  
+  - name: Valor menor  cadena
+    ansible.builtin.debug:
+      msg: "{{lista_cadena | min }} --- {{lista_cadena | max }}" 
+
+  - name: Unir elementos de una lista
+    ansible.builtin.debug:
+      msg: "{{lista_cadena | join(',')}}" 
+
+  - name: Convertir cadena en lista
+    ansible.builtin.debug:
+      msg: "{{cadena | split()}}" 
+```
+
+## Roles
+
+- Los roles contienen variables, archivos, tareas, controladores y otros artefactos de Ansible .
+- Pueden ser reutilizarlos fácilmente y compartidos con otros usuarios y proyectos. 
+- Permiten dividir el trabajo en distintos archivos, de forma que es más fácil su uso y reutilización
+- Es lo que podemos llamar una especie de librería
+
+Disponen de una estructura de archivos conocida.
+Tiene 8 directorios principales 
+
+![alt text](image-81.png)
+
+![](image-82.png)
+
+![alt text](image-83.png)
+
+### ¿Dónde podemos incluir los Roles?
+
+- Plays. Se usa la claúsula “roles”
+Es un import de tipo estático
+Se cargan y ejecutan antes que el resto de tareas
+
+```
+---
+- hosts: desarrollo
+  roles:
+    - entorno
+    - software
+
+```
+
+- Tasks de forma dinámica con include_role
+Esto permite ejecutarlos en el orden y lugar donde han sido definidos 
+
+```
+- name: ejemplo en un task
+      include_role:
+        name: limpieza_entorno
+
+```
+
+- Tasks de forma estática con import_role
+Se comportan igual que los definidos a nivel del play
+
+```
+- name: ejemplo en un task
+      import_role:
+        name: role1
+
+```
+
+Podemos crear una estructura de rol con el siguiente comando
+```
+ansible-galaxy  init  nombre_de_role
+```
+
+### Crear un rol
+
+en un rol solo se pueden poner tareas no playbooks
+
+ crea la estructura para el rol
+```
+ansible-galaxy  init  nombre_de_role
+```
+
+task role Maria DB
+
+```
+---
+# tasks file for mariadb
+- name: Instalar MariaDB
+  ansible.builtin.apt: 
+     name: mariadb-server
+     state: present
+  when: ansible_facts['distribution'] | lower =='debian' 
+
+- name: arrancar MariaDB
+  ansible.builtin.service:
+          name: mariadb
+          state: started
+  when: ansible_facts['distribution'] | lower =='debian' 
+```
+
+playbook usando role
+
+```
+--
+- name: Ejemplos de un role
+  hosts: debian1
+  roles:
+     - mariadb
+  
+  tasks:
+  
+  - name: Ultima tarea
+    ansible.builtin.debug:
+      msg: "Primero se ejecutan las tareas del role"
+```
+
+### Variables en roles
+
+La precedencia en la varibels en un rol son:
+
+1. en el default role
+2. en group_var
+3. en hosts_var
+4. en plays
+5. en vars del role
+6. desde linea de comandos
+
+default var del rol
+
+```
+---
+# default file for mariadb
+software: mariadb-server
+servicio: mariadb
+
+```
+
+task role
+
+```
+---
+# tasks file for mariadb
+- name: Instalar {{software}}
+  ansible.builtin.apt: 
+     name: "{{software}}"
+     state: present
+  when: ansible_facts['distribution'] | lower =='debian' 
+
+- name: arrancar el servicio {{servicio}}
+  ansible.builtin.service:
+          name: "{{servicio}}"
+          state: started
+  when: ansible_facts['distribution'] | lower =='debian' 
+```
+
+```
+---
+- name: Ejemplos de un role
+  hosts: debian1
+  roles:
+     - mariadb
+  vars:
+     software: apache2
+     servicio: apache2
+  tasks:
+
+  - name: Ultima tarea
+    ansible.builtin.debug:
+      msg: "Se ha instalado el software {{software}}"
+```
+
+### Handlers y ficheros en roles
+
+defaults
+
+```
+---
+# defaults file for mariadb
+software: mariadb-server
+servicio: mariadb
+```
+
+Files crear_db.sql
+```
+create database db_curso;
+```
+
+Handlers
+
+```
+---
+# handlers file for mariadb
+- name: copiar_script_sql
+  ansible.builtin.copy:
+    src: files/crear_db.sql
+    dest: /tmp/crear_db.sql
+
+- name: crear_bd
+  ansible.builtin.shell:
+    cmd: mysql < /tmp/crear_db.sql
+```
+
+
+Task
+
+```
+---
+# tasks file for mariadb
+- name: Instalar {{software}}
+  ansible.builtin.apt: 
+     name: "{{software}}"
+     state: present
+  when: ansible_facts['distribution'] | lower =='debian' 
+
+- name: arrancar el servicio {{servicio}}
+  ansible.builtin.service:
+          name: "{{servicio}}"
+          state: started
+  when: ansible_facts['distribution'] | lower =='debian' 
+  notify: 
+    - copiar_script_sql
+    - crear_bd
+
+```
+
+### Pre Post Task
+
+pre task hacer tareas antes incluso de roles
+
+```
+---
+- name: Ejemplos de un role con handlers y files
+  hosts: debian1
+  roles:
+     - mariadb
+  
+  
+  pre_tasks:
+  - name: Hacer un Upgrade del sistema
+    ansible.builtin.apt:
+      update_cache: true
+  tasks:
+
+  - name: Ultima tarea del PLAY
+    ansible.builtin.debug:
+      msg: "Se ha instalado el software {{software}}"
+
+
+  post_tasks:
+  - name: Informar de finalzación
+    ansible.builtin.debug:
+      msg: "Proceso Terminado"
+```
+
+### Roles a nivel de tarea
+
+el import_role permite acceder a las variables porque es definido a  manera global cosa que no pasa en el include_role
+
+```
+---
+- name: Ejemplos de un role con handlers y files
+  hosts: debian1
+  
+  tasks: 
+
+  - name: Primera tarea del play del PLAY
+    ansible.builtin.debug:
+      msg: "Comienzo el juego"
+  
+  - name: Incluir el role
+    import_role:
+      name: mariadb
+
+  - name: Ultima tarea del PLAY
+    ansible.builtin.debug:
+      msg: "Se ha terminado el proceso {{software}}"
+```
+
+## TAGS
+
+nos permite ejecutar o saltar tareas, se hacen con la palabra tags
+
+```
+---
+- name: Trabajar con TAGS
+  hosts: debian1
+  
+  tasks:
+
+  - name: Preparar desarrollo
+    ansible.builtin.debug:
+      msg: Preparar el entorno de desarrollo
+    tags:
+        - desarrollo
+  
+  - name: Preparar producción
+    ansible.builtin.debug:
+      msg: Preparar el entorno de produccion
+    tags:
+       - produccion
+
+  - name: Instalar mysql
+    ansible.builtin.debug:
+      msg: "Instalando mysql"
+    tags:
+      - desarrollo
+      - produccion
+
+  - name: Instalar herramientas desarrollo
+    ansible.builtin.debug:
+      msg: "Proceso Terminado"
+    tags:
+        - desarrollo
+
+  - name: Instalar la seguridad de producción
+    ansible.builtin.debug:
+      msg: "Instalar el entornod de seguridad"
+    tags:
+       - produccion
+
+  - name: Desplegar aplicacion 
+    ansible.builtin.debug:
+      msg: "Desplegar aplicación"
+    tags:
+      - desarrollo
+      - produccion
+```
+Para ejecutarlo se usa --tags o -t y la etiqueta necesaria
+
+```
+ansible-playbook <nombre_playbook.yaml> --tags all
+
+or 
+
+ansible-playbook <nombre_playbook.yaml> -t desarrollo
+```
+
+### Multiples etiquetas
+
+```
+---
+- name: Trabajar con TAGS multiples
+  hosts: debian1
+  
+  tasks:
+
+  - name: Preparar desarrollo
+    ansible.builtin.debug:
+      msg: Preparar el entorno de desarrollo
+    tags:
+        - desarrollo
+  
+  - name: Preparar test
+    ansible.builtin.debug:
+      msg: Preparar el entorno de test
+    tags:
+        - test
+
+  - name: Preparar producción
+    ansible.builtin.debug:
+      msg: Preparar el entorno de produccion
+    tags:
+       - produccion
+
+  - name: Instalar mysql
+    ansible.builtin.debug:
+      msg: "Instalando mysql"
+    tags:
+      - desarrollo
+      - produccion
+      - test
+
+  - name: Instalar herramientas desarrollo
+    ansible.builtin.debug:
+      msg: "Proceso Terminado"
+    tags:
+        - desarrollo
+
+  - name: Instalar los productos de testing
+    ansible.builtin.debug:
+      msg: "Proceso Terminado"
+    tags:
+        - test
+
+  - name: Instalar la seguridad de producción
+    ansible.builtin.debug:
+      msg: "Instalar el entornod de seguridad"
+    tags:
+       - produccion
+
+  - name: Desplegar aplicacion 
+    ansible.builtin.debug:
+      msg: "Desplegar aplicación"
+    tags:
+      - desarrollo
+      - produccion
+      - test
+```
+
+para ejecutar multiples etiquetas
+```
+ansible-playbook <nombre_playbook.yaml> --tags "desarrollo,test"
+
+or 
+
+ansible-playbook <nombre_playbook.yaml> -t "desarrollo,test"
+```
+
+### Listar etiquetas y tareas
+
+para listar las etiquetas que se tienen
+```
+ansible-playbook <nombre_playbook.yaml> --list-tags
+```
+
+validar que tareas se lanzaran con determinada etiqueta
+```
+ansible-playbook <nombre_playbook.yaml> --list-task -t <etiqueta>
+```
+
+### Saltar etiquetas y otras opciones
+saltar tags
+
+```
+ansible-playbook <nombre_playbook.yaml> --skip-tags <valores que no se quieren>
+```
+
+ejecutar solo las tareas que tienen tags
+```
+ansible-playbook <nombre_playbook.yaml> --tags tagged
+```
+
+ejecutar solo las tareas que no tienen tags
+```
+ansible-playbook <nombre_playbook.yaml> --tags untagged
+```
+
+### Always y Never
+
+never no se ejecuta nunca, always se ejecuta siempre
+
+```
+---
+- name: Trabajar con TAGS always y never
+  hosts: debian1
+  
+  tasks:
+
+  - name: Con Never
+    ansible.builtin.debug:
+      msg: Etiqueta never
+    tags:
+        - never
+  
+  - name: Con Always
+    ansible.builtin.debug:
+      msg: Etiqueta always
+    tags:
+        - always
+
+  - name: Tarea normal
+    ansible.builtin.debug:
+      msg: tarea normal
+         
+```
+si se ejecuta el siguiente comando se ejecuta la tarea con el tag never y la que tien el tag always
+```
+ansible-playbook <nombre_playbook.yaml> -t never
+```
+
+para saltar las tareas always se puede usar el siguiente  comando
+
+```
+ansible-playbook <nombre_playbook.yaml> --skip-tags always
+```
+
+### Etiquetar en plays
+
+
+```
+--
+- name: Primer play
+  hosts: debian1
+  tags: debian
+  
+  tasks:
+
+  - name: Estoy en DEBIAN
+    ansible.builtin.debug:
+      msg: Estoy en DEBIAN
+    
+- name: Segundo play
+  hosts: rocky1
+  tags: rocky
+  
+  tasks: 
+  - name: Estoy en Rocky
+    ansible.builtin.debug:
+      msg: Estoy en Rocky
+  
+  
+```
+### Etiquetas en roles
+
+```
+---
+- name: Prueba con roles
+  hosts: debian1
+  roles: 
+     - role: desarrollo
+       tags: tag1
+
+  
+  tasks:
+
+  - name: Ejemplo con role
+    import_role:
+      name: Prueba
+    tags: tag2
+    ansible.builtin.debug:
+      msg: Estoy en DEBIAN
+    
+```
+
+
+## Plantillas JINJA
+
+- Jinja es un motor de plantillas que se usa dentro
+de ANSIBLE
+-  Es rápido, efectivo y muy potente
+- Dispone de unos placeholders que permiten
+escribir código similar a la sintaxis de Python, con bucles, condiciones, etc..
+- Esto permite generar documentos y ficheros de
+forma dinámica, sencilla y potente
+- Jinja se puede utilizar en muchos entornos, como
+Ansible, Django, Flask, etc…
+- Dentro de Ansible, esto permite generar ficheros de texto o configuración cuando hay entornos diferentes basados en la misma estructura
+- De hecho, ya hemos utilizado JINJA2 de forma
+habitual, con variables, condiciones, etc….
+- Funciona de un modo similar a los de otros motores de plantillas
+
+![alt text](image-84.png)
+
+
+Para evaluar e imprimir algo se utiliza las doble llave,
+tal y como hemos visto con las variables.
+- JINJA espera que el contenido sea suministrado por el entorno correspondiente, en este caso ANSIBLE
+
+![alt text](image-85.png)
+
+Para poner comentarios en una plantilla podemos usar la siguiente expresión 
+
+![alt text](image-86.png)
+
+- Estas expresiones son ignoradas por el motor JINJA y solo sirven para entender el documento
+
+Para usar comandos de control, como condicionales o
+bucles se usa la siguiente expresión
+
+![alt text](image-87.png)
+
+- No tiene demasiadas estructuras de control, pero son
+suficientes para el propósito del motor
+- También disponemos de filtros, que ya hemos usado
+durante el curso
+- Se pueden usar macros para facilitar el trabajo
+
+### Jinja2 en ansible
+
+plantilla.j2
+
+```
+Hola {{ansible_hostname}}
+Hoy es {{ansible_date_time.date}}
+```
+
+playbook ansible
+```
+---
+- name: Trabajar con JINJA2
+  hosts: debian1
+  
+  tasks:
+
+  - name: Preparar desarrollo
+    ansible.builtin.template:
+     src: plantilla.j2
+     dest: /tmp/salida.txt
+```
+
+### Condiciones en jinja
+
+condicionales.j2
+
+```
+{# Se utilizan las mismas que en Ansible 
+   ==   !=  >  <  >=  <=
+
+   Se utiliza 
+       if  
+       else
+       endif
+#}
+
+<h1> BINVENIDO A MI PAGINA WEB DE ANSIBLE </h1>
+{% if ansible_distribution=='Debian' %}
+  <h2> ESTOY EN UNA MAQUINA DEBIAN </h2>
+{% else -%}
+  <h2> ESTOY EN UNA MAQUINA ROCKY </h2>
+{% endif %}
+```
+
+Ansible playbook
+```
+---
+- name: Trabajar con JINJA2. Montar APACHE
+  hosts: 
+      - debian1
+      - rocky1
+  
+  tasks:
+
+  - name: Instalar Apache
+    ansible.builtin.apt:
+      name: apache2
+      state: present
+    when: ansible_distribution=='Debian' 
+
+  - name: Instalar Apache en Rocky
+    ansible.builtin.yum:
+      name: httpd
+      state: present
+    when: ansible_distribution=='Rocky'
+  
+  - name: copiar pagina WEB  
+    ansible.builtin.template:
+     src: condicionales.j2
+     dest: /var/www/html/index.html
+      
+  - name: arrancar Apache
+    ansible.builtin.service:
+      name: apache2
+      state: started
+    when: ansible_distribution=='Debian' 
+
+  - name: arrancar Apache
+    ansible.builtin.service:
+      name: httpd
+      state: started
+    when: ansible_distribution=='Rocky'
+```
+
+### Operadores logicos
+
+operadores.j2
+```
+{# Para operadores lógicos se usa
+
+    and 
+    or  
+    not
+   
+#}
+
+
+{% if software=='apache2' or software=='nginx' %}
+     VOY A INSTALAR EL SERVIDOR WEB {{software}}
+{% else %}
+     {% if software=='git' and version==2 %}
+         VOY A INSTALAR {{software}} CON LA VERSION {{version}}
+     {% else %}
+         VOY A INSTALAR {{software}} SIN VERSION
+     {% endif %}
+{% endif %}
+
+```
+
+```
+---
+- name: Trabajar con JINJA2. Montar APACHE
+  hosts: 
+      - debian1
+  vars:
+      software: git
+      version:  3
+  tasks:
+
+  - name: Instalar {{software}}
+    ansible.builtin.apt:
+      name: "{{software}}"
+      state: present
+      
+  - name: copiar resultado
+    ansible.builtin.template:
+     src: operadores.j2
+     dest: /tmp/resultado.txt
+```
+### BUCLES
+
+bucles.j2
+
+```
+{# Se utilizan las mismas que en Ansible 
+   loop con una coleccion
+
+   for variable in Lista
+     operaciones
+   endfo 
+
+#}
+
+<h1>ESTOY EN UN BUCLE</h1>
+<h2>Lista de productos
+<ol>
+{% for producto in productos %}
+  <li> {{producto}} </li>
+{% endfor %}
+</ol>
+```
+playbook
+```
+---
+- name: Trabajar con JINJA2. Montar APACHE
+  hosts: 
+      - debian1
+  vars:
+      productos:
+        - pera 
+        - manzana
+        - fresa
+        - kiwi
+  tasks:
+
+      
+  - name: copiar resultado
+    ansible.builtin.template:
+     src: bucles.j2
+     dest: /var/www/html/index.html
+
+```
+
+### Filtros
+
+filtros.j2
+```
+{# 
+FILTROS. SIMILARES A LOS DE ANSIBLE
+
+#}
+
+<h1> LISTA DE PRODUCTOS </h1>
+<h2> Estos son los productos de la tienda </h2>
+<ol>
+ {%for producto in productos %}
+    <li> {{producto | upper  }} </li>
+  {% endfor %}
+
+  <li> {{ productos | join(' ') | upper }} </li>
+
+  <li> {{ 4.35 * 10 | abs }} </li>
+
+</ol>
+```
+
+
+
+playbook
+```
+---
+- name: Trabajar con JINJA2. Montar APACHE
+  hosts: 
+      - debian1
+  vars:
+      productos:
+        - pera 
+        - manzana
+        - fresa
+        - kiwi
+  tasks:
+
+      
+  - name: copiar resultado
+    ansible.builtin.template:
+     src: filtros.j2
+     dest: /var/www/html/index.html
+```
+
+## Colecciones y roles en Ansible Galaxy
+
+Ansible galaxy es un tipo de repositorio donde se encuentran roles y colecciones
+
+https://galaxy.ansible.com/ui/
+
+el comando para usar galaxy es 
+
+nos muestra
+
+```
+ansible-galaxy list
+```
+
+
+
+## Almacenamiento
+
+## Ansible Vault
+
+## Ansible con docker
+
+## Ansible AWX
+_______________________________
+
+## Keep vaulted variables safely visible
+You should encrypt sensitive or secret variables with Ansible Vault. However, encrypting the variable names as well as the variable values makes it hard to find the source of the values. To circumvent this, you can encrypt the variables individually using ansible-vault encrypt_string, or add the following layer of indirection to keep the names of your variables accessible (by grep, for example) without exposing any secrets:
+
+Create a group_vars/ subdirectory named after the group.
+
+Inside this subdirectory, create two files named vars and vault.
+
+In the vars file, define all of the variables needed, including any sensitive ones.
+
+Copy all of the sensitive variables over to the vault file and prefix these variables with vault_.
+
+Adjust the variables in the vars file to point to the matching vault_ variables using jinja2 syntax: db_password: "{{ vault_db_password }}".
+
+Encrypt the vault file to protect its contents.
+
+Use the variable name from the vars file in your playbooks.
+
+When running a playbook, Ansible finds the variables in the unencrypted file, which pulls the sensitive variable values from the encrypted file. There is no limit to the number of variable and vault files or their names.
+
+Note that using this strategy in your inventory still requires all vault passwords to be available (for example for ansible-playbook or AWX/Ansible Tower) when run with that inventory.
+
+https://docs.ansible.com/ansible/latest/tips_tricks/ansible_tips_tricks.html#playbook-tips

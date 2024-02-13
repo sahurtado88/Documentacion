@@ -8874,3 +8874,653 @@ It must be ...
 
 ____________
 
+SOCIAL MEDIA
+certain forms of online communication that let users build communities to connect with each other and share content
+
+Social media services such as Twitter and Facebook allow people to communicate and to share text, videos and other online content.
+
+TIME-SINK
+something, such as an activity or task, that consumes a lot of time
+
+Doing research can be a time-sink if a person does not know exactly what he or she is looking for.
+
+GO ALL-IN
+to put all available effort and resources towards a single goal or task
+
+The group members went all-in to support the political candidate, using all their time to promote him in the media and gather campaign funds.
+
+SKYROCKETED
+increased very quickly
+
+The local prices for fuel skyrocketed over the past few weeks, due to the rapid price increase in the international market.
+
+BY FAR
+by a large degree; by a large margin
+
+Runner number five had the best race time by far; she was almost two seconds faster than the next competitor.
+
+CARVING OUT (SOMETHING)
+finding or creating a way to do something; usually used for making time to do something
+
+The supervisor carved out a few hours from his holiday to attend an important meeting.
+
+PLUG-IN
+software or programs that are added to a computer system in order to add features and increase functionality
+
+People can install a plug-in to their web browser that stops users from seeing advertisements on any website.
+
+GAME CHANGER
+a new element that completely changes the way something is done or thought about, and that usually creates new opportunities
+
+The invention of the typewriter was a game changer, as the device allowed people to document information in a faster and more organized way.
+
+SUCCUMBED TO (SOMETHING)
+stopped trying to resist something; gave in to something
+
+After weeks of dieting, Gerry finally succumbed to temptation and visited an eat-all-you-can buffet.
+
+WHIPPED THROUGH (SOMETHING)
+did or finished something quickly
+
+Hector whipped through his morning routine in just ten minutes before going to work.
+
+INSIDIOUSLY
+referring to something that causes harm slowly and without being immediately obvious
+
+Participating in hurtful gossip in the workplace can insidiously destroy a person's image and reputation among co-workers.
+
+ZONE OUT
+to stop paying attention to something or someone
+
+The long movie caused Ron to zone out for a few minutes.
+
+_______________
+
+in charge: in control or responsible for something
+
+Amy will be in charge of the product presentation, so she will decide how the presentation will go.
+
+"Who's in charge? ... Me."
+
+co-conspire: to plan with someone in secret to do something bad or illegal
+
+A few people co-conspired to release confidential documents to the public.
+
+"And this is the first time little Jordan, ... and her assistant, April, have to ... co-conspire to cover up that Jordan Sanders has turned into a child."
+
+perusing: examining or studying someone or something carefully
+
+Callie saw Vicky perusing the bookstore for something good to read.
+
+"The geography of this is Agent Bea perusing through the house in a power position now that little Jordan would not be used to."
+
+used to: comfortable and familiar with
+
+Because of her broken arm, Gretchen has to eat with only one hand; an action she is not used to.
+
+"The geography of this is Agent Bea perusing through the house in a power position now that little Jordan would not be used to."
+
+comedic: relating to something funny, such as a movie, or to things that someone does to make an audience laugh
+
+Sasha is known for delivering good jokes; she has comedic talent and can actually have a show at a comedy club.
+
+"I used a lot of overs and two-shots in this scene just to warm up the idea that these two are in this comedic situation together."
+
+on purpose: intentionally; not by accident
+
+Peter came to work early on purpose so he can finish his remaining tasks from yesterday.
+
+"The space between the seats is on purpose because this is new for them, and I wanted it to feel like these two people are thrust into this lie together."
+
+thrust: to forcibly put someone in a certain position or situation
+
+Charlie was suddenly thrust into fame when a video of him singing became popular online.
+
+"The space between the seats is on purpose because this is new for them, and I wanted it to feel like these two people are thrust into this lie together."
+
+on the hot seat: in the position or situation in which a person is examined or questioned intensely
+
+The suspect of the crime was put on the hot seat during the investigation.
+
+" ... these two people are thrust into this lie together. But they're both on the hot seat in front of Agent Bea."
+
+come across as (something): give an impression of being something
+
+Because of her shyness, Kelly can come across as unfriendly.
+
+"... I needed her to come across as intimidating because big Jordan is such a force ..."
+
+checked: stopped from doing or continuing something
+
+Because of his carelessness in handling kitchen equipment, the kitchen assistant was checked by Chef Marie.
+
+"... little Jordan stands out of the chair ... to try her last little attempt at having the authority and power she [has] as an adult. But she's checked."
+
+Grammar tip: The present perfect tense
+
+The present perfect tense is formed by placing has/have before the past participle of the verb.
+
+Commonly, this tense is used to describe a situation that started in the past and continues in the present.
+
+"... have to work together and sort of, co-conspire to cover up that Jordan Sanders has turned into a child."
+
+It can also be used to talk about an action that started or happened during an unknown time.
+
+"She has called Child Protective Services, played by Rachel Dratch."
+
+"I haven't been to school in like, years."
+
+There are many other uses of the present perfect tense. It can be used to talk about an action that has happened or can still happen within a time period that is not yet finished. It can also be used to talk about something that happened recently.
+
+More examples:
+
+Becky has just seen the "Harry Potter" movies yesterday.
+Students from various institutions have visited the museum this month.
+The judges have not awarded the winners yet; they will do so at the end of the program.
+
+________________________
+
+ORIENTING (SOMEONE)
+the act of helping someone become familiar with a new place or situation
+
+Anya spent the entire morning orienting the new interns on the department's tasks and responsibilities.
+
+INTEGRATING
+becoming an effective part of a bigger thing or group
+
+After months of integrating into her new team, Diana showed strong teamwork and communication with the other members.
+
+ONBOARDING
+the process by which new employees are welcomed into a company and are given skills and knowledge to help them fulfill their roles
+
+During onboarding, new hires meet employees from other departments, who explain what each team's role is.
+
+RETENTION
+the ability of a company to keep its employees
+
+Retention in the company was high this year, as many employees said they were satisfied with their jobs.
+
+INCONSISTENT
+having or containing parts that do not agree or do not match with one another
+
+The manager asked Hailey to analyze her data again, because her data and her conclusions were inconsistent with each other.
+
+TAKES (SOMETHING) INTO ACCOUNT
+considers a particular thing during a decision-making process
+
+When packing clothes for a long trip, George takes into account the weather forecasts for the next few days.
+
+ORGANIZATIONAL CULTURE
+Organizational culture refers to the values and beliefs that contribute to the social and psychological environment of a company.
+
+PERSONAS
+fictional characters or models of people that are created based on the features of a target audience, in order to make sure that audience's needs are met
+
+In order to sell their home appliances more effectively, the company analyzes personas such as "busy housewives" and "wealthy families."
+
+ROBUST
+strong, effective and impressive
+
+The project team delivered a robust final product despite the tight deadlines.
+
+LEVERAGED
+used or taken advantage of, in order to achieve a result
+
+Fiona leveraged her professional connections to quickly find an investor who was willing to fund her new company.
+
+___________________
+
+SKILLS SHORTAGES
+situations where an employer or a company finds it difficult to find employees with the required qualifications
+
+The country is having a skills shortage in the technological and medical industries as fewer students take science and math courses.
+
+NORM
+the behavior, appearance, method, etc., that is accepted by most people
+
+Wearing scarves, boots and coats is the norm in countries with fall and winter seasons.
+
+GROUNDBREAKING
+new, original and very advanced
+
+Craig was given an award by the scientific community for his groundbreaking research in renewable energy.
+
+PREEMINENCE
+the state of being superior or more powerful than others
+
+The CEO has preeminence when it comes to making decisions that affect the company's business.
+
+HUMAN CAPITAL
+the value of a person's or group's skills, experience and competence to a company or organization
+
+Some construction companies invest a lot in human capital, as their business requires people who can run heavy equipment and machinery.
+
+PARAMETERS
+rules that control or limit how something should be done
+
+One of the parameters of the department project is that it remains within the company budget.
+
+CURRICULUM
+a list of all the lessons or courses that need to be studied for a particular learning program
+
+One part of the curriculum for aspiring teachers is learning how to make lesson plans.
+
+PIPELINE
+the development and production of something
+
+The tech company's new laptop series is now going through the pipeline and will be launched in a few months.
+
+UNDERTAKEN
+begun an impressive or difficult task
+
+A group of geologists have undertaken a journey to an unexplored cave in the middle of the Amazon forest.
+
+BIOTECH
+short for biotechnology; related to the use of living things or parts of living things in manufacturing or other industrial tasks
+
+Scientists use biotech equipment to breed crops that can grow underwater to increase yield even during rainy seasons.
+
+LEGISLATION
+a set of proposed laws
+
+The newest legislation will make it illegal for people to throw plastic in the river.
+
+____________________________
+
+## Simple tenses
+
+**The simple past tense** talks about actions that started and ended in the past. The simple past tense is commonly used with time expressions such as "yesterday," "last month," "last week," "last year," "a while ago."
+
+The manager called for a meeting yesterday.
+
+Form
+
+regular verb: + -d or -ed
+used, worked
+
+irregular verb: change spelling
+had, said, went
+
+**The simple present tense** talks about actions that happen in the present, habits or regular actions, and facts.
+
+The manager calls for a meeting.
+The manager calls for a meeting every week.
+The manager calls for meetings.
+
+Form
+
+singular: base form + -s
+she works
+
+plural: base form
+they work
+
+**The simple future tense** talks about actions that will happen at a later time, plans, and predictions. The simple future tense is commonly used with time expressions such as "tomorrow," "next week," "next month," "later," etc.
+
+The manager will call for a meeting tomorrow.
+The manager is going to call for a meeting tomorrow.
+
+Form
+
+"will" + verb
+will work
+
+"am going to" + verb
+am going to work
+
+"is going to" + verb
+is going to work
+
+"are going to" + verb
+are going to work
+
+## Continuous tenses
+
+**The past continuous tense** talks about continuing actions in the past.
+
+The programmers were arguing about technology when the project leader entered the conference room.
+
+Form
+
+"was" + verb + -ing
+was listening
+
+"were" + verb + -ing
+were listening
+
+**The present continuous tense** talks about actions that are happening at the moment. The present continuous tense is used with time expressions such as "at the moment," "right now," "currently," etc.
+
+Right now, the programmers are arguing about the technology to use for their latest project.
+
+Form
+
+"am" + verb + -ing
+am computing
+
+"is" + verb + -ing
+is computing
+
+"are" + verb + -ing
+are computing
+
+**The future continuous tense** talks about a prolonged action that will be done at a later time.
+
+The programmers will be arguing about the technology to use for their latest project.
+The programmers are going to be arguing about the technology to use for their latest project.
+
+Form
+
+"will be" + verb + -ing
+will be writing
+
+"(be) going to be" + verb + -ing
+is computing
+
+## Perfect tenses
+
+**The past perfect tense** talks about a completed past action that took place before another past action. Use the time expressions "before" and "after" with the simple past tense when writing the past perfect tense.
+
+They had been colleagues for a decade before the project closed.
+
+ 
+
+Form
+
+"had" + past participle
+had gone
+
+**The present perfect tense** talks about actions that were completed at a certain time before the present or actions that extend up to the present time. Use the time expressions "since" (for beginnings) and "for" (for duration) when talking about the present perfect tense.
+
+They have been colleagues for a decade.
+They have been colleagues since 2005.
+
+Form
+
+"has" + past participle
+has flown
+
+"have" + past participle
+have flown
+
+**The future perfect tense** talks about actions that will be completed or perfected at a later time. Use the time expressions "by" and "by the time" with the future perfect tense.
+
+They will have been colleagues for eleven years by 2016.
+They are going to have been colleagues for eleven years by 2016.
+
+ 
+
+Form
+
+"will have" + past participle
+will have finished
+
+"(be) going to have" + past participle
+(be) going to have finished
+
+## Perfect continuous tenses
+
+**The past perfect continuous tense** talks about continuous past actions that have been completed before another action (usually used with the simple past).
+
+The team had been working on the same project for six months when the team leader got transferred.
+
+Form
+
+"had been" + verb + -ing
+had been writing
+
+**The present perfect continuous tense** talks about repeated or continuous actions in the past or actions that may still be continuing in the present or will be continued in the future.
+
+The team has been working on the same project for six months.
+
+Form
+
+"has been" + verb + -ing
+has been telling
+
+"have been" + verb + -ing
+have been telling
+
+**The future perfect continuous tense** talks about continuous actions that will be completed at a later time or in the future. ("Will" is more frequently used than "be going to.")
+
+The team will have been working on the same project for six months by September.
+
+Form
+
+"will have been" + verb + -ing
+will have been signing
+
+"(be) going to have been" + verb + -ing
+(be) going to have been signing
+
+_______________________
+
+
+So far ...
+
+So far, we are done with the first two steps of the project.
+
+
+Thus far ...
+
+We have completed 30 percent of the project thus far.
+
+
+As of today ...
+
+As of today, we are done with Phases 1 and 2.
+
+
+To date ...
+
+We have three more phases to go through to date.
+
+We have finished ...
+
+We have finished building the prototype.
+
+
+We are now ...
+
+We are now in Phase 2.
+
+
+We are currently ...
+
+We are currently in the testing stage.
+
+
+We recently ...
+
+We recently invited some potential clients to test the product.
+
+
+Just last ... , we ...
+
+Just last week, we reassessed our timeline.
+
+
+This was a milestone ...
+
+The successful beta launch was a big milestone in our project.
+
+
+This will be a landmark ...
+
+If the trial run goes well, this week will be a landmark in our project.
+
+
+We started ...
+
+We started in June of 2008.
+
+
+We began ...
+
+We began working on this project in May.
+
+
+We are/The project is not on time ...
+
+Unfortunately, the project is not on time.
+
+
+We are (not) on schedule ...
+
+The client approved our proposal immediately, so we are on schedule.
+
+
+We are delayed ...
+
+Due to some technical difficulties, we are delayed by three weeks.
+
+
+We are ahead ...
+
+Because everything went according to plan, we are ahead by a month.
+
+When presenting a project status, you may:
+
+Talk about the progress of the project.
+
+So far, we are done with the first two steps of the project.
+We have three more phases to go through to date.
+We are currently in the testing stage.
+ 
+Talk about important events.
+
+Just last week, we reassessed our timeline.
+If the trial run goes well, this week will be a landmark in our project.
+We recently invited some potential clients to test the product.
+ 
+Talk about the timeline of the project.
+
+We started in June of 2008.
+Due to some technical difficulties, we are delayed by three weeks.
+Because everything went according to plan, we are ahead by a month.
+
+__________________________
+
+boot
+
+to start up your computer (see shut down)
+
+
+restart/reboot
+
+to turn off your computer, then boot it again
+
+
+shut down
+
+to turn off your computer (see boot)
+
+maximize
+
+to make an application window cover the whole monitor
+
+
+minimize
+
+to hide an application window without closing or exiting the application
+
+
+scan
+
+1) to use a software that checks the computer or files for viruses and other harmful programs that can destroy data or even the whole computer
+
+2) to use a machine that converts printed text or images into a computer file
+
+bookmark
+
+to save the link to a website so that you can easily find and return to that site in the future
+
+
+browse/surf
+
+to look at different websites on the internet
+
+
+chat
+
+to communicate with somebody on the Internet by exchanging short messages
+
+
+download
+
+to copy a file from the Internet onto your own computer (see upload)
+
+
+post
+
+to share one’s ideas and questions by publishing them on a website that can be viewed by other Internet users
+
+
+upload
+
+to send a file from your computer to an outside computer using the Internet so that other people can view and/or use your file (see download)
+
+Please shut down the computer after using it.
+
+You can surf the internet to research about classical art.
+
+Scan your computer regularly for viruses using an antivirus software.
+
+You can download music online and save it on your desktop or smartphone.
+
+Maximize the application window so it would take up all the space on your desktop.
+
+Minimize the application window if you want to hide the window and open another application.
+
+You can upload photos from your smartphone to your online account. If you want to access your favorite websites with just one click, you should bookmark them on your browser.
+
+Here are some action words that are used to talk about working with a computer:
+
+Verbs related to power options 
+
+boot
+restart/reboot
+shut down
+Verbs related to computer applications
+
+maximize
+minimize
+scan
+Verbs related to the internet
+
+bookmark
+browse/surf
+chat
+download
+post
+upload
+
+________________________
+
+## Purposes of adverbs of manner
+Adverbs of manner describe how something happens or how something is done.
+
+If the verb has a direct object, adverbs of manner go after the direct object ...
+
+The board members read the report carefully.
+
+... or before the verb.
+
+The board members carefully read the report.
+
+Adverbs of manner do not go between the verb and the object.
+
+The board members read carefully the report. **(Wrong)**
+
+If the verb is followed by another word that also shows action, adverbs of manner modify the action that is closer to them.
+
+She agreed to work slowly. (It will take a long time for her to finish working.)
+She slowly agreed to work. (It took a long time for her to agree.)
+
+Adverbs of manner describe how something happens or how something is done.
+
+Adverbs of manner often go after the verb and modify the action that is closer to them.
+If the verb has a direct object, the adverb may be placed after the direct object or before the verb.
+Adverbs of manner do not go between the verb and the object.
+
+_________________
+
