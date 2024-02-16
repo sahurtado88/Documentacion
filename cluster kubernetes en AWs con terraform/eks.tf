@@ -11,5 +11,4 @@ module "eks" {
     cluster_endpoint_public_acces = true // en pdn debe ser false se expone api de k8s
     cluster_endpoint_private_acces= true
 
-    cluster_addons 
 }

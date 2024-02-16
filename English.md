@@ -9524,3 +9524,163 @@ Adverbs of manner do not go between the verb and the object.
 
 _________________
 
+TREK
+a long distance walking trip, usually through mountains, rivers, deserts, etc.
+
+The group had a mountain trek that lasted two hours before they reached the waterfalls.
+
+TRAVERSE
+to move across a place or an area
+
+To get to the other side of the river, people need to traverse a wooden, hanging bridge.
+
+FLOW STATE
+A flow state is an altered state of consciousness in which a person's mind functions at its peak because he or she pays full attention to a task.
+
+PROFOUND
+having or requiring deep understanding and insight
+
+Richie's profound analysis on the new product's performance helped the company market the item more efficiently.
+
+GPS
+global positioning system; a system that uses satellites to show the location of someone or something
+
+The car uses GPS to let the driver know the fastest route to his or her destination.
+
+BID
+an attempt or effort to do, win or get something
+
+The basketball team entered the competition in a bid to win the trophy and prize money.
+
+IN ONE GO
+done in one attempt, without stopping
+
+The department finished their most important project in one go to meet the deadline.
+
+FEATS
+achievements that show skill, talent, courage, etc.
+
+The government gave the soldier a medal for his brave feats in battle, including one that saved the lives of his fellow soldiers.
+
+KITIES 
+a toy consisting of a light frame with thin material stretched over it, flown in the wind at the end of a long string.
+
+he was wind-aided by kites on his voyage.
+
+___________________
+
+## Phrases for making appointments
+
+Are you free on (day or date)?
+
+Are you free on Monday, 28th of January?
+
+
+Can we meet on (day or date)?
+
+Can we meet on Tuesday?
+Can we meet on the 29th?
+
+
+I would like to set a meeting/an appointment for (day or date and time).
+
+I would like to set a meeting for Wednesday, March 3rd.
+
+
+Are you still available on (day or date)?
+
+Are you still available on Saturday?
+Are you still available on October 29?
+
+We usually ask someone about his/her free time when making an appointment with him/her.
+
+Are you free on (day/date)?
+Are you available on (day/date)?
+ 
+We can use modals to suggest dates and times of appointment.
+
+Can we meet on (day/date)?
+I would like to set a meeting/ an appointment for (day/date and time).
+
+________________
+
+Phrases for rescheduling meetings
+
+I'm afraid I need to reschedule ... because ...
+
+I'm afraid I need to reschedule your interview because I have a meeting with the CEO.
+
+
+Could we reschedule meeting/consultation/training session?
+
+Could we reschedule our meeting?
+
+I was wondering if I could have ... rescheduled.
+
+I was wondering if I could have the meeting rescheduled.
+
+
+I'm free tomorrow (morning/afternoon) at (time) ...
+
+I'm free tomorrow afternoon at five.
+I'm free tomorrow morning at 9:45.
+
+I'm free/available on (day or date) at (time)/from (time) to (time).
+
+I'm free on Monday from 3 to 6 p.m.
+I'm available on July 14 at 11 a.m.
+
+
+I'm free/available the whole day on (day or date).
+
+I'm available the whole day on July 7.
+I'm free the whole day on Friday.
+
+
+Can we have (the meeting/interview, etc.) on (day or date) at (time)?
+
+Can we have the meeting tomorrow at 4:30 p.m.?
+Can we have the meeting on Monday at 1 p.m.?
+Can we have the meeting on July 25 at 8 a.m.?
+
+
+Does (time) on (day or date) work for you?
+
+Does 9 a.m. on Friday work for you?
+Does 4 p.m. on August 11 work for you?
+
+Here are useful phrases for rescheduling meetings:
+
+I'm afraid I need/have to reschedule ... (because ...)
+Does (time) on (day/date) work for you?
+I'm free/available (on) ... at/from ... (to) ...
+ 
+Modals are useful when asking to reschedule a meeting, providing reasons for rescheduling, and deciding on a new meeting schedule.
+
+Can/Could we reschedule ... ?
+I was wondering if I could have ... rescheduled.
+I (have) ... , and I may/might not be able to ...
+Can/Could we have the ... (on) ... at?
+
+### Current vs Actual
+
+"Current" is used when we want to say that something is of the present, not future or past. It can describe things or events of the present.
+
+This is our current house. We moved in a year ago after it was built.
+This is his current car. He wants to have a sports car ten years from now.
+
+"Actual" is used when we want to say that something is real, not imaginary. 
+
+This is just a drawing of our house before it got built. Our actual house has a gray roof and white walls.
+That is the car I want. My actual car is a green subcompact.
+
+The adjectives "current" and "actual" are used in different contexts.
+
+Current is used to say something is of the present.
+This is our current house.
+ 
+Actual is used to say something is real, not imaginary.
+Our actual house has a gray roof and white walls.
+
+____________________
+
