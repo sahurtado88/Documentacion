@@ -524,5 +524,361 @@ Actualización y mantenimiento: Puedes actualizar y mantener el job seed según 
 
 https://jenkinsci.github.io/job-dsl-plugin/#
 
+## Pipelines
+
+jenkins pipeline nos da la capacidad de escribir los build steps en forma de codigo (build, test, deploy)
+
+jenkins job dsl crea nuevos jobs basados en el codio proporcionado mientras jenkins pipeline es un tipo de job que se puede encargar del ciclo completo de : buid, test, deploy de un proyecto
+
+se puede utilizar DSL para crear nuevos pipelines jobs
+
+![alt text](image-104.png)
+
+### Jenkins file
+
+jenkinsfile es un archivo en forma de codigo que contiene el flujo completo del proceso y puede ser manejado con control de version (SCM)
+
+![alt text](image-105.png)
+
+**PIPELINE** es el bloque que define todo el contenido, el proceso entero de las etapas de un jenkinsfile
+
+**AGENT** se encarga de indicarle a jenkins que asigne un ejecutor a las compilaciones y un espacio de trabajo para el pipeline
+
+**Node** es una maquina que ejecuta el flujo de trabajo completo del pipeline
+
+**Any** referido a ejecutar el pipeline o la etapa determinada en cualqueir agente disponible
+
+**Stages** este bloque del archivo contiene todo el trabajo necesario para el proyecto, puede constar de diferentes etapas, donde en cada una se llevará a cabo una tarea o tareas especificas
+
+**Steps** dentro de una etapa, tenemos los pasos definidos para llevar a cabo la tarea del bloque,  puede ser 1 paso o mas y se especifican en orden para su ejecucion
 
 
+https://www.jenkins.io/doc/pipeline/tour/running-multiple-steps/
+
+### Sequential Stages
+Stages in Declarative Pipeline may have a stages section containing a list of nested stages to be run in sequential order.
+
+A stage must have one and only one of steps, stages, parallel, or matrix. It is not possible to nest a parallel or matrix block within a stage directive if that stage directive is nested within a parallel or matrix block itself. However, a stage directive within a parallel or matrix block can use all other functionality of a stage, including agent, tools, when, etc.
+
+
+### Parallel
+Stages in Declarative Pipeline may have a parallel section containing a list of nested stages to be run in parallel.
+
+A stage must have one and only one of steps, stages, parallel, or matrix. It is not possible to nest a parallel or matrix block within a stage directive if that stage directive is nested within a parallel or matrix block itself. However, a stage directive within a parallel or matrix block can use all other functionality of a stage, including agent, tools, when, etc.
+In addition, you can force your parallel stages to all be aborted when any one of them fails, by adding failFast true to the stage containing the parallel. Another option for adding failfast is adding an option to the pipeline definition: parallelsAlwaysFailFast().
+
+### Option: timeout and retry
+
+The "Deploy" stage retries the flakey-deploy.sh script 3 times, and then waits for up to 3 minutes for the health-check.sh script to execute. If the health check script does not complete in 3 minutes, the Pipeline will be marked as having failed in the "Deploy" stage.
+
+```
+Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage('Deploy') {
+            steps {
+                retry(3) {
+                    sh './flakey-deploy.sh'
+                }
+
+                timeout(time: 3, unit: 'MINUTES') {
+                    sh './health-check.sh'
+                }
+            }
+        }
+    }
+}
+```
+### ENV Variable and credentials
+
+The environment directive specifies a sequence of key-value pairs which will be defined as environment variables for all steps, or stage-specific steps, depending on where the environment directive is located within the Pipeline.
+
+This directive supports a special helper method credentials() which can be used to access pre-defined Credentials by their identifier in the Jenkins environment.
+
+Supported Credentials Type
+Secret Text
+The environment variable specified will be set to the Secret Text content.
+
+Secret File
+The environment variable specified will be set to the location of the File file that is temporarily created.
+
+Username and password
+The environment variable specified will be set to username:password and two additional environment variables will be automatically defined: MYVARNAME_USR and MYVARNAME_PSW respectively.
+
+SSH with Private Key
+The environment variable specified will be set to the location of the SSH key file that is temporarily created and two additional environment variables will be automatically defined: MYVARNAME_USR and MYVARNAME_PSW (holding the passphrase).
+
+Unsupported credentials type causes the pipeline to fail with the message: org.jenkinsci.plugins.credentialsbinding.impl.CredentialNotFoundException: No suitable binding handler could be found for type <unsupportedType>.
+
+```
+pipeline {
+    agent any
+    environment { 
+        SECRET_TEXT = credentials('USUARIO50')
+    }
+    stages {
+        stage('Ejemplo para Secret Text') {
+            steps {
+                sh 'echo $SECRET_TEXT'
+            }
+        }
+    }
+}
+```
+### Params and Input
+
+- **Params** the parameters directive provides a list of parameters that a user should provide when triggering the Pipeline. The values for these user-specified parameters are made available to Pipeline steps via the params object, refer to the Parameters, Declarative Pipeline for its specific usage.
+
+Each parameter has a Name and Value, depending on the parameter type. This information is exported as environment variables when the build starts, allowing subsequent parts of the build configuration to access those values. For example, use the ${PARAMETER_NAME} syntax with POSIX shells like bash and ksh, the ${Env:PARAMETER_NAME} syntax with PowerShell, or the %PARAMETER_NAME% syntax with
+
+Available Parameters
+string
+A parameter of a string type, for example: parameters { string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '') }.
+
+text
+A text parameter, which can contain multiple lines, for example: parameters { text(name: 'DEPLOY_TEXT', defaultValue: 'One\nTwo\nThree\n', description: '') }.
+
+booleanParam
+A boolean parameter, for example: parameters { booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '') }.
+
+choice
+A choice parameter, for example: parameters { choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: '') }. The first value is the default.
+
+password
+A password parameter, for example: parameters { password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'A secret password') }.
+
+```
+pipeline {
+    agent any
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "Hello ${params.PERSON}"
+
+                echo "Biography: ${params.BIOGRAPHY}"
+
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Choice: ${params.CHOICE}"
+
+                echo "Password: ${params.PASSWORD}"
+            }
+        }
+    }
+}
+```
+- **input** 
+The input directive on a stage allows you to prompt for input, using the input step. The stage will pause after any options have been applied, and before entering the agent block for that stage or evaluating the when condition of the stage. If the input is approved, the stage will then continue. Any parameters provided as part of the input submission will be available in the environment for the rest of the stage.
+
+Configuration options
+message
+Required. This will be presented to the user when they go to submit the input.
+
+id
+An optional identifier for this input. The default value is based on the stage name.
+
+ok
+Optional text for the "ok" button on the input form.
+
+submitter
+An optional comma-separated list of users or external group names who are allowed to submit this input. Defaults to allowing any user.
+
+submitterParameter
+An optional name of an environment variable to set with the submitter name, if present.
+
+parameters
+An optional list of parameters to prompt the submitter to provide. Refer to parameters for more information.
+
+```
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+            steps {
+                echo "Hello, ${PERSON}, nice to meet you."
+            }
+        }
+    }
+}
+```
+
+_________________
+
+¡Claro! Jenkins es una herramienta de automatización de código abierto que se utiliza principalmente para automatizar tareas relacionadas con la construcción, prueba y despliegue de software. Los "items" en Jenkins son los elementos fundamentales que permiten configurar y ejecutar diferentes tipos de tareas en Jenkins. Aquí tienes una explicación detallada de algunos de los items más comunes en Jenkins:
+
+1. **Freestyle Project:**
+   - Este es el tipo de item más básico en Jenkins.
+   - Permite configurar acciones personalizadas y tareas de construcción.
+   - Ejemplo: Puedes configurar un proyecto Freestyle para compilar un código fuente, ejecutar pruebas unitarias y desplegar la aplicación en un servidor de pruebas.
+
+2. **Pipeline:**
+   - Una pipeline en Jenkins es una serie de pasos que permiten definir, construir, probar y desplegar aplicaciones de forma automatizada.
+   - Las pipelines pueden definirse utilizando un script declarativo o un script de estilo Groovy.
+   - Ejemplo: Una pipeline puede incluir pasos como clonar un repositorio de código, compilar el código, ejecutar pruebas automatizadas, y si las pruebas pasan, desplegar la aplicación en un entorno de producción.
+
+3. **Multibranch Pipeline:**
+   - Este item está diseñado para proyectos que tienen múltiples ramas de código.
+   - Crea una pipeline para cada rama del repositorio, lo que permite construir, probar y desplegar cada rama de forma independiente.
+   - Ejemplo: Si tienes un repositorio Git con ramas para desarrollo, pruebas y producción, puedes configurar un Multibranch Pipeline para que Jenkins construya y pruebe cada rama automáticamente.
+
+4. **GitHub Organization:**
+   - Permite que Jenkins descubra, construya y pruebe automáticamente los repositorios dentro de una organización de GitHub.
+   - Crea pipelines para cada repositorio dentro de la organización de GitHub.
+   - Ejemplo: Si tienes una organización de GitHub con varios repositorios para diferentes proyectos, puedes configurar un GitHub Organization item para automatizar el proceso de construcción y prueba de cada repositorio.
+
+5. **Agente (Agent):**
+   - Los agentes en Jenkins son máquinas o entornos que ejecutan las tareas definidas en los items de Jenkins.
+   - Pueden ser máquinas físicas, máquinas virtuales o contenedores.
+   - Ejemplo: Puedes configurar un agente en una máquina con ciertas herramientas y dependencias específicas para que Jenkins pueda ejecutar tareas de construcción y prueba en ese entorno aislado.
+
+Estos son solo algunos ejemplos de items comunes en Jenkins y cómo se utilizan en escenarios típicos de desarrollo de software. Cada uno de estos items ofrece diferentes capacidades y flexibilidad para automatizar el proceso de desarrollo y despliegue de aplicaciones.
+_________________________
+¡Claro! Configurar un agente de Docker para Jenkins te permite ejecutar tareas de construcción y prueba en contenedores Docker de forma aislada y reproducible. Aquí te explico cómo hacerlo:
+
+1. **Instala Docker:**
+   - Asegúrate de tener Docker instalado en la máquina donde estás ejecutando Jenkins. Puedes instalar Docker siguiendo las instrucciones en el sitio web oficial de Docker.
+
+2. **Configura el entorno de Jenkins:**
+   - Accede al panel de administración de Jenkins en tu navegador web.
+   - Ve a "Manage Jenkins" (Administrar Jenkins) > "Manage Nodes and Clouds" (Administrar nodos y nubes).
+
+3. **Agrega un nuevo nodo:**
+   - Haz clic en "New Node" (Nuevo nodo) o "New Agent" (Nuevo agente), dependiendo de la versión de Jenkins que estés utilizando.
+
+4. **Configura el nodo de Docker:**
+   - Proporciona un nombre para el nodo y selecciona "Permanent Agent" (Agente permanente).
+   - Haz clic en "OK" (Aceptar) para continuar.
+
+5. **Configura las propiedades del agente:**
+   - En la sección "Remote root directory" (Directorio raíz remoto), puedes dejar el valor predeterminado o especificar un directorio personalizado donde Jenkins almacenará los archivos del proyecto en el agente.
+
+6. **Especifica el método de lanzamiento:**
+   - Selecciona "Launch agent via execution of command on the master" (Lanzar agente a través de la ejecución de un comando en el maestro).
+   - En el campo "Command" (Comando), ingresa el comando para iniciar el agente Docker. Por ejemplo:
+     ```
+     docker run -i --rm -v /var/run/docker.sock:/var/run/docker.sock jenkins/inbound-agent
+     ```
+
+   - Este comando ejecutará un contenedor Docker que actuará como agente de Jenkins y se conectará al servidor principal de Jenkins.
+
+7. **Guarda la configuración del nodo:**
+   - Haz clic en "Save" (Guardar) para guardar la configuración del nodo.
+
+Una vez configurado, Jenkins iniciará el contenedor Docker cuando sea necesario para ejecutar tareas de construcción y prueba. El agente Docker estará disponible para realizar trabajos según sea necesario y se detendrá automáticamente cuando no esté en uso.
+
+Es importante tener en cuenta que este ejemplo utiliza la imagen `jenkins/inbound-agent` como base para el agente Docker. Puedes ajustar la configuración según tus necesidades específicas, como montar volúmenes adicionales o utilizar imágenes de agentes personalizadas.
+
+### Triggers and tools
+
+**triggers** 
+The triggers directive defines the automated ways in which the Pipeline should be re-triggered. For Pipelines which are integrated with a source such as GitHub or BitBucket, triggers may not be necessary as webhooks-based integration will likely already be present. The triggers currently available are cron, pollSCM and upstream.
+
+cron
+Accepts a cron-style string to define a regular interval at which the Pipeline should be re-triggered, for example: triggers { cron('H */4 * * 1-5') }.
+
+pollSCM
+Accepts a cron-style string to define a regular interval at which Jenkins should check for new source changes. If new changes exist, the Pipeline will be re-triggered. For example: triggers { pollSCM('H */4 * * 1-5') }
+
+upstream
+Accepts a comma-separated string of jobs and a threshold. When any job in the string finishes with the minimum threshold, the Pipeline will be re-triggered. For example: triggers { upstream(upstreamProjects: 'job1,job2', threshold: hudson.model.Result.SUCCESS) }
+
+**tools**
+A section defining tools to auto-install and put on the PATH. This is ignored if agent none is specified.
+
+Supported Tools
+
+maven
+jdk
+gradle
+
+	The tool name must be pre-configured in Jenkins under Manage Jenkins → Tools.
+
+```
+pipeline {
+    agent any
+    tools {
+        maven 'apache-maven-3.0.1'
+    }
+    stages {
+        stage('Example') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+    }
+}
+```
+
+### Post
+
+The post section defines one or more additional steps that are run upon the completion of a Pipeline’s or stage’s run (depending on the location of the post section within the Pipeline). post can support any of the following post-condition blocks: always, changed, fixed, regression, aborted, failure, success, unstable, unsuccessful, and cleanup. These condition blocks allow the execution of steps inside each condition depending on the completion status of the Pipeline or stage. The condition blocks are executed in the order shown below.
+
+Conditions
+
+always
+Run the steps in the post section regardless of the completion status of the Pipeline’s or stage’s run.
+
+changed
+Only run the steps in post if the current Pipeline’s run has a different completion status from its previous run.
+
+fixed
+Only run the steps in post if the current Pipeline’s run is successful and the previous run failed or was unstable.
+
+regression
+Only run the steps in post if the current Pipeline’s or status is failure, unstable, or aborted and the previous run was successful.
+
+aborted
+Only run the steps in post if the current Pipeline’s run has an "aborted" status, usually due to the Pipeline being manually aborted. This is typically denoted by gray in the web UI.
+
+failure
+Only run the steps in post if the current Pipeline’s or stage’s run has a "failed" status, typically denoted by red in the web UI.
+
+success
+Only run the steps in post if the current Pipeline’s or stage’s run has a "success" status, typically denoted by blue or green in the web UI.
+
+unstable
+Only run the steps in post if the current Pipeline’s run has an "unstable" status, usually caused by test failures, code violations, etc. This is typically denoted by yellow in the web UI.
+
+unsuccessful
+Only run the steps in post if the current Pipeline’s or stage’s run has not a "success" status. This is typically denoted in the web UI depending on the status previously mentioned (for stages this may fire if the build itself is unstable).
+
+cleanup
+Run the steps in this post condition after every other post condition has been evaluated, regardless of the Pipeline or stage’s status.
+
+```
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'I will always say Hello again!'
+        }
+    }
+}
+```

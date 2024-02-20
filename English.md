@@ -9684,3 +9684,332 @@ Our actual house has a gray roof and white walls.
 
 ____________________
 
+## Future perfect tense
+
+When to use a future perfect tense
+The future perfect tense is used when talking about a future event that will be completed before another future event.
+
+He is very meticulous. He will have revised the report three times before he submits it to his boss tomorrow.
+
+How to form the future perfect tense
+The future perfect tense is formed with shall or will + have + the past participle of the verb
+
+The sales team will have earned over $20,000 dollars by the end of the year.
+
+Use the future perfect tense to talk about a future event that will be completed before another future event.
+
+You can do this by using shall/will + have + the past participle of a verb.
+
+_________________
+
+## verbal tenses
+Claro, aquí tienes una explicación de los tiempos verbales en inglés con ejemplos en sus formas afirmativas, negativas, interrogativas y respuestas cortas:
+
+1. **Present Simple (Presente Simple):**
+
+   - **Afirmativa:** 
+     - She plays tennis every Sunday.
+   - **Negativa:** 
+     - She does not play tennis every Sunday. (o She doesn't play tennis every Sunday.)
+   - **Interrogativa:** 
+     - Does she play tennis every Sunday?
+   - **Respuesta corta:**
+     - Yes, she does. / No, she doesn't.
+
+2. **Present Continuous (Presente Continuo):**
+
+   - **Afirmativa:** 
+     - They are studying for their exams.
+   - **Negativa:** 
+     - They are not studying for their exams. (o They aren't studying for their exams.)
+   - **Interrogativa:** 
+     - Are they studying for their exams?
+   - **Respuesta corta:**
+     - Yes, they are. / No, they aren't.
+
+3. **Present Perfect (Presente Perfecto):**
+
+   - **Afirmativa:** 
+     - I have finished my homework.
+   - **Negativa:** 
+     - I have not finished my homework. (o I haven't finished my homework.)
+   - **Interrogativa:** 
+     - Have you finished your homework?
+   - **Respuesta corta:**
+     - Yes, I have. / No, I haven't.
+
+4. **Past Simple (Pasado Simple):**
+
+   - **Afirmativa:** 
+     - He walked to school yesterday.
+   - **Negativa:** 
+     - He did not walk to school yesterday. (o He didn't walk to school yesterday.)
+   - **Interrogativa:** 
+     - Did he walk to school yesterday?
+   - **Respuesta corta:**
+     - Yes, he did. / No, he didn't.
+
+5. **Past Continuous (Pasado Continuo):**
+
+   - **Afirmativa:** 
+     - She was reading a book when I called her.
+   - **Negativa:** 
+     - She was not reading a book when I called her. (o She wasn't reading a book when I called her.)
+   - **Interrogativa:** 
+     - Was she reading a book when I called her?
+   - **Respuesta corta:**
+     - Yes, she was. / No, she wasn't.
+
+6. **Future Simple (Futuro Simple):**
+
+   - **Afirmativa:** 
+     - We will go to the beach next weekend.
+   - **Negativa:** 
+     - We will not go to the beach next weekend. (o We won't go to the beach next weekend.)
+   - **Interrogativa:** 
+     - Will we go to the beach next weekend?
+   - **Respuesta corta:**
+     - Yes, we will. / No, we won't.
+
+Estos son solo algunos ejemplos de cómo se utilizan los diferentes tiempos verbales en inglés en diferentes situaciones lingüísticas. La práctica constante es clave para dominar el uso adecuado de los tiempos verbales en inglés.
+
+Claro, aquí te presento los otros tiempos verbales en inglés con ejemplos en sus formas afirmativas, negativas, interrogativas y respuestas cortas:
+
+7. **Present Perfect Continuous (Presente Perfecto Continuo):**
+
+   - **Afirmativa:** 
+     - They have been waiting for the bus for 20 minutes.
+   - **Negativa:** 
+     - They have not been waiting for the bus for 20 minutes. (o They haven't been waiting for the bus for 20 minutes.)
+   - **Interrogativa:** 
+     - Have they been waiting for the bus for 20 minutes?
+   - **Respuesta corta:**
+     - Yes, they have. / No, they haven't.
+
+8. **Past Perfect (Pasado Perfecto):**
+
+   - **Afirmativa:** 
+     - She had already finished her work when he arrived.
+   - **Negativa:** 
+     - She had not finished her work when he arrived. (o She hadn't finished her work when he arrived.)
+   - **Interrogativa:** 
+     - Had she finished her work when he arrived?
+   - **Respuesta corta:**
+     - Yes, she had. / No, she hadn't.
+
+9. **Past Perfect Continuous (Pasado Perfecto Continuo):**
+
+   - **Afirmativa:** 
+     - He had been working on the project for three hours when the power went out.
+   - **Negativa:** 
+     - He had not been working on the project for three hours when the power went out. (o He hadn't been working on the project for three hours when the power went out.)
+   - **Interrogativa:** 
+     - Had he been working on the project for three hours when the power went out?
+   - **Respuesta corta:**
+     - Yes, he had. / No, he hadn't.
+
+10. **Future Continuous (Futuro Continuo):**
+
+    - **Afirmativa:** 
+      - They will be studying English at this time tomorrow.
+    - **Negativa:** 
+      - They will not be studying English at this time tomorrow. (o They won't be studying English at this time tomorrow.)
+    - **Interrogativa:** 
+      - Will they be studying English at this time tomorrow?
+    - **Respuesta corta:**
+      - Yes, they will. / No, they won't.
+
+Estos ejemplos muestran cómo se utilizan los diferentes tiempos verbales en inglés en una variedad de contextos. Recuerda que la práctica regular es esencial para comprender y utilizar correctamente los tiempos verbales en inglés.
+
+## Future perfect continous tense
+
+The future perfect continuous tense is formed by combining "shall/will" + "have been" + verb + "-ing."
+
+She will have been teaching this class for eight years by the time she turns 30.  
+
+The future perfect continuous tense is also called the future perfect progressive tense.
+
+The future perfect continuous tense is used when describing how long a future action will have been in progress when a future time arrives.
+
+- Your friend left you a message to call her back an hour ago. She will have been waiting for your return call for an hour by now.
+- Next year, Mr. Santiago will have been heading the company for 55 years, but he still has no plans to retire.
+- Tomorrow is my first year anniversary with this company; I will have been working here for a year already.
+
+To form the future perfect continuous tense, combine "shall/will" + "have been" + verb + "-ing."
+
+The future perfect continuous tense is used when describing how long a future action will have been in progress when a future time arrives.
+
+## Common phrases used in business contexts
+
+get by
+
+survive with difficulty
+
+The company is earning very little, but we are able to get by this year.
+
+
+go under
+
+become bankrupt
+
+If things do not get better, we will surely go under this year.
+
+
+put off
+
+wait for a later time before doing something
+
+We have to lessen our expenses. We cannot put this off any longer.
+
+step down
+
+to leave a responsibility; to resign from a position
+
+If you cannot manage the company, you need to step down and let others do it.
+
+
+take on
+
+1) to accept a responsibility
+2) to hire
+
+Nobody wants to take on the position of president. (to accept responsibility)
+
+Michael needs to take on good salespeople to increase the company's income. (hire)
+
+
+take over
+
+to get the control of something from somebody else
+
+Company X wants to take over this company by buying the majority of the shares.
+
+The office furniture store was able to get by last year because it won a huge contract.
+
+A sudden business trip to the company's headquarters in Denmark caused the regional manager to put off all his meetings for the week.
+
+Mr. Carter is expected to step down as CEO a month after announcing his retirement.
+
+The office furniture store was able to get by last year because it won a huge contract.
+
+A sudden business trip to the company's headquarters in Denmark caused the regional manager to put off all his meetings for the week.
+
+Mr. Carter is expected to step down as CEO a month after announcing his retirement.
+
+
+look ahead
+
+plan for the future
+
+Don't spend all your money: You have to look ahead and save for your retirement.
+
+
+look forward to
+
+feel excited about a future event; to anticipate
+
+I really look forward to having this problem solved.
+
+
+look back
+
+remember or think about the past
+
+Looking back on the previous year, I see that our company has achieved a 33 percent growth in business.
+
+When the team looked back on the previous year, they found that the business grew by 33 percent.
+
+look up
+
+research
+
+Use the internet to look up the company's address and contact number.
+
+
+look into
+
+investigate; examine
+
+Investors should first look into the company's business and finance operations before investing in its stocks.
+
+look up to
+
+highly respect; idolize
+
+I look up to you because of your great people skills.
+
+
+look down on
+
+consider one to be of low value
+
+Senior managers should not look down on employees who work under them.
+
+
+look to
+
+expect something from somebody
+
+I have a problem with your product. Can I look to you to solve it for me?
+
+
+look on
+
+watch
+
+The team leader looked on as his team members prepared the presentation.
+
+
+look in on
+
+visit for a short time
+
+The employer looks in on the office every so often to make sure his employees are doing their jobs properly.
+
+
+look after
+
+take care of somebody or something
+
+Could you please look after my computer while I'm gone?
+
+
+look out
+
+move away / keep away from danger
+
+When you get inside the factory, look out for hazardous materials.
+
+When making bank transactions online, look out for suspicious emails or websites that ask for your username, password or credit card details.
+
+The HR department looks after new hires through general orientation, job-specific training, and one-on-one mentoring programs.
+
+Employees across all departments look up to the CEO because of his professionalism.
+
+Here is a list of business phrasal verbs with the word "look":
+
+Relating to time
+
+look ahead
+look forward to
+look back
+
+Relating to discovery
+
+look up
+look into
+
+Regarding people
+
+look up to
+look down on
+look to
+look in on
+Other phrases
+
+look on
+look after
+look out
+
+____________
+
