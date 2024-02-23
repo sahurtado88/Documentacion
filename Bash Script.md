@@ -1822,3 +1822,22 @@ for f in *.csv
 do 
    cp -v "$f" /home/webapps/project1/folder2/"${f%.csv}"$(date +%m%d%y).csv
 done
+
+
+
+
+___________________________
+expresion de bash head /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 5 | head -n 1
+Por supuesto, esta expresión de Bash es una serie de comandos que se utilizan para generar una cadena aleatoria de caracteres alfanuméricos.
+
+Aquí está la explicación de cada comando en la secuencia:
+
+1. `head /dev/urandom`: `head` es un comando que muestra las primeras líneas de un archivo o la entrada estándar. `/dev/urandom` es un dispositivo especial en sistemas tipo Unix que proporciona bytes aleatorios. Este comando está generando una secuencia infinita de bytes aleatorios desde `/dev/urandom`.
+
+2. `tr -dc 'a-zA-Z0-9'`: `tr` es un comando de traducción que se utiliza para eliminar caracteres no deseados de la entrada. En este caso, `-dc` le dice a `tr` que elimine todos los caracteres que no sean los especificados en el conjunto `a-zA-Z0-9`, es decir, todos los caracteres que no sean letras minúsculas o mayúsculas del alfabeto inglés y dígitos del 0 al 9.
+
+3. `fold -w 5`: `fold` es un comando que envuelve líneas de texto para que no excedan una longitud específica. En este caso, `-w 5` especifica que queremos envolver las líneas a una longitud de 5 caracteres.
+
+4. `head -n 1`: Finalmente, `head -n 1` se utiliza para tomar solo la primera línea de la salida resultante de la secuencia anterior. Esto garantiza que obtendremos una sola línea de texto, que es nuestra cadena aleatoria de 5 caracteres.
+
+En resumen, esta expresión de Bash genera una cadena aleatoria de 5 caracteres alfanuméricos a partir de bytes aleatorios generados por `/dev/urandom`. La cadena final es una combinación de letras mayúsculas y minúsculas, así como dígitos del 0 al 9.

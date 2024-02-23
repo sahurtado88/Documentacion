@@ -1,0 +1,28 @@
+ns="ra-monitoring"
+config_map="prometheus-alertmanager"
+config_map_staging="${config_map}-staging"
+
+function validate_last_cmd () {
+	last_retval=$1
+	failed_op=$2
+
+	if [ $last_retval -ne 0 ]; then
+		echo "FAILED operation: ${failed_op}; last command returned $last_retval; aborting" >&2
+		exit $last_retval
+	fi
+}
+
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
+echo "setting KUBECONFIG to ${KUBECONFIG}"
+
+s=$(kubectl get cm $config_map_staging -n $ns -o jsonpath='{.data}')
+validate_last_cmd $? "reading configmap $config_map_staging"
+
+echo "Merging to config map $config_map data read from $config_map_staging:"
+echo "$s"
+
+kubectl patch cm $config_map -n $ns -p "{\"data\":$s}"
+validate_last_cmd $? "patching configmap $config_map"
+
+echo "deleting $config_map_staging"
+kubectl delete cm $config_map_staging -n $ns

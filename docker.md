@@ -1204,3 +1204,148 @@ Don’t store secure keys and configuration in a file or directory. Store them a
 Perform up-to-date security checks and keep updating the security vulnerabilities.
 
 ____________________
+# Docker CMD vs ENTRYPOINT
+
+Claro, tanto `ENTRYPOINT` como `CMD` son instrucciones en un Dockerfile que definen cómo se ejecutará un contenedor Docker y cuáles serán los comandos o argumentos predeterminados.
+
+**1. CMD:**
+
+- `CMD` define el comando predeterminado que se ejecutará cuando se inicie el contenedor, pero se puede sobrescribir fácilmente desde la línea de comandos al iniciar el contenedor.
+- Puedes tener múltiples instrucciones `CMD` en tu Dockerfile, pero solo la última se aplicará.
+- Si el usuario proporciona argumentos al iniciar el contenedor, estos se pasan como argumentos al comando especificado en `CMD`.
+
+Ejemplo:
+```Dockerfile
+FROM ubuntu
+CMD ["echo", "Hello, world!"]
+```
+En este caso, cuando inicies un contenedor basado en esta imagen, imprimirá "Hello, world!".
+
+**2. ENTRYPOINT:**
+
+- `ENTRYPOINT` especifica un comando que siempre se ejecutará cuando se inicie el contenedor. Puedes pensar en ello como el comando principal del contenedor.
+- A diferencia de `CMD`, los comandos pasados en la línea de comandos al iniciar el contenedor se agregarán como argumentos al comando especificado en `ENTRYPOINT`.
+- Puedes sobrescribir `ENTRYPOINT` también, pero no se sobrescribe completamente, sino que se anexa a los argumentos que se le pasan al iniciar el contenedor.
+
+Ejemplo:
+```Dockerfile
+FROM ubuntu
+ENTRYPOINT ["echo", "Hello,"]
+```
+Si ejecutas un contenedor basado en esta imagen con `docker run <nombre_de_la_imagen> World!`, imprimirá "Hello, World!".
+
+**¿Cuándo usar cada uno?**
+
+- **CMD:** Utiliza `CMD` cuando desees proporcionar valores predeterminados que sean fáciles de sobrescribir. Por ejemplo, podrías usarlo para especificar un comando predeterminado que el contenedor ejecutará cada vez que se inicie, pero que el usuario pueda reemplazar fácilmente si es necesario.
+
+- **ENTRYPOINT:** Utiliza `ENTRYPOINT` cuando quieras que tu contenedor actúe como un ejecutable de forma predeterminada y siempre necesites ejecutar un comando específico al iniciar el contenedor. Es útil cuando quieres asegurarte de que ciertos comandos o configuraciones siempre se apliquen, incluso si el usuario intenta anularlos.
+
+________________
+
+# comando COPY
+
+El comando `COPY` en un Dockerfile se utiliza para copiar archivos o directorios desde el sistema de archivos del host hacia el sistema de archivos del contenedor que se está construyendo.
+
+La sintaxis básica del comando `COPY` es la siguiente:
+
+```dockerfile
+COPY <origen> <destino>
+```
+
+Donde:
+- `<origen>` especifica la ruta en el sistema de archivos del host donde se encuentran los archivos o directorios que se desean copiar.
+- `<destino>` especifica la ruta dentro del contenedor donde se copiarán los archivos o directorios desde el origen.
+
+En el contexto de tu pregunta, `COPY . /app` indica que se copiará el contenido del directorio actual (representado por `.`) del contexto de construcción (es decir, donde se encuentra el Dockerfile y otros archivos relacionados) al directorio `/app` dentro del contenedor que se está construyendo.
+
+Por ejemplo, si tienes una estructura de directorios como esta:
+
+```
+|-- Dockerfile
+|-- app
+|   |-- archivo1.txt
+|   |-- archivo2.txt
+```
+
+y en tu Dockerfile tienes la instrucción `COPY . /app`, durante la construcción del contenedor, los archivos `archivo1.txt` y `archivo2.txt` se copiarán al directorio `/app` dentro del contenedor.
+
+_________________________
+
+ADD vs COPY
+
+Claro, en un archivo Dockerfile, tanto `ADD` como `COPY` se utilizan para copiar archivos y directorios del sistema de archivos del host al sistema de archivos del contenedor que se está construyendo. Sin embargo, tienen algunas diferencias clave:
+
+**1. `COPY`:**
+
+- `COPY` simplemente copia archivos o directorios del host al sistema de archivos del contenedor.
+- Es más transparente y directo en su funcionalidad.
+- Se recomienda utilizar `COPY` cuando se copian archivos locales del host al contenedor y no se necesita ninguna funcionalidad adicional.
+
+Ejemplo:
+```Dockerfile
+FROM alpine
+COPY index.html /usr/share/nginx/html/
+```
+En este caso, estamos copiando el archivo `index.html` del directorio local al directorio `/usr/share/nginx/html/` dentro del contenedor.
+
+**2. `ADD`:**
+
+- `ADD` además de copiar archivos, también puede hacer cosas como descomprimir archivos tar y descargar archivos de URLs.
+- Tiene funcionalidades adicionales que podrían no ser evidentes de inmediato.
+- A menos que necesites explícitamente esas funcionalidades adicionales, es recomendable utilizar `COPY` por su transparencia.
+
+Ejemplo:
+```Dockerfile
+FROM alpine
+ADD https://example.com/file.tar.gz /tmp/
+```
+En este caso, estamos descargando un archivo `.tar.gz` de una URL y lo descomprimimos en el directorio `/tmp/` del contenedor.
+
+**¿Cuándo usar cada uno?**
+
+- **`COPY`:** Úsalo cuando simplemente necesites copiar archivos locales al contenedor y no necesites la funcionalidad adicional proporcionada por `ADD`. Es más explícito y recomendado para la mayoría de los casos.
+
+- **`ADD`:** Úsalo si necesitas alguna de las funcionalidades adicionales que proporciona, como descompresión de archivos o descarga de archivos desde una URL. Sin embargo, ten cuidado al usar `ADD` para copiar archivos locales, ya que puede ocultar la intención del Dockerfile y causar confusiones.
+
+https://docs.docker.com/engine/reference/builder/#env
+
+# ARG vs ENV
+
+Tanto `ENV` como `ARG` son instrucciones en un Dockerfile que se utilizan para definir variables, pero tienen diferentes propósitos y comportamientos:
+
+**1. ARG (Argument):**
+
+- `ARG` se utiliza para definir variables que solo están disponibles durante la construcción de la imagen.
+- Estas variables se pueden pasar al Dockerfile desde la línea de comandos cuando se construye la imagen usando el argumento `--build-arg`.
+- Las variables definidas con `ARG` no estarán disponibles en las capas finales de la imagen creada, lo que significa que no estarán disponibles para los contenedores basados en la imagen resultante.
+
+Ejemplo:
+```Dockerfile
+ARG VERSION=latest
+FROM ubuntu:$VERSION
+```
+
+Aquí, `VERSION` es una variable de argumento que se puede pasar durante la construcción de la imagen.
+
+**2. ENV (Environment):**
+
+- `ENV` se utiliza para definir variables de entorno que estarán disponibles tanto durante la construcción de la imagen como cuando se ejecuta un contenedor basado en esa imagen.
+- Estas variables son útiles para configurar el entorno de ejecución dentro del contenedor, como configuraciones de aplicación, variables de ruta, etc.
+- Las variables definidas con `ENV` están disponibles en todas las capas de la imagen y se heredan en los contenedores que se crean a partir de la imagen.
+
+Ejemplo:
+```Dockerfile
+ENV NODE_ENV=production
+RUN npm install --global some-package
+```
+
+En este ejemplo, `NODE_ENV` es una variable de entorno que se establece en "production" y estará disponible tanto durante la construcción de la imagen como cuando se ejecute un contenedor basado en esa imagen.
+
+**Resumen:**
+
+- Usa `ARG` para configurar valores durante el tiempo de construcción de la imagen, como versiones de paquetes o rutas de archivo.
+- Usa `ENV` para configurar variables de entorno que afecten al entorno de ejecución de los contenedores basados en la imagen.
+
+En resumen, `ARG` se utiliza para configurar valores durante la construcción de la imagen, mientras que `ENV` se utiliza para configurar variables de entorno que afectan al comportamiento de los contenedores basados en la imagen.
+
+https://docs.docker.com/develop/develop-images/instructions/

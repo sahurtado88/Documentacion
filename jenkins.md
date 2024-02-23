@@ -882,3 +882,40 @@ pipeline {
     }
 }
 ```
+
+## Configuracion Slaves
+
+![alt text](image-106.png)
+
+cat id_rsa.pub > authorized_keys
+
+### Configurar JNLP
+
+Para instalar un nodo esclavo de Jenkins utilizando JNLP (Java Network Launch Protocol), sigue estos pasos:
+
+1. **Descargar e instalar Java**: Asegúrate de que Java esté instalado en la máquina donde deseas configurar el nodo esclavo. Jenkins requiere Java para ejecutar tanto el servidor principal como los nodos esclavos.
+
+2. **Configurar el entorno del nodo esclavo**:
+   - Abre un terminal o símbolo del sistema en la máquina donde deseas instalar el nodo esclavo.
+   - Descarga la versión del agente de Jenkins que corresponda con la versión del servidor principal de Jenkins. Puedes encontrarlo en la página de descargas de Jenkins.
+   - Descomprime el archivo del agente en una ubicación de tu elección en el sistema.
+
+3. **Configurar el nodo esclavo en Jenkins**:
+   - En el servidor principal de Jenkins, ve a la página de administración.
+   - Haz clic en "Administrar nodos".
+   - Haz clic en "Nuevo nodo".
+   - Ingresa un nombre para el nodo esclavo y selecciona "Esclavo con conexión a través de Java Web Start".
+   - Haz clic en "OK".
+
+4. **Configurar el cliente JNLP en el nodo esclavo**:
+   - En la máquina donde instalaste el nodo esclavo, navega al directorio donde descomprimiste el archivo del agente de Jenkins.
+   - Dentro de este directorio, encontrarás un archivo JAR llamado `agent.jar`. Ejecuta este archivo usando Java. Por ejemplo:
+     ```
+     java -jar agent.jar -jnlpUrl http://<URL del servidor de Jenkins>/computer/<nombre del nodo esclavo>/slave-agent.jnlp -secret <clave secreta>
+     ```
+     Reemplaza `<URL del servidor de Jenkins>` con la URL de tu servidor principal de Jenkins y `<nombre del nodo esclavo>` con el nombre que le diste al nodo esclavo en Jenkins. La `<clave secreta>` es proporcionada durante la configuración del nodo esclavo en Jenkins.
+
+5. **Verificar la conexión**: Una vez que ejecutes el comando, el nodo esclavo intentará conectarse al servidor principal de Jenkins utilizando JNLP. Si la configuración es correcta, deberías ver que el nodo esclavo aparece en la página de administración de nodos de Jenkins y se muestra como "Online".
+
+Este proceso instalará y configurará un nodo esclavo de Jenkins que se conecta al servidor principal utilizando JNLP. Es importante asegurarte de que los puertos necesarios estén abiertos en tu entorno para permitir la comunicación entre el nodo esclavo y el servidor principal.
+
