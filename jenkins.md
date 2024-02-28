@@ -919,3 +919,40 @@ Para instalar un nodo esclavo de Jenkins utilizando JNLP (Java Network Launch Pr
 
 Este proceso instalará y configurará un nodo esclavo de Jenkins que se conecta al servidor principal utilizando JNLP. Es importante asegurarte de que los puertos necesarios estén abiertos en tu entorno para permitir la comunicación entre el nodo esclavo y el servidor principal.
 
+________________________
+
+## Job
+
+un "job" en Jenkins es una unidad básica de trabajo que ejecuta un conjunto de acciones automatizadas. Estas acciones pueden incluir tareas como la compilación de código fuente, la ejecución de pruebas automatizadas, el análisis estático de código, la generación de artefactos, el despliegue de aplicaciones, entre otros.
+
+Los jobs en Jenkins son esenciales para establecer prácticas de integración continua (CI) y entrega continua (CD), ya que permiten automatizar y gestionar todo el proceso de desarrollo de software, desde la compilación hasta el despliegue, de manera eficiente y reproducible.
+
+Cada job en Jenkins tiene su propia configuración, que incluye detalles como la ubicación del repositorio de código fuente, las instrucciones para la compilación y las pruebas, los pasos de post-procesamiento, las notificaciones, y más. Estas configuraciones se definen en el panel de configuración del job dentro del entorno de Jenkins.
+
+Los jobs se pueden ejecutar manualmente por un usuario o pueden ser activados automáticamente por eventos, como cambios en el repositorio de código fuente (utilizando la opción "poll SCM"), temporizadores programados, o desencadenadores externos.
+
+En resumen, un job en Jenkins representa una tarea automatizada que lleva a cabo una serie de acciones específicas dentro del proceso de desarrollo de software, contribuyendo así a la automatización y mejora de la eficiencia en el ciclo de vida del desarrollo de software.
+
+________________
+
+## POLL SCM
+
+Claro, "poll SCM" en Jenkins es una característica que permite a Jenkins verificar periódicamente un repositorio de control de versiones (como Git, Subversion, Mercurial) en busca de cambios. Cuando se habilita la opción "poll SCM" para un job específico, Jenkins consulta el repositorio según el horario configurado y verifica si ha habido cambios desde la última construcción. Si se detectan cambios, Jenkins inicia una nueva construcción del job.
+
+El propósito de "poll SCM" es automatizar el proceso de construcción y pruebas en respuesta a los cambios en el código fuente. Esto ayuda a garantizar que las nuevas implementaciones se integren de manera rápida y eficiente en el ciclo de desarrollo y pruebas.
+
+Aquí tienes un ejemplo de cómo se usa "poll SCM" en Jenkins:
+
+Supongamos que tienes un proyecto de desarrollo de software almacenado en un repositorio Git. Quieres configurar un job en Jenkins para que construya y pruebe automáticamente el proyecto cada vez que se realicen cambios en el repositorio.
+
+1. Creas un job en Jenkins para el proyecto y configurarlo para que utilice Git como el sistema de control de versiones.
+
+2. En la configuración del job, activas la opción "Poll SCM" y estableces un intervalo de tiempo (por ejemplo, cada 5 minutos).
+
+3. Cuando se activa el job, Jenkins consulta el repositorio Git cada 5 minutos para ver si ha habido cambios desde la última construcción.
+
+4. Si Jenkins detecta cambios en el repositorio (por ejemplo, nuevos commits), inicia una nueva construcción del job automáticamente.
+
+5. El job ejecuta las tareas de compilación, pruebas y cualquier otra acción definida en su configuración.
+
+Este es un ejemplo básico de cómo se utiliza "poll SCM" en Jenkins para automatizar la integración continua en un proyecto de desarrollo de software. Esta característica es útil para garantizar que los equipos de desarrollo puedan mantenerse al tanto de los cambios en el código y realizar pruebas regulares para garantizar la estabilidad y la calidad del software.

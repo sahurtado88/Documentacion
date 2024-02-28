@@ -114,7 +114,7 @@ CD: the prectice of continuously maintening code in a deployable state
 
 The practice of frequently deploying small code changes to production
 
-Continuos delivery is keeping the code ina deployable state Continuos deployment is actually doing the deployment frequently
+Continuos delivery is keeping the code in a deployable state Continuos deployment is actually doing the deployment frequently
 
 Continuous Delivery is a software engineering practice where the code changes are prepared to be released. Continuous Deployment aims at continuously releasing the code changes into the production environment.
 
@@ -627,7 +627,7 @@ idempotency — the ability to repeatedly apply code to guarantee a desired stat
 
 ## Virtual Machine vs Container
 
-in vitual machine you needd Guest OS and this make more heavier  in docker you don't need de guest OS so the docker is more lighter is platform independt
+in vitual machine you needd Guest OS and this make more heavier  in docker you don't need de guest OS so the docker is more lighter is platform independent
 
 
 ### LOG MANAGEMENT TOOLS
@@ -910,5 +910,13 @@ With this capability, you can forecast cost of goods sold (COGS), secure gross m
 - canary: release a new version to a subset of users, then proceed to a full rollout
 - a/b testing: release a new version to a subset of users in a precise way (HTTP headers,cookie, weight, etc.).
 - shadow: release a new version alongside the old version. Incoming traffic is mirrored to thenew version and doesn't impact the response.
+
+### throttling
+En el contexto de la tecnología, el "throttling" se utiliza para controlar la cantidad de recursos que un dispositivo o una aplicación puede utilizar. Por ejemplo, un proveedor de servicios de internet podría "throttle" la velocidad de tu conexión a internet si has consumido una cierta cantidad de datos en un período de tiempo específico. Esto significa que tu velocidad de conexión se reduce temporalmente para evitar un uso excesivo de datos.
+
+En resumen, "throttling" es como reducir la velocidad de algo para controlar su flujo o uso, ya sea de datos en internet, energía en un motor, o cualquier otro recurso.
+
+
+
 
 
