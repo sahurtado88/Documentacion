@@ -182,6 +182,55 @@ you need an alarm to concurrency
 
 ### Virtual Private CLoud (VPC) Integration
 
+- VPC es a isolated and private network within AWS
+- Public and Private subnets
+- Critical for security and apps with compliance guidelines
+
+**VPC and Lambda**
+
+- Only necessary when your function needs to access resources not accesible over public internet
+- Example: RDS or elasticsearch in private subnet
+- Behind the scenes, Lambda creates ENIs for each subnet the function is deployed into
+- No longer contributes to cold start latency
+- VPC endpoints can be used to comunicate with some AWS services privately
+
+![alt text](image-7.png)
+for conect lambda with S3 you can use VPC endpoint
+
+## Monitoring Lambda
+
+#### Key metrics to monitor
+
+- Invocations
+- Error count and succes rate
+- Duration
+- Throttles
+- Iterator age
+- Concurrent executions
+- Unservered Concurrent execution
+
+![alt text](image-8.png)
+
+
+#### Logging and Metric filters
+
+- Writing to stout automatically writes logs to cloudwatch
+- log lines by default include metadata about the execution
+
+![alt text](image-9.png)
+
+**Metric Filters**
+
+- Allow you to write patterns (think regex) to extract metrics from log lines
+- Much cheaper than using PutMetric
+- More suitable for high TPS aplication
+
+
+
+
+
+
+
 
 
 
