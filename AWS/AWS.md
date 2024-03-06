@@ -676,3 +676,34 @@ EKS allows assigning IPv4 or IPv6 IP addresses to Pods (but not in dualstack mod
 EKS Windows pods and services do not support IPv6 yet.
 AWS Load Balancer Controller with EKS allows IPv6 traffic for IP targets only.
 Conclusion: In wrapping up, we’ve embarked on an insightful journey through the world of IPv4 public IPs and the impending horizon of IPv6. Your thoughts, suggestions, and questions are invaluable — drop them in the comments section below. Stay curious, stay connected, and build on!
+
+_______________________
+
+Tanto "Launch Template" como "Launch Configuration" son conceptos utilizados en Amazon Web Services (AWS) para configurar instancias dentro de grupos de Auto Scaling, pero tienen diferencias significativas en cuanto a su funcionalidad y flexibilidad.
+
+Launch Configuration:
+Launch Configuration es un recurso de AWS que define las configuraciones para las instancias EC2 que se lanzarán automáticamente dentro de un grupo de Auto Scaling.
+
+Las Launch Configurations son más simples y menos flexibles en comparación con los Launch Templates.
+
+No admiten versionamiento directo y no puedes actualizar una Launch Configuration una vez que ha sido creada. Si necesitas actualizar una configuración, necesitas crear una nueva Launch Configuration.
+
+Las Launch Configurations permiten definir configuraciones básicas para tus instancias, como tipo de instancia, AMI, almacenamiento, clave SSH, grupos de seguridad, etc.
+
+Launch Template:
+Launch Template es un recurso más flexible y avanzado que te permite definir configuraciones para instancias EC2 dentro de grupos de Auto Scaling.
+
+Los Launch Templates admiten versionamiento directo, lo que significa que puedes actualizar y mantener múltiples versiones de una plantilla en particular.
+
+Además de definir configuraciones de instancia similares a las Launch Configurations, los Launch Templates pueden incluir configuraciones avanzadas como etiquetas, opciones de red, configuraciones de IAM, UserData, y más.
+
+Los Launch Templates ofrecen una forma más sofisticada de manejar configuraciones, permitiendo una gestión más eficiente y simplificada de las instancias dentro de tus grupos de Auto Scaling.
+
+En resumen, si buscas una solución más básica y simple para configurar instancias en tus grupos de Auto Scaling, una Launch Configuration puede ser suficiente. Sin embargo, si necesitas mayor flexibilidad, versionamiento y configuraciones avanzadas, un Launch Template sería la opción más adecuada. En general, se recomienda el uso de Launch Templates sobre Launch Configurations debido a su mayor flexibilidad y funcionalidad.
+
+
+__________
+
+# What is the difference between AWS Shield and WAF?
+What is AWS Shield and How Does it Work? | StormIT
+The difference between them is that AWS WAF(Web Application Firewall) provides protection on the application layer and AWS Shield protects the infrastructure layers of the OSI model.

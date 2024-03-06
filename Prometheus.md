@@ -262,3 +262,24 @@ Aquí hay un ejemplo más concreto utilizando métricas de Kubernetes:
 En este caso, la consulta suma el tiempo total de CPU utilizado por los contenedores y cuenta el número de pods, ambos agrupados por el espacio de nombres (namespace).
 
 Ajusta las consultas según tus necesidades específicas y las métricas que estés utilizando en tu entorno.
+
+______________________
+
+
+La consulta PromQL que proporcionaste tiene dos partes:
+
+sum(tenants_number_of_broken{service_name="$serviceName", pod=~"$pod"}): Esta parte de la consulta utiliza la función sum() para agregar el valor de la métrica tenants_number_of_broken que cumple ciertas condiciones. Estas condiciones son:
+
+El service_name debe coincidir con el valor de la variable $serviceName.
+El pod debe coincidir con un valor que coincida con el patrón especificado en la variable $pod (usando coincidencia de expresiones regulares con =~).
+Esta parte de la consulta suma todos los valores de tenants_number_of_broken que cumplen estas condiciones.
+
+OR on() vector(0): Esta parte de la consulta es interesante. En PromQL, OR no es un operador lógico que se use típicamente como lo sería en un lenguaje de programación, sino que se utiliza para realizar operaciones de combinación de series temporales. En este caso, OR está combinando el resultado de la operación sum() con un vector de longitud cero.
+
+on(): La cláusula on() se utiliza para especificar las etiquetas de las series temporales a las que se aplica la operación. En este caso, está vacía, lo que significa que no se aplica a ninguna etiqueta en particular.
+
+vector(0): vector(0) es una función que crea una serie temporal con un solo punto que tiene un valor de 0. En este caso, se está creando un vector con un solo punto que tiene un valor de 0.
+
+La combinación de estas dos partes de la consulta significa que si no hay datos disponibles que cumplan con las condiciones de la primera parte (sum()), la consulta devolverá un vector con un único punto que tiene un valor de 0. Esto podría ser útil para representar un valor predeterminado en caso de que no haya datos disponibles en la primera parte de la consulta.
+
+___________________

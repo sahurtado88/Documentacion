@@ -10013,3 +10013,211 @@ look out
 
 ____________
 
+
+look back: to think of an event in the past
+
+During the 10th year celebration of Neolife Inc., the employees looked back on their most unforgettable moments in the company. Some gave speeches and talked about memorable events at work.
+
+"When you look back now, how do you assess the impact of the computers?"
+
+impact: a strong effect or influence
+
+Bill Gates' impact goes beyond the tech industry. Because of his company's products, many business processes became more efficient.
+
+"When you look back now, how do you assess the impact of the computers?"
+
+hindsight: wisdom or knowledge gained about something after it has happened
+
+Phoebe bought a used phone in order to save money. But in hindsight, she actually wasted money because the phone stopped working only after a week.
+
+"Looking back in hindsight, what do you think the biggest impact that they -- the Apple I and Apple II -- had?"
+
+formula: a plan or a combination of actions to solve a problem or to achieve a good result
+
+The fitness expert said that his formula for good health is regular exercise and proper diet.
+
+"And it was the old formula: you'll plug some cards in that connect to teletypes ..."
+
+reputation: the opinion that is generally held about a person or group
+
+Because the hotel has a reputation for providing quality service at an affordable price, it is almost always fully booked.
+
+"So, we got the reputation for ... ease of use."
+
+drag and drop: to move something, such as an icon, image or highlighted text, to another part of a computer screen using a mouse or a similar device
+
+You can drag and drop a file from one folder to another.
+
+"You drag and drop instead of having to memorize all these awkward commands ..."
+
+implement: to start using something, such as a new system or technology
+
+The new timekeeping system is easy to implement because of the device's simple and user-friendly design.
+
+"And graphics was so easy to implement."
+
+Grammar tip: Compound nouns
+
+A compound noun is formed when two or more words are put together to form a new noun. Below are some kinds of compound nouns.
+
+A closed compound noun is a single word formed from two words. There are no spaces or punctuation marks in between the two words.
+
+"Looking back in hindsight, what do you think the biggest impact that they -- the Apple I and Apple II -- had?"
+
+"You type on a keyboard and watch it on a TV."
+
+"... the teletype costs as much as two cars."
+
+An open compound noun is a noun formed by combining at least two words. They are separated by a space.
+
+"They’d only be built with a keyboard and a video display."
+
+More examples:
+
+Terry found an affordable apartment near her office, but the drawback was the apartment's small size.
+Liz prepared an annual report for the company's year-end meeting.
+A greenhouse is a glass building for plants.
+
+_____________________________
+
+RENEWABLE ENERGY
+Renewable energy refers to energy made from sources that do not run out or can be naturally replaced. Common renewable energy sources include sunlight, wind, rain, waves, tides and geothermal heat.
+
+DEMISE
+the end of something
+
+The demise of feudalism enabled people from different social classes to own land.
+
+ECLIPSE
+to become more noticeable than something; to diminish the importance of something by exceeding it
+
+Ride-sharing apps such as Uber went on to eclipse the taxi industry by offering security, convenience and affordability.
+
+ENERGY INDEPENDENCE
+Energy independence is a concept wherein a country can produce all of the energy that it uses instead of buying from another country.
+
+ON PAR WITH (SOMETHING)
+as good as something; equal to something
+
+With the help of the government, the country's technology is now on par with those from more developed countries.
+
+DECENTRALIZE
+move control from a central point or organization and distribute it among smaller agencies
+
+The move to decentralize scientific research helped agriculturists adapt their studies to their specific regions.
+
+____________________
+
+the heart of (something): the central or most important part of a thing or place
+
+The central business district is at the heart of the city, surrounded on all sides by residential areas.
+
+"Set the controls for the heart of the sun."
+
+probe: a spacecraft that carries tools used for exploration
+
+Scientists used a probe to take pictures of the moon's surface.
+
+"In the summer of 2018, the Parker Solar Probe will lift off from Earth."
+
+atmosphere: the air that surrounds a planet such as Earth
+
+The thin atmosphere at the top of a tall mountain makes it difficult to breathe.
+
+"It will brush through the halo of hot gases that form the sun's outer atmosphere: the corona."
+
+placid: calm, peaceful, without much movement
+
+The lack of wind around the lake made the water placid.
+
+"The surface of the sun looks placid to our eyes, but it is pierced and roiled by strong magnetic fields."
+
+roiled: quickly moving, or being made to move, in twisting circles
+
+After the fireplace was lit, dark smoke roiled from the chimney.
+
+"The surface of the sun looks placid to our eyes, but it is pierced and roiled by strong magnetic fields."
+
+magnetic fields: areas around an object that has moving electrical energy; also a force aside from gravity that causes things to come closer or go farther
+
+The Earth's magnetic field is the reason all compasses point north.
+
+"The surface of the sun looks placid to our eyes, but it is pierced and roiled by strong magnetic fields."
+
+elliptical orbit: an oval-shaped path that one object follows when traveling around another object
+
+The Earth makes one elliptical orbit around the sun every 365 days.
+
+"... the spacecraft will make seven flybys of Venus over seven years, gradually tightening its elliptical orbit ..."
+
+astrophysicist: someone who studies the physical properties of heavenly bodies, such as planets and stars
+
+Astrophysicists study stars and planets in space, hoping to learn what they are made of.
+
+"Eugene Parker is an astrophysicist at the University of Chicago."
+
+auroras: bands of colored light that can be seen in the night sky in some places on Earth, caused by the interactions of charged particles
+
+People can see auroras in places such as Sweden and Norway in the north, and Antarctica in the south.
+
+"... a powerful storm called the Carrington Event produced auroras as far south as Cuba."
+
+Grammar tip: Collocations
+
+Collocations are combinations of words that are often placed together because most native English speakers use them in this way. Collocations can be formed by combining different parts of speech, such as nouns, adjectives and verbs.
+
+"In the summer of 2018, the Parker Solar Probe will lift off from Earth."
+
+"The Parker probe is the first NASA spacecraft to be named after a living person."
+
+"If Earth gets in the way of one of these storms, it could be bad news."
+
+More examples:
+
+Feel free to order anything from the menu.
+Sheila always makes her bed every morning before she eats breakfast.
+According to the weather report, there will be heavy rains this afternoon.
+
+______________________________
+
+# "Little" and "a little" with nouns
+When used with uncountable nouns, "little" means "less than normal."
+
+Jeremy is a very reliable worker. He needs little supervision.
+
+When used with countable nouns, they both simply mean "small" or "a small ..."
+
+"A little" is also used with uncountable nouns. It means "some, though not much."
+
+Jeremy worked independently for his previous projects but his new assignment is more difficult. You need to give him a little supervision.
+
+If the noun is mentioned earlier, "little" and "a little" can be used alone.
+
+New employees usually need a lot of guidance, but Aaron needs very little.
+Gordon doesn't need much praise, but he still needs a little. Don't forget to let him know that he's done a good job.
+
+"Little" and "a little" with comparative adjectives
+With comparative adjectives, "little" means "not as much as one expected."
+
+He is disappointed. He paid a lot of money to buy a fast computer, but his new computer is little faster than his old one.
+
+With comparative adjectives, "a little" means "a bit more."
+
+His new computer may not be much faster than his old one, but it is still a little faster.
+
+"Little" and "a little" have different meanings and uses.
+
+If the noun is mentioned earlier, "little" and "a little" can be used alone.
+
+When used with uncountable nouns:
+
+"little" means "less than normal"
+"a little" means "some, though not much"
+When used with comparative adjectives:
+
+"little" means "not as much as one expected"
+"a little" means "a bit more"
+
+_______________________
+
+
