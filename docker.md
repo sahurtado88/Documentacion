@@ -891,11 +891,117 @@ docker run --network none -d --name <nombrecontenedor> -ti <nombre_imagen>
 
 ## Docker Compose
 
+Es una herramienta de docker que permite usar multicontenedores
+donde se definen contenedores, imagenes volumenes y redes en un solo archivo
+
+### Primer docker compose
+
+puede ser culaquier nombre de archvio con extension .yml sus dos valores obligatorios son version y services
+
+```
+version: '3'
+services:
+  web:
+    container_name: nginx
+    ports:
+      - "8080:80" ## HOST: CANTAINER
+    image: nginx  
+
+volumes:
+networks:
+```
+para correr un docker.compose se usa
+
+```
+docker-compose up -d
+```
+eliminar docker-compose
+```
+docker-compose down
+```
+https://docs.docker.com/compose/compose-file/compose-file-v3/
 
 
+### Variables de entorno en compose
+
+```
+version: '3'
+services:
+  db:
+    image: mysql:5.7  
+    container_name: mysql
+    ports:
+      - "3306:3306" ## HOST: CANTAINER
+    environment:
+     - "MYSQL_ROOT_PASSWORD=123456"  
+
+```
+
+Environment desde file
+```
+version: '3'
+services:
+  db:
+    image: mysql:5.7  
+    container_name: mysql
+    ports:
+      - "3306:3306" ## HOST: CANTAINER
+    env_file: common.env
+
+```
+
+common.env
+```
+MYSQL_ROOT_PASSWORD=123456
+```
+ 
+ ### Volumenes en docker compose
+
+volumen nombrado
+```
+version: '3'
+services:
+  web:
+    container_name: nginx
+    ports:
+      - "8080:80" ## HOST: CANTAINER
+    volumes:
+      - "vol2: /usr/sahre/nginx/html"  
+    image: nginx  
+volumes:
+ vol2:
+
+```
+
+volumen de host
+```
+version: '3'
+services:
+  web:
+    container_name: nginx
+    ports:
+      - "8080:80" ## HOST: CANTAINER
+    volumes:
+      - "/home/user/docker-compose/html: /usr/sahre/nginx/html"  
+    image: nginx  
 
 
+```
+### Redes en docker-compose
 
+```
+version: '3'
+services:
+  web:
+    container_name: nginx
+    ports:
+      - "8080:80" ## HOST: CANTAINER
+    image: nginx 
+    networks:
+      - net-test
+networks:
+  net-test:
+```
 ______________________________________
 
 - Un contenedor con la imagen de Apache + php creada en la anterior solicitud con:

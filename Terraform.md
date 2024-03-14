@@ -840,7 +840,7 @@ If we have lock file, the lock file causes terraform to always install the same 
 
 ## Resources syntax
 
-![Alt text](image-6.png)
+![resoucre syntax](./Images/resourcesyntax.png)
 
 ## Terraform resource behavior
 

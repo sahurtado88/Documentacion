@@ -10220,4 +10220,608 @@ When used with comparative adjectives:
 
 _______________________
 
+# Dangling modifiers
 
+Correcting incorrectly placed modifiers
+A participial phrase that is either placed in the wrong part of a sentence or written in the wrong way so that it modifies the wrong noun is called a dangling modifier.
+
+When implemented carefully, misunderstandings can be prevented by communication strategies.
+
+This sounds as if misunderstandings, not communication strategies, must be implemented carefully.  To correct this dangling modifier, we can move the noun being modified closer to the participial phrase:
+
+Communication strategies, when implemented carefully, can prevent misunderstandings.
+
+Sometimes, the noun modified by the participial phrase is not in the sentence.
+
+While waiting for the client's feedback, there was nothing else to do but read and reply to emails.
+
+To correct this dangling modifier, we need to add the correct noun and put the participial phrase beside it:
+
+While waiting for the client's feedback, we had nothing else to do but read and reply to emails.
+A dangling modifier is an error in sentence structure in which the modifier is placed in the wrong part of a sentence, or the noun modified by the participial phrase is not present.
+
+Incorrect:
+When implemented carefully, misunderstandings can be prevented by communication strategies.
+
+Correct:
+Communication strategies, when implemented carefully, can prevent misunderstandings.
+
+_______________
+
+# Bank ivestment
+
+deposit account/bank account
+
+money or funds put in the bank to earn interest. Most types of bank accounts can be withdrawn anytime by the account holder. The most common example is a savings account.
+
+
+certificate of deposit (CD)/time deposit
+
+an instrument issued by a bank for a deposit that may not be withdrawn until its maturity date
+
+
+money market account (MMA)
+
+a special savings account that pays higher-than-regular interest rates but requires higher-than-normal deposits and maintaining balance. Interest rates are often variable, depending on economic conditions. Withdrawals are allowed but limited to five (or less) times a month.
+
+
+trust fund
+
+funds or personal assets that are entrusted to a bank for management on behalf of a third party, usually a minor or disabled person
+
+annuity
+
+a contract between an investor and an insurance company which requires the investor to pay a one-time large investment amount or periodic payments, where returns (called "annuity earnings") to the investor will begin at a future date, also in the form of periodic payments. Aside from the promised annuity earnings, the investor is also protected by a life policy.
+
+
+bond
+
+a debt instrument issued by private companies or the government, with the promise to pay the investor the principal amount plus interest when the bond matures
+
+combines all investors’ funds to invest in a variety of instruments like stocks, bonds, and other securities
+
+
+real estate/real property/realty
+
+land and its improvements
+
+
+real estate investment trust (REIT)
+
+uses the pooled funds of investors (similar to a mutual fund) to invest in real estate or give mortgage loans to real estate investors/buyers
+
+
+option
+
+a formal contract that gives the investor the right (but not the obligation) to buy or sell a specific good, currency, security, or other instrument at a fixed price on or up to a fixed expiration date
+
+futures
+
+a binding agreement between an investor and seller to buy/sell a specific good, currency, security, or other instrument at a fixed price on a fixed date
+
+
+stock investment/equity investment
+
+buying and holding shares of ownership of a company, and receiving gains in the form of dividends or by selling the shares/stocks in the event of a price increase
+
+Here is a list of different kinds of investments:
+
+Bank investments
+
+deposit account/bank account
+certificate of deposit (CD)/time deposit
+money market account (MMA)
+trust fund
+Non-bank investments
+
+annuity
+bond
+mutual fund
+real estate/real property/realty
+real estate investment trust (REIT)
+option
+futures
+stock investment/equity investment
+
+____________________________
+
+# Basic terms in economics
+
+Economics
+
+the social science that studies how goods and services are produced, distributed and consumed
+
+macroeconomics
+
+the study of economic issues on a national scale.
+
+
+microeconomics
+
+the study of the economic activity of individuals or small groups
+
+
+development economics
+
+the study of economics in developing countries, particularly on structural change, poverty and economic growth
+
+
+monetary theory
+
+a framework for analyzing money and its function as a medium of exchange
+
+
+market
+
+a venue for the exchange of goods or services
+
+
+oligopoly
+
+a market dominated by a few major suppliers
+
+
+monopoly
+
+a market dominated by only one major supplier
+
+
+perfect competition
+
+a market that is not dominated by any major supplier, where every market power is the same
+
+supply
+
+the amount of goods available at a given price at any time
+
+
+demand
+
+how many consumers want the goods that are in supply
+
+
+inflation
+
+an increase in prices that occurs when money supply increases but supply of services or goods does not
+
+gross domestic product (GDP)
+
+the total value of all the goods and services produced in a country within a year
+
+
+gross national product (GNP)
+
+the total market value of the goods and services produced in one year by the people of a given country
+
+Here are basic terms used in economics:
+
+Kinds of economic studies
+
+macroeconomics
+microeconomics
+development economics
+monetary theory
+Terms related to market economy
+
+market
+oligopoly
+monopoly
+perfect competition
+supply
+demand
+inflation
+Terms related to national economy
+
+gross domestic product (GDP)
+gross national product (GNP)
+
+____________________
+
+# Describing the degree of change
+
+
+slight/slightly
+
+describes a very small change between two values
+
+
+sharp/sharply/dramatic/dramatically
+
+describes a huge and sudden change between two values
+
+
+steady/steadily
+
+describes the same degree of change in just one direction through several values
+
+
+# Describing the speed  of change
+
+
+rapidly/quickly
+
+The prices of oil-based goods have increased rapidly in the last quarter.
+
+slowly/gradually
+
+After the sudden increase in April, our customer base has continued building up gradually.
+
+peaked/reached a peak
+
+Sales reached a peak last December owing to an increased activity in Christmas shopping.
+
+fell to a low/reached bottom
+
+Customer satisfaction ratings fell to a low during our company's transition to the new system.
+
+stands/stood
+
+Our company's stock price stands at the same level as yesterday.
+
+The following is a list of terms that you can use to describe the speed at which something changes:
+
+Rate of change
+
+rapidly/quickly
+slowly/gradually
+Describing trends in graphs
+
+peaked/reached a peak
+fell to a low/reached bottom
+stands/stood
+
+_______________
+
+# How to talk about trends
+
+When talking about trends, you may
+
+Describe the speed or size of the movement
+There is a significant increase/decrease in smartphone sales.
+Fewer/more companies/people are jumping on the bandwagon.
+ 
+Explain the reason or consequences of the change
+Going green is "in" these days because it not only saves company money but also helps conserve the environment.
+The rapid employment growth in suburban areas will positively influence the supply chain in the property market.
+Many companies/people have already done it and many more will follow suit.
+You can use compound adjectives when describing trends
+
+significant decrease over an eight-year period
+a slightly low increase
+a steadily growing number
+
+_________________
+
+PROJECTED TO DO (SOMETHING)
+expected to do or achieve something in the future, based on current information
+
+Based on this week's data, the sales of XYZ Brand smartphones are projected to increase in the coming weeks.
+
+SHEDS LIGHT (ON SOMETHING)
+helps explain something or make it clearer
+
+The witness' explanation sheds light on what happened during the incident last night.
+
+SCANNER DATA
+information, such as price, brand and quantity, that is taken by using a specialized device to read a code on a product
+
+The scanner data shows that Brand X milk is more expensive than Brand Z.
+
+ROLLING OUT (SOMETHING)
+offering or making something available to the public for the first time
+
+The clothing company is rolling out their new sport shoes next month.
+
+CUTTING BACK ON (SOMETHING)
+decreasing the consumption or use of something
+
+Brad is cutting back on calories by eating less wheat and bread.
+
+LAG
+the time difference or delay between two related events
+
+There is a two-second lag between the actual sports competition and the video that is showing the event online.
+
+___________________
+
+Here are phrases you can use to facilitate a conference call.
+
+Thank you for joining me today.
+Let's proceed.
+Go ahead.
+You have a point there.
+Do you have any ideas/suggestions?
+What do you suggest?
+If any of you have questions, just email me.
+Let's meet again next...
+ 
+Modals and question words are useful for suggesting and responding to ideas.
+
+I'd like to propose...
+I'd like to say something about that, if I may.
+May I suggest...?
+(Maybe/Perhaps) We can/could...
+Can/May I add something to that?
+What/How about...?
+
+_________________________
+# Adjetives vs adverb
+
+Uses of adjectives
+An adjective is a word that describes a person, a place, or an object. It is usually placed before the word it describes.
+
+An adjective is usually placed before the word it describes.
+
+It was a short meeting.
+They have a kind manager.
+They hired a new employee.
+
+An adjective can come after the word it describes. It follows a form of the verb "to be."
+
+After the verb "to be":
+
+The meeting was short.
+Their manager is kind.
+The employee is new.
+
+After other verbs:
+
+My colleague looks tired.
+The client seemed upset.
+The news sounded bad.
+
+An adjective used in this way can show how something sounds, smells, tastes, feels, looks or seems.
+
+An adverb is a word that often ends in -ly.
+
+An adverb can describe a verb.
+
+The assistant speaks carefully.
+The report began promptly.
+The presentation ended quickly.
+
+An adverb can also describe an adjective.
+
+The client was completely satisfied.
+The project proposal was extremely interesting.
+The analysis was impressively detailed.
+
+An adverb can also describe another adverb.
+
+The presentation went surprisingly smoothly.
+The speaker ended unexpectedly early.
+The audience listened unusually attentively.
+
+REMEMBER: Always take note of how the word is used. An adjective describes a noun while an adverb describes a verb, an adjective, or another adverb.
+
+An adjective always describes a noun.
+
+He has a difficult job .
+The job is difficult. (the adjective “difficult” describes the noun “job”)
+
+An adverb describes a verb, an adjective, or another adverb.
+
+Mikhail sends emails daily. (the adverb "daily" describes the verb “sends”)
+His emails are usually brief. (the adverb “usually” describes the adjective “brief”)
+
+REMEMBER: There are adjectives that end in -ly, such as:
+
+ugly
+curly
+friendly
+lovely
+timely
+costly
+
+These are NOT adverbs.
+
+An adjective describes nouns like people, places or objects. It can be used in two ways:
+
+adjective + noun
+small box
+red jacket
+noun + verb + adjective
+The food smells delicious.
+The movie seems long.
+An adverb describes verbs, adjectives or other adverbs. It can be used in the following ways:
+
+verb + adverb
+speaks loudly
+listens carefully
+adverb + adjective
+very tall
+slightly important
+adverb + adverb
+surprisingly quickly
+unexpectedly easily
+
+_____________________________
+
+phase: a period of time in a person's life or development
+
+Kelly grew taller during her adolescent phase, right around when she was 13 years old.
+
+"Mid-life -- mid-career is the hardest phase for the majority of people."
+
+midlife crises: situations in which people in their middle ages make changes to their lives because they feel negative emotions, such as having regrets or anxiety
+
+Larry is having a midlife crisis; he started doing pottery -- a hobby he had wanted to do ever since he was young.
+
+"There are many midlife crises: The sense of missing out -- there are other lives you could have lived ..."
+
+missing out: losing a chance to do or enjoy something
+
+Tyler regrets missing out on today's company lunch; he would have had a free meal.
+
+"There are many midlife crises: The sense of missing out -- there are other lives you could have lived ..."
+
+grind: an activity or work that is boring or difficult
+
+The daily grind of office work made Shirley feel unmotivated.
+
+"Another is the sense of, 'It's just a grind.' You're constantly driving from project to project to project ... but there's a kind of hollowness or emptiness in it."
+
+at bottom: the real nature or cause of something
+
+At bottom, the project became successful because the team coordinated well with other teams.
+
+"At bottom, these are problems about how to live, and how to live a good life."
+
+philosophy: the study about the meaning of life, nature, beliefs, etc.
+
+Ethics is a branch of philosophy that discusses what good or bad behavior is.
+
+"And that's why I think philosophy can really be helpful at this stage of life."
+
+commensurable: able to be quantified by the same standard or factor
+
+Sue thinks that cars today are not commensurable with the cars of the past because today's technologies are more advanced.
+
+"... when you make decisions, it's pretty rare for the values that you're comparing to be what philosophers call 'commensurable.'"
+
+writ large: similar to something but bigger or very obvious to everyone
+
+The casual work culture present in multiple companies can be a reflection of the country's work ethics writ large.
+
+"Even if you're sure which one it is that you want to do, there's still a kind of small-scale loss, 'cause you miss out on something different. ... One kind of mid-career crisis is the experience of that -- sort of, writ large. "
+
+mitigate: lessen the seriousness or impact of something
+
+Proper construction of a building can mitigate structural damages in the event of an earthquake.
+
+"... and that [attachments] mitigate and sort of counteract the regret she would otherwise feel."
+
+closest to home: describing something that affects someone's emotions the most because it is strongly relatable
+
+For Bernard, the show's story hit closest to home; he experienced the same health struggles that the main character went through.
+
+"And really, the one that for me, hit closest to home is the distinction between what I call 'telic' and 'atelic' activities."
+
+finite: having an end or limit
+
+The Earth has a finite supply of coal so it may not be good source of energy in the long term.
+
+"It's the idea of an activity that has a kind of completable, finite ending."
+
+inherent: referring to someone or something's basic nature
+
+An inherent risk of playing sports is getting injured.
+
+"Even though they can be very valuable, telic activities or projects like that have a kind of inherent problem."
+
+temporal: relating to time
+
+The temporal changes in fashion can influence each generation's unique style.
+
+"So atelic activities are ones that don't have that kind of temporal structure."
+
+Grammar tip: The zero and third conditional
+
+Conditionals are sentences used to discuss hypothetical situations, and their effects or consequences. A conditional usually includes a conditional clause, also known as the if-clause.
+
+The zero conditional is used when making statements about real or factual situations at the present time. It is formed by combining the condition (if + simple present tense) and the result (simple present tense.)
+
+"If I ask you, 'Do you want $50 or $100?' -- you take the $100, no regrets."
+
+The third conditional, also known as the "past conditional," is used when talking about imaginary situations in the past. It is formed by combining the condition (if + past perfect) and the result (would + have + past participle.)
+
+"But if she had stuck with music, she would never have met her husband."
+
+More examples:
+
+If it rains heavily, the town's streets get flooded.
+Trixie saves $10 if she buys the cheaper pair of shoes.
+If Paula had chosen a different shirt, her outfit would not have looked good.
+Carlo would have finished the report if he had spent a few more hours in the office.
+
+______________
+
+# Causatives
+
+In causative sentences, the subject causes another person or thing to perform an action. The most commonly used causative verbs are "have," "get," "make" and "let." These verbs have different degrees of force.
+
+"Make" means to force or to control.
+
+The policeman made him stop the car.
+The conference organizers made the participants sit in assigned chairs.
+
+"Get" means to convince or to effect an action or condition.
+
+She got her colleague to work on the report for her.
+Stop coming to work late or you will get yourself fired!
+
+"Have" means to assign or to ask someone to do something.
+
+Mr. Stevens received an urgent phone call, so he had John finish the presentation for him.
+I will be in Toulouse next week, so I won't be here to meet with the designers. I will have my assistant check the designs instead.
+
+"Let" means to allow.
+
+The boss knew that the original deadline was too tight, so she let us submit the report a day later than planned.
+After checking all my documents, the officer let me enter the building.
+
+_______________________
+
+turning (something) around: changing something to make it better
+
+With his new business plan, the CEO turned the company around and saved it from being bankrupt.
+
+"... he ended up joining a gang before turning his life around."
+
+venture: to go somewhere unknown or dangerous
+
+In the past, Europeans ventured out into the seas to explore and discover new land.
+
+"... the "octo" a reference to the only bus line that dares venture into this neighborhood."
+
+make a name for (oneself): to become famous or respected by a lot of people
+
+June made a name for herself when she managed her family's restaurant and tripled its profits.
+
+"And now he wants to help young people realize: They, too, can make a name for themselves."
+
+the face of (something): the way that something appears or is represented
+
+To appeal more to rich customers, the high-end makeup company made a prestigious actress the face of its brand.
+
+"I want to be like the face of, like, of possibility because we -- when you grow here, you're told you will never be anything."
+
+close to (one's) heart: people or things that are very important to someone
+
+Animals are close to Stefan's heart, so he volunteers at the animal shelter to take care of dogs and cats.
+
+"Kibera, where most of his family and friends still live, remains close to his heart ..."
+
+drive: the strong desire to be successful
+
+Ralph's drive and ambition led to his promotion as a department manager.
+
+"I feel like if I wasn't born here, I probably won't be a rapper. […] I probably won't have the same drive."
+
+larger than life: appealing or impressive
+
+Stephen Hawking was considered larger than life; despite his illness, he was a well-respected scientist, professor and author.
+
+"When I saw that boy now, he is living larger than life, you know. "
+
+make it: to be successful
+
+Lars made it; he passed the licensure exam for architects.
+
+"I feel like I will make it, even me, one day."
+
+Grammar tip: Relative clauses that start with "where"
+
+A relative clause is a dependent clause that begins with a relative pronoun. A relative clause that starts with "where" is used to give more information about places.
+
+"Kibera, one of Africa's largest slums and the place where Henry Ohanga grew up."
+
+"Kibera, where most of his family and friends still live, remains close to his heart and features in every one of his hits."
+
+More examples:
+
+The art department where Nathan will be working at is on the 7th floor.
+The building where Diana used to work will be demolished in a few days.
+Matilda's family is looking for a new house where they can live in for a few years.
+
+_______________

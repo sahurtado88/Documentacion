@@ -113,7 +113,7 @@ echo "Finished Copying files" >> /home/cloud_user/backup_logs
     - NewName=$Name
     - NewName=${Name}
 
-
+```
 TM="SERGIO"
 echo $TM
 SERGIO
@@ -121,18 +121,24 @@ echo $'TM'
 TM
 echo $"TM"
 TM
-(base) sergio@sergio-S301LA:~$ echo $`TM`
-TM: no se encontró la orden
+echo $`TM`
+TM: command not found
 echo $(TM)
-TM: no se encontró la orden
-(base) sergio@sergio-S301LA:~$ echo $("TM")
-TM: no se encontró la orden
+TM:  command not found
+echo $("TM")
+TM: command not found
 
-(base) sergio@sergio-S301LA:~$ echo $('TM')
-TM: no se encontró la orden
+echo$ echo $('TM')
+TM: command not foundn
 
-(base) sergio@sergio-S301LA:~$ echo $(`TM`)
-TM: no se encontró la orden
+echo $(`TM`)
+TM: command not found
+
+echo$(`ls`)
+bash: adhoc.sh: command not found
+
+echo $(ls) or echo $("ls") or echo $('ls') show the list directory
+```
 
 ```
 #!/bin/bash

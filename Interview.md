@@ -3,13 +3,23 @@ my name is I studied at the U of A and graduated in 2012 as an electronic engine
 I have about 4 years of experience in devops role and I am certified as associate architect in AWS and azure fundamentals, I have knowledge in tools like git, jenkins, azure devops, terraform, docker, kubernetes, prometheus, grafana and script development in python and bash.
 
 I am currently working with kubernetes on AKS clusters validate the operation of pipleines in harness and create some alerts in grafana 
-
+__________
 I have made scripts that connect to mongo for queries, inserts and dedelete.
 
 also scripts that connect to a kubernetes cluster to validate pod status and do automatic restarts.
 
 Script that allow to delete logs searching by creation date
+___________________
+I want to leave my current job because i feel run out of room to grow and I think i need new challenges
+__________________
 
+what caught my eye was your focus on remote work, the wide range of clients you have in diferrent buisness areas, and the possibility of growing personally and professionally
+
+_________________
+
+I know your company has a variety of clients, you guarantee long-term assignments, give certification opportunities, and find projects that match employee knowledge.
+
+_______________
 
 DevOps is a work culture primarily centered around collaboration, communication, and integration among the development teams
 
