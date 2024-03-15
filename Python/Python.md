@@ -2350,6 +2350,38 @@ if indices_encontrados:
 else:
     print(f"El valor {valor_dado} no se encuentra en la tupla.")
 ```
+
+validar sin en una lista los elementos son numeros
+
+```
+# Definir una lista
+mi_lista = [1, 2, 3, 'a', 'b', 4.5]
+
+# Validar si los elementos de la lista son números
+son_numeros = all(isinstance(elemento, (int, float)) for elemento in mi_lista)
+
+if son_numeros:
+    print("Todos los elementos de la lista son números.")
+else:
+    print("Al menos un elemento de la lista no es un número.")
+```
+
+___________
+
+```
+'''
+*
+**
+***
+****
+*****
+'''
+
+for i in range(1, 6):
+    # Imprimir '*' repetido 'i' veces en cada iteración
+    print('*' * i)
+
+```
 __________________
 
 # The complete Python bootcamp from zero to hero in Python
@@ -3270,6 +3302,20 @@ x = zip(a, b)
 
 OUTPUT (('John', 'Jenny'), ('Charles', 'Christy'), ('Mike', 'Monica'))
 ```
+### isinstance
+
+The isinstance() function returns True if the specified object is of the specified type, otherwise False.
+
+If the type parameter is a tuple, this function will return True if the object is one of the types in the tuple.
+
+SYNTAX isinstance(object, type)
+
+```
+x = isinstance(5, int)
+x = isinstance(5, int)
+```
+
+
 
 ### List comprehension
 
@@ -3340,4 +3386,124 @@ def my_function(x):
 print(my_function(3))
 print(my_function(5))
 print(my_function(9))
+```
+
+### *args and *kwargs
+
+**Arbitrary Arguments**, *args
+If you do not know how many arguments that will be passed into your function, add a * before the parameter name in the function definition.
+This way the function will receive a tuple of arguments, and can access the items accordingly:
+
+```
+def my_function(*kids):
+  print("The youngest child is " + kids[2])
+
+my_function("Emil", "Tobias", "Linus")
+```
+
+**Arbitrary Keyword Arguments**, **kwargs
+If you do not know how many keyword arguments that will be passed into your function, add two asterisk: ** before the parameter name in the function definition.
+
+This way the function will receive a dictionary of arguments, and can access the items accordingly:
+
+```
+def my_function(**kid):
+  print("His last name is " + kid["lname"])
+
+my_function(fname = "Tobias", lname = "Refsnes")
+```
+
+### Lambda Expressions Map and Filter
+
+En Python, la función map nos permite aplicar una función sobre los items de un objeto iterable (lista, tupla, etc...).
+
+SYNTAX map(function, objeto iterable)
+
+```
+def square(num):
+    return num**2
+
+my_nums= [1,2,3,4,5]
+
+for item in map(square, my_nums):
+    print(item)
+
+```
+
+The Python built-in filter() function can be used to create a new iterator from an existing iterable (like a list or dictionary) that will efficiently filter out elements using a function that we provide. An iterable is a Python object that can be “iterated over”, that is, it will return items in a sequence such that we can use it in a for loop.
+
+The basic syntax for the filter() function is: filter(function, iterable)
+
+```
+def check_even(num):
+    return num%2==0
+
+mynums= [1,2,3,4,5,6]
+
+for n in filter(check_even, mynums):
+    print(n)
+```
+
+A lambda function is a small anonymous function.
+
+A lambda function can take any number of arguments, but can only have one expression.
+
+SYNTAX lambda arguments : expression
+
+```
+lambda num: num ** 2
+
+mynums= [1,2,3,4,5,6]
+
+mp=list(map(lambda num:num**2, mynums))
+print(mp)
+
+flt= list(filter(lambda num:num%2 == 0, mynums))
+print (flt)
+
+OUTPUT: [1, 4, 9, 16, 25, 36]
+[2, 4, 6]
+```
+
+### Nested Statements and scope
+
+This idea of scope in your code is very important to understand in order to properly assign and call variable names.
+
+In simple terms, the idea of scope can be described by 3 general rules:
+
+Name assignments will create or change local names by default.
+Name references search (at most) four scopes, these are:
+- local
+- enclosing functions
+- global
+- built-in
+Names declared in global and nonlocal statements map assigned names to enclosing module and function scopes.
+The statement in #2 above can be defined by the LEGB rule.
+
+LEGB Rule:
+
+L: Local — Names assigned in any way within a function (def or lambda), and not declared global in that function.
+
+E: Enclosing function locals — Names in the local scope of any and all enclosing functions (def or lambda), from inner to outer.
+
+G: Global (module) — Names assigned at the top-level of a module file, or declared global in a def within the file.
+
+B: Built-in (Python) — Names preassigned in the built-in names module : open, range, SyntaxError,...
+
+#### The global statement
+If you want to assign a value to a name defined at the top level of the program (i.e. not inside any kind of scope such as functions or classes), then you have to tell Python that the name is not local, but it is global. We do this using the global statement. It is impossible to assign a value to a variable defined outside a function without the global statement.
+
+```
+x = 50
+
+def func():
+    global x
+    print('This function is now using the global x!')
+    print('Because of global x is: ', x)
+    x = 2
+    print('Ran func(), changed global x to', x)
+
+print('Before calling func(), x is: ', x)
+func()
+print('Value of x (outside of func()) is: ', x)
 ```
