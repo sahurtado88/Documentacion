@@ -3304,7 +3304,345 @@ Entre los específicos podemos mencionar:
 - Vexadata
 - Etc….
 
+ver datos con ansible facts
+
+```
+---
+
+- name: ver datos de los discos ansible_facts
+  hosts: ubuntu_server
+
+  tasks:
+
+  - name: modulo para recopilar devices usando el filtro reject de Jinja 2
+    ansible.builtin.set_fact:
+      dispositivos: "{{ ansible_facts['devices'].keys()  | reject('match','^loop(.*)$') | list }}" 
+
+  - name: Visualizar los dispositivos
+    ansible.builtin.debug:
+    var: dispositivos
+```
+
+```
+---
+
+- name: ver datos de los discos ansible_facts
+  hosts: ubuntu_server
+
+  tasks:
+
+  - name: modulo para recopilar devices usando el filtro reject de Jinja 2
+    ansible.builtin.set_fact:
+      dispositivos: "{{ ansible_facts['devices'].keys()  | reject('match','^loop(.*)$') | list }}" 
+
+  - name: Visualizar los dispositivos
+    ansible.builtin.debug:
+     var: dispositivos
+
+  - name: Ver solo los dispositivos sd usando el filtro select  de Jinja 2
+    ansible.builtin.set_fact:
+      discos: "{{ansible_facts['devices'].keys()  | select('match','^sd(.*)$') | list }}"
+  
+  - name: Visualizar los discos
+    ansible.builtin.debug:
+      var: discos
+
+  - name: ver informacion de Particiones
+    ansible.builtin.debug:
+      msg: "Particion {{item}} --> {{ansible_devices[item].partitions}}"
+    loop: "{{discos}}"
+
+  - name: ver nombre de las particiones de cada disco
+    ansible.builtin.debug:
+      msg: "Particion {{item}} --> {{ansible_devices[item].partitions.keys()}}"
+    loop: "{{discos}}"
+```
+
+ver dispositivos por comando
+
+```
+---
+
+- name: ver datos de los discos con comandos
+  hosts: ubuntu_server
+
+  tasks:
+
+  - name: Ver los discos a través de comandos
+    ansible.builtin.shell:
+      cmd:  ls /dev/sd*
+    register: discos
+
+  - name: Visualizar discos y particiones
+    ansible.builtin.debug:
+      msg: "{{discos.stdout | split('\n')}}"
+ 
+```
+
+### uso modulo parted
+
+visualizar discos con parted
+
+```
+---
+
+- name: Trabajar con el módulos parted
+  hosts: ubuntu_server
+
+  tasks:
+
+  - name: Ver datos de sdb
+    community.general.parted:
+      device: /dev/sdb
+      state: info
+    register: datos
+      
+
+  - name: Visualizar datos de la particion
+    ansible.builtin.debug:
+      var: datos
+```
+
+crear particion con parted
+
+```
+---
+
+- name: Trabajar con el módulos parted
+  hosts: ubuntu_server
+
+  tasks:
+   
+  - name: Crear una particion en sdb
+    community.general.parted:
+      device: /dev/sdb
+      number: 1
+      part_end: 5GiB
+      state: present
+   
+
+  
+  - name: Ver datos de sdb
+    community.general.parted:
+      device: /dev/sdb
+      state: info
+    register: datos
+      
+  - name: ver los datos
+    ansible.builtin.debug:
+      var: datos
+
+ 
+ ```
+### Crear sistema de ficheros con filesystem
+
+```
+--
+
+- name: Crear un sistema de ficheros
+  hosts: ubuntu_server
+
+  tasks:
+  
+  - name: Crear sistema de ficheros
+    community.general.filesystem:
+      dev: /dev/sdb1
+      fstype: ext4
+      state: present
+      
+```
+### montar un sistema de ficheros con FILESYSTEM
+
+```
+- name: Montar un sistema de ficheros
+  hosts: ubuntu_server
+
+  tasks:
+  
+  - name: Crear punto de montaje
+    ansible.builtin.file:
+      path: /datos
+      state: directory
+
+   - name: Montar el sistema de ficheros
+    ansible.posix.mount:
+      path: /datos
+      src: /dev/sdb1
+      fstype: ext4
+      state: mounted
+```
+
+### Volumenes logicos
+
+- Los volúmenes lógicos (LVM Logical Volume
+Manager) son una tecnología de gestión de
+almacenamiento que se utiliza en sistemas
+operativos Linux y Unix para proporcionar una
+capa de abstracción entre el almacenamiento
+físico y los sistemas de archivos del sistema
+operativo.
+
+- Los volúmenes lógicos se crean a partir de grupos
+de volúmenes, que son conjuntos de uno o más
+discos físicos o particiones que se han agrupado
+para formar una sola entidad de almacenamiento.
+⬥ Los volúmenes lógicos se pueden redimensionar al
+agregar o quitar discos físicos o particiones de los
+grupos de volúmenes.
+
+![alt text](image.png)
+
+### Crear una particion en el disco para LVM
+
+```
+---
+
+- name: Trabajar con vOLUMENES LOGICOS
+  hosts: rocky_server
+
+  tasks:
+  
+  - name: Crear una particion en el disco nvme0n2
+    community.general.parted:
+      device: /dev/nvme0n2
+      number: 1
+      part_end: 5GiB
+      state: present
+
+  - name: Ver el disco
+    community.general.parted:
+      device: /dev/nvme0n2
+      state: info
+    register: datos
+
+
+  - name: Visualizar resultado
+    ansible.builtin.debug:
+      var: datos
+```
+
+### Crear volumen group
+
+```
+---
+
+- name: Trabajar con vOLUMENES LOGICOS
+  hosts: rocky_server
+
+  tasks:
+  
+  - name: Crear un Volume Group en las particiones
+    community.general.lvg:
+      vg: grupo1
+      pvs:
+        - /dev/nvme0n2p1
+        - /dev/nvme0n3p1
+
+  - name: Recuperar informacion de los vg
+    ansible.builtin.shell:
+      cmd: 'vgdisplay | grep "VG Name"'
+    register: datos
+
+  - name: Ver informacion
+    ansible.builtin.debug:
+      var: datos 
+```
+### Crear un volumne logicos
+
+```
+---
+
+- name: Trabajar con vOLUMENES LOGICOS
+  hosts: rocky_server
+
+  tasks:
+  - name: Crear un volumen logico en el grupo grupo1
+    community.general.lvol:
+      vg: grupo1
+      lv: vol1
+      size: 512
+
+ 
+  - name: Ver datos del volumen
+    ansible.builtin.shell: 
+     cmd: 'lvdisplay | grep "LV Name"'
+    register: datos
+      
+  - name: ver los datos
+    ansible.builtin.debug:
+      var: datos.stdout_lines
+
+```
+
+### Crear y montar el sistema de ficheros
+
+```
+--
+
+- name: Crear un sistema de ficheros
+  hosts: rocky_server
+
+  tasks:
+  
+  - name: Crear sistema de ficheros
+    community.general.filesystem:
+      dev: /dev/grupo1/vol1
+      fstype: ext4
+      state: present
+
+  - name: Crear un punto de montaje
+    ansible.builtin.file:
+      path: /documentos
+      state: directory
+
+  - name: Montar el sistema de ficheros
+    ansible.posix.mount:
+      path: /documentos
+      src: /dev/grupo1/vol1
+      fstype: ext4
+      state: mounted
+      
+```
+
 ## Ansible Vault
+
+- Este componente nos permite encriptado ficheros
+y variables de forma que podemos proteger
+contenido que pueda ser considerado sensible.
+- Por ejemplo si yo quiero proteger una contraseña
+o alguna clave privada, hasta ahora lo hemos
+hecho siempre en modo plano.
+- Con Ansible Vault puedo hacerlo de forma sencilla
+y potente
+
+- Para ello utilizamos el comando ansible-vault que
+dispone de varias opciones para incrementar
+desinfectar y realizar otras operaciones
+relacionadas.
+- Cada vez que queramos encriptar algo debemos
+facilitar una contraseña, que luego será utilizada
+para poder desencriptar el contenido
+- Podemos encriptar tanto variables como ficheros:
+
+VARIABLE 
+```
+ansible-vault encrypt_string 'ejemplo' --name 'v1'
+```
+FICHERO
+
+```
+ansible-vault encrypt fichero.yaml
+```
+- Tenemos otros comandos, como por ejemplo
+  - Create: crear un nuevo fichero encriptado
+  - View: ver el contenido encriptado
+  - Edit: editar un fichero encriptado
+  - Rekey: Modificar la password inicial
+
+- Para desencriptar podemos:
+  - Pasar desde línea de comandos
+  - Desde un fichero
+  - Desde un script
 
 ## Ansible con docker
 

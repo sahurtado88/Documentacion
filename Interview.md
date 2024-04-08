@@ -1,10 +1,10 @@
-my name is I studied at the U of A and graduated in 2012 as an electronic engineer, after graduating I have worked in IT in areas as software development, database administration and devops.
+my name is I studied at the University of A in Colombia and graduated in 2012 with a degree in electronic engineering. Since graduating, I have gained experience in various IT roles, including software development, database administration, and DevOps.
 
-I have about 4 years of experience in devops role and I am certified as associate architect in AWS and azure fundamentals, I have knowledge in tools like git, jenkins, azure devops, terraform, docker, kubernetes, prometheus, grafana and script development in python and bash.
+I have about 5 years of experience in devops role and I am certified as associate architect in AWS and azure fundamentals, I have knowledge in tools like git, jenkins, azure devops, terraform,ansible,  docker, kubernetes, prometheus, grafana and script development in python and bash.
 
-I am currently working with kubernetes on AKS clusters validate the operation of pipleines in harness and create some alerts in grafana 
+I am currently working with kubernetes on AKS clusters validate the operation of pipelines in harness and create some alerts in grafana 
 __________
-I have made scripts that connect to mongo for queries, inserts and dedelete.
+I have made scripts that connect to mongo for queries, inserts and delete.
 
 also scripts that connect to a kubernetes cluster to validate pod status and do automatic restarts.
 
@@ -19,8 +19,120 @@ _________________
 
 I know your company has a variety of clients, you guarantee long-term assignments, give certification opportunities, and find projects that match employee knowledge.
 
+_____________________
+
+I'm fast learner I think its important in this industry because time to time new tools appear
+
 _______________
 
+I need two weeks to resign-
+____________
+
+One area I've been actively working on is time management. While I am generally very organized, I sometimes find myself taking on too many tasks at once, which can lead to moments of feeling overwhelmed. However, I've been implementing strategies such as prioritizing tasks and using time-blocking techniques to improve in this area
+_________________
+
+One aspect I've identified for improvement is my public speaking skills. While I'm comfortable communicating ideas one-on-one or in small groups, I have occasionally felt nervous when speaking in front of larger audiences. However, I've been actively addressing this by participating in public speaking workshops and seeking opportunities to practice presenting in various settings. I believe that with continued effort and experience, I can further strengthen this skill and become a more confident presenter
+
+"I've found that I can be overly critical of my own work at times, which can occasionally slow down my progress. While I believe in striving for excellence, I've learned that perfectionism can sometimes hinder efficiency. To address this, I've been working on finding the right balance between attention to detail and timely completion of tasks. I've also been seeking feedback from colleagues to gain perspective and ensure that I'm meeting expectations without getting bogged down in unnecessary revisions."
+_______________________
+
+- could you explain to me how the payment would be made in dollars?
+- could you explain to me how the payment of health and pension contributions would be made?
+- if the project I join ends, how long can I be without assignment in another project?
+- on holidays in colombia do i have to work?
+- could you explain to me the company's career plan?
+- can you tell me the type of contract
+
+Claro, aquí tienes un prompt para crear una presentación de tres minutos para una entrevista de trabajo en inglés:
+
+"Good morning/afternoon/evening,
+
+My name is [Your Name] and I'm thrilled to be here today. I'm here to talk to you about why I believe I am the ideal candidate for [the position you're applying for].
+
+First and foremost, let me introduce myself briefly. I have [X years] of experience in [relevant field/industry], during which I have developed a strong skill set in [mention key skills or areas of expertise]. Throughout my career, I've had the opportunity to [mention notable achievements or projects].
+
+One aspect I particularly value about this role is [mention a specific aspect of the job or company culture that resonates with you]. I've always been passionate about [related interest or aspect] and I see this opportunity as a perfect fit for my career aspirations.
+
+Moreover, I believe my strengths lie in [mention a few key strengths or qualities that align with the job requirements], which I am eager to contribute to [company name or team].
+
+In my previous roles, I've had the chance to [briefly mention relevant experiences or projects], which have taught me the importance of [mention a valuable lesson or skill you've gained].
+
+I am also highly adaptable and thrive in fast-paced environments. I'm excited about the opportunity to bring my expertise to your team and collaborate towards [mention a shared goal or vision].
+
+In conclusion, I am enthusiastic about the possibility of joining [company name] and contributing to its success. I'm confident that my skills and experiences make me a strong candidate for this position.
+
+Thank you for considering my application. I look forward to discussing further how I can contribute to the team.
+
+Thank you."
+__________________
+
+Day in the Life of a DevOps Engineer:
+
+Morning:
+
+8:00 AM: Arrive at the office or start the workday remotely. Begin by checking emails and Slack messages for any urgent notifications or updates from the team.
+
+8:30 AM: Join the daily stand-up meeting with the development and operations teams. Discuss the progress made on ongoing projects, any blockers encountered, and plans for the day.
+
+9:00 AM: Review the current infrastructure status on AWS, Kubernetes clusters, and other cloud platforms. Check monitoring dashboards (e.g., Grafana, Prometheus) for any anomalies or performance issues.
+
+9:30 AM: Work on infrastructure improvements and optimizations. Update Terraform configurations to automate provisioning and ensure scalability of resources. Investigate and resolve any infrastructure-related tickets raised by the team.
+
+Afternoon:
+
+12:00 PM: Break for lunch. Use this time to relax, recharge, and maybe catch up with colleagues.
+
+1:00 PM: Dive into CI/CD pipeline configurations. Review Jenkins jobs and pipelines to ensure smooth integration and deployment processes. Troubleshoot any failed builds or deployment issues and implement necessary fixes.
+
+2:30 PM: Conduct a security review of the infrastructure. Perform vulnerability scans and assess security posture. Implement security best practices and configurations (e.g., IAM policies, firewall rules) to enhance system security.
+
+3:30 PM: Collaborate with developers on application deployment strategies. Assist in Dockerizing applications, creating Kubernetes deployment manifests, and optimizing container orchestration.
+
+Evening:
+
+5:00 PM: Prepare documentation and runbooks for newly implemented infrastructure changes and configurations. Ensure documentation is up to date and accessible to the team for future reference.
+
+6:00 PM: Wrap up the day by reviewing tasks completed and updating task boards or project management tools accordingly. Check in with team members to see if there are any outstanding issues or if anyone needs assistance.
+
+6:30 PM: Log off for the day and either head home or unwind before the evening activities. Reflect on the day's accomplishments and mentally prepare for tomorrow's tasks and challenges.
+
+Note: The above schedule may vary depending on the specific projects, team dynamics, and company culture. Additionally, DevOps Engineers often work on a variety of tasks ranging from infrastructure management to automation, collaboration with cross-functional teams, and continuous improvement initiatives.
+_____________________
+
+Day in the Life of a Site Reliability Engineer (SRE):
+
+Morning:
+
+8:00 AM: Start the day by reviewing any alerts or incidents that occurred overnight. Check monitoring systems like Prometheus or Datadog for any anomalies in system metrics.
+
+8:30 AM: Join the daily team stand-up meeting. Discuss ongoing projects, any incidents from the previous day, and priorities for the current day. Coordinate with other team members to ensure alignment on tasks and responsibilities.
+
+9:00 AM: Conduct a health check of critical systems and services. Verify the status of Kubernetes clusters, databases, load balancers, and other infrastructure components. Address any issues proactively to prevent potential outages.
+
+9:30 AM: Review the deployment pipeline. Ensure that CI/CD processes are running smoothly and that deployments are automated and reliable. Troubleshoot any failures or performance bottlenecks in the pipeline.
+
+Afternoon:
+
+12:00 PM: Take a break for lunch. Use this time to recharge and step away from the computer.
+
+1:00 PM: Dive into incident response planning and preparation. Review incident response runbooks, update documentation, and conduct tabletop exercises with the team to simulate potential scenarios and improve response readiness.
+
+2:30 PM: Work on capacity planning and scalability initiatives. Analyze usage trends and forecast future resource requirements. Collaborate with development teams to optimize application performance and scalability.
+
+3:30 PM: Participate in a post-incident review meeting for a recent outage. Identify root causes, lessons learned, and action items for preventing similar incidents in the future. Implement any necessary improvements or mitigations.
+
+Evening:
+
+5:00 PM: Engage in ongoing learning and professional development. Attend training sessions, webinars, or workshops to stay updated on new technologies, best practices, and industry trends relevant to SRE.
+
+6:00 PM: Wrap up the day by documenting tasks completed, updating status reports, and preparing for handover to the on-call engineer. Communicate any outstanding issues or action items to relevant stakeholders.
+
+6:30 PM: Log off for the day and transition to on-call responsibilities if scheduled. Remain available for any urgent incidents or escalations that may arise outside of regular business hours.
+
+Note: The daily routine of an SRE can vary depending on the organization's size, structure, and specific responsibilities. SREs typically focus on ensuring the reliability, availability, and performance of systems and services through automation, monitoring, incident response, and proactive maintenance.
+
+
+_____________________
 DevOps is a work culture primarily centered around collaboration, communication, and integration among the development teams
 
 What are the key benefits of using DevOps?
@@ -94,7 +206,7 @@ Import comand
 
 import block terraform 1.5
 
-I need two weeks to resign
+
 ```
  Utilizamos una imagen oficial de Python como base
 FROM python:3.9-slim

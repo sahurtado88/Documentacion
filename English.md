@@ -10825,3 +10825,322 @@ The building where Diana used to work will be demolished in a few days.
 Matilda's family is looking for a new house where they can live in for a few years.
 
 _______________
+
+![alt text](image-6.png)
+
+_____________
+
+Gerunds and infinitives are useful for describing habits.
+
+Napping is a habit I started when the doctor advised me to lose weight.
+I like to watch movies at home on weekends.
+ 
+
+To talk about habits, we can describe what we usually do when we feel a certain way.
+Whenever I feel angry, I...
+When I am stressed, I...
+I... whenever I am upset.
+I... when I am happy.
+ 
+Should can be used for giving advice on habits to start or break.
+
+You should sleep during your lunch break.
+You shouldn't drink too much coffee. 
+ 
+
+Will can be used for making decisions and promises related to habits.
+I'll sleep at noon every day.
+I'll try to lessen my coffee consumption.
+
+____________________
+
+# Hard vs Hardly
+
+"Hard" is an adverb which means "with effort" or "with force."
+
+Eliot studied hard for the test.
+Andre hit the ball hard with his racket.
+
+"Hard" is also an adjective which means "not easy" or "difficult."
+
+This project is hard. We need to hire an expert.
+
+It also means "not soft."
+
+Diamonds are the hardest material on earth.
+
+It also means "factual" or "definite."
+
+The prosecution presented hard evidence against the suspect.
+
+It also means "harsh" or "offensive," as in "hard feelings" or "hard words."
+
+He said some hard words, but I have no hard feelings against him.
+
+It also refers to something with high alcoholic content.
+
+Cris doesn't drink hard liquor.
+
+"Hardly" is an adverb which means "barely" or "almost not."
+
+We've been hearing rumors of a merger for months. We were hardly surprised when it was announced.
+Charisse hardly goes to the gym anymore. She is always too tired.
+
+"Hard" and "hardly" have different meanings and are used in different ways.
+
+"Hard" can be:
+
+an adverb which means "with effort" or "with force"
+an adjective that may mean any of the following: "not easy" or "difficult,"  "not soft," "factual" or "definite," and "harsh" or "offensive"
+"Hardly" is:
+
+ an adverb which means "barely" or "almost not"
+
+ _______________
+
+ OVERTAKE (SOMETHING OR SOMEONE)
+to become better, more successful, more important, etc., than something or someone else
+
+Due to cheaper service and faster delivery times, WeGone Ltd. managed to overtake Micasa Incorporated Enterprises as the leading logistics company.
+
+TIPPING POINT
+the moment when important things start to happen; the moment when certain effects can no longer be stopped
+
+The large forest fire became the tipping point for the citizens to stage a rally for conservation of the country's environmental resources.
+
+PLUG-IN HYBRID
+describing something, such as a vehicle, that can be powered by both gasoline and batteries which recharge by plugging in to a power source such as a wall socket
+
+The Toyota Prius is a car that uses plug-in hybrid technology to make itself run.
+
+COMBUSTION ENGINE
+a machine that produces energy for vehicles by burning fuel inside itself
+
+The sports car needs plenty of fuel for its large combustion engine to work properly.
+
+SUBSIDIARY
+a company controlled by a larger company (which is called a parent company); the parent company owns more than half the shares of the subsidiary
+
+The local Distribution Inc. company is a subsidiary of a much larger manufacturing corporation that operates internationally.
+
+GRIP
+power or control over something
+
+The government has a strong grip on national oil prices.
+
+SEGMENTS
+groups of customers that have similar preferences, needs or characteristics when buying goods and services
+
+The advertisements for the new line of running shoes will be targeted at older, working segments who are also conscious of their health.
+
+IMPEDED
+slowed, stopped or hindered
+
+The slow processing of legal documents impeded the construction of the new mall complex.
+
+____________
+
+Dear Mr. Daniel,
+
+I would like to schedule a meeting with you to discuss the possibility of purchasing a newly discovered source of oil.
+
+Given the urgency of this matter, I suggest we meet at the following time:
+
+Date: August 25
+Time: 1:30 p.m.
+Location: Conference Room 5
+
+I would like to discuss the details of the oil field, including its location, production capacity, and any challenges or opportunities it may present.
+
+Please let me know if the proposed meeting time works for you. If not, kindly suggest an alternative that would suit your availability.
+
+I look forward to your response. Thank you for your attention to this matter.
+
+Regards,
+Charles Fournier
+Logistics Manager
+
+___________
+
+# Verbals: gerunds, infinitives and participles
+
+Verbals are words that look like verbs but are used as nouns, adjectives or adverbs.  There are three kinds of verbals: gerunds, infinitives and participles.
+
+## Gerunds
+Gerunds are verbals that end in -ing and function as nouns.
+
+Playing basketball takes up much of her time.
+He gave up smoking three years ago.
+His favorite pastime is watching TV.
+I am afraid of flying in an airplane.
+
+## Infinitives
+Infinitives are verbals made by combining the word "to" + a verb in its base form. They function as nouns, adjectives, or adverbs.
+
+To play basketball for the Bulls is one of his biggest dreams.
+I want to make you proud.
+His goal was to run 3 kilometers every day.
+Baseball is an interesting game to watch.
+## Participles
+Participles are verbals used as adjectives. There are two types of participles: present participles and past participles.
+
+Present participles end in -ing.
+
+The book is interesting.
+The walking man is very tall.
+
+Past participles end in -ed, -en, -d, -t or -n as in the words "asked," "eaten," "saved," "dealt" and "seen."
+
+His neck was injured.
+They put a brace on his injured neck to help it heal.
+
+## Verbs followed by gerunds or infinitives
+Some verbs like "begin," "hate," "start," "can't stand," "prefer," "continue", "can't bear," "neglect" and "love" can take either a gerund or an infinitive without changing the meaning of a sentence.
+
+She began working.
+She began to work.
+
+With verbs such as "remember," "stop," "try" and "regret," the use of a gerund or an infinitive changes the meaning of a sentence.
+
+I remembered locking the door.(The person carried out the action first and then remembered doing it.)
+I remembered to lock the door.(The person speaking remembered they had to lock the door and then carried out the action.)
+
+Other verbs only take one form or the other. Unfortunately, there is no rule about which form the verb takes. The same is true when the verb follows an adjective. The best way to learn their correct use is with practice.
+
+______________
+
+get into (something): to become interested or involved in something, such as an industry, hobby or activity
+
+After attending a free lesson with a friend, Violet started to get into yoga.
+
+"'Why did you think that you could get into space? Rockets?'"
+
+physics: a branch of science that deals with the movement of forces such as natural heat, light and energy, as well as their relationships with objects
+
+A person who is familiar with physics can explain how white light can be split into many different colors.
+
+"He has the same degrees I have, which are in physics and economics."
+
+economics: a field of study that deals with the production and sale of goods and services
+
+Business owners use the principles of economics to determine how much to charge customers for products and services.
+
+"He has the same degrees I have, which are in physics and economics."
+
+aerospace: an industry that involves travel in or above the Earth's atmosphere, as well as the vehicles used for this
+
+SpaceX is an aerospace company that builds rockets with a goal of taking humans to the planet Mars.
+
+"Traditional space assumed, like aerospace, that there was one customer and the customer was the government."
+
+notion: an idea, concept or opinion
+
+Archie found the discussion confusing; afterwards, he had only a vague notion of what conclusion had been reached.
+
+"... the customer had a finite amount of demand and the customer was going to pay you whatever it cost plus a little bit of profit. And this is the notion of cost-plus accounting."
+
+incentive: something that motivates a person to put more effort into an activity, or to do something in a certain way
+
+The manager offered an incentive to his team: the first three people to finish their tasks would be allowed to go home early.
+
+"... there is very little incentive to lower your cost ..."
+
+bureaucracy: a system or organization of people that is used to make decisions or accomplish tasks in a business or government; this may involve going through complicated or tedious procedures
+
+Due to the slow and complex bureaucracy of the land development office, the necessary permits were released later than planned.
+
+"I could charge less because I have less bureaucracy."
+
+closing in on (something): moving nearer to something, whether physically or otherwise
+
+The company's stock prices went up today, closing in on a seven percent increase.
+
+"... he dropped the cost of launch by almost, by a factor of six, closing in on factor ten."
+
+Grammar tip: Verbs followed by infinitives
+
+An infinitive is a form of verb that can function as a noun, adjective or adverb. An infinitive takes the form to + the base form of a verb.
+
+Some verbs are often followed by infinitives. There are no fixed rules about which verbs are followed by infinitives, but speakers can achieve correct usage through exposure and practice.
+
+"... the customer was going to pay you whatever it cost plus a little bit of profit."
+
+"I will just choose to charge less."
+
+"I probably need to update these slides ..."
+
+More examples:
+
+As a part of her exercise routine, Nessa needs to run at least five kilometers every day.
+David preferred to ride his bicycle to work rather than take public transportation.
+The siblings chose to hold the family reunion in a hotel.
+___________________
+
+
+IN LARGE PART
+mostly; mainly; to a great extent
+
+The project was a success due in large part to the group's good teamwork and communication.
+
+EQUITY CAPITAL
+Equity capital refers to funds or money that investors put into a business, in exchange for a share of ownership in that business.
+
+TRANSACTION
+an event or process in which a person or organization buys or sells something
+
+Gretel's transaction with the car dealer went well; she was able to sell her vehicle easily.
+
+IN-PRINCIPLE APPROVAL
+An in-principle approval refers to an agreement to the general terms of a proposal or deal, without yet specifying all the details.
+
+JOINT VENTURE
+a business partnership between two or more companies
+
+A joint venture between an online marketing store and a clothing company allowed customers to buy clothes exclusively available on the website.
+
+CONSORTIUMS
+groups of companies, people, etc., that agree to work towards a single goal or objective
+
+Consortiums of doctors and hospitals raised enough money to build a new hospital that will treat patients for free.
+
+HEAD START
+an advantage or benefit that one person or group has over competitors
+
+Tia's previous work experience in a relevant industry gave her a head start when she applied for a new job.
+
+GEARING UP TO (DO SOMETHING)
+preparing for something
+
+Many football teams are gearing up for the national competition that will happen in a few weeks.
+
+____________________
+
+When describing market trends, you may
+
+Talk about trends that are going up
+Dow climbs 2.3 percent in...
+European stocks advanced...
+Basic resources stocks rebounded...
+
+Talk about market trends that are going down
+crude slides to 8-week low...
+Korean Won continues to plummet...
+the stock market rally is likely to peter out...
+
+Talk about market trends that are staying flat
+the unemployment rate held steady...
+after settling Monday at...
+
+You may use the following phrase structures to describe market trends
+
+verbs followed by prepositions
+settled at...
+rose to...
+peter out...
+
+verbs followed by infinitives
+continues to plummet...
+tends to increase…
+is likely to drop…
+
+____________________

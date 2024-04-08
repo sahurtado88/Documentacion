@@ -2383,7 +2383,31 @@ for i in range(1, 6):
 
 ```
 __________________
+```
+import string
 
+def ispangram(str1, alphabet=string.ascii_lowercase): 
+    # Create a set of the alphabet
+    alphaset = set(alphabet)  
+    
+    # Remove spaces from str1
+    str1 = str1.replace(" ",'')
+    
+    # Lowercase all strings in the passed in string
+    # Recall we assume no punctuation 
+    str1 = str1.lower()
+    
+    # Grab all unique letters in the string as a set
+    str1 = set(str1)
+    
+    # Now check that the alpahbet set is same as string set
+    return str1 == alphaset
+
+print(ispangram("The quick brown fox jumps over the lazy dog"))
+```
+
+
+__________________
 # The complete Python bootcamp from zero to hero in Python
 
 ejecutar un programa de python se usa el comando
@@ -3507,3 +3531,743 @@ print('Before calling func(), x is: ', x)
 func()
 print('Value of x (outside of func()) is: ', x)
 ```
+
+## validating user input
+
+```
+def user_choice():
+    
+    # This original choice value can be anything that isn't an integer
+    choice = 'wrong'
+    
+    # While the choice is not a digit, keep asking for input.
+    while choice not in ['0','1','2']:
+        
+        # we shouldn't convert here, otherwise we get an error on a wrong input
+        choice = input("Choose one of these numbers (0,1,2): ")
+        
+        if choice not in ['0','1','2']:
+            # THIS CLEARS THE CURRENT OUTPUT BELOW THE CELL
+            clear_output()
+            
+            print("Sorry, but you did not choose a value in the correct range (0,1,2)")
+            
+    
+    # Optionally you can clear everything after running the function
+    # clear_output()
+    
+    # We can convert once the while loop above has confirmed we have a digit.
+    return int(choice)
+```
+## Python OOP
+
+Python is an object oriented programming language.
+
+Almost everything in Python is an object, with its properties and methods.
+
+A Class is like an object constructor, or a "blueprint" for creating objects.
+
+### The __init__() Function
+
+The examples above are classes and objects in their simplest form, and are not really useful in real life applications.
+
+To understand the meaning of classes we have to understand the built-in __init__() function.
+
+All classes have a function called __init__(), which is always executed when the class is being initiated.
+
+Use the __init__() function to assign values to object properties, or other operations that are necessary to do when the object is being created
+
+```
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+p1 = Person("John", 36)
+
+print(p1.name)
+print(p1.age)
+```
+
+### The __str__() Function
+The __str__() function controls what should be returned when the class object is represented as a string.
+
+If the __str__() function is not set, the string representation of the object is returned:
+
+```
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+  def __str__(self):
+    return f"{self.name}({self.age})"
+
+p1 = Person("John", 36)
+
+print(p1)
+```
+
+### The __len__() Function
+
+es un método especial que se utiliza para devolver la longitud de un objeto. Este método es invocado automáticamente cuando se llama a la función len() en un objeto.
+
+Por ejemplo, puedes implementar __len__ en tus propias clases para que puedan ser utilizadas con la función len(). Aquí tienes un ejemplo simple:
+
+```
+class MiLista:
+    def __init__(self, elementos):
+        self.elementos = elementos
+
+    def __len__(self):
+        return len(self.elementos)
+
+# Crear una instancia de MiLista
+mi_lista = MiLista([1, 2, 3, 4, 5])
+
+# Usar len() en mi_lista
+print(len(mi_lista))  # Esto imprimirá 5, la longitud de la lista dentro de mi_lista
+
+```
+En este ejemplo, __len__ está definido en la clase MiLista. Cuando se llama a len(mi_lista), Python invoca automáticamente el método __len__ de mi_lista, que devuelve la longitud de la lista elementos dentro de mi_lista.
+
+Es importante destacar que puedes implementar __len__ en tus propias clases para definir qué significa "longitud" para esa clase en particular. Esto permite que objetos de tu clase sean utilizados de manera coherente con las funciones y métodos estándar de Python que esperan obtener la longitud de un objeto.
+
+
+
+### Object Methods
+Objects can also contain methods. Methods in objects are functions that belong to the object.
+
+Let us create a method in the Person class:
+
+```
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+  def myfunc(self):
+    print("Hello my name is " + self.name)
+
+p1 = Person("John", 36)
+p1.myfunc()
+```
+
+### The self Parameter
+
+The self parameter is a reference to the current instance of the class, and is used to access variables that belongs to the class.
+
+It does not have to be named self , you can call it whatever you like, but it has to be the first parameter of any function in the class:
+
+```
+# Use the words mysillyobject and abc instead of self:
+
+class Person:
+  def __init__(mysillyobject, name, age):
+    mysillyobject.name = name
+    mysillyobject.age = age
+
+  def myfunc(abc):
+    print("Hello my name is " + abc.name)
+
+p1 = Person("John", 36)
+p1.myfunc()
+```
+
+### Atributes and Methods
+
+Los métodos y los atributos son dos conceptos fundamentales en la programación orientada a objetos, como en Python.
+
+Atributos: Los atributos son variables que pertenecen a un objeto específico. Pueden ser de dos tipos:
+
+Atributos de instancia: Estos son específicos de cada objeto individual creado a partir de una clase. Cada objeto tiene su propia copia de estos atributos, y pueden variar entre diferentes instancias de la misma clase.
+
+Atributos de clase: Estos son compartidos por todas las instancias de la clase. Son como variables globales dentro de una clase, pero se accede a ellas mediante la clase en lugar de a través de una instancia específica.
+
+Métodos: Los métodos son funciones asociadas a un objeto o una clase. Hay dos tipos principales de métodos:
+
+Métodos de instancia: Estos métodos operan en instancias específicas de una clase. Tienen acceso a los atributos de esa instancia utilizando self.
+
+Métodos de clase: Estos métodos operan en toda la clase en lugar de instancias individuales. Pueden acceder a los atributos de clase, pero no a los atributos de instancia directamente.
+
+En resumen, los atributos son como datos almacenados dentro de un objeto, mientras que los métodos son funciones que operan en esos datos o realizan acciones relacionadas con el objeto. Los atributos describen el estado de un objeto, mientras que los métodos definen su comportamiento.
+
+#### Abstract methods
+
+n método abstracto es un tipo especial de método que se define en una clase pero no se implementa en esa clase en particular. En su lugar, se espera que las clases hijas proporcionen una implementación concreta para este método. Los métodos abstractos son parte de un concepto más amplio conocido como clases abstractas.
+
+En Python, las clases abstractas y los métodos abstractos se pueden definir utilizando el módulo abc (Abstract Base Classes) que proporciona una forma de crear clases y métodos abstractos. Aquí hay un ejemplo:
+
+```
+from abc import ABC, abstractmethod
+
+class FiguraGeometrica(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Rectangulo(FiguraGeometrica):
+    def __init__(self, base, altura):
+        self.base = base
+        self.altura = altura
+    
+    def area(self):
+        return self.base * self.altura
+
+class Triangulo(FiguraGeometrica):
+    def __init__(self, base, altura):
+        self.base = base
+        self.altura = altura
+    
+    def area(self):
+        return (self.base * self.altura) / 2
+
+# No se puede instanciar directamente una FiguraGeometrica porque es abstracta
+# figura = FiguraGeometrica() # Esto daría un error
+
+rectangulo = Rectangulo(5, 4)
+triangulo = Triangulo(3, 6)
+
+print("Área del rectángulo:", rectangulo.area())
+print("Área del triángulo:", triangulo.area())
+
+```
+
+En este ejemplo, FiguraGeometrica es una clase abstracta que tiene un método abstracto area(). Las clases Rectangulo y Triangulo heredan de FiguraGeometrica y proporcionan una implementación concreta del método area(). Es importante destacar que cualquier clase que herede de FiguraGeometrica debe proporcionar una implementación para el método area(), de lo contrario, Python generará un error. Esto garantiza que todas las clases derivadas cumplan con ciertas expectativas de comportamiento.
+
+### Python Inheritance
+Inheritance allows us to define a class that inherits all the methods and properties from another class.
+
+Parent class is the class being inherited from, also called base class.
+
+Child class is the class that inherits from another class, also called derived class.
+
+Any class can be a parent class, so the syntax is the same as creating any other class
+
+#### Create a Child Class
+To create a class that inherits the functionality from another class, send the parent class as a parameter when creating the child class:
+
+Use the pass keyword when you do not want to add any other properties or methods to the class.
+
+Now the Student class has the same properties and methods as the Person class.
+```
+# Create a class named Student, which will inherit the properties and methods from the Person class:
+
+class Student(Person):
+  pass
+```
+
+#### Add the __init__() Function
+
+So far we have created a child class that inherits the properties and methods from its parent.
+
+We want to add the __init__() function to the child class (instead of the pass keyword)
+
+When you add the __init__() function, the child class will no longer inherit the parent's __init__() function
+
+To keep the inheritance of the parent's __init__() function, add a call to the parent's __init__() function
+
+```
+class Student(Person):
+  def __init__(self, fname, lname):
+    Person.__init__(self, fname, lname)
+```
+Now we have successfully added the __init__() function, and kept the inheritance of the parent class, and we are ready to add functionality in the __init__() function
+
+#### Use the super() Function
+Python also has a super() function that will make the child class inherit all the methods and properties from its parent:
+
+By using the super() function, you do not have to use the name of the parent element, it will automatically inherit the methods and properties from its parent.
+
+```
+class Student(Person):
+  def __init__(self, fname, lname):
+    super().__init__(fname, lname)
+```
+
+#### Add Properties
+
+Add a property called graduationyear to the Student class. dd another parameter in the __init__() function
+
+```
+class Student(Person):
+  def __init__(self, fname, lname, year):
+    super().__init__(fname, lname)
+    self.graduationyear = year
+
+x = Student("Mike", "Olsen", 2019)
+```
+
+#### Add methods
+
+If you add a method in the child class with the same name as a function in the parent class, the inheritance of the parent method will be overridden.
+
+Add a method called welcome to the Student class:
+
+```
+class Student(Person):
+  def __init__(self, fname, lname, year):
+    super().__init__(fname, lname)
+    self.graduationyear = year
+
+  def welcome(self):
+    print("Welcome", self.firstname, self.lastname, "to the class of", self.graduationyear)
+```
+
+### Python Polymorphism
+
+The word "polymorphism" means "many forms", and in programming it refers to methods/functions/operators with the same name that can be executed on many objects or classes.
+
+Polymorphism is often used in Class methods, where we can have multiple classes with the same method name.
+
+For example, say we have three classes: Car, Boat, and Plane, and they all have a method called move():
+
+```
+class Car:
+  def __init__(self, brand, model):
+    self.brand = brand
+    self.model = model
+
+  def move(self):
+    print("Drive!")
+
+class Boat:
+  def __init__(self, brand, model):
+    self.brand = brand
+    self.model = model
+
+  def move(self):
+    print("Sail!")
+
+class Plane:
+  def __init__(self, brand, model):
+    self.brand = brand
+    self.model = model
+
+  def move(self):
+    print("Fly!")
+
+car1 = Car("Ford", "Mustang")       #Create a Car class
+boat1 = Boat("Ibiza", "Touring 20") #Create a Boat class
+plane1 = Plane("Boeing", "747")     #Create a Plane class
+
+for x in (car1, boat1, plane1):
+  x.move()
+```
+
+What about classes with child classes with the same name? Can we use polymorphism there?
+
+Yes. If we use the example above and make a parent class called Vehicle, and make Car, Boat, Plane child classes of Vehicle, the child classes inherits the Vehicle methods, but can override them:
+
+```
+class Vehicle:
+  def __init__(self, brand, model):
+    self.brand = brand
+    self.model = model
+
+  def move(self):
+    print("Move!")
+
+class Car(Vehicle):
+  pass
+
+class Boat(Vehicle):
+  def move(self):
+    print("Sail!")
+
+class Plane(Vehicle):
+  def move(self):
+    print("Fly!")
+
+car1 = Car("Ford", "Mustang") #Create a Car object
+boat1 = Boat("Ibiza", "Touring 20") #Create a Boat object
+plane1 = Plane("Boeing", "747") #Create a Plane object
+
+for x in (car1, boat1, plane1):
+  print(x.brand)
+  print(x.model)
+  x.move()
+```
+
+Child classes inherits the properties and methods from the parent class.
+
+In the example above you can see that the Car class is empty, but it inherits brand, model, and move() from Vehicle.
+
+The Boat and Plane classes also inherit brand, model, and move() from Vehicle, but they both override the move() method.
+
+Because of polymorphism we can execute the same method for all classes.
+
+## Modules and Package
+
+Consider a module to be the same as a code library.
+
+A file containing a set of functions you want to include in your application.
+
+To create a module just save the code you want in a file with the file extension .py:
+
+```
+# Save this code in a file named mymodule.py
+
+def greeting(name):
+  print("Hello, " + name)
+```
+
+Now we can use the module we just created, by using the import statement:
+
+```
+import mymodule
+
+mymodule.greeting("Jonathan")
+```
+
+The module can contain functions, as already described, but also variables of all types (arrays, dictionaries, objects etc)
+
+## __name__ and __main__
+
+En Python, __main__ y __name__ están relacionados y se utilizan principalmente cuando tienes un script de Python que puede ser ejecutado directamente o importado como un módulo en otro script.
+
+__main__: Esto se refiere al ámbito principal de tu programa. Cuando ejecutas un script de Python directamente (no lo importas desde otro script), el intérprete de Python asigna el valor __main__ al atributo __name__ dentro del script que estás ejecutando directamente.
+
+__name__: Este es un atributo especial que se asigna automáticamente por Python. Si un script es ejecutado directamente, __name__ se establece en __main__. Si el script es importado como un módulo en otro script, __name__ se establece con el nombre del módulo.
+
+Entonces, ¿por qué es útil? Bueno, permite que un script de Python pueda actuar de diferentes maneras dependiendo de cómo se esté utilizando. Por ejemplo, puedes tener un bloque de código que se ejecute solo si el script es ejecutado directamente y no cuando es importado como un módulo.
+
+Aquí hay un ejemplo simple para ilustrarlo:
+
+```
+# Ejemplo de script.py
+
+def saludar():
+    print("Hola, soy un script de Python!")
+
+# Si se ejecuta directamente este script, se ejecutará lo siguiente:
+if __name__ == "__main__":
+    print("Este mensaje solo se mostrará si ejecutas este script directamente.")
+    saludar()
+
+```
+Si ejecutas script.py directamente, verás ambos mensajes impresos en la consola. Pero si importas script.py en otro script, solo verás el mensaje dentro del bloque if __name__ == "__main__":, y la función saludar() no se ejecutará automáticamente. Esto proporciona flexibilidad y modularidad en tu código.
+
+## Errros and ezception
+
+The try block lets you test a block of code for errors.
+
+The except block lets you handle the error.
+
+The else block lets you execute code when there is no error.
+
+The finally block lets you execute code, regardless of the result of the try- and except blocks.
+
+When an error occurs, or exception as we call it, Python will normally stop and generate an error message.
+
+These exceptions can be handled using the try statement:
+
+```
+try:
+  print(x)
+except:
+  print("An exception occurred")
+```
+
+You can define as many exception blocks as you want, e.g. if you want to execute a special block of code for a special kind of error:
+
+```
+try:
+  print(x)
+except NameError:
+  print("Variable x is not defined")
+except:
+  print("Something else went wrong")
+```
+
+You can use the else keyword to define a block of code to be executed if no errors were raised:
+
+```
+try:
+  print("Hello")
+except:
+  print("Something went wrong")
+else:
+  print("Nothing went wrong")
+
+```
+
+The finally block, if specified, will be executed regardless if the try block raises an error or not.
+
+```
+try:
+  print(x)
+except:
+  print("Something went wrong")
+finally:
+  print("The 'try except' is finished")
+```
+
+This can be useful to close objects and clean up resources:
+
+```
+try:
+  f = open("demofile.txt")
+  try:
+    f.write("Lorum Ipsum")
+  except:
+    print("Something went wrong when writing to the file")
+  finally:
+    f.close()
+except:
+  print("Something went wrong when opening the file")
+```
+
+### Raise an exception
+As a Python developer you can choose to throw an exception if a condition occurs.
+
+To throw (or raise) an exception, use the raise keyword.
+
+```
+x = -1
+
+if x < 0:
+  raise Exception("Sorry, no numbers below zero")
+```
+
+The raise keyword is used to raise an exception.
+
+You can define what kind of error to raise, and the text to print to the user.
+
+```
+x = "hello"
+
+if not type(x) is int:
+  raise TypeError("Only integers are allowed")
+```
+
+```
+try:
+    result= 10 +10
+except:
+    print ("you arent't adding correctly)
+else:
+    print("add went well")
+    print(result)
+```
+
+```
+def ask_for_int():
+   while True:
+       try:
+           result = int(input("please provide a number: "))
+       except:
+          print ("Whoops! that is not a number")
+          continue
+       else:
+          print("yes thank you")
+          break
+       finally:
+          print("End of try/except/finally block")   
+
+ask_for_int() 
+```
+
+## Pylint
+
+install pylint: pip instla pylint
+
+to execute pylint you can use the next command:
+
+pylint -r y .\test_oop.py
+
+## Unittest
+
+## Python decorators
+
+Los decoradores en Python son una característica poderosa que permite modificar o extender el comportamiento de funciones o métodos sin modificar su código interno. Los decoradores son funciones que toman otra función como argumento y devuelven una función modificada.
+
+Aquí tienes un ejemplo básico para entender cómo funcionan:
+
+```
+def mi_decorador(funcion):
+    def funcion_modificada():
+        print("Antes de llamar a la función...")
+        funcion()
+        print("Después de llamar a la función...")
+    return funcion_modificada
+
+@mi_decorador
+def saludo():
+    print("Hola!")
+
+saludo()
+
+```
+
+En este ejemplo, mi_decorador es un decorador que toma una función (funcion) como argumento y devuelve una función modificada (funcion_modificada). Cuando llamamos a saludo(), en realidad estamos llamando a funcion_modificada, que envuelve la función original saludo() y agrega impresiones antes y después de llamarla.
+
+Los decoradores son útiles para agregar funcionalidades comunes a múltiples funciones, como registro, validación de argumentos, control de acceso, entre otros. También se utilizan en marcos y bibliotecas populares de Python, como Flask y Django, para extender su funcionalidad de manera fácil y elegante.
+
+python has decorators that allow you to tack on extra functionality to an already existing function
+
+they use the @ operator and are then placed on top of the original function
+
+## Python Generators
+
+os generadores en Python son una forma poderosa de trabajar con secuencias de datos de manera eficiente y con bajo consumo de memoria. En lugar de crear una lista completa de elementos en la memoria, los generadores generan elementos sobre la marcha, uno a la vez, lo que los hace ideales para trabajar con conjuntos de datos grandes o infinitos.
+
+Los generadores se definen utilizando funciones normales de Python, pero en lugar de usar la declaración return para devolver un valor, utilizan la declaración yield. Cuando una función con yield es llamada, no se ejecuta completamente de una vez; en cambio, la función se detiene en cada yield, devolviendo el valor especificado y suspendiendo su estado hasta que se solicite el próximo valor.
+
+Veamos un ejemplo simple para entender mejor cómo funcionan los generadores:
+```
+def mi_generador():
+    yield 1
+    yield 2
+    yield 3
+
+# Usando el generador
+gen = mi_generador()
+
+print(next(gen))  # Imprime: 1
+print(next(gen))  # Imprime: 2
+print(next(gen))  # Imprime: 3
+
+```
+En este ejemplo, mi_generador() es una función que devuelve un generador. Cada vez que llamamos a next(gen), el generador devuelve el siguiente valor en la secuencia, comenzando desde donde se detuvo la última vez que se llamó next(). Cuando no hay más valores que generar, se genera una excepción StopIteration.
+
+Los generadores son especialmente útiles cuando se trabaja con grandes conjuntos de datos o cuando se necesita generar una secuencia de valores bajo demanda, ya que evitan la necesidad de almacenar todos los valores en la memoria a la vez. Esto puede resultar en un ahorro significativo de memoria y mejorar el rendimiento de las aplicaciones.
+
+```
+def gen_fibon(number):
+    '''
+    generar la seri de fibonnaci
+    '''
+    value1=1
+    value2=1
+    for _ in range (number):
+        yield value1
+        value1,value2= value2,value1+value2
+
+for number in gen_fibon(10):
+    print(number)
+```
+
+## Python Iterators
+An iterator is an object that contains a countable number of values.
+
+An iterator is an object that can be iterated upon, meaning that you can traverse through all the values.
+
+Technically, in Python, an iterator is an object which implements the iterator protocol, which consist of the methods __iter__() and __next__().
+
+Lists, tuples, dictionaries, and sets are all iterable objects. They are iterable containers which you can get an iterator from.
+
+All these objects have a iter() method which is used to get an iterator:
+
+```
+mytuple = ("apple", "banana", "cherry")
+myit = iter(mytuple)
+
+print(next(myit))
+print(next(myit))
+print(next(myit))
+```
+
+Even strings are iterable objects, and can return an iterator:
+
+```
+mystr = "banana"
+myit = iter(mystr)
+
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
+```
+
+### Create an Iterator
+To create an object/class as an iterator you have to implement the methods __iter__() and __next__() to your object.
+
+As you have learned in the Python Classes/Objects chapter, all classes have a function called __init__(), which allows you to do some initializing when the object is being created.
+
+The __iter__() method acts similar, you can do operations (initializing etc.), but must always return the iterator object itself.
+
+The __next__() method also allows you to do operations, and must return the next item in the sequence.
+
+```
+# Create an iterator that returns numbers, starting with 1, and each sequence will increase by one (returning 1,2,3,4,5 etc.):
+
+class MyNumbers:
+  def __iter__(self):
+    self.a = 1
+    return self
+
+  def __next__(self):
+    x = self.a
+    self.a += 1
+    return x
+
+myclass = MyNumbers()
+myiter = iter(myclass)
+
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+```
+
+StopIteration
+The example above would continue forever if you had enough next() statements, or if it was used in a for loop.
+
+To prevent the iteration from going on forever, we can use the StopIteration statement.
+
+In the __next__() method, we can add a terminating condition to raise an error if the iteration is done a specified number of times:
+
+```
+# Stop after 20 iterations:
+
+class MyNumbers:
+  def __iter__(self):
+    self.a = 1
+    return self
+
+  def __next__(self):
+    if self.a <= 20:
+      x = self.a
+      self.a += 1
+      return x
+    else:
+      raise StopIteration
+
+myclass = MyNumbers()
+myiter = iter(myclass)
+
+for x in myiter:
+  print(x)
+```
+
+## Other Modules
+
+### Collection modules
+
+```
+# cuenta las veces que se repite un elemento 
+from collections import Counter
+mylist=[1,1,1,1,1,2,2,2,2,2,3,3,3,3]
+print(Counter(mylist))
+
+OUTPUT: Counter({1: 5, 2: 5, 3: 4})
+```
+
+### Shutil and  OS module
+
+
+The shutil module offers a number of high-level operations on files and collections of files. In particular, functions are provided which support file copying and removal.
+### Subprocess
+
+### Pathlib
+
+### Tempfile
+
+### Signal
+
+### Syslog
+
