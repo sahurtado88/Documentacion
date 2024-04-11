@@ -3644,9 +3644,347 @@ ansible-vault encrypt fichero.yaml
   - Desde un fichero
   - Desde un script
 
+### Running ansible playbook with vault
+
+1. Run the playbook with --ask-vault-pass (--ask-vault-pass)
+2. Run the plñaybook with -vault-password-fiule( --vault-password-file)
+3. Environment variable (export ANSIBLE_VAULT_PASSWORD_FILE=./ansible-vault-pass)
+
 ## Ansible con docker
 
+### descargar una imagen 
+
+```
+---
+- name: Descargar imagen Docker
+  hosts: ubuntu_server
+  
+
+  tasks:
+  - name: Descargar Tomcat 
+    community.docker.docker_image:
+      name: tomcat
+      source: pull
+```
+
+### cambiar tag a una imagen
+
+```
+---
+- name: Descargar imagen Docker
+  hosts: ubuntu_server
+  
+
+  tasks:
+  - name: Descargar Tomcat 
+    community.docker.docker_image:
+      name: tomcat
+      source: pull
+
+  - name: Etiquetar de nuevo el tomcat
+    community.docker.docker_image:
+      name: tomcat
+      repository: mi-tomcat
+      source: local
+```
+
+### crear un contenedor
+
+```
+---
+- name: Descargar imagen Docker
+  hosts: ubuntu_server
+  
+
+  tasks:
+  - name: Crear un contenedor con Busybox
+    community.docker.docker_container:
+      name: contenedor1
+      image: busybox
+      state: started
+```
+
+### crear contenedor interactivo
+
+```
+---
+- name: Descargar imagen Docker
+  hosts: ubuntu_server
+  
+
+  tasks:
+  - name: Crear un contenedor interactivo con Debian
+    community.docker.docker_container:
+      name: contenedor_debian
+      image: debian
+      state: started
+      interactive: true
+```
+
+### crear contenedor en background
+
+```
+
+---
+- name: Descargar imagen Docker
+  hosts: ubuntu_server
+  
+
+  tasks:
+  - name: Crear un contenedor en backgroud
+    community.docker.docker_container:
+      name: contenedor_tomcat
+      image: mi-tomcat
+      state: started
+      detach: true
+```
+
+### Borrar un contenedor y configurar un puerto
+
+```
+---
+- name: Descargar imagen Docker
+  hosts: ubuntu_server
+  
+
+  tasks:
+  - name: Borrar el contenedor
+    community.docker.docker_container:
+      name: contenedor_tomcat
+      state: absent
+
+  - name: Crear tomcat con puertos asociados
+    community.docker.docker_container:
+      name: contenedor_tomcat
+      state: started
+      detach: true
+      image: mi-tomcat
+      ports:
+        - 9000:8080
+
+```
+### Crear una red de docker
+
+```
+---
+- name: Descargar imagen Docker
+  hosts: ubuntu_server
+  
+
+  tasks:
+  - name: Crear una red de Docker
+    community.docker.docker_network:
+      name: red1
+      ipam_config:
+        - subnet: 172.3.27.0/16
+          gateway: 172.3.27.1
+
+```
+
+### Crear un contenedor asociado a una red
+
+```
+
+---
+- name: Crear un contenedor asociado a una red
+  hosts: ubuntu_server
+
+  tasks:
+  - name: Crear contenedor en red
+    community.docker.docker_container:
+      name: nginx1
+      image: nginx 
+      ports:
+        - 9090:80
+      networks:
+        - name: red1 
+      detach: true
+```
+
+### bind en docker volumenes
+
+```
+
+---
+- name: Trabajar con un volumen bind
+  hosts: ubuntu_server
+  
+
+  tasks:
+  - name: Crear un contenedor nginx
+    community.docker.docker_container:
+      name: nginx3
+      image: nginx
+      ports:
+        - 9191:80
+      detach: true
+      volumes:
+        - "/datos:/usr/share/nginx/html"
+
+  - name: Copiar a /datos la pagina WEB
+    ansible.builtin.copy:
+      src: index.html
+      dest: /datos
+```
+### Variables
+```
+---
+- name: Trabajar con variables
+  hosts: ubuntu_server
+  
+
+  tasks:
+  - name: Crear un contenedor Mariadb
+    community.docker.docker_container:
+      name: mariadb1
+      image: mariadb
+      detach: true
+      env:
+        MARIADB_ROOT_PASSWORD: "lepanto"
+        MARIADB_DATABASE: "db1"
+        MARIADB_USER: "usu1"
+        MARIADB_PASSWORD: "lepanto"
+
+```
+
+### Docker con ansible con un registry de AWS
+```
+---
+- name: Build and push Docker image to AWS ECR
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Log into AWS ECR
+      command: "aws ecr get-login-password --region {{ aws_region }}"
+      register: ecr_login
+      changed_when: false
+
+    - name: Build Docker image
+      community.docker.docker_image:
+        name: my-docker-image
+        path: /path/to/dockerfile/directory
+        tag: latest
+
+    - name: Tag Docker image
+      community.docker.docker_image:
+        name: my-docker-image
+        tag: latest
+        repository: "{{ aws_account_id }}.dkr.ecr.{{ aws_region }}.amazonaws.com/my-docker-image"
+
+    - name: Push Docker image to AWS ECR
+      community.docker.docker_image:
+        name: "{{ aws_account_id }}.dkr.ecr.{{ aws_region }}.amazonaws.com/my-docker-image"
+        tag: latest
+        source: build
+        push: yes
+
+  vars:
+    aws_region: your-aws-region
+    aws_account_id: your-aws-account-id
+
+```
+
+### ansible y kubernetes
+
+```
+---
+- name: Deploy Nginx app to Kubernetes cluster
+  hosts: localhost
+  tasks:
+    - name: Create Namespace
+      community.kubernetes.k8s:
+        api_version: v1
+        kind: Namespace
+        name: nginx-app
+        state: present
+
+    - name: Deploy Nginx Pod
+      community.kubernetes.k8s:
+        definition:
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            name: nginx-pod
+            namespace: nginx-app
+          spec:
+            containers:
+              - name: nginx-container
+                image: nginx:latest
+                ports:
+                  - containerPort: 80
+        state: present
+
+```
+
+## Inventario dinamico
+
+Aquí hay un ejemplo de cómo podrías configurar un inventario dinámico utilizando un script Python para recuperar información sobre los hosts desde una fuente externa, como un proveedor de nube:
+
+Supongamos que tienes un script Python llamado aws_ec2_inventory.py que recupera información sobre las instancias de EC2 en tu cuenta de AWS y genera un inventario en formato JSON:
+
+```
+#!/usr/bin/env python
+import boto3
+import json
+
+def get_ec2_instances():
+    ec2 = boto3.client('ec2', region_name='us-east-1')
+    instances = ec2.describe_instances()
+
+    inventory = {
+        'all': {
+            'hosts': []
+        },
+        '_meta': {
+            'hostvars': {}
+        }
+    }
+
+    for reservation in instances['Reservations']:
+        for instance in reservation['Instances']:
+            instance_id = instance['InstanceId']
+            public_ip = instance.get('PublicIpAddress', '')
+            private_ip = instance.get('PrivateIpAddress', '')
+            tags = {tag['Key']: tag['Value'] for tag in instance.get('Tags', [])}
+
+            inventory['all']['hosts'].append(instance_id)
+            inventory['_meta']['hostvars'][instance_id] = {
+                'ansible_host': public_ip,
+                'private_ip': private_ip,
+                'tags': tags
+            }
+
+    print(json.dumps(inventory))
+
+if __name__ == '__main__':
+    get_ec2_instances()
+
+```
+
+Este script utiliza la biblioteca Boto3 de Python para interactuar con la API de EC2 de AWS y recopilar información sobre las instancias de EC2 en tu cuenta. Luego, genera un inventario en formato JSON que contiene información sobre los hosts y sus variables.
+
+Para usar este script como inventario dinámico en Ansible, puedes configurar tu archivo ansible.cfg para que apunte a este script:
+
+```
+[defaults]
+inventory = /path/to/aws_ec2_inventory.py
+
+```
+
 ## Ansible AWX
+
+AWX es una plataforma de código abierto que proporciona una interfaz web y un conjunto de herramientas para la automatización de la infraestructura y la gestión de configuraciones. Es básicamente una versión de la comunidad de la plataforma de automatización de TI de Red Hat, Ansible Tower.
+
+AWX proporciona una interfaz de usuario
+basada en web, API REST y motor de tareas
+creado sobre Ansible
+
+### Componentes de AWX
+
+![alt text](image-1.png)
+
+
 _______________________________
 
 ## Keep vaulted variables safely visible

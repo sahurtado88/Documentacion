@@ -551,7 +551,7 @@ The backup and recovery strategy is considered the least efficient for RTO. Howe
 
 With the pilot light strategy, the data is live, but the services are idle. Live data means the data stores and databases are up-to-date (or nearly up-to-date) with the active Region and ready to service read operations. I
 
-n the pilot light strategy, basic infrastructure elements are in place like Elastic Load Balancing and Amazon EC2 Auto Scaling in Figure 6. But functional elements (like compute) are “shut off.”
+in the pilot light strategy, basic infrastructure elements are in place like Elastic Load Balancing and Amazon EC2 Auto Scaling in Figure 6. But functional elements (like compute) are “shut off.”
 
 ### WARMSTAND BY
 

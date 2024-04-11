@@ -264,16 +264,18 @@ Jenkins master pulls the code from the remote GitHub repository every time there
 Every slave node has a label associate with it
 Master distributes the workload to all the Jenkins slaves
 We can run a specific pipeline on a particular node by defining a label in the pipeline code
+
 Q2: What is Jenkinsfile?
 
 Jenkinsfile contains the definition of a Jenkins pipeline and is checked into the source control repository. It is a text file.
+
 Q3: Explain the two types of pipelines in Jenkins
 
-Scripted Pipeline: It is based on Groovy script as their Domain Specific Language. One or more node blocks do the core work throughout the entire pipeline.
+- Scripted Pipeline: It is based on Groovy script as their Domain Specific Language. One or more node blocks do the core work throughout the entire pipeline.
 Executes the pipeline or any of its stages on any available agent
 Defines the build stage
 Performs steps related to the building stage
-Declarative Pipeline: It provides a simple and friendly syntax to define a pipeline. Here, the pipeline block represents the work done throughout the pipeline.
+- Declarative Pipeline: It provides a simple and friendly syntax to define a pipeline. Here, the pipeline block represents the work done throughout the pipeline.
 Executes the pipeline or any of its stages on any available agent
 Defines the build stage
 Performs steps related to the build stage
@@ -290,16 +292,20 @@ Q5: How you will check the generated artifact/logs/Zar file in Jenkins?
 
 If the Jenkins job has generated any artifacts then it has an Artifacts section in that
 Alternatively, you can ssh into the Jenkins server, and from JENKINS_HOME/workspace/<Your_Job_Name>/ path you can download the artifact
+
 Q6: How Jenkins can fetch the github or GitLab’s repository?
 
 In order for Jenkins to checkout the github or GitLab’s repository we need to install the Git plugin.
 We need to create the access token in the github or Gitlab and for that token we need to provide the credentials in Jenkins so that using that token Jenkins can perform the action.
+
 Q7: How to automate the access token rotation in the GitLab and apply the new token in Jenkins?
 
 We can use the GitLab’s API and use the GET method to get the access token and we can implement a script in which we need to rotate the token and then we need to use the Jenkins API and perform the POST method to apply the new token over there.
+
 Q8: What is Jenkins’s shared library?
 
 A Jenkins Shared Library is a powerful feature of the Jenkins automation server that allows you to define reusable code and functionality that can be shared across multiple Jenkins pipelines and projects.
+
 Q9: What is the significance of stages in Jenkins?
 
 Stages allow you to organize your pipeline into logical sections. For example, you might have stages like “Build,” “Test,” “Deploy to Staging,” and “Deploy to Production.” Each stage represents a specific phase of your software delivery process.
@@ -334,6 +340,7 @@ The Jenkins master will have the cron entries set up for the jobs as per the sch
 Q14: What are executors and how many executors do we get by default?
 
 Executors define how many jobs we can run in parallel. By default we get 2 executors but we can also increase that number
+
 Q15: From one server to another, how do you copy or move your Jenkins jobs?
 
 First, we need to copy our jobs directory from the old to the new server. There are multiple ways to do it. We can either move the job from the installation by simply copying the corresponding job directory or we can make a clone of the job directory by making an existing job’s copy. For this, we need to have a different name, which we can rename later.
@@ -497,9 +504,9 @@ la recomendable
 
 ### Jenkins job DSL
 
-Jenkins DSL e suna manera de programar con codigo el job
+Jenkins DSL es una manera de programar con codigo el job
 
-el plugin jenkin job DSL es utilizado para definir uy construir jobs en una forma programable on los archivos de codigo
+el plugin jenkin job DSL es utilizado para definir y construir jobs en una forma programable con los archivos de codigo
 
 los usuarios pueden describir su job utilizando groovy base script lo que simplifica la manera d emanejar los jobs
 

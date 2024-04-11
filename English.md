@@ -11144,3 +11144,362 @@ tends to increase…
 is likely to drop…
 
 ____________________
+
+… will have … by/at the end of …
+
+We will have expanded our operations to Europe by the end of 2012.
+International Ventures will have earned more than $10 million at the end of this quarter.
+
+
+Before/By/At/After the end of the year/quarter/first half … will have reached/expanded/grown …
+
+By the end of 2012, we will have expanded our operations to Europe.
+Before the third quarter of this year, ProStart Computers will have overtaken SmarTech.
+After the second quarter of next year, Loquy Comm will have opened its New York office.
+
+… will (also) have been … by the time …
+
+Green Global will have been operating in full swing in Latin America by the time the company starts expanding into Africa.
+
+
+By the time … will (also) have been …
+
+By the time its competitors catch on, Green Global will also have been releasing its new products into the market.
+
+The future perfect and future perfect continuous tenses can be used with certain time expressions to make projections about company performance.
+
+We will have expanded/overtaken/exceeded/etc. ... by the time ...
+By/At the start/end/middle of ..., we will have reached/met/achieved/etc. ...
+We will have been operating/providing/working/etc. ... before/after ...
+By/At ..., we will have been producing/collaborating/earning/etc. ...
+________________
+
+"in other words," "again" - to repeat an idea
+
+We must respond to our callers as if they were always right. In other words, we must treat them with utmost courtesy.
+
+"also," "in addition," "besides" - to add an idea
+
+Be as clear as possible during your negotiation meeting. In addition, make sure to document the whole discussion so that everyone will remember the terms of agreement.
+
+"above all," "most importantly" - to emphasize an idea
+
+Our employees are highly skilled, well-trained, and well-respected in their fields. Above all, they are committed to the company.
+
+
+"equally," "similarly," "likewise" - to compare
+
+He is the most hardworking team leader in this organization. Similarly, his team members are regarded as the company’s most industrious employees.
+
+"on the other hand," "in contrast" - to contrast
+
+Steve often gets stressed out over his projects. In contrast, his manager, Alice, always seems relaxed.
+
+"however," "nonetheless," "and yet," "still" - to contradict
+
+They had exerted every possible effort to meet the deadline. And yet, due to technical difficulties, the project was delayed by a week.
+
+"as a result," "therefore," "thus" - to show a result
+
+He exerts extra effort to be polite and helpful to his customers. As a result, he has a high rate of return clients.
+
+"indeed," "in fact," "of course" - to confirm an idea
+
+Our manager has offered all kinds of support to new employees. Indeed, it is hard to imagine anyone being more welcoming than he is.
+
+whereas: mientras
+
+ass for en cuanto a
+
+________________
+
+"as a rule," "generally speaking," "in most cases," "on the whole" - to give a generalization
+
+Lung diseases have become so common in recent years. In most cases, air pollution is a major cause.
+
+"to summarize," "to sum up," "in short" - to summarize ideas
+
+In short, dirty air is bad for our health.
+
+"for example," "for instance," "to illustrate" - to give an example
+
+For example, it can give us lung cancer, emphysema, or asthma.
+
+"actually," "what I mean is" - to correct or clarify an idea
+
+Actually, I would dare say that air pollution is the cause of 99 percent of all lung diseases.
+
+"by the way," "incidentally" - to signal a change of subject
+
+Joey: There's a lot of construction going on in our street.
+Jill: I know. It's been so dusty!
+Joey: Now, they're building a new parking lot across the hospital.
+Jill: By the way, some hospital staff are coming to do a health survey in our office today. They're doing a study on lung diseases.
+
+
+"frankly," "honestly," "fortunately," "sadly" - to show our attitude/feelings towards what we are saying
+
+Fortunately, there are a lot of things we can do to accomplish that.
+
+"as a result," "therefore," "thus," "in that case" - to show a result
+
+Therefore, we must lessen air pollution.
+
+"well," "you know" - to pause before saying what we want to say
+
+Well, I guess so.
+You know, you're right!
+
+__________________
+
+# Phrases for firing an employee
+As you know, the company is in transition. Unfortunately, your contract has been terminated as a result of this.
+
+It is with deepest regret that I inform you that the company has decided to let you go.
+
+I think we can both agree that your skills are more suited elsewhere.
+
+Your suggestions are interesting, however …
+
+The presentation was not bad, but …
+
+It didn't work for me when …
+
+I think we should make a plan of action to improve your performance.
+
+You can attend training sessions and workshops in order to improve your …
+
+I acknowledge the difficulties of your job. How can we work through these difficulties together?
+
+When breaking bad news, you may use these common phrases to:
+
+Fire an employee
+Unfortunately, your contract has been terminated because...
+It is with deep regret that I inform you that you will no longer be working with us...
+We can both agree that your skills are more suited elsewhere...
+
+Reject someone's suggestion or presentation
+Your suggestions are interesting, however...
+The presentation was not bad, but...
+It didn't work for me when...
+
+Give bad appraisals
+I think we should improve your...
+You can attend training sessions to improve your...
+We can work through the difficulties of your job by...
+
+You may use discourse markers when breaking bad news
+As you know...
+Unfortunately...
+However...
+It is with deep regret that...
+
+_____________________
+
+# Common confusing verbs
+lay vs. lie
+"Lay" means "to put something down" (past tense: "laid"; past participle: "laid"). "Lie" means "to be in a horizontal position, as when one is resting on a bed" (past tense: "lay"; past participle: "lain").
+
+They lay a blanket on the ground for a picnic. After they eat, they will lie on the blanket and take a nap.
+
+leave vs. let
+"Leave" means "to not disturb or interfere." "Let" means "to allow or to permit."
+
+I will leave you alone while you read the manual. I will let you learn how to operate the machine on your own.
+
+raise vs. rise
+"Raise" means "to make something go up, usually by carrying it." "Rise" means "to go up."
+
+As the candidate spoke, the audience raised signs and banners showing their support for him. As his speech ended, they began to rise from their seats and applaud.
+
+loose vs. lose
+"Loose" or "loosen" means "to free or to open up." "Lose" means "to be unable to keep something" or "to get rid of something."
+
+This belt is too tight. I should either loosen it or lose some weight.
+
+remember vs. remind
+"Remember" means "to keep an idea in one's head" or "to get back an idea one has lost." It is an action you do by yourself. "Remind" means "to help somebody else remember."
+
+It's hard for Melanie to remember important appointments, so she asks Dan to remind her of them.
+
+Examples of confusing verbs:
+
+lay vs. lie
+leave vs. let
+raise vs. rise
+loose vs. lose
+remember vs. remind
+
+bring vs. take
+"Bring" talks about somebody carrying something towards the speaker or listener. "Take" talks about somebody carrying something away from the speaker or listener. 
+
+Please bring the files to our meeting. - Okay, I'll bring them there.
+I'm taking the contract to the client's office today. - Could you take these files with you, too?
+
+borrow vs. lend
+"Borrow" means to take something that is not yours, with the intention of returning it. "Lend" means to let somebody hold and use something, but you expect him/ her to give it back afterwards.
+
+Marie borrowed my pen so she could sign the contract.
+I lent Marie my pen so she could sign the contract.
+
+say vs. tell
+"Tell" is followed by the receiver of the speech. "Say" does not need to be followed by a receiver.
+
+John told Ruth to drive carefully.
+Ruth said she would be careful.
+
+listen vs. hear
+"Hear" is passive; it is something that happens to you -- whether you like it or not -- when sound enters your ears. "Listen" is active; it is something you choose to do.
+
+Camille heard the phone ringing, but she ignored it.
+Beatrice listened carefully to the lecture.
+
+make vs. do
+"Make" is used when there is a new product that is created. "Do" is used when a task is done but no new product is created.
+
+Mario and Anna made the report last week. They created the images and assembled the slides.
+Jose and Tina did the report on Monday in front of the Board of Directors.
+
+teach vs. learn
+"Teach" means "to give knowledge." "Learn" means "to gain or receive knowledge."
+
+My boss taught me many important lessons about management.
+I learned my management style from my boss.
+
+_________________
+
+# Passive verb forms
+
+## Simple tenses
+To transform simple tenses into the passive form, use linking verb + past participle.
+
+Simple present tense
+
+Active form
+Ben swims five laps every morning.
+
+Passive form
+Five laps are swum by Ben every morning.
+
+Simple past tense
+
+Active form
+Ben swam five laps yesterday morning.
+
+Passive form
+Five laps were swum by Ben yesterday morning.
+
+Simple future tense
+
+Active form
+Ben will swim five laps tomorrow morning.
+
+Passive form
+Five laps will be swum by Ben tomorrow morning.
+
+## Continuous tenses
+To transform continuous tenses into the passive form, use "be" verb + "being" + past participle.
+
+Present continuous tense
+​​​​​​​
+Active form
+Kathryn is designing the brochure.
+
+Passive form
+The brochure is being designed by Kathryn.
+
+Past continuous tense
+
+Active form
+Kathryn was designing the brochure when her boss sent new instructions.
+
+Passive form
+The brochure was being designed by Kathryn when her boss sent new instructions.
+
+Future continuous tense (rarely used in the passive form)
+
+Active form
+Kathryn will be designing the brochure until Ben comes to help her.
+
+Passive form
+The brochure will be being designed by Kathryn until Ben comes to help her.
+
+## Perfect tenses
+To transform perfect tenses into the passive form, use "have" verb + "been" + past participle.
+
+Present perfect tense
+
+Active form
+Jeff has invited Rita to the company dinner.
+
+Passive form
+Rita has been invited by Jeff to the company dinner.
+
+Past perfect tense
+
+Active form
+Jeff had invited Rita to the company dinner before he invited Harry.
+
+Passive form
+Rita had been invited by Jeff to the company dinner before he invited Harry.
+
+Future perfect tense
+
+Active form
+By tomorrow, Jeff will have invited Rita to the company dinner.
+
+Passive form
+By tomorrow, Rita will have been invited by Jeff to the company dinner.
+
+## Summary 
+
+Most sentences are active. We use the passive form when we want to emphasize the person or thing receiving the action. Listed below are the different passive verb forms:
+
+Simple tenses: linking verb + past participle
+Continuous tenses: "be" verb + "being" + past participle
+Perfect tenses: "have" verb + "been" + past participle
+
+# Specific uses of THE
+
+## Groups
+We use "the" when talking about a specific unit or well-known group as a whole. We do not use "the" when we generalize about members of a group.
+
+The nurses have gone on strike.
+Nurses work very hard.
+
+We use "the" when talking about a "closed" group, meaning one with a limited number of members. We do not use "the" when talking about an "open" group, meaning one with a wider number of members.
+
+The Impressionists believed that paintings should not look like photographs.
+French painters became popular in the 19th century.
+
+## Titles and ownership
+We use "the" when we describe ownership. We do not use "the" when a noun is put after a pronoun or a possessive noun.
+
+The book belongs to Jane.
+That is her book.
+That is Jane's book.
+
+Names of newspapers usually include "the." Names of magazines usually do not include "the."
+
+Miguel likes to read The New York Times.
+Can you buy me a copy of Newsweek?
+
+## Ideas
+We use "the" when talking about the radio, the cinema, the television, and the theater as physical objects. We do not use "the" when we talk about them as abstract ideas -- art forms or professions.
+
+Melanie went to the theater to watch a movie last week.
+Anthony has worked in theater for more than 20 years.
+
+We use "the" when the noun is modified by a defining phrase, usually using the preposition "of." We do not use "the" when talking about "half-general" ideas -- that is, ideas halfway between "general" and "particular."
+
+George loves the music of The Rolling Stones.
+George loves rock music.
+
+Here are some of the special rules for using "the."
+
+when referring to a group as a whole
+The nurses have gone on strike.
+when talking about titles and describing ownership
+Miguel likes to read The New York Times.
+when referring to ideas as physical objects
+Melanie went to the theater to watch a movie last week.

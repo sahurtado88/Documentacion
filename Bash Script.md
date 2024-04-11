@@ -220,7 +220,7 @@ echo $DATETIME >> /home/$USER/$MYLOG
 ## FLOW CONTROL
 
 ### FOR LOOP
-
+```
 #!/bin/bash
 
 for i in $( ls ); do
@@ -230,15 +230,15 @@ done
 for i in $(seq 1 10); do
     touch file$i
 done
-
+```
 ### WHILE LOOP
-
+```
 COUNTER=0
 while [ $COUNTER -lt 10];do
     echo the counter is $COUNTER
     let COUNTER-=1
 done
-
+```
 ### UNTIL LOOP
 
 ## SIGNAL
